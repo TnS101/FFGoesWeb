@@ -4,7 +4,48 @@
     Layout = "_Layout";
 }
 <head>
+    <style type="text/css" id="custom-background-css">
+        body.custom-background {
+            background-image: url("https://i.ibb.co/KyxCNsq/lampa.jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: round;
+            background-attachment:scroll;
+        }
+    </style>
+    <partial name="_NavBar">
 </head>
-<body>
-    <p>Welcome to my game!</p>
+<body class="home page-template-default page page-id-6 logged-in admin-bar custom-background customize-support site-home">
+    <div id="page">
+
+        <header class="entry-header with-image full">
+            <div class="title-meta-wrapper">
+                <h1 class="site-title"><a asp-controller="Home" asp-action="Index">Conquerors of Utopia</a></h1>
+
+                <div class="container">
+                    <h1 class="has-luminous-vivid-amber-color has-text-color has-text-align-center">Join other players in order to take what’s yours!</h1>
+                </div>
+            </div>
+        </header>
+        <div id="content" class="site-content clearfix">
+            <div class="container clearfix">
+
+                <div id="primary" class="content-area full-width">
+                    <main id="main" class="site-main" role="main">
+
+                        <article id="post-6" class="post-6 page type-page status-publish hentry">
+
+                            <div class="entry-content single-entry-content">
+
+                                <div class="wp-block-button aligncenter is-style-fill"><a asp-controller="UnitCreation" asp-action="Create" class="wp-block-button__link has-text-color has-background creation-button"><strong>Join Now</strong></a></div>
+                            </div>
+
+                        </article>
+                    </main>
+                </div>
+            </div>
+
+        </div>
+        <partial name="_Footer">
+    </div>
 </body>
