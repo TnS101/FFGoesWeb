@@ -1,0 +1,12 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Explore";
+    Layout = "_Layout";
+}
+<partial name="_NavBar">
+    <partial name="_SideBars">
+        <h2>Explore</h2>
+
+        <p>No items found</p>
+        <a asp-controller="World" asp-action="Explore">Walk</a>
+        <partial name="_Footer">
