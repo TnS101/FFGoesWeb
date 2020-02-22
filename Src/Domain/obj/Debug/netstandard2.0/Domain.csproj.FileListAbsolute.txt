@@ -1,0 +1,3 @@
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Domain\obj\Debug\netstandard2.0\Domain.csprojAssemblyReference.cache
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfoInputs.cache
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfo.cs

@@ -1,1 +1,0 @@
-Database entities and configurations.

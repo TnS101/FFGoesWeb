@@ -1,0 +1,11 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+<body>
+    <partial name="_NavBar">
+        <partial name="_SideBars">
+            <p class="site-title">Unit created!</p>
+            <a asp-controller="World" asp-action="Home">Start exploring the World!</a>
+</body>
+<partial name="_Footer">

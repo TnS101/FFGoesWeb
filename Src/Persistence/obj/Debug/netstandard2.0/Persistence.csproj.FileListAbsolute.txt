@@ -1,0 +1,5 @@
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Persistence\bin\Debug\netstandard2.0\Persistence.deps.json
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Persistence\bin\Debug\netstandard2.0\Persistence.dll
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Persistence\obj\Debug\netstandard2.0\Persistence.AssemblyInfoInputs.cache
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Persistence\obj\Debug\netstandard2.0\Persistence.AssemblyInfo.cs
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Persistence\obj\Debug\netstandard2.0\Persistence.csprojAssemblyReference.cache

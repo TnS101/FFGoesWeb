@@ -1,0 +1,12 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "End";
+    Layout = "_Layout";
+}
+
+<partial name="_NavBar">
+    <partial name="_SideBars">
+        <h2>You have killed your enemy!</h2>
+
+        <a asp-controller="World" asp-action="Home">World!</a>
+        <partial name="_Footer">

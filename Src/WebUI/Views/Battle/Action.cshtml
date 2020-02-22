@@ -1,0 +1,57 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model string[]
+@{
+    @using FinalFantasyTryoutGoesWeb.Data.Entities;
+    ViewData["Title"] = "Action";
+    Layout = "_Layout";
+    var playerName = Model[0];
+    var enemyName = Model[1];
+    var imagePath = Model[2];
+    var playerCurrentHP = Model[3];
+    var playerMaxHP = Model[4];
+    var enemyCurrentHP = Model[5];
+    var enemyMaxHP = Model[6];
+    var playerAttack = Model[7];
+    var enemyAttack = Model[8];
+    var playerCurrentMana = Model[9];
+    var playerMaxMana = Model[10];
+    var enemyCurrentMana = Model[11];
+    var enemyMaxMana = Model[12];
+    var enemyRace = Model[13];
+}
+<head>
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <partial name="_SideBars">
+        <h2 style="text-align:center">@playerName  vs  @enemyRace @enemyName</h2>
+        <div class="action-div">
+
+            <img src="~/images/ExampleSprite2.png" class="player-sprite" alt="Player"/>
+            <img src="@imagePath" alt="Enemy" />
+            <br />
+
+            <progress id="playerDamage" value="@double.Parse(playerAttack)" hidden></progress>
+            <progress id="enemyDamage" value="@double.Parse(enemyAttack)" hidden></progress>
+            <br />
+            <div>
+                <progress class="player-healthBar" id="playerHealth" value="@double.Parse(playerCurrentHP)" max="@double.Parse(playerMaxHP)"></progress>
+                <progress class="healthBar" id="enemyHealth" value="@double.Parse(enemyCurrentHP)" max="@double.Parse(enemyMaxHP)"></progress>
+                <br />
+                <br />
+                <progress class="player-manaBar" id="playerMana" value="@double.Parse(playerCurrentMana)" max="@double.Parse(playerMaxMana)"></progress>
+                <progress class="manaBar" id="enemyMana" value="@double.Parse(enemyCurrentMana)" max="@double.Parse(enemyMaxMana)"></progress>
+                <p class="versus">⚔️</p>
+
+            </div>
+            <div class="container battle-container">
+                <a asp-controller="Battle" asp-action="Action" asp-route-id="attack"><img class="attack" src="~/images/attack.png" alt="Alternate Text" /></a>
+                <a asp-controller="Battle" asp-action="Action" asp-route-id="defend"><img src="~/images/shield.png" alt="Alternate Text" /></a>
+                <a asp-controller="Battle" asp-action="Action" asp-route-id="spellCast">Spell</a>
+                <a asp-controller="Battle" asp-action="Action" asp-route-id="escape">Escape</a>
+            </div>
+        </div>
+
+</body>
+<partial name="_Footer">
