@@ -1,10 +1,10 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.Equipment
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
     public class ArmorCheck
     {
-        public void Check(Item item, int slotNumber, string classUsable, int regularStatNumber)
+        public void Check(Item item, int slotNumber, string classUsable, int level)
         {
             if (slotNumber == 0)
             {
@@ -34,7 +34,7 @@
             {
                 item.Slot = "Gloves";
             }
-            item.Name = $"{classUsable}'s {item.Slot} LVL : {regularStatNumber}";
+            item.Name = $"{classUsable}'s {item.Slot} LVL : {level}";
         }
     }
 }

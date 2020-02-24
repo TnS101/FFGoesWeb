@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Generators;
     using FinalFantasyTryoutGoesWeb.Persistence;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
@@ -47,9 +47,8 @@
 
         [HttpGet("World/TreasureLoot")]
         [Route("World/TreasureLoot")]
-        public async Task<IActionResult> TreasureEncounter(string option)
+        public async Task<IActionResult> TreasureEncounter([FromQuery]string option)
         {
-            option = Request.Query["option"];
             await context.SaveChangesAsync();
 
             return View(treasureGenerator.Generate(player,rng,option));

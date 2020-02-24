@@ -1,8 +1,8 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Handlers;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.FightingClassUtilites;
     using FinalFantasyTryoutGoesWeb.Persistence;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
@@ -21,16 +21,16 @@
             player = context.Users.FirstOrDefault().Units.FirstOrDefault();
         }
 
-        [HttpPost("EquipmentAction/Equip")]
+        [HttpGet("EquipmentAction/Equip")]
         [Route("EquipmentAction/Equip")]
-        public IActionResult Equip(Item item)
+        public IActionResult Equip([FromQuery]string itemName)
         {
             return View(equipmentHandler.EquipOption.Equip(player, item, statSum));
         }
 
-        [HttpPost("EquipmentAction/UnEquip")]
+        [HttpGet("EquipmentAction/UnEquip")]
         [Route("EquipmentAction/UnEquip")]
-        public IActionResult UnEquip(Item item)
+        public IActionResult UnEquip([FromQuery] string itemName)
         {
             return View(equipmentHandler.UnEquipOption.UnEquip(player,item,statSum));
         }

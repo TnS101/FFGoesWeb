@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.LevelUtility;
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.LevelUtility;
     using FinalFantasyTryoutGoesWeb.Persistence;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;

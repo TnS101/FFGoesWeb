@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Generators
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemyClassRepository;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using FinalFantasyTryoutGoesWeb.Domain.GameContent.Repositories.EnemyClassRepository;
     using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.FightingClassUtilites;
     using System;

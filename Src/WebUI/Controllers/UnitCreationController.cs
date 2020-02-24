@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Handlers;
     using FinalFantasyTryoutGoesWeb.Persistence;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
@@ -23,19 +23,17 @@
             player = new Unit { Type = "Player", Equipment = new Equipment(), UserId = user.Id, GoldAmount = 100, Level = 1, XPCap = 100 };
         }
 
-        [HttpPost("UnitCreation/Create")]
+        [HttpGet("UnitCreation/Create")]
         [Route("UnitCreation/Create")]
         public IActionResult Create()
         {
             return View(context.Images.Where(i => i.Description.Contains("Main Stat:")).ToList());
         }
 
-        [HttpGet("UnitCreation/SubmittedCreate")]
+        [HttpPost("UnitCreation/SubmittedCreate")]
         [Route("UnitCreation/SubmittedCreate")]
-        public async Task<IActionResult> SubmittedCreate(string fightingClass, string race)
+        public async Task<IActionResult> Create([FromQuery]string fightingClass, [FromForm]string race)
         {
-            fightingClass = HttpContext.Request.Query["id"];
-            race = Request.Form["race"];
             player.UserId = user.Id;
 
             //Fighting Class Check
@@ -45,17 +43,23 @@
             //Race Check
             validatorHandler.RaceCheck.Check(player, race);
             await context.Units.AddAsync(player);
-            return View();
+            return Redirect("/NamePick");
         }
 
         [HttpGet("UnitCreation/NamePick")]
         [Route("UnitCreation/NamePick")]
-        public async Task<IActionResult> NamePick(string name)
+        public IActionResult NamePick() 
         {
-            name = Request.Form["name"];
+            return View();
+        }
+
+        [HttpPost("UnitCreation/NamePick")]
+        [Route("UnitCreation/NamePick")]
+        public async Task<IActionResult> NamePick([FromForm]string name)
+        {
             player.Name = name;
             await context.SaveChangesAsync();
-            return View();
+            return Redirect("/World/Explore");
         }
     }
 }

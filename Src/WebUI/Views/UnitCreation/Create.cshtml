@@ -19,7 +19,7 @@
                             <h1 class="has-luminous-vivid-amber-color has-text-color has-text-align-center image-description">@image.Description</h1>
                         </div>
                         <div class="has-text-align-center race-pick">
-                            <form asp-controller="UnitCreation" asp-action="SubmittedCreate" asp-route-id="@image.Name">
+                            <form asp-controller="UnitCreation" asp-action="SubmittedCreate" asp-route-id="@image.Name" method="post">
                                 <select name="race">
                                     <option value="Human">Human</option>
                                     <option value="Orc">Orc</option>

@@ -1,11 +1,22 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
+    ViewData["Title"] = "NamePick";
     Layout = "_Layout";
 }
-<body>
+<head>
     <partial name="_NavBar">
-        <partial name="_SideBars">
-            <p class="site-title">Unit created!</p>
-            <a asp-controller="World" asp-action="Home">Start exploring the World!</a>
+</head>
+<body>
+    <partial name="_SideBars">
+    <div class="has-text-align-center">
+        <div class="wp-block-image is-style-circle-mask"><figure class="aligncenter size-large is-resized is-large-text"><i class="far fa-smile"></i></figure></div>
+        <form asp-controller="UnitCreation" asp-action="NamePick" method="post">
+            <input type="text" name="name" value="" placeholder="Insert player Name..." />
+            <br />
+            <br />
+            <input type="submit" name="" value="Create" />
+        </form>
+    </div>
+    
 </body>
 <partial name="_Footer">

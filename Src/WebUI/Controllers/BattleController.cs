@@ -1,10 +1,9 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.WebUI.Controllers
 {
     using Domain.GameContent.Utilities.Looting;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Looting;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Handlers;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Generators;
     using FinalFantasyTryoutGoesWeb.Persistence;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
@@ -37,10 +36,8 @@
 
         [HttpGet("Battle/Action")]
         [Route("Battle/Action")]
-        public async Task<IActionResult> Action(string action, CancellationToken cancellationToken)
+        public async Task<IActionResult> Action([FromQuery]string action, CancellationToken cancellationToken)
         {
-            action = HttpContext.Request.Query["id"];
-
             var stats = new string[] { player.Name, enemy.Name, image.Path,
                 player.CurrentHP.ToString(),player.MaxHP.ToString(), enemy.CurrentHP.ToString() , enemy.MaxHP.ToString()
                 , player.CurrentAttackPower.ToString(), enemy.CurrentAttackPower.ToString(), player.CurrentMana.ToString()
