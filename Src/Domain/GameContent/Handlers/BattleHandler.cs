@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Handlers
 {
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.BattleOptions;
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.Validators.Battle;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.BattleOptions;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.Battle;
 
     public class BattleHandler
     {

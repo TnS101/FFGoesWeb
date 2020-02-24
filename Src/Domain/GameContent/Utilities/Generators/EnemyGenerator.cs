@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Generators
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemyClassRepository;
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
     using FinalFantasyTryoutGoesWeb.Domain.GameContent.Repositories.EnemyClassRepository;
     using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.FightingClassUtilites;

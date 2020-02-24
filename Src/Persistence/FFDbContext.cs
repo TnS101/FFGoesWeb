@@ -1,7 +1,6 @@
-﻿using Application.Common.Interfaces;
-
-namespace FinalFantasyTryoutGoesWeb.Persistence
+﻿namespace FinalFantasyTryoutGoesWeb.Persistence
 {
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
     using System.Threading;

@@ -1,4 +1,4 @@
-﻿namespace Application
+﻿namespace FinalFantasyTryoutGoesWeb.Application
 {
     using AutoMapper;
     using MediatR;

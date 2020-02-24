@@ -1,16 +1,19 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Controllers
+﻿namespace FinalFantasyTryoutGoesWeb.WebUI.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Data;
-    using FinalFantasyTryoutGoesWeb.Data.Entities;
-    using FinalFantasyTryoutGoesWeb.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.GameContent.LootVariations;
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.Generators;
+    using Domain.GameContent.Utilities.Looting;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Looting;
+    using FinalFantasyTryoutGoesWeb.Persistence;
+    using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
 
-    public class BattleController : Controller
+    public class BattleController : BaseController
     {
         private static readonly FFDbContext context = new FFDbContext();
         private readonly BattleHandler battleHandler = new BattleHandler();
@@ -34,7 +37,7 @@
 
         [HttpGet("Battle/Action")]
         [Route("Battle/Action")]
-        public async Task<IActionResult> Action(string action)
+        public async Task<IActionResult> Action(string action, CancellationToken cancellationToken)
         {
             action = HttpContext.Request.Query["id"];
 
@@ -43,7 +46,7 @@
                 , player.CurrentAttackPower.ToString(), enemy.CurrentAttackPower.ToString(), player.CurrentMana.ToString()
                 ,player.MaxMana.ToString(),enemy.CurrentMana.ToString(),enemy.MaxMana.ToString(), enemy.Race};
 
-            await ExecuteAction(action);
+            await ExecuteAction(action, cancellationToken);
             
             if (enemy.CurrentHP <= 0)
             {
@@ -79,7 +82,7 @@
             return View();
         }
 
-        private async Task ExecuteAction(string action)
+        private async Task ExecuteAction(string action, CancellationToken cancellationToken)
         {
             if (yourTurn)
             {
@@ -99,12 +102,12 @@
                 {
                     await Escape();
                 }
-                battleHandler.TurnCheck.Check(player, enemy, battleHandler, context, yourTurn);
+                battleHandler.TurnCheck.Check(player, enemy, battleHandler, context, yourTurn, cancellationToken);
                 yourTurn = false;
             }
             if (!yourTurn)
             {
-                battleHandler.TurnCheck.Check(player, enemy, battleHandler, context, yourTurn);
+                battleHandler.TurnCheck.Check(player, enemy, battleHandler, context, yourTurn, cancellationToken);
             }
         }
     }

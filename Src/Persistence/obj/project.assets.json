@@ -1746,6 +1746,7 @@
         "dependencies": {
           "AutoMapper": "9.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
+          "Domain": "1.0.0",
           "MediatR": "8.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
           "Microsoft.EntityFrameworkCore": "3.1.2"
@@ -1760,9 +1761,6 @@
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Application": "1.0.0"
-        },
         "compile": {
           "bin/placeholder/Domain.dll": {}
         },

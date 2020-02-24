@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Generators
 {
-    using FinalFantasyTryoutGoesWeb.GameContent.TreasureKeys;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.TreasureKeys;
     using System;
 
     public class TreasureKeyGenerator

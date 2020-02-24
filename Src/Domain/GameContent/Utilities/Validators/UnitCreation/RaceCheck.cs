@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.GameContent.Utilities.Validators.UnitCreation
 {
-    using FinalFantasyTryoutGoesWeb.Data.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities;
 
     public class RaceCheck
     {

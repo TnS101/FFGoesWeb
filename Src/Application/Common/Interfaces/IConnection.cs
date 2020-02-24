@@ -1,4 +1,4 @@
-﻿namespace Application.Common.Interfaces
+﻿namespace FinalFantasyTryoutGoesWeb.Application.Common.Interfaces
 {
     public interface IConnection
     {

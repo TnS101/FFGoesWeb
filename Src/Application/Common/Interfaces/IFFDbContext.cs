@@ -1,22 +1,23 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.Common.Interfaces
 {
+    using FinalFantasyTryoutGoesWeb.Domain.Entities;
     using Microsoft.EntityFrameworkCore;
     using System.Threading;
     using System.Threading.Tasks;
 
     public interface IFFDbContext
     {
-        public DbSet<User> Users { get; set; }
+        DbSet<User> Users { get; set; }
 
-        public DbSet<Equipment> Equipments { get; set; }
+        DbSet<Equipment> Equipments { get; set; }
 
-        public DbSet<Item> Items { get; set; }
+        DbSet<Item> Items { get; set; }
 
-        public DbSet<Spell> Spells { get; set; }
+        DbSet<Spell> Spells { get; set; }
 
-        public DbSet<Unit> Units { get; set; }
+        DbSet<Unit> Units { get; set; }
 
-        public DbSet<Image> Images { get; set; }
+        DbSet<Image> Images { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

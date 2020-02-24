@@ -1,4 +1,4 @@
-﻿namespace Domain.GameContent.Utilities.Looting
+﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Looting
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
     using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Generators;

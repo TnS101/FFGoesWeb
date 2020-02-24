@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Generators
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    using FinalFantasyTryoutGoesWeb.GameContent.TreasureKeys;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.TreasureKeys;
     using System;
     using System.Linq;
 

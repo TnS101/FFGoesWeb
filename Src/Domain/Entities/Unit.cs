@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities
 {
-    using Final_Fantasy_Tryout.PlayerInfo;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Contracts;
     using System.Collections.Generic;
 
     public class Unit : IUnit

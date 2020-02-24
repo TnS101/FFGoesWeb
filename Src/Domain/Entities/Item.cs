@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities
 {
-    using Application.Common.GameContent.Contracts;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Contracts;
 
     public class Item : IItem
     {

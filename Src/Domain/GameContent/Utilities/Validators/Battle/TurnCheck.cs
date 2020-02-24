@@ -1,6 +1,5 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.Battle
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
     using FinalFantasyTryoutGoesWeb.Domain.GameContent.Handlers;
     using System;

@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.GameContent.TreasureKeys
+﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.TreasureKeys
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
 

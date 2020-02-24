@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.GameContent.Utilities.FightingClassUtilites
+﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.FightingClassUtilites
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
 

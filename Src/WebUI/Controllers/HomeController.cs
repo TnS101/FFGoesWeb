@@ -1,13 +1,18 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Controllers
+﻿namespace FinalFantasyTryoutGoesWeb.WebUI.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Data;
+    using FinalFantasyTryoutGoesWeb.Persistence;
+    using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly FFDbContext context = new FFDbContext();
+        private readonly FFDbContext context;
 
+        public HomeController(FFDbContext context)
+        {
+            this.context = context;
+        }
         public IActionResult Index()
         {
             return View();

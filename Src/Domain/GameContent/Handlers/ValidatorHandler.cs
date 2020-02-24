@@ -1,8 +1,10 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Handlers
 {
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.Validators.Battle;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.Battle;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.Equipment;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.SpellCheck;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.UnitCreation;
     using FinalFantasyTryoutGoesWeb.GameContent.Utilities.Validators.Equipment;
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.Validators.SpellCheck;
     using FinalFantasyTryoutGoesWeb.GameContent.Utilities.Validators.UnitCreation;
 
     public class ValidatorHandler

@@ -1,8 +1,8 @@
-﻿namespace FinalFantasyTryoutGoesWeb.GameContent.Utilities.Validators.UnitCreation
+﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.UnitCreation
 {
-    using FinalFantasyTryoutGoesWeb.Data.Entities;
-    using FinalFantasyTryoutGoesWeb.GameContent.Repositories.PlayerClassRepository;
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.FightingClassUtilites;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerClassRepository;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.FightingClassUtilites;
 
     public class FightingClassCheck
     {

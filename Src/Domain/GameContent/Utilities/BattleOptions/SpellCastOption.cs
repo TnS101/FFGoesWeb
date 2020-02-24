@@ -1,9 +1,9 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.BattleOptions
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
     using FinalFantasyTryoutGoesWeb.Domain.GameContent.Repositories.EnemySpellRepository;
     using FinalFantasyTryoutGoesWeb.Domain.GameContent.Repositories.PlayerSpellRepository;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+   
     using System;
     using System.Linq;
 

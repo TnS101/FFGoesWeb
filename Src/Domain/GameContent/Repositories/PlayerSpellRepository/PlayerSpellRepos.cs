@@ -1,8 +1,8 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Repositories.PlayerSpellRepository
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.Validators.SpellCheck;
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.Validators.SpellChecks.MainStats;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.SpellCheck;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Validators.SpellChecks.MainStats;
 
     public class PlayerSpellRepos
     {

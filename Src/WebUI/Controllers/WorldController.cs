@@ -1,19 +1,27 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Data;
-    using FinalFantasyTryoutGoesWeb.Data.Entities;
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.Generators;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Persistence;
+    using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class WorldController : Controller
+    public class WorldController : BaseController
     {
-        private static readonly FFDbContext context = new FFDbContext();
-        private readonly Unit player = context.Units.FirstOrDefault();
-        private readonly Random rng = new Random();
+        private readonly FFDbContext context;
+        private readonly Unit player;
+        private readonly Random rng;
         private readonly TreasureGenerator treasureGenerator = new TreasureGenerator();
+
+        public WorldController(FFDbContext context)
+        {
+            player = context.Units.FirstOrDefault();
+            this.context = context;
+            rng = new Random();
+        }
 
         [HttpGet("World/Home")]
         [Route("World/Home")]

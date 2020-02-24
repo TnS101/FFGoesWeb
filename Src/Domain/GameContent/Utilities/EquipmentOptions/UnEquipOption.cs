@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.EquipmentOptions
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    using FinalFantasyTryoutGoesWeb.GameContent.Utilities.FightingClassUtilites;
+    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.FightingClassUtilites;
 
     public class UnEquipOption
     {

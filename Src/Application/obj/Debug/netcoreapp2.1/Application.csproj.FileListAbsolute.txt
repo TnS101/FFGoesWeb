@@ -1,0 +1,3 @@
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Application\obj\Debug\netcoreapp2.1\Application.csprojAssemblyReference.cache
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Application\obj\Debug\netcoreapp2.1\Application.AssemblyInfoInputs.cache
+C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Application\obj\Debug\netcoreapp2.1\Application.AssemblyInfo.cs

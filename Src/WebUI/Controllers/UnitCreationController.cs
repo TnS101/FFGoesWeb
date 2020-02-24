@@ -1,19 +1,27 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Data;
-    using FinalFantasyTryoutGoesWeb.Data.Entities;
-    using FinalFantasyTryoutGoesWeb.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Models;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Persistence;
+    using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class UnitCreationController : Controller
+    public class UnitCreationController : BaseController
     {
-        private static readonly FFDbContext context = new FFDbContext();
-        private static readonly User user = context.Users.FirstOrDefault();
-        private Unit player = new Unit { Type = "Player", Equipment = new Equipment(), UserId = user.Id, GoldAmount = 100, Level = 1, XPCap = 100 };
-        private readonly ValidatorHandler validatorHandler = new ValidatorHandler();
+        private readonly FFDbContext context;
+        private readonly User user;
+        private readonly Unit player;
+        private readonly ValidatorHandler validatorHandler;
+
+        public UnitCreationController(FFDbContext context)
+        {
+            this.context = context;
+            validatorHandler = new ValidatorHandler();
+            user = context.Users.FirstOrDefault();
+            player = new Unit { Type = "Player", Equipment = new Equipment(), UserId = user.Id, GoldAmount = 100, Level = 1, XPCap = 100 };
+        }
 
         [HttpPost("UnitCreation/Create")]
         [Route("UnitCreation/Create")]
@@ -32,7 +40,7 @@
 
             //Fighting Class Check
 
-            await context.Units.AddAsync(validatorHandler.FightingClassCheck.Check(player,fightingClass));
+            await context.Units.AddAsync(validatorHandler.FightingClassCheck.Check(player, fightingClass));
 
             //Race Check
             validatorHandler.RaceCheck.Check(player, race);

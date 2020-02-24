@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.GameContent.Utilities.BattleOptions
+﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.BattleOptions
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities;
     using System;
