@@ -5058,11 +5058,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\WebUI\\WebUI.csproj",
+      "projectUniqueName": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\WebUI\\WebUI.csproj",
       "projectName": "WebUI",
-      "projectPath": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\WebUI\\WebUI.csproj",
+      "projectPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\WebUI\\WebUI.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\WebUI\\obj\\",
+      "outputPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\WebUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5081,14 +5081,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Application\\Application.csproj"
+            "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Application\\Application.csproj"
             },
-            "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Domain\\Domain.csproj"
+            "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Persistence\\Persistence.csproj": {
-              "projectPath": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Persistence\\Persistence.csproj"
+            "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Persistence\\Persistence.csproj"
             }
           }
         }

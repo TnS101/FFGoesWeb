@@ -3,8 +3,7 @@
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemySpellRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerSpellRepository;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System;
     using System.Linq;
     using System.Threading;

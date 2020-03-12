@@ -1,8 +1,8 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.SeedInitialData
 {
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    using System.Collections.Generic;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -33,7 +33,6 @@
             context.Users.Add(new User
             {
                 Username = "Pesho the Slayer",
-                Units = new List<Unit>(),
                 Password = "qmsinoktite:("
             });
 

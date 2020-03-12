@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

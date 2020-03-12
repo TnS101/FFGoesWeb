@@ -1,6 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Equipment
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+
     public class Weapon : Item
     {
         public Weapon(string name, string slot,int level, string classType, double attackPower, int stamina

@@ -6,3 +6,11 @@ C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Infrastructure\obj\Debug\nets
 C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.AssemblyInfo.cs
 C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.dll
 C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.pdb
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\bin\Debug\netstandard2.0\Infrastructure.deps.json
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\bin\Debug\netstandard2.0\Infrastructure.dll
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\bin\Debug\netstandard2.0\Infrastructure.pdb
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.AssemblyInfo.cs
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.dll
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.pdb

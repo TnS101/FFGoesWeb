@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\source\\repos\\FinalFantasyTryoutGoesWeb\\Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -11,3 +11,8 @@ C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Persistence\bin\Debug\netstan
 C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Persistence\obj\Debug\netstandard2.0\Persistence.csproj.CopyComplete
 C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Persistence\obj\Debug\netstandard2.0\Persistence.dll
 C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\Persistence\obj\Debug\netstandard2.0\Persistence.pdb
+C:\Users\PC\Desktop\FFGoesWeb\Src\Persistence\obj\Debug\netstandard2.0\Persistence.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\FFGoesWeb\Src\Persistence\obj\Debug\netstandard2.0\Persistence.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\FFGoesWeb\Src\Persistence\obj\Debug\netstandard2.0\Persistence.AssemblyInfo.cs
+C:\Users\PC\Desktop\FFGoesWeb\Src\Persistence\obj\Debug\netstandard2.0\Persistence.dll
+C:\Users\PC\Desktop\FFGoesWeb\Src\Persistence\obj\Debug\netstandard2.0\Persistence.pdb

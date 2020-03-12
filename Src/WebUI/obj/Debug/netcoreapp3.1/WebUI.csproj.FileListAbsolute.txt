@@ -37,3 +37,4 @@ C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\WebUI\obj\Debug\netcoreapp3.1
 C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\WebUI\bin\Debug\netcoreapp3.1\MediatR.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\WebUI\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\PC\source\repos\FinalFantasyTryoutGoesWeb\WebUI\obj\Debug\netcoreapp3.1\WebUI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.csprojAssemblyReference.cache

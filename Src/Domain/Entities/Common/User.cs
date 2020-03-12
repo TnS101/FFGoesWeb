@@ -1,5 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Common
 {
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System.Collections.Generic;
     using System.ComponentModel;
 
