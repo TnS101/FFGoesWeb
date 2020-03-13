@@ -1,38 +1,36 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.FightingClassUtilites;
-    using FinalFantasyTryoutGoesWeb.Persistence;
+    using global::Application.GameCQ.Equipment.Queries;
+    using global::Application.GameCQ.Equipment.Commands.Update;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
+    using System.Threading.Tasks;
 
     public class EquipmentActionController : BaseController
     {
-        private readonly FFDbContext context;
-        private readonly Unit player;
-        private readonly StatSum statSum = new StatSum();
-        private readonly EquipmentHandler equipmentHandler = new EquipmentHandler();
-
-        public EquipmentActionController(FFDbContext context)
+        public EquipmentActionController()
         {
-            this.context = context;
-            player = context.Users.FirstOrDefault().Units.FirstOrDefault();
         }
 
-        [HttpGet("EquipmentAction/Equip")]
+        [HttpPost("EquipmentAction/Equip")]
         [Route("EquipmentAction/Equip")]
-        public IActionResult Equip([FromQuery]string itemName)
+        public async Task<IActionResult> Equip([FromQuery]string itemId, [FromQuery]string command)
         {
-            return View(equipmentHandler.EquipOption.Equip(player, item, statSum));
+            return Ok(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = int.Parse(itemId), Command = command, UnitId = 1 }));
         }
 
-        [HttpGet("EquipmentAction/UnEquip")]
+        [HttpPost("EquipmentAction/UnEquip")]
         [Route("EquipmentAction/UnEquip")]
-        public IActionResult UnEquip([FromQuery] string itemName)
+        public async Task<IActionResult> UnEquip([FromQuery] string itemId, [FromQuery]string command)
         {
-            return View(equipmentHandler.UnEquipOption.UnEquip(player,item,statSum));
+            return Ok(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = int.Parse(itemId), Command = command, UnitId = 1 }));
+        }
+
+        [HttpGet("EquipmentAction/Equipment")]
+        [Route("EquipmentAction/Equipment")]
+        public async Task<IActionResult> Equipment() 
+        {
+            return Ok(await this.Mediator.Send(new GetEquipmentQuery { UnitId = 1}));
         }
     }
 }

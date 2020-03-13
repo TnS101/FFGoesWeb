@@ -1,6 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application
 {
     using AutoMapper;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
     using System.Reflection;
@@ -11,6 +12,7 @@
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddScoped(typeof(EquipmentHandler));
 
             return services;
         }

@@ -19,7 +19,7 @@ namespace Application.GameCQ.Item.Commands.Update
             this.itemGenerator = itemGenerator;
         }
 
-        public async Task<Unit> Handle(LootItemCommand request, CancellationToken cancellationToken)
+        public async Task<MediatR.Unit> Handle(LootItemCommand request, CancellationToken cancellationToken)
         {
             var rng = new Random();
 
@@ -29,7 +29,7 @@ namespace Application.GameCQ.Item.Commands.Update
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
+            return MediatR.Unit.Value;
         }
     }
 }

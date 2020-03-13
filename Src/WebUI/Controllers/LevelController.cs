@@ -1,32 +1,21 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.LevelUtility;
-    using FinalFantasyTryoutGoesWeb.Persistence;
+    using global::Application.GameCQ.Unit.Commands.Update;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
+    using System.Threading.Tasks;
 
     public class LevelController : BaseController
     {
-        private readonly FFDbContext context;
-        private Unit unit;
-        private Level level;
-
-        public LevelController(FFDbContext context)
+        public LevelController()
         {
-            this.context = context;
-            level = new Level();
-            unit = context.Units.FirstOrDefault();
         }
 
         [HttpGet("Level/LevelUp")]
         [Route("Level/LevelUp")]
-        public IActionResult LevelUp()
+        public async Task<IActionResult> LevelUp()
         {
-            level.Up(unit);
-            context.SaveChanges();
-            return View();
+            return Ok(await this.Mediator.Send(new UnitLevelUpCommand()));
         }
     }
 }

@@ -1,26 +1,17 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Controllers
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Generators;
-    using FinalFantasyTryoutGoesWeb.Persistence;
+    using global::Application.GameCQ.Treasure.Commands.Update;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
 
     public class WorldController : BaseController
     {
-        private readonly FFDbContext context;
-        private readonly Unit player;
         private readonly Random rng;
-        private readonly TreasureGenerator treasureGenerator = new TreasureGenerator();
-
-        public WorldController(FFDbContext context)
+        public WorldController()
         {
-            player = context.Units.FirstOrDefault();
-            this.context = context;
-            rng = new Random();
+            this.rng = new Random();
         }
 
         [HttpGet("World/Home")]
@@ -47,11 +38,9 @@
 
         [HttpGet("World/TreasureLoot")]
         [Route("World/TreasureLoot")]
-        public async Task<IActionResult> TreasureEncounter([FromQuery]string option)
+        public async Task<IActionResult> TreasureEncounter()
         {
-            await context.SaveChangesAsync();
-
-            return View(treasureGenerator.Generate(player,rng,option));
+            return Ok(await this.Mediator.Send(new LootTreasureCommand { UnitId = 1 }));
         }
     }
 }
