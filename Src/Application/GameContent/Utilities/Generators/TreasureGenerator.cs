@@ -1,7 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.TreasureKeys;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System;
     using System.Linq;
 
@@ -31,9 +30,10 @@
 
             if (option == "open")
             {
-                TreasureKey treasureKey = (TreasureKey)player.Items.FirstOrDefault(i => i.Name.Split(' ')[0] == treasureType);
+                TreasureKey treasureKey = (TreasureKey)player.Inventory.Items.FirstOrDefault(i => i.Name.Split(' ')[0] == treasureType);
                 player.GoldAmount += goldRewards;
-                player.Items.Remove(treasureKey);
+                player.Inventory.Items.Remove(treasureKey);
+
                 return "TreasureOpen";
             }
             else if (option == "pass")

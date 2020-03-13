@@ -2,7 +2,7 @@
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerClassRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
     public class FightingClassCheck
     {

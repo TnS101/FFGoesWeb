@@ -1,7 +1,5 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
-
     public class Treasure : Item
     {
         public Treasure()

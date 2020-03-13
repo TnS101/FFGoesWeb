@@ -3,6 +3,7 @@
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -33,7 +34,8 @@
             context.Users.Add(new User
             {
                 Username = "Pesho the Slayer",
-                Password = "qmsinoktite:("
+                Password = "qmsinoktite:(",
+                Units = new List<Unit>()
             });
 
             await context.SaveChangesAsync(cancellationToken);

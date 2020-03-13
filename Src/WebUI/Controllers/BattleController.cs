@@ -1,9 +1,5 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.WebUI.Controllers
 {
-    using Domain.GameContent.Utilities.Looting;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Utilities.Generators;
     using FinalFantasyTryoutGoesWeb.Persistence;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;

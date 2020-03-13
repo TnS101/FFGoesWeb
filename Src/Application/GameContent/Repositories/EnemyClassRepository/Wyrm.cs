@@ -1,6 +1,4 @@
-﻿using FinalFantasyTryoutGoesWeb.Domain.GameContent;
-
-namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemyClassRepository
+﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemyClassRepository
 {
     public class Wyrm : FightingClass
     {

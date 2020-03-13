@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Looting
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
     public class Loot
     {
@@ -12,7 +12,7 @@
 
         public void ItemLoot(Unit player) 
         {
-            player.Items.Add(itemGenerator.Generate(player));
+            player.Inventory.Items.Add(itemGenerator.Generate(player));
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
 {
-    using Domain.Entities;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Looting;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
     public class EndOption
     {

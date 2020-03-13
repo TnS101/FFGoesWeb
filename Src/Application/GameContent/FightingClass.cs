@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent
 {
-    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Contracts;
+    using FinalFantasyTryoutGoesWeb.Domain.Contracts;
 
     public abstract class FightingClass : IFightingClass
     {

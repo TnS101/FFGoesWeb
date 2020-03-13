@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Domain.GameContent.Contracts
+﻿namespace FinalFantasyTryoutGoesWeb.Domain.Contracts
 {
     public interface IFightingClass
     {

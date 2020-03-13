@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Domain.GameContent.Contracts;
+    using FinalFantasyTryoutGoesWeb.Domain.Contracts;
 
     public class Unit : IUnit
     {

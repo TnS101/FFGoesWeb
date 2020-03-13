@@ -2,7 +2,7 @@
 {
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System;
     using System.Threading;
 
@@ -15,7 +15,7 @@
             {
                 battleHandler.RegenerateOption.Regenerate(player);
                 context.SaveChangesAsync(cancellationToken);
-                return yourTurn = false;
+                return false;
             }
 
             else if (!yourTurn)
@@ -37,7 +37,7 @@
 
                 battleHandler.RegenerateOption.Regenerate(enemy);
                 context.SaveChangesAsync(cancellationToken);
-                return yourTurn = true;
+                return true;
             }
             return true;
         }

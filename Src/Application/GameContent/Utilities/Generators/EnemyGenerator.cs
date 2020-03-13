@@ -3,8 +3,7 @@
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemyClassRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System;
     using System.Linq;
 

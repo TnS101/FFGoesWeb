@@ -1,6 +1,4 @@
-﻿using FinalFantasyTryoutGoesWeb.Domain.GameContent;
-
-namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerClassRepository
+﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerClassRepository
 {
     public class Priest : FightingClass
     {

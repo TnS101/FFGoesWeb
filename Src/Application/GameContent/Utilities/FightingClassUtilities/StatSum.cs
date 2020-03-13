@@ -1,12 +1,12 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
     public class StatSum
     {
         public void Sum(Unit player)
         {
-            foreach (var item in player.Items)
+            foreach (var item in player.Inventory.Items)
             {
                 player.ArmorValue += item.ArmorValue;
                 player.RessistanceValue += item.RessistanceValue;

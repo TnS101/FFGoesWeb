@@ -1,7 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities;
-    using FinalFantasyTryoutGoesWeb.Domain.GameContent;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
     public class StatIncrement
     {
