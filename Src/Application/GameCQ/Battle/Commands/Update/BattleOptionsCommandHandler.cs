@@ -50,7 +50,7 @@ namespace Application.GameCQ.Battle.Commands.Update
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return MediatR.Unit.Value;
+            return "/Action";
         }
     }
 }
