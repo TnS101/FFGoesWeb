@@ -12,9 +12,9 @@
         {
         }
 
-        public Unit Generate(UnitViewModel player)
+        public UnitFullViewModel Generate(UnitPartialViewModel player)
         {
-            Unit enemy = new Unit { Type = "Enemy", Level = player.Level};
+            UnitFullViewModel enemy = new Unit { Type = "Enemy", Level = player.Level};
             StatIncrement statIncrement = new StatIncrement();
             var rng = new Random();
             int enemyNumber = rng.Next(0, 26);

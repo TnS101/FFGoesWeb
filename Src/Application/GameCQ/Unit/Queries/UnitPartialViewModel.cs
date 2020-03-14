@@ -1,6 +1,6 @@
 ﻿namespace Application.GameCQ.Unit.Queries
 {
-    public class UnitViewModel
+    public class UnitPartialViewModel
     {
         public string Name { get; set; }
 

@@ -4,6 +4,6 @@
 
     public class UnitListViewModel
     {
-        public IEnumerable<UnitViewModel> Units { get; set; }
+        public IEnumerable<UnitPartialViewModel> Units { get; set; }
     }
 }

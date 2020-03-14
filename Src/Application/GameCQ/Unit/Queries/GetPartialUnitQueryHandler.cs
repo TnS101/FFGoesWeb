@@ -6,20 +6,20 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class GetUnitQueryHandler : IRequestHandler<GetUnitQuery, UnitViewModel>
+    public class GetPartialUnitQueryHandler : IRequestHandler<GetPartialUnitQuery, UnitPartialViewModel>
     {
         private readonly IFFDbContext context;
         private readonly IMapper mapper;
-        public GetUnitQueryHandler(IFFDbContext context, IMapper mapper)
+        public GetPartialUnitQueryHandler(IFFDbContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
         }
-        public async Task<UnitViewModel> Handle(GetUnitQuery request, CancellationToken cancellationToken)
+        public async Task<UnitPartialViewModel> Handle(GetPartialUnitQuery request, CancellationToken cancellationToken)
         {
             var unit = await this.context.Units.FindAsync(request.UnitId);
 
-            return this.mapper.Map<UnitViewModel>(unit);
+            return this.mapper.Map<UnitPartialViewModel>(unit);
         }
     }
 }

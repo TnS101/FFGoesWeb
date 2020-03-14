@@ -8,11 +8,18 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using global::Application.GameCQ.Spell.Queries;
 
     public class BattleController : BaseController
     {
         private readonly EnemyGenerator enemyGenerator;
         private Unit enemy;
+        private bool yourTurn;
+
+        public BattleController()
+        {
+            this.yourTurn = true;
+        }
 
         public BattleController(EnemyGenerator enemyGenerator)
         {
@@ -23,24 +30,22 @@
         [Route("Battle/Battle")]
         public async Task<IActionResult> Battle()
         {
-            var player = await this.Mediator.Send(new GetUnitQuery { UnitId = 1 });
-            enemy = enemyGenerator.Generate(player);
-            return View(new string[] { player.Name, enemy.Name });
+            var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UnitId = 1 });
+            enemy = enemyGenerator.Generate(playerPVM);
+            return View(new string[] { playerPVM.Name, enemy.Name });
         }
 
         [HttpGet("Battle/Action")]
         [Route("Battle/Action")]
-        public async Task<IActionResult> Action([FromQuery]string action, CancellationToken cancellationToken)
+        public async Task<IActionResult> Action([FromQuery]string action)
         {
-            var player = await this.Mediator.Send(new GetFullUnitQuery { UnitId = 1 });
+            var playerFullVm = await this.Mediator.Send(new GetFullUnitQuery { UnitId = 1 });
 
-            var stats = new string[] { player.Name, enemy.Name, enemy.ImageURL,
-                player.CurrentHP.ToString(),player.MaxHP.ToString(), enemy.CurrentHP.ToString() , enemy.MaxHP.ToString()
-                , player.CurrentAttackPower.ToString(), enemy.CurrentAttackPower.ToString(), player.CurrentMana.ToString()
-                ,player.MaxMana.ToString(),enemy.CurrentMana.ToString(),enemy.MaxMana.ToString(), enemy.Race, player.MagicPower.ToString(),
-                player.CurrentMagicPower.ToString(), enemy.MagicPower.ToString(), enemy.CurrentMagicPower.ToString()};
-
-            await ExecuteAction(action, cancellationToken);
+            var stats = new string[] { playerFullVm.Name, enemy.Name, enemy.ImageURL,
+                playerFullVm.CurrentHP.ToString(),playerFullVm.MaxHP.ToString(), enemy.CurrentHP.ToString() , enemy.MaxHP.ToString()
+                , playerFullVm.CurrentAttackPower.ToString(), enemy.CurrentAttackPower.ToString(), playerFullVm.CurrentMana.ToString()
+                ,playerFullVm.MaxMana.ToString(),enemy.CurrentMana.ToString(),enemy.MaxMana.ToString(), enemy.Race, playerFullVm.MagicPower.ToString(),
+                playerFullVm.CurrentMagicPower.ToString(), enemy.MagicPower.ToString(), enemy.CurrentMagicPower.ToString()};
             
             if (enemy.CurrentHP <= 0)
             {
@@ -53,9 +58,11 @@
 
         [HttpPost("Battle/SpellOption")]
         [Route("Battle/SpellOption")]
-        public IActionResult SpellList()
+        public async Task<IActionResult> SpellOption()
         {
-            return View(@"\Action", context.Spells.Where(s => s.ClassType == player.ClassType));
+            var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UnitId = 1 });
+
+            return View(@"\Action", await this.Mediator.Send(new GetPersonalSpellsQuery { ClassType = playerPVM.ClassType}));
         }
 
         [HttpGet("Battle/Escape")]
@@ -78,31 +85,7 @@
 
         private async Task ExecuteAction(string action, CancellationToken cancellationToken)
         {
-            if (yourTurn)
-            {
-                if (action == "attack")
-                {
-                    battleHandler.AttackOption.Attack(player, enemy);
-                }
-                if (action == "defend")
-                {
-                    battleHandler.DefendOption.Defend(player);
-                }
-                if (action == "spellCast")
-                {
-                    SpellList();
-                }
-                if (action == "escape")
-                {
-                    await Escape();
-                }
-                battleHandler.TurnCheck.Check(player, enemy, battleHandler, context, yourTurn, cancellationToken);
-                yourTurn = false;
-            }
-            if (!yourTurn)
-            {
-                battleHandler.TurnCheck.Check(player, enemy, battleHandler, context, yourTurn, cancellationToken);
-            }
+            
         }
     }
 }

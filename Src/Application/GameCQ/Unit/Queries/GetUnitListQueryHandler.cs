@@ -23,7 +23,7 @@
         {
             return new UnitListViewModel
             {
-                Units = await this.context.Units.Where(u => u.UserId == request.UserId).ProjectTo<UnitViewModel>(this.mapper.ConfigurationProvider).ToListAsync()
+                Units = await this.context.Units.Where(u => u.UserId == request.UserId).ProjectTo<UnitPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync()
             };
         }
     }

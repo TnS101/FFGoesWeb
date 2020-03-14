@@ -1,6 +1,6 @@
 ﻿namespace Application.GameCQ.Unit.Queries
 {
-    public class UnitFullViewModel
+    public class UnitFullViewModel 
     {
         public string Name { get; set; }
 
@@ -29,5 +29,7 @@
         public double ArmorValue { get; set; }
 
         public double RessistanceValue { get; set; }
+
+        public string ImageURL { get; set; }
     }
 }

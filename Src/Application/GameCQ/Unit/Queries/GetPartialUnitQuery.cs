@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class GetUnitQuery : IRequest<UnitViewModel>
+    public class GetPartialUnitQuery : IRequest<UnitPartialViewModel>
     {
         public int UnitId { get; set; }
     }

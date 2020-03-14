@@ -4,17 +4,15 @@
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System;
-    using System.Threading;
 
     public class TurnCheck
     {
-        public bool Check(Unit player, Unit enemy, BattleHandler battleHandler, IFFDbContext context, bool yourTurn, CancellationToken cancellationToken)
+        public bool Check(Unit player, Unit enemy, BattleHandler battleHandler, bool yourTurn, IFFDbContext context)
         {
             var rng = new Random();
             if (yourTurn)
             {
                 battleHandler.RegenerateOption.Regenerate(player);
-                context.SaveChangesAsync(cancellationToken);
                 return false;
             }
 
@@ -36,7 +34,6 @@
                 }
 
                 battleHandler.RegenerateOption.Regenerate(enemy);
-                context.SaveChangesAsync(cancellationToken);
                 return true;
             }
             return true;
