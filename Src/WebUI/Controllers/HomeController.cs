@@ -25,7 +25,7 @@
         [Route("Home/MonsterCatalog")]
         public IActionResult MonsterCatalog()
         {
-            return Ok(this.Mediator.Send(new GetMonstersQuery { }));
+            return View(this.Mediator.Send(new GetMonstersImagesQuery { }));
         }
     }
 }

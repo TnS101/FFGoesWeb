@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class GetMonstersQuery : IRequest<MonsterListViewModel>
+    public class GetMonstersImagesQuery : IRequest<MonsterImageListViewModel>
     {
     }
 }
