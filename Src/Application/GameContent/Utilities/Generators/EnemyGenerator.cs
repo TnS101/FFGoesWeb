@@ -1,11 +1,10 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemyClassRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
     using System;
-    using System.Linq;
 
     public class EnemyGenerator
     {
@@ -13,9 +12,9 @@
         {
         }
 
-        public Unit Generate(IFFDbContext context)
+        public Unit Generate(UnitViewModel player)
         {
-            Unit enemy = new Unit { Type = "Enemy", Level = context.Units.FirstOrDefault(u => u.Type == "Player").Level};
+            Unit enemy = new Unit { Type = "Enemy", Level = player.Level};
             StatIncrement statIncrement = new StatIncrement();
             var rng = new Random();
             int enemyNumber = rng.Next(0, 26);
