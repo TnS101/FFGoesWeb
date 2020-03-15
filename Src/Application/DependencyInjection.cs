@@ -13,6 +13,9 @@
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped(typeof(EquipmentHandler));
+            services.AddScoped(typeof(BattleHandler));
+            services.AddScoped(typeof(GeneratorHandler));
+            services.AddScoped(typeof(ValidatorHandler));
 
             return services;
         }

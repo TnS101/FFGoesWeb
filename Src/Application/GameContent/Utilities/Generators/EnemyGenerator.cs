@@ -2,7 +2,6 @@
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemyClassRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using global::Application.GameCQ.Unit.Queries;
     using System;
 
@@ -12,9 +11,9 @@
         {
         }
 
-        public UnitFullViewModel Generate(UnitPartialViewModel player)
+        public UnitFullViewModel Generate(int playerLevel)
         {
-            UnitFullViewModel enemy = new UnitFullViewModel { Type = "Enemy", Level = player.Level};
+            UnitFullViewModel enemy = new UnitFullViewModel { Type = "Enemy", Level = playerLevel};
             StatIncrement statIncrement = new StatIncrement();
             var rng = new Random();
             int enemyNumber = rng.Next(0, 26);

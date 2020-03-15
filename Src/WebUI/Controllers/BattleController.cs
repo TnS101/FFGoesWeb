@@ -1,36 +1,31 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.WebUI.Controllers
 {
     using global::Application.GameCQ.Unit.Queries;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using global::Application.GameCQ.Spell.Queries;
     using global::Application.GameCQ.Battle.Commands.Update;
+    using global::Application.GameCQ.Enemy.Commands.Create;
 
     public class BattleController : BaseController
     {
-        private readonly EnemyGenerator enemyGenerator;
         private UnitFullViewModel enemy;
         private bool yourTurn;
 
         public BattleController()
         {
-            this.yourTurn = true;
-        }
-
-        public BattleController(EnemyGenerator enemyGenerator)
-        {
-            this.enemyGenerator = enemyGenerator;
+            yourTurn = true;
         }
 
         [HttpPost("Battle/Battle")]
         [Route("Battle/Battle")]
-        public async Task<IActionResult> Battle()
+        public async Task<ActionResult<string[]>> Battle() //TODO: Change return type if not working
         {
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UnitId = 1 });
-            enemy = enemyGenerator.Generate(playerPVM);
-            return View(new string[] { playerPVM.Name, enemy.Name });
+            enemy = await this.Mediator.Send(new GenerateEnemyCommand { PlayerLevel = playerPVM.Level });
+
+            return new string[] { playerPVM.Name, enemy.Name };
         }
 
         [HttpGet("Battle/Action")]

@@ -32,7 +32,7 @@
                 }
                 if (request.Command == "spellCast")
                 {
-                    //SpellCast
+                    battleHandler.SpellCastOption.PlayerSpellCast(request.Player, request.Player,request.SpellName,this.context);
                 }
                 if (request.Command == "escape")
                 {

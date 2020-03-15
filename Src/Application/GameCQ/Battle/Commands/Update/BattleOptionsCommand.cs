@@ -12,5 +12,7 @@
         public string Command { get; set; }
 
         public bool YourTurn { get; set; }
+
+        public string SpellName { get; set; }
     }
 }
