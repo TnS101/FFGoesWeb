@@ -2,10 +2,12 @@
 {
     using global::Application.GameCQ.Treasure.Commands.Update;
     using global::WebUI.Controllers;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Threading.Tasks;
 
+    [Authorize]
     public class WorldController : BaseController
     {
         private readonly Random rng;

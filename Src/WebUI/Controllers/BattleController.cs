@@ -7,7 +7,9 @@
     using global::Application.GameCQ.Spell.Queries;
     using global::Application.GameCQ.Battle.Commands.Update;
     using global::Application.GameCQ.Enemy.Commands.Create;
+    using Microsoft.AspNetCore.Authorization;
 
+    [Authorize]
     public class BattleController : BaseController
     {
         private UnitFullViewModel enemy;

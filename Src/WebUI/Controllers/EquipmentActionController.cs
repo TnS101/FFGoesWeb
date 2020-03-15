@@ -5,7 +5,9 @@
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
 
+    [Authorize]
     public class EquipmentActionController : BaseController
     {
         public EquipmentActionController()

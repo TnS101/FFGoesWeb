@@ -2,7 +2,6 @@
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System.Collections.Generic;
-    using System.ComponentModel;
 
     public class User
     {
@@ -12,10 +11,12 @@
         }
 
         public int Id { get; set; }
-        [DisplayName("User Name")]
+        
         public string Username { get; set; }
 
         public string Password { get; set; }
+
+        public string Email { get; set; }
 
         public ICollection<Unit> Units { get; set; }
     }

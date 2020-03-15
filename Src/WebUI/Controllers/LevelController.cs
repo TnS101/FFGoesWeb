@@ -2,9 +2,11 @@
 {
     using global::Application.GameCQ.Unit.Commands.Update;
     using global::WebUI.Controllers;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
 
+    [Authorize]
     public class LevelController : BaseController
     {
         public LevelController()
