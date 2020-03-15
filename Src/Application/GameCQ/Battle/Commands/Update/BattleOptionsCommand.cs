@@ -7,7 +7,7 @@
     {
         public UnitFullViewModel Player { get; set; }
 
-        public FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Unit Enemy { get; set; }
+        public UnitFullViewModel Enemy { get; set; }
 
         public string Command { get; set; }
 

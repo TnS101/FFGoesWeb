@@ -2,14 +2,14 @@
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerClassRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
 
     public class FightingClassCheck
     {
-        private readonly StatIncrement statIncrement = new StatIncrement();
-
-        public Unit Check(Unit player, string fightingClass)
+        public UnitFullViewModel Check(UnitFullViewModel player, string fightingClass)
         {
+            StatIncrement statIncrement = new StatIncrement();
+
             if (fightingClass == "Warrior")
             {
                 Warrior warrior = new Warrior();

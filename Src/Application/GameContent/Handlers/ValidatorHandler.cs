@@ -1,6 +1,5 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.Battle;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.Equipment;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellCheck;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.UnitCreation;
@@ -22,8 +21,6 @@
         public SlotCheck SlotCheck { get; set; } = new SlotCheck();
 
         public SpellCheck SpellCheck { get; set; } = new SpellCheck();
-
-        public TurnCheck TurnCheck { get; set; } = new TurnCheck();
 
         public WeaponCheck WeaponCheck { get; set; } = new WeaponCheck();
     }

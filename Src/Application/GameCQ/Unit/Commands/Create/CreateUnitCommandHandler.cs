@@ -1,5 +1,7 @@
 ﻿namespace Application.GameCQ.Unit.Commands.Create
 {
+    using Application.GameCQ.Unit.Queries;
+    using AutoMapper;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
     using MediatR;
@@ -10,11 +12,13 @@
     {
         private readonly IFFDbContext context;
         private readonly ValidatorHandler validatorHandler;
+        private readonly IMapper mapper;
 
-        public CreateUnitCommandHandler(IFFDbContext context, ValidatorHandler validatorHandler)
+        public CreateUnitCommandHandler(IFFDbContext context, ValidatorHandler validatorHandler, IMapper mapper)
         {
             this.context = context;
             this.validatorHandler = validatorHandler;
+            this.mapper = mapper;
         }
         public async Task<Unit> Handle(CreateUnitCommand request, CancellationToken cancellationToken)
         {
@@ -29,7 +33,7 @@
                 XPCap = 100
             };
 
-            this.validatorHandler.FightingClassCheck.Check(unit,request.ClassType);
+            this.validatorHandler.FightingClassCheck.Check(this.mapper.Map<UnitFullViewModel>(unit),request.ClassType);
 
             this.validatorHandler.RaceCheck.Check(unit, request.Race);
 

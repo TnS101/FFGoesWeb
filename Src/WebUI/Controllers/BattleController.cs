@@ -2,18 +2,16 @@
 {
     using global::Application.GameCQ.Unit.Queries;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
     using global::Application.GameCQ.Spell.Queries;
+    using global::Application.GameCQ.Battle.Commands.Update;
 
     public class BattleController : BaseController
     {
         private readonly EnemyGenerator enemyGenerator;
-        private Unit enemy;
+        private UnitFullViewModel enemy;
         private bool yourTurn;
 
         public BattleController()
@@ -37,23 +35,12 @@
 
         [HttpGet("Battle/Action")]
         [Route("Battle/Action")]
-        public async Task<IActionResult> Action([FromQuery]string action)
+        public async Task<IActionResult> Action([FromQuery]string command)
         {
             var playerFullVm = await this.Mediator.Send(new GetFullUnitQuery { UnitId = 1 });
 
-            var stats = new string[] { playerFullVm.Name, enemy.Name, enemy.ImageURL,
-                playerFullVm.CurrentHP.ToString(),playerFullVm.MaxHP.ToString(), enemy.CurrentHP.ToString() , enemy.MaxHP.ToString()
-                , playerFullVm.CurrentAttackPower.ToString(), enemy.CurrentAttackPower.ToString(), playerFullVm.CurrentMana.ToString()
-                ,playerFullVm.MaxMana.ToString(),enemy.CurrentMana.ToString(),enemy.MaxMana.ToString(), enemy.Race, playerFullVm.MagicPower.ToString(),
-                playerFullVm.CurrentMagicPower.ToString(), enemy.MagicPower.ToString(), enemy.CurrentMagicPower.ToString()};
-            
-            if (enemy.CurrentHP <= 0)
-            {
-                enemy.CurrentHP = 0;
-                return Redirect(@"\End");
-            }
-
-            return View(stats);
+            return View(await this.Mediator.Send(new BattleOptionsCommand 
+            { Command = command, Player = playerFullVm, Enemy = this.enemy, YourTurn = this.yourTurn }), this.Stats(playerFullVm));
         }
 
         [HttpPost("Battle/SpellOption")]
@@ -65,27 +52,13 @@
             return View(@"\Action", await this.Mediator.Send(new GetPersonalSpellsQuery { ClassType = playerPVM.ClassType}));
         }
 
-        [HttpGet("Battle/Escape")]
-        [Route("Battle/Escape")]
-        public async Task<IActionResult> Escape()
+        private string[] Stats(UnitFullViewModel playerFullVm) 
         {
-            battleHandler.EscapeOption.Escape(player);
-            await context.SaveChangesAsync();
-            return View();
-        }
-
-        [HttpGet("Battle/End")]
-        [Route("Battle/End")]
-        public async Task<IActionResult> End()
-        {
-            battleHandler.EndOption.End(player, enemy, loot);
-            await context.SaveChangesAsync();
-            return View();
-        }
-
-        private async Task ExecuteAction(string action, CancellationToken cancellationToken)
-        {
-            
+            return new string[] { playerFullVm.Name, enemy.Name, enemy.ImageURL,
+                playerFullVm.CurrentHP.ToString(),playerFullVm.MaxHP.ToString(), enemy.CurrentHP.ToString() , enemy.MaxHP.ToString()
+                , playerFullVm.CurrentAttackPower.ToString(), enemy.CurrentAttackPower.ToString(), playerFullVm.CurrentMana.ToString()
+                ,playerFullVm.MaxMana.ToString(),enemy.CurrentMana.ToString(),enemy.MaxMana.ToString(), enemy.Race, playerFullVm.MagicPower.ToString(),
+                playerFullVm.CurrentMagicPower.ToString(), enemy.MagicPower.ToString(), enemy.CurrentMagicPower.ToString()};
         }
     }
 }

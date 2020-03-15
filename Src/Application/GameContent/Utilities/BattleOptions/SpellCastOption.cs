@@ -4,14 +4,13 @@
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemySpellRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerSpellRepository;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
     using System;
     using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class SpellCastOption
     {
-        public async Task PlayerSpellCast(Unit caster, Unit target, string spellName, IFFDbContext context, CancellationToken cancellationToken)
+        public void PlayerSpellCast(UnitFullViewModel caster, UnitFullViewModel target, string spellName, IFFDbContext context)
         {
             Type type = typeof(PlayerSpellRepos);
             var instance = Activator.CreateInstance(type);
@@ -26,10 +25,9 @@
             {
                 target.CurrentHP = 0;
             }
-            await context.SaveChangesAsync(cancellationToken);
         }
 
-        public void EnemySpellCast(Unit caster, Unit target, IFFDbContext context)
+        public void EnemySpellCast(UnitFullViewModel caster, UnitFullViewModel target, IFFDbContext context)
         {
             Random rng = new Random();
             Type type = typeof(EnemySpellRepos);

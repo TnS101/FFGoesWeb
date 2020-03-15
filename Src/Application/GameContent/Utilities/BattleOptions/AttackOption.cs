@@ -1,10 +1,10 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
 
     public class AttackOption
     {
-        public void Attack(Unit caster, Unit target)
+        public void Attack(UnitFullViewModel caster, UnitFullViewModel target)
         {
             if (target.CurrentHP > 0)
             {

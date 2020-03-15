@@ -1,8 +1,12 @@
-﻿namespace Application.GameCQ.Unit.Queries
+﻿using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+
+namespace Application.GameCQ.Unit.Queries
 {
     public class UnitFullViewModel 
     {
         public string Name { get; set; }
+
+        public string Type { get; set; }
 
         public string ClassType { get; set; }
 
@@ -28,8 +32,28 @@
 
         public double ArmorValue { get; set; }
 
+        public double CurrentArmorValue { get; set; }
+
         public double RessistanceValue { get; set; }
 
+        public double CurrentRessistanceValue { get; set; }
+
+        public int HealthRegen { get; set; }
+
+        public int CurrentHealthRegen { get; set; }
+
+        public int ManaRegen { get; set; }
+
+        public int CurrentManaRegen { get; set; }
+
+        public double CritChance { get; set; }
+
+        public double CurrentCritChance { get; set; }
+
+        public double XP { get; set; }
+
         public string ImageURL { get; set; }
+
+        public Inventory Inventory { get; set; }
     }
 }

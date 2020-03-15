@@ -14,7 +14,7 @@
 
         public UnitFullViewModel Generate(UnitPartialViewModel player)
         {
-            UnitFullViewModel enemy = new Unit { Type = "Enemy", Level = player.Level};
+            UnitFullViewModel enemy = new UnitFullViewModel { Type = "Enemy", Level = player.Level};
             StatIncrement statIncrement = new StatIncrement();
             var rng = new Random();
             int enemyNumber = rng.Next(0, 26);
@@ -93,7 +93,7 @@
             return enemy;
         }
 
-        private void RarityRng(Unit enemy)
+        private void RarityRng(UnitFullViewModel enemy)
         {
             var rng = new Random();
             int number = rng.Next(1, 11);

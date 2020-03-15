@@ -2,12 +2,12 @@
 {
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
     using System;
 
     public class TurnCheck
     {
-        public bool Check(Unit player, Unit enemy, BattleHandler battleHandler, bool yourTurn, IFFDbContext context)
+        public bool Check(UnitFullViewModel player, UnitFullViewModel enemy, BattleHandler battleHandler, bool yourTurn, IFFDbContext context)
         {
             var rng = new Random();
             if (yourTurn)

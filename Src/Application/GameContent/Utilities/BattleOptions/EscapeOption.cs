@@ -1,20 +1,18 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
-    using System;
+    using global::Application.GameCQ.Unit.Queries;
 
     public class EscapeOption
     {
-        public void Escape(Unit player)
+        public void Escape(UnitFullViewModel player)
         {
-            var escapeRNG = new Random();
-            double goldLoss = player.GoldAmount * 0.2;
+            double xpLoss = player.XP * 0.1;
 
-            if (player.GoldAmount < 0)
+            if (player.XP < 0)
             {
-                player.GoldAmount = 0;
+                player.XP = 0;
             }
-            player.GoldAmount -= (int)goldLoss;
+            player.XP -= xpLoss;
         }
     }
 }

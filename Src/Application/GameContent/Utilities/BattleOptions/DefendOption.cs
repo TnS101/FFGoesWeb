@@ -1,10 +1,10 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
 
     public class DefendOption
     {
-        public void Defend(Unit target)
+        public void Defend(UnitFullViewModel target)
         {
             double armorBonus = 0;
             if (target.Type == "Enemy")

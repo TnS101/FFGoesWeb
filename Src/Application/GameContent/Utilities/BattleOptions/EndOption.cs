@@ -1,11 +1,11 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Looting;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
 
     public class EndOption
     {
-        public void End(Unit player, Unit enemy, Loot loot)
+        public void End(UnitFullViewModel player, UnitFullViewModel enemy, Loot loot)
         {
             player.XP += enemy.MaxHP / 10;
             loot.ItemLoot(player);

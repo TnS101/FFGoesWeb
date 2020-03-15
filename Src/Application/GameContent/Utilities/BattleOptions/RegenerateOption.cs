@@ -1,10 +1,10 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
 
     public class RegenerateOption
     {
-        public void Regenerate(Unit caster)
+        public void Regenerate(UnitFullViewModel caster)
         {
             double hpRegen = caster.CurrentHealthRegen;
             double manaRegen = caster.CurrentManaRegen;

@@ -2,6 +2,7 @@
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
     using System;
 
     public class ItemGenerator
@@ -15,7 +16,7 @@
             this.validatorHandler = new ValidatorHandler();
         }
 
-        public Item Generate(Unit unit)
+        public Item Generate(UnitFullViewModel unit)
         {
             var stats = new int[] { };
             int fightingClassStatNumber = rng.Next(unit.Level, unit.Level + 5);

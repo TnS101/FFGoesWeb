@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameCQ.Unit.Queries;
 
     public class StatIncrement
     {
@@ -8,7 +8,7 @@
         {
         }
 
-        public void Increment(FightingClass fightingClass, Unit unit)
+        public void Increment(FightingClass fightingClass, UnitFullViewModel unit)
         {
             unit.ClassType = fightingClass.ClassType;
             unit.MaxHP = fightingClass.MaxHP;

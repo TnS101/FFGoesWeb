@@ -13,7 +13,7 @@ namespace WebUI
         {
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton<IMapper, Mapper>();
             services.AddMediatR(typeof(Startup));
