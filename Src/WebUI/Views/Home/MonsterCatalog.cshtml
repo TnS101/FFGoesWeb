@@ -1,5 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model List<FinalFantasyTryoutGoesWeb.Data.Entities.Image>
+@model Application.GameCQ.Monster.Queries.MonsterImageListViewModel
 @{
     Layout = "_Layout";
 }
@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <partial name="_SideBars">
-            @foreach (var image in Model)
+            @foreach (var image in Model.Monsters)
             {
                 <div class="wp-block-columns">
                     <div class="wp-block-column" style="flex-basis:33.33%">

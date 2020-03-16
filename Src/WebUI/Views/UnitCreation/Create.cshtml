@@ -1,5 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model List<FinalFantasyTryoutGoesWeb.Data.Entities.Image>
+@model Application.GameCQ.Image.Queries.ImageListViewModel
 @{
     Layout = "_Layout";
 }
@@ -9,7 +9,7 @@
     <partial name="_NavBar">
         <div class="container">
             <partial name="_SideBars">
-                @foreach (var image in Model)
+                @foreach (var image in Model.Images)
                 {
                     <div class="entry-content single-entry-content">
 
