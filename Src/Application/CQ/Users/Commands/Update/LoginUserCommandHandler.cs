@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Users.Commands.Update
 {
+    using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using System.Linq;

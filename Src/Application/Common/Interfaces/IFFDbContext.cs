@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.Common.Interfaces
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
+    using global::Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using Microsoft.EntityFrameworkCore;
     using System.Threading;

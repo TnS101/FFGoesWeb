@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Common
+﻿namespace Domain.Entities.Common
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System;
@@ -13,7 +13,7 @@
         }
 
         public string Id { get; set; }
-        
+
         public string Username { get; set; }
 
         public string Password { get; set; }

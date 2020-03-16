@@ -3,6 +3,8 @@
     using AutoMapper;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -17,7 +19,7 @@
         }
         public async Task<UnitPartialViewModel> Handle(GetPartialUnitQuery request, CancellationToken cancellationToken)
         {
-            var unit = await this.context.Units.FindAsync(request.UnitId);
+            var unit = await this.context.Units.Where(u => u.UserId == request.UserId && u.IsSelected).MinAsync(cancellationToken);
 
             return this.mapper.Map<UnitPartialViewModel>(unit);
         }

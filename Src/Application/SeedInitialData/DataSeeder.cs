@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.SeedInitialData
 {
+    using global::Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System.Collections.Generic;
     using System.Threading;

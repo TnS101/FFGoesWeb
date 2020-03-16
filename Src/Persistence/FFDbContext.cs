@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Persistence
 {
+    using global::Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using Microsoft.EntityFrameworkCore;
     using System.Threading;

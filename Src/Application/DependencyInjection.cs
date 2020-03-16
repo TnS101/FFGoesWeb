@@ -1,8 +1,8 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application
 {
     using AutoMapper;
+    using global::Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;

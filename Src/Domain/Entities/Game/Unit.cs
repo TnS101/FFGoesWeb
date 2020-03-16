@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
+    using global::Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Domain.Contracts;
     using System;
 
@@ -77,5 +77,7 @@
         public int GoldAmount { get; set; }
 
         public string ImageURL { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

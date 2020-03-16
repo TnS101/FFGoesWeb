@@ -1,6 +1,6 @@
 ﻿namespace Application.CQ.Users.Commands.Update
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
+    using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using System.Threading;

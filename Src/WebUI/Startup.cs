@@ -1,10 +1,12 @@
 namespace WebUI
 {
     using AutoMapper;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
+    using Domain.Entities.Common;
+    using FinalFantasyTryoutGoesWeb.Persistence;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
@@ -19,7 +21,10 @@ namespace WebUI
             services.AddSingleton<IMapper, Mapper>();
             services.AddMediatR(typeof(Startup));
             services.AddSignalR();
-            services.AddIdentityCore<User>();
+            services.AddIdentityCore<User>()
+            .AddEntityFrameworkStores<FFDbContext>()
+            .AddDefaultUI()
+            .AddDefaultTokenProviders();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

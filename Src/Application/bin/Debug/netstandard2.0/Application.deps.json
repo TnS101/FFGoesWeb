@@ -14,6 +14,7 @@
           "Domain": "1.0.0",
           "MediatR": "8.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.EntityFrameworkCore": "3.1.2",
           "NETStandard.Library": "2.0.3"
         },
@@ -765,9 +766,6 @@
         }
       },
       "Domain/1.0.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Identity": "2.2.0"
-        },
         "runtime": {
           "Domain.dll": {}
         }
