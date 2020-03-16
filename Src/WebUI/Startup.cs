@@ -1,6 +1,7 @@
 namespace WebUI
 {
     using AutoMapper;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -17,6 +18,8 @@ namespace WebUI
         {
             services.AddSingleton<IMapper, Mapper>();
             services.AddMediatR(typeof(Startup));
+            services.AddSignalR();
+            services.AddIdentityCore<User>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

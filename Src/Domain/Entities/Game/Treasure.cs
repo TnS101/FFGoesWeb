@@ -1,12 +1,15 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
+﻿using System;
+
+namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
 {
     public class Treasure : Item
     {
         public Treasure()
         {
+            this.Id = Guid.NewGuid().ToString();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Rarity { get; set; }
 

@@ -9,10 +9,6 @@
     [Authorize]
     public class LevelController : BaseController
     {
-        public LevelController()
-        {
-        }
-
         [HttpGet("Level/LevelUp")]
         [Route("Level/LevelUp")]
         public async Task<IActionResult> LevelUp()

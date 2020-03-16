@@ -4,6 +4,6 @@
 
     public class GetFullUnitQuery : IRequest<UnitFullViewModel>
     {
-        public int UnitId { get; set; }
+        public string UnitId { get; set; }
     }
 }

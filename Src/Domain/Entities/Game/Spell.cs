@@ -1,8 +1,14 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
+﻿using System;
+
+namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
 {
     public class Spell
     {
-        public int Id { get; set; }
+        public Spell()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 

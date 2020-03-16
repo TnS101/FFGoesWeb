@@ -4,6 +4,6 @@
 
     public class GetPartialUnitQuery : IRequest<UnitPartialViewModel>
     {
-        public int UnitId { get; set; }
+        public string UnitId { get; set; }
     }
 }

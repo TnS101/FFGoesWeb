@@ -4,6 +4,6 @@
 
     public class GetEquipmentQuery : IRequest<EquipmentViewModel>
     {
-        public int UnitId { get; set; }
+        public string UnitId { get; set; }
     }
 }

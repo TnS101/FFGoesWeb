@@ -1,5 +1,6 @@
 ﻿namespace Application.GameCQ.Item.Commands.Create
 {
+    using AutoMapper;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
     using System.Threading;
@@ -8,30 +9,20 @@
     public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand>
     {
         private readonly IFFDbContext context;
+        private readonly IMapper mapper;
         
 
-        public CreateItemCommandHandler(IFFDbContext context)
+        public CreateItemCommandHandler(IFFDbContext context, IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
         }
 
         public async Task<Unit> Handle(CreateItemCommand request, CancellationToken cancellationToken)
         {
-            this.context.Items.Add(new FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Item
-            {
-                Name = request.Name,
-                Agility = request.Agility,
-                ArmorValue = request.ArmorValue,
-                AttackPower = request.AttackPower,
-                ClassType = request.ClassType,
-                Intellect = request.Intellect,
-                Level = request.Level,
-                RessistanceValue = request.RessistanceValue,
-                Slot = request.Slot,
-                Spirit = request.Spirit,
-                Stamina = request.Stamina,
-                Strength = request.Strength
-            });
+            var item = this.mapper.Map<FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Item>(request);
+
+            this.context.Items.Add(item);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

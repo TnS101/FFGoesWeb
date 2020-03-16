@@ -22,16 +22,7 @@
         }
         public async Task<Unit> Handle(CreateUnitCommand request, CancellationToken cancellationToken)
         {
-            var unit = new FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Unit
-            {
-                Name = request.Name,
-                UserId = request.UserId,
-                Type = "Player",
-                Equipment = new FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Equipment(),
-                GoldAmount = 100,
-                Level = 1,
-                XPCap = 100
-            };
+            var unit = this.mapper.Map<FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Unit>(request);
 
             this.validatorHandler.FightingClassCheck.Check(this.mapper.Map<UnitFullViewModel>(unit),request.ClassType);
 

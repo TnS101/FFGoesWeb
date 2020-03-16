@@ -12,9 +12,10 @@
     {
         private readonly IFFDbContext context;
         private readonly SignInManager<User> signInManager;
-        public LoginUserCommandHandler(IFFDbContext context)
+        public LoginUserCommandHandler(IFFDbContext context, SignInManager<User> signInManager)
         {
             this.context = context;
+            this.signInManager = signInManager;
         }
         public async Task<string> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {

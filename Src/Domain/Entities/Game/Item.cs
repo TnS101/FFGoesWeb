@@ -1,12 +1,17 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
 {
     using FinalFantasyTryoutGoesWeb.Domain.Contracts;
+    using System;
 
     public class Item : IItem
     {
-        public int Id { get; set; }
+        public Item()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+        public string Id { get; set; }
 
-        public int InventoryId { get; set; }
+        public string InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 

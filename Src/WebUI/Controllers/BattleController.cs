@@ -15,18 +15,13 @@
         private UnitFullViewModel enemy;
         private bool yourTurn;
 
-        public BattleController()
-        {
-            yourTurn = true;
-        }
-
         [HttpPost("Battle/Battle")]
         [Route("Battle/Battle")]
         public async Task<ActionResult<string[]>> Battle() //TODO: Change return type if not working
         {
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UnitId = 1 });
             enemy = await this.Mediator.Send(new GenerateEnemyCommand { PlayerLevel = playerPVM.Level });
-
+            this.yourTurn = true;
             return new string[] { playerPVM.Name, enemy.Name };
         }
 

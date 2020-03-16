@@ -1,6 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Common
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using System;
     using System.Collections.Generic;
 
     public class User
@@ -8,9 +9,10 @@
         public User()
         {
             Units = new HashSet<Unit>();
+            this.Id = Guid.NewGuid().ToString();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         
         public string Username { get; set; }
 

@@ -1,7 +1,10 @@
 ﻿namespace Application.CQ.Users.Commands.Create
 {
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
     using MediatR;
+    using Microsoft.AspNetCore.Identity;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -9,9 +12,11 @@
     public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand,string>
     {
         private readonly IFFDbContext context;
-        public RegisterUserCommandHandler(IFFDbContext context)
+        private readonly UserManager<User> userManager;
+        public RegisterUserCommandHandler(IFFDbContext context, UserManager<User> userManager)
         {
             this.context = context;
+            this.userManager = userManager;
         }
         public async Task<string> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
@@ -33,7 +38,13 @@
             }
             else
             {
-                await this.context.SaveChangesAsync(cancellationToken);
+                await this.userManager.CreateAsync(new User
+                {
+                    Username = request.Username,
+                    Password = request.Password,
+                    Email = request.Email,
+                    Units = new List<FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Unit>()
+                });
                 return "Succsefuly registered! Redirecting to the login page.";
             }
         }

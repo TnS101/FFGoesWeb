@@ -4,6 +4,6 @@
 
     public class GetUnitListQuery : IRequest<UnitListViewModel>
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

@@ -10,10 +10,6 @@
     [Authorize]
     public class EquipmentActionController : BaseController
     {
-        public EquipmentActionController()
-        {
-        }
-
         [HttpPost("EquipmentAction/Equip")]
         [Route("EquipmentAction/Equip")]
         public async Task<IActionResult> Equip([FromQuery]string itemId, [FromQuery]string command)

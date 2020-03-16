@@ -2,23 +2,25 @@
 {
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Domain.Contracts;
+    using System;
 
     public class Unit : IUnit
     {
         public Unit()
         {
+            this.Id = Guid.NewGuid().ToString();
         }
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public int EquipmentId { get; set; }
+        public string EquipmentId { get; set; }
 
         public Equipment Equipment { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public User User { get; set; }
 
-        public int InventoryId { get; set; }
+        public string InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 

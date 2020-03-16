@@ -19,7 +19,7 @@
         [Route("User/Login")]
         public async Task<ActionResult> Login(string username, string password) 
         {
-            return View(@"/Login", await this.Mediator.Send(new LoginUserCommand { Username = username, Password = password }));
+            return View("/Login", await this.Mediator.Send(new LoginUserCommand { Username = username, Password = password }));
         }
 
         [HttpGet("User/Register")]

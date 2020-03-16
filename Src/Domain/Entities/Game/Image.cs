@@ -1,8 +1,15 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
+﻿using System;
+
+namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
 {
     public class Image
     {
-        public int Id { get; set; }
+        public Image()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
+        public string Id { get; set; }
 
         public string Path { get; set; }
 

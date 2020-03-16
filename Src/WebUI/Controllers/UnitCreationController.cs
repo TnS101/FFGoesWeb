@@ -10,11 +10,6 @@
     [Authorize]
     public class UnitCreationController : BaseController
     {
-
-        public UnitCreationController()
-        {
-        }
-
         [HttpGet("UnitCreation/Create")]
         [Route("UnitCreation/Create")]
         public async Task<IActionResult> Create()
