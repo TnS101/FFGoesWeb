@@ -7,7 +7,6 @@
     using global::Application.GameCQ.Image.Queries;
     using Microsoft.AspNetCore.Authorization;
 
-    [Authorize]
     public class UnitCreationController : BaseController
     {
         [HttpGet("UnitCreation/Create")]

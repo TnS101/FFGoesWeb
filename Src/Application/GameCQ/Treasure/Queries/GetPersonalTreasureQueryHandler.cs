@@ -22,7 +22,7 @@
         {
             var unit = await this.context.Units.FindAsync(request.UnitId);
 
-            var treasures = this.context.Items.Where(i => i.Name.Split(' ')[1] == "Treasure" && i.InventoryId == unit.InventoryId);
+            var treasures = this.context.Items.Where(i => i.Name.Split()[1] == "Treasure" && i.InventoryId == unit.InventoryId);
 
             return new TreasureListViewModel
             {

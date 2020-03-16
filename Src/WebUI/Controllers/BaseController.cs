@@ -10,8 +10,8 @@
     {
         private IMediator mediator;
 
-        protected IMediator Mediator => mediator = HttpContext.RequestServices.GetService<>();
+        protected IMediator Mediator => mediator = HttpContext.RequestServices.GetService<IMediator>();
 
-        protected UserManager<User> UserManager => HttpContext.RequestServices.GetService<>();
+        protected UserManager<User> UserManager => HttpContext.RequestServices.GetService<UserManager<User>>();
     }
 }

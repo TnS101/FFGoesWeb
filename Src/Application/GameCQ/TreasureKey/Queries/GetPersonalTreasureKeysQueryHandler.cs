@@ -23,7 +23,7 @@
         {
             var unit = await this.context.Units.FindAsync(request.UnitId);
 
-            var inventory = this.context.Items.Where(i => i.Name.Split(' ')[1] == "Key" && i.InventoryId == unit.InventoryId);
+            var inventory = this.context.Items.Where(i => i.Name.Split()[1] == "Key" && i.InventoryId == unit.InventoryId);
 
             return new TreasureKeyListViewModel
             {

@@ -8,6 +8,8 @@
 
     public class HomeController : BaseController
     {
+        [HttpGet("/")]
+        [Route("/")]
         public IActionResult Index()
         {
             return View();
