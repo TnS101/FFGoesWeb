@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class LogoutUserCommand : IRequest
+    public class LogoutUserCommand : IRequest<string>
     {
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.SeedInitialData
+﻿namespace Application.SeedInitialData
 {
     using global::Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain.Entities.Game;
 
     public class DataSeeder
     {
@@ -16,7 +17,7 @@
             this.context = context;
         }
 
-        public async Task Seed(CancellationToken cancellationToken)
+        public async Task SeedAsync(CancellationToken cancellationToken)
         {
             await SeedUsers(cancellationToken);
 

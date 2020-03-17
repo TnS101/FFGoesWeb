@@ -2,6 +2,6 @@
 {
     public interface IConnection
     {
-        string String { get; set; }
+        static string String { get; set; }
     }
 }

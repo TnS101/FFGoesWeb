@@ -6,12 +6,15 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
 
+    [ApiController]
+    [Route("api/[controller]/action")]
     public class BaseController : Controller
     {
         private IMediator mediator;
+        private UserManager<User> userManager;
 
-        protected IMediator Mediator => mediator = HttpContext.RequestServices.GetService<IMediator>();
+        protected IMediator Mediator => mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        protected UserManager<User> UserManager => HttpContext.RequestServices.GetService<UserManager<User>>();
+        protected UserManager<User> UserManager => userManager ??= HttpContext.RequestServices.GetService<UserManager<User>>();
     }
 }

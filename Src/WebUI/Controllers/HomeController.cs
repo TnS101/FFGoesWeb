@@ -9,28 +9,25 @@
     public class HomeController : BaseController
     {
         [HttpGet("/")]
-        [Route("/")]
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
-        [HttpGet("Home/About")]
-        [Route("Home/About")]
+        [HttpGet("/About")]
         public IActionResult About()
         {
             return View();
         }
 
-        [HttpGet("Home/MonsterCatalaog")]
-        [Route("Home/MonsterCatalog")]
+        [HttpGet("/MonsterCatalog")]
         public async Task<ActionResult> MonsterCatalog()
         {
             return View(await this.Mediator.Send(new GetMonstersImagesQuery { }));
         }
 
-        [HttpGet("Home/ClassCatalog")]
-        [Route("Home/ClassCatalog")]
+        [HttpGet("/ClassCatalog")]
+        [Route("/ClassCatalog")]
         public async Task<ActionResult> ClassCatalog() 
         {
             return View(await this.Mediator.Send(new GetFightingClassImagesQuery {  }));

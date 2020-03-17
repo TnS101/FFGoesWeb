@@ -6,14 +6,16 @@
     using System.Threading.Tasks;
     using global::Application.GameCQ.Image.Queries;
     using Microsoft.AspNetCore.Authorization;
+    using MediatR;
 
     public class UnitCreationController : BaseController
     {
+
         [HttpGet("UnitCreation/Create")]
         [Route("UnitCreation/Create")]
         public async Task<IActionResult> Create()
         {
-            return View(await this.Mediator.Send(new GetFightingClassImagesQuery { }));
+            return View(await this.Mediator.Send(new GetFightingClassImagesQuery ()));
         }
 
         [HttpPost("UnitCreation/SubmittedCreate")]

@@ -881,6 +881,16 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -2679,6 +2689,11 @@
         "version.txt"
       ]
     },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../Common/Common.csproj",
+      "msbuildProject": "../Common/Common.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
@@ -2689,6 +2704,7 @@
     ".NETStandard,Version=v2.1": [
       "AutoMapper >= 9.0.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 7.0.0",
+      "Common >= 1.0.0",
       "Domain >= 1.0.0",
       "MediatR >= 8.0.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 8.0.0",
@@ -2726,6 +2742,9 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
+            "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Common\\Common.csproj"
+            },
             "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Domain\\Domain.csproj"
             }

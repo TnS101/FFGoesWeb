@@ -26,11 +26,11 @@
             if (status.Succeeded)
             {
                 await signInManager.SignInAsync(user, true);
-                return "Login Succesful";
+                return "/";
             }
             else
             {
-                return "An error occured. Please, try again!";
+                return "/LoginError";
             }
         }
     }

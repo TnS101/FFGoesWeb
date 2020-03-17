@@ -6,17 +6,17 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class LogoutUserCommandHandler : IRequestHandler<LogoutUserCommand>
+    public class LogoutUserCommandHandler : IRequestHandler<LogoutUserCommand,string>
     {
         private readonly SignInManager<User> signInManager;
         public LogoutUserCommandHandler (SignInManager<User> signInManager)
         {
             this.signInManager = signInManager;
         }
-        public async Task<Unit> Handle(LogoutUserCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(LogoutUserCommand request, CancellationToken cancellationToken)
         {
             await this.signInManager.SignOutAsync();
-            return Unit.Value;
+            return "/";
         }
     }
 }

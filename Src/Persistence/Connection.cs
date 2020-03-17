@@ -4,6 +4,6 @@
 
     public class Connection : IConnection
     {
-        public string String { get; set; } = @"Server=.;Database=FFDb;Integrated Security=True";
+        public static string String { get; set; } = @"Server=.;Database=FFDb;Integrated Security=True";
     }
 }

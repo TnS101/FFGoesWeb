@@ -1,10 +1,11 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.Common.Interfaces
 {
-    using global::Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using Microsoft.EntityFrameworkCore;
     using System.Threading;
     using System.Threading.Tasks;
+    using global::Domain.Entities.Game;
+    using global::Domain.Entities.Common;
 
     public interface IFFDbContext
     {

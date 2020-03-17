@@ -2,6 +2,7 @@
 {
     using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
@@ -24,19 +25,19 @@
         {
             if (request.Password.Length < 8 || request.Password.Length > 30)
             {
-                return "Password Length must be between 8 and 30 characters";
+                return string.Format(GC.LengthException,"Password",8,30);
             }
             if (request.Username.Length < 5 || request.Username.Length > 20)
             {
-                return "Username length must be between 5 and 20 characters";
+                return string.Format(GC.LengthException, "Username", 5, 20);
             }
             if (this.context.Users.Any(u => u.Username == request.Username))
             {
-                return "Username is already taken, please choose another email address";
+                return string.Format(GC.IdentityInUse, "Username", "Username");
             }
             if (this.context.Users.Any(u => u.Email == request.Email))
             {
-                return "Email address is in use, please choose another email address";
+                return string.Format(GC.IdentityInUse, "E-mail address", "E-mail address");
             }
             else
             {
@@ -50,7 +51,7 @@
 
                 await this.userManager.CreateAsync(user, user.Password);
                 
-                return "Succsefuly registered! Redirecting to the login page.";
+                return string.Format(GC.RegistrationSuccessful,user.Username);
             }
         }
 

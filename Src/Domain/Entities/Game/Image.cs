@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
+namespace Domain.Entities.Game
 {
     public class Image
     {
