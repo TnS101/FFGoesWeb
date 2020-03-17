@@ -8,8 +8,8 @@
 
     public class LogoutUserCommandHandler : IRequestHandler<LogoutUserCommand,string>
     {
-        private readonly SignInManager<User> signInManager;
-        public LogoutUserCommandHandler (SignInManager<User> signInManager)
+        private readonly SignInManager<ApplicationUser> signInManager;
+        public LogoutUserCommandHandler (SignInManager<ApplicationUser> signInManager)
         {
             this.signInManager = signInManager;
         }

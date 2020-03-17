@@ -1,5 +1,6 @@
 namespace WebUI
 {
+    using Application.CQ.Users.Commands.Create;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Monster.Queries;
     using Application.SeedInitialData;
@@ -7,10 +8,10 @@ namespace WebUI
     using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Persistence;
-    using Infrastructure;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
@@ -25,7 +26,7 @@ namespace WebUI
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(Startup));
             services.AddDbContext<FFDbContext>()
-                .AddTransient<IFFDbContext,FFDbContext>();
+                .AddTransient<IUserStore<ApplicationUser>,FFDbContext>();
             services.AddSignalR();
             services.AddControllers();
             services.AddMvc();
@@ -33,7 +34,8 @@ namespace WebUI
             services.AddScoped<IRequestHandler<DataSeederCommand,Unit>,DataSeederCommandHandler>();
             services.AddScoped<IRequestHandler<GetFightingClassImagesQuery, ImageListViewModel>, GetFightingClassImagesQueryHandler>();
             services.AddScoped<IRequestHandler<GetMonstersImagesQuery, MonsterImageListViewModel>, GetMonstersImagesQueryHandler>();
-            services.AddIdentityCore<User>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<IRequestHandler<RegisterUserCommand,string[]>, RegisterUserCommandHandler>();
+            services.AddIdentityCore<ApplicationUser>().AddEntityFrameworkStores<FFDbContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

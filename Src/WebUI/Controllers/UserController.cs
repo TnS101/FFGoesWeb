@@ -17,23 +17,23 @@
 
         [HttpPost("User/Login")]
         [Route("User/Login")]
-        public async Task<ActionResult> Login(string username, string password) 
+        public async Task<ActionResult> Login([FromForm]string username, [FromForm]string password) 
         {
             return View("/Login", await this.Mediator.Send(new LoginUserCommand { Username = username, Password = password }));
         }
 
-        [HttpGet("User/Register")]
-        [Route("User/Register")]
+        [HttpGet("/Register")]
         public ActionResult Register() 
         {
-            return View();
+            return View(@"\Register","");
         }
 
-        [HttpPost("User/Register")]
-        [Route("User/Register")]
-        public async Task <ActionResult> Register(string username, string password, string email, string confirmPassword)
+        [HttpPost("/Register")]
+        public async Task <ActionResult> Register([FromForm]string username, [FromForm]string password, [FromForm]string email, [FromForm]string confirmPassword)
         {
-            return View("/Register",await this.Mediator.Send(new RegisterUserCommand { Username = username, Password = password, Email = email, ConfirmPassword = confirmPassword }));
+            var result = await this.Mediator.Send(new RegisterUserCommand { Username = username, Password = password, Email = email, ConfirmPassword = confirmPassword });
+
+            return View(result[0],result[1]);
         }
 
         [HttpPost("User/Logout")]

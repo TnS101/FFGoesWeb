@@ -6,7 +6,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Options;
 
-    public class ApplicationDbContext : ApiAuthorizationDbContext<User>
+    public class ApplicationDbContext : ApiAuthorizationDbContext<Domain.Entities.Common.ApplicationUser>
     {
         public ApplicationDbContext(
             DbContextOptions<ApplicationDbContext> options,

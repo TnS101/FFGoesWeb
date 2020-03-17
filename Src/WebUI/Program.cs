@@ -2,6 +2,7 @@ using Application.SeedInitialData;
 using FinalFantasyTryoutGoesWeb.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
@@ -14,14 +15,18 @@ namespace WebUI
         {
             var host = CreateHostBuilder(args).Build();
 
-            //using (var scope = host.Services.CreateScope())
-            //{
-            //    var services = scope.ServiceProvider;
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
 
-            //    var mediator = services.GetRequiredService<IMediator>();
+                //var context = services.GetRequiredService<FFDbContext>();
 
-            //    await mediator.Send(new DataSeederCommand());
-            //}
+                //context.Database.EnsureCreated();
+
+                //var mediator = services.GetRequiredService<IMediator>();
+                
+                //await mediator.Send(new DataSeederCommand());
+            }
 
             host.Run();
         }

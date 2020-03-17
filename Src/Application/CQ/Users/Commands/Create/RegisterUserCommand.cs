@@ -5,7 +5,7 @@
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
-    public class RegisterUserCommand : IRequest<string>
+    public class RegisterUserCommand : IRequest<string[]>
     {
         [DisplayName(GConst.Username)]
         [Required(ErrorMessage = GConst.RequiredField)]

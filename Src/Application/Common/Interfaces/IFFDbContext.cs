@@ -9,7 +9,7 @@
 
     public interface IFFDbContext
     {
-        DbSet<User> Users { get; set; }
+        DbSet<ApplicationUser> Users { get; set; }
 
         DbSet<Equipment> Equipments { get; set; }
 

@@ -12,7 +12,7 @@
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection.String));
 
-            services.AddDefaultIdentity<User>()
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<FFDbContext>();
 
             return services;

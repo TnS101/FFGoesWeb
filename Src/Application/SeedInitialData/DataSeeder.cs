@@ -32,9 +32,9 @@
 
         private async Task SeedUsers(CancellationToken cancellationToken) 
         {
-            context.Users.Add(new User
+            context.Users.Add(new ApplicationUser
             {
-                Username = "Pesho the Slayer",
+                UserName = "Pesho the Slayer",
                 Password = "qmsinoktite:(",
                 Units = new List<Unit>()
             });

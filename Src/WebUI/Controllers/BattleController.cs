@@ -16,9 +16,9 @@
     {
         private UnitFullViewModel enemy;
         private bool yourTurn;
-        private readonly UserManager<User> userManager;
-        private User user;
-        public BattleController(UserManager<User> userManager)
+        private readonly UserManager<ApplicationUser> userManager;
+        private ApplicationUser user;
+        public BattleController(UserManager<ApplicationUser> userManager)
         {
             this.userManager = userManager;
         }

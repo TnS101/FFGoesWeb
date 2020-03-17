@@ -19,8 +19,8 @@
             services.AddScoped(typeof(BattleHandler));
             services.AddScoped(typeof(GeneratorHandler));
             services.AddScoped(typeof(ValidatorHandler));
-            services.AddScoped(typeof(SignInManager<User>));
-            services.AddScoped(typeof(UserManager<User>));
+            services.AddScoped(typeof(SignInManager<ApplicationUser>));
+            services.AddScoped(typeof(UserManager<ApplicationUser>));
 
             return services;
         }

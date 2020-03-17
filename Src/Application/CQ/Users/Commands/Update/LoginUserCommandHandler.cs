@@ -11,17 +11,17 @@
     public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand,string>
     {
         private readonly IFFDbContext context;
-        private readonly SignInManager<User> signInManager;
-        public LoginUserCommandHandler(IFFDbContext context, SignInManager<User> signInManager)
+        private readonly SignInManager<ApplicationUser> signInManager;
+        public LoginUserCommandHandler(IFFDbContext context, SignInManager<ApplicationUser> signInManager)
         {
             this.context = context;
             this.signInManager = signInManager;
         }
         public async Task<string> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
-            var user = this.context.Users.FirstOrDefault(u => u.Username == request.Username);
+            var user = this.context.Users.FirstOrDefault(u => u.UserName == request.Username);
 
-            var status = await this.signInManager.PasswordSignInAsync(user.Username, user.Username, true, false);
+            var status = await this.signInManager.PasswordSignInAsync(user.UserName, user.UserName, true, false);
 
             if (status.Succeeded)
             {
