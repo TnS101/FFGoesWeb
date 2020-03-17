@@ -12,7 +12,10 @@
             <input type="text" name="confirmPassword" value=""  placeholder="confirm password"/>
             <input type="submit" name="name" value="Register" />     
         </form>
-        <p>@Model</p>
+        @foreach (var line in Model.Split("."))
+        {
+            <p>@line</p>
+        }
     </body>
 
 

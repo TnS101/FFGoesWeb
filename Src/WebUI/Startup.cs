@@ -11,7 +11,6 @@ namespace WebUI
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
@@ -26,7 +25,7 @@ namespace WebUI
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(Startup));
             services.AddDbContext<FFDbContext>()
-                .AddTransient<IUserStore<ApplicationUser>,FFDbContext>();
+                .AddTransient<IFFDbContext,FFDbContext>();
             services.AddSignalR();
             services.AddControllers();
             services.AddMvc();

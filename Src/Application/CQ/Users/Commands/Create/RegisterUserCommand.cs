@@ -9,11 +9,13 @@
     {
         [DisplayName(GConst.Username)]
         [Required(ErrorMessage = GConst.RequiredField)]
+        [StringLength(20, MinimumLength = 5)]
         [RegularExpression(@"[A-Za-z]+\d*", ErrorMessage = GConst.UsernameError)]
         public string Username { get; set;}
 
         [DisplayName(GConst.Password)]
         [Required(ErrorMessage = GConst.RequiredField)]
+        [StringLength(30, MinimumLength = 8)]
         [RegularExpression(@"[A-Z][A-za-z]+\d+", ErrorMessage = GConst.PasswordError)]
         public string Password { get; set; }
 

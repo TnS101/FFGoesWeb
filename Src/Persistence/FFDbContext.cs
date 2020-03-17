@@ -13,7 +13,7 @@
     using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
 
-    public class FFDbContext : ApiAuthorizationDbContext<ApplicationUser>, IUserRoleStore<ApplicationUser>
+    public class FFDbContext : ApiAuthorizationDbContext<ApplicationUser>, IFFDbContext
     {
         public FFDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {

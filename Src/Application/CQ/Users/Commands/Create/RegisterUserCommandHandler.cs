@@ -5,6 +5,7 @@
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Cryptography;
@@ -12,7 +13,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand,string[]>
+    public class RegisterUserCommandHandler : PageModel, IRequestHandler<RegisterUserCommand, string[]>
     {
         private readonly IFFDbContext context;
         private readonly UserManager<ApplicationUser> userManager;
@@ -23,18 +24,18 @@
         }
         public async Task<string[]> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            var result = new string[] { "","" };
+            var result = new string[] { "", "" };
             var sb = new StringBuilder();
 
-            if (request.Password.Length < 8 || request.Password.Length > 30)
+            if (!this.ModelState.IsValid)
             {
+                var errors = this.ModelState.Select(v => v.Value.Errors).Where(c => c.Count > 0).ToList();
+                foreach (var error in errors)
+                {
+                    sb.AppendLine(error.FirstOrDefault().ErrorMessage);
+                }
+
                 result[0] = @"\Register";
-                sb.AppendLine(string.Format(GConst.LengthException, "Password", 8, 30));
-            }
-            if (request.Username.Length < 5 || request.Username.Length > 20)
-            {
-                result[0] = @"\Register";
-                sb.AppendLine(string.Format(GConst.LengthException, "Username", 5, 20));
             }
             if (this.context.Users.Any(u => u.UserName == request.Username))
             {
@@ -46,28 +47,31 @@
                 result[0] = @"\Register";
                 sb.AppendLine(string.Format(GConst.IdentityInUse, "E-mail address", "E-mail address"));
             }
-            else
+            if(this.ModelState.IsValid)
             {
                 var user = new ApplicationUser
                 {
                     UserName = request.Username,
-                    Password = this.Hash(request.Password),
+                    Password = request.Password,
                     Email = request.Email,
                     Units = new List<FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Unit>(),
                     PasswordHash = this.Hash(request.Password)
                 };
 
-                await this.userManager.CreateAsync(user, user.Password);
+                var createResult = await this.userManager.CreateAsync(user, user.Password);
 
-                await this.userManager.AddToRoleAsync(user, GConst.UserRole);
+                //await this.userManager.AddToRoleAsync(user, GConst.UserRole);
 
-                result[0] = @"\RegistrtationSuccess";
-                result[1] = string.Format(GConst.RegistrationSuccessful, user.UserName);
-
-                return result;
+                if (createResult.Succeeded)
+                {
+                    result[0] = @"\RegistrationSuccess";
+                    result[1] = string.Format(GConst.RegistrationSuccessful, user.UserName);
+                    return result;
+                }
             }
 
             result[1] = sb.ToString();
+            result[0] = @"\Register";
             return result;
         }
 
