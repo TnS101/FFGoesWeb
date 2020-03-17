@@ -25,19 +25,19 @@
         {
             if (request.Password.Length < 8 || request.Password.Length > 30)
             {
-                return string.Format(GC.LengthException,"Password",8,30);
+                return string.Format(GConst.LengthException,"Password",8,30);
             }
             if (request.Username.Length < 5 || request.Username.Length > 20)
             {
-                return string.Format(GC.LengthException, "Username", 5, 20);
+                return string.Format(GConst.LengthException, "Username", 5, 20);
             }
             if (this.context.Users.Any(u => u.Username == request.Username))
             {
-                return string.Format(GC.IdentityInUse, "Username", "Username");
+                return string.Format(GConst.IdentityInUse, "Username", "Username");
             }
             if (this.context.Users.Any(u => u.Email == request.Email))
             {
-                return string.Format(GC.IdentityInUse, "E-mail address", "E-mail address");
+                return string.Format(GConst.IdentityInUse, "E-mail address", "E-mail address");
             }
             else
             {
@@ -50,8 +50,10 @@
                 };
 
                 await this.userManager.CreateAsync(user, user.Password);
-                
-                return string.Format(GC.RegistrationSuccessful,user.Username);
+
+                await this.userManager.AddToRoleAsync(user, GConst.UserRole);
+
+                return string.Format(GConst.RegistrationSuccessful,user.Username);
             }
         }
 

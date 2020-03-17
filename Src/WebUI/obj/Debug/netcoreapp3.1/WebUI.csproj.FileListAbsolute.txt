@@ -150,3 +150,8 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\bin\Debug\netcoreapp3.1\Infrastructure.p
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.Views.pdb
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.dll
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.pdb
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\bin\Debug\netcoreapp3.1\Common.dll
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\bin\Debug\netcoreapp3.1\Common.pdb
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll

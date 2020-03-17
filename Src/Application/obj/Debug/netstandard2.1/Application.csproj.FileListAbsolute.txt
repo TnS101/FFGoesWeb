@@ -9,3 +9,5 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\Application\bin\Debug\netstandard2.1\Domain.pd
 C:\Users\PC\Desktop\FFGoesWeb\Src\Application\obj\Debug\netstandard2.1\Application.csproj.CopyComplete
 C:\Users\PC\Desktop\FFGoesWeb\Src\Application\obj\Debug\netstandard2.1\Application.dll
 C:\Users\PC\Desktop\FFGoesWeb\Src\Application\obj\Debug\netstandard2.1\Application.pdb
+C:\Users\PC\Desktop\FFGoesWeb\Src\Application\bin\Debug\netstandard2.1\Common.dll
+C:\Users\PC\Desktop\FFGoesWeb\Src\Application\bin\Debug\netstandard2.1\Common.pdb

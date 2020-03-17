@@ -7,22 +7,22 @@
 
     public class RegisterUserCommand : IRequest<string>
     {
-        [DisplayName(GC.Username)]
-        [Required(ErrorMessage = GC.RequiredField)]
-        [RegularExpression(@"[A-Za-z]+\d*", ErrorMessage = GC.UsernameError)]
+        [DisplayName(GConst.Username)]
+        [Required(ErrorMessage = GConst.RequiredField)]
+        [RegularExpression(@"[A-Za-z]+\d*", ErrorMessage = GConst.UsernameError)]
         public string Username { get; set;}
 
-        [DisplayName(GC.Password)]
-        [Required(ErrorMessage = GC.RequiredField)]
-        [RegularExpression(@"[A-Z][A-za-z]+\d+", ErrorMessage = GC.PasswordError)]
+        [DisplayName(GConst.Password)]
+        [Required(ErrorMessage = GConst.RequiredField)]
+        [RegularExpression(@"[A-Z][A-za-z]+\d+", ErrorMessage = GConst.PasswordError)]
         public string Password { get; set; }
 
-        [DisplayName(GC.Email)]
-        [Required(ErrorMessage = GC.RequiredField)]
-        [EmailAddress(ErrorMessage = GC.EmailError)]
+        [DisplayName(GConst.Email)]
+        [Required(ErrorMessage = GConst.RequiredField)]
+        [EmailAddress(ErrorMessage = GConst.EmailError)]
         public string Email { get; set; }
 
-        [Compare(nameof(Password), ErrorMessage = GC.ConfirmPasswordError)]
+        [Compare(nameof(Password), ErrorMessage = GConst.ConfirmPasswordError)]
         public string ConfirmPassword { get; set; }
     }
 }

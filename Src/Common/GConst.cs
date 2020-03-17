@@ -1,11 +1,11 @@
-﻿using System;
-
-namespace Common
+﻿namespace Common
 {
-    public class GC
+    public class GConst
     {
         public const string AdminRole = "Administrator";
         public const string UserRole = "User";
+        public const string AdminArea = "Administrator";
+        public string UserArea = "User";
 
         public const string LengthException = "{0} length must be between {1} and {2} characters";
         public const string IdentityInUse = "{0} is in use, please choose another {1}";

@@ -13,3 +13,5 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\bin\Debug\netcoreapp3.1\Domain.
 C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CopyComplete
 C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.dll
 C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.pdb
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\bin\Debug\netcoreapp3.1\Common.dll
+C:\Users\PC\Desktop\FFGoesWeb\Src\Infrastructure\bin\Debug\netcoreapp3.1\Common.pdb

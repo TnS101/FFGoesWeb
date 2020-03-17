@@ -30,7 +30,7 @@
             }
             else
             {
-                return "/LoginError";
+                return @"\LoginError";
             }
         }
     }

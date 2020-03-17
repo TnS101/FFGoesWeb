@@ -1,12 +1,13 @@
 namespace WebUI
 {
-    using Application.Common.Mappings;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Monster.Queries;
     using Application.SeedInitialData;
     using AutoMapper;
+    using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Persistence;
+    using Infrastructure;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,7 @@ namespace WebUI
             services.AddScoped<IRequestHandler<DataSeederCommand,Unit>,DataSeederCommandHandler>();
             services.AddScoped<IRequestHandler<GetFightingClassImagesQuery, ImageListViewModel>, GetFightingClassImagesQueryHandler>();
             services.AddScoped<IRequestHandler<GetMonstersImagesQuery, MonsterImageListViewModel>, GetMonstersImagesQueryHandler>();
+            services.AddIdentityCore<User>().AddEntityFrameworkStores<ApplicationDbContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

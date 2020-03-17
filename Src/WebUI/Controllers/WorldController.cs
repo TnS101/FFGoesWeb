@@ -16,15 +16,13 @@
             this.rng = new Random();
         }
 
-        [HttpGet("World/Home")]
-        [Route("World/Home")]
+        [HttpGet("/World")]
         public IActionResult Home()
         {
             return View();
         }
 
-        [HttpGet("World/Explore")]
-        [Route("World/Explore")]
+        [HttpGet("/Explore")]
         public IActionResult Explore()
         {
             int exploreNumber = rng.Next(0, 10);
@@ -38,8 +36,7 @@
             }
         }
 
-        [HttpGet("World/TreasureLoot")]
-        [Route("World/TreasureLoot")]
+        [HttpGet("/TreasureLoot")]
         public async Task<IActionResult> TreasureEncounter()
         {
             return Ok(await this.Mediator.Send(new LootTreasureCommand { UnitId = 1 }));

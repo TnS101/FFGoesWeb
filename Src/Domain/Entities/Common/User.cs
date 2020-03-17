@@ -3,13 +3,16 @@
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using System;
     using System.Collections.Generic;
+    using Microsoft.AspNetCore.Identity;
+    using System.Security.Principal;
 
-    public class User
+    public class User : IdentityUser
     {
         public User()
         {
             Units = new HashSet<Unit>();
             this.Id = Guid.NewGuid().ToString();
+            
         }
 
         public string Id { get; set; }

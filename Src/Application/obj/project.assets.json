@@ -893,7 +893,7 @@
       },
       "Domain/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.1",
+        "framework": "Unsupported,Version=v0.0",
         "compile": {
           "bin/placeholder/Domain.dll": {}
         },
@@ -2803,5 +2803,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project Domain is not compatible with netstandard2.1 (.NETStandard,Version=v2.1). Project Domain supports: netcoreapp3.1 (.NETCoreApp,Version=v3.1)",
+      "libraryId": "Domain",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.1"
+      ]
+    }
+  ]
 }
