@@ -1,6 +1,5 @@
 ﻿namespace WebUI.Controllers
 {
-    using Application.CQ.Users.Commands.Create;
     using Application.CQ.Users.Commands.Update;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
@@ -25,15 +24,18 @@
         [HttpGet("/Register")]
         public ActionResult Register() 
         {
-            return View(@"\Register","");
+            return View(@"\Register");
         }
 
         [HttpPost("/Register")]
         public async Task <ActionResult> Register([FromForm]string username, [FromForm]string password, [FromForm]string email, [FromForm]string confirmPassword)
         {
-            var result = await this.Mediator.Send(new RegisterUserCommand { Username = username, Password = password, Email = email, ConfirmPassword = confirmPassword });
+            if (!this.ModelState.IsValid)
+            {
+                return View(@"\Register");
+            }
 
-            return View(result[0],result[1]);
+            return View(@"\RegistrationSuccess");
         }
 
         [HttpPost("User/Logout")]

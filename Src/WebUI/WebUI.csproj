@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\Views\" />
+    <Folder Include="Areas\Identity\Pages\" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,5 @@
 namespace WebUI
 {
-    using Application.CQ.Users.Commands.Create;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Monster.Queries;
     using Application.SeedInitialData;
@@ -33,7 +32,6 @@ namespace WebUI
             services.AddScoped<IRequestHandler<DataSeederCommand,Unit>,DataSeederCommandHandler>();
             services.AddScoped<IRequestHandler<GetFightingClassImagesQuery, ImageListViewModel>, GetFightingClassImagesQueryHandler>();
             services.AddScoped<IRequestHandler<GetMonstersImagesQuery, MonsterImageListViewModel>, GetMonstersImagesQueryHandler>();
-            services.AddScoped<IRequestHandler<RegisterUserCommand,string[]>, RegisterUserCommandHandler>();
             services.AddIdentityCore<ApplicationUser>().AddEntityFrameworkStores<FFDbContext>();
         }
 
