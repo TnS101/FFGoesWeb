@@ -1,0 +1,23 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+<body class="nav-bar">
+    <header id="masthead" class="site-header full" style="top: -42px;margin-left:-140px;position:fixed">
+        <div class="container">
+            <div id="site-branding">
+            </div>
+            <div id="site-navigation" role="navigation" style="background-color:rgb(45, 54, 76);width:1986px;height:100px;margin-left:-150px;padding-top:28px">
+                <div class="site-main-menu">
+                    <ul id="primary-menu" class="demo-menu" style="font-size:35px">
+                        <li style="padding-left:840px" class="page_item page-item-9"><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Home</a></li>
+                        <li class="page_item page-item-2"><a href="https://localhost:44341/Identity/Account/Login"><i class="fas fa-sign-in-alt"></i>Log In</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="site-top-right">
+            </div>
+        </div>
+    </header>
+</body>

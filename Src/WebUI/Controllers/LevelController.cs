@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
 
-    [Authorize]
+    [Authorize(Roles = "Administrator,Player")]
     public class LevelController : BaseController
     {
         [HttpGet("Level/LevelUp")]

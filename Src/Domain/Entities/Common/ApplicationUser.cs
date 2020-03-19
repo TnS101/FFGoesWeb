@@ -11,7 +11,6 @@
         {
             Units = new HashSet<Unit>();
             this.Id = Guid.NewGuid().ToString();
-            
         }
 
         public override string Id { get; set; }
@@ -22,6 +21,10 @@
 
         public override string Email { get; set; }
 
+        public string Role { get; set; }
+
         public ICollection<Unit> Units { get; set; }
+
+        public DateTime? LastLogin { get; set; }
     }
 }

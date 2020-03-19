@@ -42,7 +42,7 @@ using Domain.Entities.Common;
 #nullable disable
 #nullable restore
 #line 1 "C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\Areas\Identity\Pages\Account\_ViewImports.cshtml"
-using AnisMasterpieces.Web.Areas.Identity.Pages.Account;
+using WebUI.Areas.Identity.Pages.Account;
 
 #line default
 #line hidden
@@ -56,7 +56,7 @@ using AnisMasterpieces.Web.Areas.Identity.Pages.Account.Manage;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"433b1be084b02c67343241656a02a29998caf35c", @"/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"07307628341c2e03286debbbc2c59ae528404a74", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a7261ad59b391e072fb8aa6c38578711349beb71", @"/Areas/Identity/Pages/Account/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dbdb5a460a3be86c12dc0ebadd6c8a39c4c76a2d", @"/Areas/Identity/Pages/Account/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a925e7fbd81d6662e3a9efea83035bc4a340934b", @"/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml")]
     public class Areas_Identity_Pages_Account_Manage_ExternalLogins : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {
@@ -107,7 +107,7 @@ using AnisMasterpieces.Web.Areas.Identity.Pages.Account.Manage;
 #line hidden
 #nullable disable
             WriteLiteral("\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "433b1be084b02c67343241656a02a29998caf35c8371", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "433b1be084b02c67343241656a02a29998caf35c8356", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -165,9 +165,9 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper.For = ModelExpressionProv
 #line hidden
 #nullable disable
             WriteLiteral("                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "433b1be084b02c67343241656a02a29998caf35c11297", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "433b1be084b02c67343241656a02a29998caf35c11282", async() => {
                 WriteLiteral("\n                                <div>\n                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "433b1be084b02c67343241656a02a29998caf35c11629", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "433b1be084b02c67343241656a02a29998caf35c11614", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -192,7 +192,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\n                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "433b1be084b02c67343241656a02a29998caf35c13595", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "433b1be084b02c67343241656a02a29998caf35c13580", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -295,7 +295,7 @@ WriteAttributeValue(" ", 1027, login.ProviderDisplayName, 1028, 26, false);
 #line hidden
 #nullable disable
             WriteLiteral("    <h4>Add another service to log in.</h4>\n    <hr />\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "433b1be084b02c67343241656a02a29998caf35c19390", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "433b1be084b02c67343241656a02a29998caf35c19375", async() => {
                 WriteLiteral("\n        <div id=\"socialLoginList\">\n            <p>\n");
 #nullable restore
 #line 46 "C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\Areas\Identity\Pages\Account\Manage\ExternalLogins.cshtml"

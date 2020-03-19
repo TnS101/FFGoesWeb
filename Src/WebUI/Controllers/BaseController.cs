@@ -6,8 +6,6 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
 
-    [ApiController]
-    [Route("api/[controller]/action")]
     public class BaseController : Controller
     {
         private IMediator mediator;

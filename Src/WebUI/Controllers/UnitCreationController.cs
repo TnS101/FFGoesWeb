@@ -6,8 +6,8 @@
     using System.Threading.Tasks;
     using global::Application.GameCQ.Image.Queries;
     using Microsoft.AspNetCore.Authorization;
-    using MediatR;
 
+    [Authorize(Roles = "Administrator,User")]
     public class UnitCreationController : BaseController
     {
 

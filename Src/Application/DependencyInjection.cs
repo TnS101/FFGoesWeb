@@ -7,7 +7,6 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using System.Reflection;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
 
     public class DependencyInjection
     {

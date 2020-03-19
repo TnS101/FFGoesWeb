@@ -1,9 +1,10 @@
 ﻿namespace Application.GameCQ.Unit.Queries
 {
     using MediatR;
+    using System.Security.Claims;
 
     public class GetFullUnitQuery : IRequest<UnitFullViewModel>
     {
-        public string UserId { get; set; }
+        public ClaimsPrincipal User { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 namespace WebUI
 {
+    using Application.CQ.User.Queries;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Monster.Queries;
     using Application.SeedInitialData;
@@ -32,6 +33,7 @@ namespace WebUI
             services.AddScoped<IRequestHandler<DataSeederCommand,Unit>,DataSeederCommandHandler>();
             services.AddScoped<IRequestHandler<GetFightingClassImagesQuery, ImageListViewModel>, GetFightingClassImagesQueryHandler>();
             services.AddScoped<IRequestHandler<GetMonstersImagesQuery, MonsterImageListViewModel>, GetMonstersImagesQueryHandler>();
+            services.AddScoped<IRequestHandler<GetOnlineUsersQuery, UserListViewModel>, GetOnlineUsersQueryHandler>();
             services.AddIdentityCore<ApplicationUser>().AddEntityFrameworkStores<FFDbContext>();
         }
 
@@ -51,9 +53,12 @@ namespace WebUI
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(name: "areaRoute",
+                    pattern:"{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                     "{controller=Home}/{action=Index}/{id?}");
+                     pattern:"{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

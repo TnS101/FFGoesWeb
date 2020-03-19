@@ -20,11 +20,9 @@ namespace WebUI
                 var services = scope.ServiceProvider;
 
                 //var context = services.GetRequiredService<FFDbContext>();
-
                 //context.Database.EnsureCreated();
 
                 //var mediator = services.GetRequiredService<IMediator>();
-                
                 //await mediator.Send(new DataSeederCommand());
             }
 

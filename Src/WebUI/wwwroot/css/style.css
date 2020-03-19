@@ -30,10 +30,6 @@ main.ng-enter {
         opacity: 1
     }
 
-/*!
- * Font Awesome Free 5.8.1 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */
 .fa, .fab, .fal, .far, .fas {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -5740,24 +5736,6 @@ main.ng-enter {
     font-weight: 900
 }
 
-/*
-Theme Name: Azuma
-Theme URI: https://uxlthemes.com/theme/azuma/
-Author: UXL Themes
-Author URI: https://uxlthemes.com
-Description: Azuma is a customizable WordPress theme which features a sticky header, homepage hero or slider using the standard WordPress image widget, sortable homepage sections, custom colors and fonts, grid layout options and support for video posts/articles. Support for Easy Digital Downloads (EDD) and WooCommerce ecommerce plugins along with Wishlist and Quick View plugins is included along with an auto-updating shopping cart, sticky add-to-cart panel on single product pages and a horizontal product filter widget area.
-Version: 1.1.1
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: azuma
-Tags: one-column, two-columns, left-sidebar, right-sidebar, grid-layout, custom-background, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, footer-widgets, blog, news, e-commerce
-
-This theme, like WordPress, is licensed under the GPL.
-*/
-
-/*--------------------------------------------------------------
-# Normalize
---------------------------------------------------------------*/
 html {
     font-family: sans-serif;
     -webkit-text-size-adjust: 100%;
@@ -6093,12 +6071,12 @@ html {
 
 *,
 *:before,
-*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+*:after { 
     box-sizing: inherit;
 }
 
 body {
-    background: #fff; /* Fallback for when there is no custom background color defined. */
+    background: #fff;
 }
 
 blockquote:before,
@@ -6371,9 +6349,6 @@ input[type="search"] {
     max-width: 100%;
 }
 
-/*--------------------------------------------------------------
-## Links
---------------------------------------------------------------*/
 a {
     color: #ff7800;
     text-decoration: none;
@@ -6444,12 +6419,10 @@ a {
         text-decoration: none;
         top: 5px;
         width: auto;
-        z-index: 100000; /* Above WP toolbar. */
+        z-index: 100000;
     }
 
-/*--------------------------------------------------------------
-# Alignments
---------------------------------------------------------------*/
+
 .alignleft {
     display: inline;
     float: left;
@@ -6469,9 +6442,7 @@ a {
     margin-right: auto;
 }
 
-/*--------------------------------------------------------------
-# Clearings
---------------------------------------------------------------*/
+
 .clearfix:before,
 .clearfix:after,
 .entry-content:before,
@@ -7410,9 +7381,6 @@ article.comment-body {
         padding-bottom: 10px;
     }
 
-/*--------------------------------------------------------------
-# Media
---------------------------------------------------------------*/
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {
@@ -7422,7 +7390,6 @@ article.comment-body {
     padding: 0;
 }
 
-/* Make sure embeds and iframes fit their containers. */
 embed,
 iframe,
 object {
@@ -7446,9 +7413,6 @@ object {
         height: 100%;
     }
 
-/*--------------------------------------------------------------
-## Captions
---------------------------------------------------------------*/
 .wp-caption {
     margin-bottom: 15px;
     max-width: 100%;
@@ -7471,9 +7435,6 @@ object {
     font-size: 16px;
 }
 
-/*--------------------------------------------------------------
-## Galleries
---------------------------------------------------------------*/
 .gallery {
     margin-bottom: 15px;
 }
@@ -7522,9 +7483,6 @@ object {
     margin: 0 10px 10px 10px;
 }
 
-/*--------------------------------------------------------------
-## General
---------------------------------------------------------------*/
 .container {
     width: 96%;
     max-width: 1400px;
@@ -7540,9 +7498,6 @@ object {
     margin-top: 0;
 }
 
-/*--------------------------------------------------------------
-## Header
---------------------------------------------------------------*/
 #masthead {
     margin: 0 auto;
     padding: 0;
@@ -12171,7 +12126,7 @@ pre.wp-block-verse {
 }
 
 :root .has-luminous-vivid-amber-color {
-    color: #fcb900
+    color: #ffa14d
 }
 
 :root .has-light-green-cyan-color {
@@ -13094,6 +13049,7 @@ hr {
 
 .site-home {
     margin-top: -54px;
+    background-color: rgba(59, 92, 252, 0.69)
 }
 
 .creation-button {

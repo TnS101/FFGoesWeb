@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Domain.Entities.Common;
+using System.Net;
+using System;
 
 namespace WebUI.Areas.Identity.Pages.Account
 {
@@ -81,6 +83,12 @@ namespace WebUI.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var cookie = new Cookie("userLogin", DateTime.UtcNow.ToString())
+                    {
+                        Expires = DateTime.UtcNow.AddDays(1)
+                    };
+
+                    Response.Cookies.Append(cookie.Name,cookie.Value);
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

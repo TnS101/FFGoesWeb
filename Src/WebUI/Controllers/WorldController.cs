@@ -7,7 +7,7 @@
     using System;
     using System.Threading.Tasks;
 
-    [Authorize]
+    [Authorize(Roles = "Administrator,Player")]
     public class WorldController : BaseController
     {
         private readonly Random rng;

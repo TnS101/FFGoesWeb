@@ -11,7 +11,7 @@
     using Microsoft.AspNetCore.Identity;
     using global::Domain.Entities.Common;
 
-    [Authorize]
+    [Authorize(Roles = "Administrator,Player")]
     public class BattleController : BaseController
     {
         private UnitFullViewModel enemy;
@@ -26,9 +26,7 @@
         [Route("Battle/Battle")]
         public async Task<ActionResult<string[]>> Battle() //TODO: Change return type if not working
         {
-            this.user = await this.userManager.GetUserAsync(this.User);
-
-            var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UserId = this.user.Id });
+            var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
             enemy = await this.Mediator.Send(new GenerateEnemyCommand { PlayerLevel = playerPVM.Level });
             this.yourTurn = true;
             return new string[] { playerPVM.Name, enemy.Name };
@@ -38,7 +36,7 @@
         [Route("Battle/Action")]
         public async Task<IActionResult> Action([FromQuery]string command)
         {
-            var playerFullVm = await this.Mediator.Send(new GetFullUnitQuery { UserId = this.user.Id });
+            var playerFullVm = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
 
             return View(await this.Mediator.Send(new BattleOptionsCommand 
             { Command = command, Player = playerFullVm, Enemy = this.enemy, YourTurn = this.yourTurn }), this.Stats(playerFullVm));
@@ -48,7 +46,7 @@
         [Route("Battle/SpellOption")]
         public async Task<IActionResult> SpellOption()
         {
-            var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UserId = this.user.Id });
+            var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User});
 
             return View(@"\Action", await this.Mediator.Send(new GetPersonalSpellsQuery { ClassType = playerPVM.ClassType}));
         }

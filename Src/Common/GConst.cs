@@ -8,7 +8,7 @@
         public string UserArea = "User";
 
         public const string LengthException = "{0} length must be between {1} and {2} characters.";
-        public const string IdentityInUse = "{0} is in use, please choose another {1}.";
+        public const string IdentityInUse = "{0} is in use, please choose another {0}.";
         public const string RegistrationSuccessful = "Almost there, {0}! Hopping to the login page.";
         public const string RequiredField = "This Field is required";
         public const string UsernameError = "Username must contain only letters or digits and must be at least 5 characters long.";
