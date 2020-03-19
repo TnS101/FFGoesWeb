@@ -1,8 +1,10 @@
 ﻿using Application.GameCQ.Unit.Queries;
 using AutoMapper;
+using Domain.Entities.Common;
 using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
 using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Linq;
 using System.Threading;
@@ -15,19 +17,23 @@ namespace Application.GameCQ.Item.Commands.Update
         private readonly IFFDbContext context;
         private readonly ItemGenerator itemGenerator;
         private readonly IMapper mapper;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public LootItemCommandHandler(IFFDbContext context, ItemGenerator itemGenerator, IMapper mapper)
+        public LootItemCommandHandler(IFFDbContext context, ItemGenerator itemGenerator, IMapper mapper, UserManager<ApplicationUser> userManager)
         {
             this.context = context;
             this.itemGenerator = itemGenerator;
             this.mapper = mapper;
+            this.userManager = userManager;
         }
 
         public async Task<MediatR.Unit> Handle(LootItemCommand request, CancellationToken cancellationToken)
         {
             var rng = new Random();
 
-            var unit = await this.context.Units.FindAsync(request.UnitId);
+            var user = await this.userManager.GetUserAsync(request.User);
+
+            var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
             this.context.Items.Where(i => i.InventoryId == unit.InventoryId).ToList().Add(this.itemGenerator.Generate(this.mapper.Map<UnitFullViewModel>(unit)));
 

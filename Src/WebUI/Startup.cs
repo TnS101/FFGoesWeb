@@ -1,6 +1,6 @@
 namespace WebUI
 {
-    using Application.CQ.User.Queries;
+    using Application.CQ.Admin.Users.Queries;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Monster.Queries;
     using Application.SeedInitialData;

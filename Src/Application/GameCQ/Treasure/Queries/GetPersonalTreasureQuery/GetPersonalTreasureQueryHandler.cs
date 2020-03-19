@@ -8,6 +8,7 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Microsoft.EntityFrameworkCore;
+    using Application.CQ.Admin.Treasure.Queries.GetAllTreasureQuery;
 
     public class GetPersonalTreasureQueryHandler : IRequestHandler<GetPersonalTreasureQuery, TreasureListViewModel>
     {

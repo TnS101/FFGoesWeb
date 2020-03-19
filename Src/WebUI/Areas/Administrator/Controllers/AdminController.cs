@@ -1,6 +1,6 @@
 ﻿namespace WebUI.Areas.Administrator.Controllers
 {
-    using Application.CQ.User.Queries;
+    using Application.CQ.Admin.Users.Queries;
     using Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -12,7 +12,7 @@
     public class AdminController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> Dashboard([FromForm]string role) 
+        public async Task<ActionResult> Dashboard([FromForm]string role)
         {
             return View(await this.Mediator.Send(new GetOnlineUsersQuery { Role = role }));
         }
