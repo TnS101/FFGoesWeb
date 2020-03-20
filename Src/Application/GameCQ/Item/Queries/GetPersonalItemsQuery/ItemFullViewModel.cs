@@ -1,9 +1,6 @@
 ﻿namespace Application.GameCQ.Item.Queries
 {
-    using Application.Common.Mappings;
-    using AutoMapper;
-
-    public class ItemFullViewModel : IHaveCustomMappings
+    public class ItemFullViewModel
     {
         public string Name { get; set; }
 
@@ -28,10 +25,5 @@
         public double RessistanceValue { get; set; }
 
         public string Slot { get; set; }
-
-        public void CreateMappings(IProfileExpression configuration)
-        {
-            configuration.CreateMap<FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Item, ItemFullViewModel>();
-        }
     }
 }

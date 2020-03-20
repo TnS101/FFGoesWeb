@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace Domain.Entities.Game
+﻿namespace Domain.Entities.Game
 {
-    public class Image
+    using System;
+
+    public class Image 
     {
         public Image()
         {

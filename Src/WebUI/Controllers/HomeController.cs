@@ -28,6 +28,7 @@
             return View(await this.Mediator.Send(new GetMonstersImagesQuery { }));
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> ClassCatalog() 
         {

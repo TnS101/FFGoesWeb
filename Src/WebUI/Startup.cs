@@ -1,5 +1,6 @@
 namespace WebUI
 {
+    using Application.Common.Mappings;
     using Application.CQ.Admin.Users.Queries;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Monster.Queries;
@@ -23,6 +24,15 @@ namespace WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+            services.AddMvc();
+
             services.AddMediatR(typeof(Startup));
             services.AddDbContext<FFDbContext>()
                 .AddTransient<IFFDbContext,FFDbContext>();
