@@ -1,17 +1,17 @@
-﻿using Application.GameCQ.Unit.Queries;
-using AutoMapper;
-using Domain.Entities.Common;
-using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
-using MediatR;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Application.GameCQ.Item.Commands.Update
+﻿namespace Application.GameCQ.Item.Commands.Update
 {
+    using Application.GameCQ.Unit.Queries;
+    using AutoMapper;
+    using Domain.Entities.Common;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
+    using MediatR;
+    using Microsoft.AspNetCore.Identity;
+    using System;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     public class LootItemCommandHandler : IRequestHandler<LootItemCommand>
     {
         private readonly IFFDbContext context;

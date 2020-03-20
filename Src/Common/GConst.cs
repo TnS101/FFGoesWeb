@@ -16,9 +16,5 @@
         public const string EmailError = "Invalid Email Address.";
         public const string ConfirmPasswordError = "Passwords must match.";
 
-        public const string Username = "Username";
-        public const string Password = "Password";
-        public const string Email = "E-mail Address";
-
     }
 }

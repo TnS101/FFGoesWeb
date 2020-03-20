@@ -4,16 +4,26 @@
     using System;
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Identity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using Domain.Entities.Common.Social;
 
     public class ApplicationUser : IdentityUser
     {
         public ApplicationUser()
         {
-            Units = new HashSet<Unit>();
+            this.Units = new HashSet<Unit>();
+            this.Friends = new HashSet<ApplicationUser>();
+            this.FriendRequests = new HashSet<FriendRequest>();
+            this.Messages = new HashSet<Message>();
             this.Id = Guid.NewGuid().ToString();
         }
 
         public override string Id { get; set; }
+
+        public string FriendId { get; set; }
+
+        [ForeignKey("FriendId")]
+        public virtual ApplicationUser Friend { get; set; }
 
         public override string UserName { get; set; }
 
@@ -23,8 +33,13 @@
 
         public string Role { get; set; }
 
+        public DateTime? LastLogin { get; set; }
+
         public ICollection<Unit> Units { get; set; }
 
-        public DateTime? LastLogin { get; set; }
+        public ICollection<FriendRequest> FriendRequests { get; set; }
+
+        public ICollection<Message> Messages { get; set; }
+        public virtual ICollection<ApplicationUser> Friends { get; set; }
     }
 }
