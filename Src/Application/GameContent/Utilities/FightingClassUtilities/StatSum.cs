@@ -4,6 +4,10 @@
 
     public class StatSum
     {
+        public StatSum()
+        {
+        }
+
         public void Sum(Unit player)
         {
             foreach (var item in player.Inventory.Items)

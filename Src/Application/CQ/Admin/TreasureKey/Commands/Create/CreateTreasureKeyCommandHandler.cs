@@ -5,7 +5,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    class CreateTreasureKeyCommandHandler : IRequestHandler<CreateTreasureKeyCommand>
+    public class CreateTreasureKeyCommandHandler : IRequestHandler<CreateTreasureKeyCommand>
     {
         private readonly IFFDbContext context;
         public CreateTreasureKeyCommandHandler(IFFDbContext context)

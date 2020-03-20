@@ -8,9 +8,9 @@
     public class GenerateEnemyCommandHandler : IRequestHandler<GenerateEnemyCommand, UnitFullViewModel>
     {
         private readonly EnemyGenerator enemyGenerator;
-        public GenerateEnemyCommandHandler(EnemyGenerator enemyGenerator)
+        public GenerateEnemyCommandHandler()
         {
-            this.enemyGenerator = enemyGenerator;
+            this.enemyGenerator = new EnemyGenerator();
         }
         public async Task<UnitFullViewModel> Handle(GenerateEnemyCommand request, CancellationToken cancellationToken)
         {

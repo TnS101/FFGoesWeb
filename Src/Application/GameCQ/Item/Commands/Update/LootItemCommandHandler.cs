@@ -19,10 +19,10 @@ namespace Application.GameCQ.Item.Commands.Update
         private readonly IMapper mapper;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public LootItemCommandHandler(IFFDbContext context, ItemGenerator itemGenerator, IMapper mapper, UserManager<ApplicationUser> userManager)
+        public LootItemCommandHandler(IFFDbContext context, IMapper mapper, UserManager<ApplicationUser> userManager)
         {
             this.context = context;
-            this.itemGenerator = itemGenerator;
+            this.itemGenerator = new ItemGenerator();
             this.mapper = mapper;
             this.userManager = userManager;
         }

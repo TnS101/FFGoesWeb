@@ -1,10 +1,11 @@
 ﻿namespace Application.GameCQ.Unit.Commands.Create
 {
     using MediatR;
+    using System.Security.Claims;
 
     public class CreateUnitCommand : IRequest
     {
-        public int UserId { get; set; }
+        public ClaimsPrincipal User { get; set; }
 
         public string ClassType { get; set; }
 

@@ -1,24 +1,24 @@
-﻿using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
-using MediatR;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Application.GameCQ.Equipment.Commands.Update
+﻿namespace Application.GameCQ.Equipment.Commands.Update
 {
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
+    using MediatR;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     public class UpdateEquipmentCommandHandler : IRequestHandler<UpdateEquipmentCommand>
     {
         private readonly IFFDbContext context;
         private readonly EquipmentHandler equipmentHandler;
         private readonly StatSum statSum;
 
-        public UpdateEquipmentCommandHandler(IFFDbContext context, EquipmentHandler equipmentHandler, StatSum statSum)
+        public UpdateEquipmentCommandHandler(IFFDbContext context)
         {
             this.context = context;
-            this.equipmentHandler = equipmentHandler;
-            this.statSum = statSum;
+            this.equipmentHandler = new EquipmentHandler();
+            this.statSum = new StatSum();
         }
         public async Task<MediatR.Unit> Handle(UpdateEquipmentCommand request, CancellationToken cancellationToken)
         {

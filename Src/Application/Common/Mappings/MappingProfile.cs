@@ -3,13 +3,16 @@
     using System;
     using System.Linq;
     using System.Reflection;
+    using Application.CQ.Admin.Users.Queries;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Item.Queries;
     using Application.GameCQ.Monster.Queries;
     using Application.GameCQ.Spell.Queries;
     using Application.GameCQ.Treasure.Queries;
     using Application.GameCQ.TreasureKey.Queries;
+    using Application.GameCQ.Unit.Queries;
     using AutoMapper;
+    using Domain.Entities.Common;
     using Domain.Entities.Game;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
@@ -24,6 +27,9 @@
             CreateMap<Spell, SpellFullViewModel>();
             CreateMap<Treasure, TreasureFullViewModel>();
             CreateMap<TreasureKey, TreasureKeyFullViewModel>();
+            CreateMap<ApplicationUser, UserPartialViewModel>();
+            CreateMap<Unit, UnitPartialViewModel>();
+            CreateMap<Unit, UnitFullViewModel>();
         }
 
         private void ApplyMappingsFromAssembly(Assembly assembly)

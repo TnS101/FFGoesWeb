@@ -12,10 +12,11 @@
         private readonly IFFDbContext context;
         private readonly BattleHandler battleHandler;
         private readonly Loot loot;
-        public BattleOptionsCommandHandler(IFFDbContext context, BattleHandler battleHandler, Loot loot)
+        public BattleOptionsCommandHandler(IFFDbContext context)
         {
             this.context = context;
-            this.battleHandler = battleHandler;
+            this.battleHandler = new BattleHandler();
+            this.loot = new Loot();
             this.loot = loot;
         }
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)

@@ -39,7 +39,7 @@
         [HttpGet("/TreasureLoot")]
         public async Task<IActionResult> TreasureEncounter()
         {
-            return Ok(await this.Mediator.Send(new LootTreasureCommand { UnitId = 1 }));
+            return Ok(await this.Mediator.Send(new LootTreasureCommand { User = this.User }));
         }
     }
 }

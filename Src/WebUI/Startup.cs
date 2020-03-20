@@ -1,10 +1,7 @@
 namespace WebUI
 {
+    using Application.Common.Handlers;
     using Application.Common.Mappings;
-    using Application.CQ.Admin.Users.Queries;
-    using Application.GameCQ.Image.Queries;
-    using Application.GameCQ.Monster.Queries;
-    using Application.SeedInitialData;
     using AutoMapper;
     using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
@@ -23,28 +20,29 @@ namespace WebUI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //AutoMapper
             services.AddAutoMapper(typeof(Startup));
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
             });
-
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
-            services.AddMvc();
 
+            //MediatR
             services.AddMediatR(typeof(Startup));
+            var registerHandlers = new RegisterHandlers(services);
+
+            //Identity
             services.AddDbContext<FFDbContext>()
                 .AddTransient<IFFDbContext,FFDbContext>();
+            services.AddAuthentication();
+            services.AddIdentityCore<ApplicationUser>().AddEntityFrameworkStores<FFDbContext>();
+
+            //Other services
             services.AddSignalR();
             services.AddControllers();
             services.AddMvc();
-            services.AddAuthentication();
-            services.AddScoped<IRequestHandler<DataSeederCommand,Unit>,DataSeederCommandHandler>();
-            services.AddScoped<IRequestHandler<GetFightingClassImagesQuery, ImageListViewModel>, GetFightingClassImagesQueryHandler>();
-            services.AddScoped<IRequestHandler<GetMonstersImagesQuery, MonsterImageListViewModel>, GetMonstersImagesQueryHandler>();
-            services.AddScoped<IRequestHandler<GetOnlineUsersQuery, UserListViewModel>, GetOnlineUsersQueryHandler>();
-            services.AddIdentityCore<ApplicationUser>().AddEntityFrameworkStores<FFDbContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

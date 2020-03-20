@@ -22,7 +22,7 @@
         [Route("UnitCreation/SubmittedCreate")]
         public async Task<IActionResult> Create([FromQuery]string fightingClass, [FromForm]string race, [FromForm]string name)
         {
-            await this.Mediator.Send(new CreateUnitCommand { ClassType = fightingClass, Race = race, Name = name, UserId = 1});
+            await this.Mediator.Send(new CreateUnitCommand { ClassType = fightingClass, Race = race, Name = name, User = this.User});
             return Redirect("/World/Home");
         }
     }
