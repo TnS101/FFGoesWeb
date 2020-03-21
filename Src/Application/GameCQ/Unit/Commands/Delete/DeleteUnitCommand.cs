@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class DeleteUnitCommand : IRequest
+    public class DeleteUnitCommand : IRequest<string>
     {
         public string UnitId { get; set; }
     }

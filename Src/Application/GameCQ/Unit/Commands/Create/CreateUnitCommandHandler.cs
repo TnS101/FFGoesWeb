@@ -10,7 +10,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreateUnitCommandHandler : IRequestHandler<CreateUnitCommand>
+    public class CreateUnitCommandHandler : IRequestHandler<CreateUnitCommand,string>
     {
         private readonly IFFDbContext context;
         private readonly ValidatorHandler validatorHandler;
@@ -24,7 +24,7 @@
             this.userManager = userManager;
             this.mapper = mapper;
         }
-        public async Task<Unit> Handle(CreateUnitCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateUnitCommand request, CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
@@ -44,7 +44,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
+            return "/Profile/PersonalUnits";
         }
     }
 }

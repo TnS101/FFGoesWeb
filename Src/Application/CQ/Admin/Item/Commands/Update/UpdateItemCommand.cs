@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class UpdateItemCommand : IRequest
+    public class UpdateItemCommand : IRequest<string>
     {
         public string Id { get; set; }
 

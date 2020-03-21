@@ -16,13 +16,13 @@
             this.rng = new Random();
         }
 
-        [HttpGet("/World")]
+        [HttpGet]
         public IActionResult Home()
         {
             return View();
         }
 
-        [HttpGet("/Explore")]
+        [HttpGet]
         public IActionResult Explore()
         {
             int exploreNumber = rng.Next(0, 10);
@@ -36,10 +36,10 @@
             }
         }
 
-        [HttpGet("/TreasureLoot")]
+        [HttpGet]
         public async Task<IActionResult> TreasureEncounter()
         {
-            return Ok(await this.Mediator.Send(new LootTreasureCommand { User = this.User }));
+            return View(@"\TreasureEncounter", await this.Mediator.Send(new LootTreasureCommand { User = this.User }));
         }
     }
 }

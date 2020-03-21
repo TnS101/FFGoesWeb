@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class DeleteItemCommand : IRequest
+    public class DeleteItemCommand : IRequest<string>
     {
         public string ItemId { get; set; }
     }

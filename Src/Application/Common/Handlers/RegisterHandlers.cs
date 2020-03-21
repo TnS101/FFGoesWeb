@@ -32,6 +32,17 @@
     using Application.GameCQ.Unit.Queries;
     using Application.SeedInitialData;
     using MediatR;
+    using Application.CQ.Forum.Topic.Commands.Create;
+    using Application.CQ.Forum.Topic.Commands.Delete;
+    using Application.CQ.Forum.Topic.Commands.Update;
+    using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
+    using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
+    using Application.CQ.Forum.Comment.Create;
+    using Application.CQ.Forum.Comment.Delete;
+    using Application.CQ.Forum.Comment.Update;
+    using Application.CQ.Forum.FriendRequest.Commands.Create;
+    using Application.CQ.Forum.FriendRequest.Commands.Delete;
+    using Application.CQ.Forum.FriendRequest.Commands.Update;
 
     public class RegisterHandlers
     {
@@ -50,13 +61,13 @@
 
         private void AdminCommands(IServiceCollection services) 
         {
-            services.AddScoped<IRequestHandler<CreateItemCommand>, CreateItemCommandHandler>();
-            services.AddScoped<IRequestHandler<DeleteItemCommand>, DeleteItemCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateItemCommand>, UpdateItemCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateTreasureCommand>, CreateTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<DeleteTreasureCommand>, DeleteTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateTreasureKeyCommand>, CreateTreasureKeyCommandHandler>();
-            services.AddScoped<IRequestHandler<DeleteTreasureKeyCommand>, DeleteTreasureKeyCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateItemCommand,string>, CreateItemCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteItemCommand, string>, DeleteItemCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateItemCommand, string>, UpdateItemCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateTreasureCommand, string>, CreateTreasureCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteTreasureCommand, string>, DeleteTreasureCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateTreasureKeyCommand, string>, CreateTreasureKeyCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteTreasureKeyCommand, string>, DeleteTreasureKeyCommandHandler>();
         }
 
         private void AdminQueries(IServiceCollection services)
@@ -72,15 +83,24 @@
         {
             services.AddScoped<IRequestHandler<BattleOptionsCommand, string>, BattleOptionsCommandHandler>();
             services.AddScoped<IRequestHandler<GenerateEnemyCommand, UnitFullViewModel>, GenerateEnemyCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateEquipmentCommand>, UpdateEquipmentCommandHandler>();
-            services.AddScoped<IRequestHandler<DiscardItemCommand>, DiscardItemCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateEquipmentCommand, string>, UpdateEquipmentCommandHandler>();
+            services.AddScoped<IRequestHandler<DiscardItemCommand, string>, DiscardItemCommandHandler>();
             services.AddScoped<IRequestHandler<LootItemCommand>, LootItemCommandHandler>();
-            services.AddScoped<IRequestHandler<OpenTreasureCommand>, OpenTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<LootTreasureCommand>, LootTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<LootTreasureCommand>, LootTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateUnitCommand>, CreateUnitCommandHandler>();
-            services.AddScoped<IRequestHandler<DeleteUnitCommand>, DeleteUnitCommandHandler>();
+            services.AddScoped<IRequestHandler<OpenTreasureCommand, string>, OpenTreasureCommandHandler>();
+            services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();
+            services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateUnitCommand, string>, CreateUnitCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteUnitCommand, string>, DeleteUnitCommandHandler>();
             services.AddScoped<IRequestHandler<UnitLevelUpCommand>, UnitLevelUpCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateTopicCommand, string>, CreateTopicCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteTopicCommand, string>, DeleteTopicCommandHandler>();
+            services.AddScoped<IRequestHandler<EditTopicCommand, string>, EditTopicCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateCommentCommand, string>, CreateCommentCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteCommentCommand, string>, DeleteCommentCommandHandler>();
+            services.AddScoped<IRequestHandler<EditCommentCommand, string>, EditCommentCommandHandler>();
+            services.AddScoped<IRequestHandler<SendFriendRequestCommand, string>, SendFriendRequestCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteFriendRequestCommand, string>, DeleteFriendRequestCommandHandler>();
+            services.AddScoped<IRequestHandler<AcceptFriendRequestCommand, string>, AcceptFriendRequestCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)
@@ -97,6 +117,8 @@
             services.AddScoped<IRequestHandler<GetFullUnitQuery, UnitFullViewModel>, GetFullUnitQueryHandler>();
             services.AddScoped<IRequestHandler<GetPartialUnitQuery, UnitPartialViewModel>, GetPartialUnitQueryHandler>();
             services.AddScoped<IRequestHandler<GetUnitListQuery, UnitListViewModel>, GetUnitListQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllTopicsQuery, TopicListViewModel>, GetAllTopicsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>, GetCurrentTopicQueryHandler>();
         }
     }
 }

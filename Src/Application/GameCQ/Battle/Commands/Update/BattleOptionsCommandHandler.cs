@@ -17,7 +17,6 @@
             this.context = context;
             this.battleHandler = new BattleHandler();
             this.loot = new Loot();
-            this.loot = loot;
         }
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
@@ -33,13 +32,13 @@
                 }
                 if (request.Command == "spellCast")
                 {
-                    battleHandler.SpellCastOption.PlayerSpellCast(request.Player, request.Player,request.SpellName,this.context);
+                    battleHandler.SpellCastOption.PlayerSpellCast(request.Player, request.Enemy,request.SpellName,this.context);
                 }
                 if (request.Command == "escape")
                 {
                     this.battleHandler.EscapeOption.Escape(request.Player);
                     await this.context.SaveChangesAsync(cancellationToken);
-                    return "/Escape";
+                    return @"\Escape";
                 }
 
                 battleHandler.TurnCheck.Check(request.Player, request.Enemy, battleHandler, request.YourTurn, this.context);
@@ -50,14 +49,14 @@
                 }
                 await this.context.SaveChangesAsync(cancellationToken);
 
-                return "/Action";
+                return @"\Action";
             }
             else
             {
                 request.Enemy.CurrentHP = 0;
                 this.battleHandler.EndOption.End(request.Player, request.Enemy, loot);
                 await this.context.SaveChangesAsync(cancellationToken);
-                return "/End";
+                return @"\End";
             }
         }
     }

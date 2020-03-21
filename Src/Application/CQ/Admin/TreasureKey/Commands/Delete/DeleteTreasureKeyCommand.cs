@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class DeleteTreasureKeyCommand : IRequest
+    public class DeleteTreasureKeyCommand : IRequest<string>
     {
         public string KeyId { get; set; }
     }

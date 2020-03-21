@@ -5,14 +5,14 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class DeleteTreasureKeyCommandHandler : IRequestHandler<DeleteTreasureKeyCommand>
+    public class DeleteTreasureKeyCommandHandler : IRequestHandler<DeleteTreasureKeyCommand,string>
     {
         private readonly IFFDbContext context;
         public DeleteTreasureKeyCommandHandler(IFFDbContext context)
         {
             this.context = context;
         }
-        public async Task<Unit> Handle(DeleteTreasureKeyCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(DeleteTreasureKeyCommand request, CancellationToken cancellationToken)
         {
             var key = await this.context.TreasureKeys.FindAsync(request.KeyId);
 
@@ -20,7 +20,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
+            return "/Treasures";
         }
     }
 }

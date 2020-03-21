@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using global::Domain.Entities.Game;
     using global::Domain.Entities.Common;
+    using global::Domain.Entities.Common.Social;
 
     public interface IFFDbContext
     {
@@ -26,5 +27,13 @@
         DbSet<TreasureKey> TreasureKeys { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+
+        DbSet<Comment> Comments { get; set; }
+
+        DbSet<FriendRequest> FriendRequests { get; set; }
+
+        DbSet<Message> Messages { get; set; }
+
+        DbSet<Topic> Topics { get; set; }
     }
 }

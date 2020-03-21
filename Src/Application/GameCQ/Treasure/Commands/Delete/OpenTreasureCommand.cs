@@ -3,7 +3,7 @@
     using MediatR;
     using System.Security.Claims;
 
-    public class OpenTreasureCommand : IRequest
+    public class OpenTreasureCommand : IRequest<string>
     {
         public int Id { get; set; }
 

@@ -7,6 +7,7 @@
     using global::Domain.Entities.Game;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using global::Domain.Models;
+    using global::Domain.Entities.Common.Social;
 
     public class FFDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>, IFFDbContext
     {
@@ -31,6 +32,16 @@
         public DbSet<TreasureKey> TreasureKeys { get; set; }
 
         public DbSet<Inventory> Inventories { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<FriendRequest> FriendRequests { get; set; }
+
+        public DbSet<Message> Messages { get; set; }
+
+        public DbSet<Topic> Topics { get; set; }
+
+        public DbSet<UserTopics> UsersTopics { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -57,6 +68,19 @@
            .HasOne(u => u.Unit)
            .WithOne(i => i.Inventory)
            .HasForeignKey<Inventory>(u => u.UnitId);
+
+            modelBuilder.Entity<UserTopics>()
+           .HasKey(k => new { k.UserId, k.TopicId });
+
+            modelBuilder.Entity<UserTopics>()
+           .HasOne(u => u.User)
+           .WithMany(t => t.UserTopics)
+           .HasForeignKey(u => u.UserId);
+
+            modelBuilder.Entity<UserTopics>()
+           .HasOne(t => t.Topic)
+           .WithMany(u => u.UserTopics)
+           .HasForeignKey(t => t.TopicId);
         }
     }
 }

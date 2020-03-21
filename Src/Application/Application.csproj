@@ -22,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="CQ\Forum\FriendRequest\Queries\" />
+    <Folder Include="CQ\Forum\Message\Commands\" />
+    <Folder Include="CQ\Forum\Message\Queries\" />
     <Folder Include="CQ\User\" />
   </ItemGroup>
 

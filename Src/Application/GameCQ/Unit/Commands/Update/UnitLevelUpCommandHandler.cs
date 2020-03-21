@@ -21,6 +21,8 @@
         {
             this.level.Up(await this.context.Units.FindAsync(request.UnitId));
 
+            await this.context.SaveChangesAsync(cancellationToken);
+
             return Unit.Value;
         }
     }

@@ -44,6 +44,8 @@
 
             this.context.TreasureKeys.Where(i => i.InventoryId == unit.InventoryId).ToList().Add(this.context.TreasureKeys.FirstOrDefault(k => k.Rarity == rarity));
 
+            await this.context.SaveChangesAsync(cancellationToken);
+
             return Unit.Value;
         }
     }

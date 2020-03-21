@@ -5,16 +5,16 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand>
+    public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand,string>
     {
         private readonly IFFDbContext context;
         public UpdateItemCommandHandler(IFFDbContext context)
         {
             this.context = context;
         }
-        public async Task<Unit> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
         {
-            var oldItem = await this.context.Items.FindAsync(request.Id);
+            var item = await this.context.Items.FindAsync(request.Id);
 
             var newName = request.NewName;
 
@@ -42,76 +42,75 @@
 
             if (string.IsNullOrWhiteSpace(newName))
             {
-                newName = oldItem.Name;
+                newName = item.Name;
             }
             if (newLevel == 0)
             {
-                newLevel = oldItem.Level;
+                newLevel = item.Level;
             }
             if (string.IsNullOrWhiteSpace(newClassType))
             {
-                newClassType = oldItem.ClassType;
+                newClassType = item.ClassType;
             }
             if (newStamina == 0)
             {
-                newStamina = oldItem.Stamina;
+                newStamina = item.Stamina;
             }
             if (newStrength == 0)
             {
-                newStrength = oldItem.Strength;
+                newStrength = item.Strength;
             }
             if (newAgility == 0)
             {
-                newAgility = oldItem.Agility;
+                newAgility = item.Agility;
             }
             if (newIntellect == 0)
             {
-                newIntellect = oldItem.Intellect;
+                newIntellect = item.Intellect;
             }
             if (newSpirit == 0)
             {
-                newSpirit = oldItem.Spirit;
+                newSpirit = item.Spirit;
             }
             if (newAttackPower == 0)
             {
-                newAttackPower = oldItem.AttackPower;
+                newAttackPower = item.AttackPower;
             }
             if (newArmorValue == 0)
             {
-                newArmorValue = oldItem.ArmorValue;
+                newArmorValue = item.ArmorValue;
             }
             if (newRessistanceValue == 0)
             {
-                newRessistanceValue = oldItem.ArmorValue;
+                newRessistanceValue = item.ArmorValue;
             }
             if (string.IsNullOrWhiteSpace(newSlot))
             {
-                newSlot = oldItem.Slot;
+                newSlot = item.Slot;
             }
 
-            this.SlotCheck(newAttackPower,newArmorValue,newRessistanceValue,newSlot);
+            this.SlotCheck(newAttackPower, newArmorValue, newRessistanceValue, newSlot);
 
-            await this.context.Items.AddAsync(new FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Item 
-            {
-                Name = newName,
-                Level = newLevel,
-                ClassType = newClassType,
-                Stamina = newStamina,
-                Strength = newStrength,
-                Agility = newAgility,
-                Intellect = newIntellect,
-                Spirit = newSpirit,
-                AttackPower = newAttackPower,
-                ArmorValue = newArmorValue,
-                Slot = newSlot
-            });
+            item.Name = newName;
+            item.Level = newLevel;
+            item.ClassType = newClassType;
+            item.Stamina = newStamina;
+            item.Strength = newStrength;
+            item.Agility = newAgility;
+            item.Intellect = newIntellect;
+            item.Spirit = newSpirit;
+            item.AttackPower = newAttackPower;
+            item.ArmorValue = newArmorValue;
+            item.Slot = newSlot;
+
+            this.context.Items.Update(item);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
+            return "/Items";
         }
 
-        private void SlotCheck(double newAttackPower, double newArmorValue, double newRessistanceValue, string newSlot) 
+        private void SlotCheck(double newAttackPower, double newArmorValue, double newRessistanceValue, string newSlot)
         {
             if (newSlot == "Weapon")
             {

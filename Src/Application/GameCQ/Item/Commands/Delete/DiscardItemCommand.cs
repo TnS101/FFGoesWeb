@@ -3,7 +3,7 @@
     using MediatR;
     using System.Security.Claims;
 
-    public class DiscardItemCommand : IRequest
+    public class DiscardItemCommand : IRequest<string>
     {
         public ClaimsPrincipal User { get; set; }
 

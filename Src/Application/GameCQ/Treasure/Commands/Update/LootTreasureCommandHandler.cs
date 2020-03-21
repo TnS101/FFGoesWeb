@@ -9,7 +9,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class LootTreasureCommandHandler : IRequestHandler<LootTreasureCommand>
+    public class LootTreasureCommandHandler : IRequestHandler<LootTreasureCommand,string>
     {
         private readonly IFFDbContext context;
         private readonly UserManager<ApplicationUser> userManager;
@@ -18,7 +18,7 @@
             this.context = context;
             this.userManager = userManager;
         }
-        public async Task<Unit> Handle(LootTreasureCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(LootTreasureCommand request, CancellationToken cancellationToken)
         {
             var rng = new Random();
 
@@ -43,11 +43,13 @@
                 rarity = "Gold";
             }
 
-            this.context.Items.Where(i => i.InventoryId == unit.InventoryId).ToList().Add(this.context.Treasures.FirstOrDefault(t => t.Rarity == rarity));
+            var treasure = this.context.Treasures.FirstOrDefault(t => t.Rarity == rarity);
+
+            this.context.Items.Where(i => i.InventoryId == unit.InventoryId).ToList().Add(treasure);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
+            return rarity;
         }
     }
 }

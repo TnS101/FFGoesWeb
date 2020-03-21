@@ -5,7 +5,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand>
+    public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand,string>
     {
         private readonly IFFDbContext context;
         public CreateItemCommandHandler(IFFDbContext context)
@@ -13,7 +13,7 @@
             this.context = context;
         }
 
-        public async Task<Unit> Handle(CreateItemCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateItemCommand request, CancellationToken cancellationToken)
         {
             this.context.Items.Add(new FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Item 
             {
@@ -32,7 +32,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
+            return "/Items";
         }
     }
 }

@@ -9,7 +9,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class OpenTreasureCommandHandler : IRequestHandler<OpenTreasureCommand>
+    public class OpenTreasureCommandHandler : IRequestHandler<OpenTreasureCommand,string>
     {
         private readonly IFFDbContext context;
         private readonly UserManager<ApplicationUser> userManager;
@@ -19,7 +19,7 @@
             this.context = context;
             this.userManager = userManager;
         }
-        public async Task<MediatR.Unit> Handle(OpenTreasureCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(OpenTreasureCommand request, CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
@@ -43,7 +43,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return MediatR.Unit.Value;
+            return "/Inventory";
         }
     }
 }

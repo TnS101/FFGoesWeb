@@ -4,26 +4,17 @@
     using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
-    using global::Application.GameCQ.Spell.Queries;
     using global::Application.GameCQ.Battle.Commands.Update;
     using global::Application.GameCQ.Enemy.Commands.Create;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
-    using global::Domain.Entities.Common;
 
     [Authorize(Roles = "Administrator,Player")]
     public class BattleController : BaseController
     {
         private UnitFullViewModel enemy;
         private bool yourTurn;
-        private readonly UserManager<ApplicationUser> userManager;
-        private ApplicationUser user;
-        public BattleController(UserManager<ApplicationUser> userManager)
-        {
-            this.userManager = userManager;
-        }
-        [HttpPost("Battle/Battle")]
-        [Route("Battle/Battle")]
+        
+        [HttpGet]
         public async Task<ActionResult<string[]>> Battle() //TODO: Change return type if not working
         {
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
@@ -32,23 +23,19 @@
             return new string[] { playerPVM.Name, enemy.Name };
         }
 
-        [HttpGet("Battle/Action")]
-        [Route("Battle/Action")]
-        public async Task<IActionResult> Action([FromQuery]string command)
+        [HttpGet]
+        public ActionResult Action() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Action([FromQuery]string command, [FromBody]string spellName)
         {
             var playerFullVm = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
 
             return View(await this.Mediator.Send(new BattleOptionsCommand 
-            { Command = command, Player = playerFullVm, Enemy = this.enemy, YourTurn = this.yourTurn }), this.Stats(playerFullVm));
-        }
-
-        [HttpPost("Battle/SpellOption")]
-        [Route("Battle/SpellOption")]
-        public async Task<IActionResult> SpellOption()
-        {
-            var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User});
-
-            return View(@"\Action", await this.Mediator.Send(new GetPersonalSpellsQuery { ClassType = playerPVM.ClassType}));
+            { Command = command, Player = playerFullVm, Enemy = this.enemy, YourTurn = this.yourTurn, SpellName = spellName }), this.Stats(playerFullVm));
         }
 
         private string[] Stats(UnitFullViewModel playerFullVm) 

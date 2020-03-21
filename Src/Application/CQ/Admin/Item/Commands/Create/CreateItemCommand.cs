@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class CreateItemCommand : IRequest
+    public class CreateItemCommand : IRequest<string>
     {
         public string Name { get; set; }
 

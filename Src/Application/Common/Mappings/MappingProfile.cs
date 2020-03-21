@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Reflection;
     using Application.CQ.Admin.Users.Queries;
+    using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Item.Queries;
     using Application.GameCQ.Monster.Queries;
@@ -13,6 +14,7 @@
     using Application.GameCQ.Unit.Queries;
     using AutoMapper;
     using Domain.Entities.Common;
+    using Domain.Entities.Common.Social;
     using Domain.Entities.Game;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
@@ -30,6 +32,7 @@
             CreateMap<ApplicationUser, UserPartialViewModel>();
             CreateMap<Unit, UnitPartialViewModel>();
             CreateMap<Unit, UnitFullViewModel>();
+            CreateMap<Topic,TopicFullViewModel>();
         }
 
         private void ApplyMappingsFromAssembly(Assembly assembly)

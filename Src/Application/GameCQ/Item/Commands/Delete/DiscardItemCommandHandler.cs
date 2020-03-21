@@ -8,7 +8,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class DiscardItemCommandHandler : IRequestHandler<DiscardItemCommand>
+    public class DiscardItemCommandHandler : IRequestHandler<DiscardItemCommand,string>
     {
         private readonly IFFDbContext context;
         private readonly UserManager<ApplicationUser> userManager;
@@ -17,7 +17,7 @@
             this.context = context;
             this.userManager = userManager;
         }
-        public async Task<MediatR.Unit> Handle(DiscardItemCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(DiscardItemCommand request, CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
@@ -29,7 +29,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return MediatR.Unit.Value;
+            return "/Inventory";
         }
     }
 }

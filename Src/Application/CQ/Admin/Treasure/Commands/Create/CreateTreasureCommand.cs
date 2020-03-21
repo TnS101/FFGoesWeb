@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class CreateTreasureCommand : IRequest
+    public class CreateTreasureCommand : IRequest<string>
     {
         public string Rarity { get; set; }
 

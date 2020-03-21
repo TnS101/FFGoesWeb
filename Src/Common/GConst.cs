@@ -16,5 +16,8 @@
         public const string EmailError = "Invalid Email Address.";
         public const string ConfirmPasswordError = "Passwords must match.";
 
+        //Redirects
+        public const string CommentCommandRedirect = "/Forum/Home/CurrentTopic/id={0}";
+        public const string FriendCommandRedirect = "/FriendList";
     }
 }

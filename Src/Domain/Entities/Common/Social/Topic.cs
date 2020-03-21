@@ -9,6 +9,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.Comments = new HashSet<Comment>();
+            this.UserTopics = new HashSet<UserTopics>();
         }
 
         public string Id { get; set; }
@@ -21,10 +22,14 @@
 
         public string Category { get; set; }
 
+        public string Content { get; set; }
+
         public int Likes { get; set; }
 
         public DateTime CreateOn { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+
+        public ICollection<UserTopics> UserTopics { get; set; }
     }
 }

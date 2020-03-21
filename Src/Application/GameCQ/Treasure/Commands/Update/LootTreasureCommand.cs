@@ -3,7 +3,7 @@
     using MediatR;
     using System.Security.Claims;
 
-    public class LootTreasureCommand : IRequest
+    public class LootTreasureCommand : IRequest<string>
     {
         public ClaimsPrincipal User { get; set; }
     }

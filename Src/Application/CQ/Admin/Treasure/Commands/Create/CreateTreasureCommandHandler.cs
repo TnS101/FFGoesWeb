@@ -5,14 +5,14 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreateTreasureCommandHandler : IRequestHandler<CreateTreasureCommand>
+    public class CreateTreasureCommandHandler : IRequestHandler<CreateTreasureCommand,string>
     {
         private readonly IFFDbContext context;
         public CreateTreasureCommandHandler(IFFDbContext context)
         {
             this.context = context;
         }
-        public async Task<Unit> Handle(CreateTreasureCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateTreasureCommand request, CancellationToken cancellationToken)
         {
             this.context.Treasures.Add(new FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Treasure 
             {
@@ -23,7 +23,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
+            return "/Treasures";
         }
     }
 }

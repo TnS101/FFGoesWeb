@@ -79,5 +79,7 @@
         public string ImageURL { get; set; }
 
         public bool IsSelected { get; set; }
+
+        public int Energy { get; set; }
     }
 }

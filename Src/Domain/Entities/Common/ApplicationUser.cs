@@ -15,7 +15,9 @@
             this.Friends = new HashSet<ApplicationUser>();
             this.FriendRequests = new HashSet<FriendRequest>();
             this.Messages = new HashSet<Message>();
+            this.UserTopics = new HashSet<UserTopics>();
             this.Id = Guid.NewGuid().ToString();
+            this.Comments = new HashSet<Comment>();
         }
 
         public override string Id { get; set; }
@@ -40,6 +42,11 @@
         public ICollection<FriendRequest> FriendRequests { get; set; }
 
         public ICollection<Message> Messages { get; set; }
+
+        public ICollection<UserTopics> UserTopics { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
+
         public virtual ICollection<ApplicationUser> Friends { get; set; }
     }
 }
