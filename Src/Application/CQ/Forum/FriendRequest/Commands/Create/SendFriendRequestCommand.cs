@@ -9,7 +9,5 @@
         public ClaimsPrincipal Sender { get; set; }
 
         public string RecieverId { get; set; }
-
-        public DateTime SentOn { get; set; }
     }
 }

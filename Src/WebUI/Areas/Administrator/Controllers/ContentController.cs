@@ -14,7 +14,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
-    using WebUI.Controllers;
+    using WebUI.Controllers.Common;
 
     [Authorize(Roles = GConst.AdminRole)]
     [Area(GConst.AdminArea)]

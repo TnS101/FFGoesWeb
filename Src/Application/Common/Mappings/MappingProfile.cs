@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Reflection;
     using Application.CQ.Admin.Users.Queries;
+    using Application.CQ.Forum.Message.Queries;
     using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Item.Queries;
@@ -33,6 +34,7 @@
             CreateMap<Unit, UnitPartialViewModel>();
             CreateMap<Unit, UnitFullViewModel>();
             CreateMap<Topic,TopicFullViewModel>();
+            CreateMap<Message,MessageFullViewModel>();
         }
 
         private void ApplyMappingsFromAssembly(Assembly assembly)

@@ -1,7 +1,6 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Controllers
+﻿namespace WebUI.Controllers.Game
 {
     using global::Application.GameCQ.Unit.Commands.Create;
-    using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using global::Application.GameCQ.Image.Queries;
@@ -11,6 +10,7 @@
     using global::Application.GameCQ.Equipment.Commands.Update;
     using global::Application.GameCQ.Equipment.Queries;
     using global::Application.GameCQ.Unit.Commands.Update;
+    using WebUI.Controllers.Common;
 
     [Authorize(Roles = "Administrator,User")]
     public class UnitController : BaseController

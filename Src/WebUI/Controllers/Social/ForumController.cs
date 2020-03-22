@@ -1,10 +1,11 @@
-﻿namespace WebUI.Controllers
+﻿namespace WebUI.Controllers.Social
 {
     using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
     using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using WebUI.Controllers.Common;
 
     [Authorize]
     public class ForumController : BaseController

@@ -28,6 +28,8 @@
 
         public DateTime CreateOn { get; set; }
 
+        public DateTime? EditedOn { get; set; }
+
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<UserTopics> UserTopics { get; set; }

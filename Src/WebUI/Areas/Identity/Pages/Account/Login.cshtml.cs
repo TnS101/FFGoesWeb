@@ -83,6 +83,7 @@ namespace WebUI.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
                     var cookie = new Cookie("userLogin", DateTime.UtcNow.ToString())
                     {
                         Expires = DateTime.UtcNow.AddDays(1)

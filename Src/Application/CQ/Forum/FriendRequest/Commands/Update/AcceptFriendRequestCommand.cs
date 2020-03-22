@@ -5,7 +5,7 @@
 
     public class AcceptFriendRequestCommand : IRequest<string>
     {
-        public ClaimsPrincipal User { get; set; }
+        public ClaimsPrincipal Reciever { get; set; }
 
         public string RequestId { get; set; }
     }

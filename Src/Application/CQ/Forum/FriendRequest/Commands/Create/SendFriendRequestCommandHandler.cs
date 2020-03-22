@@ -27,7 +27,7 @@
 
             reciever.FriendRequests.Add(new Domain.Entities.Common.Social.FriendRequest
             {
-                User = sender,
+                SenderName = sender.UserName,
                 SentOn = DateTime.UtcNow
             });
 

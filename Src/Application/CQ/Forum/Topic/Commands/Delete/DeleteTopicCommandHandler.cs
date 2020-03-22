@@ -1,6 +1,7 @@
 ﻿namespace Application.CQ.Forum.Topic.Commands.Delete
 {
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using global::Common;
     using MediatR;
     using System.Linq;
     using System.Threading;
@@ -26,7 +27,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return "/PersonalTopics";
+            return GConst.TopicCommandRedirect;
         }
     }
 }

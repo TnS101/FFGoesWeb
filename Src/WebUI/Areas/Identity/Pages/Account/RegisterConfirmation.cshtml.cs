@@ -16,11 +16,13 @@ namespace WebUI.Areas.Identity.Pages.Account
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IEmailSender _sender;
+        private readonly RoleManager<ApplicationUser> roleManager;
 
-        public RegisterConfirmationModel(UserManager<ApplicationUser> userManager, IEmailSender sender)
+        public RegisterConfirmationModel(UserManager<ApplicationUser> userManager, IEmailSender sender, RoleManager<ApplicationUser> roleManager)
         {
             _userManager = userManager;
             _sender = sender;
+            this.roleManager = roleManager;
         }
 
         public string Email { get; set; }
@@ -43,6 +45,9 @@ namespace WebUI.Areas.Identity.Pages.Account
             }
 
             Email = email;
+
+            await this.roleManager.CreateAsync(user);
+
             // Once you add a real email sender, you should remove this code that lets you confirm the account
             DisplayConfirmAccountLink = true;
             if (DisplayConfirmAccountLink)

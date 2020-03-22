@@ -1,13 +1,12 @@
-﻿using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Application.CQ.Forum.Topic.Commands.Update
+﻿namespace Application.CQ.Forum.Topic.Commands.Update
 {
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using global::Common;
+    using MediatR;
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     public class EditTopicCommandHandler : IRequestHandler<EditTopicCommand, string>
     {
         private readonly IFFDbContext context;
@@ -31,16 +30,20 @@ namespace Application.CQ.Forum.Topic.Commands.Update
             {
                 request.Content = topic.Content;
             }
-            if (string.IsNullOrWhiteSpace(request.Content) && string.IsNullOrWhiteSpace(request.Title) && string.IsNullOrWhiteSpace(request.Category))
-            {
-                request.EditedOn = topic.CreateOn;
-            }
+
+            topic.Title = request.Title;
+
+            topic.Category = request.Category;
+
+            topic.Content = request.Content;
+
+            topic.EditedOn = DateTime.UtcNow;
 
             this.context.Topics.Update(topic);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return "/PersonalTopics";
+            return GConst.TopicCommandRedirect;
         }
     }
 }

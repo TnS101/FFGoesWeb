@@ -15,6 +15,8 @@
 
         public ApplicationUser User { get; set; }
 
+        public string SenderName { get; set; }
+
         public DateTime SentOn { get; set; }
     }
 }

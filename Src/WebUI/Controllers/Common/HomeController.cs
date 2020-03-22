@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.WebUI.Controllers
+﻿namespace WebUI.Controllers.Common
 {
     using global:: Application.GameCQ.Image.Queries;
     using global::Application.GameCQ.Monster.Queries;

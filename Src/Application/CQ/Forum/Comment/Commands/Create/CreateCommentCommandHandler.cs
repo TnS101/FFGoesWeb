@@ -5,12 +5,13 @@
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, string>
+    public class CreateCommentCommandHandler : PageModel,IRequestHandler<CreateCommentCommand, string>
     {
         private readonly IFFDbContext context;
         private readonly UserManager<ApplicationUser> userManager;
@@ -24,6 +25,11 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
+            if (!string.IsNullOrWhiteSpace(request.Content))
+            {
+                request.Content = string.Format(GConst.NullCommentError);
+            }
+
             this.context.Comments.Add(new Domain.Entities.Common.Social.Comment
             {
                 Content = request.Content,
@@ -36,7 +42,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return string.Format(GConst.CommentCommandRedirect,request.TopicId);
+            return string.Format(GConst.CommentCommandRedirect, request.TopicId);
         }
     }
 }

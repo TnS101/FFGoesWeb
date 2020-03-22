@@ -43,6 +43,11 @@
     using Application.CQ.Forum.FriendRequest.Commands.Create;
     using Application.CQ.Forum.FriendRequest.Commands.Delete;
     using Application.CQ.Forum.FriendRequest.Commands.Update;
+    using Application.CQ.Forum.FriendRequest.Queries;
+    using Application.CQ.Forum.Message.Queries;
+    using Application.CQ.Forum.Message.Commands.Create;
+    using Application.CQ.Forum.Message.Commands.Delete;
+    using Application.CQ.Forum.Message.Commands.Update;
 
     public class RegisterHandlers
     {
@@ -92,7 +97,7 @@
             services.AddScoped<IRequestHandler<CreateUnitCommand, string>, CreateUnitCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteUnitCommand, string>, DeleteUnitCommandHandler>();
             services.AddScoped<IRequestHandler<UnitLevelUpCommand>, UnitLevelUpCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateTopicCommand, string>, CreateTopicCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateTopicCommand, string[]>, CreateTopicCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteTopicCommand, string>, DeleteTopicCommandHandler>();
             services.AddScoped<IRequestHandler<EditTopicCommand, string>, EditTopicCommandHandler>();
             services.AddScoped<IRequestHandler<CreateCommentCommand, string>, CreateCommentCommandHandler>();
@@ -101,6 +106,9 @@
             services.AddScoped<IRequestHandler<SendFriendRequestCommand, string>, SendFriendRequestCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteFriendRequestCommand, string>, DeleteFriendRequestCommandHandler>();
             services.AddScoped<IRequestHandler<AcceptFriendRequestCommand, string>, AcceptFriendRequestCommandHandler>();
+            services.AddScoped<IRequestHandler<SendMessageCommand, string>, SendMessageCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteMessageCommand, string>, DeleteMessageCommandHandler>();
+            services.AddScoped<IRequestHandler<EditMessageCommand, string>, EditMessageCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)
@@ -119,6 +127,8 @@
             services.AddScoped<IRequestHandler<GetUnitListQuery, UnitListViewModel>, GetUnitListQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllTopicsQuery, TopicListViewModel>, GetAllTopicsQueryHandler>();
             services.AddScoped<IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>, GetCurrentTopicQueryHandler>();
+            services.AddScoped<IRequestHandler<GetPersonalFriendRequestsQuery, FriendRequestListViewModel>, GetPersonalFriendRequestsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetPersonalMessagesQuery, MessageListViewModel>, GetPersonalMessagesQueryHandler>();
         }
     }
 }

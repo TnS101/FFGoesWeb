@@ -1,4 +1,4 @@
-﻿namespace WebUI.Controllers
+﻿namespace WebUI.Controllers.Common
 {
     using Domain.Entities.Common;
     using MediatR;

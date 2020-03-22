@@ -3,6 +3,7 @@
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using global::Common;
     using MediatR;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -21,11 +22,10 @@
             if (string.IsNullOrWhiteSpace(request.Content))
             {
                 request.Content = comment.Content;
-                request.EditedOn = comment.CreatedOn;
             }
 
             comment.Content = request.Content;
-            comment.CreatedOn = request.EditedOn;
+            comment.EditedOn = DateTime.UtcNow;
 
             this.context.Comments.Update(comment);
 

@@ -1,12 +1,12 @@
-﻿namespace FinalFantasyTryoutGoesWeb.WebUI.Controllers
+﻿namespace WebUI.Controllers.Game
 {
     using global::Application.GameCQ.Unit.Queries;
-    using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using global::Application.GameCQ.Battle.Commands.Update;
     using global::Application.GameCQ.Enemy.Commands.Create;
     using Microsoft.AspNetCore.Authorization;
+    using WebUI.Controllers.Common;
 
     [Authorize(Roles = "Administrator,Player")]
     public class BattleController : BaseController

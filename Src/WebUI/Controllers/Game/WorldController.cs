@@ -1,11 +1,11 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Controllers
+﻿namespace WebUI.Controllers.Game
 {
     using global::Application.GameCQ.Treasure.Commands.Update;
-    using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Threading.Tasks;
+    using WebUI.Controllers.Common;
 
     [Authorize(Roles = "Administrator,Player")]
     public class WorldController : BaseController

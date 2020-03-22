@@ -32,6 +32,8 @@
 
         public DateTime CreatedOn { get; set; }
 
+        public DateTime? EditedOn { get; set; }
+
         public virtual ICollection<Comment> Replies { get; set; }
     }
 }
