@@ -48,6 +48,7 @@
     using Application.CQ.Forum.Message.Commands.Create;
     using Application.CQ.Forum.Message.Commands.Delete;
     using Application.CQ.Forum.Message.Commands.Update;
+    using Application.CQ.Admin.Spell.Queries;
 
     public class RegisterHandlers
     {
@@ -82,6 +83,7 @@
             services.AddScoped<IRequestHandler<GetAllItemsQuery, ItemListViewModel>, GetAllItemsQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllTreasuresQuery, TreasureListViewModel>, GetAllTreasuresQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllTreasureKeysQuery, TreasureKeyListViewModel>, GetAllTreasureKeysQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllSpellsQuery, SpellListViewModel>, GetAllSpellsQueryHandler>();
         }
 
         private void UserCommands(IServiceCollection services)

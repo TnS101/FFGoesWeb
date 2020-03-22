@@ -37,6 +37,8 @@
 
         public DateTime? LastLogin { get; set; }
 
+        public bool IsLoggedIn { get; set; }
+
         public ICollection<Unit> Units { get; set; }
 
         public ICollection<FriendRequest> FriendRequests { get; set; }

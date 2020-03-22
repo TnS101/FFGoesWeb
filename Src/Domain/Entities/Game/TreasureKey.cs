@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
+﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
 {
+    using System;
+
     public class TreasureKey : Item
     {
         public TreasureKey()

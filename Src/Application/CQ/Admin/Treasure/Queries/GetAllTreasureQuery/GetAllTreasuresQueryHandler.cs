@@ -23,7 +23,7 @@
         {
             return new TreasureListViewModel
             {
-                Treasures = await this.context.TreasureKeys.ProjectTo<TreasureFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync()
+                Treasures = await this.context.Treasures.ProjectTo<TreasureFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync()
             };
         }
     }

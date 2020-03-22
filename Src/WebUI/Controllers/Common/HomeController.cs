@@ -2,7 +2,6 @@
 {
     using global:: Application.GameCQ.Image.Queries;
     using global::Application.GameCQ.Monster.Queries;
-    using global::WebUI.Controllers;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;

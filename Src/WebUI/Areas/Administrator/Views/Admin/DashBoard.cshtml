@@ -1,0 +1,15 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Application.CQ.Admin.Users.Queries.UserListViewModel
+@{
+    ViewData["Title"] = "DashBoard";
+}
+<h1 class="has-text-align-center">DashBoard</h1>
+<partial name="_AdminNavBar">   
+<body>
+    @{
+        if (Model.Users.Count() == 1)
+        {
+            <h3 class="has-text-align-center">No users to display</h3>
+        }
+     }
+</body>

@@ -11,10 +11,12 @@ using Microsoft.Extensions.Logging;
 using Domain.Entities.Common;
 using System.Net;
 using System;
+using Common;
 
 namespace WebUI.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
+    [Area(GConst.UserArea)]
     public class LoginModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -83,6 +85,10 @@ namespace WebUI.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+                    var user = await _userManager.GetUserAsync(this.User);
+
+                    user.IsLoggedIn = true;
 
                     var cookie = new Cookie("userLogin", DateTime.UtcNow.ToString())
                     {

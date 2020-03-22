@@ -1,0 +1,28 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Moderation";
+    Layout = "_Layout";
+}
+    <head>
+        <partial name="_AdminNavBar">
+    </head>
+    <body>
+        <h1 class="has-text-align-center">Moderation</h1>
+
+        <div class="container">
+            <div id="site-branding">
+            </div>
+            <div id="site-navigation" role="navigation" class="has-text-align-center" style="background-color:rgb(45, 54, 76);width:250px;height:1000px;margin-left:576px;padding-top:25px">
+                <div class="site-main-menu aligncenter">
+                    <ul id="menu" class="demo-menu" style="font-size:35px; width:200px">
+                        <li class="page_item page-item-9"><a asp-controller="Content" asp-action="GameContent"><i class="fas fa-gamepad"></i>Game Content</a></li>
+                        <li class="page_item page-item-2"><a asp-controller="Content" asp-action="ForumContent"><i class="fas fa-text-height"></i>Forum Content</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="site-top-right">
+            </div>
+        </div>
+
+    </body>
+

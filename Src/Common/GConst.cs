@@ -6,7 +6,7 @@
         public const string AdminRole = "Administrator";
         public const string UserRole = "User";
         public const string AdminArea = "Administrator";
-        public string UserArea = "User";
+        public const string UserArea = "Identity";
 
         public const string RegistrationSuccessful = "Almost there, {0}! Hopping to the login page.";
 

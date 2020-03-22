@@ -14,8 +14,9 @@
 
     public class GetOnlineUsersQueryHandler : IRequestHandler<GetOnlineUsersQuery, UserListViewModel>
     {
-        public readonly IFFDbContext context;
-        public readonly IMapper mapper;
+        private readonly IFFDbContext context;
+        private readonly IMapper mapper;
+
         public GetOnlineUsersQueryHandler(IFFDbContext context, IMapper mapper)
         {
             this.context = context;
@@ -27,6 +28,14 @@
 
             var loginCookie = cookies["userLogin"];
             var users = new UserListViewModel { };
+
+            if (!this.context.Users.Any(u => u.IsLoggedIn))
+            {
+                return new UserListViewModel
+                {
+                    Users = await this.context.Users.ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync()
+                };
+            }
 
             if (request.Role is null)
             {
