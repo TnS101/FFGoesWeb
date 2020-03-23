@@ -32,8 +32,6 @@
 
         public int Likes { get; set; }
 
-        public bool IsReportedByUser { get; set; }
-
         public DateTime CreatedOn { get; set; }
 
         public DateTime? EditedOn { get; set; }

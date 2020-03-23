@@ -17,7 +17,7 @@
 
         public Topic Topic { get; set; }
 
-        public string CommendId { get; set; }
+        public string CommentId { get; set; }
 
         public Comment Comment { get; set; }
 
@@ -31,7 +31,11 @@
 
         public string Category { get; set; }
 
+        public string ReportedUserName { get; set; }
+
         public string AdditionalInformation { get; set; }
+
+        public int Stars { get; set; }
 
         public DateTime SentOn { get; set; }
     }

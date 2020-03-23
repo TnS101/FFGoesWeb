@@ -21,8 +21,6 @@
 
         public AppUser User { get; set; }
 
-        public string AttackerName { get; set; }
-
-        public string FriendName { get; set; }
+        public string CauserName { get; set; }
     }
 }

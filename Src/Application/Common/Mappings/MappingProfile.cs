@@ -3,6 +3,7 @@
     using Application.CQ.Admin.Users.Queries;
     using Application.CQ.Forum.Message.Queries;
     using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
+    using Application.CQ.User.Feedback.Queries;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Item.Queries;
     using Application.GameCQ.Monster.Queries;
@@ -14,6 +15,7 @@
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;
     using Domain.Entities.Game;
+    using Domain.Entities.Moderation;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
     public class MappingProfile : Profile
@@ -32,6 +34,7 @@
             this.CreateMap<Unit, UnitFullViewModel>();
             this.CreateMap<Topic, TopicFullViewModel>();
             this.CreateMap<Message, MessageFullViewModel>();
+            this.CreateMap<Feedback, FeedbackPartialViewModel>();
         }
     }
 }

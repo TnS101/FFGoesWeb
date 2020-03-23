@@ -20,7 +20,11 @@
         {
             var commentToRemove = this.context.Comments.FirstOrDefault(c => c.Id == request.CommentId);
 
-            this.context.Comments.RemoveRange(commentToRemove.Replies);
+            var replies = this.context.Comments.Where(c => c.Replies.Select(r => r.Id == commentToRemove.Id).Count() > 0);
+
+            this.context.Comments.RemoveRange(replies);
+
+            await this.context.SaveChangesAsync(cancellationToken);
 
             this.context.Comments.Remove(commentToRemove);
 

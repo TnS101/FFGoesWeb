@@ -22,8 +22,6 @@
 
         public string SenderName { get; set; }
 
-        public bool IsReportedByUser { get; set; }
-
         public DateTime SentOn { get; set; }
 
         public DateTime? EditedOn { get; set; }

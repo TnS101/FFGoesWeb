@@ -37,13 +37,15 @@
 
         public int Stars { get; set; }
 
+        public int Warnings { get; set; }
+
+        public bool IsDeleted { get; set; }
+
         public DateTime? LastLogin { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
-
-        public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
 

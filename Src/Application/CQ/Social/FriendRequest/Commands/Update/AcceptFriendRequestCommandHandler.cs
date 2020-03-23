@@ -31,6 +31,8 @@
 
             this.context.FriendRequests.Remove(friendRequest);
 
+            this.context.AppUsers.Update(user);
+
             await this.context.SaveChangesAsync(cancellationToken);
 
             return GConst.FriendCommandRedirect;

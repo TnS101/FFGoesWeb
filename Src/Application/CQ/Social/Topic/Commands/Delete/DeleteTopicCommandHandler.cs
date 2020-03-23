@@ -20,9 +20,17 @@
         {
             var topicToRemove = this.context.Topics.FirstOrDefault(t => t.Id == request.TopicId);
 
-            this.context.Comments.RemoveRange(topicToRemove.Comments.SelectMany(c => c.Replies));
+            var comments = this.context.Comments.Where(c => c.TopicId == topicToRemove.Id);
 
-            this.context.Comments.RemoveRange(topicToRemove.Comments);
+            var replies = this.context.Comments.Where(c => c.Replies.Where(r => r.ReplyId == c.Id).Count() > 0);
+
+            this.context.Comments.RemoveRange(replies.ToList());
+
+            await this.context.SaveChangesAsync(cancellationToken);
+
+            this.context.Comments.RemoveRange(comments.ToList());
+
+            await this.context.SaveChangesAsync(cancellationToken);
 
             this.context.Topics.Remove(topicToRemove);
 

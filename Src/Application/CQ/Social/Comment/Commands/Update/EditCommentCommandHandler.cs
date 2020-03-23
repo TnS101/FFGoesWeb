@@ -26,6 +26,7 @@
             }
 
             comment.Content = request.Content;
+
             comment.EditedOn = DateTime.UtcNow;
 
             this.context.Comments.Update(comment);
