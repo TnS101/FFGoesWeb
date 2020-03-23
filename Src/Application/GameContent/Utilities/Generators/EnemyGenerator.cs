@@ -1,9 +1,9 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
 {
+    using System;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemyClassRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
     using global::Application.GameCQ.Unit.Queries;
-    using System;
 
     public class EnemyGenerator
     {
@@ -13,7 +13,7 @@
 
         public UnitFullViewModel Generate(int playerLevel)
         {
-            UnitFullViewModel enemy = new UnitFullViewModel { Type = "Enemy", Level = playerLevel};
+            UnitFullViewModel enemy = new UnitFullViewModel { Type = "Enemy", Level = playerLevel };
             StatIncrement statIncrement = new StatIncrement();
             var rng = new Random();
             int enemyNumber = rng.Next(0, 26);
@@ -89,6 +89,7 @@
                 enemy.Name = enemy.ClassType;
                 this.RarityRng(enemy);
             }
+
             return enemy;
         }
 
@@ -122,7 +123,7 @@
             }
             else
             {
-                enemy.Race = "";
+                enemy.Race = string.Empty;
             }
         }
     }

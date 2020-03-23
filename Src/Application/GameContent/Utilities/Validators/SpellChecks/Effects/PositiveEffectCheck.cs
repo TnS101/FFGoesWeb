@@ -5,8 +5,8 @@
 
     public class PositiveEffectCheck
     {
-        public void Check(Unit caster, Unit target, double manaRequirment
-            , double possitiveEffect, string possitiveEffectType, ManaCheck manaCheck)
+        public void Check(Unit caster, Unit target, double manaRequirment,
+            double possitiveEffect, string possitiveEffectType, ManaCheck manaCheck)
         {
             if (manaCheck.EffectManaCheck(caster, manaRequirment))
             {
@@ -53,7 +53,6 @@
                     }
                 }
             }
-
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace Application.GameCQ.Unit.Queries
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class GetPartialUnitQuery : IRequest<UnitPartialViewModel>
     {

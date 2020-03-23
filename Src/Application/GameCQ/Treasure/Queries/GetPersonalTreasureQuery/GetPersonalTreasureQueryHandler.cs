@@ -1,24 +1,26 @@
 ﻿namespace Application.GameCQ.Treasure.Queries
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using MediatR;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.CQ.Admin.Treasure.Queries.GetAllTreasureQuery;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using MediatR;
     using Microsoft.EntityFrameworkCore;
-    using Application.CQ.Admin.Treasure.Queries.GetAllTreasureQuery;
 
     public class GetPersonalTreasureQueryHandler : IRequestHandler<GetPersonalTreasureQuery, TreasureListViewModel>
     {
         private readonly IFFDbContext context;
         private readonly IMapper mapper;
+
         public GetPersonalTreasureQueryHandler(IFFDbContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
         }
+
         public async Task<TreasureListViewModel> Handle(GetPersonalTreasureQuery request, CancellationToken cancellationToken)
         {
             var unit = await this.context.Units.FindAsync(request.UnitId);
@@ -27,7 +29,7 @@
 
             return new TreasureListViewModel
             {
-                Treasures = await treasures.ProjectTo<TreasureFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync()
+                Treasures = await treasures.ProjectTo<TreasureFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

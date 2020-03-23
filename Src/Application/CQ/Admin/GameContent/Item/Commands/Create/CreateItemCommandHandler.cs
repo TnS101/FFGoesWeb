@@ -1,13 +1,14 @@
 ﻿namespace Application.CQ.Admin.Item.Commands.Create
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using MediatR;
     using System.Threading;
     using System.Threading.Tasks;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using MediatR;
 
-    public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand,string>
+    public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand, string>
     {
         private readonly IFFDbContext context;
+
         public CreateItemCommandHandler(IFFDbContext context)
         {
             this.context = context;
@@ -15,7 +16,7 @@
 
         public async Task<string> Handle(CreateItemCommand request, CancellationToken cancellationToken)
         {
-            this.context.Items.Add(new Domain.Entities.Game.Item 
+            this.context.Items.Add(new Domain.Entities.Game.Item
             {
                 Name = request.Name,
                 Level = request.Level,
@@ -27,7 +28,7 @@
                 Spirit = request.Spirit,
                 AttackPower = request.AttackPower,
                 ArmorValue = request.ArmorValue,
-                Slot = request.Slot
+                Slot = request.Slot,
             });
 
             await this.context.SaveChangesAsync(cancellationToken);

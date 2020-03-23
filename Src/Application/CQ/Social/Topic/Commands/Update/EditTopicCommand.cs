@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Forum.Topic.Commands.Update
 {
-    using MediatR;
     using System;
+    using MediatR;
 
     public class EditTopicCommand : IRequest<string>
     {

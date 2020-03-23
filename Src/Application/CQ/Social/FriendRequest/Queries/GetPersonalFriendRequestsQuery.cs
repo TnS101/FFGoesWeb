@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Forum.FriendRequest.Queries
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class GetPersonalFriendRequestsQuery : IRequest<FriendRequestListViewModel>
     {

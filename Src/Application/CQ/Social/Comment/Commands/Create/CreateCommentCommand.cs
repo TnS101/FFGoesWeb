@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Forum.Comment.Create
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class CreateCommentCommand : IRequest<string>
     {

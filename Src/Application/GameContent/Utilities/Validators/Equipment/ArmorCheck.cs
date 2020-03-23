@@ -34,6 +34,7 @@
             {
                 item.Slot = "Gloves";
             }
+
             item.Name = $"{classUsable}'s {item.Slot} LVL : {regularStatNumber}";
         }
     }

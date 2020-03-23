@@ -4,7 +4,7 @@
     {
         public string UserName { get; set; }
 
-        public int OnlineTime { get; set; } 
+        public int OnlineTime { get; set; }
 
         public string Role { get; set; }
     }

@@ -5,8 +5,8 @@
 
     public class NegativeEffectCheck
     {
-        public void Check(Unit caster, Unit target, double manaRequirment
-            , double negativeEffect, string negativeEffectType, ManaCheck manaCheck)
+        public void Check(Unit caster, Unit target, double manaRequirment,
+            double negativeEffect, string negativeEffectType, ManaCheck manaCheck)
         {
             if (manaCheck.EffectManaCheck(caster, manaRequirment) == true)
             {
@@ -91,7 +91,6 @@
                     }
                 }
             }
-
         }
     }
 }

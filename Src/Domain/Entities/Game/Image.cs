@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class Image 
+    public class Image
     {
         public Image()
         {

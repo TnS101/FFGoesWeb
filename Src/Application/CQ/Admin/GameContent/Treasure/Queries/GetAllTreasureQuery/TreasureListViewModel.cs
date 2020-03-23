@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Admin.Treasure.Queries.GetAllTreasureQuery
 {
-    using Application.GameCQ.Treasure.Queries;
     using System.Collections.Generic;
+    using Application.GameCQ.Treasure.Queries;
 
     public class TreasureListViewModel
     {

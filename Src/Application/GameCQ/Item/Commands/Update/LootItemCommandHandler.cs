@@ -1,5 +1,9 @@
 ﻿namespace Application.GameCQ.Item.Commands.Update
 {
+    using System;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Application.GameCQ.Unit.Queries;
     using AutoMapper;
     using Domain.Entities.Common;
@@ -7,19 +11,15 @@
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
-    using System;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class LootItemCommandHandler : IRequestHandler<LootItemCommand>
     {
         private readonly IFFDbContext context;
         private readonly ItemGenerator itemGenerator;
         private readonly IMapper mapper;
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly UserManager<AppUser> userManager;
 
-        public LootItemCommandHandler(IFFDbContext context, IMapper mapper, UserManager<ApplicationUser> userManager)
+        public LootItemCommandHandler(IFFDbContext context, IMapper mapper, UserManager<AppUser> userManager)
         {
             this.context = context;
             this.itemGenerator = new ItemGenerator();

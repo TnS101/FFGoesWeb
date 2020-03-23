@@ -1,8 +1,8 @@
 ﻿namespace Application.CQ.Forum.FriendRequest.Commands.Create
 {
-    using MediatR;
     using System;
     using System.Security.Claims;
+    using MediatR;
 
     public class SendFriendRequestCommand : IRequest<string>
     {

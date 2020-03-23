@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
 {
-    using global::Domain.Entities.Game;
     using System;
+    using global::Domain.Entities.Game;
 
     public class TreasureKeyGenerator
     {

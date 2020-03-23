@@ -1,5 +1,6 @@
 ﻿namespace WebUI.Areas.Administrator.Controllers
 {
+    using System.Threading.Tasks;
     using Application.CQ.Admin.Users.Queries;
     using Application.CQ.Common.Commands;
     using Application.GameCQ.Image.Queries;
@@ -7,59 +8,58 @@
     using Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
     using WebUI.Controllers.Common;
 
-    //[Authorize(Roles = GConst.AdminRole)]
+    // [Authorize(Roles = GConst.AdminRole)]
     [Area(GConst.AdminArea)]
     public class AdminController : BaseController
     {
         [HttpGet]
         public async Task<ActionResult> Dashboard([FromForm]string role)
         {
-            return View(await this.Mediator.Send(new GetOnlineUsersQuery { Role = role }));
+            return this.View(await this.Mediator.Send(new GetOnlineUsersQuery { Role = role }));
         }
 
         public ActionResult Index()
         {
-            return View(this.User);
+            return this.View(this.User);
         }
-        
+
         [HttpGet]
         public IActionResult About()
         {
-            return View();
+            return this.View();
         }
 
         [HttpGet]
         public async Task<ActionResult> MonsterCatalog()
         {
-            return View(await this.Mediator.Send(new GetMonstersImagesQuery { }));
+            return this.View(await this.Mediator.Send(new GetMonstersImagesQuery { }));
         }
 
         [Authorize]
         [HttpGet]
         public async Task<ActionResult> ClassCatalog()
         {
-            return View(await this.Mediator.Send(new GetFightingClassImagesQuery { }));
+            return this.View(await this.Mediator.Send(new GetFightingClassImagesQuery { }));
         }
 
         [HttpGet]
-        public ActionResult GameContent() 
+        public ActionResult GameContent()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPut]
-        public async Task<ActionResult> Logout() 
+        public async Task<ActionResult> Logout()
         {
-            return Redirect(await this.Mediator.Send(new CustomLogoutCommand { }));
+            return this.Redirect(await this.Mediator.Send(new CustomLogoutCommand { }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> Feedback() 
+        public async Task<ActionResult> Feedback()
         {
-            return View();
+            return this.View();
         }
     }
 }

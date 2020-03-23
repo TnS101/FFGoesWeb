@@ -20,18 +20,18 @@
     {
         public MappingProfile()
         {
-            //ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
-            CreateMap<Image,ImageFullViewModel>();
-            CreateMap<Image, MonsterImageViewModel>();
-            CreateMap<Item, ItemFullViewModel>();
-            CreateMap<Spell, SpellFullViewModel>();
-            CreateMap<Treasure, TreasureFullViewModel>();
-            CreateMap<TreasureKey, TreasureKeyFullViewModel>();
-            CreateMap<ApplicationUser, UserPartialViewModel>();
-            CreateMap<Unit, UnitPartialViewModel>();
-            CreateMap<Unit, UnitFullViewModel>();
-            CreateMap<Topic,TopicFullViewModel>();
-            CreateMap<Message,MessageFullViewModel>();
+            // ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
+            this.CreateMap<Image, ImageFullViewModel>();
+            this.CreateMap<Image, MonsterImageViewModel>();
+            this.CreateMap<Item, ItemFullViewModel>();
+            this.CreateMap<Spell, SpellFullViewModel>();
+            this.CreateMap<Treasure, TreasureFullViewModel>();
+            this.CreateMap<TreasureKey, TreasureKeyFullViewModel>();
+            this.CreateMap<AppUser, UserPartialViewModel>();
+            this.CreateMap<Unit, UnitPartialViewModel>();
+            this.CreateMap<Unit, UnitFullViewModel>();
+            this.CreateMap<Topic, TopicFullViewModel>();
+            this.CreateMap<Message, MessageFullViewModel>();
         }
     }
 }

@@ -1,23 +1,25 @@
 ﻿namespace Application.GameCQ.TreasureKey.Commands.Update
 {
-    using Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain.Entities.Common;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using MediatR;
+    using Microsoft.AspNetCore.Identity;
 
     public class LootTreasureKeyCommandHandler : IRequestHandler<LootTreasureKeyCommand>
     {
         private readonly IFFDbContext context;
-        private readonly UserManager<ApplicationUser> userManager;
-        public LootTreasureKeyCommandHandler(IFFDbContext context, UserManager<ApplicationUser> userManager)
+        private readonly UserManager<AppUser> userManager;
+
+        public LootTreasureKeyCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
             this.userManager = userManager;
         }
+
         public async Task<Unit> Handle(LootTreasureKeyCommand request, CancellationToken cancellationToken)
         {
             var rng = new Random();
@@ -27,7 +29,7 @@
 
             var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            string rarity = ""; 
+            string rarity = string.Empty;
 
             if (generationNumber >= 0 && generationNumber < 5)
             {

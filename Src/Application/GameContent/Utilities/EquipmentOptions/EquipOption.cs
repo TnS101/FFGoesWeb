@@ -9,7 +9,7 @@
         {
             if (player.ClassType != item.ClassType)
             {
-                //Item not available for player(wrong class)
+                // Item not available for player(wrong class)
                 return "WrongClass";
             }
             else
@@ -21,24 +21,22 @@
                     statSum.Sum(player);
                     return "ItemEquipped";
                 }
-
                 else if (item.Slot == "Weapon" && item.Level <= player.Level && !player.Equipment.WeaponSlot)
                 {
-                    //Slot is already taken!
+                    // Slot is already taken!
                     return "SlotTaken";
                 }
 
                 if (item.Slot == "Trinket" && item.Level <= player.Level && player.Equipment.TrinketSlot)
                 {
                     player.Equipment.Items.Add(item);
-                    player.Equipment.TrinketSlot = false; ;
+                    player.Equipment.TrinketSlot = false;
                     statSum.Sum(player);
                     return "ItemEquipped";
                 }
-
                 else if (item.Slot == "Trinket" && item.Level <= player.Level && !player.Equipment.TrinketSlot)
                 {
-                    //Slot is already taken!
+                    // Slot is already taken!
                     return "SlotTaken";
                 }
 
@@ -51,13 +49,11 @@
                         statSum.Sum(player);
                         return "ItemEquipped";
                     }
-
                     else if (item.Slot == "Helmet" && !player.Equipment.HelmetSlot)
                     {
-                        //Slot is already taken!
+                        // Slot is already taken!
                         return "SlotTaken";
                     }
-
                     else if (item.Slot == "Chestplate" && player.Equipment.ChestplateSlot)
                     {
                         player.Equipment.Items.Add(item);
@@ -65,13 +61,11 @@
                         statSum.Sum(player);
                         return "ItemEquipped";
                     }
-
                     else if (item.Slot == "Chestplate" && !player.Equipment.ChestplateSlot)
                     {
-                        //Slot is already taken!
+                        // Slot is already taken!
                         return "SlotTaken";
                     }
-
                     else if (item.Slot == "Shoulder" && player.Equipment.ShoulderSlot)
                     {
                         player.Equipment.Items.Add(item);
@@ -79,13 +73,11 @@
                         statSum.Sum(player);
                         return "ItemEquipped";
                     }
-
                     else if (item.Slot == "Shoulder" && !player.Equipment.ShoulderSlot)
                     {
-                        //Slot is already taken!
+                        // Slot is already taken!
                         return "SlotTaken";
                     }
-
                     else if (item.Slot == "Bracer" && player.Equipment.BracerSlot)
                     {
                         player.Equipment.Items.Add(item);
@@ -93,13 +85,11 @@
                         statSum.Sum(player);
                         return "ItemEquipped";
                     }
-
                     else if (item.Slot == "Bracer" && !player.Equipment.BracerSlot)
                     {
-                        //Slot is already taken!
+                        // Slot is already taken!
                         return "SlotTaken";
                     }
-
                     else if (item.Slot == "Boots" && player.Equipment.BootsSlot)
                     {
                         player.Equipment.Items.Add(item);
@@ -107,13 +97,11 @@
                         statSum.Sum(player);
                         return "ItemEquipped";
                     }
-
                     else if (item.Slot == "Boots" && !player.Equipment.BootsSlot)
                     {
-                        //Slot is already taken!
+                        // Slot is already taken!
                         return "SlotTaken";
                     }
-
                     else if (item.Slot == "Leggings" && player.Equipment.LeggingsSlot)
                     {
                         player.Equipment.Items.Add(item);
@@ -121,13 +109,11 @@
                         statSum.Sum(player);
                         return "ItemEquipped";
                     }
-
                     else if (item.Slot == "Leggings" && !player.Equipment.LeggingsSlot)
                     {
-                        //Slot is already taken!
+                        // Slot is already taken!
                         return "SlotTaken";
                     }
-
                     else if (item.Slot == "Gloves" && player.Equipment.GlovesSlot)
                     {
                         player.Equipment.Items.Add(item);
@@ -135,20 +121,20 @@
                         statSum.Sum(player);
                         return "ItemEquipped";
                     }
-
                     else if (item.Slot == "Gloves" && !player.Equipment.GlovesSlot)
                     {
-                        //Slot is already taken!
+                        // Slot is already taken!
                         return "SlotTaken";
                     }
                 }
                 else if (item.Level > player.Level)
                 {
-                    //Item level is too high!
+                    // Item level is too high!
                     return "LevelHigh";
                 }
             }
-            return "";
+
+            return string.Empty;
         }
     }
 }

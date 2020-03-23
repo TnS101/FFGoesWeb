@@ -1,4 +1,4 @@
-namespace WebUI
+﻿namespace WebUI
 {
     using Application.Common.Handlers;
     using Application.Common.Mappings;
@@ -22,7 +22,7 @@ namespace WebUI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //AutoMapper
+            // AutoMapper
             services.AddAutoMapper(typeof(Startup));
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -31,27 +31,26 @@ namespace WebUI
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            //MediatR
+            // MediatR
             services.AddMediatR(typeof(Startup));
             var registerHandlers = new RegisterHandlers(services);
 
-            //Identity
-            //services.AddAuthentication();
-            //services.AddIdentityCore<ApplicationUser>().AddEntityFrameworkStores<FFDbContext>();
+            // Identity
+            services.AddIdentityCore<AppUser>();
 
-            //Database
+            // Database
             services.AddDbContext<FFDbContext>()
-                .AddTransient<IFFDbContext,FFDbContext>();
+                .AddTransient<IFFDbContext, FFDbContext>();
 
-            services.AddDefaultIdentity<ApplicationUser>()
+            services.AddDefaultIdentity<AppUser>()
                .AddRoles<ApplicationRole>().AddEntityFrameworkStores<FFDbContext>();
 
-            //Other services
+            // Other services
             services.AddSignalR();
             services.AddControllers();
             services.AddMvc();
 
-            //Cookies
+            // Cookies
             services.Configure<CookiePolicyOptions>(
                 options =>
                 {
@@ -76,12 +75,13 @@ namespace WebUI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(name: "areaRoute",
-                    pattern:"{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "areaRoute",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                     pattern:"{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
             });

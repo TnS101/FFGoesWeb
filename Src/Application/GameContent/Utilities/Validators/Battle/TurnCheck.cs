@@ -1,9 +1,9 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.Battle
 {
+    using System;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
     using global::Application.GameCQ.Unit.Queries;
-    using System;
 
     public class TurnCheck
     {
@@ -15,7 +15,6 @@
                 battleHandler.RegenerateOption.Regenerate(player);
                 return false;
             }
-
             else if (!yourTurn)
             {
                 int enemyActionNumber = rng.Next(0, 2);
@@ -36,6 +35,7 @@
                 battleHandler.RegenerateOption.Regenerate(enemy);
                 return true;
             }
+
             return true;
         }
     }

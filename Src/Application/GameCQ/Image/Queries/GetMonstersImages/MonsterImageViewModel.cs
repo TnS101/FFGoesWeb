@@ -1,6 +1,6 @@
 ﻿namespace Application.GameCQ.Monster.Queries
 {
-    public class MonsterImageViewModel 
+    public class MonsterImageViewModel
     {
         public string Path { get; set; }
 

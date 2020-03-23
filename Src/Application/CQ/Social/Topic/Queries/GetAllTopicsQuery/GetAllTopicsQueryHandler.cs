@@ -1,20 +1,20 @@
 ﻿namespace Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery
 {
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class GetAllTopicsQueryHandler : IRequestHandler<GetAllTopicsQuery, TopicListViewModel>
     {
         private readonly IFFDbContext context;
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly UserManager<AppUser> userManager;
 
-        public GetAllTopicsQueryHandler(IFFDbContext context, UserManager<ApplicationUser> userManager)
+        public GetAllTopicsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
             this.userManager = userManager;
@@ -33,10 +33,10 @@
                         UserName = t.User.UserName,
                         CreateOn = t.CreateOn,
                         Likes = t.Likes,
-                        Comments = t.Comments.Count()
+                        Comments = t.Comments.Count(),
                     })
                 .OrderByDescending(t => t.CreateOn)
-                .ToListAsync()
+                .ToListAsync(),
                 };
             }
             else
@@ -52,10 +52,10 @@
                         UserName = t.User.UserName,
                         CreateOn = t.CreateOn,
                         Likes = t.Likes,
-                        Comments = t.Comments.Count()
+                        Comments = t.Comments.Count(),
                     })
                 .OrderByDescending(t => t.CreateOn)
-                .ToListAsync()
+                .ToListAsync(),
                 };
             }
         }

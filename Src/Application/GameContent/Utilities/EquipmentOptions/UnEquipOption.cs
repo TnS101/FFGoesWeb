@@ -21,7 +21,6 @@
                 statSum.Sum(player);
                 return "ItemUnEquipped";
             }
-
             else if (item.Slot == "Bracer" && !player.Equipment.BracerSlot)
             {
                 player.Equipment.Items.Remove(item);
@@ -29,7 +28,6 @@
                 statSum.Sum(player);
                 return "ItemUnEquipped";
             }
-
             else if (item.Slot == "Boots" && !player.Equipment.BootsSlot)
             {
                 player.Equipment.Items.Remove(item);
@@ -37,7 +35,6 @@
                 statSum.Sum(player);
                 return "ItemUnEquipped";
             }
-
             else if (item.Slot == "Leggings" && !player.Equipment.LeggingsSlot)
             {
                 player.Equipment.Items.Remove(item);
@@ -45,7 +42,6 @@
                 statSum.Sum(player);
                 return "ItemUnEquipped";
             }
-
             else if (item.Slot == "Gloves" && !player.Equipment.GlovesSlot)
             {
                 player.Equipment.Items.Remove(item);
@@ -54,7 +50,7 @@
                 return "ItemUnEquipped";
             }
 
-            return "";
+            return string.Empty;
         }
     }
 }

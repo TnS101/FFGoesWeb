@@ -1,15 +1,15 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
 {
-    using global::Domain.Entities.Game;
     using System;
     using System.Linq;
+    using global::Domain.Entities.Game;
 
     public class TreasureGenerator
     {
         public string Generate(Unit player, Random rng, string option)
         {
             int treasureNumber = rng.Next(0, 10);
-            string treasureType = "";
+            string treasureType = string.Empty;
             int goldRewards = 0;
 
             if (treasureNumber >= 0 && treasureNumber < 5)
@@ -41,7 +41,7 @@
                 return "TreasurePass";
             }
 
-            return "";
+            return string.Empty;
         }
     }
 }

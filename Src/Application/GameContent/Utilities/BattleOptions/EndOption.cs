@@ -9,7 +9,8 @@
         {
             player.XP += enemy.MaxHP / 10;
             loot.ItemLoot(player);
-            //Stat reset
+
+            // Stat reset
             player.CurrentAttackPower = player.AttackPower;
             player.CurrentMagicPower = player.MagicPower;
             player.CurrentArmorValue = player.ArmorValue;

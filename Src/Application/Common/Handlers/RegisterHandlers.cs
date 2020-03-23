@@ -1,10 +1,10 @@
 ﻿namespace Application.Common.Handlers
 {
-    using Microsoft.Extensions.DependencyInjection;
     using Application.CQ.Admin.Item.Commands.Create;
     using Application.CQ.Admin.Item.Commands.Delete;
     using Application.CQ.Admin.Item.Commands.Update;
     using Application.CQ.Admin.Item.Queries;
+    using Application.CQ.Admin.Spell.Queries;
     using Application.CQ.Admin.Treasure.Commands.Create;
     using Application.CQ.Admin.Treasure.Commands.Delete;
     using Application.CQ.Admin.Treasure.Queries.GetAllTreasureQuery;
@@ -12,6 +12,23 @@
     using Application.CQ.Admin.TreasureKey.Commands.Delete;
     using Application.CQ.Admin.TreasureKey.Commands.Queries;
     using Application.CQ.Admin.Users.Queries;
+    using Application.CQ.Common.Commands;
+    using Application.CQ.Forum.Comment.Create;
+    using Application.CQ.Forum.Comment.Delete;
+    using Application.CQ.Forum.Comment.Update;
+    using Application.CQ.Forum.FriendRequest.Commands.Create;
+    using Application.CQ.Forum.FriendRequest.Commands.Delete;
+    using Application.CQ.Forum.FriendRequest.Commands.Update;
+    using Application.CQ.Forum.FriendRequest.Queries;
+    using Application.CQ.Forum.Message.Commands.Create;
+    using Application.CQ.Forum.Message.Commands.Delete;
+    using Application.CQ.Forum.Message.Commands.Update;
+    using Application.CQ.Forum.Message.Queries;
+    using Application.CQ.Forum.Topic.Commands.Create;
+    using Application.CQ.Forum.Topic.Commands.Delete;
+    using Application.CQ.Forum.Topic.Commands.Update;
+    using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
+    using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
     using Application.GameCQ.Battle.Commands.Update;
     using Application.GameCQ.Enemy.Commands.Create;
     using Application.GameCQ.Equipment.Commands.Update;
@@ -32,24 +49,7 @@
     using Application.GameCQ.Unit.Queries;
     using Application.SeedInitialData;
     using MediatR;
-    using Application.CQ.Forum.Topic.Commands.Create;
-    using Application.CQ.Forum.Topic.Commands.Delete;
-    using Application.CQ.Forum.Topic.Commands.Update;
-    using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
-    using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
-    using Application.CQ.Forum.Comment.Create;
-    using Application.CQ.Forum.Comment.Delete;
-    using Application.CQ.Forum.Comment.Update;
-    using Application.CQ.Forum.FriendRequest.Commands.Create;
-    using Application.CQ.Forum.FriendRequest.Commands.Delete;
-    using Application.CQ.Forum.FriendRequest.Commands.Update;
-    using Application.CQ.Forum.FriendRequest.Queries;
-    using Application.CQ.Forum.Message.Queries;
-    using Application.CQ.Forum.Message.Commands.Create;
-    using Application.CQ.Forum.Message.Commands.Delete;
-    using Application.CQ.Forum.Message.Commands.Update;
-    using Application.CQ.Admin.Spell.Queries;
-    using Application.CQ.Common.Commands;
+    using Microsoft.Extensions.DependencyInjection;
 
     public class RegisterHandlers
     {
@@ -58,7 +58,7 @@
             this.Register(services);
         }
 
-        public void Register(IServiceCollection services) 
+        public void Register(IServiceCollection services)
         {
             this.AdminCommands(services);
             this.AdminQueries(services);
@@ -68,9 +68,9 @@
             this.ModeratorQueries(services);
         }
 
-        private void AdminCommands(IServiceCollection services) 
+        private void AdminCommands(IServiceCollection services)
         {
-            services.AddScoped<IRequestHandler<CreateItemCommand,string>, CreateItemCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateItemCommand, string>, CreateItemCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteItemCommand, string>, DeleteItemCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateItemCommand, string>, UpdateItemCommandHandler>();
             services.AddScoped<IRequestHandler<CreateTreasureCommand, string>, CreateTreasureCommandHandler>();
@@ -137,14 +137,12 @@
             services.AddScoped<IRequestHandler<GetPersonalMessagesQuery, MessageListViewModel>, GetPersonalMessagesQueryHandler>();
         }
 
-        private void ModeratorCommands(IServiceCollection services) 
+        private void ModeratorCommands(IServiceCollection services)
         {
-
         }
 
-        private void ModeratorQueries(IServiceCollection services) 
+        private void ModeratorQueries(IServiceCollection services)
         {
-            
         }
     }
 }

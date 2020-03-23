@@ -1,19 +1,20 @@
 ﻿namespace Application.GameCQ.TreasureKey.Queries
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using MediatR;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.CQ.Admin.TreasureKey.Commands.Queries;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using MediatR;
     using Microsoft.EntityFrameworkCore;
-    using Application.CQ.Admin.TreasureKey.Commands.Queries;
 
     public class GetPersonalTreasureKeysQueryHandler : IRequestHandler<GetPersonalTreasureKeysQuery, TreasureKeyListViewModel>
     {
         private readonly IFFDbContext context;
         private readonly IMapper mapper;
+
         public GetPersonalTreasureKeysQueryHandler(IFFDbContext context, IMapper mapper)
         {
             this.context = context;
@@ -28,7 +29,7 @@
 
             return new TreasureKeyListViewModel
             {
-                Keys = await inventory.ProjectTo<TreasureKeyFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync()
+                Keys = await inventory.ProjectTo<TreasureKeyFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

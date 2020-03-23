@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Comment 
+    public class Comment
     {
         public Comment()
         {
@@ -22,7 +22,7 @@
 
         public string UserId { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public AppUser User { get; set; }
 
         public string TopicId { get; set; }
 

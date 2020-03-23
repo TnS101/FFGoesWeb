@@ -1,7 +1,7 @@
 ﻿namespace Application.GameCQ.Unit.Commands.Create
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class CreateUnitCommand : IRequest<string>
     {

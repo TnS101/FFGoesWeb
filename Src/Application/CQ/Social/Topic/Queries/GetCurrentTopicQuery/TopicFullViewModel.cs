@@ -1,9 +1,9 @@
 ﻿namespace Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery
 {
-    using Domain.Entities.Common;
-    using Domain.Entities.Common.Social;
     using System;
     using System.Collections.Generic;
+    using Domain.Entities.Common;
+    using Domain.Entities.Common.Social;
 
     public class TopicFullViewModel
     {
@@ -14,7 +14,7 @@
 
         public string UserId { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public AppUser User { get; set; }
 
         public string Title { get; set; }
 

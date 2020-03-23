@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Admin.TreasureKey.Commands.Queries
 {
-    using Application.GameCQ.TreasureKey.Queries;
     using System.Collections.Generic;
+    using Application.GameCQ.TreasureKey.Queries;
 
     public class TreasureKeyListViewModel
     {

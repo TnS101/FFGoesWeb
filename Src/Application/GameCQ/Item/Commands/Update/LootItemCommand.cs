@@ -1,7 +1,7 @@
 ﻿namespace Application.GameCQ.Item.Commands.Update
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class LootItemCommand : IRequest
     {

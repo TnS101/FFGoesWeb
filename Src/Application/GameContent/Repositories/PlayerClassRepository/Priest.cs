@@ -2,30 +2,39 @@
 {
     public class Priest : FightingClass
     {
-        private const string classType = "Priest";
-        private const double maxHP = 170;
-        private const int healthRegen = 5;
-        private const double maxMana = 180;
-        private const int manaRegen = 10;
-        private const double attackPower = 15;
-        private const double magicPower = 32;
-        private const double armorValue = 2.8;
-        private const double ressistanceValue = 5.3;
-        private const double critChance = 2;
+        private const string ClassTypeValue = "Priest";
+        private const double MaxHPValue = 170;
+        private const int HealthRegenValue = 5;
+        private const double MaxManaValue = 180;
+        private const int ManaRegenValue = 10;
+        private const double AttackPowerValue = 15;
+        private const double MagicPowerValue = 32;
+        private const double ArmorValueValue = 2.8;
+        private const double RessistanceValueValue = 5.3;
+        private const double CritChanceValue = 2;
 
         public Priest()
         {
         }
 
-        public override string ClassType => classType;
-        public override double MaxHP => maxHP;
-        public override int HealthRegen => healthRegen;
-        public override double MaxMana => maxMana;
-        public override int ManaRegen => manaRegen;
-        public override double AttackPower => attackPower;
-        public override double ArmorValue => armorValue;
-        public override double RessistanceValue => ressistanceValue;
-        public override double MagicPower => magicPower;
-        public override double CritChance => critChance;
+        public override string ClassType => ClassTypeValue;
+
+        public override double MaxHP => MaxHPValue;
+
+        public override int HealthRegen => HealthRegenValue;
+
+        public override double MaxMana => MaxManaValue;
+
+        public override int ManaRegen => ManaRegenValue;
+
+        public override double AttackPower => AttackPowerValue;
+
+        public override double ArmorValue => ArmorValueValue;
+
+        public override double RessistanceValue => RessistanceValueValue;
+
+        public override double MagicPower => MagicPowerValue;
+
+        public override double CritChance => CritChanceValue;
     }
 }

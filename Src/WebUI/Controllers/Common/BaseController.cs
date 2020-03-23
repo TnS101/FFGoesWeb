@@ -9,10 +9,10 @@
     public class BaseController : Controller
     {
         private IMediator mediator;
-        private UserManager<ApplicationUser> userManager;
+        private UserManager<AppUser> userManager;
 
-        protected IMediator Mediator => mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+        protected IMediator Mediator => this.mediator ??= this.HttpContext.RequestServices.GetService<IMediator>();
 
-        protected UserManager<ApplicationUser> UserManager => userManager ??= HttpContext.RequestServices.GetService<UserManager<ApplicationUser>>();
+        protected UserManager<AppUser> UserManager => this.userManager ??= this.HttpContext.RequestServices.GetService<UserManager<AppUser>>();
     }
 }

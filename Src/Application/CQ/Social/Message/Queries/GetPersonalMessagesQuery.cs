@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Forum.Message.Queries
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class GetPersonalMessagesQuery : IRequest<MessageListViewModel>
     {

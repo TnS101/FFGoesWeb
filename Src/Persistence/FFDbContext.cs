@@ -1,22 +1,25 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Persistence
 {
-    using global::Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
-    using Microsoft.EntityFrameworkCore;
-    using global::Domain.Entities.Game;
-    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-    using global::Domain.Models;
+    using global::Domain.Entities.Common;
     using global::Domain.Entities.Common.Social;
+    using global::Domain.Entities.Game;
     using global::Domain.Entities.Moderation;
+    using global::Domain.Models;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
 
-    public class FFDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>, IFFDbContext
+    public class FFDbContext : IdentityDbContext<AppUser, ApplicationRole, string>, IFFDbContext
     {
-        public FFDbContext(DbContextOptions options) : base(options)
+        public FFDbContext(DbContextOptions options)
+            : base(options)
         {
         }
 
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
+
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
 
         public DbSet<Equipment> Equipments { get; set; }
 
@@ -43,7 +46,9 @@
         public DbSet<Topic> Topics { get; set; }
 
         public DbSet<UserTopics> UsersTopics { get; set; }
+
         public DbSet<Ticket> Tickets { get; set; }
+
         public DbSet<Feedback> Feedbacks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -84,6 +89,32 @@
            .HasOne(t => t.Topic)
            .WithMany(u => u.UserTopics)
            .HasForeignKey(t => t.TopicId);
+
+            modelBuilder.Entity<AppUser>().ToTable("Users");
+
+            modelBuilder.Entity<AppUser>(appUser =>
+            {
+                appUser
+                .HasMany(e => e.Claims)
+                .WithOne()
+                .HasForeignKey(e => e.UserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+                appUser
+                    .HasMany(e => e.Logins)
+                    .WithOne()
+                    .HasForeignKey(e => e.UserId)
+                    .IsRequired()
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                appUser
+                    .HasMany(e => e.Roles)
+                    .WithOne()
+                    .HasForeignKey(e => e.UserId)
+                    .IsRequired()
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
         }
     }
 }

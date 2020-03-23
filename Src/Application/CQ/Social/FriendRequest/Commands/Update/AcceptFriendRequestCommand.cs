@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Forum.FriendRequest.Commands.Update
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class AcceptFriendRequestCommand : IRequest<string>
     {

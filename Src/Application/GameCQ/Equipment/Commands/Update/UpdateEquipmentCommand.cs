@@ -1,7 +1,7 @@
 ﻿namespace Application.GameCQ.Equipment.Commands.Update
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class UpdateEquipmentCommand : IRequest<string>
     {

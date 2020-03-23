@@ -1,11 +1,11 @@
 ﻿namespace Application.CQ.Admin.Item.Commands.Delete
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using MediatR;
     using System.Threading;
     using System.Threading.Tasks;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using MediatR;
 
-    public class DeleteItemCommandHandler : IRequestHandler<DeleteItemCommand,string>
+    public class DeleteItemCommandHandler : IRequestHandler<DeleteItemCommand, string>
     {
         private readonly IFFDbContext context;
 

@@ -4,8 +4,8 @@
 
     public class Trinket : Item
     {
-        public Trinket(string name, string slot, int level, string classType, int stamina
-           , int strength, int intellect, int agility, int spirit)
+        public Trinket(string name, string slot, int level, string classType, int stamina,
+           int strength, int intellect, int agility, int spirit)
         {
             this.Name = name;
             this.Slot = slot;

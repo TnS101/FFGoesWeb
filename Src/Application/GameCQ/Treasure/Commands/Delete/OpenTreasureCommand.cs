@@ -1,7 +1,7 @@
 ﻿namespace Application.GameCQ.Treasure.Commands.Delete
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class OpenTreasureCommand : IRequest<string>
     {
@@ -11,6 +11,6 @@
 
         public string Rarity { get; set; }
 
-        public ClaimsPrincipal User { get; set; } 
+        public ClaimsPrincipal User { get; set; }
     }
 }

@@ -4,8 +4,8 @@
 
     public class Weapon : Item
     {
-        public Weapon(string name, string slot,int level, string classType, double attackPower, int stamina
-            , int strength, int intellect, int agility, int spirit)
+        public Weapon(string name, string slot, int level, string classType, double attackPower, int stamina,
+            int strength, int intellect, int agility, int spirit)
         {
             this.Name = name;
             this.Slot = slot;

@@ -15,10 +15,12 @@
             {
                 armorBonus += 0.40;
             }
+
             if (target.CurrentHP <= 0)
             {
                 target.CurrentHP = 0;
             }
+
             target.CurrentArmorValue += armorBonus * target.CurrentArmorValue;
         }
     }

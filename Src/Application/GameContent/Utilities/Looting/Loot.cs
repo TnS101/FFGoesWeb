@@ -6,14 +6,15 @@
     public class Loot
     {
         private readonly ItemGenerator itemGenerator;
+
         public Loot()
         {
-            this.itemGenerator =  new ItemGenerator();
+            this.itemGenerator = new ItemGenerator();
         }
 
-        public void ItemLoot(UnitFullViewModel player) 
+        public void ItemLoot(UnitFullViewModel player)
         {
-            player.Inventory.Items.Add(itemGenerator.Generate(player));
+            player.Inventory.Items.Add(this.itemGenerator.Generate(player));
         }
     }
 }

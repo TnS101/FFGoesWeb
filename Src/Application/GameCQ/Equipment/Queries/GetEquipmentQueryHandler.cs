@@ -1,19 +1,20 @@
-﻿using Application.GameCQ.Item.Queries;
-using AutoMapper;
-using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-using MediatR;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper.QueryableExtensions;
-using Microsoft.EntityFrameworkCore;
-
-namespace Application.GameCQ.Equipment.Queries
+﻿namespace Application.GameCQ.Equipment.Queries
 {
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Application.GameCQ.Item.Queries;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using MediatR;
+    using Microsoft.EntityFrameworkCore;
+
     public class GetEquipmentQueryHandler : IRequestHandler<GetEquipmentQuery, EquipmentViewModel>
     {
         private readonly IFFDbContext context;
         private readonly IMapper mapper;
+
         public GetEquipmentQueryHandler(IFFDbContext context, IMapper mapper)
         {
             this.context = context;
@@ -24,7 +25,7 @@ namespace Application.GameCQ.Equipment.Queries
         {
             return new EquipmentViewModel
             {
-                Items = await this.context.Items.Where(i => i.Inventory.UnitId == request.UnitId).ProjectTo<ItemFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync()
+                Items = await this.context.Items.Where(i => i.Inventory.UnitId == request.UnitId).ProjectTo<ItemFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

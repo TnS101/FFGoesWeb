@@ -1,8 +1,8 @@
-﻿using global::Domain.Entities.Game;
-
-namespace Application.GameCQ.Unit.Queries
+﻿namespace Application.GameCQ.Unit.Queries
 {
-    public class UnitFullViewModel 
+    using global::Domain.Entities.Game;
+
+    public class UnitFullViewModel
     {
         public string Id { get; set; }
 

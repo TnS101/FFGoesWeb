@@ -1,11 +1,11 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
 {
+    using System;
+    using System.Linq;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemySpellRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerSpellRepository;
     using global::Application.GameCQ.Unit.Queries;
-    using System;
-    using System.Linq;
 
     public class SpellCastOption
     {
@@ -38,6 +38,7 @@
                 var spellMethod = type.GetMethods().Where(m => m.Name.Split('_')[0] == caster.ClassType && m.IsPrivate).ToList()[spellNumber];
                 spellMethod.Invoke(instance, new object[] { caster, target });
             }
+
             if (target.CurrentHP <= 0)
             {
                 target.CurrentHP = 0;

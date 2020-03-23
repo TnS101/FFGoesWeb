@@ -1,7 +1,7 @@
 ﻿namespace Application.GameCQ.Item.Commands.Delete
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class DiscardItemCommand : IRequest<string>
     {

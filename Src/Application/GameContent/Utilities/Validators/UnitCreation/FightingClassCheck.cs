@@ -63,6 +63,7 @@
                 Shaman shaman = new Shaman();
                 statIncrement.Increment(shaman, player);
             }
+
             return player;
         }
     }

@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Forum.Topic.Commands.Delete
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class DeleteTopicCommand : IRequest<string>
     {

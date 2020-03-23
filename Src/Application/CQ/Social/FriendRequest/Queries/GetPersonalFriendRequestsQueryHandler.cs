@@ -1,23 +1,25 @@
 ﻿namespace Application.CQ.Forum.FriendRequest.Queries
 {
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class GetPersonalFriendRequestsQueryHandler : IRequestHandler<GetPersonalFriendRequestsQuery, FriendRequestListViewModel>
     {
         private readonly IFFDbContext context;
-        private readonly UserManager<ApplicationUser> userManager;
-        public GetPersonalFriendRequestsQueryHandler(IFFDbContext context, UserManager<ApplicationUser> userManager)
+        private readonly UserManager<AppUser> userManager;
+
+        public GetPersonalFriendRequestsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
             this.userManager = userManager;
         }
+
         public async Task<FriendRequestListViewModel> Handle(GetPersonalFriendRequestsQuery request, CancellationToken cancellationToken)
         {
             var reciever = await this.userManager.GetUserAsync(request.Reciever);
@@ -29,10 +31,10 @@
                 FriendRequests = await this.context.FriendRequests.Where(fr => fr.UserId == reciever.Id).Select(fr => new FriendRequestFullViewModel
                 {
                     SenderName = friendRequest.SenderName,
-                    SentOn = friendRequest.SentOn
+                    SentOn = friendRequest.SentOn,
                 })
                 .OrderByDescending(s => s.SentOn)
-                .ToListAsync()
+                .ToListAsync(),
             };
         }
     }

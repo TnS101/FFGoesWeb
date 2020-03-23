@@ -1,15 +1,16 @@
 ﻿namespace Application.CQ.Forum.Comment.Update
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using global::Common;
-    using MediatR;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using global::Common;
+    using MediatR;
 
     public class EditCommentCommandHandler : IRequestHandler<EditCommentCommand, string>
     {
         private readonly IFFDbContext context;
+
         public EditCommentCommandHandler(IFFDbContext context)
         {
             this.context = context;
@@ -31,7 +32,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return string.Format(GConst.CommentCommandRedirect,request.TopicId);
+            return string.Format(GConst.CommentCommandRedirect, request.TopicId);
         }
     }
 }

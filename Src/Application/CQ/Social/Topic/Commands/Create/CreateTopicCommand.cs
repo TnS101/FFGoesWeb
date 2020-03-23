@@ -1,15 +1,15 @@
 ﻿namespace Application.CQ.Forum.Topic.Commands.Create
 {
-    using MediatR;
     using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
+    using MediatR;
 
     public class CreateTopicCommand : IRequest<string[]>
     {
         public ClaimsPrincipal User { get; set; }
 
         [Required]
-        [StringLength(50,MinimumLength = 5)]
+        [StringLength(50, MinimumLength = 5)]
         [RegularExpression(@"[A-Z][a-z]\w+")]
         public string Title { get; set; }
 

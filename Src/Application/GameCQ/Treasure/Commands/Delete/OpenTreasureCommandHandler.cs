@@ -1,38 +1,39 @@
 ﻿namespace Application.GameCQ.Treasure.Commands.Delete
 {
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using global::Domain.Entities.Game;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
 
-    public class OpenTreasureCommandHandler : IRequestHandler<OpenTreasureCommand,string>
+    public class OpenTreasureCommandHandler : IRequestHandler<OpenTreasureCommand, string>
     {
         private readonly IFFDbContext context;
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly UserManager<AppUser> userManager;
 
-        public OpenTreasureCommandHandler(IFFDbContext context, UserManager<ApplicationUser> userManager)
+        public OpenTreasureCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
             this.userManager = userManager;
         }
+
         public async Task<string> Handle(OpenTreasureCommand request, CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
             var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            var treasureKey = unit.Inventory.Items.Select(k => new TreasureKey 
+            var treasureKey = unit.Inventory.Items.Select(k => new TreasureKey
             {
-                Rarity = request.Rarity
+                Rarity = request.Rarity,
             }).FirstOrDefault();
 
             var treasure = unit.Inventory.Items.Select(t => new Treasure
             {
-                Rarity = request.Rarity
+                Rarity = request.Rarity,
             }).FirstOrDefault();
 
             unit.Inventory.Items.Remove(treasureKey);

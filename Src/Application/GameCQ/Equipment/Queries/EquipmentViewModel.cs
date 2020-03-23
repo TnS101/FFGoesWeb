@@ -1,7 +1,7 @@
 ﻿namespace Application.GameCQ.Equipment.Queries
 {
-    using Application.GameCQ.Item.Queries;
     using System.Collections.Generic;
+    using Application.GameCQ.Item.Queries;
 
     public class EquipmentViewModel
     {

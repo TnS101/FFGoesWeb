@@ -1,18 +1,19 @@
 ﻿namespace Application.CQ.Admin.Treasure.Queries.GetAllTreasureQuery
 {
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Application.GameCQ.Treasure.Queries;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-    using Application.GameCQ.Treasure.Queries;
 
     public class GetAllTreasuresQueryHandler : IRequestHandler<GetAllTreasuresQuery, TreasureListViewModel>
     {
         private readonly IFFDbContext context;
         private readonly IMapper mapper;
+
         public GetAllTreasuresQueryHandler(IFFDbContext context, IMapper mapper)
         {
             this.context = context;
@@ -23,7 +24,7 @@
         {
             return new TreasureListViewModel
             {
-                Treasures = await this.context.Treasures.ProjectTo<TreasureFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync()
+                Treasures = await this.context.Treasures.ProjectTo<TreasureFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

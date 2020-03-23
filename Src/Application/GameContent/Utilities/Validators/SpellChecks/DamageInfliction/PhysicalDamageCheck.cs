@@ -21,7 +21,6 @@
                 {
                     target.CurrentArmorValue -= target.CurrentArmorValue * 0.25;
                 }
-
             }
         }
     }

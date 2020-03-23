@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# SA1117: Parameters should be on same line or separate lines
+dotnet_diagnostic.SA1117.severity = silent
+
+# SA1305: Field names should not use Hungarian notation
+dotnet_diagnostic.SA1305.severity = silent

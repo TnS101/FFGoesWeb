@@ -7,13 +7,14 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using Domain.Entities.Common.Social;
     using Domain.Entities.Moderation;
+    using Domain.Common;
 
-    public class ApplicationUser : IdentityUser
+    public class AppUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
-        public ApplicationUser()
+        public AppUser()
         {
             this.Units = new HashSet<Unit>();
-            this.Friends = new HashSet<ApplicationUser>();
+            this.Friends = new HashSet<AppUser>();
             this.FriendRequests = new HashSet<FriendRequest>();
             this.Messages = new HashSet<Message>();
             this.UserTopics = new HashSet<UserTopics>();
@@ -27,24 +28,24 @@
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
 
-        public override string Id { get; set; }
-
         public string FriendId { get; set; }
 
         [ForeignKey("FriendId")]
-        public virtual ApplicationUser Friend { get; set; }
-
-        public override string UserName { get; set; }
-
-        public string Password { get; set; }
-
-        public override string Email { get; set; }
+        public virtual AppUser Friend { get; set; }
 
         public bool IsLoggedIn { get; set; }
 
         public int Stars { get; set; }
 
         public DateTime? LastLogin { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
 
         public ICollection<Unit> Units { get; set; }
 
@@ -60,7 +61,7 @@
 
         public ICollection<Feedback> Feedbacks { get; set; }
 
-        public virtual ICollection<ApplicationUser> Friends { get; set; }
+        public virtual ICollection<AppUser> Friends { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

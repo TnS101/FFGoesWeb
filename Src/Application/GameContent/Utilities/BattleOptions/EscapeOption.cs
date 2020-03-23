@@ -12,6 +12,7 @@
             {
                 player.XP = 0;
             }
+
             player.XP -= xpLoss;
         }
     }

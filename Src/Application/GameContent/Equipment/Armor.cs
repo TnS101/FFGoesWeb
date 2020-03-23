@@ -4,10 +4,10 @@
 
     public class Armor : Item
     {
-        public Armor(string name,string slot, int level
-            , string classType, int stamina
-            , int strength, int intellect, int agility
-            , int spirit, double armorValue, double ressistanceValue)
+        public Armor(string name, string slot, int level,
+            string classType, int stamina,
+            int strength, int intellect, int agility,
+            int spirit, double armorValue, double ressistanceValue)
         {
             this.Name = name;
             this.Slot = slot;

@@ -1,17 +1,18 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.Common.Interfaces
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
-    using Microsoft.EntityFrameworkCore;
     using System.Threading;
     using System.Threading.Tasks;
-    using global::Domain.Entities.Game;
+    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Common.Social;
+    using global::Domain.Entities.Game;
     using global::Domain.Entities.Moderation;
+    using global::Domain.Models;
+    using Microsoft.EntityFrameworkCore;
 
     public interface IFFDbContext
     {
-        DbSet<ApplicationUser> Users { get; set; }
+        DbSet<AppUser> AppUsers { get; set; }
 
         DbSet<Equipment> Equipments { get; set; }
 
@@ -27,9 +28,9 @@
 
         DbSet<TreasureKey> TreasureKeys { get; set; }
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-
         DbSet<Comment> Comments { get; set; }
+
+        DbSet<ApplicationRole> ApplicationRoles { get; set; }
 
         DbSet<FriendRequest> FriendRequests { get; set; }
 
@@ -40,5 +41,7 @@
         DbSet<Ticket> Tickets { get; set; }
 
         DbSet<Feedback> Feedbacks { get; set; }
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

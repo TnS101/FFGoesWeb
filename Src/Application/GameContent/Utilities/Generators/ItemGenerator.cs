@@ -1,9 +1,9 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using global::Domain.Entities.Game;
-    using global::Application.GameCQ.Unit.Queries;
     using System;
+    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
+    using global::Application.GameCQ.Unit.Queries;
+    using global::Domain.Entities.Game;
 
     public class ItemGenerator
     {
@@ -19,11 +19,11 @@
         public Item Generate(UnitFullViewModel unit)
         {
             var stats = new int[] { };
-            int fightingClassStatNumber = rng.Next(unit.Level, unit.Level + 5);
-            int statNumber = rng.Next(0, 10);
-            int slotNumber = rng.Next(0, 10);
-            string fightingClassType = "";
-            string weaponName = "";
+            int fightingClassStatNumber = this.rng.Next(unit.Level, unit.Level + 5);
+            int statNumber = this.rng.Next(0, 10);
+            int slotNumber = this.rng.Next(0, 10);
+            string fightingClassType = string.Empty;
+            string weaponName = string.Empty;
 
             for (int i = 0; i < 8; i++)
             {
@@ -41,7 +41,7 @@
                 }
             }
 
-            return validatorHandler.SlotCheck.Check(fightingClassStatNumber, slotNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, validatorHandler);
+            return this.validatorHandler.SlotCheck.Check(fightingClassStatNumber, slotNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, this.validatorHandler);
         }
     }
 }

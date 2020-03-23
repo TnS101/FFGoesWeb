@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Forum.Message.Commands.Create
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class SendMessageCommand : IRequest<string>
     {

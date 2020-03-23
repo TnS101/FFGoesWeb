@@ -1,14 +1,14 @@
-using Application.SeedInitialData;
-using FinalFantasyTryoutGoesWeb.Persistence;
-using MediatR;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System.Threading.Tasks;
-
-namespace WebUI
+﻿namespace WebUI
 {
+    using System.Threading.Tasks;
+    using Application.SeedInitialData;
+    using FinalFantasyTryoutGoesWeb.Persistence;
+    using MediatR;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+
     public class Program
     {
         public static async Task Main(string[] args)
@@ -19,11 +19,12 @@ namespace WebUI
             {
                 var services = scope.ServiceProvider;
 
-                //var context = services.GetRequiredService<FFDbContext>();
-                //context.Database.Migrate();
+                var context = services.GetRequiredService<FFDbContext>();
 
-                //var mediator = services.GetRequiredService<IMediator>();
-                //await mediator.Send(new DataSeederCommand());
+                // context.Database.EnsureCreated();
+
+                // var mediator = services.GetRequiredService<IMediator>();
+                // await mediator.Send(new DataSeederCommand());
             }
 
             host.Run();

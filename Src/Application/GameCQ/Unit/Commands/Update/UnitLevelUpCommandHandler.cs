@@ -1,10 +1,10 @@
 ﻿namespace Application.GameCQ.Unit.Commands.Update
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.LevelUtility;
     using MediatR;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class UnitLevelUpCommandHandler : IRequestHandler<UnitLevelUpCommand>
     {

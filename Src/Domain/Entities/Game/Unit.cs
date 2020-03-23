@@ -18,7 +18,7 @@
 
         public string UserId { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public AppUser User { get; set; }
 
         public string InventoryId { get; set; }
 

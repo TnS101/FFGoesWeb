@@ -1,17 +1,19 @@
 ﻿namespace Application.CQ.Admin.Item.Commands.Update
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using MediatR;
     using System.Threading;
     using System.Threading.Tasks;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using MediatR;
 
-    public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand,string>
+    public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand, string>
     {
         private readonly IFFDbContext context;
+
         public UpdateItemCommandHandler(IFFDbContext context)
         {
             this.context = context;
         }
+
         public async Task<string> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
         {
             var item = await this.context.Items.FindAsync(request.Id);
@@ -44,46 +46,57 @@
             {
                 newName = item.Name;
             }
+
             if (newLevel == 0)
             {
                 newLevel = item.Level;
             }
+
             if (string.IsNullOrWhiteSpace(newClassType))
             {
                 newClassType = item.ClassType;
             }
+
             if (newStamina == 0)
             {
                 newStamina = item.Stamina;
             }
+
             if (newStrength == 0)
             {
                 newStrength = item.Strength;
             }
+
             if (newAgility == 0)
             {
                 newAgility = item.Agility;
             }
+
             if (newIntellect == 0)
             {
                 newIntellect = item.Intellect;
             }
+
             if (newSpirit == 0)
             {
                 newSpirit = item.Spirit;
             }
+
             if (newAttackPower == 0)
             {
                 newAttackPower = item.AttackPower;
             }
+
             if (newArmorValue == 0)
             {
                 newArmorValue = item.ArmorValue;
             }
+
             if (newRessistanceValue == 0)
             {
                 newRessistanceValue = item.ArmorValue;
             }
+
             if (string.IsNullOrWhiteSpace(newSlot))
             {
                 newSlot = item.Slot;
@@ -117,6 +130,7 @@
                 newArmorValue = 0;
                 newRessistanceValue = 0;
             }
+
             if (newSlot == "Trinket")
             {
                 newArmorValue = 0;

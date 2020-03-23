@@ -19,6 +19,7 @@
                     {
                         armorPenalty += 0.50;
                     }
+
                     target.CurrentArmorValue -= armorPenalty * target.CurrentArmorValue;
                 }
                 else

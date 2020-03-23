@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class GetAllTopicsQuery : IRequest<TopicListViewModel>
     {
