@@ -2,11 +2,13 @@
 {
     public class GConst
     {
-        //Areas
+        //Areas and Roles
         public const string AdminRole = "Administrator";
         public const string UserRole = "User";
         public const string AdminArea = "Administrator";
         public const string UserArea = "Identity";
+        public const string ModeratorRole = "Mod";
+        public const string ModeratorArea = "Moderator";
 
         public const string RegistrationSuccessful = "Almost there, {0}! Hopping to the login page.";
 
@@ -17,6 +19,8 @@
         public const string CreateTopicErrorRedirect = @"\Create";
         public const string CreateMessageCommandRedirect = "/Profile/Friends";
         public const string MessageCommandRedirect = "/Profile/Wall";
+        public const string HomeRedirect = "/";
+        public const string FeedbackRedirect = "/Admin/";
 
         //Errors
         public const string NullCommentError = "User {0} left a blank comment.";
@@ -31,5 +35,10 @@
 
         //Routes
         public const string HomeRoute = "/Home";
+
+        //Feedback
+        public const string SendFeedback = "Thank you, {0} for your feedback! If your feedback is marked as useful, you will recieve a reward!" +
+                                            "You can track your feedbacks in your Profile Panel.";
+        public const string AcceptedFeedback = "Brilliant idea, {0}! You have been rewarded {1} Support Stars!";
     }
 }

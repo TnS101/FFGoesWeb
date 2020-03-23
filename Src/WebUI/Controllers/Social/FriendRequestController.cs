@@ -22,13 +22,13 @@
             return Redirect(await this.Mediator.Send(new SendFriendRequestCommand { Sender = this.User, RecieverId = recieverId }));
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> Delete([FromQuery]string requestId) 
         {
             return Redirect(await this.Mediator.Send(new DeleteFriendRequestCommand { RequestId = requestId }));
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult> Accept([FromQuery]string requestId) 
         {
             return Redirect(await this.Mediator.Send(new AcceptFriendRequestCommand { Reciever = this.User, RequestId = requestId }));

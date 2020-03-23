@@ -1,6 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application
 {
     using AutoMapper;
+    using global::Domain.Entities.Common;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
     using System.Reflection;

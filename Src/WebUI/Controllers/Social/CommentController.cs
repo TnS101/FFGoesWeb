@@ -15,13 +15,13 @@
             return Redirect(await this.Mediator.Send(new CreateCommentCommand { TopicId = topicId, Content = content, User = this.User }));
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> Delete([FromQuery]string commentId, [FromQuery]string topicId) 
         {
             return Redirect(await this.Mediator.Send(new DeleteCommentCommand { CommentId = commentId, TopicId = topicId }));
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult> Edit([FromQuery]string commentId, [FromQuery]string topicId, [FromForm]string content) 
         {
             return Redirect(await this.Mediator.Send(new EditCommentCommand { Content = content, CommentId = commentId, TopicId = topicId }));

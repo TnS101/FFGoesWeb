@@ -268,8 +268,9 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Iden
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_GuestNavBar.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\Admin\DashBoard.cshtml.g.cs
-C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminNavBar.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\Admin\MonsterCatalog.cshtml.g.cs
-C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\Content\Moderation.cshtml.g.cs
-C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\Content\GameContent.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\GameContent\Items.cshtml.g.cs
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\Admin\GameContent.cshtml.g.cs
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\GameContent\Treasures.cshtml.g.cs
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\Shared\_AdminNavBar.cshtml.g.cs
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Moderator\Views\Mod\Index.cshtml.g.cs

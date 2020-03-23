@@ -29,7 +29,7 @@
             return View();
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Action([FromQuery]string command, [FromBody]string spellName)
         {
             var playerFullVm = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });

@@ -1,6 +1,7 @@
 ﻿namespace WebUI.Areas.Administrator.Controllers
 {
     using Application.CQ.Admin.Users.Queries;
+    using Application.CQ.Common.Commands;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Monster.Queries;
     using Common;
@@ -41,6 +42,24 @@
         public async Task<ActionResult> ClassCatalog()
         {
             return View(await this.Mediator.Send(new GetFightingClassImagesQuery { }));
+        }
+
+        [HttpGet]
+        public ActionResult GameContent() 
+        {
+            return View();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Logout() 
+        {
+            return Redirect(await this.Mediator.Send(new CustomLogoutCommand { }));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Feedback() 
+        {
+            return View(await this.Mediator.Send());
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿namespace Domain.Entities.Common
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Domain.Entities.Game;
     using System;
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Identity;
     using System.ComponentModel.DataAnnotations.Schema;
     using Domain.Entities.Common.Social;
+    using Domain.Entities.Moderation;
 
     public class ApplicationUser : IdentityUser
     {
@@ -18,6 +19,8 @@
             this.UserTopics = new HashSet<UserTopics>();
             this.Id = Guid.NewGuid().ToString();
             this.Comments = new HashSet<Comment>();
+            this.Notifications = new HashSet<Notification>();
+            this.Feedbacks = new HashSet<Feedback>();
         }
 
         public override string Id { get; set; }
@@ -35,9 +38,11 @@
 
         public string Role { get; set; }
 
-        public DateTime? LastLogin { get; set; }
-
         public bool IsLoggedIn { get; set; }
+
+        public int Stars { get; set; }
+
+        public DateTime? LastLogin { get; set; }
 
         public ICollection<Unit> Units { get; set; }
 
@@ -48,6 +53,10 @@
         public ICollection<UserTopics> UserTopics { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+
+        public ICollection<Notification> Notifications { get; set; }
+
+        public ICollection<Feedback> Feedbacks { get; set; }
 
         public virtual ICollection<ApplicationUser> Friends { get; set; }
     }

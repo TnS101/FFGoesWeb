@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
+﻿namespace Domain.Entities.Game
 {
     using FinalFantasyTryoutGoesWeb.Domain.Contracts;
     using System;
@@ -38,5 +38,7 @@
         public double RessistanceValue { get; set; }
 
         public string Slot { get; set; }
+
+        public int SellingPrice { get; set; }
     }
 }

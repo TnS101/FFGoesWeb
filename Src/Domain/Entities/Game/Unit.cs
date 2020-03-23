@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
+﻿namespace Domain.Entities.Game
 {
     using global::Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Domain.Contracts;
@@ -23,6 +23,10 @@
         public string InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
+
+        public string ProfessionId { get; set; }
+
+        public Profession Profession { get; set; }
 
         public string Name { get; set; }
 

@@ -60,7 +60,7 @@
             return View();
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult> UpdateItem([FromForm]string name, [FromForm]int level
             , [FromForm]string classType, [FromForm]int stamina, [FromForm]int strength, [FromForm]int agility
             , [FromForm]int intellect, [FromForm]int spirit, [FromForm] double attackPower
@@ -83,7 +83,7 @@
             }));
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> DeleteItem([FromBody]string id)
         {
             return Redirect(await this.Mediator.Send(new DeleteItemCommand { ItemId = id }));
@@ -107,7 +107,7 @@
             return Redirect(await this.Mediator.Send(new CreateTreasureCommand { Rarity = rarity, Reward = reward, ImageURL = imageURL }));
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> DeleteTreasure([FromForm]string id)
         {
             return Redirect(await this.Mediator.Send(new DeleteTreasureCommand { Id = id }));
@@ -131,7 +131,7 @@
             return Redirect(await this.Mediator.Send(new CreateTreasureKeyCommand { Rarity = rarity, ImageURL = imageURL }));
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> DeleteTreasureKey([FromForm]string id)
         {
             return Redirect(await this.Mediator.Send(new DeleteTreasureKeyCommand { KeyId = id }));

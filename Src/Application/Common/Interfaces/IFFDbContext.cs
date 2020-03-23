@@ -7,6 +7,7 @@
     using global::Domain.Entities.Game;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Common.Social;
+    using global::Domain.Entities.Moderation;
 
     public interface IFFDbContext
     {
@@ -35,5 +36,9 @@
         DbSet<Message> Messages { get; set; }
 
         DbSet<Topic> Topics { get; set; }
+
+        DbSet<Ticket> Tickets { get; set; }
+
+        DbSet<Feedback> Feedbacks { get; set; }
     }
 }

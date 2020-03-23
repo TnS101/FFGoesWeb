@@ -1,5 +1,6 @@
 ﻿namespace Domain.Entities.Common.Social
 {
+    using Domain.Entities.Moderation;
     using System;
     using System.Collections.Generic;
 
@@ -10,6 +11,7 @@
             this.Id = Guid.NewGuid().ToString();
             this.Comments = new HashSet<Comment>();
             this.UserTopics = new HashSet<UserTopics>();
+            this.Tickets = new HashSet<Ticket>();
         }
 
         public string Id { get; set; }
@@ -26,11 +28,15 @@
 
         public int Likes { get; set; }
 
+        public bool IsReportedByUser { get; set; }
+
         public DateTime CreateOn { get; set; }
 
         public DateTime? EditedOn { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+
+        public ICollection<Ticket> Tickets { get; set; }
 
         public ICollection<UserTopics> UserTopics { get; set; }
     }

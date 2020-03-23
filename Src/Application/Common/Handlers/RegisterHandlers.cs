@@ -49,6 +49,7 @@
     using Application.CQ.Forum.Message.Commands.Delete;
     using Application.CQ.Forum.Message.Commands.Update;
     using Application.CQ.Admin.Spell.Queries;
+    using Application.CQ.Common.Commands;
 
     public class RegisterHandlers
     {
@@ -63,6 +64,8 @@
             this.AdminQueries(services);
             this.UserCommands(services);
             this.UserQueries(services);
+            this.ModeratorCommands(services);
+            this.ModeratorQueries(services);
         }
 
         private void AdminCommands(IServiceCollection services) 
@@ -74,6 +77,7 @@
             services.AddScoped<IRequestHandler<DeleteTreasureCommand, string>, DeleteTreasureCommandHandler>();
             services.AddScoped<IRequestHandler<CreateTreasureKeyCommand, string>, CreateTreasureKeyCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteTreasureKeyCommand, string>, DeleteTreasureKeyCommandHandler>();
+            services.AddScoped<IRequestHandler<CustomLogoutCommand, string>, CustomLogoutCommandHandler>();
         }
 
         private void AdminQueries(IServiceCollection services)
@@ -131,6 +135,16 @@
             services.AddScoped<IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>, GetCurrentTopicQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalFriendRequestsQuery, FriendRequestListViewModel>, GetPersonalFriendRequestsQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalMessagesQuery, MessageListViewModel>, GetPersonalMessagesQueryHandler>();
+        }
+
+        private void ModeratorCommands(IServiceCollection services) 
+        {
+
+        }
+
+        private void ModeratorQueries(IServiceCollection services) 
+        {
+            
         }
     }
 }

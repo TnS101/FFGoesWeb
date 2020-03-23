@@ -34,7 +34,7 @@
             return Redirect(await this.Mediator.Send(new CreateUnitCommand { ClassType = fightingClass, Race = race, Name = name, User = this.User }));
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> Delete([FromQuery]string unitId)
         {
             return Redirect(await this.Mediator.Send(new DeleteUnitCommand { UnitId = unitId }));
@@ -46,13 +46,13 @@
             return View(await this.Mediator.Send(new GetFullUnitQuery { User = this.User }));
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Equip([FromQuery]string itemId, [FromQuery]string command)
         {
             return Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = itemId, Command = command, User = this.User }));
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> UnEquip([FromQuery] string itemId, [FromQuery]string command)
         {
             return Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = itemId, Command = command, User = this.User }));

@@ -21,7 +21,7 @@
             return View(await this.Mediator.Send(new CreateTopicCommand { Title = title, Category = category, Content = content , User = this.User  }));
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> Delete([FromQuery]string topicId) 
         {
             return Redirect(await this.Mediator.Send(new DeleteTopicCommand {  TopicId = topicId}));
@@ -33,7 +33,7 @@
             return View();
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult> Edit([FromQuery]string topicId, [FromForm]string title, [FromForm]string category
             ,[FromForm]string content)
         {

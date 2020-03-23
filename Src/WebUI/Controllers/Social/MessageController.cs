@@ -22,13 +22,13 @@
             return Redirect(await this.Mediator.Send(new SendMessageCommand { Sender = this.User, RecieverName = recieverName, Content = content }));
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> Delete([FromQuery]string messageId) 
         {
             return Redirect(await this.Mediator.Send(new DeleteMessageCommand { MessageId = messageId }));
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult> Edit([FromQuery]string messageId, [FromBody]string content) 
         {
             return Redirect(await this.Mediator.Send(new EditMessageCommand { MessageId = messageId, Content = content }));

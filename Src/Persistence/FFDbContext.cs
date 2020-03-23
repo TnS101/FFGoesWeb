@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using global::Domain.Models;
     using global::Domain.Entities.Common.Social;
+    using global::Domain.Entities.Moderation;
 
     public class FFDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>, IFFDbContext
     {
@@ -42,6 +43,8 @@
         public DbSet<Topic> Topics { get; set; }
 
         public DbSet<UserTopics> UsersTopics { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
