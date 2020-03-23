@@ -1,4 +1,5 @@
-﻿using Domain.Entities.Common;
+﻿using Common;
+using Domain.Entities.Common;
 using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -33,6 +34,8 @@ namespace Application.CQ.Admin.Moderation.Feedback.Commands.Update
             this.context.Users.Update(user);
 
             await this.context.SaveChangesAsync(cancellationToken);
+
+            return string.Format(GConst.AcceptedFeedback,user.UserName,request.Stars);
         }
     }
 }

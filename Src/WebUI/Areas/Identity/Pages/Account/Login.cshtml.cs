@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,21 +10,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Domain.Entities.Common;
-using System.Net;
-using System;
-using Common;
 
-namespace WebUI.Areas.Identity.Pages.Account
+namespace WebUI.Areas.Identity
 {
     [AllowAnonymous]
-    [Area(GConst.UserArea)]
     public class LoginModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, 
+        public LoginModel(SignInManager<ApplicationUser> signInManager,
             ILogger<LoginModel> logger,
             UserManager<ApplicationUser> userManager)
         {
@@ -71,6 +68,7 @@ namespace WebUI.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             ReturnUrl = returnUrl;
+
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -85,17 +83,6 @@ namespace WebUI.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-
-                    var user = await _userManager.GetUserAsync(this.User);
-
-                    user.IsLoggedIn = true;
-
-                    var cookie = new Cookie("userLogin", DateTime.UtcNow.ToString())
-                    {
-                        Expires = DateTime.UtcNow.AddDays(1)
-                    };
-
-                    Response.Cookies.Append(cookie.Name,cookie.Value);
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

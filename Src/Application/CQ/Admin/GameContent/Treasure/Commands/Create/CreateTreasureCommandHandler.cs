@@ -14,7 +14,7 @@
         }
         public async Task<string> Handle(CreateTreasureCommand request, CancellationToken cancellationToken)
         {
-            this.context.Treasures.Add(new FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Treasure 
+            this.context.Treasures.Add(new Domain.Entities.Game.Treasure 
             {
                 Rarity = request.Rarity,
                 Reward = request.Reward,

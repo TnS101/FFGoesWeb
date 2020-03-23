@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Domain.Entities.Game
+﻿namespace Domain.Entities.Game
 {
     using System;
 

@@ -24,7 +24,7 @@
         {
             return View(this.User);
         }
-
+        
         [HttpGet]
         public IActionResult About()
         {
@@ -59,7 +59,7 @@
         [HttpGet]
         public async Task<ActionResult> Feedback() 
         {
-            return View(await this.Mediator.Send());
+            return View();
         }
     }
 }

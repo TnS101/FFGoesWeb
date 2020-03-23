@@ -1,6 +1,6 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Equipment
+﻿namespace Application.GameContent.Equipment
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Domain.Entities.Game;
 
     public class Armor : Item
     {

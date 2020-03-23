@@ -2,7 +2,7 @@
 {
     using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Domain.Entities.Game;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using System.Linq;

@@ -15,7 +15,7 @@
 
         public async Task<string> Handle(CreateItemCommand request, CancellationToken cancellationToken)
         {
-            this.context.Items.Add(new FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Item 
+            this.context.Items.Add(new Domain.Entities.Game.Item 
             {
                 Name = request.Name,
                 Level = request.Level,

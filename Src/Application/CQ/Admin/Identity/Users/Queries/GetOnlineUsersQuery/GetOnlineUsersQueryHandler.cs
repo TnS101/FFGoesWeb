@@ -2,8 +2,10 @@
 {
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Globalization;
@@ -39,11 +41,11 @@
 
             if (request.Role is null)
             {
-                users = new UserListViewModel { Users = await this.context.Users.ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync() };
+                //users = new UserListViewModel { Users = await this.context.Users.ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync() };
             }
             else
             {
-                users = new UserListViewModel { Users = await this.context.Users.Where(u => u.Role == request.Role).ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync() };
+                //users = new UserListViewModel { Users = await this.context.Users.Where(u => (request.Role)).ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync() };
             }
 
             foreach (var user in users.Users)

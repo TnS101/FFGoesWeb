@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.Equipment
 {
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Domain.Entities.Game;
 
     public class ArmorCheck
     {

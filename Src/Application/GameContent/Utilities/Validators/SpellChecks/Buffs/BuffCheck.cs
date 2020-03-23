@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.Buffs
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Domain.Entities.Game;
 
     public class BuffCheck
     {

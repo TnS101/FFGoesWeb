@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Domain.Entities.Game;
     using global::Application.GameCQ.Unit.Queries;
     using System;
 

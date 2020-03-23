@@ -2,7 +2,7 @@
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellCheck;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Domain.Entities.Game;
 
     public class EnemySpellRepos
     {

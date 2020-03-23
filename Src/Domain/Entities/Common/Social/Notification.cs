@@ -22,5 +22,7 @@
         public ApplicationUser User { get; set; }
 
         public string AttackerName { get; set; }
+
+        public string FriendName { get; set; }
     }
 }

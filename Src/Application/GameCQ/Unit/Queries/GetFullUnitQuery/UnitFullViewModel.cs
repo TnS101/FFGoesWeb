@@ -1,4 +1,4 @@
-﻿using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+﻿using global::Domain.Entities.Game;
 
 namespace Application.GameCQ.Unit.Queries
 {

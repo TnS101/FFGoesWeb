@@ -21,6 +21,10 @@
             this.Comments = new HashSet<Comment>();
             this.Notifications = new HashSet<Notification>();
             this.Feedbacks = new HashSet<Feedback>();
+
+            this.Roles = new HashSet<IdentityUserRole<string>>();
+            this.Claims = new HashSet<IdentityUserClaim<string>>();
+            this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
 
         public override string Id { get; set; }
@@ -35,8 +39,6 @@
         public string Password { get; set; }
 
         public override string Email { get; set; }
-
-        public string Role { get; set; }
 
         public bool IsLoggedIn { get; set; }
 
@@ -59,5 +61,11 @@
         public ICollection<Feedback> Feedbacks { get; set; }
 
         public virtual ICollection<ApplicationUser> Friends { get; set; }
+
+        public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
+
+        public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
+
+        public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
     }
 }

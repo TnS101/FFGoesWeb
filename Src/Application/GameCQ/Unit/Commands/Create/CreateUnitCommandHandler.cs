@@ -28,7 +28,7 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var unit = new FinalFantasyTryoutGoesWeb.Domain.Entities.Game.Unit 
+            var unit = new Domain.Entities.Game.Unit 
             {
                 Name = request.Name,
                 ClassType = request.ClassType,

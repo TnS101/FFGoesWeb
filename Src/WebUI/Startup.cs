@@ -4,11 +4,13 @@ namespace WebUI
     using Application.Common.Mappings;
     using AutoMapper;
     using Domain.Entities.Common;
+    using Domain.Models;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Persistence;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
@@ -34,15 +36,28 @@ namespace WebUI
             var registerHandlers = new RegisterHandlers(services);
 
             //Identity
+            //services.AddAuthentication();
+            //services.AddIdentityCore<ApplicationUser>().AddEntityFrameworkStores<FFDbContext>();
+
+            //Database
             services.AddDbContext<FFDbContext>()
                 .AddTransient<IFFDbContext,FFDbContext>();
-            services.AddAuthentication();
-            services.AddIdentityCore<ApplicationUser>().AddEntityFrameworkStores<FFDbContext>();
+
+            services.AddDefaultIdentity<ApplicationUser>()
+               .AddRoles<ApplicationRole>().AddEntityFrameworkStores<FFDbContext>();
 
             //Other services
             services.AddSignalR();
             services.AddControllers();
             services.AddMvc();
+
+            //Cookies
+            services.Configure<CookiePolicyOptions>(
+                options =>
+                {
+                    options.CheckConsentNeeded = context => true;
+                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -67,6 +82,8 @@ namespace WebUI
                 endpoints.MapControllerRoute(
                     name: "default",
                      pattern:"{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
         }
     }

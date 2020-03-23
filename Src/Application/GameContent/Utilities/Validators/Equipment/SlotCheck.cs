@@ -2,7 +2,8 @@
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Equipment;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using global::Application.GameContent.Equipment;
+    using global::Domain.Entities.Game;
 
     public class SlotCheck
     {

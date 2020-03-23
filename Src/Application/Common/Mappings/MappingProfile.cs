@@ -1,8 +1,5 @@
 ﻿namespace Application.Common.Mappings
 {
-    using System;
-    using System.Linq;
-    using System.Reflection;
     using Application.CQ.Admin.Users.Queries;
     using Application.CQ.Forum.Message.Queries;
     using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
@@ -35,21 +32,6 @@
             CreateMap<Unit, UnitFullViewModel>();
             CreateMap<Topic,TopicFullViewModel>();
             CreateMap<Message,MessageFullViewModel>();
-        }
-
-        private void ApplyMappingsFromAssembly(Assembly assembly)
-        {
-            var types = assembly.GetExportedTypes()
-                .Where(t => t.GetInterfaces().Any(i =>
-                    i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>)))
-                .ToList();
-
-            foreach (var type in types)
-            {
-                var instance = Activator.CreateInstance(type);
-                var methodInfo = type.GetMethod("Mapping");
-                methodInfo?.Invoke(instance, new object[] { this });
-            }
         }
     }
 }
