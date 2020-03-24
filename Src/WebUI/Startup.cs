@@ -52,11 +52,11 @@
 
             // Cookies
             services.Configure<CookiePolicyOptions>(
-                options =>
-                {
-                    options.CheckConsentNeeded = context => true;
-                    options.MinimumSameSitePolicy = SameSiteMode.None;
-                });
+               options =>
+               {
+                   options.CheckConsentNeeded = context => true;
+                   options.MinimumSameSitePolicy = SameSiteMode.None;
+               });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

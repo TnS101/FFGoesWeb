@@ -46,6 +46,12 @@
                 Content = string.Format(GConst.SampleEntityDescription, "feedback"),
             });
 
+            this.context.Feedbacks.Add(new Feedback
+            {
+                Content = string.Format(GConst.SampleEntityDescription, "feedback"),
+                IsAccepted = true,
+            });
+
             await this.context.SaveChangesAsync(cancellationToken);
         }
 

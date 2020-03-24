@@ -22,11 +22,4 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CQ\Admin\Moderation\Feedback\Queries\GetAllFeedbacksQuery\" />
-    <Folder Include="CQ\Admin\Moderation\Feedback\Queries\GetCurrentFeedbackQuery\" />
-    <Folder Include="CQ\Moderator\Queries\GetAllTicketsQuery\" />
-    <Folder Include="CQ\Moderator\Queries\GetCurrentTicketQuery\" />
-  </ItemGroup>
-
 </Project>

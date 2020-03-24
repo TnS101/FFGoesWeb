@@ -44,22 +44,10 @@
             return this.View(await this.Mediator.Send(new GetFightingClassImagesQuery { }));
         }
 
-        [HttpGet]
-        public ActionResult GameContent()
-        {
-            return this.View();
-        }
-
         [HttpPut]
         public async Task<ActionResult> Logout()
         {
             return this.Redirect(await this.Mediator.Send(new CustomLogoutCommand { }));
-        }
-
-        [HttpGet]
-        public async Task<ActionResult> Feedback()
-        {
-            return this.View();
         }
     }
 }

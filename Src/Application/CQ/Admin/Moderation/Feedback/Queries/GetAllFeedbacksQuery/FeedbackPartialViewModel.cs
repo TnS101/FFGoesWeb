@@ -4,9 +4,9 @@
 
     public class FeedbackPartialViewModel
     {
-        public string SenderName { get; set; }
+        public string Id { get; set; }
 
-        public int Rate { get; set; }
+        public string SenderName { get; set; }
 
         public DateTime SentOn { get; set; }
     }

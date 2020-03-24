@@ -1,0 +1,25 @@
+﻿namespace WebUI.Areas.Administrator.Controllers
+{
+    using System.Threading.Tasks;
+    using Application.CQ.Admin.Moderation.Feedback.Commands.Delete.FeedbackTaskDoneCommand;
+    using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
+    using Common;
+    using Microsoft.AspNetCore.Mvc;
+    using WebUI.Controllers.Common;
+
+    [Area(GConst.AdminArea)]
+    public class ToDoController : BaseController
+    {
+        [HttpGet]
+        public async Task<ActionResult> List()
+        {
+            return this.View(await this.Mediator.Send(new ToDoList { }));
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> FinishTask([FromQuery]string feedbackId)
+        {
+            return this.Redirect(await this.Mediator.Send(new FeedbackTaskDoneCommand { FeedbackId = feedbackId }));
+        }
+    }
+}

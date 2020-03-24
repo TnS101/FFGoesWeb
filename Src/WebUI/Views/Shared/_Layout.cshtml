@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 <html>
 <head>
     <link href="~/css/site.css" rel="stylesheet" />
@@ -26,7 +27,6 @@
     </style>
 </head>
 <body>
-    <partial name="_CookieConsentPartial" />
     @RenderBody()
 
     <environment include="Development">

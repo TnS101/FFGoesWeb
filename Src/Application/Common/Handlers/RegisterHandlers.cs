@@ -4,6 +4,12 @@
     using Application.CQ.Admin.Item.Commands.Delete;
     using Application.CQ.Admin.Item.Commands.Update;
     using Application.CQ.Admin.Item.Queries;
+    using Application.CQ.Admin.Moderation.Feedback.Commands.Delete;
+    using Application.CQ.Admin.Moderation.Feedback.Commands.Delete.FeedbackTaskDoneCommand;
+    using Application.CQ.Admin.Moderation.Feedback.Commands.Update;
+    using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
+    using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
+    using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
     using Application.CQ.Admin.Spell.Queries;
     using Application.CQ.Admin.Treasure.Commands.Create;
     using Application.CQ.Admin.Treasure.Commands.Delete;
@@ -82,9 +88,12 @@
             services.AddScoped<IRequestHandler<CreateTreasureKeyCommand, string>, CreateTreasureKeyCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteTreasureKeyCommand, string>, DeleteTreasureKeyCommandHandler>();
             services.AddScoped<IRequestHandler<CustomLogoutCommand, string>, CustomLogoutCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteFeedbackCommand, string>, DeleteFeedbackCommandHandler>();
+            services.AddScoped<IRequestHandler<AcceptFeedbackCommand, string>, AcceptFeedbackCommandHandler>();
+            services.AddScoped<IRequestHandler<FeedbackTaskDoneCommand, string>, FeedbackTaskDoneCommandHandler>();
         }
 
-        private void AdminQueries(IServiceCollection services) // Add Feedbacks
+        private void AdminQueries(IServiceCollection services)
         {
             services.AddScoped<IRequestHandler<DataSeederCommand, Unit>, DataSeederCommandHandler>();
             services.AddScoped<IRequestHandler<GetOnlineUsersQuery, UserListViewModel>, GetOnlineUsersQueryHandler>();
@@ -92,6 +101,9 @@
             services.AddScoped<IRequestHandler<GetAllTreasuresQuery, TreasureListViewModel>, GetAllTreasuresQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllTreasureKeysQuery, TreasureKeyListViewModel>, GetAllTreasureKeysQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllSpellsQuery, SpellListViewModel>, GetAllSpellsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllFeedbacksQuery, FeedbacksListViewModel>, GetAllFeedbacksQueryHandler>();
+            services.AddScoped<IRequestHandler<GetCurrentFeedbackQuery, FeedbackFullViewModel>, GetCurrentFeedbackQueryHandler>();
+            services.AddScoped<IRequestHandler<ToDoList, FeedbackTaskListViewModel>, ToDoListHandler>();
         }
 
         private void UserCommands(IServiceCollection services)

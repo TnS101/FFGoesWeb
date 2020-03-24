@@ -1,0 +1,27 @@
+﻿@model Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.FeedbacksListViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Feedbacks";
+    Layout = "_Layout";
+}
+<head>
+    <partial name="_AdminNavBar">
+</head>
+<body>
+    <h2>Feedbacks</h2>
+    @{
+        if (Model.Feedbacks.Count() == 1)
+        {
+            <h3>No feedbacks to display</h3>
+        }
+        else
+        {
+            foreach (var feedback in Model.Feedbacks)
+            {
+                <h4>@feedback.SenderName</h4>
+                <h4>@feedback.SentOn.Date</h4> <a asp-controller="Feedback" asp-action="CurrentFeedback" asp-route-id ="@feedback.Id"><i class="fas fa-external-link-square-alt"></i></a>
+            }
+        }
+    }
+</body>
+

@@ -20,6 +20,12 @@
     public class GameContentController : BaseController
     {
         [HttpGet]
+        public ActionResult Content()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
         public async Task<ActionResult> Items()
         {
             return this.View(await this.Mediator.Send(new GetAllItemsQuery { }));

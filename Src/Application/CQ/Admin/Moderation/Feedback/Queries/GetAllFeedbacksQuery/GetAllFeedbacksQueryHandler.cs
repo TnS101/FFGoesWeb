@@ -20,12 +20,13 @@
         {
             return new FeedbacksListViewModel
             {
-                Feedbacks = await this.context.Feedbacks.Select(f => new FeedbackPartialViewModel
+                Feedbacks = await this.context.Feedbacks.Where(f => !f.IsAccepted).Select(f => new FeedbackPartialViewModel
                 {
                     SenderName = f.User.UserName,
                     SentOn = f.SentOn,
-                    Rate = f.Rate,
-                }).ToListAsync(),
+                })
+                .OrderBy(t => t.SentOn)
+                .ToListAsync(),
             };
         }
     }

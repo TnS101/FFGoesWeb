@@ -21,8 +21,6 @@
         {
             var feedback = await this.context.Feedbacks.FindAsync(request.FeedbackId);
 
-            var sender = await this.context.AppUsers.FindAsync(feedback.UserId);
-
             return this.mapper.Map<FeedbackFullViewModel>(feedback);
         }
     }

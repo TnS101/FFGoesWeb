@@ -29,6 +29,7 @@
         public const string OpenCommentTicketRedirect = "/Forum/CurrentTopic{0}";
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
         public const string TicketCommandRedirect = "/Moderator/Tickets";
+        public const string ToDoListRedirect = "/Admin/ToDoList";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";
