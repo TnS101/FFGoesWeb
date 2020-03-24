@@ -29,6 +29,10 @@
     using Application.CQ.Forum.Topic.Commands.Update;
     using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
     using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
+    using Application.CQ.Moderator.Commands.Delete;
+    using Application.CQ.Moderator.Commands.Update;
+    using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
+    using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.GameCQ.Battle.Commands.Update;
     using Application.GameCQ.Enemy.Commands.Create;
     using Application.GameCQ.Equipment.Commands.Update;
@@ -80,7 +84,7 @@
             services.AddScoped<IRequestHandler<CustomLogoutCommand, string>, CustomLogoutCommandHandler>();
         }
 
-        private void AdminQueries(IServiceCollection services)
+        private void AdminQueries(IServiceCollection services) // Add Feedbacks
         {
             services.AddScoped<IRequestHandler<DataSeederCommand, Unit>, DataSeederCommandHandler>();
             services.AddScoped<IRequestHandler<GetOnlineUsersQuery, UserListViewModel>, GetOnlineUsersQueryHandler>();
@@ -139,10 +143,14 @@
 
         private void ModeratorCommands(IServiceCollection services)
         {
+            services.AddScoped<IRequestHandler<DeleteTicketCommand, string>, DeleteTicketCommandHandler>();
+            services.AddScoped<IRequestHandler<CloseTicketCommand, string>, CloseTicketCommandHandler>();
         }
 
         private void ModeratorQueries(IServiceCollection services)
         {
+            services.AddScoped<IRequestHandler<GetAllTicketsQuery, TicketsListViewModel>, GetAllTicketsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetCurrentTicketQuery, TicketFullViewModel>, GetCurrentTicketQueryHandler>();
         }
     }
 }

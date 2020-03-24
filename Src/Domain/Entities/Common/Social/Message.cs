@@ -22,6 +22,8 @@
 
         public string SenderName { get; set; }
 
+        public bool IsRemoved { get; set; }
+
         public DateTime SentOn { get; set; }
 
         public DateTime? EditedOn { get; set; }

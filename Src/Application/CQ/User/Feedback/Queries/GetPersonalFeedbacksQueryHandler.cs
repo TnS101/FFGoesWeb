@@ -30,7 +30,7 @@
 
             return new FeedbackListViewModel
             {
-                Feedbacks = await this.context.Feedbacks.Where(f => f.UserId == user.Id).ProjectTo<FeedbackPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                Feedbacks = await this.context.Feedbacks.Where(f => f.UserId == user.Id).ProjectTo<FeedbackFulllViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

@@ -34,6 +34,7 @@
                 SentOn = DateTime.UtcNow,
                 MessageId = request.MessageId,
                 ReportedUserName = message.User.UserName,
+                Type = GConst.MessageType,
             };
 
             this.context.Tickets.Add(ticket);

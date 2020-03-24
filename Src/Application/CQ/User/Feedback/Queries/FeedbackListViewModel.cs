@@ -4,6 +4,6 @@
 
     public class FeedbackListViewModel
     {
-        public IEnumerable<FeedbackPartialViewModel> Feedbacks { get; set; }
+        public IEnumerable<FeedbackFulllViewModel> Feedbacks { get; set; }
     }
 }

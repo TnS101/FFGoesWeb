@@ -28,6 +28,8 @@
 
         public int Likes { get; set; }
 
+        public bool IsRemoved { get; set; }
+
         public DateTime CreateOn { get; set; }
 
         public DateTime? EditedOn { get; set; }

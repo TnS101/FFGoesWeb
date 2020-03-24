@@ -42,6 +42,10 @@
 
         DbSet<Feedback> Feedbacks { get; set; }
 
+        DbSet<Notification> Notifications { get; set; }
+
+        DbSet<Profession> Professions { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

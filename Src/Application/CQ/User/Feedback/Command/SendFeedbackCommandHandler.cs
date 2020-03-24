@@ -31,6 +31,7 @@
                 SentOn = DateTime.UtcNow,
                 Stars = 0,
                 UserId = sender.Id,
+                Rate = request.Rate,
             });
 
             await this.context.SaveChangesAsync(cancellationToken);

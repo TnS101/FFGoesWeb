@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Common.Commands;
+    using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Common;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
@@ -24,7 +25,7 @@
         [HttpGet]
         public async Task<ActionResult> Tickets()
         {
-            return this.View();
+            return this.View(await this.Mediator.Send(new GetAllTicketsQuery { }));
         }
     }
 }

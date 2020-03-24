@@ -1,8 +1,12 @@
 ﻿namespace Application.Common.Mappings
 {
+    using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
+    using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
     using Application.CQ.Admin.Users.Queries;
     using Application.CQ.Forum.Message.Queries;
     using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
+    using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
+    using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.User.Feedback.Queries;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Item.Queries;
@@ -22,7 +26,6 @@
     {
         public MappingProfile()
         {
-            // ApplyMappingsFromAssembly(Assembly.GetExecutingAssembly());
             this.CreateMap<Image, ImageFullViewModel>();
             this.CreateMap<Image, MonsterImageViewModel>();
             this.CreateMap<Item, ItemFullViewModel>();
@@ -34,6 +37,10 @@
             this.CreateMap<Unit, UnitFullViewModel>();
             this.CreateMap<Topic, TopicFullViewModel>();
             this.CreateMap<Message, MessageFullViewModel>();
+            this.CreateMap<Feedback, FeedbackFulllViewModel>();
+            this.CreateMap<Ticket, TicketPartialViewModel>();
+            this.CreateMap<Ticket, TicketFullViewModel>();
+            this.CreateMap<Feedback, FeedbackFullViewModel>();
             this.CreateMap<Feedback, FeedbackPartialViewModel>();
         }
     }

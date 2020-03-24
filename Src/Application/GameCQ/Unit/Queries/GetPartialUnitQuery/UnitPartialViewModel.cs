@@ -2,6 +2,8 @@
 {
     public class UnitPartialViewModel
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string ClassType { get; set; }
@@ -19,5 +21,7 @@
         public double ArmorValue { get; set; }
 
         public double RessistanceValue { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

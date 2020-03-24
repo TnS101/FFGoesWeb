@@ -24,40 +24,50 @@
         {
             if (request.User is null)
             {
-                return new TopicListViewModel
-                {
-                    Topics = await this.context.Topics.Select(t => new TopicPartialViewModel
-                    {
-                        Title = t.Title,
-                        Category = t.Category,
-                        UserName = t.User.UserName,
-                        CreateOn = t.CreateOn,
-                        Likes = t.Likes,
-                        Comments = t.Comments.Count(),
-                    })
-                .OrderByDescending(t => t.CreateOn)
-                .ToListAsync(),
-                };
+                return await this.PublicTopics();
             }
             else
             {
-                var user = await this.userManager.GetUserAsync(request.User);
+                return await this.PersonalTopics(request);
+            }
+        }
 
-                return new TopicListViewModel
+        private async Task<TopicListViewModel> PersonalTopics(GetAllTopicsQuery request)
+        {
+            var user = await this.userManager.GetUserAsync(request.User);
+
+            return new TopicListViewModel
+            {
+                Topics = await this.context.Topics.Where(t => t.UserId == user.Id).Select(t => new TopicPartialViewModel
                 {
-                    Topics = await this.context.Topics.Where(t => t.UserId == user.Id).Select(t => new TopicPartialViewModel
-                    {
-                        Title = t.Title,
-                        Category = t.Category,
-                        UserName = t.User.UserName,
-                        CreateOn = t.CreateOn,
-                        Likes = t.Likes,
-                        Comments = t.Comments.Count(),
-                    })
+                    Title = t.Title,
+                    Category = t.Category,
+                    UserName = t.User.UserName,
+                    CreateOn = t.CreateOn,
+                    Likes = t.Likes,
+                    Comments = t.Comments.Count(),
+                })
+            .OrderByDescending(t => t.CreateOn)
+            .ToListAsync(),
+            };
+        }
+
+        private async Task<TopicListViewModel> PublicTopics()
+        {
+            return new TopicListViewModel
+            {
+                Topics = await this.context.Topics.Select(t => new TopicPartialViewModel
+                {
+                    Title = t.Title,
+                    Category = t.Category,
+                    UserName = t.User.UserName,
+                    CreateOn = t.CreateOn,
+                    Likes = t.Likes,
+                    Comments = t.Comments.Count(),
+                })
                 .OrderByDescending(t => t.CreateOn)
                 .ToListAsync(),
-                };
-            }
+            };
         }
     }
 }

@@ -34,6 +34,7 @@
                 SentOn = DateTime.UtcNow,
                 CommentId = request.CommentId,
                 ReportedUserName = comment.User.UserName,
+                Type = GConst.CommentType,
             };
 
             this.context.Tickets.Add(ticket);

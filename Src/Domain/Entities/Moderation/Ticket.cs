@@ -31,6 +31,10 @@
 
         public string Category { get; set; }
 
+        public string Type { get; set; }
+
+        public string Content { get; set; }
+
         public string ReportedUserName { get; set; }
 
         public string AdditionalInformation { get; set; }

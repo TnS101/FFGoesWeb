@@ -34,6 +34,7 @@
                 SentOn = DateTime.UtcNow,
                 TopicId = request.TopicId,
                 ReportedUserName = topic.User.UserName,
+                Type = GConst.TopicType,
             };
 
             this.context.Tickets.Add(ticket);

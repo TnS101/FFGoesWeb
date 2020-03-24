@@ -51,6 +51,10 @@
 
         public DbSet<Feedback> Feedbacks { get; set; }
 
+        public DbSet<Notification> Notifications { get; set; }
+
+        public DbSet<Profession> Professions { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

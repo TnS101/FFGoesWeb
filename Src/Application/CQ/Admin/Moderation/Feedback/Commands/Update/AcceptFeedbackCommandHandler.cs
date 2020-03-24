@@ -1,17 +1,10 @@
 ﻿namespace Application.CQ.Admin.Moderation.Feedback.Commands.Update
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-    using Application.CQ.Common;
-    using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
 
     public class AcceptFeedbackCommandHandler : IRequestHandler<AcceptFeedbackCommand, string>
     {
@@ -24,9 +17,9 @@
 
         public async Task<string> Handle(AcceptFeedbackCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.context.AppUsers.FindAsync(request.SenderId);
+            var feedBack = await this.context.Feedbacks.FindAsync(request.FeedbackId);
 
-            var feedBack = user.Feedbacks.FirstOrDefault(f => f.Id == request.FeedbackId);
+            var user = await this.context.AppUsers.FindAsync(feedBack.UserId);
 
             user.Stars += request.Stars;
 
