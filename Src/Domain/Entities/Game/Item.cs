@@ -39,6 +39,8 @@
 
         public string Slot { get; set; }
 
-        public int SellingPrice { get; set; }
+        public int SellPrice { get; set; }
+
+        public string ImageURL { get; set; }
     }
 }

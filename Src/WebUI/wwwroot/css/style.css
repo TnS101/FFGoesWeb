@@ -5744,7 +5744,7 @@ html {
 
 body {
     margin: 0;
-    padding-top:100px
+    padding-top: 100px
 }
 
 article,
@@ -6071,7 +6071,7 @@ html {
 
 *,
 *:before,
-*:after { 
+*:after {
     box-sizing: inherit;
 }
 
@@ -8191,7 +8191,7 @@ span.mini-account .form-row-last {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
     hyphens: none;
-    text-align:center;
+    text-align: center;
     padding-bottom: 100px;
     color: #ff7800;
 }
@@ -8416,7 +8416,7 @@ span.mini-account .form-row-last {
     }
 
     #primary-menu ul {
-        position:sticky;
+        position: sticky;
         opacity: 0;
         background-color: #2d364c;
         border-top: 2px solid #ff7800;
@@ -10467,9 +10467,9 @@ p.has-background {
     color: #ff7800;
 }
 
-    .wp-block-button__link:active, .wp-block-button__link:focus, .wp-block-button__link:hover, .wp-block-button__link:visited {
-        color: inherit
-    }
+.wp-block-button__link:active, .wp-block-button__link:focus, .wp-block-button__link:hover, .wp-block-button__link:visited {
+    color: inherit
+}
 
 .is-style-squared .wp-block-button__link {
     border-radius: 0
@@ -11394,7 +11394,7 @@ p.has-text-color a {
     }
 
     .wp-block-pullquote .has-text-color a {
-        color:#ffd400
+        color: #ffd400
     }
 
     .wp-block-pullquote:not(.is-style-solid-color) {
@@ -12996,25 +12996,25 @@ i {
 }
 
 .sidebar {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 130px; /* Set the width of the sidebar */
+    height: inherit; /* Full-height: remove this if you want "auto" height */
+    width: 1180px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: rgba(50, 59, 100, 0.91);
+    /*background-image: linear-gradient(90deg, #000322 50%, rgba(118, 118, 118, 0.00) 80%);*/
     overflow-x: hidden; /* Disable horizontal scroll */
     margin-top: 0px;
 }
 
 .sidebar2 {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 130px; /* Set the width of the sidebar */
+    height: inherit; /* Full-height: remove this if you want "auto" height */
+    width: 1180px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     right: 0;
-    background-color: rgba(50, 59, 100, 0.91);
+    /*background-image: linear-gradient(90deg, rgba(118, 118, 118, 0.00) 0%, #000322 50%);*/
     overflow-x: hidden; /* Disable horizontal scroll */
     margin-top: 0px;
 }
@@ -13070,3 +13070,14 @@ hr {
     padding-bottom: 30px;
     padding-top: 10px;
 }
+
+.main-gradient {
+    background-image: linear-gradient(180deg, #2d364c 20%, rgba(255, 255, 255, 0.00) 120%);
+    /*background-image: radial-gradient(at center center, rgba(255, 255, 255, 0.99) -150%, #2d364c 80%);*/
+}
+
+.main-font-color {
+    color: #d0d3d7;
+}
+
+

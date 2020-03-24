@@ -1,7 +1,17 @@
-﻿@model Application.GameCQ.Item.Queries.ItemListViewModel
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Application.GameCQ.Item.Queries.ItemListViewModel
 @{
     ViewData["Title"] = "Items";
 }
-
-<h2 class="has-text-align-center">Items</h2>
-
+<head>
+    <partial name="_AdminNavBar">
+</head>
+<body>
+    <h1 class="has-text-align-center main-font-color">Items</h1>
+    @foreach (var item in Model.Items)
+    {
+        <img src="@item.ImageURL" alt="Item Image">
+        <h3>@item.Name</h3>
+        <h3>@item.Slot</h3>
+    }
+</body>

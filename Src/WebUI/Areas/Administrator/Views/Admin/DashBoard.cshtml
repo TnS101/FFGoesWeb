@@ -3,13 +3,13 @@
 @{
     ViewData["Title"] = "DashBoard";
 }
-<h1 class="has-text-align-center">DashBoard</h1>
+<h1 class="has-text-align-center main-font-color">DashBoard</h1>
 <partial name="_AdminNavBar">   
 <body>
     @{
         if (Model.Users.Count() == 1)
         {
-            <h3 class="has-text-align-center">No users to display</h3>
+            <h2 class="has-text-align-center main-font-color">No users to display</h2>
         }
      }
 </body>

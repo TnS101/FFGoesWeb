@@ -10,7 +10,7 @@
     [Area(GConst.ModeratorArea)]
     public class ModController : BaseController
     {
-        [HttpGet("/Moderator")]
+        [HttpGet("/Moderator/Index")]
         public ActionResult Index()
         {
             return this.View();

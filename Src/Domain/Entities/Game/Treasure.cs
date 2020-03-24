@@ -11,7 +11,5 @@ namespace Domain.Entities.Game
         public string Rarity { get; set; }
 
         public int Reward { get; set; }
-
-        public string ImageURL { get; set; }
     }
 }
