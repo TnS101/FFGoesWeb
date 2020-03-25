@@ -1,6 +1,7 @@
 ﻿namespace WebUI.Controllers.Common
 {
     using System.Threading.Tasks;
+    using Application.CQ.User.Queries.Panel;
     using Application.GameCQ.Unit.Queries;
     using Domain.Entities.Common;
     using global::Common;
@@ -17,9 +18,6 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Logout()
         {
-            await this.HttpContext.SignOutAsync("Cookies");
-            await this.HttpContext.SignOutAsync("oidc");
-
             await this.SignInManager.SignOutAsync();
             return this.Redirect("/");
         }
@@ -28,6 +26,12 @@
         public async Task<ActionResult> AllUnits()
         {
             return this.View(await this.Mediator.Send(new GetUnitListQuery { User = this.User }));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Panel()
+        {
+            return this.View(await this.Mediator.Send(new UserPanelQuery { User = this.User }));
         }
     }
 }

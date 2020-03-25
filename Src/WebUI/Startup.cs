@@ -41,6 +41,7 @@
                 .AddTransient<IFFDbContext, FFDbContext>();
 
             services.AddIdentity<AppUser, ApplicationRole>()
+                .AddSignInManager()
                 .AddDefaultTokenProviders()
                 .AddDefaultUI()
                .AddEntityFrameworkStores<FFDbContext>();

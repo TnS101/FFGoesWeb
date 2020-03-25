@@ -283,3 +283,4 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\_Vie
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Facebook.dll
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Profile\Panel.cshtml.g.cs

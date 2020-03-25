@@ -39,6 +39,7 @@
     using Application.CQ.Moderator.Commands.Update;
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
+    using Application.CQ.User.Queries.Panel;
     using Application.GameCQ.Battle.Commands.Update;
     using Application.GameCQ.Enemy.Commands.Create;
     using Application.GameCQ.Equipment.Commands.Update;
@@ -151,6 +152,7 @@
             services.AddScoped<IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>, GetCurrentTopicQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalFriendRequestsQuery, FriendRequestListViewModel>, GetPersonalFriendRequestsQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalMessagesQuery, MessageListViewModel>, GetPersonalMessagesQueryHandler>();
+            services.AddScoped<IRequestHandler<UserPanelQuery, UserPanelViewModel>, UserPanelQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

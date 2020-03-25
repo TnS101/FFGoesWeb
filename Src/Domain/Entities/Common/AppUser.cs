@@ -33,13 +33,19 @@
         [ForeignKey("FriendId")]
         public virtual AppUser Friend { get; set; }
 
-        public bool IsLoggedIn { get; set; }
+        public string Status { get; set; }
 
         public int Stars { get; set; }
 
         public int Warnings { get; set; }
 
+        public int MasteryPoints { get; set; }
+
+        public int ForumPoints { get; set; }
+
         public bool IsDeleted { get; set; }
+
+        public bool IsLoggedIn { get; set; }
 
         public DateTime? LastLogin { get; set; }
 

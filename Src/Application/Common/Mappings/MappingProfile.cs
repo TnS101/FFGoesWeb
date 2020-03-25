@@ -8,7 +8,7 @@
     using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
-    using Application.CQ.User.Feedback.Queries;
+    using Application.CQ.User.Feedbacks.Queries;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Item.Queries;
     using Application.GameCQ.Monster.Queries;
