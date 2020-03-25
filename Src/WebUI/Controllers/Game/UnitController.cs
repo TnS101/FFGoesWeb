@@ -16,12 +16,6 @@
     public class UnitController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> All() // TODO: Move to ProfileController
-        {
-            return this.View(await this.Mediator.Send(new GetUnitListQuery { User = this.User }));
-        }
-
-        [HttpGet]
         public async Task<ActionResult> Create()
         {
             return this.View(await this.Mediator.Send(new GetFightingClassImagesQuery()));

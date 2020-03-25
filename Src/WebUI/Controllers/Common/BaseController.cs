@@ -10,9 +10,12 @@
     {
         private IMediator mediator;
         private UserManager<AppUser> userManager;
+        private SignInManager<AppUser> signInManager;
 
         protected IMediator Mediator => this.mediator ??= this.HttpContext.RequestServices.GetService<IMediator>();
 
         protected UserManager<AppUser> UserManager => this.userManager ??= this.HttpContext.RequestServices.GetService<UserManager<AppUser>>();
+
+        protected SignInManager<AppUser> SignInManager => this.signInManager ??= this.HttpContext.RequestServices.GetService<SignInManager<AppUser>>();
     }
 }

@@ -36,9 +36,6 @@
             services.AddMediatR(typeof(Startup));
             var registerHandlers = new RegisterHandlers(services);
 
-            // Identity
-            // services.AddIdentityCore<AppUser>();
-
             // Database
             services.AddDbContext<FFDbContext>()
                 .AddTransient<IFFDbContext, FFDbContext>();
@@ -47,6 +44,10 @@
                 .AddDefaultTokenProviders()
                 .AddDefaultUI()
                .AddEntityFrameworkStores<FFDbContext>();
+
+            // Authentication
+            // services.AddAuthentication()
+            //    .AddFacebook();
 
             // Other services
             services.AddSignalR();

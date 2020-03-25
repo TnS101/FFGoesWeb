@@ -13082,8 +13082,18 @@ hr {
 
 .main-nav-bar {
     background-color: rgb(45, 54, 76);
-    width: 1986px;
-    height: 100px;
-    margin-left: -150px;
+    width: 1985px;
+    height: 60px;
+    margin-left: -25px;
     padding-top: 28px
+}
+
+.item-padding
+{
+    padding-top: 30px;
+}
+
+.nav-font-size
+{
+    font-size:30px;
 }

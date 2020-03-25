@@ -7,7 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    [Authorize(Roles = "Administrator,Player")]
+    [Authorize(Roles = "Administrator,User", Policy = "Unit available")]
     public class WorldController : BaseController
     {
         private readonly Random rng;
