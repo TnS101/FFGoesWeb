@@ -13080,4 +13080,10 @@ hr {
     color: #d0d3d7;
 }
 
-
+.main-nav-bar {
+    background-color: rgb(45, 54, 76);
+    width: 1986px;
+    height: 100px;
+    margin-left: -150px;
+    padding-top: 28px
+}

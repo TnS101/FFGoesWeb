@@ -11,6 +11,7 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
@@ -36,14 +37,16 @@
             var registerHandlers = new RegisterHandlers(services);
 
             // Identity
-            services.AddIdentityCore<AppUser>();
+            // services.AddIdentityCore<AppUser>();
 
             // Database
             services.AddDbContext<FFDbContext>()
                 .AddTransient<IFFDbContext, FFDbContext>();
 
-            services.AddDefaultIdentity<AppUser>()
-               .AddRoles<ApplicationRole>().AddEntityFrameworkStores<FFDbContext>();
+            services.AddIdentity<AppUser, ApplicationRole>()
+                .AddDefaultTokenProviders()
+                .AddDefaultUI()
+               .AddEntityFrameworkStores<FFDbContext>();
 
             // Other services
             services.AddSignalR();

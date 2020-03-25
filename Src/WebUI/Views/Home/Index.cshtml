@@ -36,20 +36,29 @@
         <header class="entry-header with-image full">
             <div class="title-meta-wrapper">
                 <h1 class="site-title main-font-color"><a asp-controller="Home" asp-action="Index">Final Fantasy Tryout</a></h1>
+                @if (!Model.Identity.IsAuthenticated)
+                {
+                    <div class="container">
+                        <h1 class="main-font-color has-text-align-center">Join other players in order to take what’s yours!</h1>
+                    </div>
+                }
+                else
+                {
+            <div class="container">
+                <h1 class="main-font-color has-text-align-center">Final Fantasy Tryout is an individual project by Hristo Todorov.</h1>
+                <h2 class="main-font-color has-text-align-center">The game is very simple : Attack, Endure, Win!</h2>
+            </div>
+                }
 
-                <div class="container">
-                    <h1 class="main-font-color has-text-align-center">Join other players in order to take what’s yours!</h1>
-                </div>
             </div>
         </header>
-        @if (!Model.Identity.IsAuthenticated)
-        {
-            <div id="content" class="site-content clearfix">
-                <div class="container clearfix">
+        <div id="content" class="site-content clearfix">
+            <div class="container clearfix">
 
-                    <div id="primary" class="content-area full-width">
-                        <main id="main" class="site-main" role="main">
-
+                <div id="primary" class="content-area full-width">
+                    <main id="main" class="site-main" role="main">
+                        @if (!Model.Identity.IsAuthenticated)
+                        {
                             <article id="post-6" class="post-6 page type-page status-publish hentry">
 
                                 <div class="entry-content single-entry-content">
@@ -58,12 +67,13 @@
                                 </div>
 
                             </article>
-                        </main>
-                    </div>
-                </div>
+                        }
 
+                    </main>
+                </div>
             </div>
-        }
+
+        </div>
         <partial name="_CookieConsentPartial" />
         <br />
         <partial name="_Footer">
