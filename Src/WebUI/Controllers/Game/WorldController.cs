@@ -7,7 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    [Authorize(Roles = "Administrator,User", Policy = "Unit available")]
+    [Authorize(Roles = "Administrator,User")]
     public class WorldController : BaseController
     {
         private readonly Random rng;
@@ -18,9 +18,10 @@
         }
 
         [HttpGet]
-        public IActionResult Home()
+        public async Task<ActionResult> Home()
         {
-            return this.View();
+            var user = await this.UserManager.GetUserAsync(this.User);
+            return this.View(user.Units);
         }
 
         [HttpGet]

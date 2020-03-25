@@ -1,12 +1,21 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@model List<Domain.Entities.Game.Unit>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Home";
     Layout = "_Layout";
 }
 <partial name="_NavBar">
-<partial name="_SideBars">
-    <body class="has-text-align-center">
-        <h2>Welcome to the World of FF! Lets start walking around!</h2>
-    </body>
-<a asp-controller="World" asp-action="Explore">World!</a>
-<partial name="_Footer">
+    <partial name="_SideBars">
+        <body class="has-text-align-center">
+            @if (Model.Count == 0)
+            {
+                <h2 class="main-font-color">Please, create a character first before starting your adventure!</h2>
+                <a asp-controller="Unit" asp-action="Create">Create</a>
+            }
+            else
+            {
+                <h2 class="main-font-color">Welcome to the World of FF! Lets start walking around!</h2>
+                <a asp-controller="World" asp-action="Explore"><i class="fas fa-shoe-prints"></i></a>
+            }
+        </body>
+        <partial name="_Footer">
