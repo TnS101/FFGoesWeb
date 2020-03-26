@@ -44,6 +44,9 @@ namespace Persistence.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int>("ForumPoints")
+                        .HasColumnType("int");
+
                     b.Property<string>("FriendId")
                         .HasColumnType("nvarchar(450)");
 
@@ -61,6 +64,9 @@ namespace Persistence.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("MasteryPoints")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -88,12 +94,18 @@ namespace Persistence.Migrations
                     b.Property<int>("Stars")
                         .HasColumnType("int");
 
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
+
+                    b.Property<int>("Warnings")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -124,7 +136,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("EditedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsReportedByUser")
+                    b.Property<bool>("IsRemoved")
                         .HasColumnType("bit");
 
                     b.Property<int>("Likes")
@@ -182,7 +194,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("EditedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsReportedByUser")
+                    b.Property<bool>("IsRemoved")
                         .HasColumnType("bit");
 
                     b.Property<string>("SenderName")
@@ -209,13 +221,10 @@ namespace Persistence.Migrations
                     b.Property<string>("ApplicationSection")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AttackerName")
+                    b.Property<string>("CauserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FriendName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
@@ -228,7 +237,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notification");
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Domain.Entities.Common.Social.Topic", b =>
@@ -248,7 +257,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("EditedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsReportedByUser")
+                    b.Property<bool>("IsRemoved")
                         .HasColumnType("bit");
 
                     b.Property<int>("Likes")
@@ -388,6 +397,9 @@ namespace Persistence.Migrations
                     b.Property<string>("EquipmentId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Intellect")
                         .HasColumnType("int");
 
@@ -403,7 +415,7 @@ namespace Persistence.Migrations
                     b.Property<double>("RessistanceValue")
                         .HasColumnType("float");
 
-                    b.Property<int>("SellingPrice")
+                    b.Property<int>("SellPrice")
                         .HasColumnType("int");
 
                     b.Property<string>("Slot")
@@ -442,7 +454,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Profession");
+                    b.ToTable("Professions");
                 });
 
             modelBuilder.Entity("Domain.Entities.Game.Unit", b =>
@@ -519,6 +531,9 @@ namespace Persistence.Migrations
                     b.Property<int>("ManaRegen")
                         .HasColumnType("int");
 
+                    b.Property<int>("Mastery")
+                        .HasColumnType("int");
+
                     b.Property<double>("MaxHP")
                         .HasColumnType("float");
 
@@ -573,6 +588,9 @@ namespace Persistence.Migrations
                     b.Property<bool>("IsAccepted")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("SentOn")
                         .HasColumnType("datetime2");
 
@@ -600,20 +618,29 @@ namespace Persistence.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CommendId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CommentId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MessageId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("ReportedUserName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("SentOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Stars")
+                        .HasColumnType("int");
+
                     b.Property<string>("TopicId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -804,9 +831,6 @@ namespace Persistence.Migrations
                 {
                     b.HasBaseType("Domain.Entities.Game.Item");
 
-                    b.Property<string>("ImageURL")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Rarity")
                         .HasColumnType("nvarchar(max)");
 
@@ -819,10 +843,6 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.Game.TreasureKey", b =>
                 {
                     b.HasBaseType("Domain.Entities.Game.Item");
-
-                    b.Property<string>("ImageURL")
-                        .HasColumnName("TreasureKey_ImageURL")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rarity")
                         .HasColumnName("TreasureKey_Rarity")

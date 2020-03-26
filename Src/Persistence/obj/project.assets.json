@@ -2036,6 +2036,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "Common": "1.0.0",
           "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": "3.1.0",
           "Microsoft.AspNetCore.Authorization": "3.1.2",
           "Microsoft.Extensions.Identity.Core": "3.1.2"

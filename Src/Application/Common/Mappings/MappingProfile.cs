@@ -16,6 +16,7 @@
     using Application.GameCQ.Treasure.Queries;
     using Application.GameCQ.TreasureKey.Queries;
     using Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Unit.Queries.GetUnitListQuery;
     using AutoMapper;
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;

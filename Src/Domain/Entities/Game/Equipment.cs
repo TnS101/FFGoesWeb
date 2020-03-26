@@ -5,10 +5,11 @@
 
     public class Equipment
     {
-        public Equipment()
+        public Equipment(string unitId)
         {
             Items = new HashSet<Item>();
             this.Id = Guid.NewGuid().ToString();
+            this.UnitId = unitId;
         }
 
         public string Id { get; set; }

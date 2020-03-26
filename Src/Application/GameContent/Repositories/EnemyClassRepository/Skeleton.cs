@@ -15,26 +15,16 @@
 
         public Skeleton()
         {
+            this.ClassType = ClassTypeValue;
+            this.MaxHP = MaxHPValue;
+            this.HealthRegen = HealthRegenValue;
+            this.MaxMana = MaxManaValue;
+            this.ManaRegen = ManaRegenValue;
+            this.AttackPower = AttackPowerValue;
+            this.MagicPower = MagicPowerValue;
+            this.ArmorValue = ArmorValueValue;
+            this.RessistanceValue = RessistanceValueValue;
+            this.CritChance = CritChanceValue;
         }
-
-        public override string ClassType => ClassTypeValue;
-
-        public override double MaxHP => MaxHPValue;
-
-        public override int HealthRegen => HealthRegenValue;
-
-        public override double MaxMana => MaxManaValue;
-
-        public override int ManaRegen => ManaRegenValue;
-
-        public override double AttackPower => AttackPowerValue;
-
-        public override double ArmorValue => ArmorValueValue;
-
-        public override double RessistanceValue => RessistanceValueValue;
-
-        public override double MagicPower => MagicPowerValue;
-
-        public override double CritChance => CritChanceValue;
     }
 }

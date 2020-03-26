@@ -40,15 +40,23 @@
             services.AddDbContext<FFDbContext>()
                 .AddTransient<IFFDbContext, FFDbContext>();
 
-            services.AddIdentity<AppUser, ApplicationRole>()
-                .AddSignInManager()
-                .AddDefaultTokenProviders()
-                .AddDefaultUI()
-               .AddEntityFrameworkStores<FFDbContext>();
+            // Identity
+            services.AddDefaultIdentity<AppUser>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 8;
+            })
+            .AddSignInManager()
+            .AddDefaultTokenProviders()
+            .AddDefaultUI()
+            .AddRoles<ApplicationRole>()
+            .AddEntityFrameworkStores<FFDbContext>();
 
-            // Authentication
-            // services.AddAuthentication()
-            //    .AddFacebook();
+            // Authorization
+            services.AddAuthorization();
 
             // Other services
             services.AddSignalR();

@@ -182,7 +182,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Common\\Common.csproj": {
+                "projectPath": "C:\\Users\\PC\\Desktop\\FFGoesWeb\\Src\\Common\\Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

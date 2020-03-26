@@ -8,6 +8,7 @@
     using Domain.Entities.Common.Social;
     using Domain.Entities.Moderation;
     using Domain.Common;
+    using global::Common;
 
     public class AppUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -22,6 +23,7 @@
             this.Comments = new HashSet<Comment>();
             this.Notifications = new HashSet<Notification>();
             this.Feedbacks = new HashSet<Feedback>();
+            this.Status = GConst.UnSetStatus;
 
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();

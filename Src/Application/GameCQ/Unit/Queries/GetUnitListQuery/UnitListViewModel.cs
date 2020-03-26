@@ -1,9 +1,9 @@
-﻿namespace Application.GameCQ.Unit.Queries
+﻿namespace Application.GameCQ.Unit.Queries.GetUnitListQuery
 {
     using System.Collections.Generic;
 
     public class UnitListViewModel
     {
-        public IEnumerable<UnitPartialViewModel> Units { get; set; }
+        public IEnumerable<UnitMinViewModel> Units { get; set; }
     }
 }

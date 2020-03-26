@@ -6,30 +6,19 @@
     Layout = "_Layout";
 }
 <head>
-    <style type="text/css" id="custom-background-css">
-        body.custom-background {
-            background-image: url("https://i.ibb.co/KyxCNsq/lampa.jpg");
-            background-position: center;
-            background-size: cover;
-            background-repeat: round;
-            background-attachment: scroll;
-        }
-    </style>
-    @if (Model.Identity.IsAuthenticated)
+    @if (Model.IsInRole(GConst.AdminRole))
     {
-        if (Model.IsInRole(GConst.AdminRole))
-        {
-            await Html.RenderPartialAsync("_AdminNavBar");
-        }
-        if (Model.IsInRole(GConst.UserRole))
-        {
-            await Html.RenderPartialAsync("_NavBar");
-        }
+        await Html.RenderPartialAsync("_AdminNavBar");
+    }
+    @if (Model.IsInRole(GConst.UserRole))
+    {
+        await Html.RenderPartialAsync("_NavBar");
     }
     else
     {
         await Html.RenderPartialAsync("_GuestNavBar");
     }
+
 </head>
 <body class="main-gradient">
     <div id="page">
@@ -44,10 +33,10 @@
                 }
                 else
                 {
-            <div class="container">
-                <h1 class="main-font-color has-text-align-center">Final Fantasy Tryout is an individual project by Hristo Todorov.</h1>
-                <h2 class="main-font-color has-text-align-center">The game is very simple : Attack, Endure, Win!</h2>
-            </div>
+                    <div class="container">
+                        <h1 class="main-font-color has-text-align-center">Final Fantasy Tryout is an individual project by Hristo Todorov.</h1>
+                        <h2 class="main-font-color has-text-align-center">The game is very simple : Attack, Endure, Win!</h2>
+                    </div>
                 }
 
             </div>

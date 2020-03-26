@@ -87,8 +87,6 @@ namespace WebUI.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    await this._userManager.AddToRoleAsync(user, GConst.UserRole);
-
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
@@ -106,6 +104,7 @@ namespace WebUI.Areas.Identity.Pages.Account
                     }
                     else
                     {
+                        await this._userManager.AddToRoleAsync(user, GConst.UserRole);
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }

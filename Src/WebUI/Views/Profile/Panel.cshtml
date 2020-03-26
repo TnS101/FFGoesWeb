@@ -8,28 +8,29 @@
     <partial name="_NavBar">
 </head>
 <body>
-    <div class="item-padding has-text-align-center main-font-color">
-        <h2>@Model.UserName</h2>
+    <div class="item-padding has-text-align-center">
+        <h2 class="main-font-color">@Model.UserName</h2>
+        <hr />
         <div class="item-padding">
-            <h2>Social</h2>
-            <h3 class="item-padding">Your status is @Model.Status</h3><a asp-controller="Profile" asp-action="Status"><i class="fas fa-pen-square"></i>Change</a>
-            <h3 class="item-padding">You have made @Model.Friends</h3><a asp-controller="Profile" asp-action="Friends"><i class="fas fa-user-friends"></i>Friends</a>
-            <h3 class="item-padding">You have created @Model.UserTopics</h3><a asp-controller="Profile" asp-action="Topics"><i class="fas fa-stream"></i>Topics</a>
+            <h2 class="main-font-color">Social</h2>
+            <h3 class="item-padding">Your status is <i class="@Model.Status"></i><a asp-controller="Profile" asp-action="Status" class="main-font-color">Change</a></h3>
+            <h3 class="item-padding">You have made @Model.Friends <a asp-controller="Profile" asp-action="Friends" class="main-font-color"><i class="fas fa-user-friends"></i>Friends</a></h3>
+            <h3 class="item-padding">You have created @Model.UserTopics <a asp-controller="Profile" asp-action="Topics" class="main-font-color"><i class="fas fa-stream"></i>Topics</a></h3>
             <hr />
         </div>
         <div class="item-padding">
-            <h2>Game</h2>
-            <h3 class="item-padding">You have trained @Model.Units Battle</h3><a asp-controller="Profile" asp-action="Units"><i class="fas fa-fist-raised"></i>Units</a>
-            <h3 class="item-padding">You have achieved @Model.MasteryPoints</h3><a asp-controller="Profile" asp-action="MasteryPoints"><i class="fas fa-meteor"></i>Mastery Points</a>
+            <h2 class="main-font-color">Game</h2>
+            <h3 class="item-padding">You have trained @Model.Units Battle <a asp-controller="Profile" asp-action="Units" class="main-font-color"><i class="fas fa-fist-raised"></i>Units</a></h3>
+
+            <h3 class="item-padding">You have achieved @Model.MasteryPoints <a asp-controller="Profile" asp-action="MasteryPoints" class="main-font-color"><i class="fas fa-meteor icon-color"></i>Mastery Points</a></h3>
             <hr />
         </div>
         <div class="item-padding">
-            <h2>Other</h2>
-            <h3 class="item-padding">You have earned @Model.ForumPoints</h3><a asp-controller="Profile" asp-action="ForumPoints"><i class="far fa-thumbs-up"></i>Forum Points</a>
-            <h3 class="item-padding">Your <a asp-controller="Profile" asp-action="Feedbacks">Feedback</a> has made the game @Model.Feedbacks better and you have recieved @Model.Stars Supporter Stars for your great ideas!</h3>
-            <h3 class="item-padding">The times you have went a little bit overboard : @Model.Warnings and you recieved a <a asp-controller="Profile" asp-action="Warnings">Warning</a></h3>
+            <h2 class="main-font-color">Other</h2>
+            <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up"></i>Forum Points</a></h3>
+            <h3 class="item-padding">Your <a asp-controller="Profile" asp-action="Feedbacks" class="secondary-font-color">Feedback</a> has made the game @Model.Feedbacks times better and you have recieved @Model.Stars Supporter Stars for your great ideas!</h3>
+            <h3 class="item-padding">The times you have went a little bit overboard : @Model.Warnings and recieved a <a asp-controller="Profile" asp-action="Warnings">Warning</a></h3>
         </div>
     </div>
-
 </body>
-
+<partial name="_Footer">

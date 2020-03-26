@@ -1,13 +1,15 @@
 ﻿namespace WebUI.Controllers.Game
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
+    using Application.GameCQ.Unit.Queries.GetUnitListQuery;
     using global::Application.GameCQ.Treasure.Commands.Update;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    [Authorize(Roles = "Administrator,User")]
+    //[Authorize(Roles = "User")]
     public class WorldController : BaseController
     {
         private readonly Random rng;
@@ -20,8 +22,7 @@
         [HttpGet]
         public async Task<ActionResult> Home()
         {
-            var user = await this.UserManager.GetUserAsync(this.User);
-            return this.View(user.Units);
+            return this.View(await this.Mediator.Send(new GetUnitListQuery { User = this.User }));
         }
 
         [HttpGet]

@@ -5,10 +5,11 @@
 
     public class Inventory
     {
-        public Inventory()
+        public Inventory(string unitId)
         {
             Items = new HashSet<Item>();
             this.Id = Guid.NewGuid().ToString();
+            this.UnitId = unitId;
         }
 
         public string Id { get; set; }

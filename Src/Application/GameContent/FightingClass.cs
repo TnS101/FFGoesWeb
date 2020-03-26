@@ -8,24 +8,24 @@
         {
         }
 
-        public virtual string ClassType { get; }
+        public string ClassType { get; protected set; }
 
-        public virtual double MaxHP { get; }
+        public double MaxHP { get; protected set; }
 
-        public virtual int HealthRegen { get; }
+        public int HealthRegen { get; protected set; }
 
-        public virtual double MaxMana { get; }
+        public double MaxMana { get; protected set; }
 
-        public virtual int ManaRegen { get; }
+        public int ManaRegen { get; protected set; }
 
-        public virtual double AttackPower { get; }
+        public double AttackPower { get; protected set; }
 
-        public virtual double ArmorValue { get; }
+        public double ArmorValue { get; protected set; }
 
-        public virtual double RessistanceValue { get; }
+        public double RessistanceValue { get; protected set; }
 
-        public virtual double MagicPower { get; }
+        public double MagicPower { get; protected set; }
 
-        public virtual double CritChance { get; }
+        public double CritChance { get; protected set; }
     }
 }

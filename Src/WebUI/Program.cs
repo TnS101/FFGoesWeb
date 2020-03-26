@@ -1,6 +1,5 @@
 ﻿namespace WebUI
 {
-    using System.Threading.Tasks;
     using Application.SeedInitialData;
     using Common;
     using Domain.Entities.Common;
@@ -9,9 +8,9 @@
     using MediatR;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using System.Threading.Tasks;
 
     public class Program
     {
@@ -25,26 +24,26 @@
 
                 var context = services.GetRequiredService<FFDbContext>();
 
-                var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
-                //
+                //var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+                
                 //var usermanager = services.GetRequiredService<UserManager<AppUser>>();
-                //
+                
                 //await roleManager.CreateAsync(new ApplicationRole(GConst.AdminRole));
-                //
+                
                 //await roleManager.CreateAsync(new ApplicationRole(GConst.UserRole));
-                //
+                
                 //await roleManager.CreateAsync(new ApplicationRole(GConst.ModeratorRole));
                 //var admin = new AppUser
                 //{
                 //    UserName = "admin",
                 //    Email = "admin@admin.com",
                 //};
-                //
+                
                 //await usermanager.CreateAsync(admin, "Admin@123456");
-
-                //context.Database.EnsureCreated();
-
+                
                 //await usermanager.AddToRoleAsync(admin, GConst.AdminRole);
+
+                //context.SaveChanges();
 
                 // var mediator = services.GetRequiredService<IMediator>();
                 // await mediator.Send(new DataSeederCommand());

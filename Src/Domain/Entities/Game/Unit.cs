@@ -9,6 +9,9 @@
         public Unit()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Level = 1;
+            this.XPCap = 100;
+            this.GoldAmount = 100;
         }
         public string Id { get; set; }
 
@@ -79,6 +82,8 @@
         public double CurrentCritChance { get; set; }
 
         public int GoldAmount { get; set; }
+
+        public int Mastery { get; set; }
 
         public string ImageURL { get; set; }
 

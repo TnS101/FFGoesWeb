@@ -1,0 +1,39 @@
+﻿@model Application.GameCQ.Unit.Queries.GetUnitListQuery.UnitListViewModel
+@{
+    ViewData["Title"] = "Units";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <partial name="_NavBar">
+</head>
+<body>
+    <div class="has-text-align-center item-padding">
+        <h1 class="main-font-color">Your Battle Units</h1>
+        <div class="item-padding">
+            @foreach (var unit in Model.Units)
+            {
+                if (!unit.IsSelected)
+                {
+                    <a asp-controller="Unit" asp-action="Select" asp-route-id="@unit.Id" class=" has-large-font-size"><i class="far fa-hand-point-down"></i></a>
+                }
+                else
+                {
+                    <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-large-font-size"></i></a>
+                }
+                <div class="main-font-color">
+                    <h2 class="main-font-color">@unit.Name</h2>
+                    <hr class="" />
+                    <h3><img src="@unit.IconURL" alt="" />@unit.ClassType</h3>
+                    <hr />
+                    <h3><i class="fas fa-certificate"></i>@unit.Level</h3>
+                    <hr />
+                    <h3><i class="fas fa-heartbeat"></i>@unit.CurrentHP / @unit.MaxHP</h3>
+                    <hr />
+                    <h3><i class="fas fa-bolt"></i>@unit.Energy / 10</h3>
+                </div>
+                <hr />
+            }
+        </div>
+    </div>
+</body>
+

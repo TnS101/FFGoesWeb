@@ -1,6 +1,7 @@
 ﻿namespace WebUI.Controllers.Game
 {
     using System.Threading.Tasks;
+    using Application.GameCQ.Unit.Commands.Update.SelectUnitCommand;
     using global::Application.GameCQ.Equipment.Commands.Update;
     using global::Application.GameCQ.Equipment.Queries;
     using global::Application.GameCQ.Image.Queries;
@@ -12,7 +13,7 @@
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    [Authorize(Roles = "Administrator,User")]
+    //[Authorize(Roles = "Administrator,User")]
     public class UnitController : BaseController
     {
         [HttpGet]
@@ -22,7 +23,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromQuery]string fightingClass, [FromForm]string race, [FromForm]string name)
+        public async Task<ActionResult> Create([FromForm]string fightingClass, [FromForm]string race, [FromForm]string name)
         {
             return this.Redirect(await this.Mediator.Send(new CreateUnitCommand { ClassType = fightingClass, Race = race, Name = name, User = this.User }));
         }
@@ -40,29 +41,35 @@
         }
 
         [HttpPut]
-        public async Task<IActionResult> Equip([FromQuery]string itemId, [FromQuery]string command)
+        public async Task<ActionResult> Equip([FromQuery]string itemId, [FromQuery]string command)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = itemId, Command = command, User = this.User }));
         }
 
         [HttpPut]
-        public async Task<IActionResult> UnEquip([FromQuery] string itemId, [FromQuery]string command)
+        public async Task<ActionResult> UnEquip([FromQuery] string itemId, [FromQuery]string command)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = itemId, Command = command, User = this.User }));
         }
 
         [HttpGet]
-        public async Task<IActionResult> Equipment([FromQuery]string unitId)
+        public async Task<ActionResult> Equipment([FromQuery]string unitId)
         {
             return this.View(await this.Mediator.Send(new GetEquipmentQuery { UnitId = unitId }));
         }
 
         [HttpGet]
-        public async Task<IActionResult> LevelUp()
+        public async Task<ActionResult> LevelUp()
         {
             await this.Mediator.Send(new UnitLevelUpCommand());
 
             return this.View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Select([FromQuery]string unitId)
+        {
+            return this.Redirect(await this.Mediator.Send(new SelectUnitCommand { UnitId = unitId }));
         }
     }
 }

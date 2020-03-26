@@ -57,7 +57,9 @@
     using Application.GameCQ.Unit.Commands.Create;
     using Application.GameCQ.Unit.Commands.Delete;
     using Application.GameCQ.Unit.Commands.Update;
+    using Application.GameCQ.Unit.Commands.Update.SelectUnitCommand;
     using Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Unit.Queries.GetUnitListQuery;
     using Application.SeedInitialData;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
@@ -132,6 +134,7 @@
             services.AddScoped<IRequestHandler<SendMessageCommand, string>, SendMessageCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteMessageCommand, string>, DeleteMessageCommandHandler>();
             services.AddScoped<IRequestHandler<EditMessageCommand, string>, EditMessageCommandHandler>();
+            services.AddScoped<IRequestHandler<SelectUnitCommand, string>, SelectUnitCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)

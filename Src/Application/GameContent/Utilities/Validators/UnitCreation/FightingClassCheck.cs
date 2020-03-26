@@ -2,11 +2,11 @@
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerClassRepository;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
-    using global::Application.GameCQ.Unit.Queries;
+    using global::Domain.Entities.Game;
 
     public class FightingClassCheck
     {
-        public UnitFullViewModel Check(UnitFullViewModel player, string fightingClass)
+        public Unit Check(Unit player, string fightingClass)
         {
             StatIncrement statIncrement = new StatIncrement();
 

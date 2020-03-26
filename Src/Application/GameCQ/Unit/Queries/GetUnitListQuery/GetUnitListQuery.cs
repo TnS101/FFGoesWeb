@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Unit.Queries
+﻿namespace Application.GameCQ.Unit.Queries.GetUnitListQuery
 {
     using System.Security.Claims;
     using MediatR;
