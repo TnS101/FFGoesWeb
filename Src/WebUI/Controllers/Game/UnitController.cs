@@ -69,7 +69,7 @@
         [HttpGet]
         public async Task<ActionResult> Select([FromQuery]string unitId)
         {
-            return this.Redirect(await this.Mediator.Send(new SelectUnitCommand { UnitId = unitId }));
+            return this.Redirect(await this.Mediator.Send(new SelectUnitCommand { UnitId = unitId, User = this.User }));
         }
     }
 }

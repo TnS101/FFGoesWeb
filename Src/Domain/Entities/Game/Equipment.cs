@@ -10,6 +10,7 @@
             Items = new HashSet<Item>();
             this.Id = Guid.NewGuid().ToString();
             this.UnitId = unitId;
+            this.Capacity = 50;
         }
 
         public string Id { get; set; }

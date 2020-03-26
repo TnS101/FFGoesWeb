@@ -1,34 +1,41 @@
 ﻿namespace Application.GameCQ.Unit.Commands.Update.SelectUnitCommand
 {
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
+    using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using global::Common;
     using MediatR;
+    using Microsoft.AspNetCore.Identity;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     public class SelectUnitCommandHandler : IRequestHandler<SelectUnitCommand, string>
     {
         private readonly IFFDbContext context;
+        private readonly UserManager<AppUser> userManager;
 
-        public SelectUnitCommandHandler(IFFDbContext context)
+        public SelectUnitCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
+            this.userManager = userManager;
         }
 
         public async Task<string> Handle(SelectUnitCommand request, CancellationToken cancellationToken)
         {
             var newUnit = await this.context.Units.FindAsync(request.UnitId);
 
-            var user = await this.context.AppUsers.FindAsync(newUnit.UserId);
+            var user = await this.userManager.GetUserAsync(request.User);
 
-            var oldUnit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            if (this.context.Units.Where(u => u.UserId == user.Id).Any(u => u.IsSelected))
+            {
+                var oldUnit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            oldUnit.IsSelected = false;
+                oldUnit.IsSelected = false;
+
+                this.context.Units.Update(oldUnit);
+            }
 
             newUnit.IsSelected = true;
-
-            this.context.Units.Update(oldUnit);
 
             this.context.Units.Update(newUnit);
 
