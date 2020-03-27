@@ -1,10 +1,11 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Persistence
 {
+    using Domain.Base;
+    using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Units;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Common.Social;
-    using global::Domain.Entities.Game;
     using global::Domain.Entities.Moderation;
     using global::Domain.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -23,13 +24,7 @@
 
         public DbSet<Equipment> Equipments { get; set; }
 
-        public DbSet<Item> Items { get; set; }
-
         public DbSet<Spell> Spells { get; set; }
-
-        public DbSet<Unit> Units { get; set; }
-
-        public DbSet<Image> Images { get; set; }
 
         public DbSet<Treasure> Treasures { get; set; }
 
@@ -58,6 +53,20 @@
         public DbSet<Status> Statuses { get; set; }
 
         public DbSet<UserStatus> UserStatuses { get; set; }
+
+        public DbSet<Weapon> Weapons { get; set; }
+
+        public DbSet<Armor> Armors { get; set; }
+
+        public DbSet<Trinket> Trinkets { get; set; }
+
+        public DbSet<Material> Materials { get; set; }
+
+        public DbSet<FightingClass> FightingClasses { get; set; }
+
+        public DbSet<Hero> Heroes { get; set; }
+
+        public DbSet<Monster> Monsters { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -101,6 +110,11 @@
             modelBuilder.Entity<UserStatus>().HasKey(k => new { k.UserId });
 
             modelBuilder.Entity<AppUser>().ToTable("Users");
+
+            modelBuilder.Entity<Comment>()
+            .HasMany(p => p.Replies)
+            .WithOne(t => t.Reply)
+            .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<AppUser>(appUser =>
             {

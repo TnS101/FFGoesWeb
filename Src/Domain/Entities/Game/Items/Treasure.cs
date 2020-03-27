@@ -1,15 +1,14 @@
-﻿using System;
-
-namespace Domain.Entities.Game
+﻿namespace Domain.Entities.Game.Items
 {
-    public class Treasure : Item
+    public class Treasure
     {
         public Treasure()
         {
-            this.Id = Guid.NewGuid().ToString();
         }
         public string Rarity { get; set; }
 
         public int Reward { get; set; }
+
+        public string ImageURL { get; set; }
     }
 }

@@ -4,6 +4,6 @@
 
     public class DeleteUnitCommand : IRequest<string>
     {
-        public string UnitId { get; set; }
+        public int UnitId { get; set; }
     }
 }

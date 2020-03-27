@@ -1,20 +1,19 @@
 ﻿namespace Domain.Entities.Common
 {
-    using global::Domain.Entities.Game;
+    using Domain.Common;
+    using Domain.Entities.Common.Social;
+    using Domain.Entities.Game.Units;
+    using Domain.Entities.Moderation;
+    using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
-    using Microsoft.AspNetCore.Identity;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Domain.Entities.Common.Social;
-    using Domain.Entities.Moderation;
-    using Domain.Common;
-    using global::Common;
 
     public class AppUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
         public AppUser()
         {
-            this.Units = new HashSet<Unit>();
+            this.Heroes = new HashSet<Hero>();
             this.Friends = new HashSet<AppUser>();
             this.FriendRequests = new HashSet<FriendRequest>();
             this.Messages = new HashSet<Message>();
@@ -58,7 +57,7 @@
 
         public DateTime? DeletedOn { get; set; }
 
-        public ICollection<Unit> Units { get; set; }
+        public ICollection<Hero> Heroes { get; set; }
 
         public ICollection<FriendRequest> FriendRequests { get; set; }
 

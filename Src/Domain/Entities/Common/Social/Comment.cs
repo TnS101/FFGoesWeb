@@ -9,13 +9,12 @@
     {
         public Comment()
         {
-            this.Id = Guid.NewGuid().ToString();
             this.Replies = new HashSet<Comment>();
             this.Tickets = new HashSet<Ticket>();
         }
-        public string Id { get; set; }
+        public int Id { get; set; }
 
-        public string ReplyId { get; set; }
+        public int ReplyId { get; set; }
 
         [ForeignKey("ReplyId")]
         public virtual Comment Reply { get; set; }
@@ -24,7 +23,7 @@
 
         public AppUser User { get; set; }
 
-        public string TopicId { get; set; }
+        public int TopicId { get; set; }
 
         public Topic Topic { get; set; }
 

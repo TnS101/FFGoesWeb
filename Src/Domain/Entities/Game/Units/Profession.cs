@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Game
+﻿namespace Domain.Entities.Game.Units
 {
     using System;
     using System.Collections.Generic;
@@ -7,15 +7,14 @@
     {
         public Profession()
         {
-            this.Id = Guid.NewGuid().ToString();
-            this.Units = new HashSet<Unit>();
+            this.Heroes = new HashSet<Hero>();
         }
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Type { get; set; }
 
         public string Bonus { get; set; }
 
-        public ICollection<Unit> Units { get; set; }
+        public ICollection<Hero> Heroes { get; set; }
     }
 }

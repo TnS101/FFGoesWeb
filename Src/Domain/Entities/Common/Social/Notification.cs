@@ -6,10 +6,9 @@
     {
         public Notification()
         {
-            this.Id = Guid.NewGuid().ToString();
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Type { get; set; }
 

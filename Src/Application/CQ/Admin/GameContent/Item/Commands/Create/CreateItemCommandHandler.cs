@@ -16,7 +16,24 @@
 
         public async Task<string> Handle(CreateItemCommand request, CancellationToken cancellationToken)
         {
-            this.context.Items.Add(new Domain.Entities.Game.Item
+            if (request.Type == "Weapon")
+            {
+
+            }
+            if (request.Type == "Armor")
+            {
+
+            }
+            if (request.Type == "Trinket")
+            {
+
+            }
+            if (request.Type == "Material")
+            {
+
+            }
+
+            this.context.Weapons.Add(new Domain.Entities.Game.Weapon
             {
                 Name = request.Name,
                 Level = request.Level,

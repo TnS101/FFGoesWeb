@@ -5,7 +5,7 @@
 
     public class EditTopicCommand : IRequest<string>
     {
-        public string TopicId { get; set; }
+        public int TopicId { get; set; }
 
         public string Title { get; set; }
 

@@ -4,8 +4,8 @@
 
     public class DeleteCommentCommand : IRequest<string>
     {
-        public string CommentId { get; set; }
+        public int CommentId { get; set; }
 
-        public string TopicId { get; set; }
+        public int TopicId { get; set; }
     }
 }

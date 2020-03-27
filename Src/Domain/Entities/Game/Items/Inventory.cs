@@ -1,20 +1,19 @@
-﻿namespace Domain.Entities.Game
+﻿namespace Domain.Entities.Game.Items
 {
-    using System;
+    using Domain.Base;
     using System.Collections.Generic;
 
     public class Inventory
     {
-        public Inventory(string unitId)
+        public Inventory(int unitId)
         {
             Items = new HashSet<Item>();
-            this.Id = Guid.NewGuid().ToString();
             this.UnitId = unitId;
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
-        public string UnitId { get; set; }
+        public int UnitId { get; set; }
 
         public Unit Unit { get; set; }
 

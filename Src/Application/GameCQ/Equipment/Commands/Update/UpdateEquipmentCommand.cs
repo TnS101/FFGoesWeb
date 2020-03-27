@@ -5,7 +5,7 @@
 
     public class UpdateEquipmentCommand : IRequest<string>
     {
-        public string ItemId { get; set; }
+        public int ItemId { get; set; }
 
         public string Command { get; set; }
 

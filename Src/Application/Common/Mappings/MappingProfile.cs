@@ -10,26 +10,23 @@
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.User.Feedbacks.Queries;
     using Application.CQ.User.Status.Queries;
-    using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Item.Queries;
-    using Application.GameCQ.Monster.Queries;
     using Application.GameCQ.Spell.Queries;
     using Application.GameCQ.Treasure.Queries;
     using Application.GameCQ.TreasureKey.Queries;
     using Application.GameCQ.Unit.Queries;
     using AutoMapper;
+    using Domain.Base;
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;
-    using Domain.Entities.Game;
+    using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Units;
     using Domain.Entities.Moderation;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
 
     public class MappingProfile : Profile
     {
         public MappingProfile()
         {
-            this.CreateMap<Image, ImageFullViewModel>();
-            this.CreateMap<Image, MonsterImageViewModel>();
             this.CreateMap<Item, ItemFullViewModel>();
             this.CreateMap<Spell, SpellFullViewModel>();
             this.CreateMap<Treasure, TreasureFullViewModel>();

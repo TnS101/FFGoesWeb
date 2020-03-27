@@ -16,7 +16,25 @@
 
         public async Task<string> Handle(DeleteItemCommand request, CancellationToken cancellationToken)
         {
-            var item = this.context.Items.FindAsync(request.ItemId);
+            if (request.Slot == "Weapon")
+            {
+
+            }
+            if (request.Slot == "Armor")
+            {
+
+            }
+            if (request.Slot == "Trinket")
+            {
+
+            }
+            if (request.Slot == "Material")
+            {
+
+            }
+
+
+            var item = this.context.We.FindAsync(request.ItemId);
 
             this.context.Items.Remove(item.Result);
 

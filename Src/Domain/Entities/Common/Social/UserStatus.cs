@@ -10,7 +10,7 @@
 
         public AppUser User { get; set; }
 
-        public string StatusId { get; set; }
+        public int StatusId { get; set; }
 
         public Status Status { get; set; }
     }

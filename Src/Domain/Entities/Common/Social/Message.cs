@@ -8,11 +8,10 @@
     {
         public Message()
         {
-            this.Id = Guid.NewGuid().ToString();
             this.Tickets = new HashSet<Ticket>();
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string UserId { get; set; }
 

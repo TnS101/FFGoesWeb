@@ -8,13 +8,12 @@
     {
         public Topic()
         {
-            this.Id = Guid.NewGuid().ToString();
             this.Comments = new HashSet<Comment>();
             this.UserTopics = new HashSet<UserTopics>();
             this.Tickets = new HashSet<Ticket>();
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string UserId { get; set; }
 

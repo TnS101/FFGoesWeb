@@ -18,7 +18,7 @@
 
         public async Task<string> Handle(DeleteTopicCommand request, CancellationToken cancellationToken)
         {
-            var topicToRemove = this.context.Topics.FirstOrDefault(t => t.Id == request.TopicId);
+            var topicToRemove = await this.context.Topics.FindAsync(request.TopicId);
 
             var comments = this.context.Comments.Where(c => c.TopicId == topicToRemove.Id);
 

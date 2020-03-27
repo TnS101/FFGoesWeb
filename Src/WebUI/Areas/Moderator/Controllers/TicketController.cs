@@ -10,19 +10,19 @@
     public class TicketController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> CurrentTicket([FromQuery]string ticketId)
+        public async Task<ActionResult> CurrentTicket([FromQuery]int ticketId)
         {
             return this.View(await this.Mediator.Send(new GetCurrentTicketQuery { TicketId = ticketId }));
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]string ticketId)
+        public async Task<ActionResult> Delete([FromQuery]int ticketId)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteTicketCommand { TicketId = ticketId }));
         }
 
         [HttpPut]
-        public async Task<ActionResult> Close([FromQuery]string ticketId, [FromForm]int stars)
+        public async Task<ActionResult> Close([FromQuery]int ticketId, [FromForm]int stars)
         {
             return this.Redirect(await this.Mediator.Send(new CloseTicketCommand { TicketId = ticketId, Stars = stars }));
         }

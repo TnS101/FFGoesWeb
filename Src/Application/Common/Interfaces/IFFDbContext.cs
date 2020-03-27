@@ -2,7 +2,8 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
+    using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Units;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Common.Social;
     using global::Domain.Entities.Game;
@@ -16,13 +17,7 @@
 
         DbSet<Equipment> Equipments { get; set; }
 
-        DbSet<Item> Items { get; set; }
-
         DbSet<Spell> Spells { get; set; }
-
-        DbSet<Unit> Units { get; set; }
-
-        DbSet<Image> Images { get; set; }
 
         DbSet<Treasure> Treasures { get; set; }
 
@@ -49,6 +44,20 @@
         DbSet<Status> Statuses { get; set; }
 
         DbSet<UserStatus> UserStatuses { get; set; }
+
+        DbSet<Weapon> Weapons { get; set; }
+
+        DbSet<Armor> Armors { get; set; }
+
+        DbSet<Trinket> Trinkets { get; set; }
+
+        DbSet<Material> Materials { get; set; }
+
+        DbSet<FightingClass> FightingClasses { get; set; }
+
+        DbSet<Hero> Heroes { get; set; }
+
+        DbSet<Monster> Monsters { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

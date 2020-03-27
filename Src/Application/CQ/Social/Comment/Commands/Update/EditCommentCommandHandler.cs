@@ -33,7 +33,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return string.Format(GConst.CommentCommandRedirect, request.TopicId);
+            return string.Format(GConst.CommentCommandRedirect, comment.TopicId);
         }
     }
 }

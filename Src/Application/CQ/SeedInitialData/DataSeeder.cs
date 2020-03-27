@@ -4,10 +4,9 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Domain.Entities.Common.Social;
-    using Domain.Entities.Game;
+    using Domain.Entities.Game.Units;
     using Domain.Entities.Moderation;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Domain.Entities.Game;
     using global::Common;
     using global::Domain.Entities.Common;
 
@@ -63,7 +62,7 @@
             this.context.AppUsers.Add(new AppUser
             {
                 UserName = "Pesho the Slayer [Not a real user]",
-                Units = new List<Unit>(),
+                Heroes = new List<Hero>(),
             });
 
             await this.context.SaveChangesAsync(cancellationToken);

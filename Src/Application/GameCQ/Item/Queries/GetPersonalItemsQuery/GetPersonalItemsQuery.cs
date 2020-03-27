@@ -4,6 +4,6 @@
 
     public class GetPersonalItemsQuery : IRequest<ItemListViewModel>
     {
-        public string UnitId { get; set; }
+        public int UnitId { get; set; }
     }
 }

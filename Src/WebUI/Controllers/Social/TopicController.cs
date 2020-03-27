@@ -22,9 +22,9 @@
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]string topicId)
+        public async Task<ActionResult> Delete([FromQuery]int id)
         {
-            return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = topicId }));
+            return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = id }));
         }
 
         [HttpGet]
@@ -34,10 +34,10 @@
         }
 
         [HttpPut]
-        public async Task<ActionResult> Edit([FromQuery]string topicId, [FromForm]string title, [FromForm]string category,
+        public async Task<ActionResult> Edit([FromQuery]int id, [FromForm]string title, [FromForm]string category,
             [FromForm]string content)
         {
-            return this.Redirect(await this.Mediator.Send(new EditTopicCommand { TopicId = topicId, Title = title, Category = category, Content = content }));
+            return this.Redirect(await this.Mediator.Send(new EditTopicCommand { TopicId = id, Title = title, Category = category, Content = content }));
         }
     }
 }

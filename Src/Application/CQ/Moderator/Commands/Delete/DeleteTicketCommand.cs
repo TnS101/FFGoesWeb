@@ -4,6 +4,6 @@
 
     public class DeleteTicketCommand : IRequest<string>
     {
-        public string TicketId { get; set; }
+        public int TicketId { get; set; }
     }
 }

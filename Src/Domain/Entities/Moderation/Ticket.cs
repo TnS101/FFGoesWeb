@@ -8,10 +8,9 @@
     {
         public Ticket()
         {
-            this.Id = Guid.NewGuid().ToString();
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string TopicId { get; set; }
 

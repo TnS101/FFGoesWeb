@@ -30,9 +30,9 @@
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]string unitId)
+        public async Task<ActionResult> Delete([FromQuery]int id)
         {
-            return this.Redirect(await this.Mediator.Send(new DeleteUnitCommand { UnitId = unitId }));
+            return this.Redirect(await this.Mediator.Send(new DeleteUnitCommand { UnitId = id }));
         }
 
         [HttpGet]
@@ -42,21 +42,21 @@
         }
 
         [HttpPut]
-        public async Task<ActionResult> Equip([FromQuery]string itemId, [FromQuery]string command)
+        public async Task<ActionResult> Equip([FromQuery]int id, [FromQuery]string command)
         {
-            return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = itemId, Command = command, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, User = this.User }));
         }
 
         [HttpPut]
-        public async Task<ActionResult> UnEquip([FromQuery] string itemId, [FromQuery]string command)
+        public async Task<ActionResult> UnEquip([FromQuery] int id, [FromQuery]string command)
         {
-            return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = itemId, Command = command, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, User = this.User }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> Equipment([FromQuery]string unitId)
+        public async Task<ActionResult> Equipment([FromQuery]int id)
         {
-            return this.View(await this.Mediator.Send(new GetEquipmentQuery { UnitId = unitId }));
+            return this.View(await this.Mediator.Send(new GetEquipmentQuery { UnitId = id }));
         }
 
         [HttpGet]

@@ -1,12 +1,9 @@
-﻿namespace Domain.Entities.Game
+﻿namespace Domain.Entities.Game.Items
 {
-    using System;
-
-    public class TreasureKey : Item
+    public class TreasureKey
     {
         public TreasureKey()
         {
-            this.Id = Guid.NewGuid().ToString();
         }
         public string Rarity { get; set; }
 

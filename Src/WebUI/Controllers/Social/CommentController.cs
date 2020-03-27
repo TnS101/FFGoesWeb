@@ -10,21 +10,21 @@
     public class CommentController : BaseController
     {
         [HttpPost]
-        public async Task<ActionResult> Create([FromQuery]string topicId, [FromForm]string content)
+        public async Task<ActionResult> Create([FromQuery]int id, [FromForm]string content)
         {
-            return this.Redirect(await this.Mediator.Send(new CreateCommentCommand { TopicId = topicId, Content = content, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new CreateCommentCommand { TopicId = id, Content = content, User = this.User }));
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]string commentId, [FromQuery]string topicId)
+        public async Task<ActionResult> Delete([FromQuery]int id)
         {
-            return this.Redirect(await this.Mediator.Send(new DeleteCommentCommand { CommentId = commentId, TopicId = topicId }));
+            return this.Redirect(await this.Mediator.Send(new DeleteCommentCommand { CommentId = id }));
         }
 
         [HttpPut]
-        public async Task<ActionResult> Edit([FromQuery]string commentId, [FromQuery]string topicId, [FromForm]string content)
+        public async Task<ActionResult> Edit([FromQuery]int id, [FromForm]string content)
         {
-            return this.Redirect(await this.Mediator.Send(new EditCommentCommand { Content = content, CommentId = commentId, TopicId = topicId }));
+            return this.Redirect(await this.Mediator.Send(new EditCommentCommand { Content = content, CommentId = id}));
         }
     }
 }

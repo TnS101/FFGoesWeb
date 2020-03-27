@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Domain.Contracts
+﻿namespace Domain.Contracts.Units
 {
     public interface IUnit
     {
@@ -7,10 +7,6 @@
         string Type { get; }
 
         int Level { get; }
-
-        double XP { get; }
-
-        double XPCap { get; }
 
         double MaxHP { get; set; }
 
@@ -33,6 +29,8 @@
         int GoldAmount { get; }
 
         string Race { get; set; }
+
+        string Rarity { get; set; }
 
         string ClassType { get; set; }
     }

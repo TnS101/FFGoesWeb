@@ -4,7 +4,7 @@
 
     public class CloseTicketCommand : IRequest<string>
     {
-        public string TicketId { get; set; }
+        public int TicketId { get; set; }
 
         public int Stars { get; set; }
     }

@@ -4,6 +4,6 @@
 
     public class GetCurrentTicketQuery : IRequest<TicketFullViewModel>
     {
-        public string TicketId { get; set; }
+        public int TicketId { get; set; }
     }
 }
