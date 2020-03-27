@@ -35,6 +35,7 @@
                 UserId = user.Id,
                 Type = "Player",
                 ImageURL = this.context.Images.FirstOrDefault(i => i.Name == request.ClassType).Path,
+                IsSelected = false,
             };
 
             unit.Inventory = new Domain.Entities.Game.Inventory(unit.Id);
@@ -45,7 +46,7 @@
 
             this.validatorHandler.RaceCheck.Check(unit, request.Race);
 
-            this.context.Units.Add(unit);
+            await this.context.Units.AddAsync(unit);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

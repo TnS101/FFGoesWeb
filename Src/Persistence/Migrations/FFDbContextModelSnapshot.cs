@@ -94,8 +94,8 @@ namespace Persistence.Migrations
                     b.Property<int>("Stars")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("StatusId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -118,6 +118,8 @@ namespace Persistence.Migrations
                         .IsUnique()
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("StatusId");
 
                     b.ToTable("Users");
                 });
@@ -240,6 +242,22 @@ namespace Persistence.Migrations
                     b.ToTable("Notifications");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Common.Social.Status", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("DisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statuses");
+                });
+
             modelBuilder.Entity("Domain.Entities.Common.Social.Topic", b =>
                 {
                     b.Property<string>("Id")
@@ -274,6 +292,24 @@ namespace Persistence.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Topics");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Common.Social.UserStatus", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("StatusId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "StatusId");
+
+                    b.HasIndex("StatusId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("UserStatuses");
                 });
 
             modelBuilder.Entity("Domain.Entities.Common.Social.UserTopics", b =>
@@ -856,6 +892,10 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Common.AppUser", "Friend")
                         .WithMany("Friends")
                         .HasForeignKey("FriendId");
+
+                    b.HasOne("Domain.Entities.Common.Social.Status", null)
+                        .WithMany("Users")
+                        .HasForeignKey("StatusId");
                 });
 
             modelBuilder.Entity("Domain.Entities.Common.Social.Comment", b =>
@@ -901,6 +941,21 @@ namespace Persistence.Migrations
                         .HasForeignKey("UserId");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Common.Social.UserStatus", b =>
+                {
+                    b.HasOne("Domain.Entities.Common.Social.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Common.AppUser", "User")
+                        .WithOne("UserStatus")
+                        .HasForeignKey("Domain.Entities.Common.Social.UserStatus", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Domain.Entities.Common.Social.UserTopics", b =>
                 {
                     b.HasOne("Domain.Entities.Common.Social.Topic", "Topic")
@@ -925,7 +980,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.Game.Item", b =>
                 {
-                    b.HasOne("Domain.Entities.Game.Equipment", null)
+                    b.HasOne("Domain.Entities.Game.Equipment", "Equipment")
                         .WithMany("Items")
                         .HasForeignKey("EquipmentId");
 

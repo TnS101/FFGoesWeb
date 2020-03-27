@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain.Entities.Common.Social;
     using Domain.Entities.Game;
     using Domain.Entities.Moderation;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
@@ -32,6 +33,8 @@
             await this.SeedEnemyImagesAsync(cancellationToken);
 
             await this.SeedSampleDataAsync(cancellationToken);
+
+            await this.SeedStatusesAsync(cancellationToken);
         }
 
         private async Task SeedSampleDataAsync(CancellationToken cancellationToken)
@@ -838,6 +841,119 @@
                 ManaRequirment = 50,
                 ClassType = "Warrior",
                 UserType = "Player",
+            });
+
+            await this.context.SaveChangesAsync(cancellationToken);
+        }
+
+        private async Task SeedStatusesAsync(CancellationToken cancellationToken)
+        {
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "UnSet",
+                IClass = "far fa-meh-blank",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Meh",
+                IClass = "far fa-meh",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Happy",
+                IClass = "far fa-smile",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Star",
+                IClass = "far fa-grin-stars",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Tired",
+                IClass = "far fa-tired",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "In Love",
+                IClass = "far fa-grin-hearts",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Fresh",
+                IClass = "far fa-grin-tongue-wink",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Status",
+                IClass = "far fa-frown",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "WTF",
+                IClass = "fas fa-flushed",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "LUL",
+                IClass = "far fa-grin-squint-tears",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Angry",
+                IClass = "far fa-angry",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Focused",
+                IClass = "fas fa-podcast",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Chilling",
+                IClass = "far fa-hand-peace",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Home With My Cat",
+                IClass = "fas fa-cat",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Home With My Dog",
+                IClass = "fas fa-dog",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Sick",
+                IClass = "fas fa-head-side-cough",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "Having A Snack",
+                IClass = "fas fa-drumstick-bite",
+            });
+
+            this.context.Statuses.Add(new Status
+            {
+                DisplayName = "9000+ IQ",
+                IClass = "fas fa-brain",
             });
 
             await this.context.SaveChangesAsync(cancellationToken);

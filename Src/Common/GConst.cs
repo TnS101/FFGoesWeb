@@ -32,6 +32,7 @@
         public const string ToDoListRedirect = "/Admin/ToDoList";
         public const string UnitCommandRedirect = "/Profile/Units";
         public const string WorldRedirect = "/World/Home";
+        public const string ProfileRedirect = "/Profile/Panel";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";
@@ -71,25 +72,5 @@
 
         //Sample entity
         public const string SampleEntityDescription = "Sample {0}. This {0} does not reffer to any actual content!";
-
-        //User Status
-        public const string UnSetStatus = "far fa-meh-blank";
-        public const string MehStatus = "far fa-meh";
-        public const string HappyStatus = "far fa-smile";
-        public const string StarStatus = "far fa-grin-stars";
-        public const string TiredStatus = "far fa-tired";
-        public const string InLoveStatus = "far fa-grin-hearts";
-        public const string FreshStatus = "far fa-grin-tongue-wink";
-        public const string SadStatus = "far fa-frown";
-        public const string WTFDStatus = "fas fa-flushed";
-        public const string LULStatus = "far fa-grin-squint-tears";
-        public const string AngryStatus = "far fa-angry";
-        public const string FocusedStatus = "fas fa-podcast";
-        public const string ChillingStatus = "far fa-hand-peace";
-        public const string HomeWithCatStatus = "fas fa-cat";
-        public const string HomeWithDogStatus = "fas fa-dog";
-        public const string SickStatus = "fas fa-head-side-cough";
-        public const string HavingASnackStatus = "fas fa-drumstick-bite";
-        public const string Over9000IQStatus = "fas fa-brain";
     }
 }

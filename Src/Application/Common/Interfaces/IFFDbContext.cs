@@ -46,6 +46,10 @@
 
         DbSet<Profession> Professions { get; set; }
 
+        DbSet<Status> Statuses { get; set; }
+
+        DbSet<UserStatus> UserStatuses { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

@@ -25,23 +25,68 @@
 
             var units = this.context.Units.Where(u => u.UserId == user.Id);
 
-            this.SumForumPoints(user);
-
-            user.MasteryPoints = units.Sum(u => u.Mastery);
-
-            return new UserPanelViewModel
+            if (!this.context.UserStatuses.Any(u => u.UserId == user.Id))
             {
-                UserName = user.UserName,
-                Stars = user.Stars,
-                Status = user.Status,
-                MasteryPoints = user.MasteryPoints,
-                Warnings = user.Warnings,
-                UserTopics = user.UserTopics.Count,
-                Feedbacks = user.Feedbacks.Count,
-                ForumPoints = user.ForumPoints,
-                Friends = user.Friends.Count,
-                Units = units.Count(),
-            };
+                var status = this.context.Statuses.FirstOrDefault(s => s.DisplayName == "UnSet");
+
+                var userStatus = new Domain.Entities.Common.Social.UserStatus
+                {
+                    StatusId = status.Id,
+                    UserId = user.Id,
+                };
+
+                this.context.UserStatuses.Add(userStatus);
+                this.SumForumPoints(user);
+
+                user.MasteryPoints = units.Sum(u => u.Mastery);
+
+                await this.context.SaveChangesAsync(cancellationToken);
+
+                return new UserPanelViewModel
+                {
+                    UserName = user.UserName,
+                    Stars = user.Stars,
+                    StatusIClass = status.IClass,
+                    MasteryPoints = user.MasteryPoints,
+                    Warnings = user.Warnings,
+                    UserTopics = user.UserTopics.Count,
+                    Feedbacks = user.Feedbacks.Count,
+                    ForumPoints = user.ForumPoints,
+                    Friends = user.Friends.Count,
+                    Units = units.Count(),
+                };
+            }
+            else
+            {
+                var userStatus = this.context.UserStatuses.FirstOrDefault(u => u.UserId == user.Id);
+
+                var status = this.context.Statuses.FirstOrDefault(s => s.Id == userStatus.StatusId);
+
+                this.SumForumPoints(user);
+
+                if (units.Count() == 0)
+                {
+                    user.MasteryPoints = 0;
+                }
+                else
+                {
+                    user.MasteryPoints = units.Sum(u => u.Mastery);
+                }
+
+                return new UserPanelViewModel
+                {
+                    UserName = user.UserName,
+                    Stars = user.Stars,
+                    StatusIClass = status.IClass,
+                    MasteryPoints = user.MasteryPoints,
+                    Warnings = user.Warnings,
+                    UserTopics = user.UserTopics.Count,
+                    Feedbacks = user.Feedbacks.Count,
+                    ForumPoints = user.ForumPoints,
+                    Friends = user.Friends.Count,
+                    Units = units.Count(),
+                };
+            }
         }
 
         private void SumForumPoints(AppUser user)

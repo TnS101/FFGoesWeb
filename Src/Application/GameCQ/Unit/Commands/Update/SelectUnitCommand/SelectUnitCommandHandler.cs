@@ -22,8 +22,6 @@
 
         public async Task<string> Handle(SelectUnitCommand request, CancellationToken cancellationToken)
         {
-            var newUnit = await this.context.Units.FindAsync(request.UnitId);
-
             var user = await this.userManager.GetUserAsync(request.User);
 
             if (this.context.Units.Where(u => u.UserId == user.Id).Any(u => u.IsSelected))
@@ -35,13 +33,11 @@
                 this.context.Units.Update(oldUnit);
             }
 
-            newUnit.IsSelected = true;
-
-            this.context.Units.Update(newUnit);
+            var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.Name == request.Id);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return GConst.WorldRedirect;
+            return unit.Name;
         }
     }
 }

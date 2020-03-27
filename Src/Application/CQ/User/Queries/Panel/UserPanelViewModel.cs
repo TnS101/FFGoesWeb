@@ -8,7 +8,7 @@
 
         public string UserName { get; set; }
 
-        public string Status { get; set; }
+        public string StatusIClass { get; set; }
 
         public int Stars { get; set; }
 

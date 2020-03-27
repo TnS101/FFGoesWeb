@@ -15,6 +15,10 @@
 
         public Inventory Inventory { get; set; }
 
+        public string EquipmentId { get; set; }
+
+        public Equipment Equipment { get; set; }
+
         public string Name { get; set; }
 
         public int Level { get; set; }

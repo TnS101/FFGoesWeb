@@ -1,5 +1,6 @@
 ﻿namespace WebUI.Controllers.Game
 {
+    using System;
     using System.Threading.Tasks;
     using Application.GameCQ.Unit.Commands.Update.SelectUnitCommand;
     using global::Application.GameCQ.Equipment.Commands.Update;
@@ -67,9 +68,9 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Select([FromQuery]string unitId)
+        public async Task<ActionResult> Select([FromQuery]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new SelectUnitCommand { UnitId = unitId, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new SelectUnitCommand { Id = id, User = this.User }));
         }
     }
 }

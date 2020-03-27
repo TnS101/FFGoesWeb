@@ -55,6 +55,10 @@
 
         public DbSet<Profession> Professions { get; set; }
 
+        public DbSet<Status> Statuses { get; set; }
+
+        public DbSet<UserStatus> UserStatuses { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -93,6 +97,8 @@
            .HasOne(t => t.Topic)
            .WithMany(u => u.UserTopics)
            .HasForeignKey(t => t.TopicId);
+
+            modelBuilder.Entity<UserStatus>().HasKey(k => new { k.UserId });
 
             modelBuilder.Entity<AppUser>().ToTable("Users");
 

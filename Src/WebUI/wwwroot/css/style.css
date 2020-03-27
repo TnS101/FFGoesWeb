@@ -13171,6 +13171,7 @@ i {
     }
 }
 
-body.custom-background {
-    
+.secondary-background-color {
+    background-color: #bdc0c6;
+    background-repeat:round
 }

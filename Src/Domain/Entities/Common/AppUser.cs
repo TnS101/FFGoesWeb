@@ -23,7 +23,6 @@
             this.Comments = new HashSet<Comment>();
             this.Notifications = new HashSet<Notification>();
             this.Feedbacks = new HashSet<Feedback>();
-            this.Status = GConst.UnSetStatus;
 
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
@@ -35,7 +34,7 @@
         [ForeignKey("FriendId")]
         public virtual AppUser Friend { get; set; }
 
-        public string Status { get; set; }
+        public UserStatus UserStatus { get; set; }
 
         public int Stars { get; set; }
 
@@ -44,6 +43,8 @@
         public int MasteryPoints { get; set; }
 
         public int ForumPoints { get; set; }
+
+        public string StatusId { get; set; }
 
         public bool IsDeleted { get; set; }
 

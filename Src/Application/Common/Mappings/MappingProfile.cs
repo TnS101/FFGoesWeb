@@ -9,6 +9,7 @@
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.User.Feedbacks.Queries;
+    using Application.CQ.User.Status.Queries;
     using Application.GameCQ.Image.Queries;
     using Application.GameCQ.Item.Queries;
     using Application.GameCQ.Monster.Queries;
@@ -16,7 +17,6 @@
     using Application.GameCQ.Treasure.Queries;
     using Application.GameCQ.TreasureKey.Queries;
     using Application.GameCQ.Unit.Queries;
-    using Application.GameCQ.Unit.Queries.GetUnitListQuery;
     using AutoMapper;
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;
@@ -45,6 +45,7 @@
             this.CreateMap<Feedback, FeedbackFullViewModel>();
             this.CreateMap<Feedback, FeedbackPartialViewModel>();
             this.CreateMap<Feedback, FeedbackTaskViewModel>();
+            this.CreateMap<Status, StatusFullViewModel>();
         }
     }
 }

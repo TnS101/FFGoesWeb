@@ -13,6 +13,7 @@
             this.XPCap = 100;
             this.GoldAmount = 100;
             this.IsSelected = false;
+            this.Energy = 10;
         }
         public string Id { get; set; }
 

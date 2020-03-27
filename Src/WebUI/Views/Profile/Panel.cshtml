@@ -3,17 +3,17 @@
     ViewData["Title"] = "Panel";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<html xmlns="http://www.w3.org/1999/xhtml" class="main-gradient">
 <head>
     <partial name="_NavBar">
 </head>
 <body class="main-gradient">
     <div class="item-padding has-text-align-center">
-        <h2 class="main-font-color">@Model.UserName</h2>
+        <h2 class="secondary-font-color">@Model.UserName</h2>
         <hr />
         <div class="item-padding">
             <h2 class="main-font-color">Social</h2>
-            <h3 class="item-padding">Your status is <i class="@Model.Status"></i><a asp-controller="Profile" asp-action="Status" class="main-font-color">Change</a></h3>
+            <h3 class="item-padding">Your status is <a asp-controller="Profile" asp-action="Status" class="main-font-color"><i class="@Model.StatusIClass"></i> Change</a></h3>
             <h3 class="item-padding">You have made @Model.Friends <a asp-controller="Profile" asp-action="Friends" class="main-font-color"><i class="fas fa-user-friends"></i>Friends</a></h3>
             <h3 class="item-padding">You have created @Model.UserTopics <a asp-controller="Profile" asp-action="Topics" class="main-font-color"><i class="fas fa-stream"></i>Topics</a></h3>
             <hr />
@@ -32,5 +32,8 @@
             <h3 class="item-padding">The times you have went a little bit overboard : @Model.Warnings and recieved a <a asp-controller="Profile" asp-action="Warnings">Warning</a></h3>
         </div>
     </div>
+    <partial name="_Footer">
 </body>
-<partial name="_Footer">
+</html>
+
+

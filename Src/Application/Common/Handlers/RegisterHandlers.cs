@@ -40,6 +40,8 @@
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.User.Queries.Panel;
+    using Application.CQ.User.Status.Commands.Update;
+    using Application.CQ.User.Status.Queries;
     using Application.GameCQ.Battle.Commands.Update;
     using Application.GameCQ.Enemy.Commands.Create;
     using Application.GameCQ.Equipment.Commands.Update;
@@ -135,6 +137,7 @@
             services.AddScoped<IRequestHandler<DeleteMessageCommand, string>, DeleteMessageCommandHandler>();
             services.AddScoped<IRequestHandler<EditMessageCommand, string>, EditMessageCommandHandler>();
             services.AddScoped<IRequestHandler<SelectUnitCommand, string>, SelectUnitCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateStatusCommand, string>, UpdateStatusCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)
@@ -156,6 +159,7 @@
             services.AddScoped<IRequestHandler<GetPersonalFriendRequestsQuery, FriendRequestListViewModel>, GetPersonalFriendRequestsQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalMessagesQuery, MessageListViewModel>, GetPersonalMessagesQueryHandler>();
             services.AddScoped<IRequestHandler<UserPanelQuery, UserPanelViewModel>, UserPanelQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllStatusesQuery, StatusListViewModel>, GetAllStatusesQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)
