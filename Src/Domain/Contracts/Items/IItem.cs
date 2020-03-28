@@ -4,5 +4,6 @@
 
     public interface IItem : ITrinket, IArmor, IWeapon
     {
+        string ImageURL { get;}
     }
 }

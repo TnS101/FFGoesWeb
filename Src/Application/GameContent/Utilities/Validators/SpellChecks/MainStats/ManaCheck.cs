@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats
 {
-    using global::Domain.Entities.Game;
+    using Domain.Base;
 
     public class ManaCheck
     {

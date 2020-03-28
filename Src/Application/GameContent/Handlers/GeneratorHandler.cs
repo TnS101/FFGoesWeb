@@ -1,6 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers
 {
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
+    using global::Application.GameContent.Utilities.Generators;
 
     public class GeneratorHandler
     {

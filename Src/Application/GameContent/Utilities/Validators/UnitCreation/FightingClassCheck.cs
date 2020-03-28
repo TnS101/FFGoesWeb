@@ -1,70 +1,73 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.UnitCreation
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerClassRepository;
+    using System.Threading.Tasks;
+    using Domain.Base;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
-    using global::Domain.Entities.Game;
 
     public class FightingClassCheck
     {
-        public Unit Check(Unit player, string fightingClass)
+        private readonly StatIncrement statIncrement;
+
+        public FightingClassCheck()
         {
-            StatIncrement statIncrement = new StatIncrement();
+            this.statIncrement = new StatIncrement();
+        }
 
-            if (fightingClass == "Warrior")
+        public async Task<Unit> Check(Unit hero, string fightingClassType, IFFDbContext context)
+        {
+            var fightingClassId = 0;
+
+            if (fightingClassType == "Warrior")
             {
-                Warrior warrior = new Warrior();
-                statIncrement.Increment(warrior, player);
+                fightingClassId = 1;
             }
 
-            if (fightingClass == "Mage")
+            if (fightingClassType == "Hunter")
             {
-                Mage mage = new Mage();
-                statIncrement.Increment(mage, player);
+                fightingClassId = 2;
             }
 
-            if (fightingClass == "Paladin")
+            if (fightingClassType == "Mage")
             {
-                Paladin paladin = new Paladin();
-                statIncrement.Increment(paladin, player);
+                fightingClassId = 3;
             }
 
-            if (fightingClass == "Necroid")
+            if (fightingClassType == "Naturalist")
             {
-                Necroid necroid = new Necroid();
-                statIncrement.Increment(necroid, player);
+                fightingClassId = 4;
             }
 
-            if (fightingClass == "Hunter")
+            if (fightingClassType == "Necroid")
             {
-                Hunter hunter = new Hunter();
-                statIncrement.Increment(hunter, player);
+                fightingClassId = 5;
             }
 
-            if (fightingClass == "Rogue")
+            if (fightingClassType == "Paladin")
             {
-                Rogue rogue = new Rogue();
-                statIncrement.Increment(rogue, player);
+                fightingClassId = 6;
             }
 
-            if (fightingClass == "Naturalist")
+            if (fightingClassType == "Priest")
             {
-                Naturalist naturalist = new Naturalist();
-                statIncrement.Increment(naturalist, player);
+                fightingClassId = 7;
             }
 
-            if (fightingClass == "Priest")
+            if (fightingClassType == "Rogue")
             {
-                Priest priest = new Priest();
-                statIncrement.Increment(priest, player);
+                fightingClassId = 8;
             }
 
-            if (fightingClass == "Shaman")
+            if (fightingClassType == "Shaman")
             {
-                Shaman shaman = new Shaman();
-                statIncrement.Increment(shaman, player);
+                fightingClassId = 9;
             }
 
-            return player;
+            var fightingClass = await context.FightingClasses.FindAsync(fightingClassId);
+
+            this.statIncrement.Increment(fightingClass, hero);
+
+            return hero;
         }
     }
 }

@@ -68,6 +68,8 @@
 
         public DbSet<Monster> Monsters { get; set; }
 
+        public DbSet<MonsterRarity> MonsterRarities { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

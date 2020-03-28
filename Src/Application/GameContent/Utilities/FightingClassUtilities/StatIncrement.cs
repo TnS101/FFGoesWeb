@@ -1,5 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites
 {
+    using Domain.Base;
+    using Domain.Entities.Game.Units;
     using global::Domain.Entities.Game;
 
     public class StatIncrement
@@ -29,6 +31,31 @@
             unit.CurrentRessistanceValue = fightingClass.RessistanceValue;
             unit.CritChance = fightingClass.CritChance;
             unit.CurrentCritChance = fightingClass.CritChance;
+            unit.ImageURL = fightingClass.ImageURL;
+            unit.IconURL = fightingClass.IconURL;
+        }
+
+        public void MonsterIncrement(Monster baseMonster, Monster monster)
+        {
+            monster.MaxHP = baseMonster.MaxHP;
+            monster.CurrentHP = baseMonster.MaxHP;
+            monster.HealthRegen = baseMonster.HealthRegen;
+            monster.CurrentHealthRegen = baseMonster.HealthRegen;
+            monster.MaxMana = baseMonster.MaxMana;
+            monster.CurrentMana = baseMonster.MaxMana;
+            monster.ManaRegen = baseMonster.ManaRegen;
+            monster.CurrentManaRegen = baseMonster.ManaRegen;
+            monster.AttackPower = baseMonster.AttackPower;
+            monster.CurrentAttackPower = baseMonster.AttackPower;
+            monster.MagicPower = baseMonster.MagicPower;
+            monster.CurrentMagicPower = baseMonster.MagicPower;
+            monster.ArmorValue = baseMonster.ArmorValue;
+            monster.CurrentArmorValue = baseMonster.ArmorValue;
+            monster.RessistanceValue = baseMonster.RessistanceValue;
+            monster.CurrentRessistanceValue = baseMonster.RessistanceValue;
+            monster.CritChance = baseMonster.CritChance;
+            monster.CurrentCritChance = baseMonster.CritChance;
+            monster.ImageURL = baseMonster.ImageURL;
         }
     }
 }

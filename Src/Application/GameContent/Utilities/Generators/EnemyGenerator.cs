@@ -1,11 +1,12 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
+﻿namespace Application.GameContent.Utilities.Generators
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemyClassRepository;
+    using Domain.Base;
+    using Domain.Entities.Game.Units;
+    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
-    using global::Application.GameCQ.Unit.Queries;
-    using global::Domain.Entities.Game;
 
     public class EnemyGenerator
     {
@@ -13,106 +14,104 @@
         {
         }
 
-        public async Task<Unit> Generate(int playerLevel)
+        public async Task<Unit> Generate(int playerLevel, IFFDbContext context)
         {
-            Unit enemy = new Unit { Type = "Enemy", Level = playerLevel };
+            Monster monster = new Monster { Type = "Enemy", Level = playerLevel };
+
             StatIncrement statIncrement = new StatIncrement();
+
             var rng = new Random();
+
             int enemyNumber = rng.Next(0, 26);
 
-            if (enemyNumber >= 0 && enemyNumber <= 5)
+            int monsterId = 0;
+
+            if (enemyNumber >= 0 && enemyNumber <= 5) // Beast
             {
-                Beast beast = new Beast();
-                statIncrement.Increment(beast, enemy);
+                monsterId = 1;
             }
 
-            if (enemyNumber >= 6 && enemyNumber <= 10)
+            if (enemyNumber >= 6 && enemyNumber <= 10) // Reptile
             {
-                Reptile reptile = new Reptile();
-                statIncrement.Increment(reptile, enemy);
+                monsterId = 2;
             }
 
-            if (enemyNumber >= 11 && enemyNumber <= 14)
+            if (enemyNumber >= 11 && enemyNumber <= 14) // Zombie
             {
-                Zombie zombie = new Zombie();
-                statIncrement.Increment(zombie, enemy);
+                monsterId = 3;
             }
 
-            if (enemyNumber >= 15 && enemyNumber <= 18)
+            if (enemyNumber >= 15 && enemyNumber <= 18) // Skeleton
             {
-                Skeleton skeleton = new Skeleton();
-                statIncrement.Increment(skeleton, enemy);
+                monsterId = 4;
             }
 
-            if (enemyNumber == 19 || enemyNumber == 20)
+            if (enemyNumber == 19 || enemyNumber == 20) // Wyrm
             {
-                Wyrm wyrm = new Wyrm();
-                statIncrement.Increment(wyrm, enemy);
+                monsterId = 5;
             }
 
-            if (enemyNumber == 21 || enemyNumber == 22)
+            if (enemyNumber == 21 || enemyNumber == 22) // Giant
             {
-                Giant giant = new Giant();
-                statIncrement.Increment(giant, enemy);
+                monsterId = 6;
             }
 
-            if (enemyNumber == 23 || enemyNumber == 24)
+            if (enemyNumber == 23 || enemyNumber == 24) // Gryphon
             {
-                Gryphon gryphon = new Gryphon();
-                statIncrement.Increment(gryphon, enemy);
+                monsterId = 7;
             }
 
-            if (enemyNumber == 25)
+            if (enemyNumber == 25) // Saint
             {
-                Saint saint = new Saint();
-                statIncrement.Increment(saint, enemy);
+                monsterId = 8;
             }
 
-            if (enemyNumber == 26)
+            if (enemyNumber == 26) // Demon
             {
-                Demon demon = new Demon();
-                statIncrement.Increment(demon, enemy);
+                monsterId = 9;
             }
 
-            enemy.Name = enemy.ClassType;
+            var baseMonster = await context.Monsters.FindAsync(monsterId);
 
-            await this.RarityRng(enemy);
+            statIncrement.MonsterIncrement(baseMonster, monster);
 
-            return enemy;
+            monster.Name = monster.ClassType;
+
+            return await this.RarityRng(monster, context);
         }
 
-        private async Task RarityRng(Unit enemy)
+        private async Task<Monster> RarityRng(Monster monster, IFFDbContext context)
         {
             var rng = new Random();
+
             int number = rng.Next(1, 11);
+
+            var monsterRarity = new MonsterRarity();
+
             if (number == 1)
             {
-                enemy.Race = "Heroic";
-                enemy.MaxHP += 0.3 * enemy.MaxHP;
-                enemy.AttackPower += 0.3 * enemy.AttackPower;
-                enemy.MagicPower += 0.3 * enemy.MagicPower;
-                enemy.ArmorValue += 0.3 * enemy.ArmorValue;
-                enemy.CurrentHP += 0.3 * enemy.CurrentHP;
-                enemy.CurrentAttackPower += 0.3 * enemy.CurrentAttackPower;
-                enemy.CurrentMagicPower += 0.3 * enemy.CurrentMagicPower;
-                enemy.CurrentArmorValue += 0.3 * enemy.CurrentArmorValue;
+                monsterRarity = context.MonsterRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Heroic");
             }
             else if (number == 2 || number == 3 || number == 4)
             {
-                enemy.Race = "Rare";
-                enemy.MaxHP += 0.15 * enemy.MaxHP;
-                enemy.AttackPower += 0.15 * enemy.AttackPower;
-                enemy.MagicPower += 0.15 * enemy.MagicPower;
-                enemy.ArmorValue += 0.15 * enemy.ArmorValue;
-                enemy.CurrentHP += 0.15 * enemy.CurrentHP;
-                enemy.CurrentAttackPower += 0.15 * enemy.CurrentAttackPower;
-                enemy.CurrentMagicPower += 0.15 * enemy.CurrentMagicPower;
-                enemy.CurrentArmorValue += 0.15 * enemy.CurrentArmorValue;
+                monsterRarity = context.MonsterRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Rare");
             }
             else
             {
-                enemy.Race = string.Empty;
+                return monster;
             }
+
+            monster.ImageURL = monsterRarity.ImageURL;
+            monster.MaxHP += monsterRarity.StatAmplifier * monster.MaxHP;
+            monster.AttackPower += monsterRarity.StatAmplifier * monster.AttackPower;
+            monster.MagicPower += monsterRarity.StatAmplifier * monster.MagicPower;
+            monster.ArmorValue += monsterRarity.StatAmplifier * monster.ArmorValue;
+            monster.CurrentHP += monsterRarity.StatAmplifier * monster.CurrentHP;
+            monster.CurrentAttackPower += monsterRarity.StatAmplifier * monster.CurrentAttackPower;
+            monster.CurrentMagicPower += monsterRarity.StatAmplifier * monster.CurrentMagicPower;
+            monster.CurrentArmorValue += monsterRarity.StatAmplifier * monster.CurrentArmorValue;
+
+            return monster;
         }
     }
 }

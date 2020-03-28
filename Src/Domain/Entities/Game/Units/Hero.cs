@@ -26,8 +26,6 @@
 
         public override string Name { get; set; }
 
-        public override string Type { get; set; }
-
         public override string ClassType { get; set; }
 
         public override string Race { get; set; }
@@ -83,5 +81,9 @@
         public override bool IsSelected { get; set; }
 
         public override int Energy { get; set; }
+
+        public override string IconURL { get; set; }
+
+        public int GearScore { get; set; }
     }
 }

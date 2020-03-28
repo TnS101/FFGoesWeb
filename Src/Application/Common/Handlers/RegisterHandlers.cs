@@ -2,8 +2,9 @@
 {
     using Application.CQ.Admin.Item.Commands.Create;
     using Application.CQ.Admin.Item.Commands.Delete;
-    using Application.CQ.Admin.Item.Commands.Update;
     using Application.CQ.Admin.Item.Queries;
+    using Application.CQ.Admin.Items.Commands.Create;
+    using Application.CQ.Admin.Items.Commands.Update;
     using Application.CQ.Admin.Moderation.Feedback.Commands.Delete;
     using Application.CQ.Admin.Moderation.Feedback.Commands.Delete.FeedbackTaskDoneCommand;
     using Application.CQ.Admin.Moderation.Feedback.Commands.Update;
@@ -46,17 +47,15 @@
     using Application.GameCQ.Enemy.Commands.Create;
     using Application.GameCQ.Equipment.Commands.Update;
     using Application.GameCQ.Equipment.Queries;
-    using Application.GameCQ.Image.Queries;
+    using Application.GameCQ.Heroes.Commands.Create;
     using Application.GameCQ.Item.Commands.Delete;
     using Application.GameCQ.Item.Commands.Update;
     using Application.GameCQ.Item.Queries;
-    using Application.GameCQ.Monster.Queries;
     using Application.GameCQ.Spell.Queries;
     using Application.GameCQ.Treasure.Commands.Delete;
     using Application.GameCQ.Treasure.Commands.Update;
     using Application.GameCQ.Treasure.Queries;
     using Application.GameCQ.TreasureKey.Queries;
-    using Application.GameCQ.Unit.Commands.Create;
     using Application.GameCQ.Unit.Commands.Delete;
     using Application.GameCQ.Unit.Commands.Update;
     using Application.GameCQ.Unit.Commands.Update.SelectUnitCommand;
@@ -121,7 +120,7 @@
             services.AddScoped<IRequestHandler<OpenTreasureCommand, string>, OpenTreasureCommandHandler>();
             services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();
             services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateUnitCommand, string>, CreateUnitCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateHeroCommand, string>, CreateHeroCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteUnitCommand, string>, DeleteUnitCommandHandler>();
             services.AddScoped<IRequestHandler<UnitLevelUpCommand>, UnitLevelUpCommandHandler>();
             services.AddScoped<IRequestHandler<CreateTopicCommand, string[]>, CreateTopicCommandHandler>();
@@ -142,11 +141,7 @@
 
         private void UserQueries(IServiceCollection services)
         {
-            services.AddScoped<IRequestHandler<GetFightingClassImagesQuery, ImageListViewModel>, GetFightingClassImagesQueryHandler>();
-            services.AddScoped<IRequestHandler<GetMonstersImagesQuery, MonsterImageListViewModel>, GetMonstersImagesQueryHandler>();
             services.AddScoped<IRequestHandler<GetEquipmentQuery, EquipmentViewModel>, GetEquipmentQueryHandler>();
-            services.AddScoped<IRequestHandler<GetFightingClassImagesQuery, ImageListViewModel>, GetFightingClassImagesQueryHandler>();
-            services.AddScoped<IRequestHandler<GetMonstersImagesQuery, MonsterImageListViewModel>, GetMonstersImagesQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalItemsQuery, ItemListViewModel>, GetPersonalItemsQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalSpellsQuery, SpellListViewModel>, GetPersonalSpellsQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalTreasureQuery, TreasureListViewModel>, GetPersonalTreasureQueryHandler>();

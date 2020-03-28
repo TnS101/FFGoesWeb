@@ -93,6 +93,8 @@
 
         public virtual int Energy { get; set; }
 
-        public virtual string Rarity { get; set; }
+        public virtual string Description { get; set; }
+
+        public virtual string IconURL { get; set; }
     }
 }

@@ -6,11 +6,11 @@
     {
         public override int Id { get; set; }
 
+        public int MonsterRarityId { get; set; }
+
+        public MonsterRarity MonsterRarity { get; set; }
+
         public override string Name { get; set; }
-
-        public override string Type { get; set; }
-
-        public override string ClassType { get; set; }
 
         public override int Level { get; set; }
 
@@ -51,7 +51,5 @@
         public override double CritChance { get; set; }
 
         public override double CurrentCritChance { get; set; }
-
-        public override string Rarity { get; set; }
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
 {
     using System;
+    using Domain.Base;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
     using global::Application.GameCQ.Unit.Queries;
-    using global::Domain.Entities.Game;
 
     public class ItemGenerator
     {

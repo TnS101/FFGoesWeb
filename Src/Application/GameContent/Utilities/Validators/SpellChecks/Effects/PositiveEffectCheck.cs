@@ -1,10 +1,14 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.Effects
 {
+    using Domain.Base;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
-    using global::Domain.Entities.Game;
 
     public class PositiveEffectCheck
     {
+        public PositiveEffectCheck()
+        {
+        }
+
         public void Check(Unit caster, Unit target, double manaRequirment,
             double possitiveEffect, string possitiveEffectType, ManaCheck manaCheck)
         {

@@ -30,8 +30,6 @@
 
         string Race { get; set; }
 
-        string Rarity { get; set; }
-
         string ClassType { get; set; }
     }
 }

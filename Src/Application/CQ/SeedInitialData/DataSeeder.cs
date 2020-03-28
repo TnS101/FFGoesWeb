@@ -25,11 +25,13 @@
 
             await this.SeedPlayerSpellsAsync(cancellationToken);
 
-            await this.SeedPlayerImages(cancellationToken);
+            await this.SeedFigthingClassesAsync(cancellationToken);
 
             await this.SeedEnemySpellsAsync(cancellationToken);
 
-            await this.SeedEnemyImagesAsync(cancellationToken);
+            await this.SeedMonstersAsync(cancellationToken);
+
+            await this.SeedMonsterRaritiesAsync(cancellationToken);
 
             await this.SeedSampleDataAsync(cancellationToken);
 
@@ -68,226 +70,455 @@
             await this.context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedEnemyImagesAsync(CancellationToken cancellationToken)
+        private async Task SeedMonsterRaritiesAsync(CancellationToken cancellationToken)
         {
-            this.context.Images.Add(new Image
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "Beast",
-                Path = "https://i.ibb.co/tm9p0Bq/Beast.png",
-                Description = "A bloodthirsty animal,which also likes to party for some reason...",
+                MonsterName = "Beast",
+                Rarity = "Rare",
+                ImageURL = "https://i.ibb.co/YhPcrdk/Beast-Rare.png",
+                StatAmplifier = 0.15,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "BeastRare",
-                Path = "https://i.ibb.co/YhPcrdk/Beast-Rare.png",
+                MonsterName = "Beast",
+                Rarity = "Heroic",
+                ImageURL = "https://i.ibb.co/NVdyxh5/Bear-Heroic.png",
+                StatAmplifier = 0.3,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "BeastHeroic",
-                Path = "https://i.ibb.co/NVdyxh5/Bear-Heroic.png",
+                MonsterName = "Demon",
+                Rarity = "Rare",
+                ImageURL = "https://i.ibb.co/tYPNYVr/Demon-Rare.png",
+                StatAmplifier = 0.15,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "Demon",
-                Path = "https://i.ibb.co/Mf1WWjq/Demon.png",
-                Description = "Fearsome and cunning! Something is wrong with his head (I mean the PNG file).",
+                MonsterName = "Demon",
+                Rarity = "Heroic",
+                ImageURL = "https://i.ibb.co/rHVZhHM/Demon-Heroic.png",
+                StatAmplifier = 0.3,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "DemonRare",
-                Path = "https://i.ibb.co/tYPNYVr/Demon-Rare.png",
+                MonsterName = "Giant",
+                Rarity = "Rare",
+                ImageURL = "https://i.ibb.co/8XjdXby/Giant-Rare.png",
+                StatAmplifier = 0.15,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "DemonHeroic",
-                Path = "https://i.ibb.co/rHVZhHM/Demon-Heroic.png",
+                MonsterName = "Giant",
+                Rarity = "Heroic",
+                ImageURL = "https://i.ibb.co/XjvgFxk/Giant-Heroic.png",
+                StatAmplifier = 0.3,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "Giant",
-                Path = "https://i.ibb.co/HpF09kD/Giant.png",
-                Description = "Not to be confused with the Iron Giant.",
+                MonsterName = "Gryphon",
+                Rarity = "Rare",
+                ImageURL = "https://i.ibb.co/1J3KskV/Gryphon-Rare.png",
+                StatAmplifier = 0.15,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "GiantRare",
-                Path = "https://i.ibb.co/8XjdXby/Giant-Rare.png",
+                MonsterName = "Gryphon",
+                Rarity = "Heroic",
+                ImageURL = "https://i.ibb.co/8dbFYx7/Gryphon-Heroic.png",
+                StatAmplifier = 0.3,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "GiantHeroic",
-                Path = "https://i.ibb.co/XjvgFxk/Giant-Heroic.png",
+                MonsterName = "Reptile",
+                Rarity = "Rare",
+                ImageURL = "https://i.ibb.co/59VHzwY/Reptile-Rare.png",
+                StatAmplifier = 0.15,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "Gryphon",
-                Path = "https://i.ibb.co/ydLmqmL/Gryphon.png",
-                Description = "These halfbreeds don't just exist in World of Warcraft!",
+                MonsterName = "Reptile",
+                Rarity = "Heroic",
+                ImageURL = "https://i.ibb.co/wd1HqhQ/Reptile-Heroic.png",
+                StatAmplifier = 0.3,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "GryphonRare",
-                Path = "https://i.ibb.co/1J3KskV/Gryphon-Rare.png",
+                MonsterName = "Saint",
+                Rarity = "Rare",
+                ImageURL = "https://i.ibb.co/tJQKJcx/Saint-Rare.png",
+                StatAmplifier = 0.15,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "GryphonHeroic",
-                Path = "https://i.ibb.co/8dbFYx7/Gryphon-Heroic.png",
+                MonsterName = "Saint",
+                Rarity = "Heroic",
+                ImageURL = "https://i.ibb.co/dgGbS3t/Saint-Heroic.png",
+                StatAmplifier = 0.3,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "Reptile",
-                Path = "https://i.ibb.co/PskPtmp/Reptile.png",
-                Description = "Actually kind of a dinosaur/lizard thingy... not very sure.",
+                MonsterName = "Skeleton",
+                Rarity = "Rare",
+                ImageURL = "https://i.ibb.co/rQPCZWf/Skeleton-Rare.png",
+                StatAmplifier = 0.15,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "ReptileRare",
-                Path = "https://i.ibb.co/59VHzwY/Reptile-Rare.png",
+                MonsterName = "Skeleton",
+                Rarity = "Heroic",
+                ImageURL = "https://i.ibb.co/TqDMrY5/Skeleton-Heroic.png",
+                StatAmplifier = 0.3,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "ReptileHeroic",
-                Path = "https://i.ibb.co/wd1HqhQ/Reptile-Heroic.png",
+                MonsterName = "Wyrm",
+                Rarity = "Rare",
+                ImageURL = "https://i.ibb.co/BgjswQW/WyrmRare.png",
+                StatAmplifier = 0.15,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "Saint",
-                Path = "https://i.ibb.co/bgdLZny/Saint.png",
-                Description = "You'll pay for not going to church on sundays!",
+                MonsterName = "Wyrm",
+                Rarity = "Heroic",
+                ImageURL = "https://i.ibb.co/V9gh3KY/Wyrm-Heroic.png",
+                StatAmplifier = 0.3,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "SaintRare",
-                Path = "https://i.ibb.co/tJQKJcx/Saint-Rare.png",
+                MonsterName = "Zombie",
+                Rarity = "Rare",
+                ImageURL = "https://i.ibb.co/3rJB9hG/Zombie-Rare.png",
+                StatAmplifier = 0.15,
             });
-            this.context.Images.Add(new Image
+
+            this.context.MonsterRarities.Add(new MonsterRarity
             {
-                Name = "SaintHeroic",
-                Path = "https://i.ibb.co/dgGbS3t/Saint-Heroic.png",
-            });
-            this.context.Images.Add(new Image
-            {
-                Name = "Skeleton",
-                Path = "https://i.ibb.co/72jY07Q/Skeleton.png",
-                Description = "{Insert a /Spooky/ joke here.}",
-            });
-            this.context.Images.Add(new Image
-            {
-                Name = "SkeletonRare",
-                Path = "https://i.ibb.co/rQPCZWf/Skeleton-Rare.png",
-            });
-            this.context.Images.Add(new Image
-            {
-                Name = "SkeletonHeroic",
-                Path = "https://i.ibb.co/TqDMrY5/Skeleton-Heroic.png",
-            });
-            this.context.Images.Add(new Image
-            {
-                Name = "Wyrm",
-                Path = "https://i.ibb.co/0QcMBhp/Wyrm.png",
-                Description = "Picture this guy beneath the toilet seat next time you take a dump. I dare you!",
-            });
-            this.context.Images.Add(new Image
-            {
-                Name = "WyrmRare",
-                Path = "https://i.ibb.co/BgjswQW/WyrmRare.png",
-            });
-            this.context.Images.Add(new Image
-            {
-                Name = "WyrmHeroic",
-                Path = "https://i.ibb.co/V9gh3KY/Wyrm-Heroic.png",
-            });
-            this.context.Images.Add(new Image
-            {
-                Name = "Zombie",
-                Path = "https://i.ibb.co/NLF8yxW/Zombie.png",
-                Description = "Sapiosexual. Not very smart.",
-            });
-            this.context.Images.Add(new Image
-            {
-                Name = "ZombieRare",
-                Path = "https://i.ibb.co/3rJB9hG/Zombie-Rare.png",
-            });
-            this.context.Images.Add(new Image
-            {
-                Name = "ZombieHeroic",
-                Path = "https://i.ibb.co/9crHfr7/Zombie-Heroic.png",
+                MonsterName = "Zombie",
+                Rarity = "Heroic",
+                ImageURL = "https://i.ibb.co/9crHfr7/Zombie-Heroic.png",
+                StatAmplifier = 0.3,
             });
 
             await this.context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedPlayerImages(CancellationToken cancellationToken)
+        private async Task SeedMonstersAsync(CancellationToken cancellationToken)
         {
-            this.context.Images.Add(new Image
+            this.context.Monsters.Add(new Monster
             {
-                Name = "Warrior",
-                Path = "https://i.ibb.co/XVJ5cHJ/Warrior.png",
+                Name = "Beast",
+                MaxHP = 110,
+                HealthRegen = 2,
+                MaxMana = 75,
+                ManaRegen = 5,
+                AttackPower = 12,
+                MagicPower = 5,
+                ArmorValue = 5,
+                RessistanceValue = 1,
+                CritChance = 2,
+                ImageURL = "https://i.ibb.co/tm9p0Bq/Beast.png",
+                Description = "A bloodthirsty animal,which also likes to party for some reason...",
+            });
+
+            this.context.Monsters.Add(new Monster
+            {
+                Name = "Reptile",
+                MaxHP = 70,
+                HealthRegen = 1,
+                MaxMana = 60,
+                ManaRegen = 7,
+                AttackPower = 14,
+                MagicPower = 5,
+                ArmorValue = 3,
+                RessistanceValue = 3,
+                CritChance = 5,
+                ImageURL = "https://i.ibb.co/PskPtmp/Reptile.png",
+                Description = "Actually kind of a dinosaur/lizard thingy... not very sure.",
+            });
+
+            this.context.Monsters.Add(new Monster
+            {
+                Name = "Zombie",
+                MaxHP = 105,
+                HealthRegen = 5,
+                MaxMana = 80,
+                ManaRegen = 5,
+                AttackPower = 12,
+                MagicPower = 3,
+                ArmorValue = 2.6,
+                RessistanceValue = 2,
+                CritChance = 2,
+                ImageURL = "https://i.ibb.co/NLF8yxW/Zombie.png",
+                Description = "Sapiosexual. Not very smart.",
+            });
+
+            this.context.Monsters.Add(new Monster
+            {
+                Name = "Skeleton",
+                MaxHP = 80,
+                HealthRegen = 10,
+                MaxMana = 80,
+                ManaRegen = 3,
+                AttackPower = 18,
+                MagicPower = 3,
+                ArmorValue = 1,
+                RessistanceValue = 2,
+                CritChance = 9,
+                ImageURL = "https://i.ibb.co/72jY07Q/Skeleton.png",
+                Description = "{Insert a /Spooky/ joke here.}",
+            });
+
+            this.context.Monsters.Add(new Monster
+            {
+                Name = "Wyrm",
+                MaxHP = 110,
+                HealthRegen = 2,
+                MaxMana = 95,
+                ManaRegen = 18,
+                AttackPower = 10,
+                MagicPower = 15,
+                ArmorValue = 5,
+                RessistanceValue = 2,
+                CritChance = 3,
+                ImageURL = "https://i.ibb.co/0QcMBhp/Wyrm.png",
+                Description = "Picture this guy beneath the toilet seat next time you take a dump. I dare you!",
+            });
+
+            this.context.Monsters.Add(new Monster
+            {
+                Name = "Giant",
+                MaxHP = 200,
+                HealthRegen = 1,
+                MaxMana = 90,
+                ManaRegen = 10,
+                AttackPower = 9,
+                MagicPower = 5,
+                ArmorValue = 5,
+                RessistanceValue = 5,
+                CritChance = 3,
+                ImageURL = "https://i.ibb.co/HpF09kD/Giant.png",
+                Description = "Not to be confused with the Iron Giant.",
+            });
+
+            this.context.Monsters.Add(new Monster
+            {
+                Name = "Gryphon",
+                MaxHP = 90,
+                HealthRegen = 2,
+                MaxMana = 110,
+                ManaRegen = 8,
+                AttackPower = 15,
+                MagicPower = 5,
+                ArmorValue = 4,
+                RessistanceValue = 4,
+                CritChance = 10,
+                ImageURL = "https://i.ibb.co/ydLmqmL/Gryphon.png",
+                Description = "These halfbreeds don't just exist in World of Warcraft!",
+            });
+
+            this.context.Monsters.Add(new Monster
+            {
+                Name = "Saint",
+                MaxHP = 170,
+                HealthRegen = 5,
+                MaxMana = 120,
+                ManaRegen = 10,
+                AttackPower = 10,
+                MagicPower = 22,
+                ArmorValue = 3,
+                RessistanceValue = 8,
+                CritChance = 8,
+                ImageURL = "https://i.ibb.co/bgdLZny/Saint.png",
+                Description = "You'll pay for not going to church on sundays!",
+            });
+
+            this.context.Monsters.Add(new Monster
+            {
+                Name = "Demon",
+                MaxHP = 150,
+                HealthRegen = 4,
+                MaxMana = 115,
+                ManaRegen = 6,
+                AttackPower = 20,
+                MagicPower = 8,
+                ArmorValue = 8,
+                RessistanceValue = 4,
+                CritChance = 5,
+                ImageURL = "https://i.ibb.co/Mf1WWjq/Demon.png",
+                Description = "Fearsome and cunning! Something is wrong with his head (I mean the PNG file).",
+            });
+
+            await this.context.SaveChangesAsync(cancellationToken);
+        }
+
+        private async Task SeedFigthingClassesAsync(CancellationToken cancellationToken)
+        {
+            this.context.FightingClasses.Add(new FightingClass
+            {
+                ClassType = "Warrior",
+                MaxHP = 240,
+                HealthRegen = 2,
+                MaxMana = 100,
+                ManaRegen = 5,
+                AttackPower = 25,
+                MagicPower = 10,
+                ArmorValue = 5,
+                RessistanceValue = 3,
+                CritChance = 3,
+                ImageURL = "https://i.ibb.co/XVJ5cHJ/Warrior.png",
                 Description = "If you want to spam one button and lose brain cells simultaneously, you should probably play CS: GO." +
                 "Main Stat: Strength.",
                 IconURL = "https://i.ibb.co/wyMw3jR/Warrior-Icon.png",
             });
-            this.context.Images.Add(new Image
+            this.context.FightingClasses.Add(new FightingClass
             {
-                Name = "Hunter",
-                Path = "https://i.ibb.co/DDPXJbv/Hunter.png",
+                ClassType = "Hunter",
+                MaxHP = 200,
+                HealthRegen = 2,
+                MaxMana = 100,
+                ManaRegen = 5,
+                AttackPower = 32,
+                MagicPower = 12,
+                ArmorValue = 3.5,
+                RessistanceValue = 2.5,
+                CritChance = 6,
+                ImageURL = "https://i.ibb.co/DDPXJbv/Hunter.png",
                 Description = "He could have a shotgun but that would be way too much OP." +
                "Main Stat: Agility.",
                 IconURL = "https://i.ibb.co/FDj0HbP/Hunter-Icon.png",
             });
-            this.context.Images.Add(new Image
+            this.context.FightingClasses.Add(new FightingClass
             {
-                Name = "Mage",
-                Path = "https://i.ibb.co/n6q7zgb/Mage.png",
+                ClassType = "Mage",
+                MaxHP = 200,
+                HealthRegen = 3,
+                MaxMana = 130,
+                ManaRegen = 10,
+                AttackPower = 18,
+                MagicPower = 26,
+                ArmorValue = 2,
+                RessistanceValue = 8,
+                CritChance = 2,
+                ImageURL = "https://i.ibb.co/n6q7zgb/Mage.png",
                 Description = "Like cards? Go to Vegas. Like bunnies? Open a rabbit farm. Want to 1-shot someone? [CLICK ME]!" +
                 "Main Stat: Intellect.",
                 IconURL = "https://i.ibb.co/k55MXgG/MageIcon.png",
             });
-            this.context.Images.Add(new Image
+            this.context.FightingClasses.Add(new FightingClass
             {
-                Name = "Naturalist",
-                Path = "https://i.ibb.co/Ht6ZBtv/Druid.png",
+                ClassType = "Naturalist",
+                MaxHP = 220,
+                HealthRegen = 3,
+                MaxMana = 120,
+                ManaRegen = 12,
+                AttackPower = 15,
+                MagicPower = 28,
+                ArmorValue = 5,
+                RessistanceValue = 2.2,
+                CritChance = 2,
+                ImageURL = "https://i.ibb.co/Ht6ZBtv/Druid.png",
                 Description = "Don't worry. I've already donated 5 bucks to that *Beast* guy." +
                 "Main Stat: Spirit.",
                 IconURL = "https://i.ibb.co/gmK4VjW/Druid-Icon.png",
             });
-            this.context.Images.Add(new Image
+            this.context.FightingClasses.Add(new FightingClass
             {
-                Name = "Necroid",
-                Path = "https://i.ibb.co/Ms0bv1v/Necroid.png",
+                ClassType = "Necroid",
+                MaxHP = 180,
+                HealthRegen = 4,
+                MaxMana = 140,
+                ManaRegen = 10,
+                AttackPower = 15,
+                MagicPower = 30,
+                ArmorValue = 2.5,
+                RessistanceValue = 2,
+                CritChance = 2,
+                ImageURL = "https://i.ibb.co/Ms0bv1v/Necroid.png",
                 Description = "Actually, you don't wanna know about this guy. I've warned you." +
                 "Main Stat: Intellect.",
                 IconURL = "https://i.ibb.co/0rf3kG3/Necroid-Icon.png",
             });
-            this.context.Images.Add(new Image
+            this.context.FightingClasses.Add(new FightingClass
             {
-                Name = "Paladin",
-                Path = "https://i.ibb.co/yNX0SZn/Paladin.png",
+                ClassType = "Paladin",
+                MaxHP = 220,
+                HealthRegen = 2,
+                MaxMana = 110,
+                ManaRegen = 6,
+                AttackPower = 22,
+                MagicPower = 18,
+                ArmorValue = 4,
+                RessistanceValue = 5,
+                CritChance = 3,
+                ImageURL = "https://i.ibb.co/yNX0SZn/Paladin.png",
                 Description = "Damage? Got it. Health? Got it. Girlfriend? ... :(" +
                "Main Stat: Strength.",
                 IconURL = "https://i.ibb.co/yVVp9Md/Paladin-Icon.png",
             });
-            this.context.Images.Add(new Image
+            this.context.FightingClasses.Add(new FightingClass
             {
-                Name = "Priest",
-                Path = "https://i.ibb.co/xhDTxW6/Priest.png",
+                ClassType = "Priest",
+                MaxHP = 170,
+                HealthRegen = 5,
+                MaxMana = 180,
+                ManaRegen = 10,
+                AttackPower = 15,
+                MagicPower = 30,
+                ArmorValue = 2,
+                RessistanceValue = 4,
+                CritChance = 2,
+                ImageURL = "https://i.ibb.co/xhDTxW6/Priest.png",
                 Description = "Don't worry. He won't molest you." +
                "Main Stat: Spirit.",
                 IconURL = "https://i.ibb.co/pWd8pbq/Priest-Icon.png",
             });
-            this.context.Images.Add(new Image
+            this.context.FightingClasses.Add(new FightingClass
             {
-                Name = "Rogue",
-                Path = "https://i.ibb.co/K5YgbHG/Rogue.png",
+                ClassType = "Rogue",
+                MaxHP = 180,
+                HealthRegen = 3,
+                MaxMana = 100,
+                ManaRegen = 5,
+                AttackPower = 33,
+                MagicPower = 8,
+                ArmorValue = 3,
+                RessistanceValue = 1,
+                CritChance = 8,
+                ImageURL = "https://i.ibb.co/K5YgbHG/Rogue.png",
                 Description = "He steals money. Enough said, you greedy bastard." +
                "Main Stat: Agility.",
                 IconURL = string.Empty,
             });
-            this.context.Images.Add(new Image
+            this.context.FightingClasses.Add(new FightingClass
             {
-                Name = "Shaman",
-                Path = "https://i.ibb.co/fStYvFC/Shaman.png",
+                ClassType = "Shaman",
+                MaxHP = 180,
+                HealthRegen = 2,
+                MaxMana = 115,
+                ManaRegen = 12,
+                AttackPower = 20,
+                MagicPower = 20,
+                ArmorValue = 3,
+                RessistanceValue = 5,
+                CritChance = 2,
+                ImageURL = "https://i.ibb.co/fStYvFC/Shaman.png",
                 Description = "Freezing, zapping and stoning people to death was never such fun." +
                "Main Stat: Stamina.",
                 IconURL = "https://i.ibb.co/kDrCmXw/Shaman-Icon.png",

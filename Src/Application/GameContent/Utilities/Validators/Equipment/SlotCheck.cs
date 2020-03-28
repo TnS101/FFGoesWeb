@@ -1,10 +1,15 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.Equipment
 {
+    using Domain.Base;
+    using Domain.Entities.Game.Items;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using global::Domain.Entities.Game;
 
     public class SlotCheck
     {
+        public SlotCheck()
+        {
+        }
+
         public Item Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, string fightingClassType, string weaponName, ValidatorHandler validatorHandler)
         {
             if (slotNumber == 7)

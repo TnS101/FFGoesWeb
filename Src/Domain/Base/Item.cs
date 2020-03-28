@@ -42,5 +42,7 @@
         public virtual int SellPrice { get; set; }
 
         public virtual int BuyPrice { get; set; }
+
+        public virtual string ImageURL { get; set; }
     }
 }

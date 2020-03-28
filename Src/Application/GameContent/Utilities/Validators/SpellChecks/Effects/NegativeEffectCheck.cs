@@ -1,7 +1,7 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.Effects
 {
+    using Domain.Base;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
-    using global::Domain.Entities.Game;
 
     public class NegativeEffectCheck
     {

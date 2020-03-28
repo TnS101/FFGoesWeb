@@ -1,10 +1,14 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.DamageInfliction
 {
+    using Domain.Base;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
-    using global::Domain.Entities.Game;
 
     public class SpellDamageCheck
     {
+        public SpellDamageCheck()
+        {
+        }
+
         public void Check(Unit caster, Unit target, double manaRequirment, double damage, string spellName, ManaCheck manaCheck)
         {
             if (manaCheck.SpellManaCheck(caster, manaRequirment) == true)

@@ -1,10 +1,14 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.EquipmentOptions
 {
+    using Domain.Base;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
-    using global::Domain.Entities.Game;
 
     public class EquipOption
     {
+        public EquipOption()
+        {
+        }
+
         public string Equip(Unit player, Item item, StatSum statSum)
         {
             if (player.ClassType != item.ClassType)

@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites
 {
-    using global::Domain.Entities.Game;
+    using Domain.Base;
 
     public class StatSum
     {
@@ -10,16 +10,23 @@
 
         public void Sum(Unit player)
         {
-            foreach (var item in player.Inventory.Items)
+            foreach (var item in player.Equipment.Items)
             {
-                player.ArmorValue += item.ArmorValue;
-                player.RessistanceValue += item.RessistanceValue;
-                player.AttackPower += item.Strength;
-                player.AttackPower += item.AttackPower;
                 player.AttackPower += item.Agility;
                 player.MagicPower += item.Intellect;
                 player.ManaRegen += item.Spirit;
                 player.MaxHP += item.Stamina * 5;
+                player.AttackPower += item.Strength;
+
+                if (item.Slot == "Weapon")
+                {
+                    player.AttackPower += item.AttackPower;
+                }
+                else if (item.Slot != "Trinket")
+                {
+                    player.ArmorValue += item.ArmorValue;
+                    player.RessistanceValue += item.RessistanceValue;
+                }
             }
         }
     }

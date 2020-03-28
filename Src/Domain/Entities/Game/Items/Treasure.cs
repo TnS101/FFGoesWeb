@@ -1,6 +1,8 @@
 ﻿namespace Domain.Entities.Game.Items
 {
-    public class Treasure
+    using Domain.Base;
+
+    public class Treasure : Item
     {
         public Treasure()
         {
@@ -9,6 +11,6 @@
 
         public int Reward { get; set; }
 
-        public string ImageURL { get; set; }
+        public override string ImageURL { get; set; }
     }
 }

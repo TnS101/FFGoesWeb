@@ -35,5 +35,7 @@
         public override int SellPrice { get; set; }
 
         public override int BuyPrice { get; set; }
+
+        public override string ImageURL { get; set; }
     }
 }

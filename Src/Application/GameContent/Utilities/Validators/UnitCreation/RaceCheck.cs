@@ -1,6 +1,6 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.UnitCreation
 {
-    using global::Domain.Entities.Game;
+    using Domain.Base;
 
     public class RaceCheck
     {

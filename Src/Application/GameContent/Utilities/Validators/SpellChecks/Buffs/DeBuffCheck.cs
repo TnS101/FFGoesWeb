@@ -1,10 +1,14 @@
 ﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.Buffs
 {
+    using Domain.Base;
     using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
-    using global::Domain.Entities.Game;
 
     public class DeBuffCheck
     {
+        public DeBuffCheck()
+        {
+        }
+
         public void Check(Unit caster, Unit target, double manaRequirment, double debuffEffect, string spellName, string deBuffType, ManaCheck manaCheck)
         {
             if (manaCheck.SpellManaCheck(caster, manaRequirment) == true)

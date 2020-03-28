@@ -19,5 +19,7 @@
         public override int EquipmentId { get; set; }
 
         public override Equipment Equipment { get; set; }
+
+        public override string ImageURL { get; set; }
     }
 }

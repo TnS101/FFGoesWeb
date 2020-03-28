@@ -2,7 +2,8 @@
 {
     using System;
     using System.Linq;
-    using global::Domain.Entities.Game;
+    using Domain.Base;
+    using Domain.Entities.Game.Items;
 
     public class TreasureGenerator
     {

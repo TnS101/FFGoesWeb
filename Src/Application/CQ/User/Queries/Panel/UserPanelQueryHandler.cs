@@ -23,7 +23,7 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var units = this.context.Units.Where(u => u.UserId == user.Id);
+            var units = this.context.Heroes.Where(u => u.UserId == user.Id);
 
             if (!this.context.UserStatuses.Any(u => u.UserId == user.Id))
             {

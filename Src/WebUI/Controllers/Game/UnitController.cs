@@ -2,11 +2,10 @@
 {
     using System;
     using System.Threading.Tasks;
+    using Application.GameCQ.Heroes.Commands.Create;
     using Application.GameCQ.Unit.Commands.Update.SelectUnitCommand;
     using global::Application.GameCQ.Equipment.Commands.Update;
     using global::Application.GameCQ.Equipment.Queries;
-    using global::Application.GameCQ.Image.Queries;
-    using global::Application.GameCQ.Unit.Commands.Create;
     using global::Application.GameCQ.Unit.Commands.Delete;
     using global::Application.GameCQ.Unit.Commands.Update;
     using global::Application.GameCQ.Unit.Queries;
@@ -26,7 +25,7 @@
         [HttpPost]
         public async Task<ActionResult> Create([FromForm]string fightingClass, [FromForm]string race, [FromForm]string name)
         {
-            return this.Redirect(await this.Mediator.Send(new CreateUnitCommand { ClassType = fightingClass, Race = race, Name = name, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = fightingClass, Race = race, Name = name, User = this.User }));
         }
 
         [HttpDelete]
