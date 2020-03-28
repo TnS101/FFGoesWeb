@@ -4,7 +4,7 @@
 
     public class AcceptFeedbackCommand : IRequest<string>
     {
-        public string FeedbackId { get; set; }
+        public int FeedbackId { get; set; }
 
         public int Stars { get; set; }
     }

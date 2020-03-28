@@ -1,7 +1,7 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
     using Application.GameContent.Utilities.Looting;
-    using global::Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
 
     public class EndOption
     {

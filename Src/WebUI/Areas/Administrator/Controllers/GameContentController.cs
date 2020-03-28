@@ -2,10 +2,10 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Admin.GameContent.Items.Commands.Create;
+    using Application.CQ.Admin.GameContent.Items.Commands.Delete;
+    using Application.CQ.Admin.GameContent.Items.Commands.Update;
     using Application.CQ.Admin.GameContent.Items.Queries;
-    using Application.CQ.Admin.Item.Commands.Delete;
-    using Application.CQ.Admin.Items.Commands.Update;
-    using Application.CQ.Admin.Spell.Queries;
+    using Application.CQ.Admin.GameContent.Spells.Queries;
     using Common;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;

@@ -2,11 +2,10 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Application.GameCQ.Item.Queries;
+    using Application.Common.Interfaces;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    Application.Common.Interfaces;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 

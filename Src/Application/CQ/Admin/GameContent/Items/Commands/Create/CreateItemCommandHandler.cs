@@ -3,7 +3,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Domain.Entities.Game.Items;
-    Application.Common.Interfaces;
+    using Application.Common.Interfaces;
     using MediatR;
 
     public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand, string>

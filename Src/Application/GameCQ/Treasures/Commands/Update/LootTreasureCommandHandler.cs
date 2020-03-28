@@ -1,11 +1,11 @@
-﻿namespace Application.GameCQ.Treasure.Commands.Update
+﻿namespace Application.GameCQ.Treasures.Commands.Update
 {
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Domain.Entities.Common;
-    Application.Common.Interfaces;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;

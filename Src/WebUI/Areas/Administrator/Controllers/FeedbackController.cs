@@ -1,10 +1,10 @@
 ﻿namespace WebUI.Areas.Administrator.Controllers
 {
     using System.Threading.Tasks;
-    using Application.CQ.Admin.Moderation.Feedback.Commands.Delete;
-    using Application.CQ.Admin.Moderation.Feedback.Commands.Update;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
+    using Application.CQ.Admin.Moderation.Feedbacks.Commands.Delete.DeleteFeedbackCommand;
+    using Application.CQ.Admin.Moderation.Feedbacks.Commands.Update;
     using Common;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
@@ -19,21 +19,21 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> CurrentFeedback([FromQuery]string feedbackId)
+        public async Task<ActionResult> CurrentFeedback([FromQuery]int id)
         {
-            return this.View(await this.Mediator.Send(new GetCurrentFeedbackQuery { FeedbackId = feedbackId }));
+            return this.View(await this.Mediator.Send(new GetCurrentFeedbackQuery { FeedbackId = id }));
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]string feedbackId)
+        public async Task<ActionResult> Delete([FromQuery]int id)
         {
-            return this.Redirect(await this.Mediator.Send(new DeleteFeedbackCommand { FeedbackId = feedbackId }));
+            return this.Redirect(await this.Mediator.Send(new DeleteFeedbackCommand { FeedbackId = id }));
         }
 
         [HttpPut]
-        public async Task<ActionResult> Accept([FromQuery]string feedbackId, [FromBody]int stars)
+        public async Task<ActionResult> Accept([FromQuery]int id, [FromBody]int stars)
         {
-            return this.Redirect(await this.Mediator.Send(new AcceptFeedbackCommand { FeedbackId = feedbackId, Stars = stars }));
+            return this.Redirect(await this.Mediator.Send(new AcceptFeedbackCommand { FeedbackId = id, Stars = stars }));
         }
     }
 }

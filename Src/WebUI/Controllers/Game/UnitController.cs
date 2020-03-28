@@ -1,15 +1,12 @@
 ﻿namespace WebUI.Controllers.Game
 {
-    using System;
     using System.Threading.Tasks;
+    using Application.GameCQ.Equipments.Commands.Update;
+    using Application.GameCQ.Equipments.Queries;
     using Application.GameCQ.Heroes.Commands.Create;
-    using Application.GameCQ.Unit.Commands.Update.SelectUnitCommand;
-    using global::Application.GameCQ.Equipment.Commands.Update;
-    using global::Application.GameCQ.Equipment.Queries;
-    using global::Application.GameCQ.Unit.Commands.Delete;
-    using global::Application.GameCQ.Unit.Commands.Update;
-    using global::Application.GameCQ.Unit.Queries;
-    using Microsoft.AspNetCore.Authorization;
+    using Application.GameCQ.Heroes.Commands.Update.HeroLevelUpCommand;
+    using Application.GameCQ.Heroes.Commands.Update.SelectHeroCommand;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
@@ -61,15 +58,15 @@
         [HttpGet]
         public async Task<ActionResult> LevelUp()
         {
-            await this.Mediator.Send(new UnitLevelUpCommand());
+            await this.Mediator.Send(new HeroLevelUpCommand());
 
             return this.View();
         }
 
         [HttpGet]
-        public async Task<ActionResult> Select([FromQuery]string id)
+        public async Task<ActionResult> Select([FromQuery]int id)
         {
-            return this.Redirect(await this.Mediator.Send(new SelectUnitCommand { Id = id, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new SelectHeroCommand { Id = id, User = this.User }));
         }
     }
 }

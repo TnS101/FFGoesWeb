@@ -6,7 +6,7 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Domain.Entities.Common;
-    Application.Common.Interfaces;
+    using Application.Common.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;

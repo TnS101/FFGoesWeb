@@ -1,9 +1,7 @@
 ﻿namespace WebUI.Controllers.Social
 {
     using System.Threading.Tasks;
-    using Application.CQ.Forum.Comment.Create;
-    using Application.CQ.Forum.Comment.Delete;
-    using Application.CQ.Forum.Comment.Update;
+    using Application.CQ.Social.Comments.Commands.Create;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
@@ -24,7 +22,7 @@
         [HttpPut]
         public async Task<ActionResult> Edit([FromQuery]int id, [FromForm]string content)
         {
-            return this.Redirect(await this.Mediator.Send(new EditCommentCommand { Content = content, CommentId = id}));
+            return this.Redirect(await this.Mediator.Send(new EditCommentCommand { Content = content, CommentId = id }));
         }
     }
 }

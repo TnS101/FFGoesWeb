@@ -3,7 +3,7 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    Application.Common.Interfaces;
+    using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 

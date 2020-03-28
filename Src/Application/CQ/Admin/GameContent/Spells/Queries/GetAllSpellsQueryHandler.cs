@@ -2,10 +2,10 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Application.GameCQ.Spell.Queries;
+    using Application.Common.Interfaces;
+    using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    Application.Common.Interfaces;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 

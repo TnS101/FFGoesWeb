@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    Application.Common.Interfaces;
+    using Application.Common.Interfaces;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 

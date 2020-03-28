@@ -1,11 +1,10 @@
-﻿namespace Application.GameCQ.Treasure.Commands.Delete
+﻿namespace Application.GameCQ.Treasures.Commands.Delete
 {
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Domain.Entities.Common;
-    Application.Common.Interfaces;
-    using global::Domain.Entities.Game;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 

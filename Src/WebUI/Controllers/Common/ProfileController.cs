@@ -1,11 +1,10 @@
 ﻿namespace WebUI.Controllers.Common
 {
-    using System;
     using System.Threading.Tasks;
-    using Application.CQ.User.Queries.Panel;
-    using Application.CQ.User.Status.Commands.Update;
-    using Application.CQ.User.Status.Queries;
-    using Application.GameCQ.Unit.Queries.GetUnitListQuery;
+    using Application.CQ.Users.Queries.Panel;
+    using Application.CQ.Users.Statuses.Commands.Update;
+    using Application.CQ.Users.Statuses.Queries;
+    using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Microsoft.AspNetCore.Mvc;
 
     // [Authorize(Roles = GConst.UserRole)]

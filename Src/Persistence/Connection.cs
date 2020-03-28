@@ -1,6 +1,6 @@
 ﻿namespace Persistence
 {
-    Application.Common.Interfaces;
+    using Application.Common.Interfaces;
 
     public class Connection : IConnection
     {

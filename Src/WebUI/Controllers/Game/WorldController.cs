@@ -1,11 +1,9 @@
 ﻿namespace WebUI.Controllers.Game
 {
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
-    using Application.GameCQ.Unit.Queries.GetUnitListQuery;
-    using global::Application.GameCQ.Treasure.Commands.Update;
-    using Microsoft.AspNetCore.Authorization;
+    using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
+    using Application.GameCQ.Treasures.Commands.Update;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 

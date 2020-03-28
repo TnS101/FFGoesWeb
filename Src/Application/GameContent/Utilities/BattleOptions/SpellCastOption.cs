@@ -5,7 +5,7 @@
     using Application.Common.Interfaces;
     using Application.GameContent.Repositories.EnemySpellRepository;
     using Application.GameContent.Repositories.PlayerSpellRepository;
-    using global::Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
 
     public class SpellCastOption
     {

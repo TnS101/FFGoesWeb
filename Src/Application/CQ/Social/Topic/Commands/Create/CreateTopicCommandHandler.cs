@@ -8,7 +8,7 @@
     using System.Threading.Tasks;
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;
-    Application.Common.Interfaces;
+    using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;

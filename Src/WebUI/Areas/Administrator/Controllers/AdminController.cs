@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Admin.Users.Queries;
+    using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
     using Application.CQ.Common.Commands;
     using Common;
     using Microsoft.AspNetCore.Authorization;

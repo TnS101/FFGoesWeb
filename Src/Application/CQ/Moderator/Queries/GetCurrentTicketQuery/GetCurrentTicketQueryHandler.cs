@@ -2,9 +2,9 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using AutoMapper;
     using Domain.Entities.Moderation;
-    Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 

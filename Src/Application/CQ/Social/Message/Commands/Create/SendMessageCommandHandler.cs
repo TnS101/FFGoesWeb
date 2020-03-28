@@ -4,8 +4,8 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Domain.Entities.Common;
-    Application.Common.Interfaces;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;

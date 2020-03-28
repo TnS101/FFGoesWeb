@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Generators;
-    using Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using AutoMapper;
     using MediatR;
 

@@ -1,9 +1,10 @@
 ﻿namespace WebUI.Controllers.Game
 {
     using System.Threading.Tasks;
-    using global::Application.GameCQ.Battle.Commands.Update;
-    using global::Application.GameCQ.Enemy.Commands.Create;
-    using global::Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Battles.Commands.Update;
+    using Application.GameCQ.Enemies.Commands.Create;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
+    using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;

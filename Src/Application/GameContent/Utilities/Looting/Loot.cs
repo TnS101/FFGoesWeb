@@ -1,7 +1,7 @@
 ﻿namespace Application.GameContent.Utilities.Looting
 {
     using Application.GameContent.Utilities.Generators;
-    using global::Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
 
     public class Loot
     {

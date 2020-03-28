@@ -4,6 +4,6 @@
 
     public class GetCurrentFeedbackQuery : IRequest<FeedbackFullViewModel>
     {
-        public string FeedbackId { get; set; }
+        public int FeedbackId { get; set; }
     }
 }

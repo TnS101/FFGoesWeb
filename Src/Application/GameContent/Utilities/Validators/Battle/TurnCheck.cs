@@ -3,7 +3,7 @@
     using System;
     using Application.Common.Interfaces;
     using Application.GameContent.Handlers;
-    using global::Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
 
     public class TurnCheck
     {

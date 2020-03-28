@@ -6,12 +6,10 @@
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Domain.Entities.Common;
-    Application.Common.Interfaces;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
     public class GetOnlineUsersQueryHandler : IRequestHandler<GetOnlineUsersQuery, UserListViewModel>

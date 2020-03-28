@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.TreasureKey.Commands.Update
+﻿namespace Application.GameCQ.TreasureKeys.Commands.Update
 {
     using System.Security.Claims;
     using MediatR;

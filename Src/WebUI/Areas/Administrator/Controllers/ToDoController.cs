@@ -17,9 +17,9 @@
         }
 
         [HttpDelete]
-        public async Task<ActionResult> FinishTask([FromQuery]string feedbackId)
+        public async Task<ActionResult> FinishTask([FromQuery]int id)
         {
-            return this.Redirect(await this.Mediator.Send(new FeedbackTaskDoneCommand { FeedbackId = feedbackId }));
+            return this.Redirect(await this.Mediator.Send(new FeedbackTaskDoneCommand { FeedbackId = id }));
         }
     }
 }

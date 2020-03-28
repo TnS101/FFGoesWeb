@@ -1,6 +1,6 @@
 ﻿namespace Application.GameCQ.Enemies.Commands.Create
 {
-    using Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using MediatR;
 
     public class GenerateEnemyCommand : IRequest<UnitFullViewModel>

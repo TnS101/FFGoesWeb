@@ -1,6 +1,6 @@
 ﻿namespace Application.GameCQ.Battles.Commands.Update
 {
-    using Application.GameCQ.Unit.Queries;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using MediatR;
 
     public class BattleOptionsCommand : IRequest<string>

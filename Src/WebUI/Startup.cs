@@ -1,12 +1,11 @@
 ﻿namespace WebUI
 {
     using Application.Common.Handlers;
+    using Application.Common.Interfaces;
     using Application.Common.Mappings;
     using AutoMapper;
     using Domain.Entities.Common;
     using Domain.Models;
-    Application.Common.Interfaces;
-    Persistence;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -14,6 +13,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Persistence;
 
     public class Startup
     {
