@@ -27,19 +27,21 @@
             this.userManager = userManager;
         }
 
-        public async Task<MediatR.Unit> Handle(LootItemCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(LootItemCommand request, CancellationToken cancellationToken)
         {
             var rng = new Random();
 
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            this.context.Items.Where(i => i.InventoryId == unit.InventoryId).ToList().Add(this.itemGenerator.Generate(this.mapper.Map<UnitFullViewModel>(unit)));
+            hero.Inventory.Items.Add(this.itemGenerator.Generate(this.mapper.Map<UnitFullViewModel>(hero)));
+
+            this.context.Heroes.Update(hero);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return MediatR.Unit.Value;
+            return Unit.Value;
         }
     }
 }

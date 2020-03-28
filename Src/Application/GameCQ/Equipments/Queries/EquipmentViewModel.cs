@@ -1,10 +1,10 @@
 ﻿namespace Application.GameCQ.Equipment.Queries
 {
     using System.Collections.Generic;
-    using Application.GameCQ.Item.Queries;
+    using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
 
     public class EquipmentViewModel
     {
-        public ICollection<ItemFullViewModel> Items { get; set; }
+        public ICollection<ItemMinViewModel> Items { get; set; }
     }
 }

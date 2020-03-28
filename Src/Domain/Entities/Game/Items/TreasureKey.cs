@@ -7,7 +7,7 @@
         public TreasureKey()
         {
         }
-        public string Rarity { get; set; }
+        public override string Rarity { get; set; }
 
         public override string ImageURL { get; set; }
     }

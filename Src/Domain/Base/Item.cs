@@ -44,5 +44,9 @@
         public virtual int BuyPrice { get; set; }
 
         public virtual string ImageURL { get; set; }
+
+        public virtual string Rarity { get; set; }
+
+        public virtual int Reward { get; set; }
     }
 }

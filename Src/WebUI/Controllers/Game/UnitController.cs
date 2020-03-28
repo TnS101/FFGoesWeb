@@ -19,7 +19,7 @@
         [HttpGet]
         public async Task<ActionResult> Create()
         {
-            return this.View(await this.Mediator.Send(new GetFightingClassImagesQuery()));
+            return this.View();
         }
 
         [HttpPost]
@@ -55,7 +55,7 @@
         [HttpGet]
         public async Task<ActionResult> Equipment([FromQuery]int id)
         {
-            return this.View(await this.Mediator.Send(new GetEquipmentQuery { UnitId = id }));
+            return this.View(await this.Mediator.Send(new GetEquipmentQuery { HeroId = id }));
         }
 
         [HttpGet]

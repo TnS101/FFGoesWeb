@@ -1,22 +1,23 @@
 ﻿namespace Domain.Entities.Game.Items
 {
     using Domain.Base;
+    using Domain.Entities.Game.Units;
     using System.Collections.Generic;
 
     public class Equipment
     {
-        public Equipment(int unitId)
+        public Equipment(int heroId)
         {
-            Items = new HashSet<Item>();
-            this.UnitId = unitId;
+            this.Items = new HashSet<Item>();
             this.Capacity = 50;
+            this.HeroId = heroId;
         }
 
         public int Id { get; set; }
 
-        public int UnitId { get; set; }
+        public int HeroId { get; set; }
 
-        public Unit Unit { get; set; }
+        public Hero Hero { get; set; }
 
         public int Capacity { get; set; }
 

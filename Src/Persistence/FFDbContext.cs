@@ -87,14 +87,14 @@
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Equipment>()
-           .HasOne(u => u.Unit)
+           .HasOne(u => u.Hero)
            .WithOne(e => e.Equipment)
            .HasForeignKey<Unit>(e => e.EquipmentId);
 
             modelBuilder.Entity<Inventory>()
-           .HasOne(u => u.Unit)
+           .HasOne(u => u.Hero)
            .WithOne(i => i.Inventory)
-           .HasForeignKey<Inventory>(u => u.UnitId);
+           .HasForeignKey<Inventory>(u => u.HeroId);
 
             modelBuilder.Entity<UserTopics>()
            .HasKey(k => new { k.UserId, k.TopicId });

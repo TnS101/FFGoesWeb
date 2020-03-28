@@ -24,14 +24,14 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var unit = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            var treasureKey = unit.Inventory.Items.Select(k => new TreasureKey
+            var treasureKey = unit.Inventory.Items.Select(k => new Domain.Entities.Game.Items.TreasureKey
             {
                 Rarity = request.Rarity,
             }).FirstOrDefault();
 
-            var treasure = unit.Inventory.Items.Select(t => new Treasure
+            var treasure = unit.Inventory.Items.Select(t => new Domain.Entities.Game.Items.Treasure
             {
                 Rarity = request.Rarity,
             }).FirstOrDefault();

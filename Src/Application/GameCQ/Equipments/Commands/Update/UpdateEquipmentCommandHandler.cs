@@ -29,26 +29,28 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            var item = unit.Inventory.Items.FirstOrDefault(i => i.Id == request.ItemId);
+            var item = hero.Inventory.Items.FirstOrDefault(i => i.Id == request.ItemId);
 
-            if (request.Command == "equip")
+            string result = string.Empty;
+
+            if (request.Command == "Equip")
             {
-                this.equipmentHandler.EquipOption.Equip(unit, item, this.statSum);
+                result = this.equipmentHandler.EquipOption.Equip(hero, item, this.statSum);
 
                 await this.context.SaveChangesAsync(cancellationToken);
-
-                return "/Equipment";
             }
             else
             {
-                this.equipmentHandler.UnEquipOption.UnEquip(unit, item, this.statSum);
+                result = this.equipmentHandler.UnEquipOption.UnEquip(hero, item, this.statSum);
 
                 await this.context.SaveChangesAsync(cancellationToken);
-
-                return "/Equipment";
             }
+
+            this.context.Equipments.Update(hero.Equipment);
+
+            return string.Format("/Equipment", result);
         }
     }
 }

@@ -33,5 +33,9 @@
         public int NewBuyPrice { get; set; }
 
         public int NewSellPrice { get; set; }
+
+        public string Rarity { get; set; }
+
+        public int Reward { get; set; }
     }
 }

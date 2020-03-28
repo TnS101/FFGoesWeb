@@ -59,6 +59,8 @@
 
         DbSet<Monster> Monsters { get; set; }
 
+        DbSet<Inventory> Inventories { get; set; }
+
         DbSet<MonsterRarity> MonsterRarities { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

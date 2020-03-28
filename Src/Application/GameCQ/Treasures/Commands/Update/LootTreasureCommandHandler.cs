@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using Domain.Entities.Common;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
@@ -28,30 +29,39 @@
 
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
             string rarity = string.Empty;
+
+            int reward = 0;
 
             if (treasureNumber >= 0 && treasureNumber < 5)
             {
                 rarity = "Bronze";
+                reward = 50;
             }
             else if (treasureNumber >= 5 && treasureNumber < 8)
             {
                 rarity = "Silver";
+                reward = 100;
             }
             else
             {
                 rarity = "Gold";
+                reward = 200;
             }
 
-            var treasure = this.context.Treasures.FirstOrDefault(t => t.Rarity == rarity);
+            hero.Inventory.Items.Add(new Domain.Entities.Game.Items.Treasure
+            {
+                Rarity = rarity,
+                Reward = reward,
+            });
 
-            this.context.Items.Where(i => i.InventoryId == unit.InventoryId).ToList().Add(treasure);
+            this.context.Heroes.Update(hero);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return rarity;
+            return GConst.WorldRedirect;
         }
     }
 }

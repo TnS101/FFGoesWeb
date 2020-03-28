@@ -3,7 +3,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Application.GameCQ.Item.Queries;
+    using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
@@ -23,10 +23,27 @@
 
         public async Task<EquipmentViewModel> Handle(GetEquipmentQuery request, CancellationToken cancellationToken)
         {
-            return new EquipmentViewModel
+            if (request.Slot == "Weapon")
             {
-                Items = await this.context.Items.Where(i => i.Inventory.UnitId == request.UnitId).ProjectTo<ItemFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
-            };
+                return new EquipmentViewModel
+                {
+                    Items = await this.context.Weapons.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Armor")
+            {
+                return new EquipmentViewModel
+                {
+                    Items = await this.context.Armors.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else
+            {
+                return new EquipmentViewModel
+                {
+                    Items = await this.context.Trinkets.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
         }
     }
 }

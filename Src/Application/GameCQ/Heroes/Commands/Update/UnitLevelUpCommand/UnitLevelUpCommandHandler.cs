@@ -19,7 +19,7 @@
 
         public async Task<Unit> Handle(UnitLevelUpCommand request, CancellationToken cancellationToken)
         {
-            this.level.Up(await this.context.Units.FindAsync(request.UnitId));
+            this.level.Up(await this.context.Heroes.FindAsync(request.HeroId));
 
             await this.context.SaveChangesAsync(cancellationToken);
 

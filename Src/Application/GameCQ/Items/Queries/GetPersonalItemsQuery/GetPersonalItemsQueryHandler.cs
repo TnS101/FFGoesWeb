@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
@@ -22,10 +23,48 @@
 
         public async Task<ItemListViewModel> Handle(GetPersonalItemsQuery request, CancellationToken cancellationToken)
         {
-            return new ItemListViewModel
+            if (request.Slot == "Weapon")
             {
-                Items = await this.context.Items.Where(i => i.Inventory.UnitId == request.UnitId).ProjectTo<ItemFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
-            };
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Weapons.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Armor")
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Armors.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Trinket")
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Trinkets.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Treasure")
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Treasures.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Treasure Key")
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.TreasureKeys.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Materials.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
         }
     }
 }

@@ -8,7 +8,6 @@
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
 
     public class GetFullUnitQueryHandler : IRequestHandler<GetFullUnitQuery, UnitFullViewModel>
     {
@@ -27,7 +26,7 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var unit = await this.context.Units.Where(u => u.UserId == user.Id && u.IsSelected).MinAsync(cancellationToken);
+            var unit = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
             return this.mapper.Map<UnitFullViewModel>(unit);
         }

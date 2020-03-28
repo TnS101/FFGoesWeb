@@ -1,6 +1,7 @@
 ﻿namespace Application.CQ.Admin.Items.Commands.Update
 {
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using global::Common;
     using MediatR;
     using System.Threading;
     using System.Threading.Tasks;
@@ -28,6 +29,14 @@
             {
                 await this.MaterialUpdate(request);
             }
+            else if (request.Slot == "Treasure")
+            {
+                await this.TreasureUpdate(request);
+            }
+            else if (request.Slot == "Treasure Key")
+            {
+                await this.TreasureKeyUpdate(request);
+            }
             else
             {
                 await this.ArmorUpdate(request);
@@ -35,7 +44,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return "/Items";
+            return string.Format(GConst.AdminItemCommandRedirect, request.Slot);
         }
 
         private async Task WeaponUpdate(UpdateItemCommand request)
@@ -86,6 +95,32 @@
             material.SellPrice = request.NewSellPrice;
 
             material.BuyPrice = request.NewBuyPrice;
+
+            this.context.Materials.Update(material);
+        }
+
+        private async Task TreasureUpdate(UpdateItemCommand request)
+        {
+            var treasure = await this.context.Treasures.FindAsync(request.Id);
+
+            this.NullCheck(request, treasure);
+
+            treasure.Rarity = request.Rarity;
+
+            treasure.Reward = request.Reward;
+
+            this.context.Treasures.Update(treasure);
+        }
+
+        private async Task TreasureKeyUpdate(UpdateItemCommand request)
+        {
+            var treasureKey = await this.context.TreasureKeys.FindAsync(request.Id);
+
+            this.NullCheck(request, treasureKey);
+
+            treasureKey.Rarity = request.Rarity;
+
+            this.context.TreasureKeys.Update(treasureKey);
         }
 
         private void BaseStatsSet(UpdateItemCommand request, Domain.Base.Item item)
@@ -104,13 +139,25 @@
 
         private void NullCheck(UpdateItemCommand request, Domain.Base.Item item)
         {
-            if (item.Slot != "Material")
+            if (string.IsNullOrWhiteSpace(request.NewName))
             {
-                if (string.IsNullOrWhiteSpace(request.NewName))
+                request.NewName = item.Name;
+            }
+
+            if (item.Slot != "Treasure" && item.Slot != "Treasure Key")
+            {
+                if (request.NewBuyPrice == 0)
                 {
-                    request.NewName = item.Name;
+                    request.NewBuyPrice = item.BuyPrice;
                 }
 
+                if (request.NewSellPrice == 0)
+                {
+                    request.NewSellPrice = item.SellPrice;
+                }
+            }
+            else if (item.Slot != "Material")
+            {
                 if (request.NewLevel == 0)
                 {
                     request.NewLevel = item.Level;
@@ -146,6 +193,27 @@
                     request.NewSpirit = item.Spirit;
                 }
 
+                if (item.Slot == "Treasure")
+                {
+                    if (string.IsNullOrWhiteSpace(request.Rarity))
+                    {
+                        request.Rarity = item.Rarity;
+                    }
+
+                    if (request.Reward == 0)
+                    {
+                        request.Reward = item.Reward;
+                    }
+                }
+
+                if (item.Slot == "Treasure Key")
+                {
+                    if (request.Reward == 0)
+                    {
+                        request.Reward = item.Reward;
+                    }
+                }
+
                 if (item.Slot == "Weapon")
                 {
                     if (request.NewAttackPower == 0)
@@ -165,16 +233,6 @@
                         request.NewRessistanceValue = item.ArmorValue;
                     }
                 }
-            }
-
-            if (request.NewBuyPrice == 0)
-            {
-                request.NewBuyPrice = item.BuyPrice;
-            }
-
-            if (request.NewSellPrice == 0)
-            {
-                request.NewSellPrice = item.SellPrice;
             }
         }
     }

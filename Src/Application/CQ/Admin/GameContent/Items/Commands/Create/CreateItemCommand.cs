@@ -28,11 +28,13 @@
 
         public string Slot { get; set; }
 
-        public string Type { get; set; }
-
         public int SellPrice { get; set; }
 
         public int BuyPrice { get; set; }
+
+        public string Rarity { get; set; }
+
+        public int Reward { get; set; }
 
         public string ImageURL { get; set; }
     }

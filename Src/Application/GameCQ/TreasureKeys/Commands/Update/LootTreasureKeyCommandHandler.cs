@@ -27,7 +27,7 @@
 
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
             string rarity = string.Empty;
 
@@ -44,7 +44,10 @@
                 rarity = "Gold";
             }
 
-            this.context.TreasureKeys.Where(i => i.InventoryId == unit.InventoryId).ToList().Add(this.context.TreasureKeys.FirstOrDefault(k => k.Rarity == rarity));
+            hero.Inventory.Items.Add(new Domain.Entities.Game.Items.TreasureKey
+            {
+                Rarity = rarity,
+            });
 
             await this.context.SaveChangesAsync(cancellationToken);
 

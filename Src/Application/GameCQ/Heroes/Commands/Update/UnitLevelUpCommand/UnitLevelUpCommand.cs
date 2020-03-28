@@ -4,6 +4,6 @@
 
     public class UnitLevelUpCommand : IRequest
     {
-        public string UnitId { get; set; }
+        public int HeroId { get; set; }
     }
 }

@@ -1,8 +1,6 @@
 ﻿namespace WebUI.Controllers.Common
 {
     using System.Threading.Tasks;
-    using global::Application.GameCQ.Image.Queries;
-    using global::Application.GameCQ.Monster.Queries;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -24,14 +22,14 @@
         [HttpGet]
         public async Task<ActionResult> MonsterCatalog()
         {
-            return this.View(await this.Mediator.Send(new GetMonstersImagesQuery { }));
+            return this.View();
         }
 
         [Authorize]
         [HttpGet]
         public async Task<ActionResult> ClassCatalog()
         {
-            return this.View(await this.Mediator.Send(new GetFightingClassImagesQuery { }));
+            return this.View();
         }
     }
 }

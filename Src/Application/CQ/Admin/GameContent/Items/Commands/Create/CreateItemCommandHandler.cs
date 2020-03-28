@@ -18,17 +18,25 @@
 
         public async Task<string> Handle(CreateItemCommand request, CancellationToken cancellationToken)
         {
-            if (request.Type == "Weapon")
+            if (request.Slot == "Weapon")
             {
                 this.WeaponCreate(request);
             }
-            else if (request.Type == "Trinket")
+            else if (request.Slot == "Trinket")
             {
                 this.TrinketCreate(request);
             }
-            else if (request.Type == "Material")
+            else if (request.Slot == "Material")
             {
                 this.CreateMaterial(request);
+            }
+            else if (request.Slot == "Treasure")
+            {
+                this.CreateTreasure(request);
+            }
+            else if (request.Slot == "Treasure Key")
+            {
+                this.CreateTreasureKey(request);
             }
             else
             {
@@ -106,6 +114,27 @@
                 Name = request.Name,
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
+                ImageURL = request.ImageURL,
+            });
+        }
+
+        private void CreateTreasure(CreateItemCommand request)
+        {
+            this.context.Treasures.Add(new Treasure
+            {
+                Name = request.Name,
+                Rarity = request.Rarity,
+                Reward = request.Reward,
+                ImageURL = request.ImageURL,
+            });
+        }
+
+        private void CreateTreasureKey(CreateItemCommand request)
+        {
+            this.context.TreasureKeys.Add(new TreasureKey
+            {
+                Name = request.Name,
+                Rarity = request.Rarity,
                 ImageURL = request.ImageURL,
             });
         }

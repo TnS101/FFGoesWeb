@@ -3,8 +3,6 @@
     using System.Threading.Tasks;
     using Application.CQ.Admin.Users.Queries;
     using Application.CQ.Common.Commands;
-    using Application.GameCQ.Image.Queries;
-    using Application.GameCQ.Monster.Queries;
     using Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -34,14 +32,14 @@
         [HttpGet]
         public async Task<ActionResult> MonsterCatalog()
         {
-            return this.View(await this.Mediator.Send(new GetMonstersImagesQuery { }));
+            return this.View();
         }
 
         [Authorize]
         [HttpGet]
         public async Task<ActionResult> ClassCatalog()
         {
-            return this.View(await this.Mediator.Send(new GetFightingClassImagesQuery { }));
+            return this.View();
         }
 
         [HttpPut]

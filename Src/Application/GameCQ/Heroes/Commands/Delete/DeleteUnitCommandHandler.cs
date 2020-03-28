@@ -1,6 +1,5 @@
 ﻿namespace Application.GameCQ.Unit.Commands.Delete
 {
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
@@ -18,13 +17,13 @@
 
         public async Task<string> Handle(DeleteUnitCommand request, CancellationToken cancellationToken)
         {
-            var unit = await this.context.Units.FindAsync(request.UnitId);
+            var hero = await this.context.Heroes.FindAsync(request.UnitId);
 
-            var items = this.context.Items.Where(i => i.InventoryId == unit.InventoryId && i.EquipmentId == unit.EquipmentId);
+            this.context.Inventories.Remove(hero.Inventory);
 
-            this.context.Items.RemoveRange(items);
+            this.context.Equipments.Remove(hero.Equipment);
 
-            this.context.Units.Remove(unit);
+            this.context.Heroes.Remove(hero);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

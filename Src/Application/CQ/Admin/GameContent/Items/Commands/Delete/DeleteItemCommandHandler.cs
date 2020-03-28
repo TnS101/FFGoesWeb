@@ -3,6 +3,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using global::Common;
     using MediatR;
 
     public class DeleteItemCommandHandler : IRequestHandler<DeleteItemCommand, string>
@@ -19,31 +20,43 @@
 
             if (request.Slot == "Weapon")
             {
-                var item = this.context.Weapons.FindAsync(request.ItemId).Result;
-                this.context.Weapons.Remove(item);
+                var weapon = await this.context.Weapons.FindAsync(request.ItemId);
+                this.context.Weapons.Remove(weapon);
             }
 
             if (request.Slot == "Armor")
             {
-                var item = this.context.Armors.FindAsync(request.ItemId).Result;
-                this.context.Armors.Remove(item);
+                var armor = await this.context.Armors.FindAsync(request.ItemId);
+                this.context.Armors.Remove(armor);
             }
 
             if (request.Slot == "Trinket")
             {
-                var item = this.context.Trinkets.FindAsync(request.ItemId).Result;
-                this.context.Trinkets.Remove(item);
+                var trinket = await this.context.Trinkets.FindAsync(request.ItemId);
+                this.context.Trinkets.Remove(trinket);
             }
 
             if (request.Slot == "Material")
             {
-                var item = this.context.Materials.FindAsync(request.ItemId).Result;
-                this.context.Materials.Remove(item);
+                var material = await this.context.Materials.FindAsync(request.ItemId);
+                this.context.Materials.Remove(material);
+            }
+
+            if (request.Slot == "Treasure")
+            {
+                var treasure = await this.context.Treasures.FindAsync(request.ItemId);
+                this.context.Treasures.Remove(treasure);
+            }
+
+            if (request.Slot == "TreasureKey")
+            {
+                var treasureKey = await this.context.TreasureKeys.FindAsync(request.ItemId);
+                this.context.TreasureKeys.Remove(treasureKey);
             }
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return "/Items";
+            return string.Format(GConst.AdminItemCommandRedirect,request.Slot);
         }
     }
 }

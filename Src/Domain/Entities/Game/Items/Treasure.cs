@@ -7,9 +7,9 @@
         public Treasure()
         {
         }
-        public string Rarity { get; set; }
+        public override string Rarity { get; set; }
 
-        public int Reward { get; set; }
+        public override int Reward { get; set; }
 
         public override string ImageURL { get; set; }
     }

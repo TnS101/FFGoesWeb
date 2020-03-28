@@ -1,8 +1,8 @@
 ﻿namespace Application.Common.Handlers
 {
+    using Application.CQ.Admin.GameContent.Items.Queries;
     using Application.CQ.Admin.Item.Commands.Create;
     using Application.CQ.Admin.Item.Commands.Delete;
-    using Application.CQ.Admin.Item.Queries;
     using Application.CQ.Admin.Items.Commands.Create;
     using Application.CQ.Admin.Items.Commands.Update;
     using Application.CQ.Admin.Moderation.Feedback.Commands.Delete;
@@ -12,12 +12,6 @@
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
     using Application.CQ.Admin.Spell.Queries;
-    using Application.CQ.Admin.Treasure.Commands.Create;
-    using Application.CQ.Admin.Treasure.Commands.Delete;
-    using Application.CQ.Admin.Treasure.Queries.GetAllTreasureQuery;
-    using Application.CQ.Admin.TreasureKey.Commands.Create;
-    using Application.CQ.Admin.TreasureKey.Commands.Delete;
-    using Application.CQ.Admin.TreasureKey.Commands.Queries;
     using Application.CQ.Admin.Users.Queries;
     using Application.CQ.Common.Commands;
     using Application.CQ.Forum.Comment.Create;
@@ -54,8 +48,6 @@
     using Application.GameCQ.Spell.Queries;
     using Application.GameCQ.Treasure.Commands.Delete;
     using Application.GameCQ.Treasure.Commands.Update;
-    using Application.GameCQ.Treasure.Queries;
-    using Application.GameCQ.TreasureKey.Queries;
     using Application.GameCQ.Unit.Commands.Delete;
     using Application.GameCQ.Unit.Commands.Update;
     using Application.GameCQ.Unit.Commands.Update.SelectUnitCommand;
@@ -87,10 +79,6 @@
             services.AddScoped<IRequestHandler<CreateItemCommand, string>, CreateItemCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteItemCommand, string>, DeleteItemCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateItemCommand, string>, UpdateItemCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateTreasureCommand, string>, CreateTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<DeleteTreasureCommand, string>, DeleteTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateTreasureKeyCommand, string>, CreateTreasureKeyCommandHandler>();
-            services.AddScoped<IRequestHandler<DeleteTreasureKeyCommand, string>, DeleteTreasureKeyCommandHandler>();
             services.AddScoped<IRequestHandler<CustomLogoutCommand, string>, CustomLogoutCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteFeedbackCommand, string>, DeleteFeedbackCommandHandler>();
             services.AddScoped<IRequestHandler<AcceptFeedbackCommand, string>, AcceptFeedbackCommandHandler>();
@@ -101,10 +89,8 @@
         {
             services.AddScoped<IRequestHandler<DataSeederCommand, Unit>, DataSeederCommandHandler>();
             services.AddScoped<IRequestHandler<GetOnlineUsersQuery, UserListViewModel>, GetOnlineUsersQueryHandler>();
-            services.AddScoped<IRequestHandler<GetAllItemsQuery, ItemListViewModel>, GetAllItemsQueryHandler>();
-            services.AddScoped<IRequestHandler<GetAllTreasuresQuery, TreasureListViewModel>, GetAllTreasuresQueryHandler>();
-            services.AddScoped<IRequestHandler<GetAllTreasureKeysQuery, TreasureKeyListViewModel>, GetAllTreasureKeysQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllSpellsQuery, SpellListViewModel>, GetAllSpellsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllItemsQuery, ItemListViewModel>, GetAllItemsQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllFeedbacksQuery, FeedbacksListViewModel>, GetAllFeedbacksQueryHandler>();
             services.AddScoped<IRequestHandler<GetCurrentFeedbackQuery, FeedbackFullViewModel>, GetCurrentFeedbackQueryHandler>();
             services.AddScoped<IRequestHandler<ToDoList, FeedbackTaskListViewModel>, ToDoListHandler>();
@@ -144,8 +130,6 @@
             services.AddScoped<IRequestHandler<GetEquipmentQuery, EquipmentViewModel>, GetEquipmentQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalItemsQuery, ItemListViewModel>, GetPersonalItemsQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalSpellsQuery, SpellListViewModel>, GetPersonalSpellsQueryHandler>();
-            services.AddScoped<IRequestHandler<GetPersonalTreasureQuery, TreasureListViewModel>, GetPersonalTreasureQueryHandler>();
-            services.AddScoped<IRequestHandler<GetPersonalTreasureKeysQuery, TreasureKeyListViewModel>, GetPersonalTreasureKeysQueryHandler>();
             services.AddScoped<IRequestHandler<GetFullUnitQuery, UnitFullViewModel>, GetFullUnitQueryHandler>();
             services.AddScoped<IRequestHandler<GetPartialUnitQuery, UnitPartialViewModel>, GetPartialUnitQueryHandler>();
             services.AddScoped<IRequestHandler<GetUnitListQuery, UnitListViewModel>, GetUnitListQueryHandler>();

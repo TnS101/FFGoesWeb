@@ -1,5 +1,6 @@
 ﻿namespace Application.Common.Mappings
 {
+    using Application.CQ.Admin.GameContent.Items.Queries;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
@@ -10,10 +11,8 @@
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.User.Feedbacks.Queries;
     using Application.CQ.User.Status.Queries;
-    using Application.GameCQ.Item.Queries;
+    using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using Application.GameCQ.Spell.Queries;
-    using Application.GameCQ.Treasure.Queries;
-    using Application.GameCQ.TreasureKey.Queries;
     using Application.GameCQ.Unit.Queries;
     using Application.GameCQ.Unit.Queries.GetUnitListQuery;
     using AutoMapper;
@@ -28,10 +27,8 @@
     {
         public MappingProfile()
         {
-            this.CreateMap<Item, ItemFullViewModel>();
+            this.CreateMap<Item, ItemMinViewModel>();
             this.CreateMap<Spell, SpellFullViewModel>();
-            this.CreateMap<Treasure, TreasureFullViewModel>();
-            this.CreateMap<TreasureKey, TreasureKeyFullViewModel>();
             this.CreateMap<AppUser, UserPartialViewModel>();
             this.CreateMap<Unit, UnitPartialViewModel>();
             this.CreateMap<Unit, UnitFullViewModel>();

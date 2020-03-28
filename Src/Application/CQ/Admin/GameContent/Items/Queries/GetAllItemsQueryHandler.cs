@@ -1,8 +1,9 @@
-﻿namespace Application.CQ.Admin.Item.Queries
+﻿namespace Application.CQ.Admin.GameContent.Items.Queries
 {
     using System.Threading;
     using System.Threading.Tasks;
     using Application.GameCQ.Item.Queries;
+    using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
@@ -22,10 +23,48 @@
 
         public async Task<ItemListViewModel> Handle(GetAllItemsQuery request, CancellationToken cancellationToken)
         {
-            return new ItemListViewModel
+            if (request.Slot == "Weapon")
             {
-                Items = await this.context.Items.ProjectTo<ItemFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
-            };
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Weapons.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Armor")
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Armors.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Trinket")
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Trinkets.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Treasure")
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Treasures.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Treasure Keys")
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.TreasureKeys.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Materials.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
         }
     }
 }

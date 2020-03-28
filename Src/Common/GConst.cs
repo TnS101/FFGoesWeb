@@ -33,6 +33,7 @@
         public const string UnitCommandRedirect = "/Profile/Units";
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";
+        public const string AdminItemCommandRedirect = "/Items/{0}";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";

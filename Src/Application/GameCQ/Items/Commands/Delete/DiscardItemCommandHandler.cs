@@ -23,11 +23,13 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var unit = this.context.Units.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var unit = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
             var itemToRemove = unit.Inventory.Items.FirstOrDefault(i => i.Id == request.ItemId);
 
             unit.Inventory.Items.Remove(itemToRemove);
+
+            this.context.Inventories.Update(unit.Inventory);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
