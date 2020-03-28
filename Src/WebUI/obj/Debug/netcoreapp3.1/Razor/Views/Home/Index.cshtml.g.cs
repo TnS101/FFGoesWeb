@@ -34,6 +34,13 @@ using Domain.Entities.Common;
 #line hidden
 #nullable disable
 #nullable restore
+#line 5 "C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\Views\_ViewImports.cshtml"
+using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\Views\Home\Index.cshtml"
 using Common;
 
@@ -41,7 +48,7 @@ using Common;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9610ffdf0745eb364399fa2904d429facff09b44", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ddd99b8770de49e98c6928f3b3e27c5d9818c0a4", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"72de99cefb048e3e38636f6b45588b33a393a074", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<System.Security.Claims.ClaimsPrincipal>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("main-gradient"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +93,7 @@ using Common;
 #line hidden
 #nullable disable
             WriteLiteral("    <html xmlns=\"http://www.w3.org/1999/xhtml\" class=\"main-gradient\">\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9610ffdf0745eb364399fa2904d429facff09b445668", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9610ffdf0745eb364399fa2904d429facff09b445878", async() => {
                 WriteLiteral("\r\n");
 #nullable restore
 #line 10 "C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\Views\Home\Index.cshtml"
@@ -126,9 +133,9 @@ using Common;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9610ffdf0745eb364399fa2904d429facff09b447404", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9610ffdf0745eb364399fa2904d429facff09b447614", async() => {
                 WriteLiteral("\r\n        <div id=\"page\">\r\n            <header>\r\n                <div>\r\n                    <h1 class=\" main-font-color site-title\">");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9610ffdf0745eb364399fa2904d429facff09b447802", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9610ffdf0745eb364399fa2904d429facff09b448012", async() => {
                     WriteLiteral("Final Fantasy Tryout");
                 }
                 );
@@ -210,7 +217,7 @@ using Common;
 #line hidden
 #nullable disable
                 WriteLiteral("\r\n                        </main>\r\n                    </div>\r\n                </div>\r\n\r\n            </div>\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9610ffdf0745eb364399fa2904d429facff09b4412078", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9610ffdf0745eb364399fa2904d429facff09b4412288", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -225,7 +232,7 @@ using Common;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n            <br />\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9610ffdf0745eb364399fa2904d429facff09b4413289", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9610ffdf0745eb364399fa2904d429facff09b4413499", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

@@ -24,11 +24,11 @@
 
         public override int Spirit { get; set; }
 
-        public override int InventoryId { get; set; }
+        public override int? InventoryId { get; set; }
 
         public override Inventory Inventory { get; set; }
 
-        public override int EquipmentId { get; set; }
+        public override int? EquipmentId { get; set; }
 
         public override Equipment Equipment { get; set; }
 

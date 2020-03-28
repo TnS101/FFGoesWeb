@@ -1,5 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model Application.GameCQ.Item.Queries.ItemListViewModel
+@model Application.GameCQ.Items.Queries.GetPersonalItemsQuery.ItemListViewModel
 @{
     ViewData["Title"] = "Items";
 }
@@ -12,6 +12,5 @@
     {
         <img src="@item.ImageURL" alt="Item Image">
         <h3>@item.Name</h3>
-        <h3>@item.Slot</h3>
     }
 </body>

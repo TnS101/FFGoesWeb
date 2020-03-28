@@ -1,5 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model Application.GameCQ.Image.Queries.ImageListViewModel
+@model Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery.FightingClassListViewModel
 @{
     Layout = "_Layout";
 }
@@ -8,17 +8,17 @@
 <body>
     <partial name="_NavBar">
         <div class="container">
-                @foreach (var image in Model.Images)
+                @foreach (var fightingClass in Model.FightingClasses)
                 {
                     <div class="entry-content single-entry-content">
 
                         <div class="entry-header with-image full site-background main-gradient">
-                            <div class="wp-block-image is-style-circle-mask"><figure class="aligncenter size-large is-resized"><img src="@image.Path" alt="" width="300" height="300"></figure></div>
-                            <h1 class="section-title has-text-align-center image-name">@image.Name</h1>
-                            <h1 class="has-very-light-gray-color has-text-color has-text-align-center image-description">@image.Description</h1>
+                            <div class="wp-block-image is-style-circle-mask"><figure class="aligncenter size-large is-resized"><img src="@fightingClass.ImageURL" alt="" width="300" height="300"></figure></div>
+                            <h1 class="section-title has-text-align-center image-name">@fightingClass.ClassType</h1>
+                            <h1 class="has-very-light-gray-color has-text-color has-text-align-center image-description">@fightingClass.Description</h1>
                         </div>
                         <div class="has-text-align-center race-pick">
-                            <form asp-controller="Unit" asp-action="Create" asp-route-id="@image.Name" method="post">
+                            <form asp-controller="Unit" asp-action="Create" method="post">
                                 <select name="race">
                                     <option value="Human">Human</option>
                                     <option value="Orc">Orc</option>
@@ -31,7 +31,7 @@
                                     <input type="text" name="name" value="" placeholder="Insert your character Name" />
                                 </div>
                                 <div class="item-padding">
-                                    <input type="text" hidden name="fightingClass" value="@image.Name" />
+                                    <input type="text" hidden name="fightingClass" value="@fightingClass.ClassType" />
                                     <input type="submit" name="" value="Create Character" />
                                 </div>
                             </form>

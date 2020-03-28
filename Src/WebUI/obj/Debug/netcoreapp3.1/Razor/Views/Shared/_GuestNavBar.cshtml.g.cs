@@ -33,8 +33,15 @@ using Domain.Entities.Common;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\Views\_ViewImports.cshtml"
+using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6249fe98666bf8c3fd21596a84a825aebbf82f25", @"/Views/Shared/_GuestNavBar.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ddd99b8770de49e98c6928f3b3e27c5d9818c0a4", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"72de99cefb048e3e38636f6b45588b33a393a074", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__GuestNavBar : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Home", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -74,7 +81,7 @@ using Domain.Entities.Common;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6249fe98666bf8c3fd21596a84a825aebbf82f254535", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6249fe98666bf8c3fd21596a84a825aebbf82f254745", async() => {
                 WriteLiteral(@"
     <header id=""masthead"" class=""site-header full"" style=""top: -42px;margin-left:-140px;position:fixed"">
         <div class=""container"">
@@ -84,7 +91,7 @@ using Domain.Entities.Common;
                 <div class=""main-nav-bar"">
                     <ul id=""primary-menu"" class=""demo-menu nav-font-size"">
                         <li style=""padding-left:860px"" class=""page_item page-item-9"">");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6249fe98666bf8c3fd21596a84a825aebbf82f255276", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6249fe98666bf8c3fd21596a84a825aebbf82f255486", async() => {
                     WriteLiteral("<i class=\"fas fa-home\"></i>Home");
                 }
                 );

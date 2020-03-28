@@ -24,11 +24,11 @@
 
         int Spirit { get; }
 
-        int InventoryId { get; }
+        int? InventoryId { get; }
 
         Inventory Inventory { get; }
 
-        int EquipmentId { get; }
+        int? EquipmentId { get; }
 
         Equipment Equipment { get; }
     }

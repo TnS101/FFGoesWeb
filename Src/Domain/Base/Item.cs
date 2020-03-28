@@ -31,11 +31,11 @@
 
         public virtual int Spirit { get; set; }
 
-        public virtual int InventoryId { get; set; }
+        public virtual int? InventoryId { get; set; }
 
         public virtual Inventory Inventory { get; set; }
 
-        public virtual int EquipmentId { get; set; }
+        public virtual int? EquipmentId { get; set; }
 
         public virtual Equipment Equipment { get; set; }
 

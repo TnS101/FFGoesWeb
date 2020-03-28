@@ -3,20 +3,22 @@
     using System.Threading.Tasks;
     using Application.GameCQ.Equipments.Commands.Update;
     using Application.GameCQ.Equipments.Queries;
+    using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
     using Application.GameCQ.Heroes.Commands.Create;
+    using Application.GameCQ.Heroes.Commands.Delete;
     using Application.GameCQ.Heroes.Commands.Update.HeroLevelUpCommand;
     using Application.GameCQ.Heroes.Commands.Update.SelectHeroCommand;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    //[Authorize(Roles = "Administrator,User")]
+    // [Authorize(Roles = "Administrator,User")]
     public class UnitController : BaseController
     {
         [HttpGet]
         public async Task<ActionResult> Create()
         {
-            return this.View();
+            return this.View(await this.Mediator.Send(new GetAllFightingClassesQuery{ }));
         }
 
         [HttpPost]
@@ -25,10 +27,10 @@
             return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = fightingClass, Race = race, Name = name, User = this.User }));
         }
 
-        [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]int id)
+        [HttpPost]
+        public async Task<ActionResult> Delete([FromForm]int heroId)
         {
-            return this.Redirect(await this.Mediator.Send(new DeleteUnitCommand { UnitId = id }));
+            return this.Redirect(await this.Mediator.Send(new DeleteHeroCommand { HeroId = heroId }));
         }
 
         [HttpGet]
@@ -37,14 +39,14 @@
             return this.View(await this.Mediator.Send(new GetFullUnitQuery { User = this.User }));
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Equip([FromQuery]int id, [FromQuery]string command)
+        [HttpPost]
+        public async Task<ActionResult> Equip([FromForm]int id, [FromForm]string command)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, User = this.User }));
         }
 
-        [HttpPut]
-        public async Task<ActionResult> UnEquip([FromQuery] int id, [FromQuery]string command)
+        [HttpPost]
+        public async Task<ActionResult> UnEquip([FromForm] int id, [FromForm]string command)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, User = this.User }));
         }

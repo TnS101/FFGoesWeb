@@ -96,7 +96,6 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Batt
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Battle\Battle.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Battle\End.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
-C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\ClassCatalog.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\MonsterCatalog.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Footer.cshtml.g.cs
@@ -226,7 +225,6 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shar
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\Admin\DashBoard.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\Admin\MonsterCatalog.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\GameContent\Items.cshtml.g.cs
-C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\GameContent\Treasures.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Moderator\Views\Mod\Index.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Administrator\Views\GameContent\Content.cshtml.g.cs

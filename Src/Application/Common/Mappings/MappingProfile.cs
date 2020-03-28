@@ -10,10 +10,12 @@
     using Application.CQ.Social.Message.Queries;
     using Application.CQ.Users.Feedbacks.Queries;
     using Application.CQ.Users.Statuses.Queries;
+    using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
+    using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using Domain.Base;
@@ -41,6 +43,8 @@
             this.CreateMap<Feedback, FeedbackTaskViewModel>();
             this.CreateMap<Status, StatusFullViewModel>();
             this.CreateMap<Hero, UnitMinViewModel>();
+            this.CreateMap<FightingClass, FightingClassMinViewModel>();
+            this.CreateMap<Monster, MonsterMinViewModel>();
         }
     }
 }

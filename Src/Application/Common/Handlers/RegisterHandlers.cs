@@ -33,9 +33,9 @@
     using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
     using Application.GameCQ.Battles.Commands.Update;
-    using Application.GameCQ.Enemies.Commands.Create;
     using Application.GameCQ.Equipments.Commands.Update;
     using Application.GameCQ.Equipments.Queries;
+    using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
     using Application.GameCQ.Heroes.Commands.Create;
     using Application.GameCQ.Heroes.Commands.Delete;
     using Application.GameCQ.Heroes.Commands.Update.HeroLevelUpCommand;
@@ -46,6 +46,8 @@
     using Application.GameCQ.Items.Commands.Delete;
     using Application.GameCQ.Items.Commands.Update;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
+    using Application.GameCQ.Monsters.Commands.Create;
+    using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using Application.GameCQ.Treasures.Commands.Delete;
     using Application.GameCQ.Treasures.Commands.Update;
@@ -95,7 +97,7 @@
         private void UserCommands(IServiceCollection services)
         {
             services.AddScoped<IRequestHandler<BattleOptionsCommand, string>, BattleOptionsCommandHandler>();
-            services.AddScoped<IRequestHandler<GenerateEnemyCommand, UnitFullViewModel>, GenerateEnemyCommandHandler>();
+            services.AddScoped<IRequestHandler<GenerateMonsterCommand, UnitFullViewModel>, GenerateMonsterCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateEquipmentCommand, string>, UpdateEquipmentCommandHandler>();
             services.AddScoped<IRequestHandler<DiscardItemCommand, string>, DiscardItemCommandHandler>();
             services.AddScoped<IRequestHandler<LootItemCommand>, LootItemCommandHandler>();
@@ -135,6 +137,8 @@
             services.AddScoped<IRequestHandler<GetPersonalMessagesQuery, MessageListViewModel>, GetPersonalMessagesQueryHandler>();
             services.AddScoped<IRequestHandler<UserPanelQuery, UserPanelViewModel>, UserPanelQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllStatusesQuery, StatusListViewModel>, GetAllStatusesQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllFightingClassesQuery, FightingClassListViewModel>, GetAllFightingClassesQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllMonstersQuery, MonsterListViewModel>, GetAllMonstersQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

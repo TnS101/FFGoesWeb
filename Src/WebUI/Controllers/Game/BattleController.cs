@@ -2,9 +2,9 @@
 {
     using System.Threading.Tasks;
     using Application.GameCQ.Battles.Commands.Update;
-    using Application.GameCQ.Enemies.Commands.Create;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
+    using Application.GameCQ.Monsters.Commands.Create;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
@@ -19,7 +19,7 @@
         public async Task<ActionResult<string[]>> Battle() // TODO: Change return type if not working
         {
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
-            this.enemy = await this.Mediator.Send(new GenerateEnemyCommand { PlayerLevel = playerPVM.Level });
+            this.enemy = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level });
             this.yourTurn = true;
             return new string[] { playerPVM.Name, this.enemy.Name };
         }

@@ -33,8 +33,15 @@ using Domain.Entities.Common;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\Views\_ViewImports.cshtml"
+using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2e5912a1140a2a717260453f15d6718c72a80758", @"/Views/Battle/Attack.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ddd99b8770de49e98c6928f3b3e27c5d9818c0a4", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"72de99cefb048e3e38636f6b45588b33a393a074", @"/Views/_ViewImports.cshtml")]
     public class Views_Battle_Attack : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<string[]>
     {
         #line hidden
@@ -70,7 +77,7 @@ using Domain.Entities.Common;
 #line default
 #line hidden
 #nullable disable
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e5912a1140a2a717260453f15d6718c72a807583533", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e5912a1140a2a717260453f15d6718c72a807583743", async() => {
                 WriteLiteral("\r\n");
             }
             );
@@ -84,7 +91,7 @@ using Domain.Entities.Common;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e5912a1140a2a717260453f15d6718c72a807584499", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e5912a1140a2a717260453f15d6718c72a807584709", async() => {
                 WriteLiteral("\r\n    <h2>Attack</h2>\r\n    <p>");
 #nullable restore
 #line 10 "C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\Views\Battle\Attack.cshtml"

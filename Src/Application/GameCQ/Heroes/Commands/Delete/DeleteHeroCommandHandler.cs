@@ -17,7 +17,7 @@
 
         public async Task<string> Handle(DeleteHeroCommand request, CancellationToken cancellationToken)
         {
-            var hero = await this.context.Heroes.FindAsync(request.UnitId);
+            var hero = await this.context.Heroes.FindAsync(request.HeroId);
 
             this.context.Inventories.Remove(hero.Inventory);
 
