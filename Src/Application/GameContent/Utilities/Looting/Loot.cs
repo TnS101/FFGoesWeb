@@ -1,6 +1,6 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Looting
+﻿namespace Application.GameContent.Utilities.Looting
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
+    using Application.GameContent.Utilities.Generators;
     using global::Application.GameCQ.Unit.Queries;
 
     public class Loot

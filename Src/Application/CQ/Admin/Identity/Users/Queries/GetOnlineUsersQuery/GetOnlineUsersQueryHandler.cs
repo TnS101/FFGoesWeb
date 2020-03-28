@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Admin.Users.Queries
+﻿namespace Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery
 {
     using System;
     using System.Globalization;
@@ -9,7 +9,7 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;

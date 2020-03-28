@@ -1,11 +1,11 @@
-﻿namespace Application.GameCQ.Enemy.Commands.Create
+﻿namespace Application.GameCQ.Enemies.Commands.Create
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Generators;
     using Application.GameCQ.Unit.Queries;
     using AutoMapper;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
 
     public class GenerateEnemyCommandHandler : IRequestHandler<GenerateEnemyCommand, UnitFullViewModel>

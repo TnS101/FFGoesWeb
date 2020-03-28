@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Admin.Items.Commands.Create
+﻿namespace Application.CQ.Admin.GameContent.Items.Commands.Create
 {
     using MediatR;
 

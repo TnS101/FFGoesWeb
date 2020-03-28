@@ -1,10 +1,10 @@
-﻿namespace Application.CQ.Admin.Items.Commands.Update
+﻿namespace Application.CQ.Admin.GameContent.Items.Commands.Update
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using global::Common;
-    using MediatR;
     using System.Threading;
     using System.Threading.Tasks;
+    Application.Common.Interfaces;
+    using global::Common;
+    using MediatR;
 
     public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand, string>
     {

@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Admin.Items.Commands.Update
+﻿namespace Application.CQ.Admin.GameContent.Items.Commands.Update
 {
     using MediatR;
 

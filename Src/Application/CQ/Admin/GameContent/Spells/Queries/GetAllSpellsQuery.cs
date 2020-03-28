@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Admin.Spell.Queries
+﻿namespace Application.CQ.Admin.GameContent.Spells.Queries
 {
     using Application.GameCQ.Spell.Queries;
     using MediatR;

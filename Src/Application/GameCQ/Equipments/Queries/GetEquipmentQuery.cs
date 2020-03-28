@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Equipment.Queries
+﻿namespace Application.GameCQ.Equipments.Queries
 {
     using MediatR;
 

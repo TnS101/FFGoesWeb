@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.Common.Interfaces
+﻿namespace Application.Common.Interfaces
 {
     using System.Threading;
     using System.Threading.Tasks;
@@ -6,7 +6,6 @@
     using Domain.Entities.Game.Units;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Common.Social;
-    using global::Domain.Entities.Game;
     using global::Domain.Entities.Moderation;
     using global::Domain.Models;
     using Microsoft.EntityFrameworkCore;

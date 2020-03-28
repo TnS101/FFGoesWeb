@@ -5,8 +5,8 @@
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
+    using Application.Common.Interfaces;
+    using Application.GameContent.Handlers;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;

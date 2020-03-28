@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.Equipment
+﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
     public class WeaponCheck
     {

@@ -1,10 +1,10 @@
-﻿namespace Application.GameCQ.Item.Commands.Delete
+﻿namespace Application.GameCQ.Items.Commands.Delete
 {
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using Application.Common.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 

@@ -3,7 +3,7 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 

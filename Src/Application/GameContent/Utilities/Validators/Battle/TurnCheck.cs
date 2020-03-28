@@ -1,8 +1,8 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.Battle
+﻿namespace Application.GameContent.Utilities.Validators.Battle
 {
     using System;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
+    using Application.Common.Interfaces;
+    using Application.GameContent.Handlers;
     using global::Application.GameCQ.Unit.Queries;
 
     public class TurnCheck

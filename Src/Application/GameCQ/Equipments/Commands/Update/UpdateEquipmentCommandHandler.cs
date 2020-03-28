@@ -1,12 +1,12 @@
-﻿namespace Application.GameCQ.Equipment.Commands.Update
+﻿namespace Application.GameCQ.Equipments.Commands.Update
 {
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
+    using Application.GameContent.Handlers;
+    using Application.GameContent.Utilities.FightingClassUtilites;
     using Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 

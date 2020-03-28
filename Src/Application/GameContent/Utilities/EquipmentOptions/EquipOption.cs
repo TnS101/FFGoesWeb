@@ -1,7 +1,7 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.EquipmentOptions
+﻿namespace Application.GameContent.Utilities.EquipmentOptions
 {
     using Domain.Base;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
+    using Application.GameContent.Utilities.FightingClassUtilites;
 
     public class EquipOption
     {

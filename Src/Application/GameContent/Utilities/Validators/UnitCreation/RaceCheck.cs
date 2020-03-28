@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.UnitCreation
+﻿namespace Application.GameContent.Utilities.Validators.UnitCreation
 {
     using Domain.Base;
 

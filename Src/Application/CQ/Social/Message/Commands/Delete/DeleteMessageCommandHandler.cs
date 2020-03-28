@@ -1,8 +1,8 @@
-﻿namespace Application.CQ.Forum.Message.Commands.Delete
+﻿namespace Application.CQ.Social.Message.Commands.Create
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 

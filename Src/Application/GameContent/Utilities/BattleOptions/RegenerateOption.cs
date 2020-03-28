@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
+﻿namespace Application.GameContent.Utilities.BattleOptions
 {
     using global::Application.GameCQ.Unit.Queries;
 

@@ -1,11 +1,11 @@
-﻿namespace Application.CQ.Forum.Message.Commands.Create
+﻿namespace Application.CQ.Social.Message.Commands.Create
 {
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;

@@ -1,10 +1,10 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
+﻿namespace Application.GameContent.Utilities.BattleOptions
 {
     using System;
     using System.Linq;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.EnemySpellRepository;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Repositories.PlayerSpellRepository;
+    using Application.Common.Interfaces;
+    using Application.GameContent.Repositories.EnemySpellRepository;
+    using Application.GameContent.Repositories.PlayerSpellRepository;
     using global::Application.GameCQ.Unit.Queries;
 
     public class SpellCastOption

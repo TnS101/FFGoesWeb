@@ -1,9 +1,9 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.UnitCreation
+﻿namespace Application.GameContent.Utilities.Validators.UnitCreation
 {
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
+    using Application.GameContent.Utilities.FightingClassUtilites;
     using Domain.Base;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
 
     public class FightingClassCheck
     {

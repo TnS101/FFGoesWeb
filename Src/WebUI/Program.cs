@@ -1,16 +1,16 @@
 ﻿namespace WebUI
 {
+    using System.Threading.Tasks;
     using Application.SeedInitialData;
     using Common;
     using Domain.Entities.Common;
     using Domain.Models;
-    using FinalFantasyTryoutGoesWeb.Persistence;
     using MediatR;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using System.Threading.Tasks;
+    using Persistence;
 
     public class Program
     {

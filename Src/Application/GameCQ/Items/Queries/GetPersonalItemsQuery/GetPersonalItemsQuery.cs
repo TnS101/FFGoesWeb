@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Item.Queries
+﻿namespace Application.GameCQ.Items.Queries.GetPersonalItemsQuery
 {
     using MediatR;
 

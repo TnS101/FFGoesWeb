@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Equipment.Commands.Update
+﻿namespace Application.GameCQ.Equipments.Commands.Update
 {
     using System.Security.Claims;
     using MediatR;

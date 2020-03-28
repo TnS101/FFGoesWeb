@@ -5,7 +5,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;

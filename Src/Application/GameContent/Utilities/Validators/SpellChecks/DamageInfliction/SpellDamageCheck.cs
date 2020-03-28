@@ -1,7 +1,7 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.DamageInfliction
+﻿namespace Application.GameContent.Utilities.Validators.SpellChecks.DamageInfliction
 {
     using Domain.Base;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
+    using Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
 
     public class SpellDamageCheck
     {

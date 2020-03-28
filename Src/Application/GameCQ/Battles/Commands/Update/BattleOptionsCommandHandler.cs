@@ -1,10 +1,10 @@
-﻿namespace Application.GameCQ.Battle.Commands.Update
+﻿namespace Application.GameCQ.Battles.Commands.Update
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Looting;
+    using Application.Common.Interfaces;
+    using Application.GameContent.Handlers;
+    using Application.GameContent.Utilities.Looting;
     using MediatR;
 
     public class BattleOptionsCommandHandler : IRequestHandler<BattleOptionsCommand, string>

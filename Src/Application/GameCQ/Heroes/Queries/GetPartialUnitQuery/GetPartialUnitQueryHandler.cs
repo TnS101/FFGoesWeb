@@ -1,11 +1,11 @@
-﻿namespace Application.GameCQ.Unit.Queries
+﻿namespace Application.GameCQ.Heroes.Queries.GetPartialUnitQuery
 {
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using AutoMapper;
     using Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 

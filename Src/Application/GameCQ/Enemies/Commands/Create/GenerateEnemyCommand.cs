@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Enemy.Commands.Create
+﻿namespace Application.GameCQ.Enemies.Commands.Create
 {
     using Application.GameCQ.Unit.Queries;
     using MediatR;

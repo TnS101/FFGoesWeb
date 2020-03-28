@@ -1,6 +1,5 @@
 ﻿namespace Application.Common.Mappings
 {
-    using Application.CQ.Admin.GameContent.Items.Queries;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
@@ -19,7 +18,6 @@
     using Domain.Base;
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;
-    using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using Domain.Entities.Moderation;
 

@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQ\User\Commands\" />
+    <Folder Include="CQ\Users\Commands\" />
   </ItemGroup>
 
 </Project>

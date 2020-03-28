@@ -1,6 +1,6 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.BattleOptions
+﻿namespace Application.GameContent.Utilities.BattleOptions
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Looting;
+    using Application.GameContent.Utilities.Looting;
     using global::Application.GameCQ.Unit.Queries;
 
     public class EndOption

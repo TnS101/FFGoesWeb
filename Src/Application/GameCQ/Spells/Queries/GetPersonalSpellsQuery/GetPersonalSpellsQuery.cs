@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Spell.Queries
+﻿namespace Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery
 {
     using MediatR;
 

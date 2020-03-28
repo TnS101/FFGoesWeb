@@ -1,12 +1,11 @@
-﻿namespace Application.GameCQ.Item.Queries
+﻿namespace Application.GameCQ.Items.Queries.GetPersonalItemsQuery
 {
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
+    using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 

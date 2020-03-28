@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Equipment.Queries
+﻿namespace Application.GameCQ.Equipments.Queries
 {
     using System.Collections.Generic;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;

@@ -5,8 +5,8 @@
     using AutoMapper;
     using Domain.Entities.Common;
     using Domain.Models;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Persistence;
+    Application.Common.Interfaces;
+    Persistence;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;

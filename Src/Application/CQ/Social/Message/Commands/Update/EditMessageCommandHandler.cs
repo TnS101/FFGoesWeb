@@ -1,9 +1,9 @@
-﻿namespace Application.CQ.Forum.Message.Commands.Update
+﻿namespace Application.CQ.Social.Message.Commands.Create
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 

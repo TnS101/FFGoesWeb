@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Forum.Message.Queries
+﻿namespace Application.CQ.Social.Message.Queries
 {
     using System.Collections.Generic;
 

@@ -1,14 +1,14 @@
-﻿namespace Application.GameCQ.Item.Commands.Update
+﻿namespace Application.GameCQ.Items.Commands.Update
 {
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Application.GameCQ.Unit.Queries;
+    using Application.Common.Interfaces;
+    using Application.GameContent.Utilities.Generators;
+    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using AutoMapper;
     using Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 

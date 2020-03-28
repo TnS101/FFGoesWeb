@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.LevelUtility
+﻿namespace Application.GameContent.Utilities.LevelUtility
 {
     using Domain.Base;
 

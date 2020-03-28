@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Unit.Queries.GetUnitListQuery
+﻿namespace Application.GameCQ.Heroes.Queries.GetUnitListQuery
 {
     using System.Collections.Generic;
 

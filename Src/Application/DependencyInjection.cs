@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application
+﻿namespace Application
 {
     using System.Reflection;
     using AutoMapper;

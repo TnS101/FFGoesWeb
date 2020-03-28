@@ -1,7 +1,7 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.Buffs
+﻿namespace Application.GameContent.Utilities.Validators.SpellChecks.Buffs
 {
     using Domain.Base;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
+    using Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
 
     public class DeBuffCheck
     {

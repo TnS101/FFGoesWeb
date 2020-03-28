@@ -1,8 +1,8 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers
+﻿namespace Application.GameContent.Handlers
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.Equipment;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellCheck;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.UnitCreation;
+    using Application.GameContent.Utilities.Validators.Equipment;
+    using Application.GameContent.Utilities.Validators.SpellCheck;
+    using Application.GameContent.Utilities.Validators.UnitCreation;
 
     public class ValidatorHandler
     {

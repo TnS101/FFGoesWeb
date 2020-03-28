@@ -1,10 +1,10 @@
-﻿namespace Application.CQ.Forum.Message.Queries
+﻿namespace Application.CQ.Social.Message.Queries
 {
     using System;
 
     public class MessageFullViewModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Content { get; set; }
 

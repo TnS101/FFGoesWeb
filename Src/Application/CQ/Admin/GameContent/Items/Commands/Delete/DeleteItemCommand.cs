@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Admin.Item.Commands.Delete
+﻿namespace Application.CQ.Admin.GameContent.Items.Commands.Delete
 {
     using MediatR;
 

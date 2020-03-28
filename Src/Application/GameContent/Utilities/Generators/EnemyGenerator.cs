@@ -5,8 +5,8 @@
     using System.Threading.Tasks;
     using Domain.Base;
     using Domain.Entities.Game.Units;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites;
+    using Application.Common.Interfaces;
+    using Application.GameContent.Utilities.FightingClassUtilites;
 
     public class EnemyGenerator
     {

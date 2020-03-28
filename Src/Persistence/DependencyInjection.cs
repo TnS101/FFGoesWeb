@@ -1,6 +1,6 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Persistence
+﻿namespace Persistence
 {
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
 

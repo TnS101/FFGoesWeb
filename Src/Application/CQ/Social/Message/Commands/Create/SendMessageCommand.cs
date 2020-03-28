@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Forum.Message.Commands.Create
+﻿namespace Application.CQ.Social.Message.Commands.Create
 {
     using System.Security.Claims;
     using MediatR;

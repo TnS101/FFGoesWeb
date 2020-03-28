@@ -1,10 +1,9 @@
-﻿namespace Application.CQ.Admin.Item.Commands.Create
+﻿namespace Application.CQ.Admin.GameContent.Items.Commands.Create
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Application.CQ.Admin.Items.Commands.Create;
     using Domain.Entities.Game.Items;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using MediatR;
 
     public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand, string>

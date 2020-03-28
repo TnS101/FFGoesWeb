@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Generators
+﻿namespace Application.GameContent.Utilities.Generators
 {
     using System;
     using System.Linq;

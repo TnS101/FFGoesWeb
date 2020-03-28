@@ -1,8 +1,7 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites
+﻿namespace Application.GameContent.Utilities.FightingClassUtilites
 {
     using Domain.Base;
     using Domain.Entities.Game.Units;
-    using global::Domain.Entities.Game;
 
     public class StatIncrement
     {

@@ -1,11 +1,11 @@
-﻿namespace Application.CQ.Admin.Spell.Queries
+﻿namespace Application.CQ.Admin.GameContent.Spells.Queries
 {
     using System.Threading;
     using System.Threading.Tasks;
     using Application.GameCQ.Spell.Queries;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 

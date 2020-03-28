@@ -1,8 +1,8 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.Equipment
+﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
     using Domain.Base;
     using Domain.Entities.Game.Items;
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers;
+    using Application.GameContent.Handlers;
 
     public class SlotCheck
     {

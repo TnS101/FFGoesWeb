@@ -1,6 +1,6 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Handlers
+﻿namespace Application.GameContent.Handlers
 {
-    using FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.EquipmentOptions;
+    using Application.GameContent.Utilities.EquipmentOptions;
 
     public class EquipmentHandler
     {

@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Unit.Queries
+﻿namespace Application.GameCQ.Heroes.Queries.GetPartialUnitQuery
 {
     public class UnitPartialViewModel
     {

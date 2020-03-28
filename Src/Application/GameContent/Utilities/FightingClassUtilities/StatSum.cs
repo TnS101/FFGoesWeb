@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.FightingClassUtilites
+﻿namespace Application.GameContent.Utilities.FightingClassUtilites
 {
     using Domain.Base;
 

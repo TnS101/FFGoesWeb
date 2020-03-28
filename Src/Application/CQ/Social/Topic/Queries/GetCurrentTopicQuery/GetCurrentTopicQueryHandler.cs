@@ -3,7 +3,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using AutoMapper;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using MediatR;
 
     public class GetCurrentTopicQueryHandler : IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>

@@ -1,11 +1,11 @@
-﻿namespace Application.GameCQ.Spell.Queries
+﻿namespace Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery
 {
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    using Application.Common.Interfaces;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 

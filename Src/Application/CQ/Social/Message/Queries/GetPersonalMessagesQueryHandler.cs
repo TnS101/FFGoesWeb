@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Forum.Message.Queries
+﻿namespace Application.CQ.Social.Message.Queries
 {
     using System.Linq;
     using System.Threading;
@@ -6,7 +6,7 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Domain.Entities.Common;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;

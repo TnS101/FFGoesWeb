@@ -6,7 +6,7 @@
     using Domain.Entities.Common.Social;
     using Domain.Entities.Game.Units;
     using Domain.Entities.Moderation;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using global::Common;
     using global::Domain.Entities.Common;
 

@@ -1,4 +1,4 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Application.GameContent.Utilities.Validators.SpellChecks.MainStats
+﻿namespace Application.GameContent.Utilities.Validators.SpellChecks.MainStats
 {
     using Domain.Base;
 

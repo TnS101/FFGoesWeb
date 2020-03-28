@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Battle.Commands.Update
+﻿namespace Application.GameCQ.Battles.Commands.Update
 {
     using Application.GameCQ.Unit.Queries;
     using MediatR;

@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Admin.Users.Queries
+﻿namespace Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery
 {
     using System.Collections.Generic;
 

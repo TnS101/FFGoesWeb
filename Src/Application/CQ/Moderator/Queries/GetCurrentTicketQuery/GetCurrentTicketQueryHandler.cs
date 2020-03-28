@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using Domain.Entities.Moderation;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 

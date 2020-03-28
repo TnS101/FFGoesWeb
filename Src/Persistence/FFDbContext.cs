@@ -1,9 +1,9 @@
-﻿namespace FinalFantasyTryoutGoesWeb.Persistence
+﻿namespace Persistence
 {
     using Domain.Base;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
-    using FinalFantasyTryoutGoesWeb.Application.Common.Interfaces;
+    Application.Common.Interfaces;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Common.Social;
     using global::Domain.Entities.Moderation;

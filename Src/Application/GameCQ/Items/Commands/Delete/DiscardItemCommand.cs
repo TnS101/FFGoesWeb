@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Item.Commands.Delete
+﻿namespace Application.GameCQ.Items.Commands.Delete
 {
     using System.Security.Claims;
     using MediatR;
