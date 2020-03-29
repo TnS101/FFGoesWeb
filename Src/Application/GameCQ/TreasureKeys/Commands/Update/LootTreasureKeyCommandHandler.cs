@@ -6,9 +6,10 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
-    using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class LootTreasureKeyCommandHandler : IRequestHandler<LootTreasureKeyCommand>
     {
@@ -23,12 +24,25 @@
 
         public async Task<Unit> Handle(LootTreasureKeyCommand request, CancellationToken cancellationToken)
         {
-            var rng = new Random();
-            int generationNumber = rng.Next(0, 10);
-
             var user = await this.userManager.GetUserAsync(request.User);
 
             var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+
+            await this.context.TreasureKeysInventories.AddAsync(new TreasureKeyInventory
+            {
+                InventoryId = hero.InventoryId,
+                TreasureKeyId = await this.FindKeyId(),
+            });
+
+            await this.context.SaveChangesAsync(cancellationToken);
+
+            return Unit.Value;
+        }
+
+        private async Task<int> FindKeyId()
+        {
+            var rng = new Random();
+            int generationNumber = rng.Next(0, 10);
 
             string rarity = string.Empty;
 
@@ -45,14 +59,9 @@
                 rarity = "Gold";
             }
 
-            hero.Inventory.TreasureKeys.Add(new TreasureKey
-            {
-                Rarity = rarity,
-            });
+            var treasureKey = await this.context.TreasureKeys.FirstOrDefaultAsync(tk => tk.Rarity == rarity);
 
-            await this.context.SaveChangesAsync(cancellationToken);
-
-            return Unit.Value;
+            return treasureKey.Id;
         }
     }
 }

@@ -4,18 +4,18 @@
 
     public class EndOption
     {
-        public void End(UnitFullViewModel player, UnitFullViewModel enemy)
+        public void End(UnitFullViewModel hero, UnitFullViewModel enemy)
         {
-            player.XP += enemy.MaxHP / 10;
+            hero.XP += enemy.MaxHP / 10;
 
             // Stat reset
-            player.CurrentAttackPower = player.AttackPower;
-            player.CurrentMagicPower = player.MagicPower;
-            player.CurrentArmorValue = player.ArmorValue;
-            player.CurrentRessistanceValue = player.RessistanceValue;
-            player.CurrentHealthRegen = player.HealthRegen;
-            player.CurrentManaRegen = player.ManaRegen;
-            player.CurrentCritChance = player.CritChance;
+            hero.CurrentAttackPower = hero.AttackPower;
+            hero.CurrentMagicPower = hero.MagicPower;
+            hero.CurrentArmorValue = hero.ArmorValue;
+            hero.CurrentRessistanceValue = hero.RessistanceValue;
+            hero.CurrentHealthRegen = hero.HealthRegen;
+            hero.CurrentManaRegen = hero.ManaRegen;
+            hero.CurrentCritChance = hero.CritChance;
         }
     }
 }

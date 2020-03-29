@@ -1,51 +1,51 @@
 ﻿namespace Application.GameContent.Utilities.Validators.UnitCreation
 {
-    using Domain.Base;
+    using Domain.Entities.Game.Units;
 
     public class RaceCheck
     {
-        public void Check(Unit player, string race)
+        public void Check(Hero hero, string race)
         {
             if (race == "Human")
             {
-                player.Race = "Human";
-                player.MaxHP += player.MaxHP * 0.15;
-                player.CurrentHP = player.MaxHP;
+                hero.Race = "Human";
+                hero.MaxHP += hero.MaxHP * 0.15;
+                hero.CurrentHP = hero.MaxHP;
             }
 
             if (race == "Dwarf")
             {
-                player.Race = "Dwarf";
-                player.ArmorValue += player.ArmorValue * 0.20;
-                player.CurrentArmorValue = player.ArmorValue;
+                hero.Race = "Dwarf";
+                hero.ArmorValue += hero.ArmorValue * 0.20;
+                hero.CurrentArmorValue = hero.ArmorValue;
             }
 
             if (race == "Elf")
             {
-                player.Race = "Elf";
-                player.MagicPower += player.MagicPower * 0.15;
-                player.CurrentMagicPower = player.MagicPower;
+                hero.Race = "Elf";
+                hero.MagicPower += hero.MagicPower * 0.15;
+                hero.CurrentMagicPower = hero.MagicPower;
             }
 
             if (race == "Orc")
             {
-                player.Race = "Orc";
-                player.AttackPower += 0.10 * player.AttackPower;
-                player.CurrentAttackPower = player.AttackPower;
+                hero.Race = "Orc";
+                hero.AttackPower += 0.10 * hero.AttackPower;
+                hero.CurrentAttackPower = hero.AttackPower;
             }
 
             if (race == "Goblin")
             {
-                player.Race = "Goblin";
-                player.ManaRegen += (int)player.MaxMana / 10;
-                player.CurrentMana = player.ManaRegen;
+                hero.Race = "Goblin";
+                hero.ManaRegen += (int)hero.MaxMana / 10;
+                hero.CurrentMana = hero.ManaRegen;
             }
 
             if (race == "Troll")
             {
-                player.Race = "Troll";
-                player.RessistanceValue += 0.30 * player.RessistanceValue;
-                player.CurrentRessistanceValue = player.RessistanceValue;
+                hero.Race = "Troll";
+                hero.RessistanceValue += 0.30 * hero.RessistanceValue;
+                hero.CurrentRessistanceValue = hero.RessistanceValue;
             }
         }
     }

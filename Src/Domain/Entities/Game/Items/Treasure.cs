@@ -8,7 +8,7 @@
     {
         public Treasure()
         {
-            this.TreasureInventories = new HashSet<TreasureInventories>();
+            this.TreasureInventories = new HashSet<TreasureInventory>();
         }
         public int Id { get; set; }
 
@@ -20,6 +20,6 @@
 
         public string ImageURL { get; set; }
 
-        public ICollection<TreasureInventories> TreasureInventories { get; set; }
+        public ICollection<TreasureInventory> TreasureInventories { get; set; }
     }
 }

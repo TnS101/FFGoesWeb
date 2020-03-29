@@ -9,8 +9,8 @@
     {
         public Weapon()
         {
-            this.WeaponEquipments = new HashSet<WeaponEquipments>();
-            this.WeaponInventories = new HashSet<WeaponInventories>();
+            this.WeaponEquipments = new HashSet<WeaponEquipment>();
+            this.WeaponInventories = new HashSet<WeaponInventory>();
         }
 
         public int Id { get; set; }
@@ -41,8 +41,8 @@
 
         public string ImageURL { get; set; }
 
-        public ICollection<WeaponInventories> WeaponInventories { get; set; }
+        public ICollection<WeaponInventory> WeaponInventories { get; set; }
 
-        public ICollection<WeaponEquipments> WeaponEquipments { get; set; }
+        public ICollection<WeaponEquipment> WeaponEquipments { get; set; }
     }
 }

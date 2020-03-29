@@ -36,11 +36,11 @@
 
             if (request.Command == "Equip")
             {
-                result = this.equipmentHandler.EquipOption.Equip(hero, await this.BaseItem(request), this.statSum);
+                result = await this.equipmentHandler.EquipOption.Equip(hero, await this.BaseItem(request), this.statSum, this.context);
             }
             else
             {
-                result = this.equipmentHandler.UnEquipOption.UnEquip(hero, await this.BaseItem(request), this.statSum);
+                result = await this.equipmentHandler.UnEquipOption.UnEquip(hero, await this.BaseItem(request), this.statSum, this.context);
             }
 
             this.context.Equipments.Update(hero.Equipment);

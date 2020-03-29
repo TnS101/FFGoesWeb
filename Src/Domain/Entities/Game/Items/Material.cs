@@ -8,7 +8,7 @@
     {
         public Material()
         {
-            this.MaterialInventories = new HashSet<MaterialInventories>();
+            this.MaterialInventories = new HashSet<MaterialInventory>();
         }
 
         public int Id { get; set; }
@@ -21,6 +21,6 @@
 
         public string ImageURL { get; set; }
 
-        public ICollection<MaterialInventories> MaterialInventories { get; set; }
+        public ICollection<MaterialInventory> MaterialInventories { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace Application.GameContent.Utilities.FightingClassUtilites
 {
-    using Domain.Base;
     using Domain.Entities.Game.Units;
 
     public class StatIncrement
@@ -9,29 +8,29 @@
         {
         }
 
-        public void Increment(FightingClass fightingClass, Unit unit)
+        public void Increment(FightingClass fightingClass, Hero hero)
         {
-            unit.ClassType = fightingClass.ClassType;
-            unit.MaxHP = fightingClass.MaxHP;
-            unit.CurrentHP = fightingClass.MaxHP;
-            unit.HealthRegen = fightingClass.HealthRegen;
-            unit.CurrentHealthRegen = fightingClass.HealthRegen;
-            unit.MaxMana = fightingClass.MaxMana;
-            unit.CurrentMana = fightingClass.MaxMana;
-            unit.ManaRegen = fightingClass.ManaRegen;
-            unit.CurrentManaRegen = fightingClass.ManaRegen;
-            unit.AttackPower = fightingClass.AttackPower;
-            unit.CurrentAttackPower = fightingClass.AttackPower;
-            unit.MagicPower = fightingClass.MagicPower;
-            unit.CurrentMagicPower = fightingClass.MagicPower;
-            unit.ArmorValue = fightingClass.ArmorValue;
-            unit.CurrentArmorValue = fightingClass.ArmorValue;
-            unit.RessistanceValue = fightingClass.RessistanceValue;
-            unit.CurrentRessistanceValue = fightingClass.RessistanceValue;
-            unit.CritChance = fightingClass.CritChance;
-            unit.CurrentCritChance = fightingClass.CritChance;
-            unit.ImageURL = fightingClass.ImageURL;
-            unit.IconURL = fightingClass.IconURL;
+            hero.ClassType = fightingClass.ClassType;
+            hero.MaxHP = fightingClass.MaxHP;
+            hero.CurrentHP = fightingClass.MaxHP;
+            hero.HealthRegen = fightingClass.HealthRegen;
+            hero.CurrentHealthRegen = fightingClass.HealthRegen;
+            hero.MaxMana = fightingClass.MaxMana;
+            hero.CurrentMana = fightingClass.MaxMana;
+            hero.ManaRegen = fightingClass.ManaRegen;
+            hero.CurrentManaRegen = fightingClass.ManaRegen;
+            hero.AttackPower = fightingClass.AttackPower;
+            hero.CurrentAttackPower = fightingClass.AttackPower;
+            hero.MagicPower = fightingClass.MagicPower;
+            hero.CurrentMagicPower = fightingClass.MagicPower;
+            hero.ArmorValue = fightingClass.ArmorValue;
+            hero.CurrentArmorValue = fightingClass.ArmorValue;
+            hero.RessistanceValue = fightingClass.RessistanceValue;
+            hero.CurrentRessistanceValue = fightingClass.RessistanceValue;
+            hero.CritChance = fightingClass.CritChance;
+            hero.CurrentCritChance = fightingClass.CritChance;
+            hero.ImageURL = fightingClass.ImageURL;
+            hero.IconURL = fightingClass.IconURL;
         }
 
         public void MonsterIncrement(Monster baseMonster, Monster monster)

@@ -88,11 +88,11 @@
 
             if (number == 1)
             {
-                monsterRarity = context.MonsterRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Heroic");
+                monsterRarity = context.MonstersRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Heroic");
             }
             else if (number == 2 || number == 3 || number == 4)
             {
-                monsterRarity = context.MonsterRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Rare");
+                monsterRarity = context.MonstersRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Rare");
             }
             else
             {

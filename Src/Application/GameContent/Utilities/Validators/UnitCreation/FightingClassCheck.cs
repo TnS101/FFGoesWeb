@@ -4,6 +4,7 @@
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
     using Domain.Base;
+    using Domain.Entities.Game.Units;
 
     public class FightingClassCheck
     {
@@ -14,7 +15,7 @@
             this.statIncrement = new StatIncrement();
         }
 
-        public async Task<Unit> Check(Unit hero, string fightingClassType, IFFDbContext context)
+        public async Task<Hero> Check(Hero hero, string fightingClassType, IFFDbContext context)
         {
             var fightingClassId = 0;
 

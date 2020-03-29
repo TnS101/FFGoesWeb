@@ -8,9 +8,9 @@
     {
         public Equipment(int heroId)
         {
-            this.WeaponEquipments = new HashSet<WeaponEquipments>();
-            this.ArmorEquipments = new HashSet<ArmorEquipments>();
-            this.TrinketEquipments = new HashSet<TrinketEquipments>();
+            this.WeaponEquipments = new HashSet<WeaponEquipment>();
+            this.ArmorEquipments = new HashSet<ArmorEquipment>();
+            this.TrinketEquipments = new HashSet<TrinketEquipment>();
             this.Capacity = 9;
             this.HeroId = heroId;
         }
@@ -41,10 +41,10 @@
 
         public bool WeaponSlot { get; set; }
 
-        public ICollection<WeaponEquipments> WeaponEquipments { get; set; }
+        public ICollection<WeaponEquipment> WeaponEquipments { get; set; }
 
-        public ICollection<ArmorEquipments> ArmorEquipments { get; set; }
+        public ICollection<ArmorEquipment> ArmorEquipments { get; set; }
 
-        public ICollection<TrinketEquipments> TrinketEquipments { get; set; }
+        public ICollection<TrinketEquipment> TrinketEquipments { get; set; }
     }
 }

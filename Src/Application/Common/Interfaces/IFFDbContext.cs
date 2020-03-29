@@ -3,6 +3,8 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Items.ManyToMany.Equipments;
+    using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Common.Social;
@@ -60,7 +62,25 @@
 
         DbSet<Inventory> Inventories { get; set; }
 
-        DbSet<MonsterRarity> MonsterRarities { get; set; }
+        DbSet<MonsterRarity> MonstersRarities { get; set; }
+
+        DbSet<ArmorEquipment> ArmorsEquipments { get; set; }
+
+        DbSet<TrinketEquipment> TrinketEquipments { get; set; }
+
+        DbSet<WeaponEquipment> WeaponsEquipments { get; set; }
+
+        DbSet<ArmorInventory> ArmorsInventories { get; set; }
+
+        DbSet<MaterialInventory> MaterialsInventories { get; set; }
+
+        DbSet<TreasureInventory> TreasuresInventories { get; set; }
+
+        DbSet<TreasureKeyInventory> TreasureKeysInventories { get; set; }
+
+        DbSet<TrinketInventory> TrinketsInventories { get; set; }
+
+        DbSet<WeaponInventory> WeaponsInventories { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

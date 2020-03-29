@@ -1,9 +1,11 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Handlers;
     using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
 
     public class SlotCheck
@@ -27,14 +29,17 @@
                     Level = stats[4],
                     Intellect = stats[5],
                     Spirit = stats[6],
-                    InventoryId = hero.InventoryId,
                 };
 
                 validatorHandler.WeaponCheck.Check(fightingClassNumber, fightingClassType, weaponName);
 
                 await context.Weapons.AddAsync(templateWeapon);
 
-                hero.Inventory.Weapons.Add(templateWeapon);
+                context.WeaponsInventories.Where(w => w.InventoryId == hero.InventoryId).ToList().Add(new WeaponInventory
+                {
+                    InventoryId = hero.InventoryId,
+                    WeaponId = templateWeapon.Id,
+                });
             }
             else if (slotNumber == 8)
             {
@@ -48,15 +53,16 @@
                     Spirit = stats[3],
                     Agility = stats[4],
                     Level = stats[5],
-                    InventoryId = hero.InventoryId,
                 };
                 validatorHandler.FightingClassStatCheck.Check(templateTrinket, fightingClassType, fightingClassStatNumber);
 
                 await context.Trinkets.AddAsync(templateTrinket);
 
-                hero.Inventory.Trinkets.Add(templateTrinket);
-
-                context.Inventories.Update(hero.Inventory);
+                context.TrinketsInventories.Where(t => t.InventoryId == hero.InventoryId).ToList().Add(new TrinketInventory
+                {
+                    InventoryId = hero.InventoryId,
+                    TrinketId = templateTrinket.Id,
+                });
             }
             else
             {
@@ -79,9 +85,11 @@
 
                 await context.Armors.AddAsync(templateArmor);
 
-                hero.Inventory.Armors.Add(templateArmor);
-
-                context.Inventories.Update(hero.Inventory);
+                context.ArmorsInventories.Where(t => t.InventoryId == hero.InventoryId).ToList().Add(new ArmorInventory
+                {
+                    InventoryId = hero.InventoryId,
+                    ArmorId = templateArmor.Id,
+                });
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities.Game.Items.ManyToMany.Equipments
 {
-    public class TrinketEquipments
+    public class TrinketEquipment
     {
         public int TrinketId { get; set; }
 

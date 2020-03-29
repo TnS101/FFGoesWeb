@@ -42,6 +42,10 @@
 
             hero.Equipment = new Equipment(hero.Id);
 
+            hero.EquipmentId = hero.Equipment.Id;
+
+            hero.InventoryId = hero.InventoryId;
+
             await this.validatorHandler.FightingClassCheck.Check(hero, request.ClassType, this.context);
 
             this.validatorHandler.RaceCheck.Check(hero, request.Race);

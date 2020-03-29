@@ -39,33 +39,33 @@
         {
             if (request.Slot == "Weapon")
             {
-                var weaponToRemove = await this.context.Weapons.FindAsync(request.ItemId);
-                hero.Inventory.Weapons.Remove(weaponToRemove);
+                var weaponToRemove = await this.context.WeaponsInventories.FindAsync(request.ItemId);
+                hero.Inventory.WeaponInventories.Where(wi => wi.InventoryId == hero.InventoryId).ToList().Remove(weaponToRemove);
             }
             else if (request.Slot == "Trinket")
             {
-                var trinketToRemove = await this.context.Trinkets.FindAsync(request.ItemId);
-                hero.Inventory.Trinkets.Remove(trinketToRemove);
+                var trinketToRemove = await this.context.TrinketsInventories.FindAsync(request.ItemId);
+                hero.Inventory.TrinketInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToList().Remove(trinketToRemove);
             }
             else if (request.Slot == "Material")
             {
-                var materialToRemove = await this.context.Materials.FindAsync(request.ItemId);
-                hero.Inventory.Materials.Remove(materialToRemove);
+                var materialToRemove = await this.context.MaterialsInventories.FindAsync(request.ItemId);
+                hero.Inventory.MaterialInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToList().Remove(materialToRemove);
             }
             else if (request.Slot == "Treasure")
             {
-                var treasureToRemove = await this.context.Treasures.FindAsync(request.ItemId);
-                hero.Inventory.Treasures.Remove(treasureToRemove);
+                var treasureToRemove = await this.context.TreasuresInventories.FindAsync(request.ItemId);
+                hero.Inventory.TreasureInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToList().Remove(treasureToRemove);
             }
             else if (request.Slot == "Treasure Key")
             {
-                var treasureKeyToRemove = await this.context.TreasureKeys.FindAsync(request.ItemId);
-                hero.Inventory.TreasureKeys.Remove(treasureKeyToRemove);
+                var treasureKeyToRemove = await this.context.TreasureKeysInventories.FindAsync(request.ItemId);
+                hero.Inventory.TreasureKeyInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToList().Remove(treasureKeyToRemove);
             }
             else
             {
-                var armorToRemove = await this.context.Armors.FindAsync(request.ItemId);
-                hero.Inventory.Armors.Remove(armorToRemove);
+                var armorToRemove = await this.context.ArmorsInventories.FindAsync(request.ItemId);
+                hero.Inventory.ArmorInventories.Where(ai => ai.InventoryId == hero.InventoryId).ToList().Remove(armorToRemove);
             }
         }
     }

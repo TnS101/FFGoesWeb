@@ -4,16 +4,16 @@
 
     public class EscapeOption
     {
-        public void Escape(UnitFullViewModel player)
+        public void Escape(UnitFullViewModel hero)
         {
-            double xpLoss = player.XP * 0.1;
+            double xpLoss = hero.XP * 0.1;
 
-            if (player.XP < 0)
+            if (hero.XP < 0)
             {
-                player.XP = 0;
+                hero.XP = 0;
             }
 
-            player.XP -= xpLoss;
+            hero.XP -= xpLoss;
         }
     }
 }

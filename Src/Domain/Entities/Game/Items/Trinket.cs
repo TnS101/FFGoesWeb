@@ -9,8 +9,8 @@
     {
         public Trinket()
         {
-            this.TrinketEquipments = new HashSet<TrinketEquipments>();
-            this.TrinketInventories = new HashSet<TrinketInventories>();
+            this.TrinketEquipments = new HashSet<TrinketEquipment>();
+            this.TrinketInventories = new HashSet<TrinketInventory>();
         }
 
         public int Id { get; set; }
@@ -39,8 +39,8 @@
 
         public string ImageURL { get; set; }
 
-        public ICollection<TrinketInventories> TrinketInventories { get; set; }
+        public ICollection<TrinketInventory> TrinketInventories { get; set; }
 
-        public ICollection<TrinketEquipments> TrinketEquipments { get; set; }
+        public ICollection<TrinketEquipment> TrinketEquipments { get; set; }
     }
 }

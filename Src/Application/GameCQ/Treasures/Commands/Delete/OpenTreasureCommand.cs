@@ -9,8 +9,6 @@
 
         public int Reward { get; set; }
 
-        public string Rarity { get; set; }
-
         public ClaimsPrincipal User { get; set; }
     }
 }

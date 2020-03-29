@@ -1,10 +1,10 @@
 ﻿namespace Domain.Entities.Game.Items.ManyToMany.Equipments
 {
-    public class WeaponEquipments
+    public class ArmorEquipment
     {
-        public int WeaponId { get; set; }
+        public int ArmorId { get; set; }
 
-        public Weapon Weapon { get; set; }
+        public Armor Armor { get; set; }
 
         public int EquipmentId { get; set; }
 

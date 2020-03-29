@@ -1,36 +1,36 @@
 ﻿namespace Application.GameContent.Utilities.LevelUtility
 {
-    using Domain.Base;
+    using Domain.Entities.Game.Units;
 
     public class Level
     {
-        public void Up(Unit unit)
+        public void Up(Hero hero)
         {
-            if (unit.XP >= unit.XPCap)
+            if (hero.XP >= hero.XPCap)
             {
-                unit.Level++;
-                unit.AttackPower += 2;
-                unit.CurrentAttackPower += 2;
-                unit.ArmorValue += 1;
-                unit.CurrentArmorValue += 1;
-                unit.CritChance += 0.05;
-                unit.CurrentCritChance += 0.05;
-                unit.HealthRegen += 1;
-                unit.CurrentHealthRegen += 1;
-                unit.MaxHP += 10;
-                unit.CurrentHP += 10;
-                unit.MagicPower += 3;
-                unit.CurrentMagicPower += 3;
-                unit.RessistanceValue += 1.5;
-                unit.CurrentRessistanceValue += 0.5;
-                unit.XPCap += unit.XPCap * 0.20;
-                unit.XP = unit.XP - unit.XPCap;
-                unit.CurrentHP = unit.MaxHP;
-                unit.CurrentMana = unit.CurrentMana;
+                hero.Level++;
+                hero.AttackPower += 2;
+                hero.CurrentAttackPower += 2;
+                hero.ArmorValue += 1;
+                hero.CurrentArmorValue += 1;
+                hero.CritChance += 0.05;
+                hero.CurrentCritChance += 0.05;
+                hero.HealthRegen += 1;
+                hero.CurrentHealthRegen += 1;
+                hero.MaxHP += 10;
+                hero.CurrentHP += 10;
+                hero.MagicPower += 3;
+                hero.CurrentMagicPower += 3;
+                hero.RessistanceValue += 1.5;
+                hero.CurrentRessistanceValue += 0.5;
+                hero.XPCap += hero.XPCap * 0.20;
+                hero.XP = hero.XP - hero.XPCap;
+                hero.CurrentHP = hero.MaxHP;
+                hero.CurrentMana = hero.CurrentMana;
 
-                if (unit.XP < 0)
+                if (hero.XP < 0)
                 {
-                    unit.XP = 0;
+                    hero.XP = 0;
                 }
             }
         }

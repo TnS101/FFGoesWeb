@@ -72,7 +72,7 @@
 
         private async Task SeedMonsterRaritiesAsync(CancellationToken cancellationToken)
         {
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Beast",
                 Rarity = "Rare",
@@ -80,7 +80,7 @@
                 StatAmplifier = 0.15,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Beast",
                 Rarity = "Heroic",
@@ -88,7 +88,7 @@
                 StatAmplifier = 0.3,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Demon",
                 Rarity = "Rare",
@@ -96,7 +96,7 @@
                 StatAmplifier = 0.15,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Demon",
                 Rarity = "Heroic",
@@ -104,7 +104,7 @@
                 StatAmplifier = 0.3,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Giant",
                 Rarity = "Rare",
@@ -112,7 +112,7 @@
                 StatAmplifier = 0.15,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Giant",
                 Rarity = "Heroic",
@@ -120,7 +120,7 @@
                 StatAmplifier = 0.3,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Gryphon",
                 Rarity = "Rare",
@@ -128,7 +128,7 @@
                 StatAmplifier = 0.15,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Gryphon",
                 Rarity = "Heroic",
@@ -136,7 +136,7 @@
                 StatAmplifier = 0.3,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Reptile",
                 Rarity = "Rare",
@@ -144,7 +144,7 @@
                 StatAmplifier = 0.15,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Reptile",
                 Rarity = "Heroic",
@@ -152,7 +152,7 @@
                 StatAmplifier = 0.3,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Saint",
                 Rarity = "Rare",
@@ -160,7 +160,7 @@
                 StatAmplifier = 0.15,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Saint",
                 Rarity = "Heroic",
@@ -168,7 +168,7 @@
                 StatAmplifier = 0.3,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Skeleton",
                 Rarity = "Rare",
@@ -176,7 +176,7 @@
                 StatAmplifier = 0.15,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Skeleton",
                 Rarity = "Heroic",
@@ -184,7 +184,7 @@
                 StatAmplifier = 0.3,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Wyrm",
                 Rarity = "Rare",
@@ -192,7 +192,7 @@
                 StatAmplifier = 0.15,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Wyrm",
                 Rarity = "Heroic",
@@ -200,7 +200,7 @@
                 StatAmplifier = 0.3,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Zombie",
                 Rarity = "Rare",
@@ -208,7 +208,7 @@
                 StatAmplifier = 0.15,
             });
 
-            this.context.MonsterRarities.Add(new MonsterRarity
+            this.context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Zombie",
                 Rarity = "Heroic",

@@ -1,14 +1,21 @@
 ﻿namespace Domain.Entities.Game.Units
 {
-    using Domain.Base;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
 
     public class Hero
     {
+        public Hero()
+        {
+            this.Level = 1;
+            this.XPCap = 100;
+            this.GoldAmount = 100;
+            this.Energy = 10;
+        }
+
         public int Id { get; set; }
 
-        public int? EquipmentId { get; set; }
+        public int EquipmentId { get; set; }
 
         public Equipment Equipment { get; set; }
 
@@ -16,7 +23,7 @@
 
         public AppUser User { get; set; }
 
-        public int? InventoryId { get; set; }
+        public int InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 

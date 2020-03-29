@@ -1,12 +1,14 @@
 ﻿namespace Application.GameCQ.Equipments.Queries
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
+    using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
@@ -23,27 +25,88 @@
 
         public async Task<EquipmentViewModel> Handle(GetEquipmentQuery request, CancellationToken cancellationToken)
         {
+            var hero = await this.context.Heroes.FindAsync(request.HeroId);
+
             if (request.Slot == "Weapon")
             {
-                return new EquipmentViewModel
-                {
-                    Items = await this.context.Weapons.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
-                };
+                return await this.GetWeapon(hero);
             }
             else if (request.Slot == "Armor")
             {
-                return new EquipmentViewModel
-                {
-                    Items = await this.context.Armors.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
-                };
+                return this.ArmorList(hero);
             }
             else
             {
-                return new EquipmentViewModel
-                {
-                    Items = await this.context.Trinkets.Where(i => i.Inventory.HeroId == request.HeroId).ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
-                };
+                return await this.GetTrinket(hero);
             }
+        }
+
+        private async Task<EquipmentViewModel> GetTrinket(Hero hero)
+        {
+            var equipment = await this.context.TrinketEquipments.FirstOrDefaultAsync(te => te.EquipmentId == hero.EquipmentId);
+
+            var trinket = await this.context.Trinkets.FindAsync(equipment.TrinketId);
+
+            var trinkets = new List<Trinket>();
+
+            return new EquipmentViewModel
+            {
+                Items = (List<ItemMinViewModel>)trinkets.Select(w => new ItemMinViewModel
+                {
+                    Id = w.Id,
+                    ImageURL = w.ImageURL,
+                    Name = w.Name,
+                }),
+            };
+        }
+
+        private EquipmentViewModel ArmorList(Hero hero)
+        {
+            var equipments = this.context.ArmorsEquipments.Where(we => we.EquipmentId == hero.EquipmentId);
+
+            var armors = new List<Armor>();
+
+            foreach (var armor in this.context.Armors)
+            {
+                foreach (var equip in equipments)
+                {
+                    if (equip.ArmorId == armor.Id)
+                    {
+                        armors.Add(armor);
+                    }
+                }
+            }
+
+            return new EquipmentViewModel
+            {
+                Items = (List<ItemMinViewModel>)armors.Select(w => new ItemMinViewModel
+                {
+                    ImageURL = w.ImageURL,
+                    Name = w.Name,
+                }),
+            };
+        }
+
+        private async Task<EquipmentViewModel> GetWeapon(Hero hero)
+        {
+            var equipment = await this.context.WeaponsEquipments.FirstOrDefaultAsync(we => we.EquipmentId == hero.EquipmentId);
+
+            var weapon = await this.context.Weapons.FindAsync(equipment.WeaponId);
+
+            var weapons = new List<Weapon>
+            {
+                weapon,
+            };
+
+            return new EquipmentViewModel
+            {
+                Items = (List<ItemMinViewModel>)weapons.Select(w => new ItemMinViewModel
+                {
+                    Id = w.Id,
+                    ImageURL = w.ImageURL,
+                    Name = w.Name,
+                }),
+            };
         }
     }
 }

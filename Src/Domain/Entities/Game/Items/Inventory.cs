@@ -8,12 +8,12 @@
     {
         public Inventory(int heroId)
         {
-            this.ArmorInventories = new HashSet<ArmorInventories>();
-            this.WeaponInventories = new HashSet<WeaponInventories>();
-            this.TrinketInventories = new HashSet<TrinketInventories>();
-            this.MaterialInventories = new HashSet<MaterialInventories>();
-            this.TreasureKeyInventories = new HashSet<TreasureKeyInventories>();
-            this.TreasureInventories = new HashSet<TreasureInventories>();
+            this.ArmorInventories = new HashSet<ArmorInventory>();
+            this.WeaponInventories = new HashSet<WeaponInventory>();
+            this.TrinketInventories = new HashSet<TrinketInventory>();
+            this.MaterialInventories = new HashSet<MaterialInventory>();
+            this.TreasureKeyInventories = new HashSet<TreasureKeyInventory>();
+            this.TreasureInventories = new HashSet<TreasureInventory>();
             this.HeroId = heroId;
             this.Capacity = 50;
         }
@@ -22,20 +22,20 @@
 
         public int HeroId { get; set; }
 
-        public int Capacity { get; set; }
-
         public Hero Hero { get; set; }
 
-        public ICollection<ArmorInventories> ArmorInventories { get; set; }
+        public int Capacity { get; set; }
 
-        public ICollection<WeaponInventories> WeaponInventories { get; set; }
+        public ICollection<ArmorInventory> ArmorInventories { get; set; }
 
-        public ICollection<TrinketInventories> TrinketInventories { get; set; }
+        public ICollection<WeaponInventory> WeaponInventories { get; set; }
 
-        public ICollection<MaterialInventories> MaterialInventories { get; set; }
+        public ICollection<TrinketInventory> TrinketInventories { get; set; }
 
-        public ICollection<TreasureKeyInventories> TreasureKeyInventories { get; set; }
+        public ICollection<MaterialInventory> MaterialInventories { get; set; }
 
-        public ICollection<TreasureInventories> TreasureInventories { get; set; }
+        public ICollection<TreasureKeyInventory> TreasureKeyInventories { get; set; }
+
+        public ICollection<TreasureInventory> TreasureInventories { get; set; }
     }
 }
