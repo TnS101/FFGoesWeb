@@ -1,8 +1,10 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
-    using Domain.Base;
-    using Domain.Entities.Game.Items;
+    using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Application.GameContent.Handlers;
+    using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Units;
 
     public class SlotCheck
     {
@@ -10,7 +12,7 @@
         {
         }
 
-        public Item Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, string fightingClassType, string weaponName, ValidatorHandler validatorHandler)
+        public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, string fightingClassType, string weaponName, ValidatorHandler validatorHandler, IFFDbContext context, Hero hero)
         {
             if (slotNumber == 7)
             {
@@ -25,10 +27,14 @@
                     Level = stats[4],
                     Intellect = stats[5],
                     Spirit = stats[6],
+                    InventoryId = hero.InventoryId,
                 };
 
                 validatorHandler.WeaponCheck.Check(fightingClassNumber, fightingClassType, weaponName);
-                return templateWeapon;
+
+                await context.Weapons.AddAsync(templateWeapon);
+
+                hero.Inventory.Weapons.Add(templateWeapon);
             }
             else if (slotNumber == 8)
             {
@@ -42,9 +48,15 @@
                     Spirit = stats[3],
                     Agility = stats[4],
                     Level = stats[5],
+                    InventoryId = hero.InventoryId,
                 };
                 validatorHandler.FightingClassStatCheck.Check(templateTrinket, fightingClassType, fightingClassStatNumber);
-                return templateTrinket;
+
+                await context.Trinkets.AddAsync(templateTrinket);
+
+                hero.Inventory.Trinkets.Add(templateTrinket);
+
+                context.Inventories.Update(hero.Inventory);
             }
             else
             {
@@ -65,7 +77,11 @@
                 validatorHandler.ArmorCheck.Check(templateArmor, slotNumber, fightingClassType, stats[0]);
                 validatorHandler.FightingClassStatCheck.Check(templateArmor, fightingClassType, fightingClassStatNumber);
 
-                return templateArmor;
+                await context.Armors.AddAsync(templateArmor);
+
+                hero.Inventory.Armors.Add(templateArmor);
+
+                context.Inventories.Update(hero.Inventory);
             }
         }
     }

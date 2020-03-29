@@ -1,10 +1,10 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
-    using Domain.Base;
+    using Domain.Contracts.Items.AdditionalTypes;
 
     public class FightingClassStatCheck
     {
-        public void Check(Item item, string classUsable, int fightingClassStatNumber)
+        public void Check(IBaseItem item, string classUsable, int fightingClassStatNumber)
         {
             if (classUsable == "Hunter")
             {

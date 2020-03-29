@@ -4,85 +4,85 @@
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
 
-    public class Hero : Unit
+    public class Hero
     {
-        public override int Id { get; set; }
+        public int Id { get; set; }
 
-        public override int? EquipmentId { get; set; }
+        public int? EquipmentId { get; set; }
 
-        public override Equipment Equipment { get; set; }
+        public Equipment Equipment { get; set; }
 
-        public override string UserId { get; set; }
+        public string UserId { get; set; }
 
-        public override AppUser User { get; set; }
+        public AppUser User { get; set; }
 
-        public override int? InventoryId { get; set; }
+        public int? InventoryId { get; set; }
 
-        public override Inventory Inventory { get; set; }
+        public Inventory Inventory { get; set; }
 
-        public override string ProfessionId { get; set; }
+        public string ProfessionId { get; set; }
 
-        public override Profession Profession { get; set; }
+        public Profession Profession { get; set; }
 
-        public override string Name { get; set; }
+        public string Name { get; set; }
 
-        public override string ClassType { get; set; }
+        public string ClassType { get; set; }
 
-        public override string Race { get; set; }
+        public string Race { get; set; }
 
-        public override int Level { get; set; }
+        public int Level { get; set; }
 
-        public override double XP { get; set; }
+        public double XP { get; set; }
 
-        public override double XPCap { get; set; }
+        public double XPCap { get; set; }
 
-        public override double MaxHP { get; set; }
+        public double MaxHP { get; set; }
 
-        public override double CurrentHP { get; set; }
+        public double CurrentHP { get; set; }
 
-        public override int HealthRegen { get; set; }
+        public int HealthRegen { get; set; }
 
-        public override int CurrentHealthRegen { get; set; }
+        public int CurrentHealthRegen { get; set; }
 
-        public override double MaxMana { get; set; }
+        public double MaxMana { get; set; }
 
-        public override double CurrentMana { get; set; }
+        public double CurrentMana { get; set; }
 
-        public override int ManaRegen { get; set; }
+        public int ManaRegen { get; set; }
 
-        public override int CurrentManaRegen { get; set; }
+        public int CurrentManaRegen { get; set; }
 
-        public override double AttackPower { get; set; }
+        public double AttackPower { get; set; }
 
-        public override double CurrentAttackPower { get; set; }
+        public double CurrentAttackPower { get; set; }
 
-        public override double MagicPower { get; set; }
+        public double MagicPower { get; set; }
 
-        public override double CurrentMagicPower { get; set; }
+        public double CurrentMagicPower { get; set; }
 
-        public override double ArmorValue { get; set; }
+        public double ArmorValue { get; set; }
 
-        public override double CurrentArmorValue { get; set; }
+        public double CurrentArmorValue { get; set; }
 
-        public override double RessistanceValue { get; set; }
+        public double RessistanceValue { get; set; }
 
-        public override double CurrentRessistanceValue { get; set; }
+        public double CurrentRessistanceValue { get; set; }
 
-        public override double CritChance { get; set; }
+        public double CritChance { get; set; }
 
-        public override double CurrentCritChance { get; set; }
+        public double CurrentCritChance { get; set; }
 
-        public override int GoldAmount { get; set; }
+        public int GoldAmount { get; set; }
 
-        public override int Mastery { get; set; }
+        public int Mastery { get; set; }
 
-        public override string ImageURL { get; set; }
+        public string ImageURL { get; set; }
 
-        public override bool IsSelected { get; set; }
+        public bool IsSelected { get; set; }
 
-        public override int Energy { get; set; }
+        public int Energy { get; set; }
 
-        public override string IconURL { get; set; }
+        public string IconURL { get; set; }
 
         public int GearScore { get; set; }
     }

@@ -4,20 +4,17 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Handlers;
-    using Application.GameContent.Utilities.Looting;
     using MediatR;
 
     public class BattleOptionsCommandHandler : IRequestHandler<BattleOptionsCommand, string>
     {
         private readonly IFFDbContext context;
         private readonly BattleHandler battleHandler;
-        private readonly Loot loot;
 
         public BattleOptionsCommandHandler(IFFDbContext context)
         {
             this.context = context;
             this.battleHandler = new BattleHandler();
-            this.loot = new Loot();
         }
 
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
@@ -43,7 +40,7 @@
                 {
                     this.battleHandler.EscapeOption.Escape(request.Player);
                     await this.context.SaveChangesAsync(cancellationToken);
-                    return @"\Escape";
+                    return "/Escape";
                 }
 
                 this.battleHandler.TurnCheck.Check(request.Player, request.Enemy, this.battleHandler, request.YourTurn, this.context);
@@ -55,14 +52,14 @@
 
                 await this.context.SaveChangesAsync(cancellationToken);
 
-                return @"\Action";
+                return "/Action";
             }
             else
             {
                 request.Enemy.CurrentHP = 0;
-                this.battleHandler.EndOption.End(request.Player, request.Enemy, this.loot);
+                this.battleHandler.EndOption.End(request.Player, request.Enemy);
                 await this.context.SaveChangesAsync(cancellationToken);
-                return @"\End";
+                return "/End";
             }
         }
     }

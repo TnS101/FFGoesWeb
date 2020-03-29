@@ -20,22 +20,22 @@
 
             if (fightingClassType == "Warrior")
             {
-                fightingClassId = 1;
+                fightingClassId = 9;
             }
 
             if (fightingClassType == "Hunter")
             {
-                fightingClassId = 2;
+                fightingClassId = 8;
             }
 
             if (fightingClassType == "Mage")
             {
-                fightingClassId = 3;
+                fightingClassId = 7;
             }
 
             if (fightingClassType == "Naturalist")
             {
-                fightingClassId = 4;
+                fightingClassId = 6;
             }
 
             if (fightingClassType == "Necroid")
@@ -45,22 +45,22 @@
 
             if (fightingClassType == "Paladin")
             {
-                fightingClassId = 6;
+                fightingClassId = 4;
             }
 
             if (fightingClassType == "Priest")
             {
-                fightingClassId = 7;
+                fightingClassId = 3;
             }
 
             if (fightingClassType == "Rogue")
             {
-                fightingClassId = 8;
+                fightingClassId = 2;
             }
 
             if (fightingClassType == "Shaman")
             {
-                fightingClassId = 9;
+                fightingClassId = 1;
             }
 
             var fightingClass = await context.FightingClasses.FindAsync(fightingClassId);

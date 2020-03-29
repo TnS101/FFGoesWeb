@@ -1,7 +1,12 @@
 ﻿namespace Application.GameContent.Utilities.EquipmentOptions
 {
-    using Domain.Base;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
+    using Domain.Base;
+    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Entities.Game.Units;
 
     public class EquipOption
     {
@@ -9,129 +14,129 @@
         {
         }
 
-        public string Equip(Unit player, Item item, StatSum statSum)
+        public async Task<string> Equip(Hero hero, IBaseItem item, StatSum statSum, IFFDbContext context)
         {
-            if (player.ClassType != item.ClassType)
+            if (hero.ClassType != item.ClassType)
             {
                 // Item not available for player(wrong class)
                 return "/WrongClass";
             }
             else
             {
-                if (item.Slot == "Weapon" && item.Level <= player.Level && player.Equipment.WeaponSlot)
+                if (item.Slot == "Weapon" && item.Level <= hero.Level && hero.Equipment.WeaponSlot)
                 {
-                    player.Equipment.Items.Add(item);
-                    player.Equipment.WeaponSlot = false;
-                    statSum.Sum(player);
+                    hero.Equipment.WeaponEquipments.FirstOrDefault(c => c.EquipmentId == hero.EquipmentId).WeaponId = item.Id; // May not be working
+                    hero.Equipment.WeaponSlot = false;
+                    await statSum.Sum(hero, context);
                     return "/ItemEquipped";
                 }
-                else if (item.Slot == "Weapon" && item.Level <= player.Level && !player.Equipment.WeaponSlot)
+                else if (item.Slot == "Weapon" && item.Level <= hero.Level && !hero.Equipment.WeaponSlot)
                 {
                     // Slot is already taken!
                     return "/SlotTaken";
                 }
 
-                if (item.Slot == "Trinket" && item.Level <= player.Level && player.Equipment.TrinketSlot)
+                if (item.Slot == "Trinket" && item.Level <= hero.Level && hero.Equipment.TrinketSlot)
                 {
-                    player.Equipment.Items.Add(item);
-                    player.Equipment.TrinketSlot = false;
-                    statSum.Sum(player);
+                    hero.Equipment.TrinketEquipments.FirstOrDefault(c => c.EquipmentId == hero.EquipmentId).TrinketId = item.Id;
+                    hero.Equipment.TrinketSlot = false;
+                    await statSum.Sum(hero, context);
                     return "/ItemEquipped";
                 }
-                else if (item.Slot == "Trinket" && item.Level <= player.Level && !player.Equipment.TrinketSlot)
+                else if (item.Slot == "Trinket" && item.Level <= hero.Level && !hero.Equipment.TrinketSlot)
                 {
                     // Slot is already taken!
                     return "/SlotTaken";
                 }
 
-                if (item.Slot == "Armor" && item.Level <= player.Level)
+                if (item.Slot == "Armor" && item.Level <= hero.Level)
                 {
-                    if (item.Slot == "Helmet" && player.Equipment.HelmetSlot)
+                    if (item.Slot == "Helmet" && hero.Equipment.HelmetSlot)
                     {
-                        player.Equipment.Items.Add(item);
-                        player.Equipment.HelmetSlot = false;
-                        statSum.Sum(player);
+                        hero.Equipment.ArmorEquipments.FirstOrDefault(c => c.EquipmentId == hero.EquipmentId).ArmorId = item.Id;
+                        hero.Equipment.HelmetSlot = false;
+                        await statSum.Sum(hero, context);
                         return "/ItemEquipped";
                     }
-                    else if (item.Slot == "Helmet" && !player.Equipment.HelmetSlot)
+                    else if (item.Slot == "Helmet" && !hero.Equipment.HelmetSlot)
                     {
                         // Slot is already taken!
                         return "/SlotTaken";
                     }
-                    else if (item.Slot == "Chestplate" && player.Equipment.ChestplateSlot)
+                    else if (item.Slot == "Chestplate" && hero.Equipment.ChestplateSlot)
                     {
-                        player.Equipment.Items.Add(item);
-                        player.Equipment.ChestplateSlot = false;
-                        statSum.Sum(player);
+                        hero.Equipment.ArmorEquipments.FirstOrDefault(c => c.EquipmentId == hero.EquipmentId).ArmorId = item.Id;
+                        hero.Equipment.ChestplateSlot = false;
+                        await statSum.Sum(hero, context);
                         return "/ItemEquipped";
                     }
-                    else if (item.Slot == "Chestplate" && !player.Equipment.ChestplateSlot)
+                    else if (item.Slot == "Chestplate" && !hero.Equipment.ChestplateSlot)
                     {
                         // Slot is already taken!
                         return "/SlotTaken";
                     }
-                    else if (item.Slot == "Shoulder" && player.Equipment.ShoulderSlot)
+                    else if (item.Slot == "Shoulder" && hero.Equipment.ShoulderSlot)
                     {
-                        player.Equipment.Items.Add(item);
-                        player.Equipment.ShoulderSlot = false;
-                        statSum.Sum(player);
+                        hero.Equipment.ArmorEquipments.FirstOrDefault(c => c.EquipmentId == hero.EquipmentId).ArmorId = item.Id;
+                        hero.Equipment.ShoulderSlot = false;
+                        await statSum.Sum(hero, context);
                         return "/ItemEquipped";
                     }
-                    else if (item.Slot == "Shoulder" && !player.Equipment.ShoulderSlot)
+                    else if (item.Slot == "Shoulder" && !hero.Equipment.ShoulderSlot)
                     {
                         // Slot is already taken!
                         return "/SlotTaken";
                     }
-                    else if (item.Slot == "Bracer" && player.Equipment.BracerSlot)
+                    else if (item.Slot == "Bracer" && hero.Equipment.BracerSlot)
                     {
-                        player.Equipment.Items.Add(item);
-                        player.Equipment.BracerSlot = false;
-                        statSum.Sum(player);
+                        hero.Equipment.ArmorEquipments.FirstOrDefault(c => c.EquipmentId == hero.EquipmentId).ArmorId = item.Id;
+                        hero.Equipment.BracerSlot = false;
+                        await statSum.Sum(hero, context);
                         return "/ItemEquipped";
                     }
-                    else if (item.Slot == "Bracer" && !player.Equipment.BracerSlot)
+                    else if (item.Slot == "Bracer" && !hero.Equipment.BracerSlot)
                     {
                         // Slot is already taken!
                         return "/SlotTaken";
                     }
-                    else if (item.Slot == "Boots" && player.Equipment.BootsSlot)
+                    else if (item.Slot == "Boots" && hero.Equipment.BootsSlot)
                     {
-                        player.Equipment.Items.Add(item);
-                        player.Equipment.BootsSlot = false;
-                        statSum.Sum(player);
+                        hero.Equipment.ArmorEquipments.FirstOrDefault(c => c.EquipmentId == hero.EquipmentId).ArmorId = item.Id;
+                        hero.Equipment.BootsSlot = false;
+                        await statSum.Sum(hero, context);
                         return "/ItemEquipped";
                     }
-                    else if (item.Slot == "Boots" && !player.Equipment.BootsSlot)
+                    else if (item.Slot == "Boots" && !hero.Equipment.BootsSlot)
                     {
                         // Slot is already taken!
                         return "/SlotTaken";
                     }
-                    else if (item.Slot == "Leggings" && player.Equipment.LeggingsSlot)
+                    else if (item.Slot == "Leggings" && hero.Equipment.LeggingsSlot)
                     {
-                        player.Equipment.Items.Add(item);
-                        player.Equipment.LeggingsSlot = false;
-                        statSum.Sum(player);
+                        hero.Equipment.ArmorEquipments.FirstOrDefault(c => c.EquipmentId == hero.EquipmentId).ArmorId = item.Id;
+                        hero.Equipment.LeggingsSlot = false;
+                        await statSum.Sum(hero, context);
                         return "/ItemEquipped";
                     }
-                    else if (item.Slot == "Leggings" && !player.Equipment.LeggingsSlot)
+                    else if (item.Slot == "Leggings" && !hero.Equipment.LeggingsSlot)
                     {
                         // Slot is already taken!
                         return "/SlotTaken";
                     }
-                    else if (item.Slot == "Gloves" && player.Equipment.GlovesSlot)
+                    else if (item.Slot == "Gloves" && hero.Equipment.GlovesSlot)
                     {
-                        player.Equipment.Items.Add(item);
-                        player.Equipment.GlovesSlot = false;
-                        statSum.Sum(player);
+                        hero.Equipment.ArmorEquipments.FirstOrDefault(c => c.EquipmentId == hero.EquipmentId).ArmorId = item.Id;
+                        hero.Equipment.GlovesSlot = false;
+                        await statSum.Sum(hero, context);
                         return "/ItemEquipped";
                     }
-                    else if (item.Slot == "Gloves" && !player.Equipment.GlovesSlot)
+                    else if (item.Slot == "Gloves" && !hero.Equipment.GlovesSlot)
                     {
                         // Slot is already taken!
                         return "/SlotTaken";
                     }
                 }
-                else if (item.Level > player.Level)
+                else if (item.Level > hero.Level)
                 {
                     // Item level is too high!
                     return "/LevelHigh";

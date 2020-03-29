@@ -1,14 +1,12 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
-    using Application.GameContent.Utilities.Looting;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
 
     public class EndOption
     {
-        public void End(UnitFullViewModel player, UnitFullViewModel enemy, Loot loot)
+        public void End(UnitFullViewModel player, UnitFullViewModel enemy)
         {
             player.XP += enemy.MaxHP / 10;
-            loot.ItemLoot(player);
 
             // Stat reset
             player.CurrentAttackPower = player.AttackPower;

@@ -1,10 +1,10 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
-    using Domain.Base;
+    using Domain.Contracts.Items.AdditionalTypes;
 
     public class ArmorCheck
     {
-        public void Check(Item item, int slotNumber, string classUsable, int regularStatNumber)
+        public void Check(IBaseItem item, int slotNumber, string classUsable, int regularStatNumber)
         {
             if (slotNumber == 0)
             {

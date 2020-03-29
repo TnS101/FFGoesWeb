@@ -1,6 +1,7 @@
 ﻿namespace Domain.Contracts.FightingClass
 {
     using Domain.Base;
+    using Domain.Entities.Game.Units;
     using System.Collections.Generic;
 
     public interface IFightingClass
@@ -27,6 +28,6 @@
 
         double CritChance { get; }
 
-        ICollection<Unit> Units { get; }
+        ICollection<Hero> Heroes { get; }
     }
 }

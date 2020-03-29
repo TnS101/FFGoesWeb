@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities.Game.Items
 {
-    using Domain.Base;
+    using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Units;
     using System.Collections.Generic;
 
@@ -8,8 +8,10 @@
     {
         public Equipment(int heroId)
         {
-            this.Items = new HashSet<Item>();
-            this.Capacity = 50;
+            this.WeaponEquipments = new HashSet<WeaponEquipments>();
+            this.ArmorEquipments = new HashSet<ArmorEquipments>();
+            this.TrinketEquipments = new HashSet<TrinketEquipments>();
+            this.Capacity = 9;
             this.HeroId = heroId;
         }
 
@@ -39,6 +41,10 @@
 
         public bool WeaponSlot { get; set; }
 
-        public ICollection<Item> Items { get; set; }
+        public ICollection<WeaponEquipments> WeaponEquipments { get; set; }
+
+        public ICollection<ArmorEquipments> ArmorEquipments { get; set; }
+
+        public ICollection<TrinketEquipments> TrinketEquipments { get; set; }
     }
 }

@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Game.Items;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
@@ -25,19 +26,19 @@
 
             var unit = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            var treasureKey = unit.Inventory.Items.Select(k => new Domain.Entities.Game.Items.TreasureKey
+            var treasureKey = unit.Inventory.TreasureKeys.Select(k => new TreasureKey
             {
                 Rarity = request.Rarity,
             }).FirstOrDefault();
 
-            var treasure = unit.Inventory.Items.Select(t => new Domain.Entities.Game.Items.Treasure
+            var treasure = unit.Inventory.Treasures.Select(t => new Treasure
             {
                 Rarity = request.Rarity,
             }).FirstOrDefault();
 
-            unit.Inventory.Items.Remove(treasureKey);
+            unit.Inventory.TreasureKeys.Remove(treasureKey);
 
-            unit.Inventory.Items.Remove(treasure);
+            unit.Inventory.Treasures.Remove(treasure);
 
             unit.GoldAmount += treasure.Reward;
 

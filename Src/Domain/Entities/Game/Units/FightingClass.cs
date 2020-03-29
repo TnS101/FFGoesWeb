@@ -1,11 +1,15 @@
 ﻿namespace Domain.Entities.Game.Units
 {
-    using Domain.Base;
     using Domain.Contracts.FightingClass;
     using System.Collections.Generic;
 
     public class FightingClass : IFightingClass
     {
+        public FightingClass()
+        {
+            this.Heroes = new HashSet<Hero>();
+        }
+
         public int Id { get; set; }
 
         public string ClassType { get; set; }
@@ -34,6 +38,6 @@
 
         public string ImageURL { get; set; }
 
-        public ICollection<Unit> Units { get; set; }
+        public ICollection<Hero> Heroes { get; set; }
     }
 }

@@ -1,14 +1,23 @@
 ﻿namespace Domain.Entities.Game.Items
 {
-    using Domain.Base;
+    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Entities.Game.Items.ManyToMany.Inventories;
+    using System.Collections.Generic;
 
-    public class TreasureKey : Item
+    public class TreasureKey : ITreasure
     {
         public TreasureKey()
         {
+            this.TreasureKeyInventories = new HashSet<TreasureKeyInventories>();
         }
-        public override string Rarity { get; set; }
+        public int Id { get; set; }
 
-        public override string ImageURL { get; set; }
+        public string Name { get; set; }
+
+        public string Rarity { get; set; }
+
+        public string ImageURL { get; set; }
+
+        public ICollection<TreasureKeyInventories> TreasureKeyInventories { get; set; }
     }
 }

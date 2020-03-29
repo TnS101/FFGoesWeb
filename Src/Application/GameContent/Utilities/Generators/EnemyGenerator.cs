@@ -14,9 +14,9 @@
         {
         }
 
-        public async Task<Unit> Generate(int playerLevel, IFFDbContext context)
+        public async Task<Monster> Generate(int playerLevel, IFFDbContext context)
         {
-            Monster monster = new Monster { Type = "Enemy", Level = playerLevel };
+            Monster monster = new Monster { Level = playerLevel };
 
             StatIncrement statIncrement = new StatIncrement();
 
@@ -28,22 +28,22 @@
 
             if (enemyNumber >= 0 && enemyNumber <= 5) // Beast
             {
-                monsterId = 1;
+                monsterId = 9;
             }
 
             if (enemyNumber >= 6 && enemyNumber <= 10) // Reptile
             {
-                monsterId = 2;
+                monsterId = 8;
             }
 
             if (enemyNumber >= 11 && enemyNumber <= 14) // Zombie
             {
-                monsterId = 3;
+                monsterId = 7;
             }
 
             if (enemyNumber >= 15 && enemyNumber <= 18) // Skeleton
             {
-                monsterId = 4;
+                monsterId = 6;
             }
 
             if (enemyNumber == 19 || enemyNumber == 20) // Wyrm
@@ -53,29 +53,27 @@
 
             if (enemyNumber == 21 || enemyNumber == 22) // Giant
             {
-                monsterId = 6;
+                monsterId = 4;
             }
 
             if (enemyNumber == 23 || enemyNumber == 24) // Gryphon
             {
-                monsterId = 7;
+                monsterId = 3;
             }
 
             if (enemyNumber == 25) // Saint
             {
-                monsterId = 8;
+                monsterId = 2;
             }
 
             if (enemyNumber == 26) // Demon
             {
-                monsterId = 9;
+                monsterId = 1;
             }
 
             var baseMonster = await context.Monsters.FindAsync(monsterId);
 
             statIncrement.MonsterIncrement(baseMonster, monster);
-
-            monster.Name = monster.ClassType;
 
             return await this.RarityRng(monster, context);
         }

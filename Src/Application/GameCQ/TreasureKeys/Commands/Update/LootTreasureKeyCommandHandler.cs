@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Game.Items;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
@@ -44,7 +45,7 @@
                 rarity = "Gold";
             }
 
-            hero.Inventory.Items.Add(new Domain.Entities.Game.Items.TreasureKey
+            hero.Inventory.TreasureKeys.Add(new TreasureKey
             {
                 Rarity = rarity,
             });

@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Game.Items;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -51,13 +52,13 @@
                 reward = 200;
             }
 
-            hero.Inventory.Items.Add(new Domain.Entities.Game.Items.Treasure
+            hero.Inventory.Treasures.Add(new Treasure
             {
                 Rarity = rarity,
                 Reward = reward,
             });
 
-            this.context.Heroes.Update(hero);
+            this.context.Inventories.Update(hero.Inventory);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

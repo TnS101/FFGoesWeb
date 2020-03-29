@@ -1,9 +1,7 @@
 ﻿namespace Domain.Contracts.Items
 {
-    using Domain.Contracts.Items.Types;
-
-    public interface IItem : ITrinket, IArmor, IWeapon
+    public interface IItem
     {
-        string ImageURL { get;}
+        string Name { get; set; }
     }
 }

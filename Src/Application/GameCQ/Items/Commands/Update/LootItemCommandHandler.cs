@@ -6,8 +6,6 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Generators;
-    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
-    using AutoMapper;
     using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -16,14 +14,12 @@
     {
         private readonly IFFDbContext context;
         private readonly ItemGenerator itemGenerator;
-        private readonly IMapper mapper;
         private readonly UserManager<AppUser> userManager;
 
-        public LootItemCommandHandler(IFFDbContext context, IMapper mapper, UserManager<AppUser> userManager)
+        public LootItemCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
             this.itemGenerator = new ItemGenerator();
-            this.mapper = mapper;
             this.userManager = userManager;
         }
 
@@ -35,9 +31,9 @@
 
             var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            hero.Inventory.Items.Add(this.itemGenerator.Generate(this.mapper.Map<UnitFullViewModel>(hero)));
+            await this.itemGenerator.Generate(hero, this.context);
 
-            this.context.Heroes.Update(hero);
+            this.context.Inventories.Update(hero.Inventory);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

@@ -21,6 +21,7 @@
     using Domain.Base;
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;
+    using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using Domain.Entities.Moderation;
 
@@ -28,7 +29,10 @@
     {
         public MappingProfile()
         {
-            this.CreateMap<Item, ItemMinViewModel>();
+            this.CreateMap<Armor, ItemMinViewModel>();
+            this.CreateMap<Weapon, ItemMinViewModel>();
+            this.CreateMap<Trinket, ItemMinViewModel>();
+            this.CreateMap<Material, ItemMinViewModel>();
             this.CreateMap<Spell, SpellFullViewModel>();
             this.CreateMap<AppUser, UserPartialViewModel>();
             this.CreateMap<Unit, UnitPartialViewModel>();

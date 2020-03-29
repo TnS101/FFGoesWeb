@@ -1,43 +1,48 @@
 ﻿namespace Domain.Entities.Game.Items
 {
-    using Domain.Base;
+    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Entities.Game.Items.ManyToMany.Equipments;
+    using Domain.Entities.Game.Items.ManyToMany.Inventories;
+    using System.Collections.Generic;
 
-    public class Weapon : Item
+    public class Weapon : IBaseItem
     {
-        public override int Id { get; set; }
+        public Weapon()
+        {
+            this.WeaponEquipments = new HashSet<WeaponEquipments>();
+            this.WeaponInventories = new HashSet<WeaponInventories>();
+        }
 
-        public override double AttackPower { get; set; }
+        public int Id { get; set; }
 
-        public override string Name { get; set; }
+        public double AttackPower { get; set; }
 
-        public override string Slot { get; set; }
+        public string Name { get; set; }
 
-        public override int Level { get; set; }
+        public string Slot { get; set; }
 
-        public override string ClassType { get; set; }
+        public int Level { get; set; }
 
-        public override int Stamina { get; set; }
+        public string ClassType { get; set; }
 
-        public override int Strength { get; set; }
+        public int Stamina { get; set; }
 
-        public override int Agility { get; set; }
+        public int Strength { get; set; }
 
-        public override int Intellect { get; set; }
+        public int Agility { get; set; }
 
-        public override int Spirit { get; set; }
+        public int Intellect { get; set; }
 
-        public override int? InventoryId { get; set; }
+        public int Spirit { get; set; }
 
-        public override Inventory Inventory { get; set; }
+        public int SellPrice { get; set; }
 
-        public override int? EquipmentId { get; set; }
+        public int BuyPrice { get; set; }
 
-        public override Equipment Equipment { get; set; }
+        public string ImageURL { get; set; }
 
-        public override int SellPrice { get; set; }
+        public ICollection<WeaponInventories> WeaponInventories { get; set; }
 
-        public override int BuyPrice { get; set; }
-
-        public override string ImageURL { get; set; }
+        public ICollection<WeaponEquipments> WeaponEquipments { get; set; }
     }
 }

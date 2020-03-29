@@ -1,25 +1,26 @@
 ﻿namespace Domain.Entities.Game.Items
 {
-    using Domain.Base;
+    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Entities.Game.Items.ManyToMany.Inventories;
+    using System.Collections.Generic;
 
-    public class Material : Item
+    public class Material : IMaterial
     {
-        public override int Id { get; set; }
+        public Material()
+        {
+            this.MaterialInventories = new HashSet<MaterialInventories>();
+        }
 
-        public override int SellPrice { get; set; }
+        public int Id { get; set; }
 
-        public override int BuyPrice { get; set; }
+        public int SellPrice { get; set; }
 
-        public override string Name { get; set; }
+        public int BuyPrice { get; set; }
 
-        public override int? InventoryId { get; set; }
+        public string Name { get; set; }
 
-        public override Inventory Inventory { get; set; }
+        public string ImageURL { get; set; }
 
-        public override int? EquipmentId { get; set; }
-
-        public override Equipment Equipment { get; set; }
-
-        public override string ImageURL { get; set; }
+        public ICollection<MaterialInventories> MaterialInventories { get; set; }
     }
 }

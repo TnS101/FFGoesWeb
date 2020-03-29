@@ -9,6 +9,8 @@
 
         public string Command { get; set; }
 
+        public string Slot { get; set; }
+
         public ClaimsPrincipal User { get; set; }
     }
 }

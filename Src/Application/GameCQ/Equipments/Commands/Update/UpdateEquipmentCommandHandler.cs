@@ -6,6 +6,7 @@
     using Application.Common.Interfaces;
     using Application.GameContent.Handlers;
     using Application.GameContent.Utilities.FightingClassUtilites;
+    using Domain.Contracts.Items.AdditionalTypes;
     using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -31,26 +32,38 @@
 
             var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            var item = hero.Inventory.Items.FirstOrDefault(i => i.Id == request.ItemId);
-
             string result = string.Empty;
 
             if (request.Command == "Equip")
             {
-                result = this.equipmentHandler.EquipOption.Equip(hero, item, this.statSum);
-
-                await this.context.SaveChangesAsync(cancellationToken);
+                result = this.equipmentHandler.EquipOption.Equip(hero, await this.BaseItem(request), this.statSum);
             }
             else
             {
-                result = this.equipmentHandler.UnEquipOption.UnEquip(hero, item, this.statSum);
-
-                await this.context.SaveChangesAsync(cancellationToken);
+                result = this.equipmentHandler.UnEquipOption.UnEquip(hero, await this.BaseItem(request), this.statSum);
             }
 
             this.context.Equipments.Update(hero.Equipment);
 
+            await this.context.SaveChangesAsync(cancellationToken);
+
             return string.Format("/Equipment", result);
+        }
+
+        private async Task<IBaseItem> BaseItem(UpdateEquipmentCommand request)
+        {
+            if (request.Slot == "Weapon")
+            {
+                return await this.context.Weapons.FindAsync(request.ItemId);
+            }
+            else if (request.Slot == "Trinket")
+            {
+                return await this.context.Trinkets.FindAsync(request.ItemId);
+            }
+            else
+            {
+                return await this.context.Armors.FindAsync(request.ItemId);
+            }
         }
     }
 }

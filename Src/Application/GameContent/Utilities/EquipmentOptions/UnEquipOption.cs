@@ -1,56 +1,73 @@
 ﻿namespace Application.GameContent.Utilities.EquipmentOptions
 {
-    using Domain.Base;
+    using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
+    using Domain.Base;
+    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Units;
 
     public class UnEquipOption
     {
-        public string UnEquip(Unit player, Item item, StatSum statSum)
+        public async Task<string> UnEquip(Hero hero, IBaseItem item, StatSum statSum, IFFDbContext context)
         {
-            if (item.Slot == "Helmet" && !player.Equipment.HelmetSlot)
+            if (item.Slot == "Helmet" && !hero.Equipment.HelmetSlot)
             {
-                player.Equipment.Items.Remove(item);
-                player.Equipment.HelmetSlot = true;
-                statSum.Sum(player);
-                return "ItemUnEquipped";
+                hero.Equipment.ArmorEquipments.Remove((Armor)item);
+                hero.Equipment.HelmetSlot = true;
+                await statSum.Sum(hero, context);
+                return "/Equipment";
             }
-            else if (item.Slot == "Chestplate" && !player.Equipment.ChestplateSlot)
+            else if (item.Slot == "Chestplate" && !hero.Equipment.ChestplateSlot)
             {
-                player.Equipment.Items.Remove(item);
-                player.Equipment.ChestplateSlot = true;
-                statSum.Sum(player);
-                return "ItemUnEquipped";
+                hero.Equipment.ArmorEquipments.Remove((Armor)item);
+                hero.Equipment.ChestplateSlot = true;
+                await statSum.Sum(hero, context);
+                return "/Equipment";
             }
-            else if (item.Slot == "Bracer" && !player.Equipment.BracerSlot)
+            else if (item.Slot == "Bracer" && !hero.Equipment.BracerSlot)
             {
-                player.Equipment.Items.Remove(item);
-                player.Equipment.BracerSlot = true;
-                statSum.Sum(player);
-                return "ItemUnEquipped";
+                hero.Equipment.ArmorEquipments.Remove((Armor)item);
+                hero.Equipment.BracerSlot = true;
+                await statSum.Sum(hero, context);
+                return "/Equipment";
             }
-            else if (item.Slot == "Boots" && !player.Equipment.BootsSlot)
+            else if (item.Slot == "Boots" && !hero.Equipment.BootsSlot)
             {
-                player.Equipment.Items.Remove(item);
-                player.Equipment.BootsSlot = true;
-                statSum.Sum(player);
-                return "ItemUnEquipped";
+                hero.Equipment.ArmorEquipments.Remove((Armor)item);
+                hero.Equipment.BootsSlot = true;
+                await statSum.Sum(hero, context);
+                return "/Equipment";
             }
-            else if (item.Slot == "Leggings" && !player.Equipment.LeggingsSlot)
+            else if (item.Slot == "Leggings" && !hero.Equipment.LeggingsSlot)
             {
-                player.Equipment.Items.Remove(item);
-                player.Equipment.LeggingsSlot = true;
-                statSum.Sum(player);
-                return "ItemUnEquipped";
+                hero.Equipment.ArmorEquipments.Remove((Armor)item);
+                hero.Equipment.LeggingsSlot = true;
+                await statSum.Sum(hero, context);
+                return "/Equipment";
             }
-            else if (item.Slot == "Gloves" && !player.Equipment.GlovesSlot)
+            else if (item.Slot == "Gloves" && !hero.Equipment.GlovesSlot)
             {
-                player.Equipment.Items.Remove(item);
-                player.Equipment.GlovesSlot = true;
-                statSum.Sum(player);
-                return "ItemUnEquipped";
+                hero.Equipment.ArmorEquipments.Remove((Armor)item);
+                hero.Equipment.GlovesSlot = true;
+                await statSum.Sum(hero, context);
+                return "/Equipment";
             }
-
-            return string.Empty;
+            else if (item.Slot == "Weapon")
+            {
+                hero.Equipment.WeaponEquipments.Remove((Weapon)item);
+                hero.Equipment.WeaponSlot = true;
+                await statSum.Sum(hero, context);
+                return "/Equipment";
+            }
+            else
+            {
+                hero.Equipment.TrinketEquipments.Remove((Trinket)item);
+                hero.Equipment.TrinketSlot = true;
+                await statSum.Sum(hero, context);
+                return "/Equipment";
+            }
         }
     }
 }

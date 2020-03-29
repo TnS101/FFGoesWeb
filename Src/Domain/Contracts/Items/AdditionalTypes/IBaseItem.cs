@@ -1,35 +1,29 @@
 ﻿namespace Domain.Contracts.Items.AdditionalTypes
 {
-    using Domain.Entities.Game.Items;
-
-    public interface IBaseItem
+    public interface IBaseItem : IItem
     {
-        int Id { get; }
+        int Id { get; set; }
 
-        string Name { get; }
+        string Slot { get; set; }
 
-        string Slot { get; }
+        int Level { get; set; }
 
-        int Level { get; }
+        string ClassType { get; set; }
 
-        string ClassType { get; }
+        string ImageURL { get; set; }
 
-        int Stamina { get; }
+        int Stamina { get; set; }
 
-        int Strength { get; }
+        int Strength { get; set; }
 
-        int Agility { get; }
+        int Agility { get; set; }
 
-        int Intellect { get; }
+        int Intellect { get; set; }
 
-        int Spirit { get; }
+        int Spirit { get; set; }
 
-        int? InventoryId { get; }
+        int BuyPrice { get; set; }
 
-        Inventory Inventory { get; }
-
-        int? EquipmentId { get; }
-
-        Equipment Equipment { get; }
+        int SellPrice { get; set; }
     }
 }

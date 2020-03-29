@@ -3,6 +3,8 @@
     using Application.Common.Interfaces;
     using Domain.Base;
     using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Items.ManyToMany.Equipments;
+    using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Common.Social;
@@ -122,6 +124,132 @@
             .HasMany(p => p.Replies)
             .WithOne(t => t.Reply)
             .OnDelete(DeleteBehavior.Restrict);
+
+            // Armor Equipment
+            modelBuilder.Entity<ArmorEquipments>()
+                .HasKey(ae => new { ae.ArmorId, ae.EquipmentId });
+
+            modelBuilder.Entity<ArmorEquipments>()
+                .HasOne(a => a.Armor)
+                .WithMany(a => a.ArmorEquipments)
+                .HasForeignKey(a => a.ArmorId);
+
+            modelBuilder.Entity<ArmorEquipments>()
+                .HasOne(e => e.Equipment)
+                .WithMany(a => a.ArmorEquipments)
+                .HasForeignKey(e => e.EquipmentId);
+
+            // Trinket Equipment
+            modelBuilder.Entity<TrinketEquipments>()
+                .HasKey(te => new { te.TrinketId, te.EquipmentId });
+
+            modelBuilder.Entity<TrinketEquipments>()
+                .HasOne(t => t.Trinket)
+                .WithMany(te => te.TrinketEquipments)
+                .HasForeignKey(t => t.TrinketId);
+
+            modelBuilder.Entity<TrinketEquipments>()
+                .HasOne(e => e.Equipment)
+                .WithMany(te => te.TrinketEquipments)
+                .HasForeignKey(e => e.EquipmentId);
+
+            // Weapon Equipment
+            modelBuilder.Entity<WeaponEquipments>()
+                .HasKey(we => new { we.WeaponId, we.EquipmentId });
+
+            modelBuilder.Entity<WeaponEquipments>()
+                .HasOne(w => w.Weapon)
+                .WithMany(we => we.WeaponEquipments)
+                .HasForeignKey(w => w.WeaponId);
+
+            modelBuilder.Entity<WeaponEquipments>()
+                .HasOne(e => e.Equipment)
+                .WithMany(we => we.WeaponEquipments)
+                .HasForeignKey(e => e.EquipmentId);
+
+            // Armor Inventories
+            modelBuilder.Entity<ArmorInventories>()
+                .HasKey(ai => new { ai.ArmorId, ai.InventoryId });
+
+            modelBuilder.Entity<ArmorInventories>()
+                .HasOne(a => a.Armor)
+                .WithMany(ai => ai.ArmorInventories)
+                .HasForeignKey(a => a.ArmorId);
+
+            modelBuilder.Entity<ArmorInventories>()
+                .HasOne(i => i.Inventory)
+                .WithMany(ai => ai.ArmorInventories)
+                .HasForeignKey(i => i.InventoryId);
+
+            // Material Inventories
+            modelBuilder.Entity<MaterialInventories>()
+                .HasKey(mi => new { mi.MaterialId, mi.InventoryId });
+
+            modelBuilder.Entity<MaterialInventories>()
+                .HasOne(m => m.Material)
+                .WithMany(mi => mi.MaterialInventories)
+                .HasForeignKey(m => m.MaterialId);
+
+            modelBuilder.Entity<MaterialInventories>()
+                .HasOne(i => i.Inventory)
+                .WithMany(mi => mi.MaterialInventories)
+                .HasForeignKey(i => i.InventoryId);
+
+            // Treasure Inventories
+            modelBuilder.Entity<TreasureInventories>()
+                .HasKey(ti => new { ti.TreasureId, ti.InventoryId });
+
+            modelBuilder.Entity<TreasureInventories>()
+                .HasOne(t => t.Treasure)
+                .WithMany(ti => ti.TreasureInventories)
+                .HasForeignKey(t => t.TreasureId);
+
+            modelBuilder.Entity<TreasureInventories>()
+                .HasOne(i => i.Inventory)
+                .WithMany(ti => ti.TreasureInventories)
+                .HasForeignKey(i => i.InventoryId);
+
+            // Treasure Key Inventories
+            modelBuilder.Entity<TreasureKeyInventories>()
+                .HasKey(ti => new { ti.TreasureKeyId, ti.InventoryId });
+
+            modelBuilder.Entity<TreasureKeyInventories>()
+                .HasOne(t => t.TreasureKey)
+                .WithMany(ti => ti.TreasureKeyInventories)
+                .HasForeignKey(t => t.TreasureKeyId);
+
+            modelBuilder.Entity<TreasureKeyInventories>()
+                .HasOne(i => i.Inventory)
+                .WithMany(ti => ti.TreasureKeyInventories)
+                .HasForeignKey(i => i.InventoryId);
+
+            // Trinket Inventories
+            modelBuilder.Entity<TrinketInventories>()
+                .HasKey(ti => new { ti.TrinketId, ti.InventoryId });
+
+            modelBuilder.Entity<TrinketInventories>()
+                .HasOne(t => t.Trinket)
+                .WithMany(ti => ti.TrinketInventories)
+                .HasForeignKey(t => t.TrinketId);
+
+            modelBuilder.Entity<TrinketInventories>()
+                .HasOne(i => i.Inventory)
+                .WithMany(ti => ti.TrinketInventories)
+                .HasForeignKey(i => i.InventoryId);
+
+            // Weapon Inventories
+            modelBuilder.Entity<WeaponInventories>()
+                .HasKey(wi => new { wi.WeaponId, wi.InventoryId });
+
+            modelBuilder.Entity<WeaponInventories>()
+                .HasOne(w => w.Weapon)
+                .WithMany(w => w.WeaponInventories)
+                .HasForeignKey(w => w.WeaponId);
+
+            modelBuilder.Entity<WeaponInventories>()
+                .HasOne(i => i.Inventory)
+                .WithMany(wi => wi.WeaponInventories)
+                .HasForeignKey(i => i.InventoryId);
 
             modelBuilder.Entity<AppUser>(appUser =>
             {
