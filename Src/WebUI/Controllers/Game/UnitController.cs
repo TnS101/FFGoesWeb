@@ -9,6 +9,7 @@
     using Application.GameCQ.Heroes.Commands.Update.HeroLevelUpCommand;
     using Application.GameCQ.Heroes.Commands.Update.SelectHeroCommand;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
+    using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
@@ -16,9 +17,15 @@
     public class UnitController : BaseController
     {
         [HttpGet]
+        public async Task<ActionResult> All()
+        {
+            return this.View(await this.Mediator.Send(new GetUnitListQuery { User = this.User }));
+        }
+
+        [HttpGet]
         public async Task<ActionResult> Create()
         {
-            return this.View(await this.Mediator.Send(new GetAllFightingClassesQuery{ }));
+            return this.View(await this.Mediator.Send(new GetAllFightingClassesQuery { }));
         }
 
         [HttpPost]
@@ -33,10 +40,10 @@
             return this.Redirect(await this.Mediator.Send(new DeleteHeroCommand { HeroId = id }));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Info()
+        [HttpGet("/Info/id")]
+        public async Task<ActionResult> Info([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetFullUnitQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetFullUnitQuery { User = this.User, HeroId = id }));
         }
 
         [HttpPost]

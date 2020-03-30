@@ -44,8 +44,8 @@
             if (race == "Troll")
             {
                 hero.Race = "Troll";
-                hero.RessistanceValue += 0.30 * hero.RessistanceValue;
-                hero.CurrentRessistanceValue = hero.RessistanceValue;
+                hero.ResistanceValue += 0.30 * hero.ResistanceValue;
+                hero.CurrentResistanceValue = hero.ResistanceValue;
             }
         }
     }

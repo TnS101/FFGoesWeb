@@ -28,7 +28,7 @@
         {
             var reciever = await this.userManager.GetUserAsync(request.Reciever);
 
-            var sender = await this.userManager.FindByNameAsync(request.SenderName);
+            var sender = await this.context.AppUsers.FindAsync(request.SenderId);
 
             return new MessageListViewModel
             {

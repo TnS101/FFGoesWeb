@@ -1,0 +1,29 @@
+﻿@model Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery.UserListViewModel
+@{
+    ViewData["Title"] = "Friends";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <partial name="_NavBar">
+        <title>Friends</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="has-text-align-center secondary-font-color">Friends</h1>
+            @foreach (var friend in Model.Users)
+            {
+                <div class="wp-block-cover">
+                    <h2>@friend.UserName</h2>
+                    <a asp-controller="Message" asp-action="All" asp-route-id="@friend.Id"><i class="far fa-comment-alt"></i></a>
+                    <form asp-controller="Friends" asp-action="Remove" method="delete">
+                        <input type="hidden" name="id" value="@friend.Id" />
+                        <input type="submit" name="name" value="Delete" />
+                    </form>
+                </div>
+            }
+        </div>
+    </body>
+    </html>
+

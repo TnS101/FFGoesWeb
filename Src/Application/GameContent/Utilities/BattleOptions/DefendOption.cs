@@ -7,7 +7,7 @@
         public void Defend(UnitFullViewModel target)
         {
             double armorBonus = 0;
-            if (target.Type == "Enemy")
+            if (target.ClassType == null)
             {
                 armorBonus += 0.22;
             }

@@ -17,7 +17,7 @@
         private UnitFullViewModel player;
 
         [HttpGet]
-        public async Task<ActionResult> Battle() // TODO: Change return type if not working
+        public async Task<ActionResult> Battle()
         {
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
             this.enemy = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level });

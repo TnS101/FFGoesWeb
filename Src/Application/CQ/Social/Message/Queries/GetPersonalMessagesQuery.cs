@@ -7,6 +7,6 @@
     {
         public ClaimsPrincipal Reciever { get; set; }
 
-        public string SenderName { get; set; }
+        public string SenderId { get; set; }
     }
 }

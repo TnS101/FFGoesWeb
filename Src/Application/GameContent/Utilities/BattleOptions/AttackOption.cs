@@ -11,7 +11,7 @@
                 if (target.CurrentArmorValue >= caster.CurrentAttackPower)
                 {
                     double armorPenalty = 0;
-                    if (target.Type == "Enemy")
+                    if (target.ClassType != null)
                     {
                         armorPenalty += 0.80;
                     }

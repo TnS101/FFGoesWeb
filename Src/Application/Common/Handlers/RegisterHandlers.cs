@@ -27,6 +27,7 @@
     using Application.CQ.Social.FriendRequests.Commands.Create;
     using Application.CQ.Social.FriendRequests.Commands.Delete;
     using Application.CQ.Social.FriendRequests.Commands.Update;
+    using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
     using Application.CQ.Social.Message.Commands.Create;
     using Application.CQ.Social.Message.Queries;
     using Application.CQ.Users.Queries.Panel;
@@ -139,6 +140,7 @@
             services.AddScoped<IRequestHandler<GetAllStatusesQuery, StatusListViewModel>, GetAllStatusesQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllFightingClassesQuery, FightingClassListViewModel>, GetAllFightingClassesQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllMonstersQuery, MonsterListViewModel>, GetAllMonstersQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllFriendsQuery, UserListViewModel>, GetAllFriendsQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

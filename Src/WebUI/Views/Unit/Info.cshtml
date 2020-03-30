@@ -1,0 +1,44 @@
+﻿@model Application.GameCQ.Heroes.Queries.GetFullUnitQuery.UnitFullViewModel
+@{
+    ViewData["Title"] = "Info";
+    Layout = "_Layout";
+}
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Unit Info</title>
+        <partial name="_NavBar">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="has-text-align-center secondary-font-color">Unit Info</h1>
+            <div class="container">
+                <img src="@Model.ImageURL" class="item-padding aligncenter" alt="Unit Image" />
+                <h3 class="has-text-align-center main-font-color item-padding">Class : @Model.ClassType</h3>
+                <h3 class="has-text-align-center main-font-color">Race : @Model.Race</h3>
+                <div>
+                    <progress class="item-padding aligncenter" value="@Model.CurrentHP" max="@Model.MaxHP"></progress>
+                </div>
+                <div class="item-padding">
+                    <progress class="item-padding aligncenter" value="@Model.CurrentMana" max="@Model.MaxMana"></progress>
+                </div>
+                <h3 class="has-text-align-center main-font-color item-padding">Health Regen : @Model.HealthRegen</h3>
+                <h3 class="has-text-align-center main-font-color item-padding">Mana Regen : @Model.ManaRegen</h3>
+                <h3 class="has-text-align-center main-font-color item-padding">Attack Power : @Model.AttackPower</h3>
+                <h3 class="has-text-align-center main-font-color item-padding">Magic Power : @Model.MagicPower</h3>
+                <h3 class="has-text-align-center main-font-color item-padding">Armor : @Model.ArmorValue</h3>
+                <h3 class="has-text-align-center main-font-color item-padding">Resisance : @Model.RessistanceValue</h3>
+                <h3 class="has-text-align-center main-font-color item-padding">Level : @Model.Level</h3>
+                <div class="item-padding">
+                    <progress class="item-padding aligncenter" value="@Model.XP" max="@Model.XPCap"></progress>
+                </div>
+            </div>
+            <div class="container item-padding">
+                <h2 class="has-text-align-center main-font-color">Inventory</h2>
+            </div>
+            <div class="container item-padding">
+                <h2 class="has-text-align-center main-font-color">Equipment</h2>
+            </div>
+        </div>
+    </body>
+    </html>
+

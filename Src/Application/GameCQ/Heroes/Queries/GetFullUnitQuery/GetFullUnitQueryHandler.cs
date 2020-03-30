@@ -8,6 +8,7 @@
     using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class GetFullUnitQueryHandler : IRequestHandler<GetFullUnitQuery, UnitFullViewModel>
     {
@@ -25,8 +26,7 @@
         public async Task<UnitFullViewModel> Handle(GetFullUnitQuery request, CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetUserAsync(request.User);
-
-            var unit = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var unit = await this.context.Heroes.FirstOrDefaultAsync(u => u.UserId == user.Id && u.Id == request.HeroId);
 
             return this.mapper.Map<UnitFullViewModel>(unit);
         }

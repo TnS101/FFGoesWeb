@@ -24,7 +24,7 @@
                     <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-large-font-size"></i></a>
                 }
                 <div class="item-padding">
-                    <h2>@unit.Name</h2>
+                    <a asp-controller="Unit" asp-action="Info" asp-route-id="@unit.Id" class="has-text-align-center"><p class="has-large-font-size">@unit.Name</p></a>
                     <hr class="has-narrow-width" />
                     <h3><img src="@unit.IconURL" alt="" />@unit.ClassType</h3>
                     <hr class="has-narrow-width" />

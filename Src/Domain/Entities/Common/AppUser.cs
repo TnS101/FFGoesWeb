@@ -49,6 +49,8 @@
 
         public bool IsLoggedIn { get; set; }
 
+        public int OnlineTime { get; set; }
+
         public DateTime? LastLogin { get; set; }
 
         public DateTime CreatedOn { get; set; }

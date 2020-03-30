@@ -21,8 +21,8 @@
                 hero.CurrentHP += 10;
                 hero.MagicPower += 3;
                 hero.CurrentMagicPower += 3;
-                hero.RessistanceValue += 1.5;
-                hero.CurrentRessistanceValue += 0.5;
+                hero.ResistanceValue += 1.5;
+                hero.CurrentResistanceValue += 0.5;
                 hero.XPCap += hero.XPCap * 0.20;
                 hero.XP = hero.XP - hero.XPCap;
                 hero.CurrentHP = hero.MaxHP;

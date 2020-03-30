@@ -18,7 +18,7 @@
 
         // Redirects
         public const string CommentCommandRedirect = "/Forum/Home/CurrentTopic/id={0}";
-        public const string FriendCommandRedirect = "/Message/All/id={0}";
+        public const string FriendCommandRedirect = "/Friends/All/";
         public const string TopicCommandRedirect = "/Topic/PersonalTopics";
         public const string CreateTopicErrorRedirect = @"\Create";
         public const string CreateMessageCommandRedirect = "/Profile/Friends";
@@ -30,7 +30,7 @@
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
         public const string TicketCommandRedirect = "/Moderator/Tickets";
         public const string ToDoListRedirect = "/Admin/ToDoList";
-        public const string UnitCommandRedirect = "/Profile/Units";
+        public const string UnitCommandRedirect = "/Unit/All";
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";
         public const string AdminItemCommandRedirect = "/Items/{0}";

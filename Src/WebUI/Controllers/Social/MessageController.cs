@@ -1,17 +1,17 @@
 ﻿namespace WebUI.Controllers.Social
 {
+    using System.Threading.Tasks;
     using Application.CQ.Social.Message.Commands.Create;
     using Application.CQ.Social.Message.Queries;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
     using WebUI.Controllers.Common;
 
     public class MessageController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> All([FromQuery]string senderName)
+        public async Task<ActionResult> All([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetPersonalMessagesQuery { Reciever = this.User, SenderName = senderName }));
+            return this.View(await this.Mediator.Send(new GetPersonalMessagesQuery { Reciever = this.User, SenderId = id }));
         }
 
         [HttpPost]

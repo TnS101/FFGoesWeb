@@ -25,8 +25,8 @@
             hero.CurrentMagicPower = fightingClass.MagicPower;
             hero.ArmorValue = fightingClass.ArmorValue;
             hero.CurrentArmorValue = fightingClass.ArmorValue;
-            hero.RessistanceValue = fightingClass.RessistanceValue;
-            hero.CurrentRessistanceValue = fightingClass.RessistanceValue;
+            hero.ResistanceValue = fightingClass.RessistanceValue;
+            hero.CurrentResistanceValue = fightingClass.RessistanceValue;
             hero.CritChance = fightingClass.CritChance;
             hero.CurrentCritChance = fightingClass.CritChance;
             hero.ImageURL = fightingClass.ImageURL;
@@ -50,8 +50,8 @@
             monster.CurrentMagicPower = baseMonster.MagicPower;
             monster.ArmorValue = baseMonster.ArmorValue;
             monster.CurrentArmorValue = baseMonster.ArmorValue;
-            monster.RessistanceValue = baseMonster.RessistanceValue;
-            monster.CurrentRessistanceValue = baseMonster.RessistanceValue;
+            monster.ResistanceValue = baseMonster.ResistanceValue;
+            monster.CurrentResistanceValue = baseMonster.ResistanceValue;
             monster.CritChance = baseMonster.CritChance;
             monster.CurrentCritChance = baseMonster.CritChance;
             monster.ImageURL = baseMonster.ImageURL;

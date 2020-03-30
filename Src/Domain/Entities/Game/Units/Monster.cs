@@ -43,9 +43,9 @@
 
         public double CurrentArmorValue { get; set; }
 
-        public double RessistanceValue { get; set; }
+        public double ResistanceValue { get; set; }
 
-        public double CurrentRessistanceValue { get; set; }
+        public double CurrentResistanceValue { get; set; }
 
         public double CritChance { get; set; }
 

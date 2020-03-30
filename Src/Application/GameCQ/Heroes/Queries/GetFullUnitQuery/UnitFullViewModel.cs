@@ -8,8 +8,6 @@
 
         public string Name { get; set; }
 
-        public string Type { get; set; }
-
         public string ClassType { get; set; }
 
         public string Race { get; set; }
@@ -53,6 +51,8 @@
         public double CurrentCritChance { get; set; }
 
         public double XP { get; set; }
+
+        public double XPCap { get; set; }
 
         public string ImageURL { get; set; }
 
