@@ -8,6 +8,8 @@
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
+    using Domain.Entities.Common.Social;
 
     public class UpdateStatusCommandHandler : IRequestHandler<UpdateStatusCommand, string>
     {
@@ -24,18 +26,19 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var status = this.context.Statuses.FirstOrDefault(s => s.DisplayName == request.StatusName);
-
-            var userStatus = this.context.UserStatuses.FirstOrDefault(us => us.UserId == user.Id);
+            var userStatus = await this.context.UserStatuses.SingleOrDefaultAsync(us => us.UserId == user.Id);
 
             this.context.UserStatuses.Remove(userStatus);
 
-            await this.context.SaveChangesAsync(cancellationToken);
-
-            this.context.UserStatuses.Add(new Domain.Entities.Common.Social.UserStatus
+            if (request.StatusId == 0)
             {
+                return GConst.ProfileRedirect;
+            }
+
+            this.context.UserStatuses.Add(new UserStatus
+            {
+                StatusId = request.StatusId,
                 UserId = user.Id,
-                StatusId = status.Id,
             });
 
             await this.context.SaveChangesAsync(cancellationToken);

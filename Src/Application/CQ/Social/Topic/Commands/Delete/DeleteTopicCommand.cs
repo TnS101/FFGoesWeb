@@ -5,6 +5,6 @@
 
     public class DeleteTopicCommand : IRequest<string>
     {
-        public int TopicId { get; set; }
+        public string TopicId { get; set; }
     }
 }

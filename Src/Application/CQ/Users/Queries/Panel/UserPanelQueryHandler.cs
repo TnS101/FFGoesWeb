@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Common.Social;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
@@ -29,7 +30,7 @@
             {
                 var status = this.context.Statuses.FirstOrDefault(s => s.DisplayName == "UnSet");
 
-                var userStatus = new Domain.Entities.Common.Social.UserStatus
+                var userStatus = new UserStatus
                 {
                     StatusId = status.Id,
                     UserId = user.Id,

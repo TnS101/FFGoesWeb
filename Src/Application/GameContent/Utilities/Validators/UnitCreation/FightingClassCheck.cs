@@ -68,6 +68,8 @@
 
             this.statIncrement.Increment(fightingClass, hero);
 
+            hero.FightingClassId = fightingClass.Id;
+
             return hero;
         }
     }

@@ -5,7 +5,7 @@
 
     public class OpenTreasureCommand : IRequest<string>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public int Reward { get; set; }
 

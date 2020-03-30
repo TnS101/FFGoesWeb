@@ -2,8 +2,6 @@
 {
     public interface IBaseItem : IItem
     {
-        int Id { get; set; }
-
         string Slot { get; set; }
 
         int Level { get; set; }

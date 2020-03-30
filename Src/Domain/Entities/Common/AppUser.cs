@@ -33,6 +33,8 @@
         [ForeignKey("FriendId")]
         public virtual AppUser Friend { get; set; }
 
+        public int UserStatusId { get; set; }
+
         public UserStatus UserStatus { get; set; }
 
         public int Stars { get; set; }
@@ -42,8 +44,6 @@
         public int MasteryPoints { get; set; }
 
         public int ForumPoints { get; set; }
-
-        public string StatusId { get; set; }
 
         public bool IsDeleted { get; set; }
 

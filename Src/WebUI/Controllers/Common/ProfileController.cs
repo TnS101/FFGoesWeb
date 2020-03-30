@@ -29,9 +29,9 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> UpdateStatus([FromForm]string statusName)
+        public async Task<ActionResult> UpdateStatus([FromForm]int id)
         {
-            return this.Redirect(await this.Mediator.Send(new UpdateStatusCommand { StatusName = statusName, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new UpdateStatusCommand { StatusId = id, User = this.User }));
         }
     }
 }

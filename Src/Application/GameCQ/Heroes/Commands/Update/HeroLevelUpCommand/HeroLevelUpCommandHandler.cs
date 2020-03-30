@@ -19,7 +19,11 @@
 
         public async Task<Unit> Handle(HeroLevelUpCommand request, CancellationToken cancellationToken)
         {
-            this.level.Up(await this.context.Heroes.FindAsync(request.HeroId));
+            var hero = await this.context.Heroes.FindAsync(request.HeroId);
+
+            this.level.Up(hero);
+
+            this.context.Heroes.Update(hero);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

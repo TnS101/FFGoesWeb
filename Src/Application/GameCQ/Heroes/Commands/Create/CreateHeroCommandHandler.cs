@@ -1,12 +1,13 @@
 ﻿namespace Application.GameCQ.Heroes.Commands.Create
 {
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
+    using Application.GameContent.Handlers;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
-    using Application.Common.Interfaces;
-    using Application.GameContent.Handlers;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -35,7 +36,6 @@
                 Race = request.Race,
                 UserId = user.Id,
                 ImageURL = string.Empty,
-                IsSelected = false,
             };
 
             hero.Inventory = new Inventory(hero.Id);
@@ -44,7 +44,7 @@
 
             hero.EquipmentId = hero.Equipment.Id;
 
-            hero.InventoryId = hero.InventoryId;
+            hero.InventoryId = hero.Inventory.Id;
 
             await this.validatorHandler.FightingClassCheck.Check(hero, request.ClassType, this.context);
 

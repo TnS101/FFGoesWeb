@@ -2,11 +2,11 @@
 {
     public class TreasureInventory
     {
-        public int TreasureId { get; set; }
+        public string TreasureId { get; set; }
 
         public Treasure Treasure { get; set; }
 
-        public int InventoryId { get; set; }
+        public string InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
     }

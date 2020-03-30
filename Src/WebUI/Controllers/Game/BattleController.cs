@@ -9,35 +9,37 @@
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    [Authorize(Roles = "Administrator,Player")]
+    // [Authorize(Roles = "Administrator,Player")]
     public class BattleController : BaseController
     {
         private UnitFullViewModel enemy;
         private bool yourTurn;
+        private UnitFullViewModel player;
 
         [HttpGet]
-        public async Task<ActionResult<string[]>> Battle() // TODO: Change return type if not working
+        public async Task<ActionResult> Battle() // TODO: Change return type if not working
         {
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
             this.enemy = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level });
             this.yourTurn = true;
-            return new string[] { playerPVM.Name, this.enemy.Name };
+            return this.View(@"\Battle", this.enemy.Name);
         }
 
         [HttpGet]
-        public ActionResult Action()
+        public async Task<ActionResult> Action()
         {
-            return this.View();
+            this.player = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
+            return this.View(@"\Action", this.Stats(this.player));
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Action([FromQuery]string command, [FromBody]string spellName)
+        [HttpPost]
+        public async Task<IActionResult> Action([FromForm]string command, [FromForm]string spellName)
         {
-            var playerFullVm = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
+            this.player = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
 
             return this.View(
                 await this.Mediator.Send(new BattleOptionsCommand
-            { Command = command, Player = playerFullVm, Enemy = this.enemy, YourTurn = this.yourTurn, SpellName = spellName }), this.Stats(playerFullVm));
+            { Command = command, Player = this.player, Enemy = this.enemy, YourTurn = this.yourTurn, SpellName = spellName }), this.Stats(this.player));
         }
 
         private string[] Stats(UnitFullViewModel playerFullVm)

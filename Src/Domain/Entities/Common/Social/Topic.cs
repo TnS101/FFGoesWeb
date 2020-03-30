@@ -11,9 +11,10 @@
             this.Comments = new HashSet<Comment>();
             this.UserTopics = new HashSet<UserTopics>();
             this.Tickets = new HashSet<Ticket>();
+            this.Id = Guid.NewGuid().ToString();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string UserId { get; set; }
 

@@ -4,7 +4,7 @@
 
     public class EditMessageCommand : IRequest<string>
     {
-        public int MessageId { get; set; }
+        public string MessageId { get; set; }
 
         public string Content { get; set; }
     }

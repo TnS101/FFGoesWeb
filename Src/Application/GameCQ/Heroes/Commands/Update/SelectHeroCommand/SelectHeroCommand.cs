@@ -5,7 +5,7 @@
 
     public class SelectHeroCommand : IRequest<string>
     {
-        public int Id { get; set; }
+        public string UnitId { get; set; }
 
         public ClaimsPrincipal User { get; set; }
     }

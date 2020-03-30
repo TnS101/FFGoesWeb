@@ -7,6 +7,6 @@
     {
         public ClaimsPrincipal User { get; set; }
 
-        public string StatusName { get; set; }
+        public int StatusId { get; set; }
     }
 }

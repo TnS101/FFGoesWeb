@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
-    using AutoMapper;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using MediatR;
@@ -15,12 +14,10 @@
     public class GetEquipmentQueryHandler : IRequestHandler<GetEquipmentQuery, EquipmentViewModel>
     {
         private readonly IFFDbContext context;
-        private readonly IMapper mapper;
 
-        public GetEquipmentQueryHandler(IFFDbContext context, IMapper mapper)
+        public GetEquipmentQueryHandler(IFFDbContext context)
         {
             this.context = context;
-            this.mapper = mapper;
         }
 
         public async Task<EquipmentViewModel> Handle(GetEquipmentQuery request, CancellationToken cancellationToken)

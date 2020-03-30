@@ -4,7 +4,7 @@
 
     public class MessageFullViewModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Content { get; set; }
 

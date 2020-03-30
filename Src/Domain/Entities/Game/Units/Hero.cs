@@ -2,6 +2,7 @@
 {
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
+    using System;
 
     public class Hero
     {
@@ -11,11 +12,17 @@
             this.XPCap = 100;
             this.GoldAmount = 100;
             this.Energy = 10;
+            this.Id = Guid.NewGuid().ToString();
+            this.IsSelected = false;
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public int EquipmentId { get; set; }
+        public int FightingClassId { get; set; }
+
+        public FightingClass FightingClass { get; set; }
+
+        public string EquipmentId { get; set; }
 
         public Equipment Equipment { get; set; }
 
@@ -23,11 +30,11 @@
 
         public AppUser User { get; set; }
 
-        public int InventoryId { get; set; }
+        public string InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 
-        public string ProfessionId { get; set; }
+        public int? ProfessionId { get; set; }
 
         public Profession Profession { get; set; }
 

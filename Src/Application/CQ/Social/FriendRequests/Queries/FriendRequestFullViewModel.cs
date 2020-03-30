@@ -4,7 +4,7 @@
 
     public class FriendRequestFullViewModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string SenderName { get; set; }
 

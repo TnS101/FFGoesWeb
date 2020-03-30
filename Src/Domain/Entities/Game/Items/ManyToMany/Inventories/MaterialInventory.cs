@@ -2,11 +2,11 @@
 {
     public class MaterialInventory
     {
-        public int MaterialId { get; set; }
+        public string MaterialId { get; set; }
 
         public Material Material { get; set; }
 
-        public int InventoryId { get; set; }
+        public string InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
     }

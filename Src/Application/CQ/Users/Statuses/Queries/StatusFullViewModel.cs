@@ -2,7 +2,7 @@
 {
     public class StatusFullViewModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string DisplayName { get; set; }
 

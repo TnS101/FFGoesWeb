@@ -22,7 +22,7 @@
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]int id)
+        public async Task<ActionResult> Delete([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = id }));
         }
@@ -34,7 +34,7 @@
         }
 
         [HttpPut]
-        public async Task<ActionResult> Edit([FromQuery]int id, [FromForm]string title, [FromForm]string category,
+        public async Task<ActionResult> Edit([FromQuery]string id, [FromForm]string title, [FromForm]string category,
             [FromForm]string content)
         {
             return this.Redirect(await this.Mediator.Send(new EditTopicCommand { TopicId = id, Title = title, Category = category, Content = content }));

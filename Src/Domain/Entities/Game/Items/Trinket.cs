@@ -3,6 +3,7 @@
     using Domain.Contracts.Items.AdditionalTypes;
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
+    using System;
     using System.Collections.Generic;
 
     public class Trinket : IBaseItem
@@ -11,9 +12,10 @@
         {
             this.TrinketEquipments = new HashSet<TrinketEquipment>();
             this.TrinketInventories = new HashSet<TrinketInventory>();
+            this.Id = Guid.NewGuid().ToString();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 

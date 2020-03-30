@@ -2,22 +2,24 @@
 {
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Units;
+    using System;
     using System.Collections.Generic;
 
     public class Equipment
     {
-        public Equipment(int heroId)
+        public Equipment(string heroId)
         {
             this.WeaponEquipments = new HashSet<WeaponEquipment>();
             this.ArmorEquipments = new HashSet<ArmorEquipment>();
             this.TrinketEquipments = new HashSet<TrinketEquipment>();
             this.Capacity = 9;
             this.HeroId = heroId;
+            this.Id = Guid.NewGuid().ToString();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public int HeroId { get; set; }
+        public string HeroId { get; set; }
 
         public Hero Hero { get; set; }
 

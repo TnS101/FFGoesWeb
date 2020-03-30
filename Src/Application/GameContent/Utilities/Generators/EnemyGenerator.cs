@@ -75,10 +75,10 @@
 
             statIncrement.MonsterIncrement(baseMonster, monster);
 
-            return await this.RarityRng(monster, context);
+            return this.RarityRng(monster, context);
         }
 
-        private async Task<Monster> RarityRng(Monster monster, IFFDbContext context)
+        private Monster RarityRng(Monster monster, IFFDbContext context)
         {
             var rng = new Random();
 
@@ -86,28 +86,28 @@
 
             var monsterRarity = new MonsterRarity();
 
+            double statAmplifier = 1;
+
             if (number == 1)
             {
                 monsterRarity = context.MonstersRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Heroic");
+                statAmplifier = monsterRarity.StatAmplifier;
             }
             else if (number == 2 || number == 3 || number == 4)
             {
                 monsterRarity = context.MonstersRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Rare");
-            }
-            else
-            {
-                return monster;
+                statAmplifier = monsterRarity.StatAmplifier;
             }
 
             monster.ImageURL = monsterRarity.ImageURL;
             monster.MaxHP += monsterRarity.StatAmplifier * monster.MaxHP;
-            monster.AttackPower += monsterRarity.StatAmplifier * monster.AttackPower;
-            monster.MagicPower += monsterRarity.StatAmplifier * monster.MagicPower;
-            monster.ArmorValue += monsterRarity.StatAmplifier * monster.ArmorValue;
-            monster.CurrentHP += monsterRarity.StatAmplifier * monster.CurrentHP;
-            monster.CurrentAttackPower += monsterRarity.StatAmplifier * monster.CurrentAttackPower;
-            monster.CurrentMagicPower += monsterRarity.StatAmplifier * monster.CurrentMagicPower;
-            monster.CurrentArmorValue += monsterRarity.StatAmplifier * monster.CurrentArmorValue;
+            monster.AttackPower += statAmplifier * monster.AttackPower;
+            monster.MagicPower += statAmplifier * monster.MagicPower;
+            monster.ArmorValue += statAmplifier * monster.ArmorValue;
+            monster.CurrentHP += statAmplifier * monster.CurrentHP;
+            monster.CurrentAttackPower += statAmplifier * monster.CurrentAttackPower;
+            monster.CurrentMagicPower += statAmplifier * monster.CurrentMagicPower;
+            monster.CurrentArmorValue += statAmplifier * monster.CurrentArmorValue;
 
             return monster;
         }

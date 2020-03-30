@@ -35,6 +35,7 @@
 
         public void MonsterIncrement(Monster baseMonster, Monster monster)
         {
+            monster.Name = baseMonster.Name;
             monster.MaxHP = baseMonster.MaxHP;
             monster.CurrentHP = baseMonster.MaxHP;
             monster.HealthRegen = baseMonster.HealthRegen;

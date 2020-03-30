@@ -21,13 +21,13 @@
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]int id)
+        public async Task<ActionResult> Delete([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteMessageCommand { MessageId = id }));
         }
 
         [HttpPut]
-        public async Task<ActionResult> Edit([FromQuery]int id, [FromBody]string content)
+        public async Task<ActionResult> Edit([FromQuery]string id, [FromBody]string content)
         {
             return this.Redirect(await this.Mediator.Send(new EditMessageCommand { MessageId = id, Content = content }));
         }

@@ -1,16 +1,16 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model string[]
+@model string
 @{
     ViewData["Title"] = "Battle";
 }
 <head>
-    <meta http-equiv="refresh" content="1.2;url=https://localhost:44332/Battle/Action">
+    <meta http-equiv="refresh" content="1.2;url=https://localhost:44331/Battle/Action">
 </head>
 <body>
     <partial name="_NavBar">
         <div class="container has-text-align-center">
             <h2 class="site-title">Battle started!</h2>
-            <p class="site-title">@Model[0] vs @Model[1]</p>
+            <p class="site-title">You are fighting against : @Model</p>
         </div>
 </body>
 <partial name="_Footer">

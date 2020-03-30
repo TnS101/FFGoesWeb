@@ -60,12 +60,12 @@
             <dl class="dl-horizontal">
                 <dt class="has-larger-font-size">
                 </dt>
-
                 <dd class="has-larger-font-size">
+                    <i class="@status.IClass"></i>
                     <form asp-controller="Profile" asp-action="UpdateStatus" method="post">
-                        <input type="submit" name="statusName" value="@status.DisplayName"/>
+                        <input type="hidden" name="id" value="@status.Id" />
+                        <input type="submit" name="statusName" value="@status.DisplayName" />
                     </form>
-                <a asp-controller="Profile" asp-action="UpdateStatus" asp-route-id="@status.Id"><i class="@status.IClass"></i></a>
                 </dd>
             </dl>
         }

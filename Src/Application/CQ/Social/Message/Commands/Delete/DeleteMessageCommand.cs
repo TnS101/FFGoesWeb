@@ -4,6 +4,6 @@
 
     public class DeleteMessageCommand : IRequest<string>
     {
-        public int MessageId { get; set; }
+        public string MessageId { get; set; }
     }
 }

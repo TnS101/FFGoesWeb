@@ -5,9 +5,11 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Game.Units;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class SelectHeroCommandHandler : IRequestHandler<SelectHeroCommand, string>
     {
@@ -24,16 +26,16 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            if (this.context.Heroes.Where(u => u.UserId == user.Id).Any(u => u.IsSelected))
-            {
-                var oldHero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var oldHero = await this.context.Heroes.FirstOrDefaultAsync(u => u.UserId == user.Id);
 
+            if (oldHero.IsSelected)
+            {
                 oldHero.IsSelected = false;
 
                 this.context.Heroes.Update(oldHero);
             }
 
-            var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.Id == request.Id);
+            Hero hero = await this.context.Heroes.FindAsync(request.UnitId);
 
             hero.IsSelected = true;
 

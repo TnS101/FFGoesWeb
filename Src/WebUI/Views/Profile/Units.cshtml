@@ -14,14 +14,17 @@
             {
                 if (!unit.IsSelected)
                 {
-                    <a asp-controller="Unit" asp-action="Select" asp-route-id="@unit.Id" class="has-large-font-size"><i class="far fa-hand-point-down"></i></a>
+                    <form asp-controller="Unit" class="has-text-align-center" asp-action="Select" method="post">
+                        <input type="hidden" name="id" value="@unit.Id" />
+                        <input type="submit" name="name" value="Select" />
+                    </form>
                 }
                 else
                 {
                     <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-large-font-size"></i></a>
                 }
                 <div class="item-padding">
-                    <h2 >@unit.Name</h2>
+                    <h2>@unit.Name</h2>
                     <hr class="has-narrow-width" />
                     <h3><img src="@unit.IconURL" alt="" />@unit.ClassType</h3>
                     <hr class="has-narrow-width" />
@@ -30,8 +33,13 @@
                     <h3><i class="fas fa-heartbeat"></i>@unit.CurrentHP / @unit.MaxHP</h3>
                     <hr class="has-narrow-width" />
                     <h3><i class="fas fa-bolt"></i>@unit.Energy / 10</h3>
+
+                    <form asp-controller="Unit" asp-action="Delete" method="post" class="item-padding">
+                        <input type="hidden" name="id" value="@unit.Id" />
+                        <input type="submit" name="name" value="Delete" />
+                    </form>
                 </div>
-                <hr class="item-padding"/>
+                <hr class="item-padding" />
             }
         </div>
     </div>

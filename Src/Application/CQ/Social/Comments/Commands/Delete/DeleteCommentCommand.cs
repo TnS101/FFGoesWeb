@@ -4,6 +4,6 @@
 
     public class DeleteCommentCommand : IRequest<string>
     {
-        public int CommentId { get; set; }
+        public string CommentId { get; set; }
     }
 }

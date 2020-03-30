@@ -1,12 +1,15 @@
-﻿namespace Domain.Entities.Common.Social
+﻿using System;
+
+namespace Domain.Entities.Common.Social
 {
     public class Notification
     {
         public Notification()
         {
+            this.Id = Guid.NewGuid().ToString();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string UserId { get; set; }
 
@@ -19,5 +22,7 @@
         public string Content { get; set; }
 
         public string CauserName { get; set; }
+
+        public DateTime RecievedOn { get; set; }
     }
 }

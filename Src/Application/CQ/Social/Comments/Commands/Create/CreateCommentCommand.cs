@@ -7,7 +7,7 @@
     {
         public string Content { get; set; }
 
-        public int TopicId { get; set; }
+        public string TopicId { get; set; }
 
         public ClaimsPrincipal User { get; set; }
     }

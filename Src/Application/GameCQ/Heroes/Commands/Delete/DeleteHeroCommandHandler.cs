@@ -1,10 +1,12 @@
 ﻿namespace Application.GameCQ.Heroes.Commands.Delete
 {
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class DeleteHeroCommandHandler : IRequestHandler<DeleteHeroCommand, string>
     {
@@ -19,9 +21,13 @@
         {
             var hero = await this.context.Heroes.FindAsync(request.HeroId);
 
-            this.context.Inventories.Remove(hero.Inventory);
+            var inventory = await this.context.Inventories.FirstOrDefaultAsync(i => i.HeroId == hero.Id);
 
-            this.context.Equipments.Remove(hero.Equipment);
+            var equipment = await this.context.Equipments.FirstOrDefaultAsync(e => e.HeroId == hero.Id);
+
+            this.context.Inventories.Remove(inventory);
+
+            this.context.Equipments.Remove(equipment);
 
             this.context.Heroes.Remove(hero);
 

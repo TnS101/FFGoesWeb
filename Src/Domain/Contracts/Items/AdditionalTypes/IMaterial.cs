@@ -2,8 +2,6 @@
 {
     public interface IMaterial : IItem
     {
-        int Id { get; }
-
         int SellPrice { get; set; }
 
         int BuyPrice { get; set; }
