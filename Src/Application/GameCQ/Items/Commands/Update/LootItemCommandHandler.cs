@@ -29,9 +29,11 @@
 
             var user = await this.userManager.GetUserAsync(request.User);
 
+            var monster = await this.context.Monsters.FindAsync(request.MonsterId);
+
             var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            await this.itemGenerator.Generate(hero, this.context);
+            await this.itemGenerator.Generate(hero, this.context, monster, request.ZoneName);
 
             this.context.Inventories.Update(hero.Inventory);
 

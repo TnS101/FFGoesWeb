@@ -9,5 +9,7 @@
         public string InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
+
+        public int Count { get; set; }
     }
 }

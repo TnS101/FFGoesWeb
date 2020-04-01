@@ -3,10 +3,9 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using Domain.Base;
-    using Domain.Entities.Game.Units;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
+    using Domain.Entities.Game.Units;
 
     public class EnemyGenerator
     {

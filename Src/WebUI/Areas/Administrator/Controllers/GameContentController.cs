@@ -83,7 +83,7 @@
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeleteItem([FromBody]string id)
+        public async Task<ActionResult> DeleteItem([FromBody]int id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteItemCommand { ItemId = id }));
         }

@@ -33,9 +33,9 @@
             var instance = Activator.CreateInstance(type);
             int spellNumber = rng.Next(0, 4);
 
-            if (context.Spells.Where(s => s.ClassType == caster.ClassType).Any(s => s.ManaRequirment <= caster.MaxMana))
+            if (context.Spells.Where(s => s.ClassType == caster.Name).Any(s => s.ManaRequirment <= caster.MaxMana))
             {
-                var spellMethod = type.GetMethods().Where(m => m.Name.Split('_')[0] == caster.ClassType && m.IsPrivate).ToList()[spellNumber];
+                var spellMethod = type.GetMethods().Where(m => m.Name.Split('_')[0] == caster.Name && m.IsPrivate).ToList()[spellNumber];
                 spellMethod.Invoke(instance, new object[] { caster, target });
             }
 

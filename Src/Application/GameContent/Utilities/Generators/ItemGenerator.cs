@@ -17,7 +17,7 @@
             this.validatorHandler = new ValidatorHandler();
         }
 
-        public async Task Generate(Hero hero, IFFDbContext context)
+        public async Task Generate(Hero hero, IFFDbContext context, Monster monster, string zoneName)
         {
             var stats = new int[] { };
             int fightingClassStatNumber = this.rng.Next(hero.Level, hero.Level + 5);
@@ -43,7 +43,7 @@
                 }
             }
 
-            await this.validatorHandler.SlotCheck.Check(fightingClassStatNumber, slotNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, this.validatorHandler, context, hero);
+            await this.validatorHandler.SlotCheck.Check(fightingClassStatNumber, slotNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, this.validatorHandler, context, hero, monster, zoneName);
         }
     }
 }

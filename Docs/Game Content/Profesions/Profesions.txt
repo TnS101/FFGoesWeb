@@ -1,0 +1,10 @@
+Lumberjack <-> Carpeneter
+Miner <-> Smelter
+Tracker <-> Leatherworker
+Head Hunter <-> Clothier
+Herbalist <-> Alchemic
+Elemental Slayer <-> Conjurer
+Angler <-> Scaleworker
+Farmer <-> Chef
+Scrapper <-> Recycler
+

@@ -5,10 +5,18 @@
 
     public class EndOption
     {
-        public void End(UnitFullViewModel hero, UnitFullViewModel enemy)
+        public void End(UnitFullViewModel hero, UnitFullViewModel monster, string zoneName)
         {
-            hero.XP += this.EnemyCombinedStats(enemy) / 18;
-            hero.GoldAmount = (int)Math.Round(this.EnemyCombinedStats(enemy) / 30);
+            if (zoneName == "World")
+            {
+                hero.XP += this.EnemyCombinedStats(monster) / 18;
+                hero.GoldAmount = (int)Math.Round(this.EnemyCombinedStats(monster) / 30);
+            }
+            else
+            {
+                hero.ProffesionXP += this.EnemyCombinedStats(monster) / 20;
+                hero.GoldAmount = (int)Math.Round(this.EnemyCombinedStats(monster) / 33);
+            }
 
             // Stat reset
             hero.CurrentAttackPower = hero.AttackPower;
@@ -20,10 +28,10 @@
             hero.CurrentCritChance = hero.CritChance;
         }
 
-        private double EnemyCombinedStats(UnitFullViewModel enemy)
+        private double EnemyCombinedStats(UnitFullViewModel monster)
         {
-            return enemy.MaxHP + enemy.MaxMana + enemy.AttackPower + enemy.MagicPower
-                + enemy.ArmorValue + enemy.ResistanceValue + enemy.HealthRegen + enemy.ManaRegen + enemy.CritChance;
+            return monster.MaxHP + monster.MaxMana + monster.AttackPower + monster.MagicPower
+                + monster.ArmorValue + monster.ResistanceValue + monster.HealthRegen + monster.ManaRegen + monster.CritChance;
         }
     }
 }

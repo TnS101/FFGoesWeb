@@ -4,24 +4,24 @@
 
     public class DefendOption
     {
-        public void Defend(UnitFullViewModel target)
+        public void Defend(UnitFullViewModel caster)
         {
             double armorBonus = 0;
-            if (target.ClassType == null)
+            if (caster.ClassType == null)
             {
-                armorBonus += 0.22;
+                armorBonus += 0.30;
             }
             else
             {
                 armorBonus += 0.40;
             }
 
-            if (target.CurrentHP <= 0)
+            if (caster.CurrentHP <= 0)
             {
-                target.CurrentHP = 0;
+                caster.CurrentHP = 0;
             }
 
-            target.CurrentArmorValue += armorBonus * target.CurrentArmorValue;
+            caster.CurrentArmorValue += armorBonus * caster.CurrentArmorValue;
         }
     }
 }

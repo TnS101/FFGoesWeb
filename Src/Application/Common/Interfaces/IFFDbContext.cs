@@ -82,6 +82,8 @@
 
         DbSet<WeaponInventory> WeaponsInventories { get; set; }
 
+        DbSet<ConsumeableInventory> ConsumeableInventories { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

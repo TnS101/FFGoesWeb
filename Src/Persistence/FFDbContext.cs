@@ -89,6 +89,8 @@
 
         public DbSet<WeaponInventory> WeaponsInventories { get; set; }
 
+        public DbSet<ConsumeableInventory> ConsumeableInventories { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -266,6 +268,21 @@
             modelBuilder.Entity<WeaponInventory>()
                 .HasOne(i => i.Inventory)
                 .WithMany(wi => wi.WeaponInventories)
+                .HasForeignKey(i => i.InventoryId);
+
+            // Consumeable Inventories
+
+            modelBuilder.Entity<ConsumeableInventory>()
+                .HasKey(k => new { k.ConsumeableId, k.InventoryId });
+
+            modelBuilder.Entity<ConsumeableInventory>()
+                .HasOne(c => c.Consumeable)
+                .WithMany(ci => ci.ConsumeableInventories)
+                .HasForeignKey(c => c.ConsumeableId);
+
+            modelBuilder.Entity<ConsumeableInventory>()
+                .HasOne(i => i.Inventory)
+                .WithMany(ci => ci.ConsumeableInventories)
                 .HasForeignKey(i => i.InventoryId);
 
             modelBuilder.Entity<AppUser>(appUser =>

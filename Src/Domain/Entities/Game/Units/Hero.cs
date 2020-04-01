@@ -46,6 +46,12 @@
 
         public int Level { get; set; }
 
+        public int ProfessionLevel { get; set; }
+
+        public double ProffesionXP { get; set; }
+
+        public double ProffesionXPCap { get; set; }
+
         public double XP { get; set; }
 
         public double XPCap { get; set; }

@@ -24,31 +24,31 @@
 
                 var context = services.GetRequiredService<FFDbContext>();
 
-                //context.Database.EnsureCreated();
-                //
-                //var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
-                //
-                //var usermanager = services.GetRequiredService<UserManager<AppUser>>();
-                //
-                //await roleManager.CreateAsync(new ApplicationRole(GConst.AdminRole));
-                //
-                //await roleManager.CreateAsync(new ApplicationRole(GConst.UserRole));
-                //
-                //await roleManager.CreateAsync(new ApplicationRole(GConst.ModeratorRole));
-                //var admin = new AppUser
-                //{
-                //    UserName = "admin",
-                //    Email = "admin@admin.com",
-                //};
-                //
-                //await usermanager.CreateAsync(admin, "Admin@123456");
-                //
-                //await usermanager.AddToRoleAsync(admin, GConst.AdminRole);
-                //
-                //context.SaveChanges();
-                //
-                //var mediator = services.GetRequiredService<IMediator>();
-                //await mediator.Send(new DataSeederCommand());
+                context.Database.EnsureCreated();
+                
+                var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+                
+                var usermanager = services.GetRequiredService<UserManager<AppUser>>();
+                
+                await roleManager.CreateAsync(new ApplicationRole(GConst.AdminRole));
+                
+                await roleManager.CreateAsync(new ApplicationRole(GConst.UserRole));
+                
+                await roleManager.CreateAsync(new ApplicationRole(GConst.ModeratorRole));
+                var admin = new AppUser
+                {
+                    UserName = "admin",
+                    Email = "admin@admin.com",
+                };
+                
+                await usermanager.CreateAsync(admin, "Admin@123456");
+                
+                await usermanager.AddToRoleAsync(admin, GConst.AdminRole);
+                
+                context.SaveChanges();
+                
+                var mediator = services.GetRequiredService<IMediator>();
+                await mediator.Send(new DataSeederCommand());
             }
 
             host.Run();

@@ -57,7 +57,7 @@
             else
             {
                 request.Enemy.CurrentHP = 0;
-                this.battleHandler.EndOption.End(request.Player, request.Enemy);
+                this.battleHandler.EndOption.End(request.Player, request.Enemy, request.ZoneName);
                 await this.context.SaveChangesAsync(cancellationToken);
                 return "/End";
             }

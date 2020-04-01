@@ -3,10 +3,11 @@
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Domain.Entities.Common.Social;
+    using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using Domain.Entities.Moderation;
-    using Application.Common.Interfaces;
     using global::Common;
     using global::Domain.Entities.Common;
 
@@ -57,6 +58,238 @@
             });
 
             await this.context.SaveChangesAsync(cancellationToken);
+        }
+
+        private async Task SeedMainMaterialsAsync(CancellationToken cancellation)
+        {
+            this.context.Materials.Add(new Material
+            {
+                Name = "Oak Log",
+                Type = "Wood",
+                ImageURL = "https://ibb.co/YcSdBsh",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Walnut Log",
+                Type = "Wood",
+                ImageURL = "https://ibb.co/7pWrQVF",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Birch Log",
+                Type = "Wood",
+                ImageURL = "https://ibb.co/kQGTT9K",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Mahogany Log",
+                Type = "Wood",
+                ImageURL = "https://ibb.co/BGwKjFw",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Coal Ore",
+                Type = "Ore",
+                ImageURL = "https://ibb.co/FsN0nFj",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Copper Ore",
+                Type = "Ore",
+                ImageURL = "https://ibb.co/MZSjzJm",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Iron Ore",
+                Type = "Ore",
+                ImageURL = "https://ibb.co/x6yr58f",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Gold Ore",
+                Type = "Ore",
+                ImageURL = "https://ibb.co/cFk1F1G",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Leather Scraps",
+                Type = "Leather",
+                ImageURL = "https://ibb.co/DfP7ZCP",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Animal Fur",
+                Type = "Leather",
+                ImageURL = "https://ibb.co/p2Nzxzc",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Light Leather",
+                Type = "Leather",
+                ImageURL = "https://ibb.co/nQYG1Yq",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Fine Leather",
+                Type = "Leather",
+                ImageURL = "https://ibb.co/4fC9gWG",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Cotton",
+                Type = "Cloth",
+                ImageURL = "https://ibb.co/dkbhLrL",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Linen Cloth",
+                Type = "Cloth",
+                ImageURL = "https://ibb.co/ss8Z1pg",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Silk",
+                Type = "Cloth",
+                ImageURL = "https://ibb.co/Fg4Mnrf",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Mint",
+                Type = "Herb",
+                ImageURL = "https://ibb.co/zxCxbvt",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Coriander",
+                Type = "Herb",
+                ImageURL = "https://ibb.co/0JR4wMr",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Lavender",
+                Type = "Herb",
+                ImageURL = "https://ibb.co/zb9nYkL",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Buttercup",
+                Type = "Herb",
+                ImageURL = "https://ibb.co/KmJGXYK",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Water Essence",
+                Type = "Essence",
+                ImageURL = "https://ibb.co/NsZ0yKp",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Earth Essence",
+                Type = "Essence",
+                ImageURL = "https://ibb.co/CzHKCzg",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Air Essence",
+                Type = "Essence",
+                ImageURL = "https://ibb.co/vYKKCYy",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Fire Essence",
+                Type = "Essence",
+                ImageURL = "https://ibb.co/SxtYrJg",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Shiny Scale",
+                Type = "Scale",
+                ImageURL = "https://ibb.co/svm2fbZ",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Transparent Scale",
+                Type = "Scale",
+                ImageURL = "https://ibb.co/xhqP4sQ",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Fish Oil",
+                Type = "Scale",
+                ImageURL = "https://ibb.co/Wx404mt",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Hard Scale",
+                Type = "Scale",
+                ImageURL = "https://ibb.co/J2D2mtR",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Tomato",
+                Type = "Vegetables",
+                ImageURL = "https://ibb.co/6WnqmBG",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Lettuce",
+                Type = "Vegetables",
+                ImageURL = "https://ibb.co/Cvbv249",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Turnip",
+                Type = "Vegetables",
+                ImageURL = "https://ibb.co/3fxzbXC",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Pumpkin",
+                Type = "Vegetables",
+                ImageURL = "https://ibb.co/w0VKVH8",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Dry Branch",
+                Type = "Wood",
+                ImageURL = "https://ibb.co/Qphv5Kx",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Green Leaves",
+                Type = "Wood",
+                ImageURL = "https://ibb.co/JQ6ySPX",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Tree Stump",
+                Type = "Wood",
+                ImageURL = "https://ibb.co/c3KygY3",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Acorn",
+                Type = "Wood",
+                ImageURL = "https://ibb.co/C7d8gwZ",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Granite",
+                Type = "Rock",
+                ImageURL = "https://ibb.co/vwXXXkM",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Marble",
+                Type = "Rock",
+                ImageURL = "https://ibb.co/f4Mdj1p",
+            });
+            this.context.Materials.Add(new Material
+            {
+                Name = "Quartzite",
+                Type = "Rock",
+                ImageURL = "https://ibb.co/f4Mdj1p",
+            });
         }
 
         private async Task SeedUsersAsync(CancellationToken cancellationToken)

@@ -13,7 +13,6 @@
     public class SlotCheck
     {
         private readonly Random rng;
-        private readonly string[] rocks;
         private readonly string[] woods;
         private readonly string[] ores;
         private readonly string[] leathers;
@@ -27,13 +26,13 @@
         {
             this.rng = new Random();
 
-            this.woods = new string[] { "Oak", "Walnut", "Birch", "Mahogany" };
-            this.ores = new string[] { "Coal", "Copper", "Iron", "Gold" };
+            this.woods = new string[] { "Oak Log", "Walnut Log", "Birch Log", "Mahogany Log" };
+            this.ores = new string[] { "Coal Ore", "Copper Ore", "Iron Ore", "Gold Ore" };
             this.leathers = new string[] { "Leather Scraps", "Animal Fur", "Light Leather", "Fine Leather" };
-            this.cloths = new string[] { "Cotton", "Linnen Cloth", "Wool", "Silk Cloth" };
+            this.cloths = new string[] { "Cotton", "Linen Cloth", "Wool", "Silk Cloth" };
             this.herbs = new string[] { "Mint", "Coriander", "Lavender", "Buttercup" };
-            this.essences = new string[] { "Water", "Earth", "Air", "Fire" };
-            this.scales = new string[] { "Shiny Scale", "Transparent Scale", "Oil", "Hard Scale" };
+            this.essences = new string[] { "Water Essence", "Earth Essence", "Air Essence", "Fire Essence" };
+            this.scales = new string[] { "Shiny Scale", "Transparent Scale", "Fish Oil", "Hard Scale" };
             this.vegetables = new string[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
@@ -207,11 +206,11 @@
             {
                 mainMaterialName = this.MainMaterialVariety(this.woods);
 
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Dry Branch", "Green Leaves", "Tree Log", "Acorn" });
+                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Dry Branch", "Green Leaves", "Tree Stump", "Acorn" });
             }
             else if (zoneName == "Endless Mine")
             {
-                mainMaterialName = this.MainMaterialVariety(this.rocks);
+                mainMaterialName = this.MainMaterialVariety(this.ores);
 
                 secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Granite", "Marble", "Quartzite", "Obsidian" });
             }
@@ -255,8 +254,24 @@
             {
                 mainMaterialName = this.JunkVariety(monster);
 
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Potato", "Corn", "Garden Shovel", "Hay" });
+                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Broken Glass Cup", "Stale Hotdog", "Torn Clothes", "Broken Pencil" });
             }
+
+            var mainMaterial = await context.Materials.SingleOrDefaultAsync(m => m.Name == mainMaterialName);
+
+            var secondaryMaterial = context.Materials.SingleOrDefault(m => m.Name == secondaryMaterialName);
+
+            await context.MaterialsInventories.AddAsync(new MaterialInventory
+            {
+                InventoryId = invetoryId,
+                MaterialId = mainMaterial.Id,
+            });
+
+            context.MaterialsInventories.Add(new MaterialInventory
+            {
+                InventoryId = invetoryId,
+                MaterialId = secondaryMaterial.Id,
+            });
         }
 
         private string AllMaterialsVariety(Monster monster)

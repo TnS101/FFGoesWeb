@@ -55,5 +55,11 @@
         public string ImageURL { get; set; }
 
         public int GoldAmount { get; set; }
+
+        public int ProffesionLevel { get; set; }
+
+        public double ProffesionXP { get; set; }
+
+        public double ProffesionXPCap { get; set; }
     }
 }
