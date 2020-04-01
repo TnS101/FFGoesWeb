@@ -1,6 +1,5 @@
 ﻿namespace Domain.Entities.Game.Units
 {
-    using System;
     using System.Collections.Generic;
 
     public class Profession
@@ -13,7 +12,11 @@
 
         public string Type { get; set; }
 
-        public string Bonus { get; set; }
+        public double Bonus { get; set; }
+
+        public string Description { get; set; }
+
+        public string ProffesionZone { get; set; }
 
         public ICollection<Hero> Heroes { get; set; }
     }

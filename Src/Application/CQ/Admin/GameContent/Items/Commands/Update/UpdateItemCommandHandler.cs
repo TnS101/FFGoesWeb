@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Entities.Game.Items;
     using global::Common;
     using MediatR;
 

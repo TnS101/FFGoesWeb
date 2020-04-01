@@ -1,7 +1,5 @@
 ﻿namespace Application.GameCQ.Heroes.Queries.GetFullUnitQuery
 {
-    using Domain.Entities.Game.Items;
-
     public class UnitFullViewModel
     {
         public string Id { get; set; }
@@ -34,7 +32,7 @@
 
         public double CurrentArmorValue { get; set; }
 
-        public double RessistanceValue { get; set; }
+        public double ResistanceValue { get; set; }
 
         public double CurrentRessistanceValue { get; set; }
 
@@ -56,6 +54,6 @@
 
         public string ImageURL { get; set; }
 
-        public Inventory Inventory { get; set; }
+        public int GoldAmount { get; set; }
     }
 }

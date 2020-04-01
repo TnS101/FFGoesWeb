@@ -4,7 +4,7 @@
 
     public class DeleteItemCommand : IRequest<string>
     {
-        public string ItemId { get; set; }
+        public int ItemId { get; set; }
 
         public string Slot { get; set; }
     }

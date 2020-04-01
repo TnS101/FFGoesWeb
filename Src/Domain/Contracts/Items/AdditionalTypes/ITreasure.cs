@@ -1,7 +1,9 @@
 ﻿namespace Domain.Contracts.Items.AdditionalTypes
 {
-    public interface ITreasure : IItem
+    public interface ITreasure
     {
+        string Name { get; set; }
+
         string Rarity { get; set; }
     }
 }

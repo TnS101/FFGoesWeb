@@ -2,7 +2,7 @@
 {
     public class MaterialInventory
     {
-        public string MaterialId { get; set; }
+        public int MaterialId { get; set; }
 
         public Material Material { get; set; }
 

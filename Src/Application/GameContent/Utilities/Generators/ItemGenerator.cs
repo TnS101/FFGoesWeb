@@ -1,10 +1,10 @@
 ﻿namespace Application.GameContent.Utilities.Generators
 {
+    using System;
+    using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Handlers;
     using Domain.Entities.Game.Units;
-    using System;
-    using System.Threading.Tasks;
 
     public class ItemGenerator
     {
@@ -25,6 +25,7 @@
             int slotNumber = this.rng.Next(0, 10);
             string fightingClassType = string.Empty;
             string weaponName = string.Empty;
+            string imageURL = string.Empty;
 
             for (int i = 0; i < 8; i++)
             {

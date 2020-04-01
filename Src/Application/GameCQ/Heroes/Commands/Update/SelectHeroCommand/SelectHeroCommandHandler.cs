@@ -26,9 +26,9 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var oldHero = await this.context.Heroes.FirstOrDefaultAsync(u => u.UserId == user.Id);
+            var oldHero = await this.context.Heroes.FirstOrDefaultAsync(u => u.UserId == user.Id && u.IsSelected);
 
-            if (oldHero.IsSelected)
+            if (oldHero != null)
             {
                 oldHero.IsSelected = false;
 

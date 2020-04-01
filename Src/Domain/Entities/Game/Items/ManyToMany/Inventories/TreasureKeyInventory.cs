@@ -2,7 +2,7 @@
 {
     public class TreasureKeyInventory
     {
-        public string TreasureKeyId { get; set; }
+        public int TreasureKeyId { get; set; }
 
         public TreasureKey TreasureKey { get; set; }
 

@@ -52,6 +52,7 @@
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using Application.GameCQ.Treasures.Commands.Delete;
     using Application.GameCQ.Treasures.Commands.Update;
+    using Application.GameCQ.World.Commands.Update;
     using Application.SeedInitialData;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
@@ -122,6 +123,7 @@
             services.AddScoped<IRequestHandler<EditMessageCommand, string>, EditMessageCommandHandler>();
             services.AddScoped<IRequestHandler<SelectHeroCommand, string>, SelectHeroCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateStatusCommand, string>, UpdateStatusCommandHandler>();
+            services.AddScoped<IRequestHandler<ExploreCommand, string>, ExploreCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)

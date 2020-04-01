@@ -15,7 +15,7 @@
         </div>
 
     }
-    else if (Model.Units.Any(u => !u.IsSelected))
+    else if (!Model.Units.Any(u => u.IsSelected))
     {
         <div class="has-text-align-center item-padding">
             <h2 class="secondary-font-color">Please, <a asp-controller="Unit" asp-action="All">Select</a> a unit first before starting your adventure!</h2>

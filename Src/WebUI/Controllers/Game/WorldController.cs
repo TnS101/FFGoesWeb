@@ -1,22 +1,15 @@
 ﻿namespace WebUI.Controllers.Game
 {
-    using System;
     using System.Threading.Tasks;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Application.GameCQ.Treasures.Commands.Update;
+    using Application.GameCQ.World.Commands.Update;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    //[Authorize(Roles = "User")]
+    // [Authorize(Roles = "User")]
     public class WorldController : BaseController
     {
-        private readonly Random rng;
-
-        public WorldController()
-        {
-            this.rng = new Random();
-        }
-
         [HttpGet]
         public async Task<ActionResult> Home()
         {
@@ -24,17 +17,9 @@
         }
 
         [HttpGet]
-        public IActionResult Explore()
+        public async Task<ActionResult> Explore()
         {
-            int exploreNumber = this.rng.Next(0, 10);
-            if (exploreNumber >= 0 && exploreNumber <= 10)
-            {
-                return this.View(@"\EnemyEncounter");
-            }
-            else
-            {
-                return this.View();
-            }
+            return this.Redirect(await this.Mediator.Send(new ExploreCommand { User = this.User }));
         }
 
         [HttpGet]

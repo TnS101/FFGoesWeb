@@ -12,10 +12,9 @@
         {
             this.ArmorInventories = new HashSet<ArmorInventory>();
             this.ArmorEquipments = new HashSet<ArmorEquipment>();
-            this.Id = Guid.NewGuid().ToString();
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public double ArmorValue { get; set; }
 

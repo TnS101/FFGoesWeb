@@ -2,7 +2,7 @@
 {
     public class TrinketEquipment
     {
-        public string TrinketId { get; set; }
+        public int TrinketId { get; set; }
 
         public Trinket Trinket { get; set; }
 

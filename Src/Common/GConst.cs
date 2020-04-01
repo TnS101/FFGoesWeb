@@ -24,8 +24,8 @@
         public const string CreateMessageCommandRedirect = "/Profile/Friends";
         public const string MessageCommandRedirect = "/Profile/Chats";
         public const string HomeRedirect = "/";
-        public const string FeedbackRedirect = "/Admin/";
-        public const string SendFeedbackRedirect = "/FeedbackProgress";
+        public const string FeedbackRedirect = "/Admin/Feedbacks";
+        public const string SendFeedbackRedirect = "Profile/Feedbacks";
         public const string OpenCommentTicketRedirect = "/Forum/CurrentTopic{0}";
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
         public const string TicketCommandRedirect = "/Moderator/Tickets";
@@ -34,6 +34,9 @@
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";
         public const string AdminItemCommandRedirect = "/Items/{0}";
+        public const string NotEnoughEnergyRedirect = "/EnergyError";
+        public const string TreasureEncounterRedirect = "/TreasureEncounter";
+        public const string EnemyEncounterRedirect = "/EnemyEncounter";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";
