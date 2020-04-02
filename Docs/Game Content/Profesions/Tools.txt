@@ -1,0 +1,10 @@
+<Refining,Crafting,Disolving>
+Wood -> Saw, Hammer, Sandpaper;
+Ore -> Hammer, Furnace(auto-included), Anvil;
+Leather -> Knife, Needle, Ruler;
+Cloth -> Scissors, Needle, Knitting Kit, Ruler;
+Herb -> Mortar and Pestle ,Protective Mask;
+Essence -> Cooling Rod, Protective Mask;
+Scale -> Knife, Furnace(auto-included), Heavy Sandpaper, Hammer;
+Vegetable-> Knife, Mixing Bowl, Cutting Board, Furnace(auto-included);
+Junk -> (available when Recycler is unlocked);

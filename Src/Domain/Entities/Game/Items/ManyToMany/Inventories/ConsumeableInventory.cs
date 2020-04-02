@@ -2,12 +2,19 @@
 {
     public class ConsumeableInventory
     {
+        public ConsumeableInventory()
+        {
+            this.Count = 1;
+        }
+
         public int ConsumeableId { get; set; }
 
         public Consumeable Consumeable { get; set; }
 
-        public int InventoryId { get; set; }
+        public string InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
+
+        public int Count { get; set; }
     }
 }

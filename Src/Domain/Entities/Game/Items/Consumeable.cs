@@ -16,8 +16,10 @@
 
         public string Type { get; set; }
 
-        public double StatReplenish { get; set; } 
-        
+        public double StatReplenish { get; set; }
+
+        public bool IsCraftable { get; set; }
+
         public ICollection<ConsumeableInventory> ConsumeableInventories { get; set; }
     }
 }

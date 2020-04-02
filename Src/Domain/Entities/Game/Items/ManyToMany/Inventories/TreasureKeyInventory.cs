@@ -2,6 +2,11 @@
 {
     public class TreasureKeyInventory
     {
+        public TreasureKeyInventory()
+        {
+            this.Count = 1;
+        }
+
         public int TreasureKeyId { get; set; }
 
         public TreasureKey TreasureKey { get; set; }
@@ -9,5 +14,7 @@
         public string InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
+
+        public int Count { get; set; }
     }
 }

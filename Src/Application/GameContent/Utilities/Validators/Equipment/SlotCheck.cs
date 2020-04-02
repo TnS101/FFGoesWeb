@@ -32,7 +32,7 @@
             this.cloths = new string[] { "Cotton", "Linen Cloth", "Wool", "Silk Cloth" };
             this.herbs = new string[] { "Mint", "Coriander", "Lavender", "Buttercup" };
             this.essences = new string[] { "Water Essence", "Earth Essence", "Air Essence", "Fire Essence" };
-            this.scales = new string[] { "Shiny Scale", "Transparent Scale", "Fish Oil", "Hard Scale" };
+            this.scales = new string[] { "Shiny Scale", "Transparent Scale", "Hard Scale", "Golden Necklace" };
             this.vegetables = new string[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
@@ -218,13 +218,13 @@
             {
                 mainMaterialName = this.MainMaterialVariety(this.leathers);
 
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Stomach", "Skull", "Bones", "Nails" });
+                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Animal Stomach", "Animal Skull", "Animal Bones", "Fangs" });
             }
             else if (zoneName == "Vile City")
             {
                 mainMaterialName = this.MainMaterialVariety(this.cloths);
 
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Shirt", "Shoes", "Pants", "Soul Vial" });
+                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "T-Shirt", "Shoes", "Pants", "Human Soul" });
             }
             else if (zoneName == "Magic Flower Shop")
             {
@@ -242,19 +242,19 @@
             {
                 mainMaterialName = this.MainMaterialVariety(this.scales);
 
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "String", "Caviar", "Turtle Eggs", "Pile of Sand" });
+                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "String", "Puffer Fish", "Turtle Eggs", "Bottled Message" });
             }
             else if (zoneName == "Happy Garden")
             {
                 mainMaterialName = this.MainMaterialVariety(this.vegetables);
 
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Potato", "Corn", "Garden Shovel", "Hay" });
+                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Potato", "Corn", "Garden Shovel", "Watering Can" });
             }
             else if (zoneName == "Scrap Terminal")
             {
                 mainMaterialName = this.JunkVariety(monster);
 
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Broken Glass Cup", "Stale Hotdog", "Torn Clothes", "Broken Pencil" });
+                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Broken Glass Cup", "Stale Hotdog", "Crushed Can", "Rubber Band" });
             }
 
             var mainMaterial = await context.Materials.SingleOrDefaultAsync(m => m.Name == mainMaterialName);
@@ -376,8 +376,8 @@
 
             if (monster.Type == "Beast")
             {
-                junks[0] = "Broken Teeth";
-                junks[1] = "Torn Leather Scraps";
+                junks[0] = "Animal Blood";
+                junks[1] = "Dead Critters";
                 junks[2] = "Broken Skull";
             }
 
@@ -392,21 +392,21 @@
             {
                 junks[0] = "Broken Cogs";
                 junks[1] = "Rusty Pipes";
-                junks[2] = "Empty Battery";
+                junks[2] = "Dead Battery";
             }
 
             if (monster.Type == "Elemental")
             {
-                junks[0] = "Cracked Glass Orb";
-                junks[1] = "Coal Pieces";
-                junks[2] = "Water Vial";
+                junks[0] = "Cracked Water Orb";
+                junks[1] = "Coal Piece";
+                junks[2] = "Water Flask";
             }
 
             if (monster.Type == "Reptile" || monster.Type == "Pisces")
             {
-                junks[0] = "Torn Scales";
+                junks[0] = "Worm";
                 junks[1] = "Dead Critters";
-                junks[2] = "Water Vial";
+                junks[2] = "Water Flask";
             }
 
             if (monster.Type == "Plant")

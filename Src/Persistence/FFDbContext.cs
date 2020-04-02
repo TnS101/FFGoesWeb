@@ -91,6 +91,14 @@
 
         public DbSet<ConsumeableInventory> ConsumeableInventories { get; set; }
 
+        public DbSet<Consumeable> Consumeables { get; set; }
+
+        public DbSet<ConsumeableInventory> ConsumeablesInventories { get; set; }
+
+        public DbSet<Tool> Tools { get; set; }
+
+        public DbSet<ToolInventory> ToolsInventories { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -271,7 +279,6 @@
                 .HasForeignKey(i => i.InventoryId);
 
             // Consumeable Inventories
-
             modelBuilder.Entity<ConsumeableInventory>()
                 .HasKey(k => new { k.ConsumeableId, k.InventoryId });
 
@@ -283,6 +290,20 @@
             modelBuilder.Entity<ConsumeableInventory>()
                 .HasOne(i => i.Inventory)
                 .WithMany(ci => ci.ConsumeableInventories)
+                .HasForeignKey(i => i.InventoryId);
+
+            // Tool Inventories
+            modelBuilder.Entity<ToolInventory>()
+                .HasKey(k => new { k.ToolId, k.InventoryId });
+
+            modelBuilder.Entity<ToolInventory>()
+                .HasOne(t => t.Tool)
+                .WithMany(ti => ti.ToolInventories)
+                .HasForeignKey(t => t.ToolId);
+
+            modelBuilder.Entity<ToolInventory>()
+                .HasOne(i => i.Inventory)
+                .WithMany(ti => ti.ToolInventories)
                 .HasForeignKey(i => i.InventoryId);
 
             modelBuilder.Entity<AppUser>(appUser =>

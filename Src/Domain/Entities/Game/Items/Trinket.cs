@@ -39,6 +39,8 @@
 
         public string ImageURL { get; set; }
 
+        public bool IsCraftable { get; set; }
+
         public ICollection<TrinketInventory> TrinketInventories { get; set; }
 
         public ICollection<TrinketEquipment> TrinketEquipments { get; set; }

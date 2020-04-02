@@ -42,6 +42,8 @@
 
         public string ImageURL { get; set; }
 
+        public bool IsCraftable { get; set; }
+
         public ICollection<WeaponInventory> WeaponInventories { get; set; }
 
         public ICollection<WeaponEquipment> WeaponEquipments { get; set; }

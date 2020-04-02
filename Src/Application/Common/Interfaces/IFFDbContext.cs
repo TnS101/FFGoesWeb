@@ -82,7 +82,13 @@
 
         DbSet<WeaponInventory> WeaponsInventories { get; set; }
 
-        DbSet<ConsumeableInventory> ConsumeableInventories { get; set; }
+        DbSet<Consumeable> Consumeables { get; set; }
+
+        DbSet<ConsumeableInventory> ConsumeablesInventories { get; set; }
+
+        DbSet<Tool> Tools { get; set; }
+
+        DbSet<ToolInventory> ToolsInventories { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
