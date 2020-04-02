@@ -1,6 +1,5 @@
 ﻿namespace Application.GameCQ.Heroes.Queries.GetFullUnitQuery
 {
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
@@ -26,7 +25,7 @@
         public async Task<UnitFullViewModel> Handle(GetFullUnitQuery request, CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetUserAsync(request.User);
-            var unit = await this.context.Heroes.FirstOrDefaultAsync(u => u.UserId == user.Id && u.Id == request.HeroId);
+            var unit = await this.context.Heroes.FirstOrDefaultAsync(u => u.UserId == user.Id && u.IsSelected);
 
             return this.mapper.Map<UnitFullViewModel>(unit);
         }

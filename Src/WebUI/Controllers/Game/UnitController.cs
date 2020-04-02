@@ -19,7 +19,7 @@
         [HttpGet]
         public async Task<ActionResult> All()
         {
-            return this.View(await this.Mediator.Send(new GetUnitListQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
         }
 
         [HttpGet]
@@ -43,7 +43,7 @@
         [HttpGet("/Info/id")]
         public async Task<ActionResult> Info([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetFullUnitQuery { User = this.User, HeroId = id }));
+            return this.View(await this.Mediator.Send(new GetFullUnitQuery { User = this.User }));
         }
 
         [HttpPost]

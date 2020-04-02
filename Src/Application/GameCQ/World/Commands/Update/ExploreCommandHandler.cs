@@ -38,6 +38,8 @@
 
             hero.Energy--;
 
+            hero.LastEnergyChange = DateTime.UtcNow;
+
             this.context.Heroes.Update(hero);
 
             await this.context.SaveChangesAsync(cancellationToken);

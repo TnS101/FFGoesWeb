@@ -1,4 +1,4 @@
-﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.UnitListViewModel
+﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
 @{
     ViewData["Title"] = "Units";
     Layout = "_Layout";
@@ -10,7 +10,7 @@
     <div class="has-text-align-center item-padding main-gradient">
         <h1>Your Battle Units</h1>
         <div class="item-padding ">
-            @foreach (var unit in Model.Units)
+            @foreach (var unit in Model.Heroes)
             {
                 if (!unit.IsSelected)
                 {
@@ -32,7 +32,7 @@
                     <hr class="has-narrow-width" />
                     <h3><i class="fas fa-heartbeat"></i>@unit.CurrentHP / @unit.MaxHP</h3>
                     <hr class="has-narrow-width" />
-                    <h3><i class="fas fa-bolt"></i>@unit.Energy / 10</h3>
+                    <h3><i class="fas fa-bolt"></i>@unit.Energy / 15</h3>
 
                     <form asp-controller="Unit" asp-action="Delete" method="post" class="item-padding">
                         <input type="hidden" name="id" value="@unit.Id" />

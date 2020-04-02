@@ -36,7 +36,7 @@
         public const string AdminItemCommandRedirect = "/Items/{0}";
         public const string NotEnoughEnergyRedirect = "/EnergyError";
         public const string TreasureEncounterRedirect = "/TreasureEncounter";
-        public const string EnemyEncounterRedirect = "/EnemyEncounter";
+        public const string EnemyEncounterRedirect = "EnemyEncounter";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";

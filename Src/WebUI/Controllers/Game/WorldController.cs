@@ -13,13 +13,19 @@
         [HttpGet]
         public async Task<ActionResult> Home()
         {
-            return this.View(await this.Mediator.Send(new GetUnitListQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
         }
 
         [HttpGet]
         public async Task<ActionResult> Explore()
         {
             return this.Redirect(await this.Mediator.Send(new ExploreCommand { User = this.User }));
+        }
+
+        [HttpGet]
+        public ActionResult EnemyEncounter()
+        {
+            return this.View();
         }
 
         [HttpGet]

@@ -13,7 +13,7 @@
 
         public int Id { get; set; }
 
-        public int ToolId { get; set; }
+        public int? ToolId { get; set; }
 
         public Tool Tool { get; set; }
 

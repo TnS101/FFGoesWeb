@@ -38,9 +38,9 @@
 
             await this.SeedStatusesAsync(cancellationToken);
 
-            await this.SeedMainMaterialsAsync(cancellationToken);
-
             await this.SeedToolsAsync(cancellationToken);
+
+            await this.SeedMainMaterialsAsync(cancellationToken);
         }
 
         private async Task SeedSampleDataAsync(CancellationToken cancellationToken)

@@ -11,9 +11,12 @@
             this.Level = 1;
             this.XPCap = 100;
             this.GoldAmount = 100;
-            this.Energy = 10;
+            this.Energy = 15;
+            this.ProfessionEnergy = 10;
             this.Id = Guid.NewGuid().ToString();
             this.IsSelected = false;
+            this.LastEnergyChange = DateTime.UtcNow;
+            this.LastProfessionEnergyChange = DateTime.UtcNow;
         }
 
         public string Id { get; set; }
@@ -47,6 +50,8 @@
         public int Level { get; set; }
 
         public int ProfessionLevel { get; set; }
+
+        public int ProfessionEnergy { get; set; }
 
         public double ProffesionXP { get; set; }
 
@@ -105,5 +110,9 @@
         public string IconURL { get; set; }
 
         public int GearScore { get; set; }
+
+        public DateTime LastEnergyChange { get; set; }
+
+        public DateTime LastProfessionEnergyChange { get; set; }
     }
 }

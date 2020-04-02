@@ -28,8 +28,7 @@
         [HttpGet]
         public async Task<ActionResult> Action()
         {
-            this.player = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
-            return this.View(@"\Action", this.Stats(this.player));
+            return this.View(@"\Action", this.Stats(await this.Mediator.Send(new GetFullUnitQuery { User = this.User })));
         }
 
         [HttpPost]

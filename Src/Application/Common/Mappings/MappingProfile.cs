@@ -46,7 +46,7 @@
             this.CreateMap<Feedback, FeedbackPartialViewModel>();
             this.CreateMap<Feedback, FeedbackTaskViewModel>();
             this.CreateMap<Status, StatusFullViewModel>();
-            this.CreateMap<Hero, UnitMinViewModel>();
+            this.CreateMap<Hero, HeroMinViewModel>();
             this.CreateMap<Hero, UnitPartialViewModel>();
             this.CreateMap<Hero, UnitFullViewModel>();
             this.CreateMap<FightingClass, FightingClassMinViewModel>();
