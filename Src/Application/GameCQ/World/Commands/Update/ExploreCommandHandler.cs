@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Game.Units;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -38,20 +39,27 @@
 
             hero.Energy--;
 
-            hero.LastEnergyChange = DateTime.UtcNow;
+            await this.context.EnergyChanges.AddAsync(new EnergyChange
+            {
+                HeroId = hero.Id,
+                Type = "Walk",
+                LastChangedOn = DateTime.UtcNow,
+            });
 
             this.context.Heroes.Update(hero);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            if (exploreNumber == 0 || exploreNumber == 1)
-            {
-                return GConst.TreasureEncounterRedirect;
-            }
-            else
-            {
-                return GConst.EnemyEncounterRedirect;
-            }
+            //if (exploreNumber == 0 || exploreNumber == 1)
+            //{
+            //    return GConst.TreasureEncounterRedirect;
+            //}
+            //else
+            //{
+            //    
+            //}
+
+            return GConst.EnemyEncounterRedirect;
         }
     }
 }

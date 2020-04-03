@@ -99,6 +99,8 @@
 
         public DbSet<ToolInventory> ToolsInventories { get; set; }
 
+        public DbSet<EnergyChange> EnergyChanges { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

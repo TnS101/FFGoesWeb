@@ -20,6 +20,8 @@
 
         public int Energy { get; set; }
 
+        public int ProfessionEnergy { get; set; }
+
         public string IconURL { get; set; }
     }
 }

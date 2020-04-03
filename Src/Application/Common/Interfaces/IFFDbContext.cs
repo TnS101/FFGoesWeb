@@ -90,6 +90,8 @@
 
         DbSet<ToolInventory> ToolsInventories { get; set; }
 
+        DbSet<EnergyChange> EnergyChanges { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

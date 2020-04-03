@@ -3,6 +3,7 @@
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using System;
+    using System.Collections.Generic;
 
     public class Hero
     {
@@ -11,12 +12,11 @@
             this.Level = 1;
             this.XPCap = 100;
             this.GoldAmount = 100;
-            this.Energy = 15;
+            this.Energy = 30;
             this.ProfessionEnergy = 10;
             this.Id = Guid.NewGuid().ToString();
             this.IsSelected = false;
-            this.LastEnergyChange = DateTime.UtcNow;
-            this.LastProfessionEnergyChange = DateTime.UtcNow;
+            this.EnergyChanges = new HashSet<EnergyChange>();
         }
 
         public string Id { get; set; }
@@ -111,8 +111,6 @@
 
         public int GearScore { get; set; }
 
-        public DateTime LastEnergyChange { get; set; }
-
-        public DateTime LastProfessionEnergyChange { get; set; }
+        public ICollection<EnergyChange> EnergyChanges { get; set; }
     }
 }

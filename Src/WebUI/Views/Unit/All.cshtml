@@ -32,7 +32,8 @@
                     <hr class="has-narrow-width" />
                     <h3><i class="fas fa-heartbeat"></i>@unit.CurrentHP / @unit.MaxHP</h3>
                     <hr class="has-narrow-width" />
-                    <h3><i class="fas fa-bolt"></i>@unit.Energy / 15</h3>
+                    <h3><i class="fas fa-bolt"></i>@unit.Energy / 30</h3>
+                    <h3><i class="fas fa-hammer"></i>@unit.ProfessionEnergy / 10</h3>
 
                     <form asp-controller="Unit" asp-action="Delete" method="post" class="item-padding">
                         <input type="hidden" name="id" value="@unit.Id" />

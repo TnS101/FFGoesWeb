@@ -8,6 +8,7 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Domain.Entities.Common;
+    using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -31,12 +32,27 @@
 
             var heroes = this.context.Heroes.Where(h => h.UserId == user.Id);
 
-            foreach (var hero in heroes.ToList())
+            foreach (var hero in heroes)
             {
-                if (hero.Energy < 15 && DateTime.UtcNow.Second - hero.LastEnergyChange.Second >= 10)
+                foreach (var energyChange in this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id).OrderBy(l => l.LastChangedOn).ToList())
                 {
-                    hero.Energy++;
-                    hero.LastEnergyChange = DateTime.UtcNow;
+                    if (hero.Energy < 30 && DateTime.UtcNow.Minute - energyChange.LastChangedOn.Minute >= 4)
+                    {
+                        hero.Energy++;
+                        this.context.EnergyChanges.Remove(energyChange);
+
+                        await this.context.EnergyChanges.AddAsync(new EnergyChange
+                        {
+                            HeroId = hero.Id,
+                            LastChangedOn = DateTime.UtcNow,
+                            Type = "Regenerate",
+                        });
+                    }
+
+                    if (hero.Energy == 30)
+                    {
+                        this.context.EnergyChanges.RemoveRange(this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id));
+                    }
                 }
 
                 this.context.Heroes.Update(hero);
