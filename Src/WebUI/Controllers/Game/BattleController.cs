@@ -25,17 +25,17 @@
             return this.View(@"\Battle", this.monster.Name);
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Action()
+        [HttpGet("/Action/id")]
+        public async Task<ActionResult> Action([FromForm]string heroId)
         {
-            return this.View(@"\Action", this.Stats(await this.Mediator.Send(new GetFullUnitQuery { User = this.User })));
+            this.player = await this.Mediator.Send(new GetFullUnitQuery { HeroId = heroId });
+
+            return this.View(@"\Action", this.Stats(this.player));
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Action([FromForm]string command, [FromForm]string spellName)
+        [HttpGet]
+        public async Task<ActionResult> Action([FromQuery]string command, [FromQuery]string spellName)
         {
-            this.player = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
-
             return this.View(
                 await this.Mediator.Send(new BattleOptionsCommand
             { Command = command, Player = this.player, Enemy = this.monster, YourTurn = this.yourTurn, SpellName = spellName }), this.Stats(this.player));

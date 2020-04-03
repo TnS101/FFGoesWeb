@@ -1,0 +1,62 @@
+﻿@model Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery.TopicFullViewModel
+
+@{
+    ViewData["Title"] = "CurrentTopic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CurrentTopic</h2>
+
+<div>
+    <h4>TopicFullViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Likes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Likes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateOn)
+        </dt>
+    </dl>
+</div>
+<div class="has-text-align-center">
+    @foreach (var comment in Model.Comments)
+    {
+        <p class="main-font-color"><a asp-controller="User" asp-action="Profile" asp-route-id="@comment.UserId"></a>@comment.User.UserName</p>
+        <p class="main-font-color">@comment.Content</p>
+        <i class="fas fa-thumbs-up"></i>@comment.Likes <i class="fas fa-comments"></i><a asp-controller="Comment" asp-action="Replies"></a>@comment.Replies.Count
+    }
+</div>

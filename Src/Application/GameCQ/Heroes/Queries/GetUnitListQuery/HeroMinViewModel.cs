@@ -22,6 +22,8 @@
 
         public int ProfessionEnergy { get; set; }
 
+        public int PvPEnergy { get; set; }
+
         public string IconURL { get; set; }
     }
 }

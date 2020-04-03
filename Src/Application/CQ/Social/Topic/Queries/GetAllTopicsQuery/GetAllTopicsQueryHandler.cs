@@ -46,6 +46,7 @@
                     CreateOn = t.CreateOn,
                     Likes = t.Likes,
                     Comments = t.Comments.Count(),
+                    UserId = t.UserId,
                 })
             .OrderByDescending(t => t.CreateOn)
             .ToListAsync(),

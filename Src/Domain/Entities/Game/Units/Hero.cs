@@ -14,6 +14,7 @@
             this.GoldAmount = 100;
             this.Energy = 30;
             this.ProfessionEnergy = 10;
+            this.PvPEnergy = 15;
             this.Id = Guid.NewGuid().ToString();
             this.IsSelected = false;
             this.EnergyChanges = new HashSet<EnergyChange>();
@@ -106,6 +107,10 @@
         public bool IsSelected { get; set; }
 
         public int Energy { get; set; }
+
+        public int PvPEnergy { get; set; }
+
+        public int PvPPoints { get; set; }
 
         public string IconURL { get; set; }
 

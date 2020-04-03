@@ -21,22 +21,22 @@
         {
             if (request.YourTurn && request.Enemy.CurrentHP > 0)
             {
-                if (request.Command == "attack")
+                if (request.Command == "Attack")
                 {
                     this.battleHandler.AttackOption.Attack(request.Player, request.Enemy);
                 }
 
-                if (request.Command == "defend")
+                if (request.Command == "Defend")
                 {
                     this.battleHandler.DefendOption.Defend(request.Player);
                 }
 
-                if (request.Command == "spellCast")
+                if (request.Command == "SpellCast")
                 {
                     this.battleHandler.SpellCastOption.PlayerSpellCast(request.Player, request.Enemy, request.SpellName, this.context);
                 }
 
-                if (request.Command == "escape")
+                if (request.Command == "Escape")
                 {
                     this.battleHandler.EscapeOption.Escape(request.Player);
                     await this.context.SaveChangesAsync(cancellationToken);

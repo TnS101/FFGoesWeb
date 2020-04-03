@@ -36,20 +36,53 @@
             {
                 foreach (var energyChange in this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id).OrderBy(l => l.LastChangedOn).ToList())
                 {
-                    if (hero.Energy < 30 && DateTime.UtcNow.Minute - energyChange.LastChangedOn.Minute >= 4)
+                    int energyCap = 0;
+                    int rechargeTime = 4;
+                    int energy = 0;
+
+                    if (energyChange.Type == "Walk")
                     {
-                        hero.Energy++;
-                        this.context.EnergyChanges.Remove(energyChange);
+                        energyCap = 30;
+                        energy = hero.Energy;
+                    }
+                    else if (energyChange.Type == "Profession")
+                    {
+                        energyCap = 10;
+                        energy = hero.ProfessionEnergy;
+                    }
+                    else if (energyChange.Type == "PvP")
+                    {
+                        energyCap = 15;
+                        rechargeTime = 8;
+                        energy = hero.PvPEnergy;
+                    }
+
+                    if (energy < energyCap && DateTime.UtcNow.Minute - energyChange.LastChangedOn.Minute >= rechargeTime)
+                    {
+                        if (energyChange.Type == "Walk")
+                        {
+                            hero.Energy++;
+                        }
+                        else if (energyChange.Type == "Profession")
+                        {
+                            hero.ProfessionEnergy++;
+                        }
+                        else if (energyChange.Type == "PvP")
+                        {
+                            hero.PvPEnergy++;
+                        }
 
                         await this.context.EnergyChanges.AddAsync(new EnergyChange
                         {
                             HeroId = hero.Id,
                             LastChangedOn = DateTime.UtcNow,
-                            Type = "Regenerate",
+                            Type = "Regeneration",
                         });
+
+                        this.context.EnergyChanges.Remove(energyChange);
                     }
 
-                    if (hero.Energy == 30)
+                    if (hero.Energy == energyCap)
                     {
                         this.context.EnergyChanges.RemoveRange(this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id));
                     }

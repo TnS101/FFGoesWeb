@@ -25,9 +25,13 @@
 
             var equipment = await this.context.Equipments.FirstOrDefaultAsync(e => e.HeroId == hero.Id);
 
+            var energyChanges = this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id);
+
             this.context.Inventories.Remove(inventory);
 
             this.context.Equipments.Remove(equipment);
+
+            this.context.EnergyChanges.RemoveRange(energyChanges);
 
             this.context.Heroes.Remove(hero);
 

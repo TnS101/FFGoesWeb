@@ -7,6 +7,7 @@
     using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
+    using Application.CQ.Social.Comments.Queries.GetCurrentCommentQuery;
     using Application.CQ.Social.Message.Queries;
     using Application.CQ.Users.Feedbacks.Queries;
     using Application.CQ.Users.Statuses.Queries;
@@ -18,7 +19,6 @@
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
-    using Domain.Base;
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;
     using Domain.Entities.Game.Items;
@@ -35,8 +35,6 @@
             this.CreateMap<Material, ItemMinViewModel>();
             this.CreateMap<Spell, SpellFullViewModel>();
             this.CreateMap<AppUser, UserPartialViewModel>();
-            this.CreateMap<Unit, UnitPartialViewModel>();
-            this.CreateMap<Unit, UnitFullViewModel>();
             this.CreateMap<Topic, TopicFullViewModel>();
             this.CreateMap<Message, MessageFullViewModel>();
             this.CreateMap<Feedback, FeedbackFulllViewModel>();
@@ -52,6 +50,7 @@
             this.CreateMap<FightingClass, FightingClassMinViewModel>();
             this.CreateMap<Monster, MonsterMinViewModel>();
             this.CreateMap<Monster, UnitFullViewModel>();
+            this.CreateMap<Comment, CommentMinViewModel>();
         }
     }
 }

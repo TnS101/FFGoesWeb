@@ -43,7 +43,7 @@
         [HttpGet("/Info/id")]
         public async Task<ActionResult> Info([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetFullUnitQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetFullUnitQuery { HeroId = id }));
         }
 
         [HttpPost]

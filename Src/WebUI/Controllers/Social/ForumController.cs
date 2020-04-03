@@ -7,7 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    [Authorize]
+    // [Authorize]
     public class ForumController : BaseController
     {
         [HttpGet]
