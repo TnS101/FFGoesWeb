@@ -5,3 +5,6 @@ dotnet_diagnostic.SA1117.severity = silent
 
 # SA1305: Field names should not use Hungarian notation
 dotnet_diagnostic.SA1305.severity = silent
+
+# SA1108: Block statements should not contain embedded comments
+dotnet_diagnostic.SA1108.severity = silent

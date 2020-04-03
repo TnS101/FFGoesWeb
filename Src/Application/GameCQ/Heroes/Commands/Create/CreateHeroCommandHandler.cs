@@ -12,7 +12,7 @@
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class CreateHeroCommandHandler : IRequestHandler<CreateHeroCommand, string>
+    public class CreateHeroCommandHandler : IRequestHandler<CreateHeroCommand, string[]>
     {
         private readonly IFFDbContext context;
         private readonly ValidatorHandler validatorHandler;
@@ -25,9 +25,19 @@
             this.userManager = userManager;
         }
 
-        public async Task<string> Handle(CreateHeroCommand request, CancellationToken cancellationToken)
+        public async Task<string[]> Handle(CreateHeroCommand request, CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetUserAsync(request.User);
+
+            if (this.context.Heroes.Where(h => h.UserId == user.Id).Count() == user.AllowedHeroes)
+            {
+                return new string[] { GConst.UnitCreationErrorRedirect, string.Format(GConst.AllowedUnitsError, user.AllowedHeroes) };
+            }
+
+            if (string.IsNullOrWhiteSpace(request.Name) || request.Name.Length < 5 || request.Name.Length > 20)
+            {
+                return new string[] { GConst.UnitCreationErrorRedirect, string.Format(GConst.LengthException, 5, 20) };
+            }
 
             var hero = new Hero
             {
@@ -54,7 +64,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return GConst.UnitCommandRedirect;
+            return new string[] { GConst.UnitCommandRedirect };
         }
     }
 }

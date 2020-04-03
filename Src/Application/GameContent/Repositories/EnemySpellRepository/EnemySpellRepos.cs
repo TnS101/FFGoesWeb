@@ -15,7 +15,7 @@
             this.manaCheck = new ManaCheck();
         }
 
-        private void Beast_FuriousRoar(Unit caster, Unit target)
+        private void Bear_FuriousRoar(Unit caster, Unit target)
         {
             string spellName = "Furious Roar";
             string buffType = "Attack";
@@ -24,7 +24,7 @@
             this.spellCheck.BuffCheck.Check(caster, caster, manaRequirment, effect, spellName, buffType, this.manaCheck);
         }
 
-        private void Beast_Bite(Unit caster, Unit target)
+        private void Bear_Bite(Unit caster, Unit target)
         {
             string spellName = "Bite";
             string effectType = "hRegen";
@@ -35,7 +35,7 @@
             this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
 
-        private void Beast_ThickHide(Unit caster, Unit target)
+        private void Bear_ThickHide(Unit caster, Unit target)
         {
             string spellName = "Thick Hide";
             string buffType = "Armor";
@@ -44,7 +44,7 @@
             this.spellCheck.BuffCheck.Check(caster, caster, manaRequirment, effect, spellName, buffType, this.manaCheck);
         }
 
-        private void Beast_LickWounds(Unit caster, Unit target)
+        private void Bear_LickWounds(Unit caster, Unit target)
         {
             string spellName = "Lick Wounds";
             string negativeEffectType = "Attack";

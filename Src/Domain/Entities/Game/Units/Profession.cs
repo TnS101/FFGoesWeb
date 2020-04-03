@@ -16,7 +16,7 @@
 
         public string Description { get; set; }
 
-        public string ProffesionZone { get; set; }
+        public string ProfessionZone { get; set; }
 
         public ICollection<Hero> Heroes { get; set; }
     }

@@ -37,6 +37,7 @@
         public const string NotEnoughEnergyRedirect = "/EnergyError";
         public const string TreasureEncounterRedirect = "/TreasureEncounter";
         public const string EnemyEncounterRedirect = "EnemyEncounter";
+        public const string UnitCreationErrorRedirect = @"Unit\CreationError";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";
@@ -47,6 +48,7 @@
         public const string UsernameError = "Username must contain only letters or digits and must be at least 5 characters long.";
         public const string PasswordError = "Password must contain only letters or digts, at least one uppercase letter, one digit, one non alphanumeric character and must be at least 8 characters long.";
         public const string EmailError = "Invalid Email Address.";
+        public const string AllowedUnitsError = "You already have {0} Heroes! Delete a Hero or purchase more Hero Slots.";
 
         //Notification types
         public const string WarningType = "Warning";

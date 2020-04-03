@@ -226,7 +226,7 @@
 
                 secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "T-Shirt", "Shoes", "Pants", "Human Soul" });
             }
-            else if (zoneName == "Magic Flower Shop")
+            else if (zoneName == "Magical Flower Shop")
             {
                 mainMaterialName = this.MainMaterialVariety(this.herbs);
 

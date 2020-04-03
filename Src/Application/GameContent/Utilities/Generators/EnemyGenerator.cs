@@ -13,7 +13,7 @@
         {
         }
 
-        public async Task<Monster> Generate(int playerLevel, IFFDbContext context)
+        public async Task<Monster> Generate(int playerLevel, IFFDbContext context, string zoneName)
         {
             Monster monster = new Monster { Level = playerLevel };
 
@@ -25,50 +25,47 @@
 
             int monsterId = 0;
 
-            if (enemyNumber >= 0 && enemyNumber <= 5) // Beast
+            if (zoneName == "World")
             {
-                monsterId = 9;
+                monsterId = this.WorldMonsterId(enemyNumber);
+            }
+            else if (zoneName == "Tainted Forest")
+            {
+                
+            }
+            else if (zoneName == "Endless Mine")
+            {
+                
+            }
+            else if (zoneName == "The Wilderness")
+            {
+                
+            }
+            else if (zoneName == "Vile City")
+            {
+                
+            }
+            else if (zoneName == "Magical Flower Shop")
+            {
+                
+            }
+            else if (zoneName == "The Core")
+            {
+                
+            }
+            else if (zoneName == "Rocky Basin")
+            {
+                
+            }
+            else if (zoneName == "Happy Garden")
+            {
+                
+            }
+            else if (zoneName == "Scrap Terminal")
+            {
+                
             }
 
-            if (enemyNumber >= 6 && enemyNumber <= 10) // Reptile
-            {
-                monsterId = 8;
-            }
-
-            if (enemyNumber >= 11 && enemyNumber <= 14) // Zombie
-            {
-                monsterId = 7;
-            }
-
-            if (enemyNumber >= 15 && enemyNumber <= 18) // Skeleton
-            {
-                monsterId = 6;
-            }
-
-            if (enemyNumber == 19 || enemyNumber == 20) // Wyrm
-            {
-                monsterId = 5;
-            }
-
-            if (enemyNumber == 21 || enemyNumber == 22) // Giant
-            {
-                monsterId = 4;
-            }
-
-            if (enemyNumber == 23 || enemyNumber == 24) // Gryphon
-            {
-                monsterId = 3;
-            }
-
-            if (enemyNumber == 25) // Saint
-            {
-                monsterId = 2;
-            }
-
-            if (enemyNumber == 26) // Demon
-            {
-                monsterId = 1;
-            }
 
             var baseMonster = await context.Monsters.FindAsync(monsterId);
 
@@ -109,6 +106,56 @@
             monster.CurrentArmorValue += statAmplifier * monster.CurrentArmorValue;
 
             return monster;
+        }
+
+        private int WorldMonsterId(int enemyNumber)
+        {
+            if (enemyNumber >= 0 && enemyNumber <= 5) // Beast
+            {
+                return 9;
+            }
+
+            if (enemyNumber >= 6 && enemyNumber <= 10) // Reptile
+            {
+                return 8;
+            }
+
+            if (enemyNumber >= 11 && enemyNumber <= 14) // Zombie
+            {
+                return 7;
+            }
+
+            if (enemyNumber >= 15 && enemyNumber <= 18) // Skeleton
+            {
+                return 6;
+            }
+
+            if (enemyNumber == 19 || enemyNumber == 20) // Wyrm
+            {
+                return 5;
+            }
+
+            if (enemyNumber == 21 || enemyNumber == 22) // Giant
+            {
+                return 4;
+            }
+
+            if (enemyNumber == 23 || enemyNumber == 24) // Gryphon
+            {
+                return 3;
+            }
+
+            if (enemyNumber == 25) // Saint
+            {
+                return 2;
+            }
+
+            if (enemyNumber == 26) // Demon
+            {
+                return 1;
+            }
+
+            return 9;
         }
     }
 }

@@ -109,7 +109,7 @@
             services.AddScoped<IRequestHandler<OpenTreasureCommand, string>, OpenTreasureCommandHandler>();
             services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();
             services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateHeroCommand, string>, CreateHeroCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateHeroCommand, string[]>, CreateHeroCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteHeroCommand, string>, DeleteHeroCommandHandler>();
             services.AddScoped<IRequestHandler<HeroLevelUpCommand>, HeroLevelUpCommandHandler>();
             services.AddScoped<IRequestHandler<CreateTopicCommand, string[]>, CreateTopicCommandHandler>();

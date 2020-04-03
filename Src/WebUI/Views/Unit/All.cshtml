@@ -1,7 +1,6 @@
 ﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
 @{
     ViewData["Title"] = "Units";
-    Layout = "_Layout";
 }
 <head>
     <partial name="_NavBar">
@@ -44,7 +43,7 @@
                 <hr class="item-padding" />
             }
         </div>
+        <p class="has-large-font-size secondary-font-color has-text-align-center"><a asp-controller="Unit" asp-action="Create">Create</a> a new one!</p>
     </div>
-    <partial name="_Footer">
 </body>
 

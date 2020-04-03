@@ -942,7 +942,7 @@
         {
             this.context.Monsters.Add(new Monster
             {
-                Name = "Beast",
+                Name = "Bear",
                 MaxHP = 110,
                 HealthRegen = 2,
                 MaxMana = 75,
