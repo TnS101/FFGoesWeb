@@ -10,7 +10,7 @@
 
     public class ReportController : BaseController
     {
-        [HttpGet]
+        [HttpGet("Report/ReportTopic/id")]
         public async Task<ActionResult> ReportTopic([FromQuery]string id)
         {
             return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id }));

@@ -7,19 +7,25 @@
 
     public class CommentController : BaseController
     {
-        [HttpPost]
-        public async Task<ActionResult> Create([FromQuery]string id, [FromForm]string content)
+        [HttpGet("Comment/Create/id")]
+        public ActionResult Create([FromQuery]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new CreateCommentCommand { TopicId = id, Content = content, User = this.User }));
+            return this.View(@"\Create", id);
         }
 
-        [HttpDelete]
+        [HttpPost]
+        public async Task<ActionResult> Create([FromForm]string topicId, [FromForm]string content)
+        {
+            return this.Redirect(await this.Mediator.Send(new CreateCommentCommand { TopicId = topicId, Content = content, User = this.User }));
+        }
+
+        [HttpGet]
         public async Task<ActionResult> Delete([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteCommentCommand { CommentId = id }));
         }
 
-        [HttpPut]
+        [HttpGet]
         public async Task<ActionResult> Edit([FromQuery]string id, [FromForm]string content)
         {
             return this.Redirect(await this.Mediator.Send(new EditCommentCommand { Content = content, CommentId = id }));

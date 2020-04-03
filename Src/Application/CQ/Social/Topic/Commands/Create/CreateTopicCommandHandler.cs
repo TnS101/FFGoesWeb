@@ -6,15 +6,14 @@
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;
-    using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
 
-    public class CreateTopicCommandHandler : PageModel, IRequestHandler<CreateTopicCommand, string[]>
+    public class CreateTopicCommandHandler : IRequestHandler<CreateTopicCommand, string[]>
     {
         private readonly IFFDbContext context;
         private readonly UserManager<AppUser> userManager;
@@ -29,9 +28,7 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var sb = new StringBuilder();
-
-            if (this.ModelState.IsValid)
+            if (request.Title != null && request.Content != null)
             {
                 await this.context.Topics.AddAsync(new Domain.Entities.Common.Social.Topic
                 {
@@ -49,14 +46,7 @@
                 return new string[] { GConst.TopicCommandRedirect, string.Empty };
             }
 
-            var errors = this.ModelState.Values.SelectMany(e => e.Errors);
-
-            foreach (var error in errors)
-            {
-                sb.AppendLine(error.ErrorMessage);
-            }
-
-            return new string[] { GConst.CreateTopicErrorRedirect, sb.ToString() };
+            return new string[] { GConst.CreateTopicErrorRedirect, "Please, fill all fields!" };
         }
     }
 }

@@ -33,6 +33,9 @@
     using Application.CQ.Users.Queries.Panel;
     using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
+    using Application.CQ.Users.Tickets.Command.Comments;
+    using Application.CQ.Users.Tickets.Command.Messages;
+    using Application.CQ.Users.Tickets.Command.Topics;
     using Application.GameCQ.Battles.Commands.Update;
     using Application.GameCQ.Equipments.Commands.Update;
     using Application.GameCQ.Equipments.Queries;
@@ -124,6 +127,9 @@
             services.AddScoped<IRequestHandler<SelectHeroCommand, string>, SelectHeroCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateStatusCommand, string>, UpdateStatusCommandHandler>();
             services.AddScoped<IRequestHandler<ExploreCommand, string>, ExploreCommandHandler>();
+            services.AddScoped<IRequestHandler<OpenTopicTicketCommand, string>, OpenTopicTicketCommandHandler>();
+            services.AddScoped<IRequestHandler<OpenCommentTicketCommand, string>, OpenCommentTicketCommandHandler>();
+            services.AddScoped<IRequestHandler<OpenMessageTicketCommand, string>, OpenMessageTicketCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)

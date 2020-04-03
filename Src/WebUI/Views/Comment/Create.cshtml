@@ -1,0 +1,17 @@
+﻿@model string
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div class="has-text-align-center">
+        <form asp-controller="Comment" asp-action="Create" asp-route-id="@Model" method="post">
+            <input type="hidden" name="topicId" value="@Model" />
+            <input type="text" name="content" value="" placeholder="Write something..."/>
+            <input type="submit" name="name" value="Submit" />
+        </form>
+    </div>
+</body>
+</html>

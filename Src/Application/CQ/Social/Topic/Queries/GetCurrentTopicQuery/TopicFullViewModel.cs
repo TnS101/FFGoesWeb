@@ -7,11 +7,6 @@
 
     public class TopicFullViewModel
     {
-        public TopicFullViewModel()
-        {
-            this.Comments = new HashSet<Comment>();
-        }
-
         public string Id { get; set; }
 
         public string UserId { get; set; }

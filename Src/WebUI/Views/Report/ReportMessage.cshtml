@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title class="has-text-align-center secondary-font-color">ReportMessage</title>
+</head>
+<body>
+    <div>
+        <form asp-controller="Report" asp-action="ReportMessage" method="post">
+            <input type="hidden" name="messageId" value="@Model.Id" />
+            <select name="category">
+                <option value="Racism">Racism</option>
+                <option value="Hate Speech">Hate Speech</option>
+                <option value="Homophobia">Homophobia</option>
+                <option value="Cursing">Cursing</option>
+                <option value="Spam">Spam</option>
+            </select>
+
+            <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." />
+
+            <input type="submit" name="button" value="Send" />
+        </form>
+    </div>
+</body>
+</html>

@@ -8,15 +8,10 @@
     {
         public ClaimsPrincipal User { get; set; }
 
-        [Required]
-        [StringLength(50, MinimumLength = 5)]
-        [RegularExpression(@"[A-Z][a-z]\w+")]
         public string Title { get; set; }
 
-        [Required]
         public string Category { get; set; }
 
-        [Required]
         public string Content { get; set; }
     }
 }

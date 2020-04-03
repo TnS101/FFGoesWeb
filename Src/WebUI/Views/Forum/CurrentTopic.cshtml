@@ -2,61 +2,32 @@
 
 @{
     ViewData["Title"] = "CurrentTopic";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <partial name="_ForumNavBar">
+</head>
+<body>
+    <h1 class="has-text-align-center">@Model.Title</h1>
+    <div class="item-padding has-text-align-center">
+        <h2 class="main-font-color">@Model.Content</h2>
+        <h3 class="main-font-color">@Model.CreateOn.Date</h3>
+    </div>
+</body>
+</html>
 
-<h2>CurrentTopic</h2>
-
-<div>
-    <h4>TopicFullViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Likes)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Likes)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateOn)
-        </dt>
-    </dl>
-</div>
-<div class="has-text-align-center">
+<div class="has-text-align-center item-margin">
+    @if (Model.Comments.Count() == 0)
+    {
+        <h2 class="has-text-align-center main-font-color">No comments yet... Be the first to write <a asp-controller="Comment" asp-action="Create" asp-route-id="@Model.Id">one</a></h2>
+    }
     @foreach (var comment in Model.Comments)
     {
-        <p class="main-font-color"><a asp-controller="User" asp-action="Profile" asp-route-id="@comment.UserId"></a>@comment.User.UserName</p>
-        <p class="main-font-color">@comment.Content</p>
-        <i class="fas fa-thumbs-up"></i>@comment.Likes <i class="fas fa-comments"></i><a asp-controller="Comment" asp-action="Replies"></a>@comment.Replies.Count
+        <p class="main-font-color has-medium-font-size"><a asp-controller="User" asp-action="Profile" asp-route-id="@comment.UserId"></a></p>
+        <p class="main-font-color has-medium-font-size">@comment.Content</p>
+        <a asp-controller="Comment" asp-action="Like" asp-route-id="@comment.Id"><i class="fas fa-thumbs-up has-medium-font-size"></i></a>@comment.Likes <a asp-controller="Comment" asp-action="Replies"><i class="fas fa-comments has-medium-font-size"></i></a>@comment.Replies.Count
     }
+    <div class="item-padding">
+        <a asp-controller="Comment" asp-action="Create" asp-route-id="@Model.Id"><p class="has-text-align-center has-large-font-size main-font-color">Leave a Coment?</p></a>
+    </div>
 </div>

@@ -17,9 +17,9 @@
         public const string RegistrationSuccessful = "Almost there, {0}! Hopping to the login page.";
 
         // Redirects
-        public const string CommentCommandRedirect = "/Forum/Home/CurrentTopic/id={0}";
+        public const string CommentCommandRedirect = "/Forum/CurrentTopic/id?id={0}";
         public const string FriendCommandRedirect = "/Friends/All/";
-        public const string TopicCommandRedirect = "/Topic/PersonalTopics";
+        public const string TopicCommandRedirect = @"Forum\Home";
         public const string CreateTopicErrorRedirect = @"\Create";
         public const string CreateMessageCommandRedirect = "/Profile/Friends";
         public const string MessageCommandRedirect = "/Profile/Chats";
@@ -33,7 +33,7 @@
         public const string UnitCommandRedirect = "/Unit/All";
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";
-        public const string AdminItemCommandRedirect = "/Items/{0}";
+        public const string AdminItemCommandRedirect = "/Items/id?id={0}";
         public const string NotEnoughEnergyRedirect = "/EnergyError";
         public const string TreasureEncounterRedirect = "/TreasureEncounter";
         public const string EnemyEncounterRedirect = "EnemyEncounter";

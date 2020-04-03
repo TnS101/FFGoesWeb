@@ -16,10 +16,10 @@
             return this.View(await this.Mediator.Send(new GetAllTopicsQuery { }));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> CurrentTopic([FromQuery]string topicId)
+        [HttpGet("Forum/CurrentTopic/id")]
+        public async Task<ActionResult> CurrentTopic([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = topicId }));
+            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id }));
         }
     }
 }

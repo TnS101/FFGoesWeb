@@ -4,8 +4,9 @@
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Domain.Entities.Common;
     using Application.Common.Interfaces;
+    using Domain.Entities.Common;
+    using Domain.Entities.Common.Social;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -26,18 +27,18 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            if (!string.IsNullOrWhiteSpace(request.Content))
+            if (string.IsNullOrWhiteSpace(request.Content))
             {
-                request.Content = string.Format(GConst.NullCommentError);
+                request.Content = string.Format(GConst.NullCommentError, user.UserName);
             }
 
-            this.context.Comments.Add(new Domain.Entities.Common.Social.Comment
+            this.context.Comments.Add(new Comment
             {
                 Content = request.Content,
                 UserId = user.Id,
                 CreatedOn = DateTime.UtcNow,
                 Likes = 0,
-                Replies = new List<Domain.Entities.Common.Social.Comment>(),
+                Replies = new List<Comment>(),
                 TopicId = request.TopicId,
             });
 

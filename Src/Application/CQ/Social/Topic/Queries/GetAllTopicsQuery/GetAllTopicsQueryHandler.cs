@@ -40,6 +40,7 @@
             {
                 Topics = await this.context.Topics.Where(t => t.UserId == user.Id).Select(t => new TopicPartialViewModel
                 {
+                    Id = t.Id,
                     Title = t.Title,
                     Category = t.Category,
                     UserName = t.User.UserName,
@@ -59,6 +60,7 @@
             {
                 Topics = await this.context.Topics.Select(t => new TopicPartialViewModel
                 {
+                    Id = t.Id,
                     Title = t.Title,
                     Category = t.Category,
                     UserName = t.User.UserName,
