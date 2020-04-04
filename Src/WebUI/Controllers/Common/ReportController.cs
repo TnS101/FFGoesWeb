@@ -6,8 +6,11 @@
     using Application.CQ.Users.Tickets.Command.Comments;
     using Application.CQ.Users.Tickets.Command.Messages;
     using Application.CQ.Users.Tickets.Command.Topics;
+    using global::Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = GConst.UserRole)]
     public class ReportController : BaseController
     {
         [HttpGet("Report/ReportTopic/id")]

@@ -13,9 +13,9 @@
             {
                 if (!unit.IsSelected)
                 {
-                    <form asp-controller="Unit" class="has-text-align-center" asp-action="Select" method="post">
+                    <form  asp-controller="Unit" class="has-text-align-center" asp-action="Select" method="post">
                         <input type="hidden" name="id" value="@unit.Id" />
-                        <input type="submit" name="name" value="Select" />
+                        <input  type="submit" name="name" value="Select" />
                     </form>
                 }
                 else
@@ -43,7 +43,7 @@
                 <hr class="item-padding" />
             }
         </div>
-        <p class="has-large-font-size secondary-font-color has-text-align-center"><a asp-controller="Unit" asp-action="Create">Create</a> a new one!</p>
+        <p class="has-large-font-size main-font-color has-text-align-center"><a asp-controller="Unit" asp-action="Create">Create</a> a new one!</p>
     </div>
 </body>
 

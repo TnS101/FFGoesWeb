@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
+    using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,7 @@
             return this.View();
         }
 
+        [Authorize(Roles = GConst.UserRole)]
         [HttpGet]
         public async Task<ActionResult> MonsterCatalog()
         {

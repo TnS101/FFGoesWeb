@@ -12,6 +12,7 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Authorization;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
@@ -58,11 +59,14 @@
             .AddEntityFrameworkStores<FFDbContext>();
 
             // Authorization
-            // services.AddAuthorization();
+            services.AddAuthorization();
 
             // Other services
             services.AddSignalR();
-            services.AddControllers();
+            services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            });
             services.AddMvc();
 
             // Cookies
@@ -83,10 +87,11 @@
                 app.UseCookiePolicy();
             }
 
+            app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

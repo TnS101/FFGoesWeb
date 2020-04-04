@@ -6,10 +6,12 @@
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
     using Application.GameCQ.Items.Commands.Update;
     using Application.GameCQ.Monsters.Commands.Create;
+    using global::Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    // [Authorize(Roles = "Administrator,Player")]
+    [Authorize(Roles = GConst.UserRole)]
     public class BattleController : BaseController
     {
         private UnitFullViewModel monster;

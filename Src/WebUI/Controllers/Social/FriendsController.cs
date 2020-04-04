@@ -7,9 +7,12 @@
     using Application.CQ.Social.FriendRequests.Commands.Update;
     using Application.CQ.Social.Friends.Commands.Delete;
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
+    using global::Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
+    [Authorize(Roles = GConst.UserRole)]
     public class FriendsController : BaseController
     {
         [HttpGet]

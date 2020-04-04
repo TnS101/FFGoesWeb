@@ -45,7 +45,7 @@
         public const string NotEnoughEnergyRedirect = "/EnergyError";
         public const string TreasureEncounterRedirect = "/TreasureEncounter";
         public const string EnemyEncounterRedirect = "EnemyEncounter";
-        public const string UnitCreationErrorRedirect = @"Unit\CreationError";
+        public const string UnitCreationErrorRedirect = "/Unit/Create";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";

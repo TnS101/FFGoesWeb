@@ -3,11 +3,12 @@
     using System.Threading.Tasks;
     using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
     using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
+    using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    // [Authorize]
+    [Authorize(Roles = GConst.UserRole)]
     public class ForumController : BaseController
     {
         [HttpGet]

@@ -2,9 +2,12 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Social.Comments.Commands.Create;
+    using global::Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
+    [Authorize(Roles = GConst.UserRole)]
     public class CommentController : BaseController
     {
         [HttpGet("Comment/Create/id")]

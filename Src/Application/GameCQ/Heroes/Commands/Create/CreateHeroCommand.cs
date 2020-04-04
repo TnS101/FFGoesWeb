@@ -3,7 +3,7 @@
     using System.Security.Claims;
     using MediatR;
 
-    public class CreateHeroCommand : IRequest<string[]>
+    public class CreateHeroCommand : IRequest<string>
     {
         public ClaimsPrincipal User { get; set; }
 

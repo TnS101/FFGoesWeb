@@ -10,10 +10,12 @@
     using Application.GameCQ.Heroes.Commands.Update.SelectHeroCommand;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
+    using global::Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    // [Authorize(Roles = "Administrator,User")]
+    [Authorize(Roles = GConst.UserRole)]
     public class UnitController : BaseController
     {
         [HttpGet]
@@ -31,7 +33,7 @@
         [HttpPost]
         public async Task<ActionResult> Create([FromForm]string fightingClass, [FromForm]string race, [FromForm]string name)
         {
-            return this.View(await this.Mediator.Send(new CreateHeroCommand { ClassType = fightingClass, Race = race, Name = name, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = fightingClass, Race = race, Name = name, User = this.User }));
         }
 
         [HttpPost]
@@ -73,7 +75,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Select([FromForm]string id)
+        public async Task<ActionResult> Select(string id)
         {
             return this.Redirect(await this.Mediator.Send(new SelectHeroCommand { UnitId = id, User = this.User }));
         }

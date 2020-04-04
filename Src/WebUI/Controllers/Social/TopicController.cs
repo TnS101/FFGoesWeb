@@ -4,9 +4,12 @@
     using Application.CQ.Forum.Topic.Commands.Create;
     using Application.CQ.Forum.Topic.Commands.Delete;
     using Application.CQ.Forum.Topic.Commands.Update;
+    using global::Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
+    [Authorize(Roles = GConst.UserRole)]
     public class TopicController : BaseController
     {
         [HttpGet]

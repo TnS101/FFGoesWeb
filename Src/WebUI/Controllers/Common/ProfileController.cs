@@ -4,9 +4,11 @@
     using Application.CQ.Users.Queries.Panel;
     using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
+    using global::Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    // [Authorize(Roles = GConst.UserRole)]
+    [Authorize(Roles = GConst.UserRole)]
     public class ProfileController : BaseController
     {
         [HttpGet]
