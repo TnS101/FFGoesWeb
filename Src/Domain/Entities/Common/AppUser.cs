@@ -17,7 +17,7 @@
             this.Friends = new HashSet<AppUser>();
             this.FriendRequests = new HashSet<FriendRequest>();
             this.Messages = new HashSet<Message>();
-            this.UserTopics = new HashSet<UserTopics>();
+            this.Topics = new HashSet<Topic>();
             this.Id = Guid.NewGuid().ToString();
             this.Comments = new HashSet<Comment>();
             this.Notifications = new HashSet<Notification>();
@@ -68,7 +68,7 @@
 
         public ICollection<Message> Messages { get; set; }
 
-        public ICollection<UserTopics> UserTopics { get; set; }
+        public ICollection<Topic> Topics { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
 

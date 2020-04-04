@@ -41,8 +41,6 @@
 
         public DbSet<Topic> Topics { get; set; }
 
-        public DbSet<UserTopics> UsersTopics { get; set; }
-
         public DbSet<Ticket> Tickets { get; set; }
 
         public DbSet<Feedback> Feedbacks { get; set; }
@@ -131,19 +129,6 @@
            .HasOne(m => m.Monster)
            .WithOne(mr => mr.MonsterRarity)
            .HasForeignKey<MonsterRarity>(mr => mr.MonsterId);
-
-            modelBuilder.Entity<UserTopics>()
-           .HasKey(k => new { k.UserId, k.TopicId });
-
-            modelBuilder.Entity<UserTopics>()
-           .HasOne(u => u.User)
-           .WithMany(t => t.UserTopics)
-           .HasForeignKey(u => u.UserId);
-
-            modelBuilder.Entity<UserTopics>()
-           .HasOne(t => t.Topic)
-           .WithMany(u => u.UserTopics)
-           .HasForeignKey(t => t.TopicId);
 
             modelBuilder.Entity<UserStatus>().HasKey(k => new { k.UserId });
 

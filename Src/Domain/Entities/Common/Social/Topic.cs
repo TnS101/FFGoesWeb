@@ -9,7 +9,6 @@
         public Topic()
         {
             this.Comments = new HashSet<Comment>();
-            this.UserTopics = new HashSet<UserTopics>();
             this.Tickets = new HashSet<Ticket>();
             this.Id = Guid.NewGuid().ToString();
         }
@@ -37,7 +36,5 @@
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; }
-
-        public ICollection<UserTopics> UserTopics { get; set; }
     }
 }

@@ -1,9 +1,11 @@
 ﻿namespace WebUI.Controllers.Common
 {
     using System.Threading.Tasks;
+    using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
     using Application.CQ.Users.Queries.Panel;
     using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
+    using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -27,6 +29,18 @@
         public async Task<ActionResult> UpdateStatus([FromQuery]int id)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateStatusCommand { StatusId = id, User = this.User }));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Topics()
+        {
+            return this.View(await this.Mediator.Send(new GetAllTopicsQuery { User = this.User }));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> MasteryPoints()
+        {
+            return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
         }
     }
 }

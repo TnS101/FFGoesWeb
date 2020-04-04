@@ -25,5 +25,7 @@
         public int PvPEnergy { get; set; }
 
         public string IconURL { get; set; }
+
+        public int Mastery { get; set; }
     }
 }

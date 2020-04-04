@@ -26,6 +26,8 @@
 
             var units = this.context.Heroes.Where(u => u.UserId == user.Id);
 
+            var topics = this.context.Topics.Where(t => t.UserId == user.Id);
+
             if (!this.context.UserStatuses.Any(u => u.UserId == user.Id))
             {
                 var status = this.context.Statuses.FirstOrDefault(s => s.DisplayName == "UnSet");
@@ -50,7 +52,7 @@
                     StatusIClass = status.IClass,
                     MasteryPoints = user.MasteryPoints,
                     Warnings = user.Warnings,
-                    UserTopics = user.UserTopics.Count,
+                    UserTopics = topics.Count(),
                     Feedbacks = user.Feedbacks.Count,
                     ForumPoints = user.ForumPoints,
                     Friends = user.Friends.Count,
@@ -81,7 +83,7 @@
                     StatusIClass = status.IClass,
                     MasteryPoints = user.MasteryPoints,
                     Warnings = user.Warnings,
-                    UserTopics = user.UserTopics.Count,
+                    UserTopics = topics.Count(),
                     Feedbacks = user.Feedbacks.Count,
                     ForumPoints = user.ForumPoints,
                     Friends = user.Friends.Count,

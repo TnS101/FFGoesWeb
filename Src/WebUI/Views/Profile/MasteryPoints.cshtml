@@ -1,0 +1,34 @@
+﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MasteryPoints</title>
+    <partial name="_NavBar">
+</head>
+<body>
+    @if (Model.Heroes.Any(h => h.Mastery > 0))
+    {
+
+    }
+    else
+    {
+        <h1 class="has-text-align-center secondary-font-color">You currently do not have Mastery Points.</h1>
+        <div class="item-padding has-text-align-center">
+            <h2 class="main-font-color">Mastery Points are achieved by leveling up your <a asp-controller="Unit" asp-action="All">Heroes</a>.</h2>
+        </div>
+        <div class="item-padding has-text-align-center">
+            <h2 class="main-font-color">Leveling up a Hero to level 10 grants you 100 Mastery Points. Each level after grants you 15 points.</h2>
+        </div>
+        <div class="item-padding has-text-align-center">
+            <h2 class="main-font-color">Every step of your progress will be displayed here. Happy <a asp-controller="World" asp-action="Home">Farming</a>!</h2>
+        </div>
+        <div class="item-padding has-text-align-center">
+            <h2 class="main-font-color"><b style="color:red">Important!</b> Deleting a character will <b style="color:red">NOT</b> affect your current Mastery Points.</h2>
+        </div>
+    }
+
+</body>
+</html>
