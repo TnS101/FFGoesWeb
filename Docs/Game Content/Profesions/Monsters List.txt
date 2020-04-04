@@ -1,0 +1,29 @@
+World(Main [9])
+Bear, Reptile, Zombie, Skeleton, Wyrm, Giant, Gryphon, Saint, Demon
+
+Tainted Forest(Lumberjack[4])
+Magical Tree, Tree Kangaroo, Giant Panda, Orangutan
+
+Endless Mine(Miner[4])
+Giant Bat, Isopod, Cave Troll, Gargoyle
+
+The Wilderness(Tracker[4])
+Wolf, Boar, Fox, Wild Goat
+
+Vile City(Head Hunter[4])
+Civilian, Policeman, Prisoner, Gypsy
+
+Magical Flower Shop(Herbalist[4])
+Giant Clay Pot, Mutated Flower, Huge Dirt Block, Cactus
+
+The Core(Banisher[4])
+Giant Glass Orb, Essence Stealer, Essenceful Entity, Ancient Floating Shard
+
+Rocky Basin(Angler[4])
+Seaside Lizard, Sea Turtle, Squid, Seagull
+
+Happy Garden(Farmer[4])
+Moth, Praying Mantis, Huge Basket, The Toolshed
+
+Scrap Terminal(Scrapper[4])
+Garbage Can, Recycling Bot of 198920, Garbage Truck, Broken Vending Machine 

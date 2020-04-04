@@ -6,5 +6,7 @@
     public class GenerateMonsterCommand : IRequest<UnitFullViewModel>
     {
         public int PlayerLevel { get; set; }
+
+        public string ZoneName { get; set; }
     }
 }

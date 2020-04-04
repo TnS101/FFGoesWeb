@@ -7,10 +7,12 @@
     using Domain.Entities.Common;
     using Domain.Models;
     using MediatR;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc.Authorization;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Persistence;
@@ -56,7 +58,7 @@
             .AddEntityFrameworkStores<FFDbContext>();
 
             // Authorization
-            services.AddAuthorization();
+            // services.AddAuthorization();
 
             // Other services
             services.AddSignalR();

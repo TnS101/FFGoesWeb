@@ -4,10 +4,12 @@
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Application.GameCQ.Treasures.Commands.Update;
     using Application.GameCQ.World.Commands.Update;
+    using global::Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    // [Authorize(Roles = "User")]
+    [Authorize(Roles = GConst.UserRole)]
     public class WorldController : BaseController
     {
         [HttpGet]

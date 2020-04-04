@@ -21,7 +21,7 @@
                 caster.CurrentHP = 0;
             }
 
-            caster.CurrentArmorValue += armorBonus * caster.CurrentArmorValue;
+            caster.CurrentArmorValue += armorBonus * caster.ArmorValue;
         }
     }
 }

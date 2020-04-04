@@ -23,7 +23,7 @@
 
         public async Task<UnitFullViewModel> Handle(GenerateMonsterCommand request, CancellationToken cancellationToken)
         {
-            var enemy = await this.enemyGenerator.Generate(request.PlayerLevel, this.context);
+            var enemy = await this.enemyGenerator.Generate(request.PlayerLevel, this.context, request.ZoneName);
 
             return this.mapper.Map<UnitFullViewModel>(enemy);
         }

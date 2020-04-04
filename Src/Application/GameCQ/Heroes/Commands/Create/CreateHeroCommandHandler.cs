@@ -34,7 +34,7 @@
                 return new string[] { GConst.UnitCreationErrorRedirect, string.Format(GConst.AllowedUnitsError, user.AllowedHeroes) };
             }
 
-            if (string.IsNullOrWhiteSpace(request.Name) || request.Name.Length < 5 || request.Name.Length > 20)
+            if (request.Name.Length < 5 || request.Name.Length > 20)
             {
                 return new string[] { GConst.UnitCreationErrorRedirect, string.Format(GConst.LengthException, 5, 20) };
             }

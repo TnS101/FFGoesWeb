@@ -8,3 +8,6 @@ dotnet_diagnostic.SA1305.severity = silent
 
 # SA1108: Block statements should not contain embedded comments
 dotnet_diagnostic.SA1108.severity = silent
+
+# SA1401: Fields should be private
+dotnet_diagnostic.SA1401.severity = none

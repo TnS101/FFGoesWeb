@@ -27,7 +27,7 @@
                 }
                 else if (buffType == "Res")
                 {
-                    caster.CurrentArmorValue += buffEffect;
+                    caster.CurrentRessistanceValue += buffEffect;
                 }
                 else if (buffType == "Mana")
                 {
