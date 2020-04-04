@@ -19,10 +19,10 @@
         private UnitFullViewModel player;
 
         [HttpGet]
-        public async Task<ActionResult> Battle()
+        public async Task<ActionResult> Battle([FromForm]string zonenName)
         {
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
-            this.monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level });
+            this.monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zonenName });
             this.yourTurn = true;
             return this.View(@"\Battle", this.monster.Name);
         }

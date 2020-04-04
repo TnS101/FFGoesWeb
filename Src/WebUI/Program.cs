@@ -24,41 +24,41 @@
 
                 var context = services.GetRequiredService<FFDbContext>();
 
-                context.Database.EnsureCreated();
+                //context.Database.EnsureCreated();
                 
-                var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+                //var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
                 
-                var usermanager = services.GetRequiredService<UserManager<AppUser>>();
+                //var usermanager = services.GetRequiredService<UserManager<AppUser>>();
                 
-                await roleManager.CreateAsync(new ApplicationRole(GConst.AdminRole));
+                //await roleManager.CreateAsync(new ApplicationRole(GConst.AdminRole));
                 
-                await roleManager.CreateAsync(new ApplicationRole(GConst.ModeratorRole));
+                //await roleManager.CreateAsync(new ApplicationRole(GConst.ModeratorRole));
                 
-                await roleManager.CreateAsync(new ApplicationRole(GConst.UserRole));
-                var admin = new AppUser
-                {
-                    UserName = "admin",
-                    Email = "admin@admin.com",
-                };
+                //await roleManager.CreateAsync(new ApplicationRole(GConst.UserRole));
+                //var admin = new AppUser
+                //{
+                //    UserName = "admin",
+                //    Email = "admin@admin.com",
+                //};
 
-                var mod = new AppUser
-                {
-                    UserName = "moderator",
-                    Email = "moderator@moderator.com",
-                };
+                //var mod = new AppUser
+                //{
+                //    UserName = "moderator",
+                //    Email = "moderator@moderator.com",
+                //};
 
-                await usermanager.CreateAsync(admin, "Admin@123456");
+                //await usermanager.CreateAsync(admin, "Admin@123456");
 
-                await usermanager.CreateAsync(mod, "Mod@123456");
+                //await usermanager.CreateAsync(mod, "Mod@123456");
                 
-                await usermanager.AddToRoleAsync(admin, GConst.AdminRole);
+                //await usermanager.AddToRoleAsync(admin, GConst.AdminRole);
 
-                await usermanager.AddToRoleAsync(mod, GConst.ModeratorRole);
+                //await usermanager.AddToRoleAsync(mod, GConst.ModeratorRole);
                 
-                context.SaveChanges();
+                //context.SaveChanges();
                 
-                var mediator = services.GetRequiredService<IMediator>();
-                await mediator.Send(new DataSeederCommand());
+                //var mediator = services.GetRequiredService<IMediator>();
+                //await mediator.Send(new DataSeederCommand());
             }
 
             host.Run();

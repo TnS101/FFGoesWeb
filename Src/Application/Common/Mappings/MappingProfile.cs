@@ -17,6 +17,7 @@
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
+    using Application.GameCQ.Monsters.Queries.GetMonsterInfoQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using Domain.Entities.Common;
@@ -51,6 +52,7 @@
             this.CreateMap<Monster, MonsterMinViewModel>();
             this.CreateMap<Monster, UnitFullViewModel>();
             this.CreateMap<Comment, CommentMinViewModel>();
+            this.CreateMap<Monster, MonsterFullViewModel>();
         }
     }
 }

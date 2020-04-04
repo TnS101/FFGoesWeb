@@ -6,11 +6,15 @@
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
     using Domain.Entities.Game.Units;
+    using Microsoft.EntityFrameworkCore;
 
     public class EnemyGenerator
     {
+        private Random rng;
+
         public EnemyGenerator()
         {
+            this.rng = new Random();
         }
 
         public async Task<Monster> Generate(int playerLevel, IFFDbContext context, string zoneName)
@@ -19,15 +23,11 @@
 
             StatIncrement statIncrement = new StatIncrement();
 
-            var rng = new Random();
-
-            int enemyNumber = rng.Next(0, 26);
-
             int monsterId = 0;
 
             if (zoneName == "World")
             {
-                monsterId = this.WorldMonsterId(enemyNumber);
+                monsterId = this.WorldMonsterId();
             }
             else if (zoneName == "Tainted Forest")
             {
@@ -71,14 +71,12 @@
 
             statIncrement.MonsterIncrement(baseMonster, monster);
 
-            return this.RarityRng(monster, context);
+            return await this.RarityRng(monster, context);
         }
 
-        private Monster RarityRng(Monster monster, IFFDbContext context)
+        private async Task<Monster> RarityRng(Monster monster, IFFDbContext context)
         {
-            var rng = new Random();
-
-            int number = rng.Next(1, 11);
+            int number = this.rng.Next(1, 11);
 
             var monsterRarity = new MonsterRarity();
 
@@ -86,12 +84,12 @@
 
             if (number == 1)
             {
-                monsterRarity = context.MonstersRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Heroic");
+                monsterRarity = await context.MonstersRarities.FirstOrDefaultAsync(mr => mr.MonsterName == monster.Name && mr.Rarity == "Heroic");
                 statAmplifier = monsterRarity.StatAmplifier;
             }
             else if (number == 2 || number == 3 || number == 4)
             {
-                monsterRarity = context.MonstersRarities.FirstOrDefault(mr => mr.MonsterName == monster.Name && mr.Rarity == "Rare");
+                monsterRarity = await context.MonstersRarities.FirstOrDefaultAsync(mr => mr.MonsterName == monster.Name && mr.Rarity == "Rare");
                 statAmplifier = monsterRarity.StatAmplifier;
             }
 
@@ -108,8 +106,10 @@
             return monster;
         }
 
-        private int WorldMonsterId(int enemyNumber)
+        private int WorldMonsterId()
         {
+            int enemyNumber = this.rng.Next(0, 26);
+
             if (enemyNumber >= 0 && enemyNumber <= 5) // Beast
             {
                 return 9;

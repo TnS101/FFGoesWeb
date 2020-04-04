@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Common;
+using System.Net;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore;
 
 namespace WebUI.Areas.Identity.Pages.Account
 {
@@ -31,6 +34,8 @@ namespace WebUI.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
+            this.HttpContext.Session.Remove(".AspNetCore.Identity.Application");
+
             await _signInManager.SignOutAsync();
 
             _logger.LogInformation("User logged out.");

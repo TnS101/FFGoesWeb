@@ -7,9 +7,11 @@
     using Application.CQ.Admin.GameContent.Items.Queries;
     using Application.CQ.Admin.GameContent.Spells.Queries;
     using Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
+    [Authorize(Roles = GConst.AdminRole)]
     [Area(GConst.AdminArea)]
     public class GameContentController : BaseController
     {

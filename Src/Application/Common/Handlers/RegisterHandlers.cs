@@ -52,6 +52,7 @@
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using Application.GameCQ.Monsters.Commands.Create;
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
+    using Application.GameCQ.Monsters.Queries.GetMonsterInfoQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using Application.GameCQ.Treasures.Commands.Delete;
     using Application.GameCQ.Treasures.Commands.Update;
@@ -149,6 +150,7 @@
             services.AddScoped<IRequestHandler<GetAllFightingClassesQuery, FightingClassListViewModel>, GetAllFightingClassesQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllMonstersQuery, MonsterListViewModel>, GetAllMonstersQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllFriendsQuery, UserListViewModel>, GetAllFriendsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetMonsterInfoQuery, MonsterFullViewModel>, GetMonsterInfoQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

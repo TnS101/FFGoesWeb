@@ -72,19 +72,33 @@
                             hero.PvPEnergy++;
                         }
 
-                        await this.context.EnergyChanges.AddAsync(new EnergyChange
+                        while (true)
                         {
-                            HeroId = hero.Id,
-                            LastChangedOn = DateTime.UtcNow,
-                            Type = "Regeneration",
-                        });
+                            var regeneration = new EnergyChange
+                            {
+                                HeroId = hero.Id,
+                                LastChangedOn = DateTime.UtcNow,
+                                Type = "Regeneration",
+                            };
+
+                            if (this.context.EnergyChanges.Any(ec => ec.Id == regeneration.Id))
+                            {
+                                continue;
+                            }
+
+                            await this.context.EnergyChanges.AddAsync(regeneration);
+
+                            break;
+                        }
 
                         this.context.EnergyChanges.Remove(energyChange);
                     }
 
                     if (hero.Energy == energyCap)
                     {
-                        this.context.EnergyChanges.RemoveRange(this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id));
+                        var personalEnergyChanges = this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id);
+
+                        this.context.EnergyChanges.RemoveRange(personalEnergyChanges);
                     }
                 }
 

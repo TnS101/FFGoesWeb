@@ -9,7 +9,7 @@
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    // [Authorize(Roles = GConst.AdminRole)]
+    [Authorize(Roles = GConst.AdminRole)]
     [Area(GConst.AdminArea)]
     public class AdminController : BaseController
     {

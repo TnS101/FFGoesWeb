@@ -256,3 +256,4 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\WebUI.StaticWebAssets.xml
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.dll
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\WebUI.pdb
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\MonsterInfo.cshtml.g.cs
