@@ -28,6 +28,10 @@
 
             var topics = this.context.Topics.Where(t => t.UserId == user.Id);
 
+            var feedbacks = this.context.Feedbacks.Where(f => f.UserId == user.Id);
+
+            var friends = this.context.AppUsers.Where(f => f.FriendId == user.Id);
+
             if (!this.context.UserStatuses.Any(u => u.UserId == user.Id))
             {
                 var status = this.context.Statuses.FirstOrDefault(s => s.DisplayName == "UnSet");
@@ -52,10 +56,10 @@
                     StatusIClass = status.IClass,
                     MasteryPoints = user.MasteryPoints,
                     Warnings = user.Warnings,
-                    UserTopics = topics.Count(),
-                    Feedbacks = user.Feedbacks.Count,
+                    Topics = topics.Count(),
+                    Feedbacks = feedbacks.Count(),
                     ForumPoints = user.ForumPoints,
-                    Friends = user.Friends.Count,
+                    Friends = friends.Count(),
                     Units = units.Count(),
                 };
             }
@@ -83,10 +87,10 @@
                     StatusIClass = status.IClass,
                     MasteryPoints = user.MasteryPoints,
                     Warnings = user.Warnings,
-                    UserTopics = topics.Count(),
-                    Feedbacks = user.Feedbacks.Count,
+                    Topics = topics.Count(),
+                    Feedbacks = feedbacks.Count(),
                     ForumPoints = user.ForumPoints,
-                    Friends = user.Friends.Count,
+                    Friends = friends.Count(),
                     Units = units.Count(),
                 };
             }

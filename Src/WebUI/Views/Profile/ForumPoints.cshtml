@@ -11,16 +11,21 @@
 <body>
     @if (Model.ForumPoints > 0)
     {
-
+        <div class="has-text-align-center item-padding">
+            <a asp-controller="Comment" asp-action="PointProgress" asp-route-id="@Model.Id"><p class="main-font-color has-large-font-size">Comments</p></a>
+        </div>
+        <div class="has-text-align-center item-padding">
+            <a asp-controller="Topic" asp-action="PointProgress" asp-route-id="@Model.Id"><p class="main-font-color has-large-font-size">Topics</p></a>
+        </div>
     }
     else
     {
         <h1 class="has-text-align-center secondary-font-color">You currently do not have Forum Points.</h1>
         <div class="item-padding has-text-align-center">
-            <h2 class="main-font-color">Forum Points are the sum of all of the likes of your <a asp-controller="Profile" asp-action="Topics" asp-route-id="@Model.Id">Topics</a> and comments.</h2>
+            <h2 class="main-font-color">Forum Points are the sum of all of the likes of your <a asp-controller="Profile" asp-action="Topics" asp-route-id="@Model.Id">Topics</a> and Comments.</h2>
         </div>
         <div class="item-padding has-text-align-center">
-            <h2 class="main-font-color">Every step of your progress will be displayed here. Happy <a asp-controller="Forum" asp-action="Home"></a>Blogging!</h2>
+            <h2 class="main-font-color">Every step of your progress will be displayed here. Happy <a asp-controller="Forum" asp-action="Home">Blogging!</a></h2>
         </div>
     }
 </body>

@@ -1,10 +1,14 @@
-﻿namespace Application.CQ.Users.Queries.Panel
+﻿using System;
+
+namespace Application.CQ.Users.Queries.Panel
 {
     public class UserPanelViewModel
     {
         public UserPanelViewModel()
         {
         }
+
+        public string Id { get; set; }
 
         public string UserName { get; set; }
 
@@ -22,8 +26,10 @@
 
         public int Feedbacks { get; set; }
 
-        public int UserTopics { get; set; }
+        public int Topics { get; set; }
 
         public int Friends { get; set; }
+
+        public DateTime? LastFeedbackSentOn { get; set; }
     }
 }

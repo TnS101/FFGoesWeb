@@ -32,16 +32,29 @@ $(function () {
     });
 });
 
-$ajax(
-    {
-        type: "POST",
-        url: 'unit/select',
-        data: { id: '1'},
-    })
-    .done(function success(data)
-    {
-        alert('Unit\'s name is' + data)
+$(function () {
+    $('#leave-feedback').click(function () {
+        jQuery.get('/ Profile/LeaveFeedback');
+        getFeedback();
     });
+})
+
+function getFeedback() {
+    $ajax(
+        {
+            type: "GET",
+            url: '/ Profile/LeaveFeedback',
+            dataType: "html",
+            contentType: 'application/html; charset=utf-8',
+        })
+        .success(function success()
+        {
+            $('#feedback').html();
+        });
+}
+
+
+
 
 
 /*! jQuery v1.12.4 | (c) jQuery Foundation | jquery.org/license | WordPress 2019-05-16 */

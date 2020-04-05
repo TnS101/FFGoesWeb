@@ -46,6 +46,8 @@
         public const string TreasureEncounterRedirect = "/TreasureEncounter";
         public const string EnemyEncounterRedirect = "EnemyEncounter";
         public const string UnitCreationErrorRedirect = "/Unit/Create";
+        public const string SuccesfulFeedbackRedirect = @"\FeedbackSuccess";
+        public const string ErrorRedirect = "Error";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";

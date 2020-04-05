@@ -1,10 +1,9 @@
 ﻿namespace Application.CQ.Users.Feedbacks.Command
 {
-    using System;
     using System.Security.Claims;
     using MediatR;
 
-    public class SendFeedbackCommand : IRequest<string[]>
+    public class SendFeedbackCommand : IRequest<string>
     {
         public ClaimsPrincipal Sender { get; set; }
 

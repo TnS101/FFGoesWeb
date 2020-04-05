@@ -9,7 +9,7 @@
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class SendFeedbackCommandHandler : IRequestHandler<SendFeedbackCommand, string[]>
+    public class SendFeedbackCommandHandler : IRequestHandler<SendFeedbackCommand, string>
     {
         private readonly IFFDbContext context;
         private readonly UserManager<AppUser> userManager;
@@ -20,9 +20,16 @@
             this.userManager = userManager;
         }
 
-        public async Task<string[]> Handle(SendFeedbackCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(SendFeedbackCommand request, CancellationToken cancellationToken)
         {
             var sender = await this.userManager.GetUserAsync(request.Sender);
+
+            if (sender.LastFeedbackSentOn.HasValue && DateTime.UtcNow.Day - sender.LastFeedbackSentOn.Value.Day <= 1)
+            {
+                return GConst.ErrorRedirect;
+            }
+
+            sender.LastFeedbackSentOn = DateTime.UtcNow;
 
             this.context.Feedbacks.Add(new Domain.Entities.Moderation.Feedback
             {
@@ -34,9 +41,11 @@
                 Rate = request.Rate,
             });
 
+            this.context.AppUsers.Update(sender);
+
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return new string[] { GConst.SendFeedbackRedirect, GConst.SendFeedback };
+            return GConst.SuccesfulFeedbackRedirect;
         }
     }
 }

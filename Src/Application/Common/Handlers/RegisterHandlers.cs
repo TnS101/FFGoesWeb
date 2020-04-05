@@ -30,6 +30,8 @@
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
     using Application.CQ.Social.Message.Commands.Create;
     using Application.CQ.Social.Message.Queries;
+    using Application.CQ.Users.Feedbacks.Command;
+    using Application.CQ.Users.Feedbacks.Queries;
     using Application.CQ.Users.Queries.Panel;
     using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
@@ -131,6 +133,7 @@
             services.AddScoped<IRequestHandler<OpenTopicTicketCommand, string>, OpenTopicTicketCommandHandler>();
             services.AddScoped<IRequestHandler<OpenCommentTicketCommand, string>, OpenCommentTicketCommandHandler>();
             services.AddScoped<IRequestHandler<OpenMessageTicketCommand, string>, OpenMessageTicketCommandHandler>();
+            services.AddScoped<IRequestHandler<SendFeedbackCommand, string>, SendFeedbackCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)
@@ -151,6 +154,7 @@
             services.AddScoped<IRequestHandler<GetAllMonstersQuery, MonsterListViewModel>, GetAllMonstersQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllFriendsQuery, UserListViewModel>, GetAllFriendsQueryHandler>();
             services.AddScoped<IRequestHandler<GetMonsterInfoQuery, MonsterFullViewModel>, GetMonsterInfoQueryHandler>();
+            services.AddScoped<IRequestHandler<GetPersonalFeedbacksQuery, FeedbackListViewModel>, GetPersonalFeedbacksQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

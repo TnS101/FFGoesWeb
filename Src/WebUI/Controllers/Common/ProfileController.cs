@@ -2,6 +2,8 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
+    using Application.CQ.Users.Feedbacks.Command;
+    using Application.CQ.Users.Feedbacks.Queries;
     using Application.CQ.Users.Queries.Panel;
     using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
@@ -41,6 +43,24 @@
         public async Task<ActionResult> MasteryPoints()
         {
             return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ForumPoints()
+        {
+            return this.View(await this.UserManager.GetUserAsync(this.User));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> LeaveFeedback([FromForm]string feedback, [FromForm]int rate)
+        {
+            return this.View(await this.Mediator.Send(new SendFeedbackCommand { Content = feedback, Sender = this.User, Rate = rate }));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Feedbacks()
+        {
+            return this.View(await this.Mediator.Send(new GetPersonalFeedbacksQuery { User = this.User }));
         }
     }
 }
