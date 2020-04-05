@@ -30,13 +30,13 @@
             var loginCookie = cookies["userLogin"];
             var users = new UserListViewModel { };
 
-            if (!this.context.AppUsers.Any(u => u.IsLoggedIn))
-            {
-                return new UserListViewModel
-                {
-                    Users = await this.context.AppUsers.ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
-                };
-            }
+            //if (!this.context.AppUsers.Any(u => u.IsLoggedIn))
+            //{
+            //    return new UserListViewModel
+            //    {
+            //        Users = await this.context.AppUsers.ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+            //    };
+            //}
 
             if (request.Role is null)
             {

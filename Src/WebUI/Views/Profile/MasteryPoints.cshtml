@@ -12,6 +12,7 @@
     @if (Model.Heroes.Any(h => h.Mastery > 0))
     {
         <h1 class="has-text-align-center secondary-font-color">Your Heroes and their Mastery Points.</h1>
+        <br/>
         foreach (var hero in Model.Heroes.OrderByDescending(h => h.Mastery))
         {
             <div class="has-text-align-center has-narrow-width">
@@ -26,6 +27,7 @@
     else
     {
         <h1 class="has-text-align-center secondary-font-color">You currently do not have Mastery Points.</h1>
+        <br/>
         <div class="item-padding has-text-align-center">
             <h2 class="main-font-color">Mastery Points are achieved by leveling up your <a asp-controller="Unit" asp-action="All">Heroes</a>.</h2>
         </div>
@@ -39,6 +41,5 @@
     <div class="item-padding has-text-align-center">
         <h2 class="main-font-color"><b style="color:red">Important!</b> Deleting a character will <b style="color:red">NOT</b> affect your current Mastery Points.</h2>
     </div>
-
 </body>
 </html>

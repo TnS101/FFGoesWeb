@@ -48,11 +48,7 @@
 
         public int AllowedHeroes { get; set; }
 
-        public int OnlineTime { get; set; }
-
         public bool IsDeleted { get; set; }
-
-        public bool IsLoggedIn { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

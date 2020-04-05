@@ -1,0 +1,19 @@
+﻿@model AppUser
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+    <partial name="_SocialNavBar">
+</head>
+<body>
+    <h1 class="has-text-align-center secondary-font-color">Welcome to your Social Panel!</h1>
+    <div class="has-text-align-center item-padding">
+        <br />
+        <p class="main-font-color has-large-font-size">
+            Here you can track your Social Activities, such as <a asp-controller="Friend" asp-action="Requests" asp-route-id="@Model.Id">Friend Requests</a>,
+            <a asp-controller="Notification" asp-action="All" asp-route-id="@Model.Id">Notifications</a> and <a asp-controller="Friend" asp-action="All">Messages</a>.
+        </p>
+    </div>
+</body>
+</html>

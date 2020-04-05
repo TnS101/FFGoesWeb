@@ -8,6 +8,7 @@
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.Social.Comments.Queries.GetCurrentCommentQuery;
+    using Application.CQ.Social.Friends.Queries.GetCurrentFriendQuery;
     using Application.CQ.Social.Message.Queries;
     using Application.CQ.Users.Feedbacks.Queries;
     using Application.CQ.Users.Statuses.Queries;
@@ -53,6 +54,7 @@
             this.CreateMap<Monster, UnitFullViewModel>();
             this.CreateMap<Comment, CommentMinViewModel>();
             this.CreateMap<Monster, MonsterFullViewModel>();
+            this.CreateMap<AppUser, UserViewModel>();
         }
     }
 }

@@ -24,17 +24,17 @@
         {
             var reciever = await this.userManager.GetUserAsync(request.Reciever);
 
-            var friendRequest = await this.context.FriendRequests.FindAsync(request.RequestId);
+            var friendRequests = await this.context.FriendRequests.Where(fr => fr.UserId == reciever.Id).Select(fr => new FriendRequestFullViewModel
+            {
+                SenderName = fr.SenderName,
+                SentOn = fr.SentOn,
+            })
+                .OrderByDescending(s => s.SentOn)
+                .ToListAsync();
 
             return new FriendRequestListViewModel
             {
-                FriendRequests = await this.context.FriendRequests.Where(fr => fr.UserId == reciever.Id).Select(fr => new FriendRequestFullViewModel
-                {
-                    SenderName = friendRequest.SenderName,
-                    SentOn = friendRequest.SentOn,
-                })
-                .OrderByDescending(s => s.SentOn)
-                .ToListAsync(),
+                FriendRequests = friendRequests,
             };
         }
     }

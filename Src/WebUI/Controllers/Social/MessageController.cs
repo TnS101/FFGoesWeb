@@ -11,7 +11,7 @@
     [Authorize(Roles = GConst.UserRole)]
     public class MessageController : BaseController
     {
-        [HttpGet]
+        [HttpGet("Messages/All/id")]
         public async Task<ActionResult> All([FromQuery]string id)
         {
             return this.View(await this.Mediator.Send(new GetPersonalMessagesQuery { Reciever = this.User, SenderId = id }));

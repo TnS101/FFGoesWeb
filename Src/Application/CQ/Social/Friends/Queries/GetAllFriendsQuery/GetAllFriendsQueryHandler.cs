@@ -31,7 +31,7 @@
 
             return new UserListViewModel
             {
-                Users = await this.context.AppUsers.Where(u => u.FriendId == user.FriendId).ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                Users = await this.context.AppUsers.Where(u => u.FriendId == user.Id).ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }
