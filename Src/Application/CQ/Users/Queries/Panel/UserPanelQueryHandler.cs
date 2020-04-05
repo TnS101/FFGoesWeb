@@ -45,8 +45,6 @@
                 this.context.UserStatuses.Add(userStatus);
                 this.SumForumPoints(user);
 
-                user.MasteryPoints = units.Sum(u => u.Mastery);
-
                 await this.context.SaveChangesAsync(cancellationToken);
 
                 return new UserPanelViewModel

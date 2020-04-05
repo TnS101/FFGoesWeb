@@ -5,49 +5,53 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title class="has-text-align-center secondary-font-color">ReportTopic</title>
+    <partial name="_NavBar">
 </head>
 <body>
 
     <div class="has-text-align-center">
-        <hr />
         <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
+            <dt class="has-medium-font-size">
+                <em>@Html.DisplayNameFor(model => model.Title)</em>
             </dt>
-            <dd class="has-large-font-size main-font-color">
+            <dd class="has-large-font-size secondary-font-color">
                 @Html.DisplayFor(model => model.Title)
             </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Category)
+            <dt class="has-medium-font-size main-font-color">
+                <em>@Html.DisplayNameFor(model => model.Category)</em>
             </dt>
             <dd class="has-large-font-size main-font-color">
                 @Html.DisplayFor(model => model.Category)
             </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Content)
+            <hr />
+            <dt class="has-medium-font-size main-font-color">
+                <em>@Html.DisplayNameFor(model => model.Content)</em>
             </dt>
             <dd class="has-large-font-size main-font-color">
                 @Html.DisplayFor(model => model.Content)
             </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Likes)
+            <hr />
+            <dt class="has-medium-font-size main-font-color">
+                <em>@Html.DisplayNameFor(model => model.Likes)</em>
             </dt>
             <dd class="has-large-font-size main-font-color">
                 @Html.DisplayFor(model => model.Likes)
             </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.CreateOn)
+            <hr />
+            <dt class="has-medium-font-size main-font-color">
+                <em>@Html.DisplayNameFor(model => model.CreateOn)</em>
             </dt>
             <dd class="has-large-font-size main-font-color">
                 @Html.DisplayFor(model => model.CreateOn)
             </dd>
+            <hr />
         </dl>
     </div>
-    <div>
+    <div class="item-padding">
         <form asp-controller="Report" asp-action="ReportTopic" method="post">
             <input type="hidden" name="topicId" value="@Model.Id" />
-            <select class="aligncenter item-padding" name="category">
+            <select class="aligncenter " name="category">
                 <option value="Racism">Racism</option>
                 <option selected value="Hate Speech">Hate Speech</option>
                 <option value="Homophobia">Homophobia</option>
@@ -58,7 +62,7 @@
                 <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." />
             </div>
             <div class="item-padding">
-                <input class="aligncenter" type="submit" name="button" value="Send" />
+                <input class="aligncenter has-medium-font-size" type="submit" name="button" value="Send" />
             </div>
         </form>
     </div>

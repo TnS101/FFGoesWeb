@@ -24,7 +24,7 @@
         {
             if (request.User is null)
             {
-                return await this.PublicTopics();
+                return await this.PublicTopics(request);
             }
             else
             {
@@ -54,22 +54,32 @@
             };
         }
 
-        private async Task<TopicListViewModel> PublicTopics()
+        private async Task<TopicListViewModel> PublicTopics(GetAllTopicsQuery request)
         {
+            var topics = await this.context.Topics.Select(t => new TopicPartialViewModel
+            {
+                Id = t.Id,
+                Title = t.Title,
+                Category = t.Category,
+                UserName = t.User.UserName,
+                CreateOn = t.CreateOn,
+                Likes = t.Likes,
+                Comments = t.Comments.Count(),
+            })
+                .OrderByDescending(t => t.CreateOn)
+                .ToListAsync();
+
+            if (request.Filter is null)
+            {
+                return new TopicListViewModel
+                {
+                    Topics = topics,
+                };
+            }
+
             return new TopicListViewModel
             {
-                Topics = await this.context.Topics.Select(t => new TopicPartialViewModel
-                {
-                    Id = t.Id,
-                    Title = t.Title,
-                    Category = t.Category,
-                    UserName = t.User.UserName,
-                    CreateOn = t.CreateOn,
-                    Likes = t.Likes,
-                    Comments = t.Comments.Count(),
-                })
-                .OrderByDescending(t => t.CreateOn)
-                .ToListAsync(),
+                Topics = topics.Where(t => t.Category == request.Filter),
             };
         }
     }

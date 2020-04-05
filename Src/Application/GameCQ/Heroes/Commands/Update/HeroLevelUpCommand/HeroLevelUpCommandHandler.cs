@@ -21,7 +21,9 @@
         {
             var hero = await this.context.Heroes.FindAsync(request.HeroId);
 
-            this.level.Up(hero);
+            var user = await this.context.AppUsers.FindAsync(hero.UserId);
+
+            this.level.Up(hero, user);
 
             this.context.Heroes.Update(hero);
 

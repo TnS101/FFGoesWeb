@@ -12,9 +12,9 @@
     public class ForumController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> Home()
+        public async Task<ActionResult> Home([FromQuery]string check)
         {
-            return this.View(await this.Mediator.Send(new GetAllTopicsQuery { }));
+            return this.View(await this.Mediator.Send(new GetAllTopicsQuery { Filter = check }));
         }
 
         [HttpGet("Forum/CurrentTopic/id")]

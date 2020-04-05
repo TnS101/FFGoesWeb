@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Home";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "_Layout";
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,22 +10,61 @@
     <title>Home</title>
     <partial name="_ForumNavBar">
 </head>
-<body>
+<body class="primary-background-color">
     @if (Model.Topics.Count() == 0)
     {
         <h1 class="has-text-align-center secondary-font-color">No content to display</h1>
+        <div class="item-padding has-text-align-center">
+            <form asp-controller="Forum" asp-action="Home" method="get" class="aligncenter" style="position:fixed;width:1928px">
+                <hr />
+                <text class="has-medium-font-size main-font-color">Game</text>
+                <input type="checkbox" name="check" value="Game" />
+                <text class="has-medium-font-size main-font-color">Social</text>
+                <input type="checkbox" name="check" value="Social" />
+                <text class="has-medium-font-size main-font-color">Complain</text>
+                <input type="checkbox" name="check" value="Complain" />
+                <text class="has-medium-font-size main-font-color">Ideas</text>
+                <input type="checkbox" name="check" value="Ideas" />
+                <input type="submit" name="button" value="Filter" />
+            </form>
+            <hr />
+        </div>
     }
-    else
+
+    @if (Model.Topics.Count() > 0)
     {
+        <h1 class="has-text-align-center secondary-font-color">All Topics</h1>
+        <div class="item-padding has-text-align-center aligncenter" style="position:fixed;width:1928px">
+            <form asp-controller="Forum" asp-action="Home" method="get" class="aligncenter">
+                <hr />
+                <text class="has-medium-font-size main-font-color">Game</text>
+                <input type="checkbox" name="check" value="Game" />
+                <text class="has-medium-font-size main-font-color">Social</text>
+                <input type="checkbox" name="check" value="Social" />
+                <text class="has-medium-font-size main-font-color">Complain</text>
+                <input type="checkbox" name="check" value="Complain" />
+                <text class="has-medium-font-size main-font-color">Ideas</text>
+                <input type="checkbox" name="check" value="Ideas" />
+                <input type="submit" name="button" value="Filter" />
+            </form>
+            <hr />
+        </div>
+
         foreach (var topic in Model.Topics)
         {
-            <div class="has-text-align-center item-padding">
-                <p class="main-font-color">[@topic.Category]<a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id">@topic.Title</a> by <a asp-controller="User" asp-action="Profile" asp-route-id="@topic.UserId">@topic.UserName</a></p>
-                <i class="fas fa-thumbs-up"></i>@topic.Likes <i class="fas fa-comments"></i>@topic.Comments
-                <a asp-controller="Report" asp-action="ReportTopic" asp-route-id="@topic.Id"><i class="fas fa-exclamation-circle"></i></a>
-                <input type="hidden" name="contentType" value="" />
+            <br />
+            <br />
+            <div class="item-padding">
+                <div class="has-text-align-center item-padding">
+                    <p class="main-font-color has-large-font-size">[@topic.Category]<a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id">@topic.Title</a> by <a asp-controller="User" asp-action="Profile" asp-route-id="@topic.UserId">@topic.UserName</a></p>
+                    <i class="fas fa-thumbs-up has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Likes</b> <i class="fas fa-comments has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Comments</b>
+                    <a asp-controller="Report" asp-action="ReportTopic" asp-route-id="@topic.Id"><i class="fas fa-exclamation-circle has-large-font-size"></i></a>
+                    <hr />
+                </div>
             </div>
+
         }
+
     }
 
 </body>

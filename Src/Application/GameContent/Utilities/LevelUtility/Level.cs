@@ -1,13 +1,25 @@
 ﻿namespace Application.GameContent.Utilities.LevelUtility
 {
+    using Domain.Entities.Common;
     using Domain.Entities.Game.Units;
 
     public class Level
     {
-        public void Up(Hero hero)
+        public void Up(Hero hero, AppUser user)
         {
             if (hero.XP >= hero.XPCap)
             {
+                if (hero.Level == 10)
+                {
+                    hero.Mastery += 100;
+                    user.MasteryPoints += 100;
+                }
+                else if (hero.Level > 10)
+                {
+                    hero.Mastery += 15;
+                    user.MasteryPoints += 15;
+                }
+
                 hero.Level++;
                 hero.AttackPower += 2;
                 hero.CurrentAttackPower += 2;
@@ -23,8 +35,8 @@
                 hero.CurrentMagicPower += 3;
                 hero.ResistanceValue += 1.5;
                 hero.CurrentResistanceValue += 0.5;
+                hero.XP -= hero.XPCap;
                 hero.XPCap += hero.XPCap * 0.20;
-                hero.XP = hero.XP - hero.XPCap;
                 hero.CurrentHP = hero.MaxHP;
                 hero.CurrentMana = hero.CurrentMana;
 

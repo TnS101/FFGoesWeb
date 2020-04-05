@@ -1,0 +1,26 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+<body>
+    <header id="masthead" class="site-header full" style="top: -42px;margin-left:-140px;position:fixed">
+        <div class="container">
+            <div id="site-branding">
+            </div>
+            <div id="site-navigation" role="navigation">
+                <div class="main-nav-bar">
+                    <ul id="primary-menu" class="nav-font-size">
+                        <li style="padding-left:530px" class="page_item page-item-9"><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Home</a></li>
+                        <li class="page_item page-item-2"><a asp-controller="Guide" asp-action="Home"><i class="fas fa-scroll"></i>Guide</a></li>
+                        <li class="page_item page-item-2"><a asp-controller="PvP" asp-action="Home"><i class="fas fa-khanda"></i>PvP</a></li>
+                        <li class="page_item page-item-2"><a asp-controller="Craft" asp-action="Home"><i class="fas fa-hammer"></i>Craft</a></li>
+                        <li class="page_item page-item-2"><a asp-controller="Shop" asp-action="Home"><i class="fas fa-store-alt"></i>Shop</a></li>
+                        <li class="page_item page-item-2"><a asp-controller="Auction" asp-action="Home"><i class="fas fa-gavel"></i>Auction</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="site-top-right">
+            </div>
+        </div>
+    </header>
+</body>
