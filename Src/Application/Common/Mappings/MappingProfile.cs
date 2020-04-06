@@ -10,6 +10,7 @@
     using Application.CQ.Social.Comments.Queries.GetCurrentCommentQuery;
     using Application.CQ.Social.Friends.Queries.GetCurrentFriendQuery;
     using Application.CQ.Social.Message.Queries;
+    using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Users.Feedbacks.Queries;
     using Application.CQ.Users.Statuses.Queries;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
@@ -55,6 +56,7 @@
             this.CreateMap<Comment, CommentMinViewModel>();
             this.CreateMap<Monster, MonsterFullViewModel>();
             this.CreateMap<AppUser, UserViewModel>();
+            this.CreateMap<Notification, NotificationFullViewModel>();
         }
     }
 }

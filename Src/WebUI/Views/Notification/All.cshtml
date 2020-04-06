@@ -1,0 +1,73 @@
+﻿@model Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery.NotificationListViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All</title>
+    <partial name="_SocialNavBar">
+</head>
+<body>
+    @if (Model.Notifications.Count() > 0)
+    {
+        <h1 class="has-text-align-center secondary-font-color">Your Current Notifications</h1>
+        <br />
+        foreach (var notification in Model.Notifications)
+        {
+            <div class="has-text-align-center item-padding">
+                @if (notification.ApplicationSection == "Game")
+                {
+                    <i class="fas fa-gamepad has-large-font-size"></i>
+                }
+                else
+                {
+                    <i class="fas fa-people-arrows has-large-font-size"></i>
+                }
+
+                <p class="has-medium-font-size">@notification.Type</p>
+                <p class="has-medium-font-size"><em>@notification.Content</em></p>
+                @if (DateTime.UtcNow.Minute - notification.RecievedOn.Minute < 1)
+                {
+                    <p class="main-font-color has-large-font-size">Just Now.</p>
+                }
+                else if (DateTime.UtcNow.Hour - notification.RecievedOn.Hour < 1)
+                {
+                    int difference = DateTime.UtcNow.Minute - notification.RecievedOn.Minute;
+
+                    <p class="main-font-color has-large-font-size">
+                        @difference Minutes Ago.
+                    </p>
+                }
+                else if (DateTime.UtcNow.Day - notification.RecievedOn.Day < 1)
+                {
+                    int difference = DateTime.UtcNow.Day - notification.RecievedOn.Day;
+                    <p class="main-font-color has-large-font-size">
+                        @difference Hours Ago.
+                    </p>
+                }
+                else if (DateTime.UtcNow.Day - notification.RecievedOn.Day == 1)
+                {
+                    <p class="main-font-color has-large-font-size">
+                        Yesterday.
+                    </p>
+                }
+                else if (DateTime.UtcNow.Day - notification.RecievedOn.Day > 1)
+                {
+                    int difference = DateTime.UtcNow.Day - notification.RecievedOn.Day;
+                    <p class="main-font-color has-large-font-size">
+                        @difference Days Ago.
+                    </p>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <h1 class="has-text-align-center secondary-font-color">No Notifications to display</h1>
+    }
+    <div>
+
+    </div>
+</body>
+</html>

@@ -31,6 +31,7 @@
     using Application.CQ.Social.Friends.Queries.GetCurrentFriendQuery;
     using Application.CQ.Social.Message.Commands.Create;
     using Application.CQ.Social.Message.Queries;
+    using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Users.Feedbacks.Command;
     using Application.CQ.Users.Feedbacks.Queries;
     using Application.CQ.Users.Queries.Panel;
@@ -157,6 +158,7 @@
             services.AddScoped<IRequestHandler<GetMonsterInfoQuery, MonsterFullViewModel>, GetMonsterInfoQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalFeedbacksQuery, FeedbackListViewModel>, GetPersonalFeedbacksQueryHandler>();
             services.AddScoped<IRequestHandler<GetCurrentFriendQuery, UserViewModel>, GetCurrentFriendQueryHandler>();
+            services.AddScoped<IRequestHandler<GetPersonalNotificationsQuery, NotificationListViewModel>, GetPersonalNotificationsQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

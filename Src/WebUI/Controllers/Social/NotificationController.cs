@@ -1,18 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WebUI.Controllers.Common;
-
-namespace WebUI.Controllers.Social
+﻿namespace WebUI.Controllers.Social
 {
+    using System.Threading.Tasks;
+    using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
+    using Microsoft.AspNetCore.Mvc;
+    using WebUI.Controllers.Common;
+
     public class NotificationController : BaseController
     {
-        [HttpGet("Notification/All/id")]
-        public async Task<ActionResult> All([FromQuery]string id)
+        [HttpGet]
+        public async Task<ActionResult> All([FromForm]string check)
         {
-            return this.View(await this.Mediator.Send());
+            return this.View(await this.Mediator.Send(new GetPersonalNotificationsQuery { User = this.User, Filter = check }));
         }
     }
 }

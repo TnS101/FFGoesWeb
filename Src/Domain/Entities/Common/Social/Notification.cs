@@ -21,8 +21,6 @@ namespace Domain.Entities.Common.Social
 
         public string Content { get; set; }
 
-        public string CauserName { get; set; }
-
         public DateTime RecievedOn { get; set; }
     }
 }

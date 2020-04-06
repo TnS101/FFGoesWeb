@@ -106,7 +106,6 @@
             {
                 reportedUser.Notifications.Add(new Domain.Entities.Common.Social.Notification
                 {
-                    CauserName = GConst.ModeratorArea,
                     Content = string.Format(GConst.WarningMessage, reportedUser.UserName, reportedUser.Warnings),
                     UserId = reportedUser.Id,
                     Type = GConst.WarningType,
@@ -117,7 +116,6 @@
             {
                 reportedUser.Notifications.Add(new Domain.Entities.Common.Social.Notification
                 {
-                    CauserName = GConst.ModeratorArea,
                     Content = string.Format(GConst.PenaltyType, reportedUser.UserName, 1),
                     UserId = reportedUser.Id,
                     Type = GConst.PenaltyType,
@@ -128,7 +126,6 @@
             {
                 reportedUser.Notifications.Add(new Domain.Entities.Common.Social.Notification
                 {
-                    CauserName = GConst.ModeratorArea,
                     Content = string.Format(GConst.PenaltyType, reportedUser.UserName, 3),
                     UserId = reportedUser.Id,
                     Type = GConst.PenaltyType,
