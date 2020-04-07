@@ -80,7 +80,7 @@
         private void Hunter_PoisonShot(Unit caster, Unit target)
         {
             string spellName = "Poison Shot";
-            double damage = (0.5 * caster.CurrentAttackPower) + (0.7 * caster.CurrentMagicPower);
+            double damage = (0.5 * caster.CurrentAttackPower) + (0.7 * caster.CurrentMagicPower) - (target.CurrentArmorValue * 0.5);
             double manaRequirment = 0.25 * caster.MaxMana;
             this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
@@ -166,7 +166,7 @@
             string negativeEffectType = "Armor";
             double manaRequirment = 0.30 * caster.MaxMana;
             double negativeEffect = target.ArmorValue * 0.3;
-            double damage = (caster.CurrentMagicPower * 0.7) - target.CurrentRessistanceValue;
+            double damage = (caster.CurrentMagicPower * 0.75) - target.CurrentRessistanceValue;
             this.spellCheck.NegativeEffectCheck.Check(caster, target, manaRequirment, negativeEffect, negativeEffectType, this.manaCheck);
             this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
@@ -191,7 +191,7 @@
             string spellname = "Pouring Rain";
             string buffType = "Mana";
             string negativeEffectType = "mRegen";
-            double manaRequirment = 0;
+            double manaRequirment = caster.MaxMana * 0.1;
             double possitiveEffect = 0.3 * caster.MaxMana;
             int negativeEffect = caster.Level;
             this.spellCheck.NegativeEffectCheck.Check(caster, caster, manaRequirment, negativeEffect, negativeEffectType, this.manaCheck);
@@ -204,7 +204,7 @@
             string spellName = "Shadow Touch";
             string effectType = "Res";
             double manaRequirment = 0.30 * caster.MaxMana;
-            double effect = target.CurrentRessistanceValue * 0.3;
+            double effect = target.CurrentRessistanceValue * 0.2;
 
             double maxHPDamage = target.MaxHP * 0.08;
 
@@ -222,7 +222,7 @@
         {
             string spellName = "Life Syphon";
             string effectType = "SelfHP";
-            double manaRequirment = 0.40 * caster.MaxMana;
+            double manaRequirment = 0.4 * caster.MaxMana;
 
             double maxHPDamage = target.MaxHP * 0.1;
 
@@ -239,7 +239,7 @@
 
         private void Necroid_ArcaneBane(Unit caster, Unit target)
         {
-            string spellName = "ArcaneBane";
+            string spellName = "Arcane Bane";
             string debuffType = "Magic";
             double manaRequirment = 0.2 * caster.MaxMana;
             double negativeEffect = 0.2 * target.CurrentMagicPower;
@@ -279,7 +279,7 @@
 
         private void Paladin_ViciousSpellGuard(Unit caster, Unit target)
         {
-            string spellName = "Vicious SpellGuard";
+            string spellName = "Vicious Spell Guard";
             string buffType = "Res";
             double effect = 0.5 * caster.RessistanceValue;
             double manaRequirment = 0.3 * caster.MaxMana;
@@ -311,7 +311,7 @@
             string negativeEffectType = "Mana";
             double buffEffect = 0.20 * target.MaxMana;
             double negativeEffect = 0.20 * target.MaxMana;
-            double manaRequirment = 0.08 * caster.MaxHP;
+            double manaRequirment = 0.08 * caster.MaxMana;
             this.spellCheck.NegativeEffectCheck.Check(caster, target, manaRequirment, negativeEffect, negativeEffectType, this.manaCheck);
             this.spellCheck.BuffCheck.Check(caster, caster, manaRequirment, buffEffect, spellName, buffType, this.manaCheck);
         }
@@ -320,9 +320,9 @@
         {
             string spellName = "Staff Smash";
             string negativeEffectType = "Armor";
-            double manaRequirment = 0.15 * caster.MaxMana;
-            double damage = (1.3 * caster.CurrentAttackPower) - target.CurrentArmorValue;
-            double negativeEffect = 0.2 * target.ArmorValue;
+            double manaRequirment = 0.14 * caster.MaxMana;
+            double damage = (1.22 * caster.CurrentAttackPower) - target.CurrentArmorValue;
+            double negativeEffect = 0.18 * target.ArmorValue;
             this.spellCheck.NegativeEffectCheck.Check(caster, target, manaRequirment, negativeEffect, negativeEffectType, this.manaCheck);
             this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
@@ -364,7 +364,7 @@
             string spellName = "Evasion";
             string buffType = "Armor";
             string effectType = "mRegen";
-            double manaRequirment = 0.4 * caster.MaxHP;
+            double manaRequirment = 0.4 * caster.MaxMana;
             double buffEffect = 0.5 * caster.ArmorValue;
             double effect = caster.Level * 2;
             this.spellCheck.PositiveEffectCheck.Check(caster, caster, manaRequirment, effect, effectType, this.manaCheck);
@@ -386,7 +386,7 @@
             string spellName = "Thunder Strike";
             string negativeEffectType = "Res";
             double damage = (1.2 * caster.CurrentMagicPower) + (0.20 * caster.CurrentAttackPower) - target.CurrentRessistanceValue;
-            double negativeEffect = 0.5 * target.RessistanceValue;
+            double negativeEffect = 0.4 * target.RessistanceValue;
             double manaRequirment = 0.5 * caster.MaxMana;
             this.spellCheck.NegativeEffectCheck.Check(caster, target, manaRequirment, negativeEffect, negativeEffectType, this.manaCheck);
             this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
@@ -396,7 +396,7 @@
         {
             string spellName = "Earth Strike";
             string possitiveEffectType = "Health";
-            double manaRequirment = 0.5 * caster.MaxMana;
+            double manaRequirment = 0.4 * caster.MaxMana;
             double damage = (1.2 * caster.CurrentAttackPower) + (0.20 * caster.CurrentMagicPower) - target.CurrentArmorValue;
             double possitiveEffect = 0.5 * caster.CurrentAttackPower;
             this.spellCheck.PositiveEffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);
@@ -418,7 +418,7 @@
         {
             string spellName = "Water Strike";
             string possitiveEffectType = "mRegen";
-            double manaRequirment = 0.22 * caster.MaxMana;
+            double manaRequirment = 0.25 * caster.MaxMana;
             double damage = (1.1 * caster.CurrentMagicPower) - target.CurrentRessistanceValue;
             int possitiveEffect = 2 * caster.Level;
             this.spellCheck.PositiveEffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);

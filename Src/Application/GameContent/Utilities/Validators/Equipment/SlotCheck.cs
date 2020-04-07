@@ -64,7 +64,7 @@
         {
             string imageURL = string.Empty;
 
-            validatorHandler.WeaponCheck.Check(fightingClassNumber, fightingClassType, weaponName, imageURL);
+            validatorHandler.WeaponCheck.Check(fightingClassNumber, fightingClassType, weaponName, imageURL, this.rng);
 
             Weapon templateWeapon = new Weapon
             {
