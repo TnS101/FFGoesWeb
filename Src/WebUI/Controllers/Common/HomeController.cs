@@ -35,5 +35,11 @@
         {
             return this.View(await this.Mediator.Send(new GetMonsterInfoQuery { MonsterId = id }));
         }
+
+        [Authorize(Roles = GConst.UserRole)]
+        public ActionResult PrivacyPolicy()
+        {
+            return this.View();
+        }
     }
 }

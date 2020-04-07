@@ -219,7 +219,6 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Batt
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Comment\Create.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Forum\CurrentTopic.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Forum\Home.cshtml.g.cs
-C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\MonsterCatalog.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Profile\Friends.cshtml.g.cs
@@ -271,3 +270,5 @@ C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Frie
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Friends\All.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Notification\All.cshtml.g.cs
 C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Guide\About.cshtml.g.cs
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PrivacyPolicy.cshtml.g.cs
+C:\Users\PC\Desktop\FFGoesWeb\Src\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\PrivacyPolicy.cshtml.g.cs

@@ -82,12 +82,22 @@
 
             validatorHandler.FightingClassStatCheck.Check(templateWeapon, fightingClassType, fightingClassStatNumber);
 
-            await context.Weapons.AddAsync(templateWeapon);
+            int weaponId = 0;
+            if (!context.Weapons.Contains(templateWeapon))
+            {
+                await context.Weapons.AddAsync(templateWeapon);
+                weaponId = templateWeapon.Id;
+            }
+            else
+            {
+                var weapon = await context.Weapons.FirstOrDefaultAsync(w => w.Equals(templateWeapon));
+                weaponId = weapon.Id;
+            }
 
             context.WeaponsInventories.Where(w => w.InventoryId == hero.InventoryId).ToList().Add(new WeaponInventory
             {
                 InventoryId = hero.InventoryId,
-                WeaponId = templateWeapon.Id,
+                WeaponId = weaponId,
             });
         }
 
@@ -107,12 +117,22 @@
             };
             validatorHandler.FightingClassStatCheck.Check(templateTrinket, fightingClassType, fightingClassStatNumber);
 
-            await context.Trinkets.AddAsync(templateTrinket);
+            int trinketId = 0;
+            if (!context.Trinkets.Contains(templateTrinket))
+            {
+                await context.Trinkets.AddAsync(templateTrinket);
+                trinketId = templateTrinket.Id;
+            }
+            else
+            {
+                var trinket = await context.Trinkets.FirstOrDefaultAsync(t => t.Equals(templateTrinket));
+                trinketId = trinket.Id;
+            }
 
             context.TrinketsInventories.Where(t => t.InventoryId == hero.InventoryId).ToList().Add(new TrinketInventory
             {
                 InventoryId = hero.InventoryId,
-                TrinketId = templateTrinket.Id,
+                TrinketId = trinketId,
             });
         }
 
@@ -122,7 +142,6 @@
             {
                 Name = $"{fightingClassType}'s Armor",
                 ArmorValue = stats[0],
-                ClassType = fightingClassType,
                 RessistanceValue = stats[1],
                 Level = stats[2],
                 Spirit = stats[3],
@@ -132,16 +151,29 @@
                 Intellect = stats[7],
             };
 
-            validatorHandler.ArmorCheck.Check(templateArmor, slotNumber, fightingClassType, stats[0]);
+            validatorHandler.ArmorCheck.Check(templateArmor, this.rng, fightingClassType, stats[0]);
+
+            templateArmor.ClassType = fightingClassType;
 
             validatorHandler.FightingClassStatCheck.Check(templateArmor, fightingClassType, fightingClassStatNumber);
 
-            await context.Armors.AddAsync(templateArmor);
+            int armorId = 0;
 
-            context.ArmorsInventories.Where(t => t.InventoryId == hero.InventoryId).ToList().Add(new ArmorInventory
+            if (!context.Armors.Contains(templateArmor))
+            {
+                await context.Armors.AddAsync(templateArmor);
+                armorId = templateArmor.Id;
+            }
+            else
+            {
+                var armor = await context.Armors.FirstOrDefaultAsync(a => a.Equals(templateArmor));
+                armorId = armor.Id;
+            }
+
+            context.ArmorsInventories.Add(new ArmorInventory
             {
                 InventoryId = hero.InventoryId,
-                ArmorId = templateArmor.Id,
+                ArmorId = armorId,
             });
         }
 

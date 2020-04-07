@@ -23,5 +23,7 @@
         int BuyPrice { get; set; }
 
         int SellPrice { get; set; }
+
+        string Type { get; set; }
     }
 }

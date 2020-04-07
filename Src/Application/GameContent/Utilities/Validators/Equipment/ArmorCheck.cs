@@ -1,11 +1,17 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
+    using System;
     using Domain.Contracts.Items.AdditionalTypes;
 
     public class ArmorCheck
     {
-        public void Check(IBaseItem item, int slotNumber, string classUsable, int regularStatNumber)
+        public void Check(IBaseItem item, Random rng, string classUsable, int regularStatNumber)
         {
+            int slotNumber = rng.Next(0, 7);
+
+            int typeNumber = rng.Next(0, 3);
+
+            int usableOrder = rng.Next(0, 3);
             if (slotNumber == 0)
             {
                 item.Slot = "Helmet";
@@ -42,7 +48,46 @@
                 item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/c/ca/Inv_glove_mail_draenordungeon_c_01.png?version=30cf3357b49e25c4c79bbdfbf2828de5";
             }
 
-            item.Name = $"{classUsable}'s {item.Slot} LVL : {regularStatNumber}";
+            string thirdClassOrder;
+            string firstClassOrder;
+            string seccondClassOrder;
+
+            if (typeNumber == 0)
+            {
+                item.Type = "Cloth";
+                firstClassOrder = "Mage,Necroid,Priest";
+                seccondClassOrder = "Necroid,Mage,Priest";
+                thirdClassOrder = "Priest,Necroid,Priest";
+            }
+            else if (typeNumber == 1)
+            {
+                item.Type = "Leather";
+                firstClassOrder = "Hunter,Rouge,Naturalist";
+                seccondClassOrder = "Rouge,Hunter,Naturalist";
+                thirdClassOrder = "Naturalist,Hunter,Rouge";
+            }
+            else
+            {
+                item.Type = "Metal";
+                firstClassOrder = "Warrior,Paladin,Shaman";
+                seccondClassOrder = "Paladin,Shaman,Warrior";
+                thirdClassOrder = "Shaman,Warrior,Paladin";
+            }
+
+            if (usableOrder == 0)
+            {
+                classUsable = firstClassOrder;
+            }
+            else if (usableOrder == 1)
+            {
+                classUsable = seccondClassOrder;
+            }
+            else
+            {
+                classUsable = thirdClassOrder;
+            }
+
+            item.Name = $"{classUsable.Split(',')[0]}'s {item.Slot} LVL : {regularStatNumber}";
         }
     }
 }

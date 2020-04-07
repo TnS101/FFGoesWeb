@@ -61,7 +61,7 @@
                             kill before you get killed. These actions happen every Turn since the game is Turn-Based. In order to experience this marvelous joy (without animations and awesome graphics tho...),
                             you must <a asp-controller="Unit" asp-action="Create"><em>Create</em></a> a Hero.
                             Explained in details, a Hero has <i class="far fa-heart secondary-font-color">Health</i>,
-                            <i class="fas fa-diagnoses secondary-font-color">Mana</i>, <i class="fas fa-khanda secondary-font-color">Attack</i>,
+                            <i class="fas fa-diagnoses secondary-font-color">Mana</i>, <i class="fas fa-khanda secondary-font-color">Attack Power</i>,
                             <i class="fas fa-magic secondary-font-color">Magic Power</i>, <i class="fas fa-shield-alt secondary-font-color">Armor</i>,
                             <i class="fas fa-hat-wizard secondary-font-color">Magical Ressistance</i>, <i class="fas fa-heartbeat secondary-font-color">Health Regeneration</i>,
                             <i class="fas fa-hand-holding-water secondary-font-color">Mana Regeneration</i>, <i class="fas fa-certificate secondary-font-color">Level</i>,
@@ -73,22 +73,26 @@
                                 <li class="has-normal-font-size main-font-color">
                                     <i class="far fa-heart main-font-color">Health</i> is Regenerated every turn in Battle and every 4 minutes out of Battle by 10%.
                                     When your Health reaches zero, you Die and lose half of your Gold. You can use various
-                                    <a href="#Consumeables"><em>Consumeable Items</em></a> in order to regen health exclusively.
+                                    <a href="#Consumeables"><em>Consumeable Items</em></a> in order to regen health exclusively. 
+                                    The Primary Stat for Health is Stamina.
                                     <hr />
                                 </li>
                                 <li class="item-padding has-normal-font-size  main-font-color">
                                     <i class="fas fa-diagnoses main-font-color">Mana</i> is Regenerated every turn in Battle and every 4 minutes out of Battle by 10%.
                                     Mana is used to cast <a href="#Spells"><em>Spells</em></a>. Note that Spells can do both Physical and Magical Damage depending on your stats.
+                                    The Primary Stat for Mana is Intellect and the Primary Stat for Mana Regeneration is Spirit.
                                     <hr />
                                 </li>
                                 <li class="item-padding has-normal-font-size  main-font-color">
-                                    <i class="fas fa-khanda main-font-color">Attack</i> is used to deal Physical Damage to your Enemy.
+                                    <i class="fas fa-khanda main-font-color">Attack Power</i> is used to deal Physical Damage to your Enemy.
                                     As the formula follows : Your Attack - Enemy's Armor = Damage Dealt.
+                                    The Primary Stats for Attack Power are Strength and Agility.
                                     <hr />
                                 </li>
                                 <li class="item-padding has-normal-font-size  main-font-color">
                                     <i class="fas fa-magic main-font-color">Magic Power</i> is used to deal Magical Damage to your Enemy.
                                     Same as your Attack but : Your Magic Power - Enemy's Ressistance = Damage Dealt.
+                                    The Primary Stat for Magic Power is Intellect.
                                     <hr />
                                 </li>
                                 <li class="item-padding has-normal-font-size main-font-color">
@@ -118,6 +122,7 @@
                                     <i class="fab fa-gripfire main-font-color">Critical Chance</i> is the persistency of landing a Critical Strike.
                                     A Critical Strike deals Double the Damage of the initial Attack.
                                     Note : Only Normal Attacks can Crit. For now.
+                                    The Primary Stat for Critical Chance is Agility.
                                     <hr />
                                 </li>
                                 <li class="item-padding has-normal-font-size main-font-color">
@@ -172,54 +177,81 @@
                                 <img src="~/images/Warrior-Icon.png" alt="Warrior" width="60" height="60" />
                                 <br />
                                 Warrior
+                                <br />
+                                is your typical Physical Damage dealer : His main source of Damage comes from Normal Attacks, wears Metal Armor 
+                                and he does not die fast. His Primary Stat is Stength. The Weapon that the Warrior uses is a Sword.
                                 <hr />
                             </li>
                             <li class="has-normal-font-size main-font-color">
                                 <img src="~/images/Rogue-Icon.png" alt="Rogue" width="60" height="60" />
                                 <br />
                                 Rogue
+                                <br />
+                                is a cunning assassin that deals mainly Physical Damage and wears Leather Armor. His Primary Stat is Agility. 
+                                The Weapon that the Rogue uses is a Dagger.
                                 <hr />
                             </li>
                             <li class="has-normal-font-size main-font-color">
                                 <img src="~/images/Hunter-Icon.png" alt="Hunter" width="60" height="60" />
                                 <br />
                                 Hunter
+                                <br />
+                                is a swift ranger that mainly consists in Physical Damage dealing and wears Leather Armor. His Primary Stat is Agility.
+                                The Weapon that the Hunter uses is a Bow.
                                 <hr />
                             </li>
                             <li class="has-normal-font-size main-font-color">
                                 <img src="~/images/MageIcon.png" alt="Mage" width="60" height="60" />
                                 <br />
                                 Mage
+                                <br />
+                                is a skillful sorcerer that deals Magic Damage and wears Cloth Armor. His Primary Stat is Intellect.
+                                The Weapon that the Mage uses is a Staff.
                                 <hr />
                             </li>
                             <li class="has-normal-font-size main-font-color">
                                 <img src="~/images/Druid-Icon.png" alt="Naturalist" width="60" height="60" />
                                 <br />
                                 Naturalist
+                                <br />
+                                is the protector of the wild which does Magical Damage and Healing. Wears Leather Armor and
+                                his Primary Stat is Spirit. The Weapon that the Naturalist uses is a Branch.
                                 <hr />
                             </li>
                             <li class="has-normal-font-size main-font-color">
                                 <img src="~/images/Necroid-Icon.png" alt="Necroid" width="60" height="60" />
                                 <br />
                                 Necroid
+                                <br />
+                                is the raiser of the dead which does Magical Damage and Healing. Wears Cloth Armor and his
+                                Primary Stat is Intellect. The Weapon that the Necroid uses is a Skull.
                                 <hr />
                             </li>
                             <li class="has-normal-font-size main-font-color">
                                 <img src="~/images/Paladin-Icon.png" alt="Paladin" width="60" height="60" />
                                 <br />
                                 Paladin
+                                <br />
+                                is the guardian of the light which does Magical and Physical Damage, and also does Healing. Wears Metal Armor and
+                                his Primary Stat is Strength. The Weapon that the Paladin uses is a Hammer.
                                 <hr />
                             </li>
                             <li class="has-normal-font-size main-font-color">
                                 <img src="~/images/Priest-Icon.png" alt="Priest" width="60" height="60" />
                                 <br />
-                                Priest
+                                Priest 
+                                <br />
+                                is the invoker of light which does Physical Damage and Healing. Wears Cloth Armor and his
+                                Primary Stat is Spirit. The Weapon that the Priest uses is a Staff.
                                 <hr />
                             </li>
                             <li class="has-normal-font-size main-font-color">
                                 <img src="~/images/Shaman-Icon.png" alt="Shaman" width="60" height="60" />
                                 <br />
                                 Shaman
+                                <br />
+                                is the elemental guide which does Physical and Magical Damage and also does Healing. Wears Metal Armor 
+                                and his Primary Stat is Stamina.
                                 <hr />
                             </li>
                         </ul>

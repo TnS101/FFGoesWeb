@@ -41,6 +41,8 @@
 
         public bool IsCraftable { get; set; }
 
+        public string Type { get; set; }
+
         public ICollection<TrinketInventory> TrinketInventories { get; set; }
 
         public ICollection<TrinketEquipment> TrinketEquipments { get; set; }
