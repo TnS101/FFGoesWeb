@@ -1,9 +1,9 @@
 <Gatherer> <=> <Crafter>
 
-Lumberjack <-> Carpeneter
-Miner <-> Smelter
+Lumberjack <-> Carpenter
+Miner <-> Forger
 Tracker <-> Leatherworker
-Head Hunter <-> Clothier
+Head Hunter <-> Tailor
 Herbalist <-> Alchemic
 Banisher <-> Conjurer
 Angler <-> Scaleworker

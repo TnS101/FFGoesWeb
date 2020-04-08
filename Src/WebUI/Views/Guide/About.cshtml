@@ -47,6 +47,7 @@
                     <a href="#Classes"><em>Classes</em></a>,
                     <a href="#Items"><em>Items</em></a>,
                     <a href="#Crafting"><em>Crafting</em></a>,
+                    <a href="#Professions"><em>Professions</em></a>,
                     <a href="#PvP"><em>PvP</em></a>,
                     <a href="#Shops"><em>Shops and Auctions</em></a> and some sneakpeaks to the
                     <a href="#FutureContent"><em>Future Content</em></a>.
@@ -69,79 +70,100 @@
                             <i class="fas fa-bolt secondary-font-color">Energy</i>
                             <br />
                             It's obvious that you need Health to live and that Health Regeneration recovers Health, but let's look up close about each attribute:
-                            <ul class="item-padding" style="list-style:none">
-                                <li class="has-normal-font-size main-font-color">
-                                    <i class="far fa-heart main-font-color">Health</i> is Regenerated every turn in Battle and every 4 minutes out of Battle by 10%.
-                                    When your Health reaches zero, you Die and lose half of your Gold. You can use various
-                                    <a href="#Items"><em>Consumeable Items</em></a> in order to regen health exclusively.
-                                    The Primary Stat for Health is Stamina.
-                                    <hr />
-                                </li>
-                                <li class="item-padding has-normal-font-size  main-font-color">
-                                    <i class="fas fa-diagnoses main-font-color">Mana</i> is Regenerated every turn in Battle and every 4 minutes out of Battle by 10%.
-                                    Mana is used to cast <a href="#Spells"><em>Spells</em></a>. Note that Spells can do both Physical and Magical Damage depending on your stats.
-                                    The Primary Stat for Mana is Intellect and the Primary Stat for Mana Regeneration is Spirit.
-                                    <hr />
-                                </li>
-                                <li class="item-padding has-normal-font-size  main-font-color">
-                                    <i class="fas fa-khanda main-font-color">Attack Power</i> is used to deal Physical Damage to your Enemy.
-                                    As the formula follows : Your Attack - Enemy's Armor = Damage Dealt.
-                                    The Primary Stats for Attack Power are Strength and Agility.
-                                    <hr />
-                                </li>
-                                <li class="item-padding has-normal-font-size  main-font-color">
-                                    <i class="fas fa-magic main-font-color">Magic Power</i> is used to deal Magical Damage to your Enemy.
-                                    Same as your Attack but : Your Magic Power - Enemy's Ressistance = Damage Dealt.
-                                    The Primary Stat for Magic Power is Intellect.
-                                    <hr />
-                                </li>
-                                <li class="item-padding has-normal-font-size main-font-color">
-                                    <i class="fas fa-shield-alt main-font-color">Armor</i> is used to Protect yourself from Physical Damage.
-                                    Something like this : Enemy's Attack - Your Armor = Damage Taken (with protection).
-                                    Important! If your Armor is higher than the Enemy's Attack, you will Block the Attack, meaming you won't recieve any Damage from it.
-                                    This also means that your Current Armor will be decreased by a percent.
-                                    <hr />
-                                </li>
-                                <li class="item-padding has-normal-font-size main-font-color">
-                                    <i class="fas fa-hat-wizard main-font-color">Magical Resistance</i> is used to Protect yourself from Magical Damage.
-                                    Like the Armor but a little different : Enemy's Magic Power - Your Ressistance = Damage Taken (with protection).
-                                    Important! If your Ressistance is higher than the Enemy's Magic Power, you will Absorb the Spell, meaming you won't recieve any Damage from it.
-                                    This also means that your Current Ressistance will be decreased by a percent.
-                                    <hr />
-                                </li>
-                                <li class="item-padding has-normal-font-size main-font-color">
-                                    <i class="fas fa-certificate main-font-color">Level</i> determines your Hero's Power.
-                                    A Level is achieved when a XP condition is satisfied (when you have more experience than your current maximum... like in, uhm, all games).
-                                    Any bonus XP points for the previous Level will be added to the next, example : I have 90 points, I am Level 1 and I need 10 more to Level Up!
-                                    I Kill a Monster that rewards me 13 XP points, which means that I will be Level 2 with 3 XP points.
-                                    In addition : Every time you Level Up you will have the opportunity to choose following points : Strength, Intellect, Spirit, Stamina or Agility.
-                                    You can find more information about the following stats in the <a href="#Items"><em>Items</em></a> section.
-                                    <hr />
-                                </li>
-                                <li class="item-padding has-normal-font-size main-font-color">
-                                    <i class="fab fa-gripfire main-font-color">Critical Chance</i> is the persistency of landing a Critical Strike.
-                                    A Critical Strike deals Double the Damage of the initial Attack.
-                                    Note : Only Normal Attacks can Crit. For now.
-                                    The Primary Stat for Critical Chance is Agility.
-                                    <hr />
-                                </li>
-                                <li class="item-padding has-normal-font-size main-font-color">
-                                    <i class="fas fa-coins main-font-color">Gold</i> is the Main Currency of the game.
-                                    It can be obtained through killing Monsters, Battling Players, Selling Items in the Shop / Auction e.t.c.
-                                    It can be used as well buying various Items, which can increase your Hero Growth drastically.
-                                    <hr />
-                                </li>
-                                <li class="item-padding has-normal-font-size main-font-color">
-                                    <i class="fas fa-bolt main-font-color">Energy</i> is our last and one of the most valuable attributes.
-                                    Without Energy, in short, you can't progress.
-                                    There are 3 types of Energy : the Common Energy (the electric icon) which has 30 points and regenerates every 4 min,
-                                    Crafting Energy (the hammer icon) which has 10 points and also regenerates every 4 min
-                                    and PvP Energy (the raised fist icon) which has 15 points and regenerates every 8 min.
-                                    In the next sections we will talk about Energies in bigger detail.
-                                    <hr />
-                                </li>
-                            </ul>
+                            <br />
+                        <p class="has-normal-font-size main-font-color">
+                            <i class="far fa-heart main-font-color">Health</i> is Regenerated every turn in Battle and every 4 minutes out of Battle by 10%.
+                            When your Health reaches zero, you Die and lose half of your Gold. You can use various
+                            <a href="#Items"><em>Consumeable Items</em></a> in order to regen health exclusively.
+                            The Primary Stat for Health is Stamina.
                         </p>
+                        <div class="item-padding">
+                            <hr />
+                            <p class="item-padding has-normal-font-size  main-font-color">
+                                <i class="fas fa-diagnoses main-font-color">Mana</i> is Regenerated every turn in Battle and every 4 minutes out of Battle by 10%.
+                                Mana is used to cast <a href="#Spells"><em>Spells</em></a>. Note that Spells can do both Physical and Magical Damage depending on your stats.
+                                The Primary Stat for Mana is Intellect and the Primary Stat for Mana Regeneration is Spirit.
+                            </p>
+                        </div>
+                        <div class="item-padding">
+                            <hr />
+                            <p class="item-padding has-normal-font-size  main-font-color">
+                                <i class="fas fa-khanda main-font-color">Attack Power</i> is used to deal Physical Damage to your Enemy.
+                                As the formula follows : Your Attack - Enemy's Armor = Damage Dealt.
+                                The Primary Stats for Attack Power are Strength and Agility.
+                            </p>
+                        </div>
+                        <div class="item-padding">
+                            <hr />
+                            <p class="item-padding has-normal-font-size  main-font-color">
+                                <i class="fas fa-magic main-font-color">Magic Power</i> is used to deal Magical Damage to your Enemy.
+                                Same as your Attack but : Your Magic Power - Enemy's Ressistance = Damage Dealt.
+                                The Primary Stat for Magic Power is Intellect.
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <p class="item-padding has-normal-font-size main-font-color">
+                                <i class="fas fa-shield-alt main-font-color">Armor</i> is used to Protect yourself from Physical Damage.
+                                Something like this : Enemy's Attack - Your Armor = Damage Taken (with protection).
+                                Important! If your Armor is higher than the Enemy's Attack, you will Block the Attack, meaming you won't recieve any Damage from it.
+                                This also means that your Current Armor will be decreased by a percent.
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <p class="item-padding has-normal-font-size main-font-color">
+                                <i class="fas fa-hat-wizard main-font-color">Magical Resistance</i> is used to Protect yourself from Magical Damage.
+                                Like the Armor but a little different : Enemy's Magic Power - Your Ressistance = Damage Taken (with protection).
+                                Important! If your Ressistance is higher than the Enemy's Magic Power, you will Absorb the Spell, meaming you won't recieve any Damage from it.
+                                This also means that your Current Ressistance will be decreased by a percent.
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <p class="item-padding has-normal-font-size main-font-color">
+                                <i class="fas fa-certificate main-font-color">Level</i> determines your Hero's Power.
+                                A Level is achieved when a XP condition is satisfied (when you have more experience than your current maximum... like in, uhm, all games).
+                                Any bonus XP points for the previous Level will be added to the next, example : I have 90 points, I am Level 1 and I need 10 more to Level Up!
+                                I Kill a Monster that rewards me 13 XP points, which means that I will be Level 2 with 3 XP points.
+                                In addition : Every time you Level Up you will have the opportunity to choose following points : Strength, Intellect, Spirit, Stamina or Agility.
+                                You can find more information about the following stats in the <a href="#Items"><em>Items</em></a> section.
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <p class="item-padding has-normal-font-size main-font-color">
+                                <i class="fab fa-gripfire main-font-color">Critical Chance</i> is the persistency of landing a Critical Strike.
+                                A Critical Strike deals Double the Damage of the initial Attack.
+                                Note : Only Normal Attacks can Crit. For now.
+                                The Primary Stat for Critical Chance is Agility.
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <p class="item-padding has-normal-font-size main-font-color">
+                                <i class="fas fa-coins main-font-color">Gold</i> is the Main Currency of the game.
+                                It can be obtained through killing Monsters, Battling Players, Selling Items in the Shop / Auction e.t.c.
+                                It can be used as well buying various Items, which can increase your Hero Growth drastically.
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <p class="item-padding has-normal-font-size main-font-color">
+                                <i class="fas fa-bolt main-font-color">Energy</i> is our last and one of the most valuable attributes.
+                                Without Energy, in short, you can't progress.
+                                There are 3 types of Energy : the Common Energy (the electric icon) which has 30 points and regenerates every 4 min,
+                                Crafting Energy (the hammer icon) which has 10 points and also regenerates every 4 min
+                                and PvP Energy (the raised fist icon) which has 15 points and regenerates every 8 min.
+                                In the next sections we will talk about Energies in bigger detail.
+                            </p>
+                        </div>
 
                     </div>
                 </div>
@@ -172,384 +194,382 @@
                         They are designed in a way that there isn't a specific way of playing them (they basically don't have a META).
                         Long story short, you have a choice of playing your favourite class with at least 2 varieties of play style!
                         Without further ado, lets meet our Classes :
+                    <p class="has-normal-font-size main-font-color">
+                        <img src="~/images/Warrior-Icon.png" alt="Warrior" width="60" height="60" />
+                        <br />
+                        Warrior
+                        <br />
+                        is your typical Physical Damage dealer : His main source of Damage comes from Normal Attacks, wears Metal Armor
+                        and he does not die fast. His Primary Stat is Stength. The Weapons used by the Warrior are Sword, Hammer and Club.
+
+                        The Warrior uses the following Spells :
                         <ul class="item-padding" style="list-style:none">
                             <li class="has-normal-font-size main-font-color">
-                                <img src="~/images/Warrior-Icon.png" alt="Warrior" width="60" height="60" />
+                                <i class="fas fa-sun main-font-color"></i> Head Smash - Damage Spell
                                 <br />
-                                Warrior
+                                Damage : Physical (high), Cost : Mana (moderate)
                                 <br />
-                                is your typical Physical Damage dealer : His main source of Damage comes from Normal Attacks, wears Metal Armor
-                                and he does not die fast. His Primary Stat is Stength. The Weapons used by the Warrior are Sword, Hammer and Club.
-
-                                The Warrior uses the following Spells :
-                                <ul class="item-padding" style="list-style:none">
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color"></i> Head Smash - Damage Spell
-                                        <br />
-                                        Damage : Physical (high), Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Negative Effect : Health (very low), Target : Self
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color item-padding"></i> Hyper Strength - Physical Damage Buff
-                                        <br />
-                                        Power (moderate), Cost : Mana (moderate), Target : Self
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Raging Blow - Damage Spell
-                                        <br />
-                                        Damage : Physical (moderate), Cost : Mana (low)
-                                        <br />
-                                        Bonus Effect : Mana Regen (very low)
-                                        <br />
-                                        Addition : Ignores a low amount of the Enemy's Armor
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Disarm - Physical Damage DeBuff
-                                        <br />
-                                        Power (moderate), Cost : Mana (moderate), Target : Enemy
-                                    </li>
-                                </ul>
-                                <br />
-                                <hr />
+                                Bonus Negative Effect : Health (very low), Target : Self
                             </li>
                             <li class="has-normal-font-size main-font-color">
-                                <img src="~/images/Rogue-Icon.png" alt="Rogue" width="60" height="60" />
+                                <i class="fas fa-sun main-font-color item-padding"></i> Hyper Strength - Physical Damage Buff
                                 <br />
-                                Rogue
-                                <br />
-                                is a cunning assassin that deals mainly Physical Damage and wears Leather Armor. His Primary Stat is Agility.
-                                The Weapon used by the Rogue is a Dagger.
-
-                                The Rogue uses the following Spells :
-                                <br />
-                                <ul class="item-padding" style="list-style:none">
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color"></i> Stab - Damage Spell
-                                        <br />
-                                        Damage : Physical (moderate), Cost : Mana (very low)
-                                        <br />
-                                        Bonus Effect : Attack Power (low)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Poison Dagger - Damage Spell
-                                        <br />
-                                        Damage : Physical (low) + Magical (moderate), Cost : Mana (moderate)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Poison Dagger - Damage Spell
-                                        <br />
-                                        Damage : Physical (low) + Magical (moderate), Cost : Mana (moderate)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Evasion - Armor Buff
-                                        <br />
-                                        Power (high) , Cost : Mana (moderate)
-                                        <br />
-                                        Positive Effect : Mana Regem (moderate)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Thievery - Gold Buff
-                                        <br />
-                                        Power (moderate) , Cost : Mana (high)
-                                    </li>
-                                </ul>
-                                <hr />
+                                Power (moderate), Cost : Mana (moderate), Target : Self
                             </li>
-                            <li class="has-normal-font-size main-font-color">
-                                <img src="~/images/Hunter-Icon.png" alt="Hunter" width="60" height="60" />
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Raging Blow - Damage Spell
                                 <br />
-                                Hunter
-
+                                Damage : Physical (moderate), Cost : Mana (low)
                                 <br />
-                                is a swift ranger that mainly consists in Physical Damage dealing and wears Leather Armor. His Primary Stat is Agility.
-                                The Weapon used by the Hunter is a Bow.
-
-                                The Hunter uses the following Spells :
-
-                                <ul class="item-padding" style="list-style:none">
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color"></i> Hasting Arrow - Damage Spell
-                                        <br />
-                                        Damage : Physical (moderate), Cost : Mana (low)
-                                        <br />
-                                        Bonus Effect : Critical Chance (low)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Grass Hop - Armor Buff
-                                        <br />
-                                        Power (very high), Cost : Mana (high)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Poison Shot - Damage Spell
-                                        <br />
-                                        Damage : Physical (low) + Magical (moderate), Cost : Mana (moderate)
-                                        <br />
-                                        Addition : Ignores a moderate ammount of Enemy's Armor
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Sharp Eye - Physical Damage Buff
-                                        <br />
-                                        Power (moderate), Cost : Mana (high)
-                                    </li>
-                                </ul>
+                                Bonus Effect : Mana Regen (very low)
                                 <br />
-                                <hr />
+                                Addition : Ignores a low amount of the Enemy's Armor
                             </li>
-                            <li class="has-normal-font-size main-font-color">
-                                <img src="~/images/MageIcon.png" alt="Mage" width="60" height="60" />
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Disarm - Physical Damage DeBuff
                                 <br />
-                                Mage
-                                <br />
-                                is a skillful sorcerer that deals Magic Damage and wears Cloth Armor. His Primary Stat is Intellect.
-                                The Weapons used by the Mage are Orb and Staff.
-
-                                The Mage uses the following Spells :
-
-                                <ul class="item-padding" style="list-style:none">
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color"></i> Water Ball - Damage Spell
-                                        <br />
-                                        Damage : Magical (moderate), Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Effect : Mana Regen (high)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Fire Ball - Damage Spell
-                                        <br />
-                                        Damage : Magical (moderate) + Enemy's Max Health (very low), Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Negative Effect : Health Regen (very low), Target : Enemy
-                                        <br />
-                                        Addition : Ignores a low amount of the Enemy's Resistance
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Mana Conversion - Mana Buff
-                                        <br />
-                                        Power (moderate) , Cost : Mana (none)
-                                        <br />
-                                        Bonus Negative Effect : Armor (low), Target : Self
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> All Out Blast - Damage Spell
-                                        <br />
-                                        Damage : Magical (very high) , Cost : Mana (very high)
-                                        <br />
-                                        Bonus Negative Effect : Mana Regen (low), Target : Self
-                                        <br />
-                                        Addition : Ignores the full amount of the Enemy's Resistance.
-                                    </li>
-                                </ul>
-                                <br />
-                                <hr />
-                            </li>
-                            <li class="has-normal-font-size main-font-color">
-                                <img src="~/images/Druid-Icon.png" alt="Naturalist" width="60" height="60" />
-                                <br />
-                                Naturalist
-                                <br />
-                                is the protector of the wild which does Magical Damage and Healing. Wears Leather Armor and
-                                his Primary Stat is Spirit. The Weapons used by the Naturalist are Branch, Orb and Staff.
-
-                                The Naturalist uses the following Spells :
-
-                                <ul class="item-padding" style="list-style:none">
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color"></i> Nature's Touch - Healing Spell
-                                        <br />
-                                        Power : Magical (moderate) , Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Effect : Armor (low)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Thorn Blast - Damage Spell
-                                        <br />
-                                        Damage : Magical (moderate) , Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Negative Effect : Armor (moderate), Target : Enemy
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Nature's Gift - Health Regen Buff
-                                        <br />
-                                        Power (moderate), Cost : Mana (none)
-                                        <br />
-                                        Bonus Effect : Magic Power (very low), Target : Self
-                                        <br />
-                                        Bonus Negative Effect : Health (very low), Target : Self
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Pouring Rain - Mana Buff
-                                        <br />
-                                        Power (moderate), Cost : Mana (very low)
-                                        <br />
-                                        Bonus Negative Effect : Mana Regen (low), Target : Self
-                                    </li>
-                                </ul>
-                                <br />
-                                <hr />
-                            </li>
-                            <li class="has-normal-font-size main-font-color">
-                                <img src="~/images/Necroid-Icon.png" alt="Necroid" width="60" height="60" />
-                                <br />
-                                Necroid
-                                <br />
-                                is the raiser of the dead which does Magical Damage and Healing. Wears Cloth Armor and his
-                                Primary Stat is Intellect. The Weapons used by the Necroid are Skull and Staff.
-
-                                The Necroid uses the following Spells :
-                                <ul class="item-padding" style="list-style:none">
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color"></i> Shadow Touch - Damage Spell
-                                        <br />
-                                        Damage : Current Mana (low) + Enemy's Max Health (very low) , Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Negative Effect : Resistance (low), Target : Enemy
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Life Syphon - Damage Spell
-                                        <br />
-                                        Damage : Current Magic Power (moderate) + Enemy's Max Health (low) , Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Effect : Health (low), Target : Self
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Arcane Bane - Magic Power DeBuff
-                                        <br />
-                                        Power (moderate), Cost : Mana (moderate)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Mutual Darkness - Damage Spell
-                                        <br />
-                                        Damage : Your Max Health (moderate), Cost : Mana (none)
-                                        <br />
-                                        Bonus Negative Effect : Health (low), Target : Self
-                                    </li>
-                                </ul>
-                                <br />
-                                <hr />
-                            </li>
-                            <li class="has-normal-font-size main-font-color">
-                                <img src="~/images/Paladin-Icon.png" alt="Paladin" width="60" height="60" />
-                                <br />
-                                Paladin
-                                <br />
-                                is the guardian of the light which does Magical and Physical Damage, and also does Healing. Wears Metal Armor and
-                                his Primary Stat is Strength. The Weapons used by the Paladin are Hammer and Sword.
-
-                                The Paladin uses the following Spells :
-                                <ul class="item-padding" style="list-style:none">
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color"></i> Holy Strike - Damage Spell
-                                        <br />
-                                        Damage : Physical (moderate), Cost : Mana (low)
-                                        <br />
-                                        Bonus Effect : Magic Power (very low), Target : Self
-                                        <br />
-                                        Addition : Ignores a moderate amount of the Enemy's Armor
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Burning Light - Damage Spell
-                                        <br />
-                                        Damage : Magical (moderate), Cost : Mana (low)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Vicious Spell Guard - Resistance Buff
-                                        <br />
-                                        Power(high), Cost : Mana (moderate)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Divine Rune - Attack Power Buff
-                                        <br />
-                                        Power(low), Cost : Mana (moderate)
-                                    </li>
-                                </ul>
-                                <br />
-                                <hr />
-                            </li>
-                            <li class="has-normal-font-size main-font-color">
-                                <img src="~/images/Priest-Icon.png" alt="Priest" width="60" height="60" />
-                                <br />
-                                Priest
-                                <br />
-                                is the invoker of light which does Physical Damage and Healing. Wears Cloth Armor and his
-                                Primary Stat is Spirit. The Weapons used by the Priest are Staff and Branch.
-
-                                The Priest uses the following Spells :
-                                <ul class="item-padding" style="list-style:none">
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color"></i> Holy Light - Healing Spell
-                                        <br />
-                                        Power : Magic Power (moderate) + Your Max Health (low), Cost : Mana (moderate)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Mana Drain - Mana Buff
-                                        <br />
-                                        Power (moderate), Cost : Mana (very low)
-                                        <br />
-                                        Bonus Negative Effect : Mana (moderate), Target : Enemy
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Staff Smash - Damage Spell
-                                        <br />
-                                        Damage : Physical (moderate), Cost : Mana (low)
-                                        <br />
-                                        Bonus Negative Effect : Armor (low), Target : Enemy
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Blessing - Magic Power Buff
-                                        <br />
-                                        Power (moderate), Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Effect : Health Regen (moderate)
-                                    </li>
-                                </ul>
-                                <br />
-                                <hr />
-                            </li>
-                            <li class="has-normal-font-size main-font-color">
-                                <img src="~/images/Shaman-Icon.png" alt="Shaman" width="60" height="60" />
-                                <br />
-                                Shaman
-                                <br />
-                                is the elemental guide which does Physical and Magical Damage and also does Healing. Wears Metal Armor
-                                and his Primary Stat is Stamina. The Weapons used by the Shaman are Club and Hammer.
-
-                                The Shaman uses the following Spells :
-                                <ul class="item-padding" style="list-style:none">
-                                    <li class="has-normal-font-size main-font-color">
-                                        <i class="fas fa-sun main-font-color"></i> Thunder Strike - Damage Spell
-                                        <br />
-                                        Damage : Magic Power (moderate) + Attack Power (low), Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Negative Effect : Resistance(moderate), Target : Enemy
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Earth Strike - Damage Spell
-                                        <br />
-                                        Damage : Attack Power (moderate) + Magic Power (low), Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Effect : Health [Attack Power(moderate)], Target : Self
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Flame Strike - Damage Spell
-                                        <br />
-                                        Damage : Attack Power (moderate), Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Effect : Attack Power (low), Target : Self
-                                        <br />
-                                        Addition : Your Enemy will Defend against this Spell with both Armor (half) and Resistance (half)
-                                    </li>
-                                    <li class="has-normal-font-size main-font-color item-padding">
-                                        <i class="fas fa-sun main-font-color"></i> Water Strike - Damage Spell
-                                        <br />
-                                        Damage : Magic Power (moderate), Cost : Mana (moderate)
-                                        <br />
-                                        Bonus Effect : Mana Regen (moderate), Target : Self
-                                    </li>
-                                </ul>
-                                <br />
+                                Power (moderate), Cost : Mana (moderate), Target : Enemy
                             </li>
                         </ul>
+                        <br />
+                        <hr />
+                    </p>
+                    <p class="has-normal-font-size main-font-color">
+                        <img src="~/images/Rogue-Icon.png" alt="Rogue" width="60" height="60" />
+                        <br />
+                        Rogue
+                        <br />
+                        is a cunning assassin that deals mainly Physical Damage and wears Leather Armor. His Primary Stat is Agility.
+                        The Weapon used by the Rogue is a Dagger.
+
+                        The Rogue uses the following Spells :
+                        <br />
+                        <ul class="item-padding" style="list-style:none">
+                            <li class="has-normal-font-size main-font-color">
+                                <i class="fas fa-sun main-font-color"></i> Stab - Damage Spell
+                                <br />
+                                Damage : Physical (moderate), Cost : Mana (very low)
+                                <br />
+                                Bonus Effect : Attack Power (low)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Poison Dagger - Damage Spell
+                                <br />
+                                Damage : Physical (low) + Magical (moderate), Cost : Mana (moderate)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Poison Dagger - Damage Spell
+                                <br />
+                                Damage : Physical (low) + Magical (moderate), Cost : Mana (moderate)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Evasion - Armor Buff
+                                <br />
+                                Power (high) , Cost : Mana (moderate)
+                                <br />
+                                Positive Effect : Mana Regem (moderate)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Thievery - Gold Buff
+                                <br />
+                                Power (moderate) , Cost : Mana (high)
+                            </li>
+                        </ul>
+                        <br />
+                        <hr />
+                    </p>
+                    <p class="has-normal-font-size main-font-color">
+                        <img src="~/images/Hunter-Icon.png" alt="Hunter" width="60" height="60" />
+                        <br />
+                        Hunter
+
+                        <br />
+                        is a swift ranger that mainly consists in Physical Damage dealing and wears Leather Armor. His Primary Stat is Agility.
+                        The Weapon used by the Hunter is a Bow.
+
+                        The Hunter uses the following Spells :
+
+                        <ul class="item-padding" style="list-style:none">
+                            <li class="has-normal-font-size main-font-color">
+                                <i class="fas fa-sun main-font-color"></i> Hasting Arrow - Damage Spell
+                                <br />
+                                Damage : Physical (moderate), Cost : Mana (low)
+                                <br />
+                                Bonus Effect : Critical Chance (low)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Grass Hop - Armor Buff
+                                <br />
+                                Power (very high), Cost : Mana (high)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Poison Shot - Damage Spell
+                                <br />
+                                Damage : Physical (low) + Magical (moderate), Cost : Mana (moderate)
+                                <br />
+                                Addition : Ignores a moderate ammount of Enemy's Armor
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Sharp Eye - Physical Damage Buff
+                                <br />
+                                Power (moderate), Cost : Mana (high)
+                            </li>
+                        </ul>
+                        <br />
+                        <hr />
+                    </p>
+                    <p class="has-normal-font-size main-font-color">
+                        <img src="~/images/MageIcon.png" alt="Mage" width="60" height="60" />
+                        <br />
+                        Mage
+                        <br />
+                        is a skillful sorcerer that deals Magic Damage and wears Cloth Armor. His Primary Stat is Intellect.
+                        The Weapons used by the Mage are Orb and Staff.
+
+                        The Mage uses the following Spells :
+
+                        <ul class="item-padding" style="list-style:none">
+                            <li class="has-normal-font-size main-font-color">
+                                <i class="fas fa-sun main-font-color"></i> Water Ball - Damage Spell
+                                <br />
+                                Damage : Magical (moderate), Cost : Mana (moderate)
+                                <br />
+                                Bonus Effect : Mana Regen (high)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Fire Ball - Damage Spell
+                                <br />
+                                Damage : Magical (moderate) + Enemy's Max Health (very low), Cost : Mana (moderate)
+                                <br />
+                                Bonus Negative Effect : Health Regen (very low), Target : Enemy
+                                <br />
+                                Addition : Ignores a low amount of the Enemy's Resistance
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Mana Conversion - Mana Buff
+                                <br />
+                                Power (moderate) , Cost : Mana (none)
+                                <br />
+                                Bonus Negative Effect : Armor (low), Target : Self
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> All Out Blast - Damage Spell
+                                <br />
+                                Damage : Magical (very high) , Cost : Mana (very high)
+                                <br />
+                                Bonus Negative Effect : Mana Regen (low), Target : Self
+                                <br />
+                                Addition : Ignores the full amount of the Enemy's Resistance.
+                            </li>
+                        </ul>
+                        <br />
+                        <hr />
+                    </p>
+                    <p class="has-normal-font-size main-font-color">
+                        <img src="~/images/Druid-Icon.png" alt="Naturalist" width="60" height="60" />
+                        <br />
+                        Naturalist
+                        <br />
+                        is the protector of the wild which does Magical Damage and Healing. Wears Leather Armor and
+                        his Primary Stat is Spirit. The Weapons used by the Naturalist are Branch, Orb and Staff.
+
+                        The Naturalist uses the following Spells :
+
+                        <ul class="item-padding" style="list-style:none">
+                            <li class="has-normal-font-size main-font-color">
+                                <i class="fas fa-sun main-font-color"></i> Nature's Touch - Healing Spell
+                                <br />
+                                Power : Magical (moderate) , Cost : Mana (moderate)
+                                <br />
+                                Bonus Effect : Armor (low)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Thorn Blast - Damage Spell
+                                <br />
+                                Damage : Magical (moderate) , Cost : Mana (moderate)
+                                <br />
+                                Bonus Negative Effect : Armor (moderate), Target : Enemy
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Nature's Gift - Health Regen Buff
+                                <br />
+                                Power (moderate), Cost : Mana (none)
+                                <br />
+                                Bonus Effect : Magic Power (very low), Target : Self
+                                <br />
+                                Bonus Negative Effect : Health (very low), Target : Self
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Pouring Rain - Mana Buff
+                                <br />
+                                Power (moderate), Cost : Mana (very low)
+                                <br />
+                                Bonus Negative Effect : Mana Regen (low), Target : Self
+                            </li>
+                        </ul>
+                        <br />
+                        <hr />
+                    </p>
+                    <p class="has-normal-font-size main-font-color">
+                        <img src="~/images/Necroid-Icon.png" alt="Necroid" width="60" height="60" />
+                        <br />
+                        Necroid
+                        <br />
+                        is the raiser of the dead which does Magical Damage and Healing. Wears Cloth Armor and his
+                        Primary Stat is Intellect. The Weapons used by the Necroid are Skull and Staff.
+
+                        The Necroid uses the following Spells :
+                        <ul class="item-padding" style="list-style:none">
+                            <li class="has-normal-font-size main-font-color">
+                                <i class="fas fa-sun main-font-color"></i> Shadow Touch - Damage Spell
+                                <br />
+                                Damage : Current Mana (low) + Enemy's Max Health (very low) , Cost : Mana (moderate)
+                                <br />
+                                Bonus Negative Effect : Resistance (low), Target : Enemy
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Life Syphon - Damage Spell
+                                <br />
+                                Damage : Current Magic Power (moderate) + Enemy's Max Health (low) , Cost : Mana (moderate)
+                                <br />
+                                Bonus Effect : Health (low), Target : Self
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Arcane Bane - Magic Power DeBuff
+                                <br />
+                                Power (moderate), Cost : Mana (moderate)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Mutual Darkness - Damage Spell
+                                <br />
+                                Damage : Your Max Health (moderate), Cost : Mana (none)
+                                <br />
+                                Bonus Negative Effect : Health (low), Target : Self
+                            </li>
+                        </ul>
+                        <br />
+                        <hr />
+                    </p>
+                    <p class="has-normal-font-size main-font-color">
+                        <img src="~/images/Paladin-Icon.png" alt="Paladin" width="60" height="60" />
+                        <br />
+                        Paladin
+                        <br />
+                        is the guardian of the light which does Magical and Physical Damage, and also does Healing. Wears Metal Armor and
+                        his Primary Stat is Strength. The Weapons used by the Paladin are Hammer and Sword.
+
+                        The Paladin uses the following Spells :
+                        <ul class="item-padding" style="list-style:none">
+                            <li class="has-normal-font-size main-font-color">
+                                <i class="fas fa-sun main-font-color"></i> Holy Strike - Damage Spell
+                                <br />
+                                Damage : Physical (moderate), Cost : Mana (low)
+                                <br />
+                                Bonus Effect : Magic Power (very low), Target : Self
+                                <br />
+                                Addition : Ignores a moderate amount of the Enemy's Armor
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Burning Light - Damage Spell
+                                <br />
+                                Damage : Magical (moderate), Cost : Mana (low)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Vicious Spell Guard - Resistance Buff
+                                <br />
+                                Power(high), Cost : Mana (moderate)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Divine Rune - Attack Power Buff
+                                <br />
+                                Power(low), Cost : Mana (moderate)
+                            </li>
+                        </ul>
+                        <br />
+                        <hr />
+                    </p>
+                    <p class="has-normal-font-size main-font-color">
+                        <img src="~/images/Priest-Icon.png" alt="Priest" width="60" height="60" />
+                        <br />
+                        Priest
+                        <br />
+                        is the invoker of light which does Physical Damage and Healing. Wears Cloth Armor and his
+                        Primary Stat is Spirit. The Weapons used by the Priest are Staff and Branch.
+
+                        The Priest uses the following Spells :
+                        <ul class="item-padding" style="list-style:none">
+                            <li class="has-normal-font-size main-font-color">
+                                <i class="fas fa-sun main-font-color"></i> Holy Light - Healing Spell
+                                <br />
+                                Power : Magic Power (moderate) + Your Max Health (low), Cost : Mana (moderate)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Mana Drain - Mana Buff
+                                <br />
+                                Power (moderate), Cost : Mana (very low)
+                                <br />
+                                Bonus Negative Effect : Mana (moderate), Target : Enemy
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Staff Smash - Damage Spell
+                                <br />
+                                Damage : Physical (moderate), Cost : Mana (low)
+                                <br />
+                                Bonus Negative Effect : Armor (low), Target : Enemy
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Blessing - Magic Power Buff
+                                <br />
+                                Power (moderate), Cost : Mana (moderate)
+                                <br />
+                                Bonus Effect : Health Regen (moderate)
+                            </li>
+                        </ul>
+                        <br />
+                        <hr />
+                    </p>
+                    <p class="has-normal-font-size main-font-color">
+                        <img src="~/images/Shaman-Icon.png" alt="Shaman" width="60" height="60" />
+                        <br />
+                        Shaman
+                        <br />
+                        is the elemental guide which does Physical and Magical Damage and also does Healing. Wears Metal Armor
+                        and his Primary Stat is Stamina. The Weapons used by the Shaman are Club and Hammer.
+
+                        The Shaman uses the following Spells :
+                        <ul class="item-padding" style="list-style:none">
+                            <li class="has-normal-font-size main-font-color">
+                                <i class="fas fa-sun main-font-color"></i> Thunder Strike - Damage Spell
+                                <br />
+                                Damage : Magic Power (moderate) + Attack Power (low), Cost : Mana (moderate)
+                                <br />
+                                Bonus Negative Effect : Resistance(moderate), Target : Enemy
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Earth Strike - Damage Spell
+                                <br />
+                                Damage : Attack Power (moderate) + Magic Power (low), Cost : Mana (moderate)
+                                <br />
+                                Bonus Effect : Health [Attack Power(moderate)], Target : Self
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Flame Strike - Damage Spell
+                                <br />
+                                Damage : Attack Power (moderate), Cost : Mana (moderate)
+                                <br />
+                                Bonus Effect : Attack Power (low), Target : Self
+                                <br />
+                                Addition : Your Enemy will Defend against this Spell with both Armor (half) and Resistance (half)
+                            </li>
+                            <li class="has-normal-font-size main-font-color item-padding">
+                                <i class="fas fa-sun main-font-color"></i> Water Strike - Damage Spell
+                                <br />
+                                Damage : Magic Power (moderate), Cost : Mana (moderate)
+                                <br />
+                                Bonus Effect : Mana Regen (moderate), Target : Self
+                            </li>
+                        </ul>
+                        <br />
                     </p>
                 </div>
                 <br />
@@ -595,7 +615,8 @@
                         and Skill Level (let's say you already have those), requires some set of Materials and also a Tool / Setting (in most cases) to finish the job.
                         That's everything, right? Wrong. When all conditions for a Craftable Item are met, one point of our Crafting Energy will be taken (if we have any...
                         otherwise we won't be able to Craft). Just like your Normal Energy, Crafting Energy regenerates once every 4 minutes, but you can only have a
-                        maximum of 10 points at a time. In addition : Some Craftable Items may require more Energy points. Keep in mind that there are different types of
+                        maximum of 10 points at a time. In addition : Some Craftable Items may require more Energy points, but all of them require a certain level of
+                        <a href="#Professions"><em>Profession Expertise</em></a> (Proffesion Skill Level). Keep in mind that there are different types of
                         Crafting and some of them DO NOT require Energy. Let's check them out.
                     </p>
                     <br />
@@ -608,21 +629,295 @@
                         <div class="item-padding">
                             <p class="has-large-font-size main-font-color">
                                 Lets start with <i class="fas fa-poo main-font-color"></i> Refining.
-                                <br />
+                            </p>
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
                                 Refining consists in transforming a Raw Material into a Usable Crafting Ingredient. Let's say you got a Tree Log and want to make
                                 Planks in order to Craft a Wooden Chair. The action you would perform in this case scenario would be <em>Refining</em>. It requires
-                                <em>Tools</em> that are in Working Condition (aren't broken / Durability > 0). Like Energy, Tool's Durability is affected the same way. 
-                                Some Crafting Tasks may go easy on your Tool, while other can completely demolish it. In order to make things balanced, Tools are Buyable 
-                                (not that expensive), Repairable (by their respective Profession Craftsmen) and Upgradeable. Refining is the <em>First Step</em> of making 
+                                <em>Tools</em> that are in Working Condition (aren't broken / Durability > 0). Like Energy, Tool's Durability is affected the same way.
+                                Some Crafting Tasks may go easy on your Tool, while other can completely demolish it. In order to make things balanced, Tools are Buyable
+                                (not that expensive), Repairable (by their respective Profession Craftsmen) and Upgradeable. Refining is the <em>First Step</em> of making
                                 a blueprint alive and is made countless times during the Crafting process. That's why Refining DOES NOT require Energy to perform.
                             </p>
                             <br />
+                            <hr />
                             <p class="has-large-font-size main-font-color">
                                 Before we reveal the different Constructing processes, it's <b>Essential</b> for us to know what <i class="fas fa-cut main-font-color"></i> Disolving is.
+                            </p>
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                Disolving means technically 'Breaking' Items into 2 or more sub-Materials that can be used in future Constructing or Refining.
+                                Like Refining and Constructing it does require Tools for you to operate. Of course, Disolving works only ot Items that originally
+                                have two or more Materials included in them. Example : I am gonna Disolve this Garden Shovel into Stick and Metal. Now I can use these
+                                Materials to <em>Construct</em> a Metal Sword. Disolving DOES NOT require Energy to perform.
+                            </p>
+                            <br />
+                            <hr />
+                            <p class="has-large-font-size main-font-color">
+                                <i class="fas fa-hammer main-font-color"></i> Constructing
+                            </p>
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                Constructing as a term can have many names : Forging, Knitting, Tailoring, Leatherworking e.t.c.
+                                This is the final step before you can recieve the reward of being a <em>Crafter</em>. Constructing also requires Tools
+                                but in order to get the job done, you need Working Setting and / or additional Tools. For example : A Chef may need a
+                                Cooking Furnace for some dishes and surely will need a Cutting Board to prepare the Ingredients. Working Spaces (like the Furnace)
+                                are automatically included to your Profession Arsenal. You DO NOT need to buy them. All other Tools are included in the
+                                <a href="#Shops"><em>Shop</em></a>.
                             </p>
                         </div>
                     </div>
                 </div>
+                <br />
+                <div id="Professions" class="item-padding">
+                    <p class="has-large-font-size main-font-color"><i class="fas fa-file main-font-color"></i> Professions</p>
+                    <hr />
+                    <p class="has-normal-font-size main-font-color">
+                        Professions divide into 2 main groups : Gatherers and Crafters. Yep. As it seems, only <em>Crafters</em> can <em>Craft</em>, but that's
+                        not the whole story : Gatherers can't perform Constructing, but they can perform Refining and Disolving actions. Long story short, Crafters
+                        use their Profession / Crafting Energy to make Items, while Gatherers use their Energy to collect the Materials / Ingredients. Of course, it's
+                        a little more complex than that.
+                    </p>
+                    <br />
+                    <br />
+                    <div class="item-padding">
+                        <p class="has-large-font-size main-font-color"><i class="fas fa-feather-alt main-font-color"></i> Gather Type Professions</p>
+                        <br />
+                        <p class="has-normal-font-size main-font-color">
+                            Every Gatherer Profession has it's own Zone. In it's Zone you are able to fight different Monsters that drop 
+                            Specified Loot (Crafting Materials). Fighting in the Zone does not grant you Gold or XP, but it does grant you <em>Profession XP</em>.
+                        </p>
+                        <div class="item-padding">
+                            <p class="has-normal-font-size main-font-color">
+                                <i class="icofont-tree-alt main-font-color icofont-2x"></i> Lumberjack
+                                <br />
+                                Zone : Tainted Forest
+                                <br />
+                                Monsters populating the Zone : Magical Tree, Giant Panda, Tree Kangaroo and Orangutan
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                <i class="icofont-mining main-font-color icofont-2x"></i> Miner
+                                <br />
+                                Zone : Endless Mine
+                                <br />
+                                Monsters populating the Zone : Giant Bat, Isopod, Cave Troll and Gargoyle
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                <i class="icofont-bear-tracks main-font-color icofont-2x"></i> Tracker
+                                <br />
+                                Zone : The Wilderness
+                                <br />
+                                Monsters populating the Zone : Wolf, Boar, Fox and Wild Goat
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                <i class="icofont-skull-face main-font-color icofont-2x"></i> Head Hunter
+                                <br />
+                                Zone : Vile City
+                                <br />
+                                Monsters populating the Zone : Civilian, Policeman, Prisoner and Gypsy
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                <i class="icofont-flora-flower icofont-2x main-font-color"></i> Herbalist
+                                <br />
+                                Zone : Magical Flower Shop
+                                <br />
+                                Monsters populating the Zone : Giant Clay Pot, Mutated Flower, Huge Dirt Block and Cactus
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                <i class="icofont-forest-fire icofont-2x main-font-color"></i> Banisher
+                                <br />
+                                Zone : The Core
+                                <br />
+                                Monsters populating the Zone : Essence Stealer, Giant Glass Orb, Essenceful Entity and Ancient Floating Shard
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                <i class="icofont-fish-5 icofont-2x icofont-flip-horizontal main-font-color"></i> Angler
+                                <br />
+                                Zone : Rocky Basin
+                                <br />
+                                Monsters populating the Zone : Seaside Lizard, Squid, Seagull and Sea Turtle
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                <i class="icofont-farmer-alt main-font-color icofont-2x"></i> Farmer
+                                <br />
+                                Zone : Happy Garden
+                                <br />
+                                Monsters populating the Zone : Moth, Praying Mantis, Huge Basket, The Toolshed
+                            </p>
+                        </div>
+
+                        <div class="item-padding">
+                            <hr />
+                            <br />
+                            <p class="has-normal-font-size main-font-color">
+                                <i class="fas fa-dumpster main-font-color has-large-font-size"></i> Scrapper
+                                <br />
+                                Zone : Happy Garden
+                                <br />
+                                Monsters populating the Zone : Garbage Can, Recycling Bot of 198920, Garbage Truck, Broken Vending Machine
+                            </p>
+                        </div>
+
+                        <br />
+                        <hr />
+                        <div class="item-padding">
+                            <p class="has-large-font-size main-font-color">
+                                <i class="fas fa-pencil-ruler main-font-color"></i> Crafter Type Professions
+                            </p>
+
+                            <div class="item-padding">
+                                <p class="has-normal-font-size main-font-color">
+                                    <i class="icofont-saw main-font-color icofont-2x"></i> Carpenter
+                                    <br />
+                                    Materials :
+                                    <br />
+                                    Tools : Saw, Hammer and Sandpaper
+                                    <br />
+                                    Working Setting : Woodworking Machine
+                                </p>
+                            </div>
+
+                            <div class="item-padding">
+                                <hr />
+                                <br />
+                                <p class="has-normal-font-size main-font-color">
+                                    <i class="icofont-gavel main-font-color icofont-2x"></i> Forger
+                                    <br />
+                                    Materials :
+                                    <br />
+                                    Tools : Hammer and Anvil
+                                    <br />
+                                    Working Setting : Furnace
+                                </p>
+                            </div>
+                            <div class="item-padding">
+                                <hr />
+                                <br />
+                                <p class="has-normal-font-size main-font-color">
+                                    <i class="icofont-crocodile main-font-color icofont-2x"></i> Leatherworker
+                                    <br />
+                                    Materials :
+                                    <br />
+                                    Tools : Knife, Needle and Ruler
+                                    <br />
+                                    Working Setting : Leather Sewing Machine
+                                </p>
+                            </div>
+                            <div class="item-padding">
+                                <hr />
+                                <br />
+                                <p class="has-normal-font-size main-font-color">
+                                    <i class="icofont-camping-vest main-font-color icofont-2x"></i> Tailor
+                                    <br />
+                                    Materials :
+                                    <br />
+                                    Tools : Scissors, Needle, Knitting Kit and Ruler
+                                    <br />
+                                    Working Setting : Sewing Machine
+                                </p>
+                            </div>
+                            <div class="item-padding">
+                                <hr />
+                                <br />
+                                <p class="has-normal-font-size main-font-color">
+                                    <i class="icofont-test-bulb main-font-color icofont-2x"></i> Alchemic
+                                    <br />
+                                    Materials :
+                                    <br />
+                                    Tools : Mortar and Pestle and Protective Mask
+                                    <br />
+                                    Working Setting : Fireplace
+                                </p>
+                            </div>
+                            <div class="item-padding">
+                                <hr />
+                                <br />
+                                <p class="has-normal-font-size main-font-color">
+                                    <i class="icofont-triangle main-font-color icofont-2x"></i> Conjurer
+                                    <br />
+                                    Materials :
+                                    <br />
+                                    Tools : Cooling Rod and Protective Mask
+                                    <br />
+                                    Working Setting : Freezer
+                                </p>
+                            </div>
+                            <div class="item-padding">
+                                <hr />
+                                <br />
+                                <p class="has-normal-font-size main-font-color">
+                                    <i class="icofont-swirl main-font-color icofont-2x"></i> Scaleworker
+                                    <br />
+                                    Materials :
+                                    <br />
+                                    Tools : Knife, Heavy Sandpaper, Hammer and Anvil
+                                    <br />
+                                    Working Setting : Drying Rack
+                                </p>
+                            </div>
+                            <div class="item-padding">
+                                <hr />
+                                <br />
+                                <p class="has-normal-font-size main-font-color">
+                                    <i class="icofont-chef main-font-color icofont-2x"></i> Chef
+                                    <br />
+                                    Materials :
+                                    <br />
+                                    Tools : Knife, Mixing Bowl and Cutting Board
+                                    <br />
+                                    Working Setting : Cooking Oven
+                                </p>
+                            </div>
+                            <div class="item-padding">
+                                <hr />
+                                <br />
+                                <p class="has-normal-font-size main-font-color">
+                                    <i class="icofont-garbage main-font-color icofont-2x"></i> Recycler
+                                    <br />
+                                    Materials :
+                                    <br />
+                                    Tools : Metal Graber
+                                    <br />
+                                    Working Setting : Melting Container
+                                </p>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
