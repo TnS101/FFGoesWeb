@@ -793,7 +793,7 @@
         {
             this.context.MonstersRarities.Add(new MonsterRarity
             {
-                MonsterName = "Beast",
+                MonsterName = "Bear",
                 Rarity = "Rare",
                 ImageURL = "https://i.ibb.co/YhPcrdk/Beast-Rare.png",
                 StatAmplifier = 0.15,
@@ -801,7 +801,7 @@
 
             this.context.MonstersRarities.Add(new MonsterRarity
             {
-                MonsterName = "Beast",
+                MonsterName = "Bear",
                 Rarity = "Heroic",
                 ImageURL = "https://i.ibb.co/NVdyxh5/Bear-Heroic.png",
                 StatAmplifier = 0.3,

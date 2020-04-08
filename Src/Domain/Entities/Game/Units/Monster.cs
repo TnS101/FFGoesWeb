@@ -1,8 +1,11 @@
 ﻿namespace Domain.Entities.Game.Units
 {
-
     public class Monster 
     {
+        public Monster()
+        {
+        }
+
         public int Id { get; set; }
 
         public int? MonsterRarityId { get; set; }

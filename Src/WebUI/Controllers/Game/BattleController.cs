@@ -16,31 +16,31 @@
     {
         private UnitFullViewModel monster;
         private bool yourTurn;
-        private UnitFullViewModel player;
+        private UnitFullViewModel hero;
 
-        [HttpGet]
-        public async Task<ActionResult> Battle([FromForm]string zonenName)
+        [HttpGet("Battle/Battle/zone")]
+        public async Task<ActionResult> Battle([FromQuery]string zone)
         {
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
-            this.monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zonenName });
+            this.monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zone });
             this.yourTurn = true;
             return this.View(@"\Battle", this.monster.Name);
         }
 
-        [HttpGet("/Action/id")]
-        public async Task<ActionResult> Action([FromForm]string heroId)
+        [HttpGet]
+        public async Task<ActionResult> Command()
         {
-            this.player = await this.Mediator.Send(new GetFullUnitQuery { HeroId = heroId });
+            this.hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
 
-            return this.View(@"\Action", this.Stats(this.player));
+            return this.View(@"\Command", this.Stats(this.hero));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Action([FromQuery]string command, [FromQuery]string spellName)
+        [HttpPost("Battle/Action/command")]
+        public async Task<ActionResult> Command([FromQuery]string command, [FromQuery]string spellName)
         {
             return this.View(
                 await this.Mediator.Send(new BattleOptionsCommand
-            { Command = command, Player = this.player, Enemy = this.monster, YourTurn = this.yourTurn, SpellName = spellName }), this.Stats(this.player));
+            { Command = command, Player = this.hero, Enemy = this.monster, YourTurn = this.yourTurn, SpellName = spellName }), this.Stats(this.hero));
         }
 
         [HttpGet]

@@ -1,0 +1,56 @@
+﻿@model string[]
+@{
+    string playerName = Model[0];
+    string enemyName = Model[1];
+    string imagePath = Model[2];
+    string playerCurrentHP = Model[3];
+    string playerMaxHP = Model[4];
+    string enemyCurrentHP = Model[5];
+    string enemyMaxHP = Model[6];
+    string playerAttack = Model[7];
+    string enemyAttack = Model[8];
+    string playerCurrentMana = Model[9];
+    string playerMaxMana = Model[10];
+    string enemyCurrentMana = Model[11];
+    string enemyMaxMana = Model[12];
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Command</title>
+</head>
+<body>
+    <h2 style="text-align:center">@playerName  vs  @enemyName</h2>
+    <div class="action-div">
+
+        <img src="~/images/ExampleSprite2.png" class="player-sprite" alt="Player" />
+        <img src="@imagePath" alt="Enemy" />
+        <br />
+
+        <progress id="playerDamage" value="@double.Parse(playerAttack)" hidden></progress>
+        <progress id="enemyDamage" value="@double.Parse(enemyAttack)" hidden></progress>
+        <br />
+        <div>
+            <progress class="player-healthBar" id="playerHealth" value="@double.Parse(playerCurrentHP)" max="@double.Parse(playerMaxHP)"></progress>
+            <progress class="healthBar" id="enemyHealth" value="@double.Parse(enemyCurrentHP)" max="@double.Parse(enemyMaxHP)"></progress>
+            <br />
+            <br />
+            <progress class="player-manaBar" id="playerMana" value="@double.Parse(playerCurrentMana)" max="@double.Parse(playerMaxMana)"></progress>
+            <progress class="manaBar" id="enemyMana" value="@double.Parse(enemyCurrentMana)" max="@double.Parse(enemyMaxMana)"></progress>
+            <p class="versus">⚔️</p>
+
+        </div>
+        <div class="container battle-container">
+            <a asp-controller="Battle" asp-action="Command" asp-route-id="Attack" asp-route-command="Attack"><img class="attack" src="~/images/attack.png" alt="Attack" /></a>
+            <a asp-controller="Battle" asp-action="Command" asp-route-id="Defend" asp-route-command="Defend"><img src="~/images/shield.png" alt="Defend" /></a>
+            <form asp-controller="Battle" asp-action="Command" method="post">
+                <select name="spellName">
+                    <option value="Spell">Spell</option>
+                </select>
+            </form>
+            <a asp-controller="Battle" asp-action="Command" asp-route-command="Escape">Escape</a>
+        </div>
+    </div>
+    <partial name="_Footer">
+</body>
+</html>
+

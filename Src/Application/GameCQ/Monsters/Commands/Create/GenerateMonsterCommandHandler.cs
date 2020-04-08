@@ -14,7 +14,7 @@
         private readonly IMapper mapper;
         private readonly IFFDbContext context;
 
-        public GenerateMonsterCommandHandler(IMapper mapper, IFFDbContext context)
+        public GenerateMonsterCommandHandler(IFFDbContext context, IMapper mapper)
         {
             this.enemyGenerator = new EnemyGenerator();
             this.mapper = mapper;

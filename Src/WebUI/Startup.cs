@@ -86,7 +86,7 @@
                 app.UseStaticFiles();
                 app.UseCookiePolicy();
             }
-
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
 

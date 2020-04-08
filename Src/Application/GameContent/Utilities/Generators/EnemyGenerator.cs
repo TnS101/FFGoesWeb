@@ -10,7 +10,7 @@
 
     public class EnemyGenerator
     {
-        private Random rng;
+        private readonly Random rng;
 
         public EnemyGenerator()
         {
@@ -66,10 +66,7 @@
                 
             }
 
-
-            var baseMonster = await context.Monsters.FindAsync(monsterId);
-
-            statIncrement.MonsterIncrement(baseMonster, monster);
+            statIncrement.MonsterIncrement(await context.Monsters.FindAsync(monsterId), monster);
 
             return await this.RarityRng(monster, context);
         }
@@ -95,12 +92,12 @@
 
             monster.ImageURL = monsterRarity.ImageURL;
             monster.MaxHP += monsterRarity.StatAmplifier * monster.MaxHP;
-            monster.AttackPower += statAmplifier * monster.AttackPower;
-            monster.MagicPower += statAmplifier * monster.MagicPower;
-            monster.ArmorValue += statAmplifier * monster.ArmorValue;
             monster.CurrentHP += statAmplifier * monster.CurrentHP;
+            monster.AttackPower += statAmplifier * monster.AttackPower;
             monster.CurrentAttackPower += statAmplifier * monster.CurrentAttackPower;
+            monster.MagicPower += statAmplifier * monster.MagicPower;
             monster.CurrentMagicPower += statAmplifier * monster.CurrentMagicPower;
+            monster.ArmorValue += statAmplifier * monster.ArmorValue;
             monster.CurrentArmorValue += statAmplifier * monster.CurrentArmorValue;
 
             return monster;
@@ -108,9 +105,9 @@
 
         private int WorldMonsterId()
         {
-            int enemyNumber = this.rng.Next(0, 26);
+            int enemyNumber = this.rng.Next(0, 27);
 
-            if (enemyNumber >= 0 && enemyNumber <= 5) // Beast
+            if (enemyNumber >= 0 && enemyNumber <= 5) // Bear
             {
                 return 9;
             }
