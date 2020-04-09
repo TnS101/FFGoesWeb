@@ -13,6 +13,7 @@
     string playerMaxMana = Model[10];
     string enemyCurrentMana = Model[11];
     string enemyMaxMana = Model[12];
+    string playerImage = Model[16];
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,8 +23,8 @@
     <h2 style="text-align:center">@playerName  vs  @enemyName</h2>
     <div class="action-div">
 
-        <img src="~/images/ExampleSprite2.png" class="player-sprite" alt="Player" />
-        <img src="@imagePath" alt="Enemy" />
+        <img src="@playerImage" alt="Player" width="80" height="80"/>
+        <img src="@imagePath" alt="Enemy" style="padding-left:250px"/>
         <br />
 
         <progress id="playerDamage" value="@double.Parse(playerAttack)" hidden></progress>
@@ -40,8 +41,8 @@
 
         </div>
         <div class="container battle-container">
-            <a asp-controller="Battle" asp-action="Command" asp-route-id="Attack" asp-route-command="Attack"><img class="attack" src="~/images/attack.png" alt="Attack" /></a>
-            <a asp-controller="Battle" asp-action="Command" asp-route-id="Defend" asp-route-command="Defend"><img src="~/images/shield.png" alt="Defend" /></a>
+            <a asp-controller="Battle" asp-action="Command" asp-route-id="Attack" asp-route-command="Attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack" /></a>
+            <a asp-controller="Battle" asp-action="Command" asp-route-id="Defend" asp-route-command="Defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
             <form asp-controller="Battle" asp-action="Command" method="post">
                 <select name="spellName">
                     <option value="Spell">Spell</option>

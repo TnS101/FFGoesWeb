@@ -71,7 +71,7 @@
             {
                 Name = "Oak Log",
                 Type = "Wood",
-                ImageURL = "https://ibb.co/YcSdBsh",
+                ImageURL = "/images/Items/Oak-Log.png",
                 IsRefineable = true,
                 FuelCount = 1,
             });
@@ -79,7 +79,7 @@
             {
                 Name = "Walnut Log",
                 Type = "Wood",
-                ImageURL = "https://ibb.co/7pWrQVF",
+                ImageURL = "/images/Items/Walnut-Log.png",
                 IsRefineable = true,
                 FuelCount = 2,
             });
@@ -87,7 +87,7 @@
             {
                 Name = "Birch Log",
                 Type = "Wood",
-                ImageURL = "https://ibb.co/kQGTT9K",
+                ImageURL = "/images/Items/Birch-Log.png",
                 IsRefineable = true,
                 FuelCount = 1,
             });
@@ -95,7 +95,7 @@
             {
                 Name = "Mahogany Log",
                 Type = "Wood",
-                ImageURL = "https://ibb.co/BGwKjFw",
+                ImageURL = "/images/Items/Mahogany-Log.png",
                 IsRefineable = true,
                 FuelCount = 1,
             });
@@ -103,144 +103,144 @@
             {
                 Name = "Coal Ore",
                 Type = "Ore",
-                ImageURL = "https://ibb.co/FsN0nFj",
+                ImageURL = "/images/Items/Coal-Ore.png",
                 FuelCount = 3,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Copper Ore",
                 Type = "Ore",
-                ImageURL = "https://ibb.co/MZSjzJm",
+                ImageURL = "/images/Items/Copper-Ore.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Iron Ore",
                 Type = "Ore",
-                ImageURL = "https://ibb.co/x6yr58f",
+                ImageURL = "/images/Items/Iron-Ore.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Gold Ore",
                 Type = "Ore",
-                ImageURL = "https://ibb.co/cFk1F1G",
+                ImageURL = "/images/Items/Gold-Ore.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Leather Scraps",
                 Type = "Leather",
-                ImageURL = "https://ibb.co/DfP7ZCP",
+                ImageURL = "/images/Items/Leather-Scraps.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Animal Fur",
                 Type = "Leather",
-                ImageURL = "https://ibb.co/p2Nzxzc",
+                ImageURL = "/images/Items/Animal-Fur.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Light Leather",
                 Type = "Leather",
-                ImageURL = "https://ibb.co/nQYG1Yq",
+                ImageURL = "/images/Items/Light-Leather.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Fine Leather",
                 Type = "Leather",
-                ImageURL = "https://ibb.co/4fC9gWG",
+                ImageURL = "/images/Items/Fine-Leather.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Cotton",
                 Type = "Cloth",
-                ImageURL = "https://ibb.co/dkbhLrL",
+                ImageURL = "/images/Items/Cotton.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Linen Cloth",
                 Type = "Cloth",
-                ImageURL = "https://ibb.co/ss8Z1pg",
+                ImageURL = "/images/Items/Linen-Cloth.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Silk",
                 Type = "Cloth",
-                ImageURL = "https://ibb.co/Fg4Mnrf",
+                ImageURL = "/images/Items/Silk.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Mint",
                 Type = "Herb",
-                ImageURL = "https://ibb.co/zxCxbvt",
+                ImageURL = "/images/Items/Mint.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Coriander",
                 Type = "Herb",
-                ImageURL = "https://ibb.co/0JR4wMr",
+                ImageURL = "/images/Items/Coriander.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Lavender",
                 Type = "Herb",
-                ImageURL = "https://ibb.co/zb9nYkL",
+                ImageURL = "/images/Items/Lavender.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Buttercup",
                 Type = "Herb",
-                ImageURL = "https://ibb.co/KmJGXYK",
+                ImageURL = "/images/Items/Herb-Essence.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Water Essence",
                 Type = "Essence",
-                ImageURL = "https://ibb.co/NsZ0yKp",
+                ImageURL = "/images/Items/Water-Essence.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Earth Essence",
                 Type = "Essence",
-                ImageURL = "https://ibb.co/CzHKCzg",
+                ImageURL = "/images/Items/Earth-Essence.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Air Essence",
                 Type = "Essence",
-                ImageURL = "https://ibb.co/vYKKCYy",
+                ImageURL = "/images/Items/Air-Essence.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Fire Essence",
                 Type = "Essence",
-                ImageURL = "https://ibb.co/SxtYrJg",
+                ImageURL = "/images/Items/Fire-Essence.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Shiny Scale",
                 Type = "Scale",
-                ImageURL = "https://ibb.co/svm2fbZ",
+                ImageURL = "/images/Items/Shiny-Scale.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Transparent Scale",
                 Type = "Scale",
-                ImageURL = "https://ibb.co/xhqP4sQ",
+                ImageURL = "/images/Items/Transparent-Scale.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
@@ -248,42 +248,42 @@
                 Name = "Golden Necklace",
                 Type = "Metal",
                 RelatedMaterials = "Gold Scraps 2, Iron Scraps 2",
-                ImageURL = "https://ibb.co/KqfDjTD",
+                ImageURL = "/images/Items/Golden-Necklace.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Hard Scale",
                 Type = "Scale",
-                ImageURL = "https://ibb.co/J2D2mtR",
+                ImageURL = "/images/Items/Hard-Scale.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Tomato",
                 Type = "Vegetables",
-                ImageURL = "https://ibb.co/6WnqmBG",
+                ImageURL = "/images/Items/Tomato.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Lettuce",
                 Type = "Vegetables",
-                ImageURL = "https://ibb.co/Cvbv249",
+                ImageURL = "/images/Items/Lettuce.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Turnip",
                 Type = "Vegetables",
-                ImageURL = "https://ibb.co/3fxzbXC",
+                ImageURL = "/images/Items/Turnip.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Pumpkin",
                 Type = "Vegetables",
-                ImageURL = "https://ibb.co/w0VKVH8",
+                ImageURL = "/images/Items/Pumpkin.png",
                 IsRefineable = true,
             });
 
@@ -292,19 +292,19 @@
             {
                 Name = "Dry Branch",
                 Type = "Wood",
-                ImageURL = "https://ibb.co/Qphv5Kx",
+                ImageURL = "/images/Items/Dry-Branch.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Green Leaves",
                 Type = "Wood",
-                ImageURL = "https://ibb.co/JQ6ySPX",
+                ImageURL = "/images/Items/Green-Leaves.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Tree Stump",
                 Type = "Wood",
-                ImageURL = "https://ibb.co/c3KygY3",
+                ImageURL = "/images/Items/Tree-Stump.png",
                 IsRefineable = true,
                 FuelCount = 1,
             });
@@ -312,42 +312,42 @@
             {
                 Name = "Acorn",
                 Type = "Wood",
-                ImageURL = "https://ibb.co/C7d8gwZ",
+                ImageURL = "/images/Items/Acorn.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Granite",
                 Type = "Rock",
-                ImageURL = "https://ibb.co/vwXXXkM",
+                ImageURL = "/images/Items/Granite.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Marble",
                 Type = "Rock",
-                ImageURL = "https://ibb.co/f4Mdj1p",
+                ImageURL = "/images/Items/Marble.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Quartzite",
                 Type = "Rock",
-                ImageURL = "https://ibb.co/80b6fB8",
+                ImageURL = "/images/Items/Quartzite.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Obsidian",
                 Type = "Rock",
-                ImageURL = "https://ibb.co/zJTjBVL",
+                ImageURL = "/images/Items/Obsidian.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Animal Stomach",
                 Type = "Meat",
-                ImageURL = "https://ibb.co/ScMB8cw",
+                ImageURL = "/images/Items/Animal-Stomach.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
@@ -355,7 +355,7 @@
                 Name = "Animal Skull",
                 Type = "Bones",
                 RelatedMaterials = "Bone Dust 1, Bone Shards 2",
-                ImageURL = "https://ibb.co/ZGFvSJB",
+                ImageURL = "/images/Items/Animal-Skull.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
@@ -363,21 +363,21 @@
                 Name = "Animal Bones",
                 Type = "Bones",
                 RelatedMaterials = "Bone Dust 2, Bone Shards 1",
-                ImageURL = "https://ibb.co/k9FD6Gf",
+                ImageURL = "/images/Items/Animal-Bones.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Fangs",
                 Type = "Bones",
-                ImageURL = "https://ibb.co/BVVrZqX",
+                ImageURL = "/images/Items/Fangs.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "T-Shirt",
                 Type = "Cloth",
                 RelatedMaterials = "Cloth 1, String 2",
-                ImageURL = "https://ibb.co/4469gs9",
+                ImageURL = "/images/Items/T-Shirt.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
@@ -385,7 +385,7 @@
                 Name = "Shoes",
                 Type = "Leather",
                 RelatedMaterials = "Leather 1,String 2",
-                ImageURL = "https://ibb.co/5MX4QyY",
+                ImageURL = "/images/Items/Shoes.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
@@ -393,75 +393,75 @@
                 Name = "Pants",
                 Type = "Leather",
                 RelatedMaterials = "Leather 1,Cloth 1,String 1",
-                ImageURL = "https://ibb.co/WVS3xqB",
+                ImageURL = "/images/Items/Pants.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Human Soul",
                 Type = "Essence",
-                ImageURL = "https://ibb.co/CJtk6vC",
+                ImageURL = "/images/Items/Human-Soul.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Rose",
                 Type = "Plant",
-                ImageURL = "https://ibb.co/n6FtY0T",
+                ImageURL = "/images/Items/Rose.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Daisy",
                 Type = "Plant",
-                ImageURL = "https://ibb.co/f8Tw3KF",
+                ImageURL = "/images/Items/Daisy.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Clay Pot",
                 Type = "Furniture",
                 RelatedMaterials = "Clay Dust 1,Clay Block 2",
-                ImageURL = "https://ibb.co/jW9zNSw",
+                ImageURL = "/images/Items/Clay-Pot.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Plastic Vase",
                 Type = "Furniture",
-                ImageURL = "https://ibb.co/pbdYG25",
+                ImageURL = "/images/Items/Plastic-Vase.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Life Essence",
                 Type = "Essence",
-                ImageURL = "https://ibb.co/rwHybgT",
+                ImageURL = "/images/Items/Life-Essence.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Light Essence",
                 Type = "Essence",
-                ImageURL = "https://ibb.co/HC9q2pp",
+                ImageURL = "/images/Items/Light-Essence.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Shadow Essence",
                 Type = "Essence",
-                ImageURL = "https://ibb.co/Scm1DXV",
+                ImageURL = "/images/Items/Shadow-Essence.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Death Essence",
                 Type = "Essence",
-                ImageURL = "https://ibb.co/XV9rCX3",
+                ImageURL = "/images/Items/Death-Essence.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "String",
                 Type = "Cloth",
-                ImageURL = "https://ibb.co/9v1LkGv",
+                ImageURL = "/images/Items/String.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
@@ -469,14 +469,14 @@
                 Name = "Puffer Fish",
                 Type = "Fish",
                 RelatedMaterials = "Poison Vial 1,Fish Meat 1",
-                ImageURL = "https://ibb.co/CQwjQ6X",
+                ImageURL = "/images/Items/Puffer-Fish.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Turtle Eggs",
                 Type = "Egg",
-                ImageURL = "https://ibb.co/r5kgpgQ",
+                ImageURL = "/images/Items/Turtle-Eggs.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
@@ -484,21 +484,21 @@
                 Name = "Bottled Message",
                 Type = "Junk",
                 RelatedMaterials = "Glass 1,Paper 1",
-                ImageURL = "https://ibb.co/nms01qD",
+                ImageURL = "/images/Items/Bottled-Message.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Potato",
                 Type = "Vegetable",
-                ImageURL = "https://ibb.co/CVh7301",
+                ImageURL = "/images/Items/Potato.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Corn",
                 Type = "Vegetable",
-                ImageURL = "https://ibb.co/s1mbTWh",
+                ImageURL = "/images/Items/Can.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
@@ -506,7 +506,7 @@
                 Name = "Garden Shovel",
                 Type = "Junk",
                 RelatedMaterials = "Stick 1, Copper Chunks 1, Dirt 1",
-                ImageURL = "https://ibb.co/ZKCPnnW",
+                ImageURL = "/images/Items/Garden-Shovel.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
@@ -514,35 +514,28 @@
                 Name = "Watering Can",
                 Type = "Junk",
                 RelatedMaterials = "Water Flask 1, Iron Chunks 1",
-                ImageURL = "https://ibb.co/52m5B9Q",
+                ImageURL = "/images/Items/Watering-Can.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Broken Glass Cup",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/418mtgN",
+                ImageURL = "/images/Items/Broken-Glass-Cup.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Stale Hotdog",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/Y7tnH6g",
+                ImageURL = "/images/Items/Stale-Hotdog.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Crushed Can",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/Y2vrXn7",
-                IsRefineable = true,
-            });
-            this.context.Materials.Add(new Material
-            {
-                Name = "Rubber Band",
-                Type = "Junk",
-                ImageURL = "https://ibb.co/QmLbFJW",
+                ImageURL = "/images/Items/Crushed-Can.png",
                 IsRefineable = true,
             });
 
@@ -551,26 +544,26 @@
             {
                 Name = "Rubber Band",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/QmLbFJW",
+                ImageURL = "/images/Items/Rubber-Band.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Animal Blood",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/dk16rZH",
+                ImageURL = "/images/Items/Animal-Blood.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Dead Critters",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/r3r1C0V",
+                ImageURL = "/images/Items/Dead-Critters.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Broken Skull",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/nfj5cGp",
+                ImageURL = "/images/Items/Broken-Skull.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
@@ -578,7 +571,7 @@
                 Name = "Broken Watch",
                 Type = "Junk",
                 RelatedMaterials = "Gold Scraps 1, Iron Scraps 1, Copper Scraps 1",
-                ImageURL = "https://ibb.co/Kjxdbqb",
+                ImageURL = "/images/Items/Broken-Watch.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
@@ -586,7 +579,7 @@
                 Name = "Empty Plastic Bottle",
                 Type = "Junk",
                 RelatedMaterials = "Gold Scraps 1, Iron Scraps 1, Copper Scraps 1",
-                ImageURL = "https://ibb.co/BqmQfCc",
+                ImageURL = "/images/Items/Empty-Plastic-Bottle.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
@@ -594,7 +587,7 @@
                 Name = "Broken Cogs",
                 Type = "Junk",
                 RelatedMaterials = "Copper Scraps 1, Iron Scraps 1",
-                ImageURL = "https://ibb.co/wY1xPrc",
+                ImageURL = "/images/Items/Broken-Cogs.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
@@ -602,22 +595,22 @@
                 Name = "Rusty Pipes",
                 Type = "Junk",
                 RelatedMaterials = "Copper Scraps 2",
-                ImageURL = "https://ibb.co/JvmB0zY",
+                ImageURL = "/images/Items/Rusty-Pipes.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
-                Name = "Dead Batery",
+                Name = "Dead Battery",
                 Type = "Junk",
                 RelatedMaterials = "Iron Scraps 1, Golden Scraps 1",
-                ImageURL = "https://ibb.co/Kb8f2WW",
+                ImageURL = "/images/Items/Dead-Battery.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Cracked Water Orb",
                 Type = "Junk",
-                RelatedMaterials = "Water Flask, Glass",
+                RelatedMaterials = "/images/Items/Cracked-Water-Orb.png",
                 ImageURL = "https://ibb.co/K0GgNk2",
                 IsDisolveable = true,
             });
@@ -625,27 +618,27 @@
             {
                 Name = "Coal Piece",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/ChHKL0F",
+                ImageURL = "/images/Items/Coal-Piece.png",
                 IsRefineable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Water Flask",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/4gWkjGK",
+                ImageURL = "/images/Items/Water-Flask.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Worm",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/Vj3xyV0",
+                ImageURL = "/images/Items/Worm.png",
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Withered Roots",
                 Type = "Junk",
                 RelatedMaterials = "Stick 1,Dirt 1",
-                ImageURL = "https://ibb.co/qYNBdFv",
+                ImageURL = "/images/Items/Withered-Roots.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
@@ -653,14 +646,14 @@
                 Name = "Mud",
                 Type = "Junk",
                 RelatedMaterials = "Water Flask 1,Dirt 1",
-                ImageURL = "https://ibb.co/J3yCfF3",
+                ImageURL = "/images/Items/Mud.png",
                 IsDisolveable = true,
             });
             this.context.Materials.Add(new Material
             {
                 Name = "Broken Branches",
                 Type = "Junk",
-                ImageURL = "https://ibb.co/74YDSkP",
+                ImageURL = "/images/Items/Broken-Branches.png",
                 IsRefineable = true,
             });
 
@@ -673,105 +666,105 @@
             {
                 Name = "Saw",
                 Durability = 10,
-                ImageURL = "https://ibb.co/bKTP72w",
+                ImageURL = "/images/Items/Saw.png",
                 BuyPrice = 20,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Hammer",
                 Durability = 10,
-                ImageURL = "https://ibb.co/VDw71cC",
+                ImageURL = "/images/Items/Hammer.png",
                 BuyPrice = 20,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Sandpaper",
                 Durability = 10,
-                ImageURL = "https://ibb.co/1dSrCDh",
+                ImageURL = "/images/Items/Sandpaper.png",
                 BuyPrice = 10,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Anvil",
                 Durability = 30,
-                ImageURL = "https://ibb.co/pLVGHzg",
+                ImageURL = "/images/Items/Anvil.png",
                 BuyPrice = 60,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Knife",
                 Durability = 10,
-                ImageURL = "https://ibb.co/CvmfV26",
+                ImageURL = "/images/Items/Knife.png",
                 BuyPrice = 20,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Needle",
                 Durability = 20,
-                ImageURL = "https://ibb.co/wB1kkC4",
+                ImageURL = "/images/Items/Needle.png",
                 BuyPrice = 10,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Ruler",
                 Durability = 50,
-                ImageURL = "https://ibb.co/VSXKqHj",
+                ImageURL = "/images/Items/Ruler.png",
                 BuyPrice = 30,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Scissors",
                 Durability = 20,
-                ImageURL = "https://ibb.co/0JHLcSh",
+                ImageURL = "/images/Items/Scissors.png",
                 BuyPrice = 40,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Knitting Kit",
                 Durability = 20,
-                ImageURL = "https://ibb.co/s6gC6ZD",
+                ImageURL = "/images/Items/Knitting-Kit.png",
                 BuyPrice = 10,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Mortar and Pestle",
                 Durability = 30,
-                ImageURL = "https://ibb.co/r7nF3YZ",
+                ImageURL = "/images/Items/Mortar-and-Pestle.png",
                 BuyPrice = 60,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Protective Mask",
                 Durability = 10,
-                ImageURL = "https://ibb.co/7GpVcS2",
+                ImageURL = "/images/Items/Protective-Mask.png",
                 BuyPrice = 20,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Cooling Rod",
                 Durability = 20,
-                ImageURL = "https://ibb.co/bghCNrf",
+                ImageURL = "/images/Items/Cooling-Rod.png",
                 BuyPrice = 40,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Heavy Sandpaper",
                 Durability = 20,
-                ImageURL = "https://ibb.co/QKgTVQ9",
+                ImageURL = "/images/Items/Heavy-Sandpaper.png",
                 BuyPrice = 30,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Mixing Bowl",
                 Durability = 30,
-                ImageURL = "https://ibb.co/XJm3Ht6",
+                ImageURL = "/images/Items/Mixing-Bowl.png",
                 BuyPrice = 50,
             });
             this.context.Tools.Add(new Tool
             {
                 Name = "Cutting Board",
                 Durability = 30,
-                ImageURL = "https://ibb.co/6462WTP",
+                ImageURL = "/images/Items/Cutting-Board.png",
                 BuyPrice = 30,
             });
 
@@ -795,7 +788,7 @@
             {
                 MonsterName = "Bear",
                 Rarity = "Rare",
-                ImageURL = "https://i.ibb.co/YhPcrdk/Beast-Rare.png",
+                ImageURL = "/images/Sprites/Bear-Rare.png",
                 StatAmplifier = 0.15,
             });
 
@@ -803,7 +796,7 @@
             {
                 MonsterName = "Bear",
                 Rarity = "Heroic",
-                ImageURL = "https://i.ibb.co/NVdyxh5/Bear-Heroic.png",
+                ImageURL = "/images/Sprites/Bear-Heroic.png",
                 StatAmplifier = 0.3,
             });
 
@@ -811,7 +804,7 @@
             {
                 MonsterName = "Demon",
                 Rarity = "Rare",
-                ImageURL = "https://i.ibb.co/tYPNYVr/Demon-Rare.png",
+                ImageURL = "/images/Sprites/Demon-Rare.png",
                 StatAmplifier = 0.15,
             });
 
@@ -819,7 +812,7 @@
             {
                 MonsterName = "Demon",
                 Rarity = "Heroic",
-                ImageURL = "https://i.ibb.co/rHVZhHM/Demon-Heroic.png",
+                ImageURL = "/images/Sprites/Demon-Heroic.png",
                 StatAmplifier = 0.3,
             });
 
@@ -827,7 +820,7 @@
             {
                 MonsterName = "Giant",
                 Rarity = "Rare",
-                ImageURL = "https://i.ibb.co/8XjdXby/Giant-Rare.png",
+                ImageURL = "/images/Sprites/Giant-Rare.png",
                 StatAmplifier = 0.15,
             });
 
@@ -835,7 +828,7 @@
             {
                 MonsterName = "Giant",
                 Rarity = "Heroic",
-                ImageURL = "https://i.ibb.co/XjvgFxk/Giant-Heroic.png",
+                ImageURL = "/images/Sprites/Giant-Heroic.png",
                 StatAmplifier = 0.3,
             });
 
@@ -843,7 +836,7 @@
             {
                 MonsterName = "Gryphon",
                 Rarity = "Rare",
-                ImageURL = "https://i.ibb.co/1J3KskV/Gryphon-Rare.png",
+                ImageURL = "/images/Sprites/Gryphon-Rare.png",
                 StatAmplifier = 0.15,
             });
 
@@ -851,7 +844,7 @@
             {
                 MonsterName = "Gryphon",
                 Rarity = "Heroic",
-                ImageURL = "https://i.ibb.co/8dbFYx7/Gryphon-Heroic.png",
+                ImageURL = "/images/Sprites/Gryphon-Heroic.png",
                 StatAmplifier = 0.3,
             });
 
@@ -859,7 +852,7 @@
             {
                 MonsterName = "Reptile",
                 Rarity = "Rare",
-                ImageURL = "https://i.ibb.co/59VHzwY/Reptile-Rare.png",
+                ImageURL = "/images/Sprites/Reptile-Rare.png",
                 StatAmplifier = 0.15,
             });
 
@@ -867,7 +860,7 @@
             {
                 MonsterName = "Reptile",
                 Rarity = "Heroic",
-                ImageURL = "https://i.ibb.co/wd1HqhQ/Reptile-Heroic.png",
+                ImageURL = "/images/Sprites/Reptile-Heroic.png",
                 StatAmplifier = 0.3,
             });
 
@@ -875,7 +868,7 @@
             {
                 MonsterName = "Saint",
                 Rarity = "Rare",
-                ImageURL = "https://i.ibb.co/tJQKJcx/Saint-Rare.png",
+                ImageURL = "/images/Sprites/Saint-Rare.png",
                 StatAmplifier = 0.15,
             });
 
@@ -883,7 +876,7 @@
             {
                 MonsterName = "Saint",
                 Rarity = "Heroic",
-                ImageURL = "https://i.ibb.co/dgGbS3t/Saint-Heroic.png",
+                ImageURL = "/images/Sprites/Saint-Heroic.png",
                 StatAmplifier = 0.3,
             });
 
@@ -891,7 +884,7 @@
             {
                 MonsterName = "Skeleton",
                 Rarity = "Rare",
-                ImageURL = "https://i.ibb.co/rQPCZWf/Skeleton-Rare.png",
+                ImageURL = "/images/Sprites/Skeleton-Rare.png",
                 StatAmplifier = 0.15,
             });
 
@@ -899,7 +892,7 @@
             {
                 MonsterName = "Skeleton",
                 Rarity = "Heroic",
-                ImageURL = "https://i.ibb.co/TqDMrY5/Skeleton-Heroic.png",
+                ImageURL = "/images/Sprites/Skeleton-Heroic.png",
                 StatAmplifier = 0.3,
             });
 
@@ -907,7 +900,7 @@
             {
                 MonsterName = "Wyrm",
                 Rarity = "Rare",
-                ImageURL = "https://i.ibb.co/BgjswQW/WyrmRare.png",
+                ImageURL = "/images/Sprites/Wyrm-Rare.png",
                 StatAmplifier = 0.15,
             });
 
@@ -915,7 +908,7 @@
             {
                 MonsterName = "Wyrm",
                 Rarity = "Heroic",
-                ImageURL = "https://i.ibb.co/V9gh3KY/Wyrm-Heroic.png",
+                ImageURL = "/images/Sprites/Wyrm-Heroic.png",
                 StatAmplifier = 0.3,
             });
 
@@ -923,7 +916,7 @@
             {
                 MonsterName = "Zombie",
                 Rarity = "Rare",
-                ImageURL = "https://i.ibb.co/3rJB9hG/Zombie-Rare.png",
+                ImageURL = "/images/Sprites/Zombie-Rare.png",
                 StatAmplifier = 0.15,
             });
 
@@ -931,7 +924,7 @@
             {
                 MonsterName = "Zombie",
                 Rarity = "Heroic",
-                ImageURL = "https://i.ibb.co/9crHfr7/Zombie-Heroic.png",
+                ImageURL = "/images/Sprites/Zombie-Heroic.png",
                 StatAmplifier = 0.3,
             });
 
@@ -952,7 +945,7 @@
                 ArmorValue = 5,
                 ResistanceValue = 1,
                 CritChance = 2,
-                ImageURL = "https://i.ibb.co/tm9p0Bq/Beast.png",
+                ImageURL = "/images/Sprites/Bear.png",
                 Description = "A bloodthirsty animal,which also likes to party for some reason...",
             });
 
@@ -968,7 +961,7 @@
                 ArmorValue = 3,
                 ResistanceValue = 3,
                 CritChance = 5,
-                ImageURL = "https://i.ibb.co/PskPtmp/Reptile.png",
+                ImageURL = "/images/Sprites/Reptile.png",
                 Description = "Actually kind of a dinosaur/lizard thingy... not very sure.",
             });
 
@@ -984,7 +977,7 @@
                 ArmorValue = 2.6,
                 ResistanceValue = 2,
                 CritChance = 2,
-                ImageURL = "https://i.ibb.co/NLF8yxW/Zombie.png",
+                ImageURL = "/images/Sprites/Zombie.png",
                 Description = "Sapiosexual. Not very smart.",
             });
 
@@ -1000,7 +993,7 @@
                 ArmorValue = 1.5,
                 ResistanceValue = 2,
                 CritChance = 9,
-                ImageURL = "https://i.ibb.co/72jY07Q/Skeleton.png",
+                ImageURL = "/images/Sprites/Skeleton.png",
                 Description = "{Insert a /Spooky/ joke here.}",
             });
 
@@ -1016,7 +1009,7 @@
                 ArmorValue = 5,
                 ResistanceValue = 3,
                 CritChance = 3,
-                ImageURL = "https://i.ibb.co/0QcMBhp/Wyrm.png",
+                ImageURL = "/images/Sprites/Wyrm.png",
                 Description = "Picture this guy beneath the toilet seat next time you take a dump. I dare you!",
             });
 
@@ -1032,7 +1025,7 @@
                 ArmorValue = 5,
                 ResistanceValue = 5,
                 CritChance = 2,
-                ImageURL = "https://i.ibb.co/HpF09kD/Giant.png",
+                ImageURL = "/images/Sprites/Giant.png",
                 Description = "Not to be confused with the Iron Giant.",
             });
 
@@ -1048,7 +1041,7 @@
                 ArmorValue = 4,
                 ResistanceValue = 4,
                 CritChance = 9,
-                ImageURL = "https://i.ibb.co/ydLmqmL/Gryphon.png",
+                ImageURL = "/images/Sprites/Gryphon.png",
                 Description = "These halfbreeds don't just exist in World of Warcraft!",
             });
 
@@ -1064,7 +1057,7 @@
                 ArmorValue = 3,
                 ResistanceValue = 8,
                 CritChance = 8,
-                ImageURL = "https://i.ibb.co/bgdLZny/Saint.png",
+                ImageURL = "/images/Sprites/Saint.png",
                 Description = "You'll pay for not going to church on sundays!",
             });
 
@@ -1080,7 +1073,7 @@
                 ArmorValue = 8,
                 ResistanceValue = 4,
                 CritChance = 5,
-                ImageURL = "https://i.ibb.co/Mf1WWjq/Demon.png",
+                ImageURL = "/images/Sprites/Demon.png",
                 Description = "Fearsome and cunning! Something is wrong with his head (I mean the PNG file).",
             });
 
@@ -1101,10 +1094,10 @@
                 ArmorValue = 5,
                 RessistanceValue = 3,
                 CritChance = 3,
-                ImageURL = "https://i.ibb.co/XVJ5cHJ/Warrior.png",
+                ImageURL = "/images/Sprites/Warrior.png",
                 Description = "If you want to spam one button and lose brain cells simultaneously, you should probably play CS: GO." +
                 "Main Stat: Strength.",
-                IconURL = "https://i.ibb.co/wyMw3jR/Warrior-Icon.png",
+                IconURL = "/images/Icons/Warrior-Icon.png",
             });
             this.context.FightingClasses.Add(new FightingClass
             {
@@ -1118,10 +1111,10 @@
                 ArmorValue = 3.5,
                 RessistanceValue = 2.5,
                 CritChance = 6,
-                ImageURL = "https://i.ibb.co/DDPXJbv/Hunter.png",
+                ImageURL = "/images/Sprites/Hunter.png",
                 Description = "He could have a shotgun but that would be way too much OP." +
                "Main Stat: Agility.",
-                IconURL = "https://i.ibb.co/FDj0HbP/Hunter-Icon.png",
+                IconURL = "/images/Icons/Hunter-Icon.png",
             });
             this.context.FightingClasses.Add(new FightingClass
             {
@@ -1135,10 +1128,10 @@
                 ArmorValue = 2,
                 RessistanceValue = 8,
                 CritChance = 2,
-                ImageURL = "https://i.ibb.co/n6q7zgb/Mage.png",
+                ImageURL = "/images/Sprites/Mage.png",
                 Description = "Like cards? Go to Vegas. Like bunnies? Open a rabbit farm. Want to 1-shot someone? [CLICK ME]!" +
                 "Main Stat: Intellect.",
-                IconURL = "https://i.ibb.co/k55MXgG/MageIcon.png",
+                IconURL = "/images/Icons/Mage-Icon.png",
             });
             this.context.FightingClasses.Add(new FightingClass
             {
@@ -1152,10 +1145,10 @@
                 ArmorValue = 5,
                 RessistanceValue = 2.2,
                 CritChance = 2,
-                ImageURL = "https://i.ibb.co/Ht6ZBtv/Druid.png",
+                ImageURL = "/images/Sprites/Druid.png",
                 Description = "Don't worry. I've already donated 5 bucks to that *Beast* guy." +
                 "Main Stat: Spirit.",
-                IconURL = "https://i.ibb.co/gmK4VjW/Druid-Icon.png",
+                IconURL = "/images/Icons/Druid-Icon.png",
             });
             this.context.FightingClasses.Add(new FightingClass
             {
@@ -1169,10 +1162,10 @@
                 ArmorValue = 2.5,
                 RessistanceValue = 2,
                 CritChance = 2,
-                ImageURL = "https://i.ibb.co/Ms0bv1v/Necroid.png",
+                ImageURL = "/images/Sprites/Necroid.png",
                 Description = "Actually, you don't wanna know about this guy. I've warned you." +
                 "Main Stat: Intellect.",
-                IconURL = "https://i.ibb.co/0rf3kG3/Necroid-Icon.png",
+                IconURL = "/images/Icons/Necroid-Icon.png",
             });
             this.context.FightingClasses.Add(new FightingClass
             {
@@ -1186,10 +1179,10 @@
                 ArmorValue = 4,
                 RessistanceValue = 5,
                 CritChance = 3,
-                ImageURL = "https://i.ibb.co/yNX0SZn/Paladin.png",
+                ImageURL = "/images/Sprites/Paladin.png",
                 Description = "Damage? Got it. Health? Got it. Girlfriend? ... :(" +
                "Main Stat: Strength.",
-                IconURL = "https://i.ibb.co/yVVp9Md/Paladin-Icon.png",
+                IconURL = "/images/Icons/Paladin-Icon.png",
             });
             this.context.FightingClasses.Add(new FightingClass
             {
@@ -1203,10 +1196,10 @@
                 ArmorValue = 2,
                 RessistanceValue = 4,
                 CritChance = 2,
-                ImageURL = "https://i.ibb.co/xhDTxW6/Priest.png",
+                ImageURL = "/images/Sprites/Priest.png",
                 Description = "Don't worry. He won't molest you." +
                "Main Stat: Spirit.",
-                IconURL = "https://i.ibb.co/pWd8pbq/Priest-Icon.png",
+                IconURL = "/images/Icons/Priest-Icon.png",
             });
             this.context.FightingClasses.Add(new FightingClass
             {
@@ -1220,10 +1213,10 @@
                 ArmorValue = 3,
                 RessistanceValue = 1,
                 CritChance = 8,
-                ImageURL = "https://i.ibb.co/K5YgbHG/Rogue.png",
+                ImageURL = "/images/Sprites/Rogue.png",
                 Description = "He steals money. Enough said, you greedy bastard." +
                "Main Stat: Agility.",
-                IconURL = "https://ibb.co/LNJqrbb",
+                IconURL = "/images/Icons/Rogue-Icon.png",
             });
             this.context.FightingClasses.Add(new FightingClass
             {
@@ -1237,10 +1230,10 @@
                 ArmorValue = 3,
                 RessistanceValue = 5,
                 CritChance = 2,
-                ImageURL = "https://i.ibb.co/fStYvFC/Shaman.png",
+                ImageURL = "/images/Sprites/Shaman.png",
                 Description = "Freezing, zapping and stoning people to death was never such fun." +
                "Main Stat: Stamina.",
-                IconURL = "https://i.ibb.co/kDrCmXw/Shaman-Icon.png",
+                IconURL = "/images/Icons/Shaman-Icon.png",
             });
 
             await this.context.SaveChangesAsync(cancellationToken);

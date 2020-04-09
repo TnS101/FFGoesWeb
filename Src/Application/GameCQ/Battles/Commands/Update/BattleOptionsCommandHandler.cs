@@ -19,6 +19,8 @@
 
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
+            var hero = await this.context.Heroes.FindAsync(request.Player.Id);
+
             if (request.YourTurn && request.Enemy.CurrentHP > 0)
             {
                 if (request.Command == "Attack")
@@ -40,7 +42,7 @@
                 {
                     this.battleHandler.EscapeOption.Escape(request.Player);
                     await this.context.SaveChangesAsync(cancellationToken);
-                    return "/Escape";
+                    return @"\Escape";
                 }
 
                 this.battleHandler.TurnCheck.Check(request.Player, request.Enemy, this.battleHandler, request.YourTurn, this.context);
@@ -52,14 +54,15 @@
 
                 await this.context.SaveChangesAsync(cancellationToken);
 
-                return "/Action";
+                return @"\Command";
             }
             else
             {
                 request.Enemy.CurrentHP = 0;
-                this.battleHandler.EndOption.End(request.Player, request.Enemy, request.ZoneName);
+                this.battleHandler.EndOption.End(hero, request.Enemy, request.ZoneName);
+                this.context.Heroes.Update(hero);
                 await this.context.SaveChangesAsync(cancellationToken);
-                return "/End";
+                return @"\End";
             }
         }
     }

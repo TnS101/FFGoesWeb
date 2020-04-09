@@ -83,14 +83,15 @@
             {
                 monsterRarity = await context.MonstersRarities.FirstOrDefaultAsync(mr => mr.MonsterName == monster.Name && mr.Rarity == "Heroic");
                 statAmplifier = monsterRarity.StatAmplifier;
+                monster.ImageURL = monsterRarity.ImageURL.ToString();
             }
             else if (number == 2 || number == 3 || number == 4)
             {
                 monsterRarity = await context.MonstersRarities.FirstOrDefaultAsync(mr => mr.MonsterName == monster.Name && mr.Rarity == "Rare");
                 statAmplifier = monsterRarity.StatAmplifier;
+                monster.ImageURL = monsterRarity.ImageURL.ToString();
             }
 
-            monster.ImageURL = monsterRarity.ImageURL;
             monster.MaxHP += monsterRarity.StatAmplifier * monster.MaxHP;
             monster.CurrentHP += statAmplifier * monster.CurrentHP;
             monster.AttackPower += statAmplifier * monster.AttackPower;

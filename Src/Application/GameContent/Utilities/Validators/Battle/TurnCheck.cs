@@ -7,13 +7,13 @@
 
     public class TurnCheck
     {
-        public bool Check(UnitFullViewModel player, UnitFullViewModel enemy, BattleHandler battleHandler, bool yourTurn, IFFDbContext context)
+        public void Check(UnitFullViewModel player, UnitFullViewModel enemy, BattleHandler battleHandler, bool yourTurn, IFFDbContext context)
         {
             var rng = new Random();
             if (yourTurn)
             {
                 battleHandler.RegenerateOption.Regenerate(player);
-                return false;
+                yourTurn = false;
             }
             else if (!yourTurn)
             {
@@ -33,10 +33,8 @@
                 }
 
                 battleHandler.RegenerateOption.Regenerate(enemy);
-                return true;
+                yourTurn = true;
             }
-
-            return true;
         }
     }
 }

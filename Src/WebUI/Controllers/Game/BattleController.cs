@@ -14,50 +14,51 @@
     [Authorize(Roles = GConst.UserRole)]
     public class BattleController : BaseController
     {
-        private UnitFullViewModel monster;
-        private bool yourTurn;
-        private UnitFullViewModel hero;
+        private static readonly bool YourTurn = true;
+        private static UnitFullViewModel monster;
+        private static UnitFullViewModel hero;
+        private static string zoneName;
 
         [HttpGet("Battle/Battle/zone")]
         public async Task<ActionResult> Battle([FromQuery]string zone)
         {
+            zoneName = zone;
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
-            this.monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zone });
-            this.yourTurn = true;
-            return this.View(@"\Battle", this.monster.Name);
+            monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zoneName });
+            return this.View(@"\Battle", monster.Name);
         }
 
         [HttpGet]
         public async Task<ActionResult> Command()
         {
-            this.hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
+            hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
 
-            return this.View(@"\Command", this.Stats(this.hero));
+            return this.View(@"\Command", this.Stats(hero));
         }
 
-        [HttpPost("Battle/Action/command")]
+        [HttpGet("Battle/Command/command")]
         public async Task<ActionResult> Command([FromQuery]string command, [FromQuery]string spellName)
         {
             return this.View(
                 await this.Mediator.Send(new BattleOptionsCommand
-            { Command = command, Player = this.hero, Enemy = this.monster, YourTurn = this.yourTurn, SpellName = spellName }), this.Stats(this.hero));
+                { Command = command, Player = hero, Enemy = monster, YourTurn = YourTurn, SpellName = spellName, ZoneName = zoneName }), this.Stats(hero));
         }
 
         [HttpGet]
         public async Task<ActionResult> End()
         {
-            return this.View(await this.Mediator.Send(new LootItemCommand { MonsterId = int.Parse(this.monster.Id),  }));
+            return this.View(await this.Mediator.Send(new LootItemCommand { MonsterId = int.Parse(monster.Id), }));
         }
 
         private string[] Stats(UnitFullViewModel playerFullVm)
         {
             return new string[]
             {
-                playerFullVm.Name, this.monster.Name, this.monster.ImageURL,
-                playerFullVm.CurrentHP.ToString(), playerFullVm.MaxHP.ToString(), this.monster.CurrentHP.ToString(), this.monster.MaxHP.ToString(),
-                playerFullVm.CurrentAttackPower.ToString(), this.monster.CurrentAttackPower.ToString(), playerFullVm.CurrentMana.ToString(),
-                playerFullVm.MaxMana.ToString(), this.monster.CurrentMana.ToString(), this.monster.MaxMana.ToString(), playerFullVm.MagicPower.ToString(),
-                playerFullVm.CurrentMagicPower.ToString(), this.monster.MagicPower.ToString(), this.monster.CurrentMagicPower.ToString(),
+                playerFullVm.Name, monster.Name, monster.ImageURL,
+                playerFullVm.CurrentHP.ToString(), playerFullVm.MaxHP.ToString(), monster.CurrentHP.ToString(), monster.MaxHP.ToString(),
+                playerFullVm.CurrentAttackPower.ToString(), monster.CurrentAttackPower.ToString(), playerFullVm.CurrentMana.ToString(),
+                playerFullVm.MaxMana.ToString(), monster.MaxMana.ToString(), playerFullVm.MagicPower.ToString(),
+                playerFullVm.CurrentMagicPower.ToString(), monster.MagicPower.ToString(), monster.CurrentMagicPower.ToString(), playerFullVm.ImageURL,
             };
         }
     }

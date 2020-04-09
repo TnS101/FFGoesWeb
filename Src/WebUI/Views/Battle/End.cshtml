@@ -5,8 +5,9 @@
 }
 
 <partial name="_NavBar">
-    <partial name="_SideBars">
-        <h2>You have killed your enemy!</h2>
+    <h1 class="has-text-align-center">You have killed your enemy!</h1>
 
-        <a asp-controller="World" asp-action="Home">World!</a>
-        <partial name="_Footer">
+    <div class="has-text-align-center">
+        <a asp-controller="World" asp-action="Home"><b class="has-normal-font-size">Back to World!</b></a>
+    </div>
+    <partial name="_Footer">

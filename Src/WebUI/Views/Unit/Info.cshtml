@@ -31,6 +31,7 @@
                 <div class="item-padding">
                     <progress class="item-padding aligncenter" value="@Model.XP" max="@Model.XPCap"></progress>
                 </div>
+                <h3 class="has-text-align-center main-font-color item-padding">Gold : @Model.GoldAmount</h3>
             </div>
             <div class="container item-padding">
                 <a asp-controller="Unit" asp-action="Inventory" asp-route-id="@Model.Id"><h2 class="has-text-align-center main-font-color">Inventory</h2></a>
