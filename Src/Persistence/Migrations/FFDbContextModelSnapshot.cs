@@ -371,7 +371,7 @@ namespace Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("RessistanceValue")
+                    b.Property<double>("ResistanceValue")
                         .HasColumnType("float");
 
                     b.Property<int>("SellPrice")
@@ -962,7 +962,7 @@ namespace Persistence.Migrations
                     b.Property<double>("MaxMana")
                         .HasColumnType("float");
 
-                    b.Property<double>("RessistanceValue")
+                    b.Property<double>("ResistanceValue")
                         .HasColumnType("float");
 
                     b.HasKey("Id");

@@ -25,8 +25,8 @@
             hero.CurrentMagicPower = fightingClass.MagicPower;
             hero.ArmorValue = fightingClass.ArmorValue;
             hero.CurrentArmorValue = fightingClass.ArmorValue;
-            hero.ResistanceValue = fightingClass.RessistanceValue;
-            hero.CurrentResistanceValue = fightingClass.RessistanceValue;
+            hero.ResistanceValue = fightingClass.ResistanceValue;
+            hero.CurrentResistanceValue = fightingClass.ResistanceValue;
             hero.CritChance = fightingClass.CritChance;
             hero.CurrentCritChance = fightingClass.CritChance;
             hero.ImageURL = fightingClass.ImageURL.ToString();
@@ -35,6 +35,7 @@
 
         public void MonsterIncrement(Monster baseMonster, Monster monster)
         {
+            monster.Id = baseMonster.Id;
             monster.Name = baseMonster.Name;
             monster.MaxHP = baseMonster.MaxHP;
             monster.CurrentHP = baseMonster.MaxHP;

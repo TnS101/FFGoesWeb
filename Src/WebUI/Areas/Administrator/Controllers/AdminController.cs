@@ -13,15 +13,10 @@
     [Area(GConst.AdminArea)]
     public class AdminController : BaseController
     {
-        [HttpGet]
-        public async Task<ActionResult> Dashboard([FromForm]string role)
-        {
-            return this.View(await this.Mediator.Send(new GetOnlineUsersQuery { Role = role }));
-        }
-
+        [HttpGet("Administrator/Admin/")]
         public ActionResult Index()
         {
-            return this.View(this.User);
+            return this.View();
         }
 
         [HttpGet]

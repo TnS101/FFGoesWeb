@@ -4,28 +4,25 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Generators;
-    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
-    using AutoMapper;
+    using Domain.Entities.Game.Units;
     using MediatR;
 
-    public class GenerateMonsterCommandHandler : IRequestHandler<GenerateMonsterCommand, UnitFullViewModel>
+    public class GenerateMonsterCommandHandler : IRequestHandler<GenerateMonsterCommand, Monster>
     {
         private readonly EnemyGenerator enemyGenerator;
-        private readonly IMapper mapper;
         private readonly IFFDbContext context;
 
-        public GenerateMonsterCommandHandler(IFFDbContext context, IMapper mapper)
+        public GenerateMonsterCommandHandler(IFFDbContext context)
         {
             this.enemyGenerator = new EnemyGenerator();
-            this.mapper = mapper;
             this.context = context;
         }
 
-        public async Task<UnitFullViewModel> Handle(GenerateMonsterCommand request, CancellationToken cancellationToken)
+        public async Task<Monster> Handle(GenerateMonsterCommand request, CancellationToken cancellationToken)
         {
             var enemy = await this.enemyGenerator.Generate(request.PlayerLevel, this.context, request.ZoneName);
 
-            return this.mapper.Map<UnitFullViewModel>(enemy);
+            return enemy;
         }
     }
 }

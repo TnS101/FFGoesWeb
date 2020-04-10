@@ -7,10 +7,16 @@
     <partial name="_AdminNavBar">
 </head>
 <body>
-    <h1 class="has-text-align-center main-font-color">Items</h1>
+    <h1 class="has-text-align-center secondary-font-color">Items</h1>
+    <br />
+    <br />
     @foreach (var item in Model.Items)
     {
-        <img src="@item.ImageURL" alt="Item Image">
-        <h3>@item.Name</h3>
+        <div class="item-padding has-text-align-center">
+            <img src="@item.ImageURL" alt="@item.Name's Image">
+            <h3 class="main-font-color">@item.Name</h3>
+            <br />
+            <hr />
+        </div>
     }
 </body>

@@ -1,9 +1,12 @@
 ﻿namespace Domain.Entities.Game.Units
 {
-    public class Monster 
+    using Domain.Base;
+
+    public class Monster : Unit
     {
         public Monster()
         {
+            this.Type = "Monster";
         }
 
         public int Id { get; set; }
@@ -12,50 +15,50 @@
 
         public MonsterRarity MonsterRarity { get; set; }
 
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
-        public int Level { get; set; }
+        public override int Level { get; set; }
 
-        public string ImageURL { get; set; }
+        public override string ImageURL { get; set; }
 
-        public double MaxHP { get; set; }
+        public override double MaxHP { get; set; }
 
-        public double CurrentHP { get; set; }
+        public override double CurrentHP { get; set; }
 
-        public int HealthRegen { get; set; }
+        public override double HealthRegen { get; set; }
 
-        public int CurrentHealthRegen { get; set; }
+        public override double CurrentHealthRegen { get; set; }
 
-        public double MaxMana { get; set; }
+        public override double MaxMana { get; set; }
 
-        public double CurrentMana { get; set; }
+        public override double CurrentMana { get; set; }
 
-        public int ManaRegen { get; set; }
+        public override double ManaRegen { get; set; }
 
-        public int CurrentManaRegen { get; set; }
+        public override double CurrentManaRegen { get; set; }
 
-        public double AttackPower { get; set; }
+        public override double AttackPower { get; set; }
 
-        public double CurrentAttackPower { get; set; }
+        public override double CurrentAttackPower { get; set; }
 
-        public double MagicPower { get; set; }
+        public override double MagicPower { get; set; }
 
-        public double CurrentMagicPower { get; set; }
+        public override double CurrentMagicPower { get; set; }
 
-        public double ArmorValue { get; set; }
+        public override double ArmorValue { get; set; }
 
-        public double CurrentArmorValue { get; set; }
+        public override double CurrentArmorValue { get; set; }
 
-        public double ResistanceValue { get; set; }
+        public override double ResistanceValue { get; set; }
 
-        public double CurrentResistanceValue { get; set; }
+        public override double CurrentResistanceValue { get; set; }
 
-        public double CritChance { get; set; }
+        public override double CritChance { get; set; }
 
-        public double CurrentCritChance { get; set; }
+        public override double CurrentCritChance { get; set; }
 
         public string Description { get; set; }
 
-        public string Type { get; set; }
+        public override string Type { get; set; }
     }
 }

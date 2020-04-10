@@ -26,7 +26,7 @@
 
         public double NewArmorValue { get; set; }
 
-        public double NewRessistanceValue { get; set; }
+        public double NewResistanceValue { get; set; }
 
         public string Slot { get; set; }
 

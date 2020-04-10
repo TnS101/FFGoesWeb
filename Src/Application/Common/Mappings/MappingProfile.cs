@@ -57,6 +57,10 @@
             this.CreateMap<Monster, MonsterFullViewModel>();
             this.CreateMap<AppUser, UserViewModel>();
             this.CreateMap<Notification, NotificationFullViewModel>();
+            this.CreateMap<Material, ItemMinViewModel>();
+            this.CreateMap<Tool, ItemMinViewModel>();
+            this.CreateMap<TreasureKey, ItemMinViewModel>();
+            this.CreateMap<Treasure, ItemMinViewModel>();
         }
     }
 }

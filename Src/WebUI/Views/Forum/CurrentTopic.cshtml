@@ -26,7 +26,7 @@
         @foreach (var comment in Model.Comments)
         {
             <div class="item-padding">
-                <p class="main-font-color has-medium-font-size"><a asp-controller="User" asp-action="Profile" asp-route-id="@comment.UserId"></a></p>
+                <p class="main-font-color has-medium-font-size"><a asp-controller="User" data-ajax="true" asp-action="Profile" asp-route-id="@comment.UserId"></a></p>
                 <p class="main-font-color has-medium-font-size">@comment.Content</p>
                 <a asp-controller="Comment" asp-action="Like" asp-route-id="@comment.Id"><i class="fas fa-thumbs-up has-medium-font-size"></i></a>@comment.Likes <a asp-controller="Comment" asp-action="Replies"><i class="fas fa-comments has-medium-font-size"></i></a>@comment.Replies.Count
             <hr />

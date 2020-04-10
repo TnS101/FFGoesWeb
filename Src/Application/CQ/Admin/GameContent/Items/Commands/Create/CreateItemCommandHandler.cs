@@ -79,7 +79,7 @@
                 Intellect = request.Intellect,
                 Spirit = request.Spirit,
                 ArmorValue = request.ArmorValue,
-                RessistanceValue = request.RessistanceValue,
+                ResistanceValue = request.ResistanceValue,
                 Slot = request.Slot,
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,

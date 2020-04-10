@@ -1,11 +1,12 @@
 ﻿namespace Domain.Entities.Game.Units
 {
+    using Domain.Base;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using System;
     using System.Collections.Generic;
 
-    public class Hero
+    public class Hero : Unit
     {
         public Hero()
         {
@@ -17,6 +18,7 @@
             this.PvPEnergy = 15;
             this.Id = Guid.NewGuid().ToString();
             this.IsSelected = false;
+            this.Type = "Player";
             this.EnergyChanges = new HashSet<EnergyChange>();
         }
 
@@ -42,13 +44,13 @@
 
         public Profession Profession { get; set; }
 
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
-        public string ClassType { get; set; }
+        public override string ClassType { get; set; }
 
         public string Race { get; set; }
 
-        public int Level { get; set; }
+        public override int Level { get; set; }
 
         public int ProfessionLevel { get; set; }
 
@@ -62,47 +64,47 @@
 
         public double XPCap { get; set; }
 
-        public double MaxHP { get; set; }
+        public override double MaxHP { get; set; }
 
-        public double CurrentHP { get; set; }
+        public override double CurrentHP { get; set; }
 
-        public int HealthRegen { get; set; }
+        public override double HealthRegen { get; set; }
 
-        public int CurrentHealthRegen { get; set; }
+        public override double CurrentHealthRegen { get; set; }
 
-        public double MaxMana { get; set; }
+        public override double MaxMana { get; set; }
 
-        public double CurrentMana { get; set; }
+        public override double CurrentMana { get; set; }
 
-        public int ManaRegen { get; set; }
+        public override double ManaRegen { get; set; }
 
-        public int CurrentManaRegen { get; set; }
+        public override double CurrentManaRegen { get; set; }
 
-        public double AttackPower { get; set; }
+        public override double AttackPower { get; set; }
 
-        public double CurrentAttackPower { get; set; }
+        public override double CurrentAttackPower { get; set; }
 
-        public double MagicPower { get; set; }
+        public override double MagicPower { get; set; }
 
-        public double CurrentMagicPower { get; set; }
+        public override double CurrentMagicPower { get; set; }
 
-        public double ArmorValue { get; set; }
+        public override double ArmorValue { get; set; }
 
-        public double CurrentArmorValue { get; set; }
+        public override double CurrentArmorValue { get; set; }
 
-        public double ResistanceValue { get; set; }
+        public override double ResistanceValue { get; set; }
 
-        public double CurrentResistanceValue { get; set; }
+        public override double CurrentResistanceValue { get; set; }
 
-        public double CritChance { get; set; }
+        public override double CritChance { get; set; }
 
-        public double CurrentCritChance { get; set; }
+        public override double CurrentCritChance { get; set; }
 
-        public int GoldAmount { get; set; }
+        public override int GoldAmount { get; set; }
 
         public int Mastery { get; set; }
 
-        public string ImageURL { get; set; }
+        public override string ImageURL { get; set; }
 
         public bool IsSelected { get; set; }
 

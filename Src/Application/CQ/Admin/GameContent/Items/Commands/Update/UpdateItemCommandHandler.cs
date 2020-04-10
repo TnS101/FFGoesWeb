@@ -76,9 +76,9 @@
                 request.NewArmorValue = armor.ArmorValue;
             }
 
-            if (request.NewRessistanceValue == 0)
+            if (request.NewResistanceValue == 0)
             {
-                request.NewRessistanceValue = armor.ArmorValue;
+                request.NewResistanceValue = armor.ArmorValue;
             }
 
             this.BaseItemsNullCheck(request, armor);
@@ -87,7 +87,7 @@
 
             armor.ArmorValue = request.NewArmorValue;
 
-            armor.RessistanceValue = request.NewRessistanceValue;
+            armor.ResistanceValue = request.NewResistanceValue;
 
             this.context.Armors.Update(armor);
         }

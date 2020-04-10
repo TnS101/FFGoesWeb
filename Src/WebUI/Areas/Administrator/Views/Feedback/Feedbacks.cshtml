@@ -8,18 +8,20 @@
     <partial name="_AdminNavBar">
 </head>
 <body>
-    <h1 class="has-text-align-center main-font-color">Feedbacks</h1>
+    <h1 class="has-text-align-center secondary-font-color">Feedbacks</h1>
     @{
-        if (Model.Feedbacks.Count() == 1)
+        if (Model.Feedbacks.Count() == 0)
         {
-            <h2 class="has-text-align-center main-font-color">No feedbacks to display</h2>
+            <h2 class="has-text-align-center secondary-font-color">No feedbacks to display</h2>
         }
         else
         {
             foreach (var feedback in Model.Feedbacks)
             {
-                <h4>@feedback.SenderName</h4>
-                <h4>@feedback.SentOn.Date</h4> <a asp-controller="Feedback" asp-action="CurrentFeedback" asp-route-id ="@feedback.Id"><i class="fas fa-external-link-square-alt"></i></a>
+                <div class="has-text-align-center item-padding">
+                    <h4 class="main-font-color">@feedback.SenderName</h4>
+                    <h4 class="main-font-color">@feedback.SentOn.Date</h4> <a asp-controller="Feedback" asp-action="CurrentFeedback" asp-route-id="@feedback.Id"><i class="fas fa-external-link-square-alt"></i></a>
+                </div>
             }
         }
     }

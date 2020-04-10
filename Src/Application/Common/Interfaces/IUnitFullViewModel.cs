@@ -28,6 +28,6 @@
 
         double ArmorValue { get; set; }
 
-        double RessistanceValue { get; set; }
+        double ResistanceValue { get; set; }
     }
 }

@@ -13,15 +13,9 @@
 
         public BuffCheck BuffCheck { get; set; }
 
-        public DeBuffCheck DeBuffCheck { get; set; }
-
-        public PhysicalDamageCheck PhysicalDamageCheck { get; set; }
-
         public SpellDamageCheck SpellDamageCheck { get; set; }
 
-        public NegativeEffectCheck NegativeEffectCheck { get; set; }
-
-        public PositiveEffectCheck PositiveEffectCheck { get; set; }
+        public EffectCheck EffectCheck { get; set; }
 
         public HealCheck HealCheck { get; set; }
 

@@ -1,10 +1,10 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
-    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
+    using Domain.Base;
 
     public class RegenerateOption
     {
-        public void Regenerate(UnitFullViewModel caster)
+        public void Regenerate(Unit caster)
         {
             double hpRegen = caster.CurrentHealthRegen;
             double manaRegen = caster.CurrentManaRegen;

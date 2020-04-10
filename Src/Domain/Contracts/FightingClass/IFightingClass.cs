@@ -22,7 +22,7 @@
 
         double ArmorValue { get; }
 
-        double RessistanceValue { get; }
+        double ResistanceValue { get; }
 
         double MagicPower { get; }
 

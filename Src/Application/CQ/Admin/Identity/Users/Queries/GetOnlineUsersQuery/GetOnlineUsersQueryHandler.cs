@@ -28,15 +28,7 @@
             var cookies = new CookieCollection();
 
             var loginCookie = cookies["userLogin"];
-            var users = new UserListViewModel { };
-
-            //if (!this.context.AppUsers.Any(u => u.IsLoggedIn))
-            //{
-            //    return new UserListViewModel
-            //    {
-            //        Users = await this.context.AppUsers.ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
-            //    };
-            //}
+            var users = await this.context.AppUsers.Where(au => au.IsOnline).ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync();
 
             if (request.Role is null)
             {
@@ -47,12 +39,18 @@
                 // users = new UserListViewModel { Users = await this.context.Users.Where(u => (request.Role)).ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync() };
             }
 
-            foreach (var user in users.Users)
+            if (users.Count() > 0)
             {
-                user.OnlineTime = DateTime.UtcNow.Minute - DateTime.ParseExact(loginCookie.Value, "MM/dd/yyyy H:mm", CultureInfo.InvariantCulture).Minute;
+                foreach (var user in users)
+                {
+                    user.OnlineTime = DateTime.UtcNow.Minute - DateTime.ParseExact(loginCookie.Value, "MM/dd/yyyy H:mm", CultureInfo.InvariantCulture).Minute;
+                }
             }
 
-            return users;
+            return new UserListViewModel
+            {
+                Users = users,
+            };
         }
     }
 }

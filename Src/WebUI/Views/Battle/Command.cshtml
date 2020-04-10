@@ -41,12 +41,13 @@
 
         </div>
         <div class="container battle-container">
-            <a asp-controller="Battle" asp-action="Command" asp-route-id="Attack" asp-route-command="Attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack" /></a>
-            <a asp-controller="Battle" asp-action="Command" asp-route-id="Defend" asp-route-command="Defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
-            <form asp-controller="Battle" asp-action="Command" method="post">
+            <a asp-controller="Battle" asp-action="Command" asp-route-command="Attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack" /></a>
+            <a asp-controller="Battle" asp-action="Command" asp-route-command="Defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
+            <form asp-controller="Battle" asp-action="Command" asp-route-command="SpellCast" method="get">
                 <select name="spellName">
-                    <option value="Spell">Spell</option>
+                    <option value="Stab">Stab</option>
                 </select>
+                <input type="submit" name="name" value="Cast" /> 
             </form>
             <a asp-controller="Battle" asp-action="Command" asp-route-command="Escape">Escape</a>
         </div>

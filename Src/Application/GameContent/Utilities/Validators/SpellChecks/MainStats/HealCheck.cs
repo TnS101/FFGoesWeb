@@ -4,11 +4,7 @@
 
     public class HealCheck
     {
-        public HealCheck()
-        {
-        }
-
-        public void Check(Unit caster, Unit target, double manaRequirment, double healEffect, string spellName, ManaCheck manaCheck)
+        public void Check(Unit caster, Unit target, double manaRequirment, double healEffect, ManaCheck manaCheck)
         {
             if (manaCheck.SpellManaCheck(caster, manaRequirment) == true)
             {

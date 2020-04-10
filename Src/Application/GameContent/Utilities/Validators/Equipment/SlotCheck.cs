@@ -142,7 +142,7 @@
             {
                 Name = $"{fightingClassType}'s Armor",
                 ArmorValue = stats[0],
-                RessistanceValue = stats[1],
+                ResistanceValue = stats[1],
                 Level = stats[2],
                 Spirit = stats[3],
                 Strength = stats[4],

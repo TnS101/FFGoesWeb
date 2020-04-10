@@ -32,7 +32,7 @@
             double manaRequirment = 0.2 * caster.MaxMana;
             double damage = (caster.AttackPower * 1.2) - target.CurrentArmorValue;
             this.spellCheck.NegativeEffectCheck.Check(caster, target, manaRequirment, effect, effectType, this.manaCheck);
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         private void Bear_ThickHide(Unit caster, Unit target)
@@ -70,7 +70,7 @@
             string spellName = "Shadow Punch";
             double damage = (1.2 * caster.CurrentAttackPower) - target.CurrentArmorValue;
             double manaRequirment = 0.22 * caster.MaxMana;
-            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.MagicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
 
         private void Demon_EyeOfTheVoid(Unit caster, Unit target)
@@ -85,9 +85,9 @@
         private void Demon_RippingHellFire(Unit caster, Unit target)
         {
             string spellName = "Ripping Hell-Fire";
-            double damage = (1.5 * caster.CurrentMagicPower) - target.RessistanceValue;
+            double damage = (1.5 * caster.CurrentMagicPower) - target.ResistanceValue;
             double manaRequirment = 0.8 * caster.MaxMana;
-            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.MagicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
 
         // Giant
@@ -129,7 +129,7 @@
             string spellName = "Overpowering Fist";
             double damage = (1.2 * caster.CurrentAttackPower) - (0.6 * target.CurrentArmorValue);
             double manaRequirment = 0.4 * caster.MaxMana;
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         // Gryphon
@@ -138,7 +138,7 @@
             string spellName = "Diving Claw";
             double damage = (1.2 * caster.CurrentArmorValue) - (0.5 * target.CurrentArmorValue);
             double manaRequirment = 0.3 * caster.MaxMana;
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         private void Gryphon_PetrifyingGaze(Unit caster, Unit target)
@@ -164,16 +164,16 @@
             string spellName = "Peck";
             double damage = (1.2 * caster.CurrentAttackPower) - target.CurrentArmorValue;
             double manaRequirment = 0.2 * caster.MaxMana;
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         // Reptile
         private void Reptile_PoisonSpit(Unit caster, Unit target)
         {
             string spellName = "Poison Spit";
-            double damage = (1.2 * caster.CurrentMagicPower) - target.CurrentRessistanceValue;
+            double damage = (1.2 * caster.CurrentMagicPower) - target.CurrentResistanceValue;
             double manaRequirment = 0.3 * caster.MaxMana;
-            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.MagicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
 
         private void Reptile_ReflectingScales(Unit caster, Unit target)
@@ -183,8 +183,8 @@
             double damage = 0.5 * target.CurrentAttackPower;
             double manaRequirment = 0.3 * caster.MaxMana;
             double effect = 0.2 * caster.ArmorValue;
-            this.spellCheck.PositiveEffectCheck.Check(caster, caster, manaRequirment, effect, effectType, this.manaCheck);
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.EffectCheck.Check(caster, caster, manaRequirment, effect, effectType, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         private void Reptile_SkinChange(Unit caster, Unit target)
@@ -204,7 +204,7 @@
             string spellName = "Scratch";
             double damage = (1.3 * caster.CurrentAttackPower) - target.CurrentArmorValue;
             double manaRequirment = 0.15 * caster.MaxMana;
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         // Saint
@@ -231,20 +231,20 @@
         private void Saint_HolySmite(Unit caster, Unit target)
         {
             string spellName = "Holy Smite";
-            double damage = caster.MagicPower - target.CurrentRessistanceValue;
+            double damage = caster.MagicPower - target.CurrentResistanceValue;
             double manaRequirment = 0.15 * caster.MaxMana;
-            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.MagicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
 
         private void Saint_JudgementDay(Unit caster, Unit target)
         {
             string spellName = "Judgement Day";
             string negativeEffectType = "Mana";
-            double damage = (1.3 * caster.CurrentMagicPower) - target.CurrentRessistanceValue;
+            double damage = (1.3 * caster.CurrentMagicPower) - target.CurrentResistanceValue;
             double negativeEffect = 0.2 * caster.MaxMana;
             double manaRequirment = 0.5 * caster.MaxMana;
             this.spellCheck.NegativeEffectCheck.Check(caster, target, manaRequirment, negativeEffect, negativeEffectType, this.manaCheck);
-            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.MagicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
 
         // Skeleton
@@ -263,9 +263,9 @@
         private void Skeleton_WrathOfTheNecropolis(Unit caster, Unit target)
         {
             string spellName = "Wrath Of The Necropolis";
-            double damage = caster.CurrentAttackPower + caster.CurrentMagicPower - target.CurrentRessistanceValue;
+            double damage = caster.CurrentAttackPower + caster.CurrentMagicPower - target.CurrentResistanceValue;
             double manaRequirment = 0.5 * caster.MaxMana;
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         private void Skeleton_Suffocation(Unit caster, Unit target)
@@ -276,7 +276,7 @@
             int negativeEffect = caster.CurrentHealthRegen;
             double manaRequirment = 0.2 * caster.MaxMana;
             this.spellCheck.NegativeEffectCheck.Check(caster, target, manaRequirment, negativeEffect, negativeEffectType, this.manaCheck);
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         private void Skeleton_HorrifyingScream(Unit caster, Unit target)
@@ -296,8 +296,8 @@
             double damage = (1.1 * caster.CurrentMagicPower) - target.CurrentArmorValue;
             double possitiveEffect = 0.15 * caster.MagicPower;
             double manaRequirment = 0.15 * caster.MaxMana;
-            this.spellCheck.PositiveEffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, positiveEffectType, this.manaCheck);
-            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.EffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, positiveEffectType, this.manaCheck);
+            this.spellCheck.MagicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
 
         private void Wyrm_Dive(Unit caster, Unit target)
@@ -307,8 +307,8 @@
             string buffType = "Armor";
             string possitiveEffectType = "Res";
             double buffEffect = 0.2 * caster.ArmorValue;
-            double possitiveEffect = 0.3 * caster.RessistanceValue;
-            this.spellCheck.PositiveEffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);
+            double possitiveEffect = 0.3 * caster.ResistanceValue;
+            this.spellCheck.EffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);
             this.spellCheck.BuffCheck.Check(caster, caster, manaRequirment, buffEffect, spellName, buffType, this.manaCheck);
         }
 
@@ -320,7 +320,7 @@
             string possitiveEffectType = "mRegen";
             int buffEffect = caster.Level;
             int possitiveEffect = caster.ManaRegen - caster.Level;
-            this.spellCheck.PositiveEffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);
+            this.spellCheck.EffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);
             this.spellCheck.BuffCheck.Check(caster, caster, manaRequirment, buffEffect, spellName, buffType, this.manaCheck);
         }
 
@@ -329,10 +329,10 @@
             string spellName = "Thunder";
             double manaRequirment = 0.5 * caster.MaxMana;
             string negativeEffectType = "Res";
-            double damage = (1.3 * caster.CurrentMagicPower) - caster.CurrentRessistanceValue;
-            double negativeEffect = 0.35 * target.RessistanceValue;
+            double damage = (1.3 * caster.CurrentMagicPower) - caster.CurrentResistanceValue;
+            double negativeEffect = 0.35 * target.ResistanceValue;
             this.spellCheck.NegativeEffectCheck.Check(caster, target, manaRequirment, negativeEffect, negativeEffectType, this.manaCheck);
-            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.MagicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
         }
 
         // Zombie
@@ -344,7 +344,7 @@
             double damage = (1.2 * caster.CurrentAttackPower) - target.CurrentArmorValue;
             int negativeEffect = caster.CurrentHealthRegen;
             this.spellCheck.NegativeEffectCheck.Check(caster, target, manaRequirment, negativeEffect, negativeEffectType, this.manaCheck);
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         private void Zombie_Feed(Unit caster, Unit target)
@@ -354,8 +354,8 @@
             string possitiveEffectType = "Health";
             double damage = (1.3 * caster.CurrentAttackPower) - target.CurrentArmorValue;
             double possitiveEffect = 0.3 * caster.MaxHP;
-            this.spellCheck.PositiveEffectCheck.Check(caster, target, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);
-            this.spellCheck.PhysicalDamageCheck.Check(caster, target, manaRequirment, damage, spellName, this.manaCheck);
+            this.spellCheck.EffectCheck.Check(caster, target, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);
+            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirment, damage, this.manaCheck);
         }
 
         private void Zombie_Mutation(Unit caster, Unit target)
@@ -366,7 +366,7 @@
             string possitiveEffectType = "Health";
             double buffEffect = 0.4 * caster.AttackPower;
             double possitiveEffect = 0.3 * caster.MaxHP;
-            this.spellCheck.PositiveEffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);
+            this.spellCheck.EffectCheck.Check(caster, caster, manaRequirment, possitiveEffect, possitiveEffectType, this.manaCheck);
             this.spellCheck.BuffCheck.Check(caster, caster, manaRequirment, buffEffect, spellName, buffType, this.manaCheck);
         }
 

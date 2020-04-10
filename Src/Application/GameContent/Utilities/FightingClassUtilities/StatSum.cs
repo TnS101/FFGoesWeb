@@ -24,7 +24,7 @@
                     hero.MaxHP += item.Stamina * 5;
                     hero.AttackPower += item.Strength;
                     hero.ArmorValue += item.ArmorValue;
-                    hero.ResistanceValue += item.RessistanceValue;
+                    hero.ResistanceValue += item.ResistanceValue;
                 }
             }
 

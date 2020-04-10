@@ -34,7 +34,7 @@
 
         public double ResistanceValue { get; set; }
 
-        public double CurrentRessistanceValue { get; set; }
+        public double CurrentResistanceValue { get; set; }
 
         public int HealthRegen { get; set; }
 

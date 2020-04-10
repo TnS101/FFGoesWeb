@@ -1,30 +1,55 @@
 ﻿namespace Application.GameContent.Utilities.Validators.SpellChecks.DamageInfliction
 {
-    using Domain.Base;
     using Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
+    using Domain.Base;
 
     public class SpellDamageCheck
     {
-        public SpellDamageCheck()
+        public void Check(Unit caster, Unit target, double manaRequirment, double damage, ManaCheck manaCheck, string damageType)
         {
-        }
-
-        public void Check(Unit caster, Unit target, double manaRequirment, double damage, string spellName, ManaCheck manaCheck)
-        {
-            if (manaCheck.SpellManaCheck(caster, manaRequirment) == true)
+            if (manaCheck.SpellManaCheck(caster, manaRequirment))
             {
-                if (damage > target.CurrentRessistanceValue)
+                if (damageType == "Physical")
                 {
-                    target.CurrentHP -= damage;
-                    if (target.CurrentHP <= damage)
+                    if (damage > target.CurrentArmorValue)
                     {
-                        target.CurrentHP = 0;
+                        target.CurrentHP -= damage;
+                    }
+                    else
+                    {
+                        target.CurrentArmorValue -= target.CurrentArmorValue * 0.25;
+                    }
+                }
+                else if (damageType == "Physical")
+                {
+                    if (damage > target.CurrentResistanceValue)
+                    {
+                        target.CurrentHP -= damage;
+                    }
+                    else
+                    {
+                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.25;
                     }
                 }
                 else
                 {
-                    target.CurrentRessistanceValue -= target.CurrentRessistanceValue * 0.25;
+                    double protection = (target.CurrentResistanceValue / 2) + (target.CurrentArmorValue / 2);
+
+                    if (damage > protection)
+                    {
+                        target.CurrentHP -= damage;
+                    }
+                    else
+                    {
+                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.125;
+                        target.CurrentArmorValue -= target.CurrentArmorValue * 0.125;
+                    }
                 }
+            }
+
+            if (target.CurrentHP <= damage)
+            {
+                target.CurrentHP = 0;
             }
         }
     }

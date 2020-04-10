@@ -26,7 +26,7 @@
 
         public double ArmorValue { get; set; }
 
-        public double RessistanceValue { get; set; }
+        public double ResistanceValue { get; set; }
 
         public double MagicPower { get; set; }
 

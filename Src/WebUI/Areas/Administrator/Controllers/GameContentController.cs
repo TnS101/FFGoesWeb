@@ -21,10 +21,10 @@
             return this.View();
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Items([FromQuery]string id)
+        [HttpGet("GameContent/Items/slot")]
+        public async Task<ActionResult> Items([FromQuery]string slot)
         {
-            return this.View(await this.Mediator.Send(new GetAllItemsQuery { Slot = id }));
+            return this.View(await this.Mediator.Send(new GetAllItemsQuery { Slot = slot }));
         }
 
         [HttpGet]
@@ -37,7 +37,7 @@
         public async Task<ActionResult> CreateItem([FromForm]string name, [FromForm]int level,
             [FromForm]string classType, [FromForm]int stamina, [FromForm]int strength, [FromForm]int agility,
             [FromForm]int intellect, [FromForm]int spirit, [FromForm] double attackPower,
-            [FromForm]double armorValue, [FromForm] double ressistanceValue, [FromForm]string slot)
+            [FromForm]double armorValue, [FromForm] double resistanceValue, [FromForm]string slot)
         {
             return this.Redirect(await this.Mediator.Send(new CreateItemCommand
             {
@@ -51,7 +51,7 @@
                 Spirit = spirit,
                 AttackPower = attackPower,
                 ArmorValue = armorValue,
-                RessistanceValue = ressistanceValue,
+                ResistanceValue = resistanceValue,
                 Slot = slot,
             }));
         }
@@ -66,7 +66,7 @@
         public async Task<ActionResult> UpdateItem([FromForm]string name, [FromForm]int level,
             [FromForm]string classType, [FromForm]int stamina, [FromForm]int strength, [FromForm]int agility,
             [FromForm]int intellect, [FromForm]int spirit, [FromForm] double attackPower,
-            [FromForm]double armorValue, [FromForm] double ressistanceValue, [FromForm]string slot)
+            [FromForm]double armorValue, [FromForm] double resistanceValue, [FromForm]string slot)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateItemCommand
             {
@@ -80,7 +80,7 @@
                 NewSpirit = spirit,
                 NewAttackPower = attackPower,
                 NewArmorValue = armorValue,
-                NewRessistanceValue = ressistanceValue,
+                NewResistanceValue = resistanceValue,
             }));
         }
 

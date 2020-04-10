@@ -6,6 +6,7 @@
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
     using Application.GameCQ.Items.Commands.Update;
     using Application.GameCQ.Monsters.Commands.Create;
+    using Domain.Entities.Game.Units;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -14,8 +15,8 @@
     [Authorize(Roles = GConst.UserRole)]
     public class BattleController : BaseController
     {
-        private static readonly bool YourTurn = true;
-        private static UnitFullViewModel monster;
+        private static bool yourTurn;
+        private static Monster monster;
         private static UnitFullViewModel hero;
         private static string zoneName;
 
@@ -25,6 +26,7 @@
             zoneName = zone;
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
             monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zoneName });
+            yourTurn = true;
             return this.View(@"\Battle", monster.Name);
         }
 
@@ -37,17 +39,17 @@
         }
 
         [HttpGet("Battle/Command/command")]
-        public async Task<ActionResult> Command([FromQuery]string command, [FromQuery]string spellName)
+        public async Task<ActionResult> Command([FromQuery]string command, [FromForm]string spellName)
         {
             return this.View(
                 await this.Mediator.Send(new BattleOptionsCommand
-                { Command = command, Player = hero, Enemy = monster, YourTurn = YourTurn, SpellName = spellName, ZoneName = zoneName }), this.Stats(hero));
+                { Command = command, Player = hero, Enemy = monster, YourTurn = yourTurn, SpellName = spellName, ZoneName = zoneName }), this.Stats(hero));
         }
 
         [HttpGet]
         public async Task<ActionResult> End()
         {
-            return this.View(await this.Mediator.Send(new LootItemCommand { MonsterId = int.Parse(monster.Id), }));
+            return this.View(await this.Mediator.Send(new LootItemCommand { MonsterId = monster.Id, }));
         }
 
         private string[] Stats(UnitFullViewModel playerFullVm)

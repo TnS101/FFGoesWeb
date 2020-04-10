@@ -1,45 +1,124 @@
 ﻿namespace Application.GameContent.Utilities.Validators.SpellChecks.Buffs
 {
-    using Domain.Base;
     using Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
+    using Domain.Base;
 
     public class BuffCheck
     {
-        public void Check(Unit caster, Unit target, double manaRequirment, double buffEffect, string spellName, string buffType, ManaCheck manaCheck)
+        public void Check(Unit caster, Unit target, double manaRequirment, double buffEffect, string buffStat, ManaCheck manaCheck, string buffType)
         {
-            if (manaCheck.SpellManaCheck(caster, manaRequirment) == true)
+            if (manaCheck.SpellManaCheck(caster, manaRequirment))
             {
-                if (buffType == "Attack")
+                if (buffType == "Positive")
                 {
-                    caster.CurrentAttackPower += buffEffect;
+                    if (buffStat == "Attack")
+                    {
+                        caster.CurrentAttackPower += buffEffect * caster.AttackPower;
+                    }
+                    else if (buffStat == "hRegen")
+                    {
+                        caster.CurrentHealthRegen += buffEffect * caster.HealthRegen;
+                    }
+                    else if (buffStat == "mRegen")
+                    {
+                        caster.CurrentManaRegen += buffEffect * caster.ManaRegen;
+                    }
+                    else if (buffStat == "Armor")
+                    {
+                        caster.CurrentArmorValue += buffEffect * caster.ArmorValue;
+                    }
+                    else if (buffStat == "Res")
+                    {
+                        caster.CurrentResistanceValue += buffEffect * caster.ResistanceValue;
+                    }
+                    else if (buffStat == "Mana")
+                    {
+                        caster.CurrentMana += buffEffect * caster.MaxMana;
+                    }
+                    else if (buffStat == "Gold")
+                    {
+                        caster.GoldAmount += (int)buffEffect;
+                    }
+                    else if (buffStat == "Magic")
+                    {
+                        caster.CurrentMagicPower += buffEffect * caster.GoldAmount;
+                    }
                 }
-                else if (buffType == "hRegen")
+                else
                 {
-                    caster.CurrentHealthRegen += (int)buffEffect;
-                }
-                else if (buffType == "mRegen")
-                {
-                    caster.CurrentManaRegen += (int)buffEffect;
-                }
-                else if (buffType == "Armor")
-                {
-                    caster.CurrentArmorValue += buffEffect;
-                }
-                else if (buffType == "Res")
-                {
-                    caster.CurrentRessistanceValue += buffEffect;
-                }
-                else if (buffType == "Mana")
-                {
-                    caster.CurrentMana += buffEffect;
-                }
-                else if (buffType == "Gold")
-                {
-                    caster.GoldAmount += (int)buffEffect;
-                }
-                else if (buffType == "Magic")
-                {
-                    caster.CurrentMagicPower += buffEffect;
+                    if (buffStat == "Attack")
+                    {
+                        if (target.CurrentAttackPower < buffEffect)
+                        {
+                            target.CurrentAttackPower = 0;
+                        }
+                        else
+                        {
+                            target.CurrentAttackPower -= buffEffect;
+                        }
+                    }
+                    else if (buffStat == "hRegen")
+                    {
+                        if (target.CurrentHealthRegen < buffEffect)
+                        {
+                            target.CurrentHealthRegen = 0;
+                        }
+                        else
+                        {
+                            target.CurrentHealthRegen -= buffEffect * target.CurrentHealthRegen;
+                        }
+                    }
+                    else if (buffStat == "mRegen")
+                    {
+                        if (target.CurrentManaRegen < buffEffect)
+                        {
+                            target.CurrentManaRegen = 0;
+                        }
+                        else
+                        {
+                            target.CurrentManaRegen -= buffEffect * target.CurrentManaRegen;
+                        }
+                    }
+                    else if (buffStat == "Armor")
+                    {
+                        if (target.CurrentArmorValue < buffEffect)
+                        {
+                            target.CurrentArmorValue = 0;
+                        }
+                        else
+                        {
+                            target.CurrentArmorValue -= buffEffect * target.CurrentArmorValue;
+                        }
+                    }
+                    else if (buffStat == "Res")
+                    {
+                        if (target.CurrentResistanceValue < buffEffect)
+                        {
+                            target.CurrentResistanceValue = 0;
+                        }
+                        else
+                        {
+                            target.CurrentResistanceValue -= buffEffect * target.CurrentResistanceValue;
+                        }
+                    }
+                    else if (buffStat == "SelfHP")
+                    {
+                        if (caster.CurrentHP > buffEffect)
+                        {
+                            caster.CurrentHP -= buffEffect;
+                        }
+                    }
+                    else if (buffStat == "Magic")
+                    {
+                        if (target.CurrentMagicPower < buffEffect)
+                        {
+                            target.CurrentMagicPower = 0;
+                        }
+                        else
+                        {
+                            target.CurrentMagicPower -= buffEffect * target.CurrentMagicPower;
+                        }
+                    }
                 }
             }
         }

@@ -10,11 +10,11 @@
 
         double MaxHP { get; set; }
 
-        int HealthRegen { get; set; }
+        double HealthRegen { get; set; }
 
         double MaxMana { get; set; }
 
-        int ManaRegen { get; set; }
+        double ManaRegen { get; set; }
 
         double AttackPower { get; set; }
 
@@ -22,13 +22,9 @@
 
         double ArmorValue { get; set; }
 
-        double RessistanceValue { get; set; }
+        double ResistanceValue { get; set; }
 
         double CritChance { get; set; }
-
-        int GoldAmount { get; }
-
-        string Race { get; set; }
 
         string ClassType { get; set; }
     }

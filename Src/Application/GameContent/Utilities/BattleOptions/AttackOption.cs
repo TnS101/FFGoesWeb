@@ -1,10 +1,11 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
+    using Domain.Base;
 
     public class AttackOption
     {
-        public void Attack(UnitFullViewModel caster, UnitFullViewModel target)
+        public void Attack(Unit caster, Unit target)
         {
             if (target.CurrentHP > 0)
             {

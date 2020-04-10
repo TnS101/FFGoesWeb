@@ -1,6 +1,7 @@
 ﻿namespace Application.GameCQ.Heroes.Queries.GetUnitListQuery
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -32,6 +33,18 @@
 
             var heroes = this.context.Heroes.Where(h => h.UserId == user.Id);
 
+            await this.EnergyManagement(heroes.ToList());
+
+            await this.context.SaveChangesAsync(cancellationToken);
+
+            return new HeroListViewModel
+            {
+                Heroes = await heroes.ProjectTo<HeroMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+            };
+        }
+
+        private async Task EnergyManagement(List<Hero> heroes)
+        {
             foreach (var hero in heroes)
             {
                 foreach (var energyChange in this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id).OrderBy(l => l.LastChangedOn).ToList())
@@ -40,21 +53,40 @@
                     int rechargeTime = 4;
                     int energy = 0;
 
+                    string type = string.Empty;
+
                     if (energyChange.Type == "Walk")
                     {
                         energyCap = 30;
                         energy = hero.Energy;
+                        type = "Walk";
                     }
                     else if (energyChange.Type == "Profession")
                     {
                         energyCap = 10;
                         energy = hero.ProfessionEnergy;
+                        type = "Profession";
                     }
                     else if (energyChange.Type == "PvP")
                     {
                         energyCap = 15;
                         rechargeTime = 8;
                         energy = hero.PvPEnergy;
+                        type = "PvP";
+                    }
+                    else if (energyChange.Type == "Health")
+                    {
+                        energyCap = (int)hero.MaxHP;
+                        energy = (int)hero.CurrentHP;
+                        rechargeTime = 1;
+                        type = "Health";
+                    }
+                    else if (energyChange.Type == "Mana")
+                    {
+                        energyCap = (int)hero.MaxMana;
+                        rechargeTime = 1;
+                        energy = (int)hero.CurrentMana;
+                        type = "Mana";
                     }
 
                     if (energy < energyCap && DateTime.UtcNow.Minute - energyChange.LastChangedOn.Minute >= rechargeTime)
@@ -71,6 +103,24 @@
                         {
                             hero.PvPEnergy++;
                         }
+                        else if (energyChange.Type == "Health")
+                        {
+                            hero.CurrentHP += 0.1 * hero.MaxHP;
+
+                            if (hero.MaxHP < hero.CurrentHP)
+                            {
+                                hero.CurrentHP = hero.MaxHP;
+                            }
+                        }
+                        else if (energyChange.Type == "Mana")
+                        {
+                            hero.CurrentMana += 0.1 * hero.MaxMana;
+
+                            if (hero.MaxMana < hero.CurrentMana)
+                            {
+                                hero.CurrentMana = hero.MaxMana;
+                            }
+                        }
 
                         while (true)
                         {
@@ -78,7 +128,7 @@
                             {
                                 HeroId = hero.Id,
                                 LastChangedOn = DateTime.UtcNow,
-                                Type = "Regeneration",
+                                Type = type,
                             };
 
                             if (this.context.EnergyChanges.Any(ec => ec.Id == regeneration.Id))
@@ -94,9 +144,9 @@
                         this.context.EnergyChanges.Remove(energyChange);
                     }
 
-                    if (hero.Energy == energyCap)
+                    if (energy == energyCap)
                     {
-                        var personalEnergyChanges = this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id);
+                        var personalEnergyChanges = this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id && ec.Type == type);
 
                         this.context.EnergyChanges.RemoveRange(personalEnergyChanges);
                     }
@@ -104,13 +154,6 @@
 
                 this.context.Heroes.Update(hero);
             }
-
-            await this.context.SaveChangesAsync(cancellationToken);
-
-            return new HeroListViewModel
-            {
-                Heroes = await heroes.ProjectTo<HeroMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
-            };
         }
     }
 }

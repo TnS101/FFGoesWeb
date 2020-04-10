@@ -50,18 +50,32 @@
                     Items = await this.context.Treasures.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
-            else if (request.Slot == "Treasure Keys")
+            else if (request.Slot == "Treasure Key")
             {
                 return new ItemListViewModel
                 {
                     Items = await this.context.TreasureKeys.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
-            else
+            else if (request.Slot == "Material")
             {
                 return new ItemListViewModel
                 {
                     Items = await this.context.Materials.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else if (request.Slot == "Tool")
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Tools.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                };
+            }
+            else
+            {
+                return new ItemListViewModel
+                {
+                    Items = await this.context.Armors.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
         }

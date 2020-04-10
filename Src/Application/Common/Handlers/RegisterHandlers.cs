@@ -62,6 +62,7 @@
     using Application.GameCQ.Treasures.Commands.Update;
     using Application.GameCQ.World.Commands.Update;
     using Application.SeedInitialData;
+    using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -107,7 +108,7 @@
         private void UserCommands(IServiceCollection services)
         {
             services.AddScoped<IRequestHandler<BattleOptionsCommand, string>, BattleOptionsCommandHandler>();
-            services.AddScoped<IRequestHandler<GenerateMonsterCommand, UnitFullViewModel>, GenerateMonsterCommandHandler>();
+            services.AddScoped<IRequestHandler<GenerateMonsterCommand, Monster>, GenerateMonsterCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateEquipmentCommand, string>, UpdateEquipmentCommandHandler>();
             services.AddScoped<IRequestHandler<DiscardItemCommand, string>, DiscardItemCommandHandler>();
             services.AddScoped<IRequestHandler<LootItemCommand>, LootItemCommandHandler>();

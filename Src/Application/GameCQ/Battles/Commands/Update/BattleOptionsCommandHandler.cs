@@ -25,17 +25,17 @@
             {
                 if (request.Command == "Attack")
                 {
-                    this.battleHandler.AttackOption.Attack(request.Player, request.Enemy);
+                    this.battleHandler.AttackOption.Attack(hero, request.Enemy);
                 }
 
                 if (request.Command == "Defend")
                 {
-                    this.battleHandler.DefendOption.Defend(request.Player);
+                    this.battleHandler.DefendOption.Defend(hero);
                 }
 
                 if (request.Command == "SpellCast")
                 {
-                    this.battleHandler.SpellCastOption.PlayerSpellCast(request.Player, request.Enemy, request.SpellName, this.context);
+                    this.battleHandler.SpellCastOption.SpellCast(hero, request.Enemy, request.SpellName, this.context);
                 }
 
                 if (request.Command == "Escape")
@@ -45,11 +45,11 @@
                     return @"\Escape";
                 }
 
-                this.battleHandler.TurnCheck.Check(request.Player, request.Enemy, this.battleHandler, request.YourTurn, this.context);
+                request.YourTurn = this.battleHandler.TurnCheck.Check(hero, request.Enemy, this.battleHandler, request.YourTurn, this.context);
 
                 if (!request.YourTurn)
                 {
-                    this.battleHandler.TurnCheck.Check(request.Player, request.Enemy, this.battleHandler, request.YourTurn, this.context);
+                   request.YourTurn = this.battleHandler.TurnCheck.Check(hero, request.Enemy, this.battleHandler, request.YourTurn, this.context);
                 }
 
                 await this.context.SaveChangesAsync(cancellationToken);
@@ -59,7 +59,7 @@
             else
             {
                 request.Enemy.CurrentHP = 0;
-                this.battleHandler.EndOption.End(hero, request.Enemy, request.ZoneName);
+                await this.battleHandler.EndOption.End(hero, request.Enemy, request.ZoneName, this.context);
                 this.context.Heroes.Update(hero);
                 await this.context.SaveChangesAsync(cancellationToken);
                 return @"\End";

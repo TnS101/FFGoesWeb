@@ -1,15 +1,13 @@
 ﻿namespace Application.SeedInitialData
 {
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common.Social;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
-    using Domain.Entities.Moderation;
-    using global::Common;
     using global::Domain.Entities.Common;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     public class DataSeeder
     {
@@ -34,34 +32,11 @@
 
             await this.SeedMonsterRaritiesAsync(cancellationToken);
 
-            await this.SeedSampleDataAsync(cancellationToken);
-
             await this.SeedStatusesAsync(cancellationToken);
 
             await this.SeedToolsAsync(cancellationToken);
 
             await this.SeedMainMaterialsAsync(cancellationToken);
-        }
-
-        private async Task SeedSampleDataAsync(CancellationToken cancellationToken)
-        {
-            this.context.Tickets.Add(new Ticket
-            {
-                AdditionalInformation = string.Format(GConst.SampleEntityDescription, "ticket"),
-            });
-
-            this.context.Feedbacks.Add(new Feedback
-            {
-                Content = string.Format(GConst.SampleEntityDescription, "feedback"),
-            });
-
-            this.context.Feedbacks.Add(new Feedback
-            {
-                Content = string.Format(GConst.SampleEntityDescription, "feedback"),
-                IsAccepted = true,
-            });
-
-            await this.context.SaveChangesAsync(cancellationToken);
         }
 
         private async Task SeedMainMaterialsAsync(CancellationToken cancellationToken)
@@ -1092,7 +1067,7 @@
                 AttackPower = 25,
                 MagicPower = 10,
                 ArmorValue = 5,
-                RessistanceValue = 3,
+                ResistanceValue = 3,
                 CritChance = 3,
                 ImageURL = "/images/Sprites/Warrior.png",
                 Description = "If you want to spam one button and lose brain cells simultaneously, you should probably play CS: GO." +
@@ -1109,7 +1084,7 @@
                 AttackPower = 32,
                 MagicPower = 12,
                 ArmorValue = 3.5,
-                RessistanceValue = 2.5,
+                ResistanceValue = 2.5,
                 CritChance = 6,
                 ImageURL = "/images/Sprites/Hunter.png",
                 Description = "He could have a shotgun but that would be way too much OP." +
@@ -1126,7 +1101,7 @@
                 AttackPower = 18,
                 MagicPower = 26,
                 ArmorValue = 2,
-                RessistanceValue = 8,
+                ResistanceValue = 8,
                 CritChance = 2,
                 ImageURL = "/images/Sprites/Mage.png",
                 Description = "Like cards? Go to Vegas. Like bunnies? Open a rabbit farm. Want to 1-shot someone? [CLICK ME]!" +
@@ -1143,7 +1118,7 @@
                 AttackPower = 15,
                 MagicPower = 28,
                 ArmorValue = 5,
-                RessistanceValue = 2.2,
+                ResistanceValue = 2.2,
                 CritChance = 2,
                 ImageURL = "/images/Sprites/Druid.png",
                 Description = "Don't worry. I've already donated 5 bucks to that *Beast* guy." +
@@ -1160,7 +1135,7 @@
                 AttackPower = 15,
                 MagicPower = 30,
                 ArmorValue = 2.5,
-                RessistanceValue = 2,
+                ResistanceValue = 2,
                 CritChance = 2,
                 ImageURL = "/images/Sprites/Necroid.png",
                 Description = "Actually, you don't wanna know about this guy. I've warned you." +
@@ -1177,7 +1152,7 @@
                 AttackPower = 22,
                 MagicPower = 18,
                 ArmorValue = 4,
-                RessistanceValue = 5,
+                ResistanceValue = 5,
                 CritChance = 3,
                 ImageURL = "/images/Sprites/Paladin.png",
                 Description = "Damage? Got it. Health? Got it. Girlfriend? ... :(" +
@@ -1194,7 +1169,7 @@
                 AttackPower = 15,
                 MagicPower = 30,
                 ArmorValue = 2,
-                RessistanceValue = 4,
+                ResistanceValue = 4,
                 CritChance = 2,
                 ImageURL = "/images/Sprites/Priest.png",
                 Description = "Don't worry. He won't molest you." +
@@ -1211,7 +1186,7 @@
                 AttackPower = 33,
                 MagicPower = 8,
                 ArmorValue = 3,
-                RessistanceValue = 1,
+                ResistanceValue = 1,
                 CritChance = 8,
                 ImageURL = "/images/Sprites/Rogue.png",
                 Description = "He steals money. Enough said, you greedy bastard." +
@@ -1228,7 +1203,7 @@
                 AttackPower = 20,
                 MagicPower = 20,
                 ArmorValue = 3,
-                RessistanceValue = 5,
+                ResistanceValue = 5,
                 CritChance = 2,
                 ImageURL = "/images/Sprites/Shaman.png",
                 Description = "Freezing, zapping and stoning people to death was never such fun." +
@@ -1245,270 +1220,234 @@
             this.context.Spells.Add(new Spell
             {
                 Name = "Furious Roar",
-                ManaRequirment = 20,
+                ManaRequirement = 20,
                 ClassType = "Beast",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Bite",
-                ManaRequirment = 20,
+                ManaRequirement = 20,
                 ClassType = "Beast",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Thick Hide",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Beast",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Lick Wounds",
-                ManaRequirment = 20,
+                ManaRequirement = 20,
                 ClassType = "Beast",
-                UserType = "Enemy",
             });
 
             // Demon
             this.context.Spells.Add(new Spell
             {
                 Name = "Corruption",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Demon",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Shadow Blast",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Demon",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Eye Of The Void",
-                ManaRequirment = 20,
+                ManaRequirement = 20,
                 ClassType = "Demon",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Ripping Hell-Fire",
-                ManaRequirment = 80,
+                ManaRequirement = 80,
                 ClassType = "Demon",
-                UserType = "Enemy",
             });
 
             // Giant
             this.context.Spells.Add(new Spell
             {
                 Name = "Overgrowth",
-                ManaRequirment = 40,
+                ManaRequirement = 40,
                 ClassType = "Giant",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Calming Mind",
-                ManaRequirment = 10,
+                ManaRequirement = 10,
                 ClassType = "Giant",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Raging Mind",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Giant",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Overpowering Fist",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Giant",
-                UserType = "Enemy",
             });
 
             // Gryphon
             this.context.Spells.Add(new Spell
             {
                 Name = "Diving Claw",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Gryphon",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Petryfying Gaze",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Gryphon",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Gust",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Gryphon",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Peck",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Gryphon",
-                UserType = "Enemy",
             });
 
             // Reptile
             this.context.Spells.Add(new Spell
             {
                 Name = "Poison Spit",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Reptile",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Reflelcting Scales",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Reptile",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Skin Change",
-                ManaRequirment = 40,
+                ManaRequirement = 40,
                 ClassType = "Reptile",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Scratch",
-                ManaRequirment = 15,
+                ManaRequirement = 15,
                 ClassType = "Reptile",
-                UserType = "Enemy",
             });
 
             // Saint
             this.context.Spells.Add(new Spell
             {
                 Name = "Sacred Words",
-                ManaRequirment = 40,
+                ManaRequirement = 40,
                 ClassType = "Saint",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Illumination",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Saint",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Holy Smite",
-                ManaRequirment = 15,
+                ManaRequirement = 15,
                 ClassType = "Saint",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Judgement Day",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Saint",
-                UserType = "Enemy",
             });
 
             // Skeleton
             this.context.Spells.Add(new Spell
             {
                 Name = "Tombstone",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Skeleton",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Wrath Of The Necropolis",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Skeleton",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Suffocation",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Skeleton",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Horrifying Scream",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Skeleton",
-                UserType = "Enemy",
             });
 
             // Wyrm
             this.context.Spells.Add(new Spell
             {
                 Name = "Tidal Slash",
-                ManaRequirment = 15,
+                ManaRequirement = 15,
                 ClassType = "Wyrm",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Dive",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Wyrm",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Hyper Speed",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Wyrm",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Thunder",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Wyrm",
-                UserType = "Enemy",
             });
 
             // Zombie
             this.context.Spells.Add(new Spell
             {
                 Name = "Infecting Bite",
-                ManaRequirment = 40,
+                ManaRequirement = 40,
                 ClassType = "Zombie",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Feed",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Zombie",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Mutation",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Zombie",
-                UserType = "Enemy",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Decay",
-                ManaRequirment = 10,
+                ManaRequirement = 10,
                 ClassType = "Zombie",
-                UserType = "Enemy",
             });
             await this.context.SaveChangesAsync(cancellationToken);
         }
@@ -1519,270 +1458,306 @@
             this.context.Spells.Add(new Spell
             {
                 Name = "Hasting Arrow",
-                ManaRequirment = 20,
+                ManaRequirement = 0.12,
                 ClassType = "Hunter",
-                UserType = "Player",
+                Type = "Damage,Physical,Self",
+                Power = 1.2,
+                ResistanceAffect = 1,
+                AdditionalEffect = "Crit,Positive",
+                BuffOrEffectTarget = "Self",
+                EffectPower = 0.05,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Grass Hop",
-                ManaRequirment = 50,
+                ManaRequirement = 0.5,
                 ClassType = "Hunter",
-                UserType = "Player",
+                Type = "Buff,Armor,Self,Positive",
+                Power = 0.7,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
-                Name = "Volley Shot",
-                ManaRequirment = 30,
+                Name = "Poison Shot",
+                ManaRequirement = 0.25,
                 ClassType = "Hunter",
-                UserType = "Player",
+                Type = "Damage,Physical/Magical,Self",
+                Power = 0.5,
+                SecondaryPower = 0.7,
+                ResistanceAffect = 0.5,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Sharp Eye",
-                ManaRequirment = 50,
+                ManaRequirement = 0.5,
                 ClassType = "Hunter",
-                UserType = "Player",
+                Type = "Buff,Attack,Self,Positive",
+                Power = 0.3,
+                BuffOrEffectTarget = "Self",
             });
 
             // Mage
             this.context.Spells.Add(new Spell
             {
                 Name = "Water Ball",
-                ManaRequirment = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Mage",
-                UserType = "Player",
+                Type = "Damage,Magical,Self",
+                Power = 0.7,
+                AdditionalEffect = "mRegen,Positive",
+                EffectPower = 1.3,
+                BuffOrEffectTarget = "Self",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Fire Ball",
-                ManaRequirment = 25,
+                ManaRequirement = 0.25,
                 ClassType = "Mage",
-                UserType = "Player",
+                Type = "Damage,Magical/MaxHP,Self/Target",
+                Power = 0.6,
+                SecondaryPower = 0.05,
+                AdditionalEffect = "hRegen,Negative",
+                EffectPower = 0.35,
+                BuffOrEffectTarget = "Target",
+                ResistanceAffect = 0.7,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Mana Conversion",
-                ManaRequirment = 0,
+                ManaRequirement = 0,
                 ClassType = "Mage",
-                UserType = "Player",
+                Type = "Buff,Mana,Self,Positive",
+                Power = 0.25,
+                AdditionalEffect = "Armor,Negative",
+                EffectPower = 0.2,
+                BuffOrEffectTarget = "Self/Target",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "All-Out Blast!",
-                ManaRequirment = 100,
+                ManaRequirement = 0.8,
                 ClassType = "Mage",
-                UserType = "Player",
+                Type = "Damage,Magical,Self",
+                Power = 2,
+                AdditionalEffect = "mRegen,Negative",
+                EffectPower = 0.2,
+                BuffOrEffectTarget = "Self",
+                ResistanceAffect = 0,
             });
 
             // Naturalist
             this.context.Spells.Add(new Spell
             {
                 Name = "Nature's Touch",
-                ManaRequirment = 50,
+                ManaRequirement = 0.4,
                 ClassType = "Naturalist",
-                UserType = "Player",
+                Type = "Heal,Magical,Self",
+                Power = 0.5,
+                AdditionalEffect = "Armor,Positive",
+                EffectPower = 0.3,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Thorn Blast",
-                ManaRequirment = 35,
+                ManaRequirement = 0.28,
                 ClassType = "Naturalist",
-                UserType = "Player",
+                Type = "Damage,Magical,Self",
+                Power = 0.75,
+                AdditionalEffect = "Armor,Negative",
+                EffectPower = 0.3,
+                BuffOrEffectTarget = "Target",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Nature's Gift",
-                ManaRequirment = 0,
+                ManaRequirement = 0,
                 ClassType = "Naturalist",
-                UserType = "Player",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Pouring Raind",
-                ManaRequirment = 0,
+                ManaRequirement = 0,
                 ClassType = "Naturalist",
-                UserType = "Player",
             });
 
             // Necroid
             this.context.Spells.Add(new Spell
             {
                 Name = "Shadow Touch",
-                ManaRequirment = 25,
+                ManaRequirement = 25,
                 ClassType = "Necroid",
-                UserType = "Player",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Life Drain",
-                ManaRequirment = 35,
+                ManaRequirement = 35,
                 ClassType = "Necroid",
-                UserType = "Player",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Blind",
-                ManaRequirment = 15,
+                ManaRequirement = 15,
                 ClassType = "Necroid",
-                UserType = "Player",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Mutual Darkness",
-                ManaRequirment = 0,
+                ManaRequirement = 0,
                 ClassType = "Necroid",
-                UserType = "Player",
+
             });
 
             // Paladin
             this.context.Spells.Add(new Spell
             {
                 Name = "Holy Strike",
-                ManaRequirment = 15,
+                ManaRequirement = 15,
                 ClassType = "Paladin",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Burning Light",
-                ManaRequirment = 15,
+                ManaRequirement = 15,
                 ClassType = "Paladin",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Vicious Spell-Guard",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Paladin",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Divine Rune",
-                ManaRequirment = 15,
+                ManaRequirement = 15,
                 ClassType = "Paladin",
-                UserType = "Player",
+
             });
 
             // Priest
             this.context.Spells.Add(new Spell
             {
                 Name = "Holy Light",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Priest",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Mana Drain",
-                ManaRequirment = 10,
+                ManaRequirement = 10,
                 ClassType = "Priest",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Staff Smash",
-                ManaRequirment = 12,
+                ManaRequirement = 12,
                 ClassType = "Priest",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Blessing",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Priest",
-                UserType = "Player",
+
             });
 
             // Rogue
             this.context.Spells.Add(new Spell
             {
                 Name = "Stab",
-                ManaRequirment = 12,
+                ManaRequirement = 12,
                 ClassType = "Rogue",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Poison Dagger",
-                ManaRequirment = 30,
+                ManaRequirement = 30,
                 ClassType = "Rogue",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Evasion",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Rogue",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Thievery",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Rogue",
-                UserType = "Player",
+
             });
 
             // Shaman
             this.context.Spells.Add(new Spell
             {
                 Name = "Thunder Strike",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Shaman",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Earth Strike",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Shaman",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Flame Strike",
-                ManaRequirment = 25,
+                ManaRequirement = 25,
                 ClassType = "Shaman",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Water Strike",
-                ManaRequirment = 25,
+                ManaRequirement = 25,
                 ClassType = "Shaman",
-                UserType = "Player",
+
             });
 
             // Warrior
             this.context.Spells.Add(new Spell
             {
                 Name = "Head Smash",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Warrior",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Hyper Strength",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Warrior",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Raging Blow",
-                ManaRequirment = 12,
+                ManaRequirement = 12,
                 ClassType = "Warrior",
-                UserType = "Player",
+
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Disarm",
-                ManaRequirment = 50,
+                ManaRequirement = 50,
                 ClassType = "Warrior",
-                UserType = "Player",
+
             });
 
             await this.context.SaveChangesAsync(cancellationToken);

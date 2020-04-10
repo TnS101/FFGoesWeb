@@ -8,19 +8,18 @@
     <partial name="_AdminNavBar">
 </head>
 <body>
-    <h1 class="has-text-align-center main-font-color">ToDo List</h1>
+    <h1 class="has-text-align-center secondary-font-color">ToDo List</h1>
     @{
         if (Model.Tasks.Count() == 1)
         {
-            <h2 class="has-text-align-center main-font-color">No available tasks</h2>
+            <h2 class="has-text-align-center secondary-font-color">No available tasks</h2>
         }
         else
         {
             foreach (var task in Model.Tasks)
             {
-                <div class="has-text-align-center ">
-                    <h4>@task.Content</h4><a asp-controller="ToDo" asp-action="FinishTask" asp-route-id="task.Id"><i class="fas fa-check"></i></a>
-
+                <div class="has-text-align-center item-padding">
+                    <h4 class="main-font-color">@task.Content</h4><a asp-controller="ToDo" asp-action="FinishTask" asp-route-id="task.Id"><i class="fas fa-check"></i></a>
                 </div>
             }
         }

@@ -1,9 +1,9 @@
 ﻿namespace Application.GameCQ.Monsters.Commands.Create
 {
-    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
+    using Domain.Entities.Game.Units;
     using MediatR;
 
-    public class GenerateMonsterCommand : IRequest<UnitFullViewModel>
+    public class GenerateMonsterCommand : IRequest<Monster>
     {
         public int PlayerLevel { get; set; }
 

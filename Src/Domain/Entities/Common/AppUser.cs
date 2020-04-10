@@ -27,6 +27,7 @@
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.IsOnline = true;
         }
 
         public string FriendId { get; set; }
@@ -49,6 +50,8 @@
         public int AllowedHeroes { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public bool IsOnline { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

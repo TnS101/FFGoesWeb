@@ -20,7 +20,7 @@
 
         public double ArmorValue { get; set; }
 
-        public double RessistanceValue { get; set; }
+        public double ResistanceValue { get; set; }
 
         public bool IsSelected { get; set; }
     }

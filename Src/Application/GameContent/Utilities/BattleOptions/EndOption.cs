@@ -1,12 +1,13 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
     using System;
-    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
+    using System.Threading.Tasks;
+    using Application.Common.Interfaces;
     using Domain.Entities.Game.Units;
 
     public class EndOption
     {
-        public void End(Hero hero, UnitFullViewModel monster, string zoneName)
+        public async Task End(Hero hero, Monster monster, string zoneName, IFFDbContext context)
         {
             if (zoneName == "World")
             {
@@ -16,6 +17,26 @@
             else
             {
                 hero.ProffesionXP += this.EnemyCombinedStats(monster) / 20;
+            }
+
+            if (hero.CurrentHP < hero.MaxHP)
+            {
+                await context.EnergyChanges.AddAsync(new EnergyChange
+                {
+                    HeroId = hero.Id,
+                    Type = "Health",
+                    LastChangedOn = DateTime.UtcNow,
+                });
+            }
+
+            if (hero.MaxMana < hero.MaxMana)
+            {
+                await context.EnergyChanges.AddAsync(new EnergyChange
+                {
+                    HeroId = hero.Id,
+                    Type = "Mana",
+                    LastChangedOn = DateTime.UtcNow,
+                });
             }
 
             // Stat reset
@@ -28,7 +49,7 @@
             hero.CurrentCritChance = hero.CritChance;
         }
 
-        private double EnemyCombinedStats(UnitFullViewModel monster)
+        private double EnemyCombinedStats(Monster monster)
         {
             return monster.MaxHP + monster.MaxMana + monster.AttackPower + monster.MagicPower
                 + monster.ArmorValue + monster.ResistanceValue + monster.HealthRegen + monster.ManaRegen + monster.CritChance;
