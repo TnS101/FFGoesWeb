@@ -20,6 +20,7 @@
             this.IsSelected = false;
             this.Type = "Player";
             this.EnergyChanges = new HashSet<EnergyChange>();
+            this.HeroSpells = new HashSet<HeroSpells>();
         }
 
         public string Id { get; set; }
@@ -117,6 +118,8 @@
         public string IconURL { get; set; }
 
         public int GearScore { get; set; }
+
+        public ICollection<HeroSpells> HeroSpells { get; set; }
 
         public ICollection<EnergyChange> EnergyChanges { get; set; }
     }

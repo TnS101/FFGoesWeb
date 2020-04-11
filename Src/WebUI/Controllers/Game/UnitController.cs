@@ -10,6 +10,7 @@
     using Application.GameCQ.Heroes.Commands.Update.SelectHeroCommand;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
+    using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -64,6 +65,12 @@
         public async Task<ActionResult> Equipment([FromQuery]string id)
         {
             return this.View(await this.Mediator.Send(new GetEquipmentQuery { HeroId = id }));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Inventory([FromQuery]string id)
+        {
+            return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id }));
         }
 
         [HttpGet]

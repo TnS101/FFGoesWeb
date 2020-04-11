@@ -98,8 +98,6 @@
             monster.CurrentAttackPower += statAmplifier * monster.CurrentAttackPower;
             monster.MagicPower += statAmplifier * monster.MagicPower;
             monster.CurrentMagicPower += statAmplifier * monster.CurrentMagicPower;
-            monster.ArmorValue += statAmplifier * monster.ArmorValue;
-            monster.CurrentArmorValue += statAmplifier * monster.CurrentArmorValue;
 
             return monster;
         }

@@ -3,10 +3,18 @@
     using System;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
+    using Application.GameContent.Utilities.Generators;
     using Domain.Entities.Game.Units;
 
     public class EndOption
     {
+        private readonly ItemGenerator itemGenerator;
+
+        public EndOption()
+        {
+            this.itemGenerator = new ItemGenerator();
+        }
+
         public async Task End(Hero hero, Monster monster, string zoneName, IFFDbContext context)
         {
             if (zoneName == "World")
@@ -19,26 +27,6 @@
                 hero.ProffesionXP += this.EnemyCombinedStats(monster) / 20;
             }
 
-            if (hero.CurrentHP < hero.MaxHP)
-            {
-                await context.EnergyChanges.AddAsync(new EnergyChange
-                {
-                    HeroId = hero.Id,
-                    Type = "Health",
-                    LastChangedOn = DateTime.UtcNow,
-                });
-            }
-
-            if (hero.MaxMana < hero.MaxMana)
-            {
-                await context.EnergyChanges.AddAsync(new EnergyChange
-                {
-                    HeroId = hero.Id,
-                    Type = "Mana",
-                    LastChangedOn = DateTime.UtcNow,
-                });
-            }
-
             // Stat reset
             hero.CurrentAttackPower = hero.AttackPower;
             hero.CurrentMagicPower = hero.MagicPower;
@@ -47,6 +35,8 @@
             hero.CurrentHealthRegen = hero.HealthRegen;
             hero.CurrentManaRegen = hero.ManaRegen;
             hero.CurrentCritChance = hero.CritChance;
+
+            await this.itemGenerator.Generate(hero, context, monster, zoneName);
         }
 
         private double EnemyCombinedStats(Monster monster)

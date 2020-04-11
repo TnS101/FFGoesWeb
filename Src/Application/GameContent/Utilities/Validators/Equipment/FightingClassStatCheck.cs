@@ -4,6 +4,10 @@
 
     public class FightingClassStatCheck
     {
+        public FightingClassStatCheck()
+        {
+        }
+
         public void Check(IBaseItem item, string classUsable, int fightingClassStatNumber)
         {
             if (classUsable.Contains(','))

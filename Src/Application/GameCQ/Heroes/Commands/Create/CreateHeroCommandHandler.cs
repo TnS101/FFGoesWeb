@@ -4,7 +4,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Handlers;
+    using Application.GameContent.Utilities.Validators.UnitCreation;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
@@ -15,14 +15,16 @@
     public class CreateHeroCommandHandler : IRequestHandler<CreateHeroCommand, string>
     {
         private readonly IFFDbContext context;
-        private readonly ValidatorHandler validatorHandler;
         private readonly UserManager<AppUser> userManager;
+        private readonly FightingClassCheck fightingClassCheck;
+        private readonly RaceCheck raceCheck;
 
         public CreateHeroCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
-            this.validatorHandler = new ValidatorHandler();
             this.userManager = userManager;
+            this.fightingClassCheck = new FightingClassCheck();
+            this.raceCheck = new RaceCheck();
         }
 
         public async Task<string> Handle(CreateHeroCommand request, CancellationToken cancellationToken)
@@ -56,9 +58,9 @@
 
             hero.InventoryId = hero.Inventory.Id;
 
-            await this.validatorHandler.FightingClassCheck.Check(hero, request.ClassType, this.context);
+            await this.fightingClassCheck.Check(hero, request.ClassType, this.context);
 
-            this.validatorHandler.RaceCheck.Check(hero, request.Race);
+            this.raceCheck.Check(hero, request.Race);
 
             await this.context.Heroes.AddAsync(hero);
 

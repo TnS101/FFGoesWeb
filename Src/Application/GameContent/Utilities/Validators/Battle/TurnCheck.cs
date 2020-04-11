@@ -1,18 +1,26 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Battle
 {
     using System;
+    using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Handlers;
+    using Application.GameContent.Utilities.BattleOptions;
     using Domain.Base;
 
     public class TurnCheck
     {
-        public bool Check(Unit player, Unit enemy, BattleHandler battleHandler, bool yourTurn, IFFDbContext context)
+        public TurnCheck()
+        {
+        }
+
+        public async Task<bool> Check(Unit player, Unit enemy, bool yourTurn, IFFDbContext context)
         {
             var rng = new Random();
+
+            var regenerationOption = new RegenerateOption();
+
             if (yourTurn)
             {
-                battleHandler.RegenerateOption.Regenerate(player);
+                regenerationOption.Regenerate(player);
                 return false;
             }
 
@@ -20,18 +28,24 @@
 
             if (enemyActionNumber == 0 && enemy.CurrentMana >= 0.15 * enemy.CurrentMana)
             {
-                battleHandler.SpellCastOption.EnemySpellCast(enemy, player, context);
+                var spellCastOption = new SpellCastOption();
+
+                await spellCastOption.SpellCast(enemy, player, string.Empty, context);
             }
             else if (enemyActionNumber == 1)
             {
-                battleHandler.AttackOption.Attack(enemy, player);
+                var attackOption = new AttackOption();
+
+                attackOption.Attack(enemy, player);
             }
             else if (enemyActionNumber == 2)
             {
-                battleHandler.DefendOption.Defend(enemy);
+                var defendOption = new DefendOption();
+
+                defendOption.Defend(enemy);
             }
 
-            battleHandler.RegenerateOption.Regenerate(enemy);
+            regenerationOption.Regenerate(enemy);
             return true;
         }
     }

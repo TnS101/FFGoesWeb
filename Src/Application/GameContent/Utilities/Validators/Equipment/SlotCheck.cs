@@ -4,7 +4,6 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Handlers;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
@@ -13,6 +12,7 @@
     public class SlotCheck
     {
         private readonly Random rng;
+        private readonly FightingClassStatCheck fightingClassStatCheck;
         private readonly string[] woods;
         private readonly string[] ores;
         private readonly string[] leathers;
@@ -25,6 +25,7 @@
         public SlotCheck()
         {
             this.rng = new Random();
+            this.fightingClassStatCheck = new FightingClassStatCheck();
 
             this.woods = new string[] { "Oak Log", "Walnut Log", "Birch Log", "Mahogany Log" };
             this.ores = new string[] { "Coal Ore", "Copper Ore", "Iron Ore", "Gold Ore" };
@@ -36,19 +37,19 @@
             this.vegetables = new string[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
-        public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, string fightingClassType, string weaponName, ValidatorHandler validatorHandler, IFFDbContext context, Hero hero, Monster monster, string zoneName)
+        public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, string fightingClassType, string weaponName, IFFDbContext context, Hero hero, Monster monster, string zoneName)
         {
             if (slotNumber == 0)
             {
-                await this.WeaponGenerate(fightingClassNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, validatorHandler, context, hero);
+                await this.WeaponGenerate(fightingClassNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, context, hero);
             }
             else if (slotNumber == 1)
             {
-                await this.TrinketGenerate(stats, fightingClassStatNumber, fightingClassType, validatorHandler, context, hero);
+                await this.TrinketGenerate(stats, fightingClassStatNumber, fightingClassType, context, hero);
             }
             else if (slotNumber == 2 || slotNumber == 3)
             {
-                await this.ArmorGenerate(stats, slotNumber, fightingClassStatNumber, fightingClassType, validatorHandler, context, hero);
+                await this.ArmorGenerate(stats, slotNumber, fightingClassStatNumber, fightingClassType, context, hero);
             }
             else if (slotNumber == 4 || slotNumber == 5)
             {
@@ -60,11 +61,13 @@
             }
         }
 
-        private async Task WeaponGenerate(int fightingClassNumber, int[] stats, int fightingClassStatNumber, string fightingClassType, string weaponName, ValidatorHandler validatorHandler, IFFDbContext context, Hero hero)
+        private async Task WeaponGenerate(int fightingClassNumber, int[] stats, int fightingClassStatNumber, string fightingClassType, string weaponName, IFFDbContext context, Hero hero)
         {
             string imageURL = string.Empty;
 
-            validatorHandler.WeaponCheck.Check(fightingClassNumber, fightingClassType, weaponName, imageURL, this.rng);
+            var weaponCheck = new WeaponCheck();
+
+            weaponCheck.Check(fightingClassNumber, fightingClassType, weaponName, imageURL, this.rng);
 
             Weapon templateWeapon = new Weapon
             {
@@ -80,7 +83,7 @@
                 ImageURL = imageURL,
             };
 
-            validatorHandler.FightingClassStatCheck.Check(templateWeapon, fightingClassType, fightingClassStatNumber);
+            this.fightingClassStatCheck.Check(templateWeapon, fightingClassType, fightingClassStatNumber);
 
             int weaponId = 0;
             if (!context.Weapons.Contains(templateWeapon))
@@ -101,7 +104,7 @@
             });
         }
 
-        private async Task TrinketGenerate(int[] stats, int fightingClassStatNumber, string fightingClassType, ValidatorHandler validatorHandler, IFFDbContext context, Hero hero)
+        private async Task TrinketGenerate(int[] stats, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
         {
             Trinket templateTrinket = new Trinket
             {
@@ -115,7 +118,7 @@
                 Level = stats[5],
                 ImageURL = "https://gamepedia.cursecdn.com/wowpedia/4/43/Inv_trinket_80_alchemy02.png?version=95bdfece62d89349b5effa0bf80956d3",
             };
-            validatorHandler.FightingClassStatCheck.Check(templateTrinket, fightingClassType, fightingClassStatNumber);
+            this.fightingClassStatCheck.Check(templateTrinket, fightingClassType, fightingClassStatNumber);
 
             int trinketId = 0;
             if (!context.Trinkets.Contains(templateTrinket))
@@ -136,7 +139,7 @@
             });
         }
 
-        private async Task ArmorGenerate(int[] stats, int slotNumber, int fightingClassStatNumber, string fightingClassType, ValidatorHandler validatorHandler, IFFDbContext context, Hero hero)
+        private async Task ArmorGenerate(int[] stats, int slotNumber, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
         {
             Armor templateArmor = new Armor
             {
@@ -151,11 +154,13 @@
                 Intellect = stats[7],
             };
 
-            validatorHandler.ArmorCheck.Check(templateArmor, this.rng, fightingClassType, stats[0]);
+            var armorCheck = new ArmorCheck();
+
+            armorCheck.Check(templateArmor, this.rng, fightingClassType, stats[0]);
 
             templateArmor.ClassType = fightingClassType;
 
-            validatorHandler.FightingClassStatCheck.Check(templateArmor, fightingClassType, fightingClassStatNumber);
+            this.fightingClassStatCheck.Check(templateArmor, fightingClassType, fightingClassStatNumber);
 
             int armorId = 0;
 

@@ -4,6 +4,10 @@
 
     public class WeaponCheck
     {
+        public WeaponCheck()
+        {
+        }
+
         public string[] Check(int fightingClassNumber, string fightingClassType, string weaponName, string imageURL, Random rng)
         {
             int classOrder;

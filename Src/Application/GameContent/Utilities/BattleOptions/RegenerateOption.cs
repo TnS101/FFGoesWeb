@@ -4,6 +4,10 @@
 
     public class RegenerateOption
     {
+        public RegenerateOption()
+        {
+        }
+
         public void Regenerate(Unit caster)
         {
             double hpRegen = caster.CurrentHealthRegen;

@@ -1,4 +1,5 @@
-﻿@model string[]
+﻿@inject Application.Common.Interfaces.IFFDbContext context
+@model string[]
 @{
     string playerName = Model[0];
     string enemyName = Model[1];
@@ -14,6 +15,7 @@
     string enemyCurrentMana = Model[11];
     string enemyMaxMana = Model[12];
     string playerImage = Model[16];
+    string playerClassType = Model[17];
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,9 +24,8 @@
 <body>
     <h2 style="text-align:center">@playerName  vs  @enemyName</h2>
     <div class="action-div">
-
-        <img src="@playerImage" alt="Player" width="80" height="80"/>
-        <img src="@imagePath" alt="Enemy" style="padding-left:250px"/>
+        <img src="@playerImage" alt="Player" width="80" height="80" />
+        <img src="@imagePath" alt="Enemy" style="padding-left:250px" />
         <br />
 
         <progress id="playerDamage" value="@double.Parse(playerAttack)" hidden></progress>
@@ -44,10 +45,14 @@
             <a asp-controller="Battle" asp-action="Command" asp-route-command="Attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack" /></a>
             <a asp-controller="Battle" asp-action="Command" asp-route-command="Defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
             <form asp-controller="Battle" asp-action="Command" asp-route-command="SpellCast" method="get">
-                <select name="spellName">
-                    <option value="Stab">Stab</option>
-                </select>
-                <input type="submit" name="name" value="Cast" /> 
+                @foreach (var spell in this.context.Spells.Where(s => s.ClassType == playerClassType))
+                {
+                    <select name="spellName">
+                        <option value="@spell.Name">@spell.Name</option>
+                    </select>
+                    <input type="submit" name="name" value="Cast" />
+                    <br />
+                }
             </form>
             <a asp-controller="Battle" asp-action="Command" asp-route-command="Escape">Escape</a>
         </div>

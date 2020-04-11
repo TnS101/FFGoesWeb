@@ -5,6 +5,10 @@
 
     public class BuffCheck
     {
+        public BuffCheck()
+        {
+        }
+
         public void Check(Unit caster, Unit target, double manaRequirment, double buffEffect, string buffStat, ManaCheck manaCheck, string buffType)
         {
             if (manaCheck.SpellManaCheck(caster, manaRequirment))
@@ -37,6 +41,8 @@
                     }
                     else if (buffStat == "Gold")
                     {
+                        buffEffect *= caster.Level;
+
                         caster.GoldAmount += (int)buffEffect;
                     }
                     else if (buffStat == "Magic")
@@ -101,7 +107,7 @@
                             target.CurrentResistanceValue -= buffEffect * target.CurrentResistanceValue;
                         }
                     }
-                    else if (buffStat == "SelfHP")
+                    else if (buffStat == "Health")
                     {
                         if (caster.CurrentHP > buffEffect)
                         {
@@ -117,6 +123,17 @@
                         else
                         {
                             target.CurrentMagicPower -= buffEffect * target.CurrentMagicPower;
+                        }
+                    }
+                    else if (buffStat == "Mana")
+                    {
+                        if (target.CurrentMana < buffEffect)
+                        {
+                            target.CurrentMana = 0;
+                        }
+                        else
+                        {
+                            target.CurrentMana -= buffEffect * target.MaxMana;
                         }
                     }
                 }

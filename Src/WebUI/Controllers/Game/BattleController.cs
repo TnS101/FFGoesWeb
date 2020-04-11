@@ -39,8 +39,10 @@
         }
 
         [HttpGet("Battle/Command/command")]
-        public async Task<ActionResult> Command([FromQuery]string command, [FromForm]string spellName)
+        public async Task<ActionResult> Command([FromQuery]string command, [FromQuery]string spellName)
         {
+            hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
+
             return this.View(
                 await this.Mediator.Send(new BattleOptionsCommand
                 { Command = command, Player = hero, Enemy = monster, YourTurn = yourTurn, SpellName = spellName, ZoneName = zoneName }), this.Stats(hero));
@@ -61,6 +63,7 @@
                 playerFullVm.CurrentAttackPower.ToString(), monster.CurrentAttackPower.ToString(), playerFullVm.CurrentMana.ToString(),
                 playerFullVm.MaxMana.ToString(), monster.MaxMana.ToString(), playerFullVm.MagicPower.ToString(),
                 playerFullVm.CurrentMagicPower.ToString(), monster.MagicPower.ToString(), monster.CurrentMagicPower.ToString(), playerFullVm.ImageURL,
+                playerFullVm.ClassType,
             };
         }
     }

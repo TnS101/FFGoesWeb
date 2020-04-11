@@ -3,18 +3,16 @@
     using System;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Handlers;
+    using Application.GameContent.Utilities.Validators.Equipment;
     using Domain.Entities.Game.Units;
 
     public class ItemGenerator
     {
         private readonly Random rng;
-        private readonly ValidatorHandler validatorHandler;
 
         public ItemGenerator()
         {
             this.rng = new Random();
-            this.validatorHandler = new ValidatorHandler();
         }
 
         public async Task Generate(Hero hero, IFFDbContext context, Monster monster, string zoneName)
@@ -43,7 +41,9 @@
                 }
             }
 
-            await this.validatorHandler.SlotCheck.Check(fightingClassStatNumber, slotNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, this.validatorHandler, context, hero, monster, zoneName);
+            var slotCheck = new SlotCheck();
+
+            await slotCheck.Check(fightingClassStatNumber, slotNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, context, hero, monster, zoneName);
         }
     }
 }

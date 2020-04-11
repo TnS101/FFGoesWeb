@@ -3,66 +3,98 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Handlers;
+    using Application.GameContent.Utilities.BattleOptions;
+    using Application.GameContent.Utilities.LevelUtility;
+    using Application.GameContent.Utilities.Validators.Battle;
+    using global::Common;
     using MediatR;
 
     public class BattleOptionsCommandHandler : IRequestHandler<BattleOptionsCommand, string>
     {
         private readonly IFFDbContext context;
-        private readonly BattleHandler battleHandler;
+        private readonly TurnCheck turnCheck;
 
         public BattleOptionsCommandHandler(IFFDbContext context)
         {
             this.context = context;
-            this.battleHandler = new BattleHandler();
+            this.turnCheck = new TurnCheck();
         }
 
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
             var hero = await this.context.Heroes.FindAsync(request.Player.Id);
 
-            if (request.YourTurn && request.Enemy.CurrentHP > 0)
+            if (request.YourTurn && request.Enemy.CurrentHP > 0 && hero.CurrentHP > 0)
             {
                 if (request.Command == "Attack")
                 {
-                    this.battleHandler.AttackOption.Attack(hero, request.Enemy);
+                    var attackOption = new AttackOption();
+
+                    attackOption.Attack(hero, request.Enemy);
                 }
 
                 if (request.Command == "Defend")
                 {
-                    this.battleHandler.DefendOption.Defend(hero);
+                    var defendOption = new DefendOption();
+
+                    defendOption.Defend(hero);
                 }
 
-                if (request.Command == "SpellCast")
+                if (request.Command == null)
                 {
-                    this.battleHandler.SpellCastOption.SpellCast(hero, request.Enemy, request.SpellName, this.context);
+                    var spellCastOption = new SpellCastOption();
+
+                    await spellCastOption.SpellCast(hero, request.Enemy, request.SpellName, this.context);
                 }
 
                 if (request.Command == "Escape")
                 {
-                    this.battleHandler.EscapeOption.Escape(request.Player);
+                    var escapeOption = new EscapeOption();
+
+                    escapeOption.Escape(request.Player);
                     await this.context.SaveChangesAsync(cancellationToken);
-                    return @"\Escape";
+                    return GConst.EscapeCommand;
                 }
 
-                request.YourTurn = this.battleHandler.TurnCheck.Check(hero, request.Enemy, this.battleHandler, request.YourTurn, this.context);
+                request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.context);
 
                 if (!request.YourTurn)
                 {
-                   request.YourTurn = this.battleHandler.TurnCheck.Check(hero, request.Enemy, this.battleHandler, request.YourTurn, this.context);
+                   request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.context);
                 }
 
                 await this.context.SaveChangesAsync(cancellationToken);
 
-                return @"\Command";
+                return GConst.BattleCommand;
+            }
+            else if (request.Enemy.CurrentHP <= -0.001)
+            {
+                var endOption = new EndOption();
+
+                request.Enemy.CurrentHP = 0;
+
+                await endOption.End(hero, request.Enemy, request.ZoneName, this.context);
+
+                if (hero.XP >= hero.XPCap)
+                {
+                    var level = new Level();
+
+                    await level.Up(hero, this.context);
+
+                    this.context.Heroes.Update(hero);
+                    await this.context.SaveChangesAsync(cancellationToken);
+
+                    return GConst.LevelUp;
+                }
+
+                this.context.Heroes.Update(hero);
+                await this.context.SaveChangesAsync(cancellationToken);
+
+                return GConst.End;
             }
             else
             {
-                request.Enemy.CurrentHP = 0;
-                await this.battleHandler.EndOption.End(hero, request.Enemy, request.ZoneName, this.context);
-                this.context.Heroes.Update(hero);
-                await this.context.SaveChangesAsync(cancellationToken);
-                return @"\End";
+                return GConst.UnitKilled;
             }
         }
     }

@@ -4,7 +4,9 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Utilities.Validators.SpellCheck;
+    using Application.GameContent.Utilities.Validators.SpellChecks.Buffs;
+    using Application.GameContent.Utilities.Validators.SpellChecks.DamageInfliction;
+    using Application.GameContent.Utilities.Validators.SpellChecks.Effects;
     using Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
     using Domain.Base;
     using Domain.Entities.Game.Units;
@@ -12,12 +14,10 @@
 
     public class SpellCastOption
     {
-        private readonly SpellCheck spellCheck;
         private readonly ManaCheck manaCheck;
 
         public SpellCastOption()
         {
-            this.spellCheck = new SpellCheck();
             this.manaCheck = new ManaCheck();
         }
 
@@ -111,13 +111,21 @@
             {
                 healEffect = spell.Power * caster.CurrentMagicPower;
             }
+            else if (spellStatType == "Health")
+            {
+                healEffect = spell.Power * caster.MaxHP;
+            }
 
-            this.spellCheck.HealCheck.Check(caster, caster, manaRequirement, healEffect, this.manaCheck);
+            var healCheck = new HealCheck();
+
+            healCheck.Check(caster, caster, manaRequirement, healEffect, this.manaCheck);
         }
 
         private void BuffSpellCast(string spellStatType, Spell spell, Unit caster, Unit target, string positiveOrNegativeBuff)
         {
             double manaRequirement = spell.ManaRequirement * caster.MaxMana;
+
+            var buffCheck = new BuffCheck();
 
             if (spell.BuffOrEffectTarget.Contains('/'))
             {
@@ -126,22 +134,22 @@
 
                 if (primaryBuffTarget == "Self" || secondaryBuffTarget == "Self")
                 {
-                    this.spellCheck.BuffCheck.Check(caster, caster, manaRequirement, spell.Power, spellStatType, this.manaCheck, positiveOrNegativeBuff);
+                    buffCheck.Check(caster, caster, manaRequirement, spell.Power, spellStatType, this.manaCheck, positiveOrNegativeBuff);
                 }
                 else
                 {
-                    this.spellCheck.BuffCheck.Check(caster, target, manaRequirement, spell.Power, spellStatType, this.manaCheck, positiveOrNegativeBuff);
+                    buffCheck.Check(caster, target, manaRequirement, spell.Power, spellStatType, this.manaCheck, positiveOrNegativeBuff);
                 }
             }
             else
             {
                 if (spell.BuffOrEffectTarget == "Self")
                 {
-                    this.spellCheck.BuffCheck.Check(caster, caster, manaRequirement, spell.Power, spellStatType, this.manaCheck, positiveOrNegativeBuff);
+                    buffCheck.Check(caster, caster, manaRequirement, spell.Power, spellStatType, this.manaCheck, positiveOrNegativeBuff);
                 }
                 else
                 {
-                    this.spellCheck.BuffCheck.Check(caster, target, manaRequirement, spell.Power, spellStatType, this.manaCheck, positiveOrNegativeBuff);
+                    buffCheck.Check(caster, target, manaRequirement, spell.Power, spellStatType, this.manaCheck, positiveOrNegativeBuff);
                 }
             }
         }
@@ -204,11 +212,24 @@
                         damage = (spell.Power * target.CurrentHP) - spell.ResistanceAffect;
                     }
                 }
+                else if (spellStatType == "CurrentMana")
+                {
+                    if (statsProvider == "Self")
+                    {
+                        damage = (spell.Power * caster.CurrentMana) - spell.ResistanceAffect;
+                    }
+                    else
+                    {
+                        damage = (spell.Power * target.CurrentMana) - spell.ResistanceAffect;
+                    }
+                }
 
                 spellDamageType = "Magical";
             }
 
-            this.spellCheck.SpellDamageCheck.Check(caster, target, manaRequirement, damage, this.manaCheck, spellDamageType);
+            var spellDamageCheck = new SpellDamageCheck();
+
+            spellDamageCheck.Check(caster, target, manaRequirement, damage, this.manaCheck, spellDamageType);
         }
 
         private double MixedDamageSpellCast(string statsProvider, string spellStatType, Spell spell, Unit caster, Unit target, string spellDamageType)
@@ -309,6 +330,26 @@
 
                     this.HPDamageCap(caster, primaryDamage, secondaryDamage);
                 }
+                else if (mainStatType == "CurrentMana" || secondaryStatProvider == "CurrentMana")
+                {
+                    if (primaryStatProvider == "Self")
+                    {
+                        primaryDamage = spell.Power * caster.CurrentMana;
+                    }
+                    else
+                    {
+                        primaryDamage = spell.Power * target.CurrentMana;
+                    }
+
+                    if (secondaryStatProvider == "Self")
+                    {
+                        secondaryDamage = spell.SecondaryPower * caster.CurrentMana;
+                    }
+                    else
+                    {
+                        secondaryDamage = spell.SecondaryPower * target.CurrentMana;
+                    }
+                }
             }
             else // Single Stat Provider (Unit or Target)
             {
@@ -361,6 +402,17 @@
 
                     this.HPDamageCap(caster, primaryDamage, secondaryDamage);
                 }
+                else if (mainStatType == "CurrentMana")
+                {
+                    if (statsProvider == "Self")
+                    {
+                        primaryDamage = spell.Power * caster.CurrentMana;
+                    }
+                    else
+                    {
+                        primaryDamage = spell.Power * target.CurrentMana;
+                    }
+                }
 
                 // Secondary Stats
                 if (secondaryStatType == "Physical")
@@ -411,6 +463,17 @@
 
                     this.HPDamageCap(caster, primaryDamage, secondaryDamage);
                 }
+                else if (secondaryStatType == "CurrentMana")
+                {
+                    if (statsProvider == "Self")
+                    {
+                        secondaryDamage = spell.SecondaryPower * caster.CurrentMana;
+                    }
+                    else
+                    {
+                        secondaryDamage = spell.SecondaryPower * target.CurrentMana;
+                    }
+                }
             }
 
             double damage = (primaryDamage + secondaryDamage) - spell.ResistanceAffect;
@@ -446,43 +509,84 @@
 
         private void EffectCast(string[] effectInfo, Spell spell, Unit caster, Unit target)
         {
+            var effectCheck = new EffectCheck();
+
             string spellTarget = spell.BuffOrEffectTarget;
             double manaRequirement = spell.ManaRequirement * caster.MaxMana;
 
-            int counter = 0;
+            string firstEffectType = effectInfo[0];
+            string firstPositiveOrNegativeEffect = effectInfo[1];
+            string secondEffectType = string.Empty;
+            string secondPositiveOrNegativeEffect = string.Empty;
 
-            for (int i = 0; i < effectInfo.Length; i++)
+            if (effectInfo.Count() > 2)
             {
-                string effectType = string.Empty;
-                string positiveOrNegativeEffect = string.Empty;
+                secondEffectType = effectInfo[2];
+                secondPositiveOrNegativeEffect = effectInfo[3];
+            }
 
-                if (i % 2 == 0)
-                {
-                    effectType = effectInfo[i];
-                }
-                else
-                {
-                    positiveOrNegativeEffect = effectInfo[i];
-                }
+            if (spell.BuffOrEffectTarget.Contains('/'))
+            {
+                string[] targets = spell.BuffOrEffectTarget.Split('/');
 
-                if (spell.BuffOrEffectTarget.Contains('/'))
-                {
-                    string[] targets = spell.BuffOrEffectTarget.Split('/');
+                string firstTarget = targets[0];
+                string secondTarget = targets[1];
 
-                    if (counter < 2)
+                if (effectInfo.Count() > 2) // Two Effects and Two Providers (Caster and Target)
+                {
+                    if (firstTarget == "Self")
                     {
-                        spellTarget = targets[counter];
-                        counter++;
+                        effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
+                    }
+                    else
+                    {
+                        effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
+                    }
+
+                    if (secondTarget == "Self")
+                    {
+                        effectCheck.Check(caster, caster, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
+                    }
+                    else
+                    {
+                        effectCheck.Check(caster, target, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
+                    }
+                }
+                else // One Effect and Two Providers (Caster and Target)
+                {
+                    if (firstTarget == "Self" || secondTarget == "Self")
+                    {
+                        effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
+                    }
+                    else
+                    {
+                        effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
+                    }
+                }
+            }
+            else // Two Effects and Single Provider (Caster or Target)
+            {
+                if (effectInfo.Count() > 2)
+                {
+                    if (spellTarget == "Self")
+                    {
+                        effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
+                        effectCheck.Check(caster, caster, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
+                    }
+                    else
+                    {
+                        effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
+                        effectCheck.Check(caster, target, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
                     }
                 }
 
-                if (spellTarget == "Self")
+                if (spellTarget == "Self") // One Effect and One Provider
                 {
-                    this.spellCheck.EffectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, effectType, this.manaCheck, positiveOrNegativeEffect);
+                    effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
                 }
                 else
                 {
-                    this.spellCheck.EffectCheck.Check(caster, target, manaRequirement, spell.EffectPower, effectType, this.manaCheck, positiveOrNegativeEffect);
+                    effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
                 }
             }
         }

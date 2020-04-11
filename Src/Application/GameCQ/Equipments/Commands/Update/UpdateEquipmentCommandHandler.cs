@@ -4,7 +4,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Handlers;
+    using Application.GameContent.Utilities.EquipmentOptions;
     using Application.GameContent.Utilities.FightingClassUtilites;
     using Domain.Contracts.Items.AdditionalTypes;
     using Domain.Entities.Common;
@@ -14,14 +14,12 @@
     public class UpdateEquipmentCommandHandler : IRequestHandler<UpdateEquipmentCommand, string>
     {
         private readonly IFFDbContext context;
-        private readonly EquipmentHandler equipmentHandler;
         private readonly UserManager<AppUser> userManager;
         private readonly StatSum statSum;
 
         public UpdateEquipmentCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
-            this.equipmentHandler = new EquipmentHandler();
             this.userManager = userManager;
             this.statSum = new StatSum();
         }
@@ -36,11 +34,15 @@
 
             if (request.Command == "Equip")
             {
-                result = await this.equipmentHandler.EquipOption.Equip(hero, await this.BaseItem(request), this.statSum, this.context);
+                var equipOption = new EquipOption();
+
+                result = await equipOption.Equip(hero, await this.BaseItem(request), this.statSum, this.context);
             }
             else
             {
-                result = await this.equipmentHandler.UnEquipOption.UnEquip(hero, await this.BaseItem(request), this.statSum, this.context);
+                var unEquipOption = new UnEquipOption();
+
+                result = await unEquipOption.UnEquip(hero, await this.BaseItem(request), this.statSum, this.context);
             }
 
             this.context.Equipments.Update(hero.Equipment);

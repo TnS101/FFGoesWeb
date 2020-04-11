@@ -5,6 +5,10 @@
 
     public class SpellDamageCheck
     {
+        public SpellDamageCheck()
+        {
+        }
+
         public void Check(Unit caster, Unit target, double manaRequirment, double damage, ManaCheck manaCheck, string damageType)
         {
             if (manaCheck.SpellManaCheck(caster, manaRequirment))
@@ -17,10 +21,10 @@
                     }
                     else
                     {
-                        target.CurrentArmorValue -= target.CurrentArmorValue * 0.25;
+                        target.CurrentArmorValue -= target.CurrentArmorValue * 0.3;
                     }
                 }
-                else if (damageType == "Physical")
+                else if (damageType == "Magical")
                 {
                     if (damage > target.CurrentResistanceValue)
                     {
@@ -28,10 +32,10 @@
                     }
                     else
                     {
-                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.25;
+                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.3;
                     }
                 }
-                else
+                else if (damageType == "Mixed")
                 {
                     double protection = (target.CurrentResistanceValue / 2) + (target.CurrentArmorValue / 2);
 
@@ -41,8 +45,8 @@
                     }
                     else
                     {
-                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.125;
-                        target.CurrentArmorValue -= target.CurrentArmorValue * 0.125;
+                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.15;
+                        target.CurrentArmorValue -= target.CurrentArmorValue * 0.15;
                     }
                 }
             }

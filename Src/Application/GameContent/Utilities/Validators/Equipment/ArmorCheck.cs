@@ -5,6 +5,10 @@
 
     public class ArmorCheck
     {
+        public ArmorCheck()
+        {
+        }
+
         public void Check(IBaseItem item, Random rng, string classUsable, int regularStatNumber)
         {
             int slotNumber = rng.Next(0, 7);

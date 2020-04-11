@@ -911,11 +911,11 @@
             this.context.Monsters.Add(new Monster
             {
                 Name = "Bear",
-                MaxHP = 110,
+                MaxHP = 80,
                 HealthRegen = 3,
                 MaxMana = 75,
                 ManaRegen = 5,
-                AttackPower = 13,
+                AttackPower = 10,
                 MagicPower = 5,
                 ArmorValue = 5,
                 ResistanceValue = 1,
@@ -927,11 +927,11 @@
             this.context.Monsters.Add(new Monster
             {
                 Name = "Reptile",
-                MaxHP = 75,
+                MaxHP = 60,
                 HealthRegen = 2,
                 MaxMana = 60,
                 ManaRegen = 7,
-                AttackPower = 15,
+                AttackPower = 12,
                 MagicPower = 5,
                 ArmorValue = 3,
                 ResistanceValue = 3,
@@ -943,11 +943,11 @@
             this.context.Monsters.Add(new Monster
             {
                 Name = "Zombie",
-                MaxHP = 115,
-                HealthRegen = 6,
+                MaxHP = 72,
+                HealthRegen = 4,
                 MaxMana = 80,
                 ManaRegen = 5,
-                AttackPower = 12,
+                AttackPower = 8,
                 MagicPower = 3,
                 ArmorValue = 2.6,
                 ResistanceValue = 2,
@@ -959,11 +959,11 @@
             this.context.Monsters.Add(new Monster
             {
                 Name = "Skeleton",
-                MaxHP = 90,
-                HealthRegen = 12,
-                MaxMana = 80,
-                ManaRegen = 3,
-                AttackPower = 18,
+                MaxHP = 62,
+                HealthRegen = 8,
+                MaxMana = 70,
+                ManaRegen = 2,
+                AttackPower = 12,
                 MagicPower = 3,
                 ArmorValue = 1.5,
                 ResistanceValue = 2,
@@ -975,13 +975,13 @@
             this.context.Monsters.Add(new Monster
             {
                 Name = "Wyrm",
-                MaxHP = 110,
+                MaxHP = 100,
                 HealthRegen = 2,
-                MaxMana = 105,
-                ManaRegen = 18,
-                AttackPower = 10,
-                MagicPower = 17,
-                ArmorValue = 5,
+                MaxMana = 80,
+                ManaRegen = 10,
+                AttackPower = 8.3,
+                MagicPower = 11.6,
+                ArmorValue = 4.6,
                 ResistanceValue = 3,
                 CritChance = 3,
                 ImageURL = "/images/Sprites/Wyrm.png",
@@ -991,12 +991,12 @@
             this.context.Monsters.Add(new Monster
             {
                 Name = "Giant",
-                MaxHP = 200,
+                MaxHP = 186,
                 HealthRegen = 3,
                 MaxMana = 90,
                 ManaRegen = 10,
-                AttackPower = 10,
-                MagicPower = 5,
+                AttackPower = 7.8,
+                MagicPower = 6,
                 ArmorValue = 5,
                 ResistanceValue = 5,
                 CritChance = 2,
@@ -1007,15 +1007,15 @@
             this.context.Monsters.Add(new Monster
             {
                 Name = "Gryphon",
-                MaxHP = 93,
+                MaxHP = 65,
                 HealthRegen = 2,
-                MaxMana = 130,
+                MaxMana = 110,
                 ManaRegen = 8,
-                AttackPower = 15,
+                AttackPower = 12,
                 MagicPower = 5,
                 ArmorValue = 4,
                 ResistanceValue = 4,
-                CritChance = 9,
+                CritChance = 7,
                 ImageURL = "/images/Sprites/Gryphon.png",
                 Description = "These halfbreeds don't just exist in World of Warcraft!",
             });
@@ -1023,15 +1023,15 @@
             this.context.Monsters.Add(new Monster
             {
                 Name = "Saint",
-                MaxHP = 170,
-                HealthRegen = 5,
+                MaxHP = 120,
+                HealthRegen = 2,
                 MaxMana = 120,
-                ManaRegen = 10,
-                AttackPower = 10,
-                MagicPower = 22,
-                ArmorValue = 3,
-                ResistanceValue = 8,
-                CritChance = 8,
+                ManaRegen = 8,
+                AttackPower = 8,
+                MagicPower = 15,
+                ArmorValue = 2,
+                ResistanceValue = 6,
+                CritChance = 3,
                 ImageURL = "/images/Sprites/Saint.png",
                 Description = "You'll pay for not going to church on sundays!",
             });
@@ -1039,15 +1039,15 @@
             this.context.Monsters.Add(new Monster
             {
                 Name = "Demon",
-                MaxHP = 150,
-                HealthRegen = 4,
-                MaxMana = 115,
+                MaxHP = 120,
+                HealthRegen = 3.6,
+                MaxMana = 100,
                 ManaRegen = 6,
-                AttackPower = 20,
-                MagicPower = 12,
-                ArmorValue = 8,
-                ResistanceValue = 4,
-                CritChance = 5,
+                AttackPower = 14,
+                MagicPower = 8,
+                ArmorValue = 7.3,
+                ResistanceValue = 3.2,
+                CritChance = 5.6,
                 ImageURL = "/images/Sprites/Demon.png",
                 Description = "Fearsome and cunning! Something is wrong with his head (I mean the PNG file).",
             });
@@ -1220,234 +1220,383 @@
             this.context.Spells.Add(new Spell
             {
                 Name = "Furious Roar",
-                ManaRequirement = 20,
-                ClassType = "Beast",
+                ManaRequirement = 0.2,
+                ClassType = "Bear",
+                Type = "Buff,Attack,Self,Positive",
+                Power = 0.2,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Bite",
-                ManaRequirement = 20,
-                ClassType = "Beast",
+                ManaRequirement = 0.2,
+                ClassType = "Bear",
+                Type = "Damage,Physical,Self",
+                Power = 1.2,
+                AdditionalEffect = "hRegen,Negative",
+                EffectPower = 0.2,
+                BuffOrEffectTarget = "Target",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Thick Hide",
-                ManaRequirement = 50,
-                ClassType = "Beast",
+                ManaRequirement = 0.5,
+                ClassType = "Bear",
+                Type = "Buff,Armor,Self,Positive",
+                Power = 0.8,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Lick Wounds",
-                ManaRequirement = 20,
-                ClassType = "Beast",
+                ManaRequirement = 0.4,
+                ClassType = "Bear",
+                Type = "Heal,Health,Self",
+                Power = 0.22,
+                BuffOrEffectTarget = "Self",
             });
 
             // Demon
             this.context.Spells.Add(new Spell
             {
                 Name = "Corruption",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Demon",
+                Type = "Buff,hRegen,Target,Negative",
+                Power = 0.2,
+                BuffOrEffectTarget = "Target",
             });
             this.context.Spells.Add(new Spell
             {
-                Name = "Shadow Blast",
-                ManaRequirement = 30,
+                Name = "Shadow Punch",
+                ManaRequirement = 0.25,
                 ClassType = "Demon",
+                Type = "Damage,Physical,Self",
+                Power = 1.2,
+                ResistanceAffect = 0.9,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Eye Of The Void",
-                ManaRequirement = 20,
+                ManaRequirement = 0.25,
                 ClassType = "Demon",
+                Type = "Buff,Armor,Target,Negative",
+                Power = 0.33,
+                BuffOrEffectTarget = "Target",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Ripping Hell-Fire",
-                ManaRequirement = 80,
+                ManaRequirement = 0.65,
                 ClassType = "Demon",
+                Type = "Damage,Magical,Self",
+                Power = 1.42,
+                ResistanceAffect = 0.88,
             });
 
             // Giant
             this.context.Spells.Add(new Spell
             {
                 Name = "Overgrowth",
-                ManaRequirement = 40,
+                ManaRequirement = 0.22,
                 ClassType = "Giant",
+                Type = "Buff,Armor,Self,Positive",
+                Power = 0.36,
+                AdditionalEffect = "hRegen,Negative",
+                EffectPower = 0.18,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Calming Mind",
-                ManaRequirement = 10,
+                ManaRequirement = 0.12,
                 ClassType = "Giant",
+                Type = "Buff,mRegen,Self,Positive",
+                Power = 0.3,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Raging Mind",
-                ManaRequirement = 50,
+                ManaRequirement = 0.4,
                 ClassType = "Giant",
+                Type = "Buff,Attack,Self,Positive",
+                Power = 0.3,
+                AdditionalEffect = "Health,Negative",
+                EffectPower = 0.18,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Overpowering Fist",
-                ManaRequirement = 50,
+                ManaRequirement = 0.4,
                 ClassType = "Giant",
+                Type = "Damage,Physical,Self",
+                Power = 1.2,
+                ResistanceAffect = 0.65,
             });
 
             // Gryphon
             this.context.Spells.Add(new Spell
             {
                 Name = "Diving Claw",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Gryphon",
+                Type = "Damage,Physical,Self",
+                Power = 1.18,
+                ResistanceAffect = 0.5,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Petryfying Gaze",
-                ManaRequirement = 50,
+                ManaRequirement = 0.5,
                 ClassType = "Gryphon",
+                Type = "Buff,hRegen,Target,Negative",
+                Power = 0.42,
+                BuffOrEffectTarget = "Target",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Gust",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Gryphon",
+                Type = "Buff,Attack,Target,Negative",
+                Power = 0.2,
+                BuffOrEffectTarget = "Target",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Peck",
-                ManaRequirement = 30,
+                ManaRequirement = 0.2,
                 ClassType = "Gryphon",
+                Type = "Damage,Physical,Self",
+                Power = 1.15,
+                ResistanceAffect = 0.85,
             });
 
             // Reptile
             this.context.Spells.Add(new Spell
             {
                 Name = "Poison Spit",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Reptile",
+                Type = "Damage,Magical,Self",
+                Power = 1.2,
+                ResistanceAffect = 0.9,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Reflelcting Scales",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Reptile",
+                Type = "Damage,Physical,Target",
+                Power = 0.4,
+                AdditionalEffect = "Armor,Positive",
+                EffectPower = 0.25,
+                BuffOrEffectTarget = "Self",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Skin Change",
-                ManaRequirement = 40,
+                ManaRequirement = 0.3,
                 ClassType = "Reptile",
+                Type = "Buff,Res,Self,Positive",
+                Power = 0.6,
+                AdditionalEffect = "Armor,Negative",
+                EffectPower = 0.25,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Scratch",
-                ManaRequirement = 15,
+                ManaRequirement = 0.15,
                 ClassType = "Reptile",
+                Type = "Damage,Physical,Self",
+                Power = 1.22,
+                ResistanceAffect = 1,
             });
 
             // Saint
             this.context.Spells.Add(new Spell
             {
                 Name = "Sacred Words",
-                ManaRequirement = 40,
+                ManaRequirement = 0.4,
                 ClassType = "Saint",
+                Type = "Heal,Magical,Self",
+                Power = 1.8,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Illumination",
-                ManaRequirement = 30,
+                ManaRequirement = 0.35,
                 ClassType = "Saint",
+                Type = "Buff,Magic,Target,Negative",
+                Power = 0.28,
+                AdditionalEffect = "mRegen,Negative",
+                EffectPower = 0.2,
+                BuffOrEffectTarget = "Target",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Holy Smite",
-                ManaRequirement = 15,
+                ManaRequirement = 0.12,
                 ClassType = "Saint",
+                Type = "Damage,Magical,Self",
+                Power = 1,
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Judgement Day",
-                ManaRequirement = 50,
+                ManaRequirement = 0.42,
                 ClassType = "Saint",
+                Type = "Damage,Magical,Self",
+                Power = 1.22,
+                AdditionalEffect = "Mana,Negative",
+                EffectPower = 0.2,
+                BuffOrEffectTarget = "Target",
+                ResistanceAffect = 0.5,
             });
 
             // Skeleton
             this.context.Spells.Add(new Spell
             {
                 Name = "Tombstone",
-                ManaRequirement = 30,
+                ManaRequirement = 0.15,
                 ClassType = "Skeleton",
+                Type = "Buff,Res,Self,Positive",
+                Power = 1.2,
+                AdditionalEffect = "hRegen,Negative",
+                EffectPower = 0.1,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Wrath Of The Necropolis",
-                ManaRequirement = 50,
+                ManaRequirement = 0.4,
                 ClassType = "Skeleton",
+                Type = "Damage,Physical/Magical,Self",
+                Power = 1,
+                SecondaryPower = 0.65,
+                ResistanceAffect = 0.7,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Suffocation",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Skeleton",
+                Type = "Damage,Physical,Self",
+                Power = 1.1,
+                AdditionalEffect = "hRegen,Negative,mRegen,Negative",
+                EffectPower = 0.12,
+                SecondaryPower = 0.15,
+                BuffOrEffectTarget = "Target",
+                ResistanceAffect = 0,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Horrifying Scream",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Skeleton",
+                Type = "Buff,Attack,Target,Negative",
+                Power = 0.2,
+                BuffOrEffectTarget = "Target",
             });
 
             // Wyrm
             this.context.Spells.Add(new Spell
             {
                 Name = "Tidal Slash",
-                ManaRequirement = 15,
+                ManaRequirement = 0.18,
                 ClassType = "Wyrm",
+                Type = "Damage,Physical,Self",
+                Power = 1.15,
+                AdditionalEffect = "Magic,Positive",
+                EffectPower = 0.2,
+                BuffOrEffectTarget = "Self",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Dive",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Wyrm",
+                Type = "Buff,Armor,Self,Positive",
+                Power = 0.2,
+                AdditionalEffect = "Res,Positive",
+                EffectPower = 0.35,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Hyper Speed",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Wyrm",
+                Type = "Buff,mRegen,Self,Positve",
+                Power = 0.6,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Thunder",
-                ManaRequirement = 50,
+                ManaRequirement = 0.5,
                 ClassType = "Wyrm",
+                Type = "Damage,Magical,Self",
+                Power = 1.3,
+                AdditionalEffect = "Res,Negative",
+                EffectPower = 0.28,
+                BuffOrEffectTarget = "Target",
+                ResistanceAffect = 0.8,
             });
 
             // Zombie
             this.context.Spells.Add(new Spell
             {
                 Name = "Infecting Bite",
-                ManaRequirement = 40,
+                ManaRequirement = 0.4,
                 ClassType = "Zombie",
+                Type = "Damage,Physical,Self",
+                Power = 1,
+                AdditionalEffect = "hRegen,Negative",
+                EffectPower = 1,
+                BuffOrEffectTarget = "Target",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Feed",
-                ManaRequirement = 50,
+                ManaRequirement = 0.3,
                 ClassType = "Zombie",
+                Type = "Damage,Physical,Self",
+                Power = 1.2,
+                AdditionalEffect = "Health,Positive",
+                EffectPower = 0.25,
+                BuffOrEffectTarget = "Self",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Mutation",
-                ManaRequirement = 50,
+                ManaRequirement = 0.4,
                 ClassType = "Zombie",
+                Type = "Buff,Attack,Self,Positive",
+                Power = 0.4,
+                AdditionalEffect = "mRegen,Positive",
+                EffectPower = 0.6,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Decay",
-                ManaRequirement = 10,
+                ManaRequirement = 0.15,
                 ClassType = "Zombie",
+                Type = "Buff,Armor,Self,Positive",
+                Power = 0.5,
+                AdditionalEffect = "hRegen,Negative",
+                EffectPower = 0.2,
+                BuffOrEffectTarget = "Self",
             });
             await this.context.SaveChangesAsync(cancellationToken);
         }
@@ -1575,189 +1724,303 @@
                 Name = "Nature's Gift",
                 ManaRequirement = 0,
                 ClassType = "Naturalist",
+                Type = "Buff,hRegen,Self,Positive",
+                Power = 1.2,
+                AdditionalEffect = "Magic,Positive,Health,Negative",
+                EffectPower = 0.1,
+                SecondaryPower = 0.05,
+                BuffOrEffectTarget = "Caster/Target",
             });
             this.context.Spells.Add(new Spell
             {
-                Name = "Pouring Raind",
+                Name = "Pouring Rain",
                 ManaRequirement = 0,
                 ClassType = "Naturalist",
+                Type = "Buff,Mana,Self,Positive",
+                Power = 0.3,
+                AdditionalEffect = "mRegen,Negative",
+                EffectPower = 0.15,
+                BuffOrEffectTarget = "Caster",
             });
 
             // Necroid
             this.context.Spells.Add(new Spell
             {
                 Name = "Shadow Touch",
-                ManaRequirement = 25,
+                ManaRequirement = 0.28,
                 ClassType = "Necroid",
+                Type = "Damage,CurrentMana/MaxHP,Self/Target",
+                Power = 0.11,
+                SecondaryPower = 0.08,
+                AdditionalEffect = "Res,Negative",
+                EffectPower = 0.3,
+                BuffOrEffectTarget = "Target",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
-                Name = "Life Drain",
-                ManaRequirement = 35,
+                Name = "Life Syphon",
+                ManaRequirement = 0.4,
                 ClassType = "Necroid",
+                Type = "Damage,Magical/MaxHP,Self/Target",
+                Power = 0.5,
+                SecondaryPower = 0.08,
+                AdditionalEffect = "Health,Positive",
+                EffectPower = 0.1,
+                BuffOrEffectTarget = "Self",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
-                Name = "Blind",
-                ManaRequirement = 15,
+                Name = "Arcane Bane",
+                ManaRequirement = 0.2,
                 ClassType = "Necroid",
+                Type = "Buff,Magic,Target,Negative",
+                Power = 0.2,
+                BuffOrEffectTarget = "Target",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Mutual Darkness",
                 ManaRequirement = 0,
                 ClassType = "Necroid",
-
+                Type = "Damage,MaxHP,Self",
+                Power = 0.15,
+                AdditionalEffect = "Health,Negative",
+                EffectPower = 0.07,
+                BuffOrEffectTarget = "Self",
+                ResistanceAffect = 1,
             });
 
             // Paladin
             this.context.Spells.Add(new Spell
             {
                 Name = "Holy Strike",
-                ManaRequirement = 15,
+                ManaRequirement = 0.15,
                 ClassType = "Paladin",
+                Type = "Damage,Physical,Self",
+                Power = 1,
+                AdditionalEffect = "Magic,Positive",
+                EffectPower = 0.1,
+                BuffOrEffectTarget = "Self",
+                ResistanceAffect = 0.7,
 
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Burning Light",
-                ManaRequirement = 15,
+                ManaRequirement = 0.15,
                 ClassType = "Paladin",
+                Type = "Damage,Magical,Self",
+                Power = 1.1,
+                ResistanceAffect = 1,
 
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Vicious Spell-Guard",
-                ManaRequirement = 30,
+                ManaRequirement = 0.35,
                 ClassType = "Paladin",
+                Type = "Buff,Res,Self,Positive",
+                Power = 0.55,
+                BuffOrEffectTarget = "Self",
 
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Divine Rune",
-                ManaRequirement = 15,
+                ManaRequirement = 0.2,
                 ClassType = "Paladin",
-
+                Type = "Buff,Attack,Self,Positive",
+                Power = 0.15,
+                BuffOrEffectTarget = "Self",
             });
 
             // Priest
             this.context.Spells.Add(new Spell
             {
                 Name = "Holy Light",
-                ManaRequirement = 30,
+                ManaRequirement = 0.3,
                 ClassType = "Priest",
-
+                Type = "Heal,Magical,Self",
+                Power = 1.1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Mana Drain",
-                ManaRequirement = 10,
+                ManaRequirement = 0.08,
                 ClassType = "Priest",
+                Type = "Buff,Mana,Target,Negative",
+                Power = 0.2,
+                AdditionalEffect = "Mana,Positive",
+                SecondaryPower = 0.2,
+                BuffOrEffectTarget = "Target/Self",
 
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Staff Smash",
-                ManaRequirement = 12,
+                ManaRequirement = 0.14,
                 ClassType = "Priest",
-
+                Type = "Damage,Physical,Self",
+                Power = 1.2,
+                AdditionalEffect = "Armor,Negative",
+                EffectPower = 0.18,
+                BuffOrEffectTarget = "Target",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Blessing",
-                ManaRequirement = 50,
+                ManaRequirement = 0.35,
                 ClassType = "Priest",
-
+                Type = "Buff,Magic,Self,Positive",
+                Power = 0.25,
+                AdditionalEffect = "hRegen,Negative",
+                EffectPower = 0.4,
+                BuffOrEffectTarget = "Self",
             });
 
             // Rogue
             this.context.Spells.Add(new Spell
             {
                 Name = "Stab",
-                ManaRequirement = 12,
+                ManaRequirement = 0.12,
                 ClassType = "Rogue",
-
+                Type = "Damage,Physical,Self",
+                Power = 1.08,
+                AdditionalEffect = "Attack,Positive",
+                EffectPower = 0.1,
+                BuffOrEffectTarget = "Self",
+                ResistanceAffect = 1,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Poison Dagger",
-                ManaRequirement = 30,
+                ManaRequirement = 0.28,
                 ClassType = "Rogue",
-
+                Type = "Damage,Physical/Magical,Self",
+                Power = 0.2,
+                SecondaryPower = 1.1,
+                ResistanceAffect = 0.6,
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Evasion",
-                ManaRequirement = 50,
+                ManaRequirement = 0.4,
                 ClassType = "Rogue",
-
+                Type = "Buff,Armor,Self,Positive",
+                Power = 0.55,
+                AdditionalEffect = "mRegen,Positive",
+                EffectPower = 0.35,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Thievery",
-                ManaRequirement = 50,
+                ManaRequirement = 0.45,
                 ClassType = "Rogue",
-
+                Type = "Buff,Gold,Self,Positive",
+                Power = 4,
+                BuffOrEffectTarget = "Self",
             });
 
             // Shaman
             this.context.Spells.Add(new Spell
             {
                 Name = "Thunder Strike",
-                ManaRequirement = 50,
+                ManaRequirement = 0.45,
                 ClassType = "Shaman",
-
+                Type = "Damage,Magical/Physical,Self",
+                Power = 1.2,
+                SecondaryPower = 0.2,
+                AdditionalEffect = "Res,Negative",
+                EffectPower = 0.4,
+                ResistanceAffect = 1,
+                BuffOrEffectTarget = "Target",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Earth Strike",
-                ManaRequirement = 50,
+                ManaRequirement = 0.45,
                 ClassType = "Shaman",
-
+                Type = "Damage,Physical/Magical,Self",
+                Power = 1.2,
+                SecondaryPower = 0.2,
+                AdditionalEffect = "Health,Positive",
+                EffectPower = 0.08,
+                ResistanceAffect = 1,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Flame Strike",
-                ManaRequirement = 25,
+                ManaRequirement = 0.25,
                 ClassType = "Shaman",
-
+                Type = "Damage,Physical/Magical,Self",
+                Power = 1.15,
+                SecondaryPower = 0.11,
+                AdditionalEffect = "Attack,Positive",
+                EffectPower = 0.15,
+                ResistanceAffect = 1,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Water Strike",
-                ManaRequirement = 25,
+                ManaRequirement = 0.24,
                 ClassType = "Shaman",
-
+                Type = "Damage,Magical,Self",
+                Power = 1.1,
+                AdditionalEffect = "mRegen,Positive",
+                EffectPower = 0.22,
+                ResistanceAffect = 1,
+                BuffOrEffectTarget = "Self",
             });
 
             // Warrior
             this.context.Spells.Add(new Spell
             {
                 Name = "Head Smash",
-                ManaRequirement = 50,
+                ManaRequirement = 0.38,
                 ClassType = "Warrior",
+                Type = "Damage,Physical,Self",
+                Power = 1.3,
+                AdditionalEffect = "Health,Negative",
+                EffectPower = 0.08,
+                ResistanceAffect = 1,
+                BuffOrEffectTarget = "Self",
 
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Hyper Strength",
-                ManaRequirement = 50,
+                ManaRequirement = 0.35,
                 ClassType = "Warrior",
-
+                Type = "Buff,Attack,Self,Positive",
+                Power = 0.2,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Raging Blow",
-                ManaRequirement = 12,
+                ManaRequirement = 0.15,
                 ClassType = "Warrior",
-
+                Type = "Damage,Physical,Self",
+                Power = 1,
+                AdditionalEffect = "mRegen,Positive",
+                EffectPower = 0.14,
+                ResistanceAffect = 0.8,
+                BuffOrEffectTarget = "Self",
             });
             this.context.Spells.Add(new Spell
             {
                 Name = "Disarm",
-                ManaRequirement = 50,
+                ManaRequirement = 0.50,
                 ClassType = "Warrior",
-
+                Type = "Buff,Attack,Target,Negative",
+                Power = 0.2,
+                BuffOrEffectTarget = "Target",
             });
 
             await this.context.SaveChangesAsync(cancellationToken);
@@ -1853,12 +2116,6 @@
             {
                 DisplayName = "Home With My Dog",
                 IClass = "fas fa-dog",
-            });
-
-            this.context.Statuses.Add(new Status
-            {
-                DisplayName = "Sick",
-                IClass = "fas fa-head-side-cough",
             });
 
             this.context.Statuses.Add(new Status

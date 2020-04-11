@@ -1,13 +1,19 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@model Application.GameCQ.Heroes.Queries.GetUnitIdQuery.UnitIdViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "End";
     Layout = "_Layout";
 }
 
 <partial name="_NavBar">
-    <h1 class="has-text-align-center">You have killed your enemy!</h1>
-
     <div class="has-text-align-center">
-        <a asp-controller="World" asp-action="Home"><b class="has-normal-font-size">Back to World!</b></a>
+        <h1 class="secondary-font-color">You have killed your enemy!</h1>
+        <div class="item-padding">
+            <p class="has-large-font-size main-font-color">You have recieved an <a asp-controller="Unit" asp-action="Inventory" asp-route-id="@Model.Id"><em>Item</em></a>!</p>
+        </div>
+        <div class="item-padding">
+            <a asp-controller="World" asp-action="Home"><b class="has-large-font-size main-font-color">Back to World!</b></a>
+        </div>
     </div>
+    <br />
     <partial name="_Footer">

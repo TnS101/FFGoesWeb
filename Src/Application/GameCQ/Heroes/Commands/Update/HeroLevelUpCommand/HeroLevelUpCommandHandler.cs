@@ -9,23 +9,32 @@
     public class HeroLevelUpCommandHandler : IRequestHandler<HeroLevelUpCommand>
     {
         private readonly IFFDbContext context;
-        private readonly Level level;
 
         public HeroLevelUpCommandHandler(IFFDbContext context)
         {
             this.context = context;
-            this.level = new Level();
         }
 
         public async Task<Unit> Handle(HeroLevelUpCommand request, CancellationToken cancellationToken)
         {
             var hero = await this.context.Heroes.FindAsync(request.HeroId);
 
-            var user = await this.context.AppUsers.FindAsync(hero.UserId);
+            if (request.StatPick == "Attack")
+            {
 
-            this.level.Up(hero, user);
+            }
+            else if (request.StatPick == "Health")
+            {
 
-            this.context.Heroes.Update(hero);
+            }
+            else if (request.StatPick == "Mana")
+            {
+
+            }
+            else if (request.StatPick == "Magic Power")
+            {
+                hero.
+            }
 
             await this.context.SaveChangesAsync(cancellationToken);
 

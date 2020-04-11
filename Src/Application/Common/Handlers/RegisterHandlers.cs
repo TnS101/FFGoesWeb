@@ -50,6 +50,7 @@
     using Application.GameCQ.Heroes.Commands.Update.SelectHeroCommand;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
+    using Application.GameCQ.Heroes.Queries.GetUnitIdQuery;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Application.GameCQ.Items.Commands.Delete;
     using Application.GameCQ.Items.Commands.Update;
@@ -160,6 +161,7 @@
             services.AddScoped<IRequestHandler<GetPersonalFeedbacksQuery, FeedbackListViewModel>, GetPersonalFeedbacksQueryHandler>();
             services.AddScoped<IRequestHandler<GetCurrentFriendQuery, UserViewModel>, GetCurrentFriendQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalNotificationsQuery, NotificationListViewModel>, GetPersonalNotificationsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetUnitIdQuery, UnitIdViewModel>, GetUnitIdQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

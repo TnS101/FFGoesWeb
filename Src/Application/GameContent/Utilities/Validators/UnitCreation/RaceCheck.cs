@@ -4,6 +4,10 @@
 
     public class RaceCheck
     {
+        public RaceCheck()
+        {
+        }
+
         public void Check(Hero hero, string race)
         {
             if (race == "Human")

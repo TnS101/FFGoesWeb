@@ -4,6 +4,10 @@
 
     public class ManaCheck
     {
+        public ManaCheck()
+        {
+        }
+
         public bool SpellManaCheck(Unit caster, double manaRequirment)
         {
             if (caster.CurrentMana >= manaRequirment)

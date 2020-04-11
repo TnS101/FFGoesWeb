@@ -47,6 +47,8 @@
         {
             foreach (var hero in heroes)
             {
+                await this.MainStatsRegen(hero);
+
                 foreach (var energyChange in this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id).OrderBy(l => l.LastChangedOn).ToList())
                 {
                     int energyCap = 0;
@@ -78,13 +80,13 @@
                     {
                         energyCap = (int)hero.MaxHP;
                         energy = (int)hero.CurrentHP;
-                        rechargeTime = 1;
+                        rechargeTime = 4;
                         type = "Health";
                     }
                     else if (energyChange.Type == "Mana")
                     {
                         energyCap = (int)hero.MaxMana;
-                        rechargeTime = 1;
+                        rechargeTime = 4;
                         energy = (int)hero.CurrentMana;
                         type = "Mana";
                     }
@@ -135,7 +137,6 @@
                             {
                                 continue;
                             }
-
                             await this.context.EnergyChanges.AddAsync(regeneration);
 
                             break;
@@ -153,6 +154,49 @@
                 }
 
                 this.context.Heroes.Update(hero);
+            }
+        }
+
+        private async Task MainStatsRegen(Hero hero)
+        {
+            if (this.context.EnergyChanges.Where(ec => ec.Type == "Health").Count() == 0)
+            {
+                if (hero.CurrentHP < hero.MaxHP)
+                {
+                    hero.CurrentHP += 0.1 * hero.MaxHP;
+
+                    await this.context.EnergyChanges.AddAsync(new EnergyChange
+                    {
+                        HeroId = hero.Id,
+                        Type = "Health",
+                        LastChangedOn = DateTime.UtcNow,
+                    });
+                }
+
+                if (hero.CurrentHP > hero.MaxHP)
+                {
+                    hero.CurrentHP = hero.MaxHP;
+                }
+            }
+
+            if (this.context.EnergyChanges.Where(ec => ec.Type == "Mana").Count() == 0)
+            {
+                if (hero.CurrentMana < hero.MaxMana)
+                {
+                    hero.CurrentMana += 0.1 * hero.MaxMana;
+
+                    await this.context.EnergyChanges.AddAsync(new EnergyChange
+                    {
+                        HeroId = hero.Id,
+                        Type = "Mana",
+                        LastChangedOn = DateTime.UtcNow,
+                    });
+                }
+
+                if (hero.CurrentMana > hero.MaxMana)
+                {
+                    hero.CurrentMana = hero.MaxMana;
+                }
             }
         }
     }

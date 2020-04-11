@@ -1,12 +1,27 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
-    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
+    using System;
     using Domain.Base;
 
     public class AttackOption
     {
+        public AttackOption()
+        {
+        }
+
         public void Attack(Unit caster, Unit target)
         {
+            Random rng = new Random();
+
+            int critNumber = rng.Next(0, 100);
+
+            double initialAttackPower = caster.CurrentAttackPower;
+
+            if (critNumber > 0 && critNumber < Math.Floor(caster.CritChance))
+            {
+                caster.CurrentAttackPower *= 2;
+            }
+
             if (target.CurrentHP > 0)
             {
                 if (target.CurrentArmorValue >= caster.CurrentAttackPower)
@@ -32,6 +47,8 @@
             {
                 target.CurrentHP = 0;
             }
+
+            caster.CurrentAttackPower = initialAttackPower;
         }
     }
 }

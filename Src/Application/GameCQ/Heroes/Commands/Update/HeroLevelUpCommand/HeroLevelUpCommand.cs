@@ -5,5 +5,7 @@
     public class HeroLevelUpCommand : IRequest
     {
         public string HeroId { get; set; }
+
+        public string StatPick { get; set; }
     }
 }

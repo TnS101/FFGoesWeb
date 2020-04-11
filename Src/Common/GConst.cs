@@ -88,5 +88,12 @@
 
         //Sample entity
         public const string SampleEntityDescription = "Sample {0}. This {0} does not reffer to any actual content!";
+
+        // Battle Commands
+        public const string EscapeCommand = @"\Escape";
+        public const string BattleCommand = @"\Command";
+        public const string LevelUp = @"Unit\LevelUp";
+        public const string End = @"\End";
+        public const string UnitKilled = @"Unit\Killed";
     }
 }

@@ -92,6 +92,8 @@
 
         DbSet<EnergyChange> EnergyChanges { get; set; }
 
+        DbSet<HeroSpells> HeroesSpells { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

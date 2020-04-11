@@ -99,6 +99,8 @@
 
         public DbSet<EnergyChange> EnergyChanges { get; set; }
 
+        public DbSet<HeroSpells> HeroesSpells { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -292,6 +294,20 @@
                 .HasOne(i => i.Inventory)
                 .WithMany(ti => ti.ToolInventories)
                 .HasForeignKey(i => i.InventoryId);
+
+            // Hero Spells
+            modelBuilder.Entity<HeroSpells>()
+                .HasKey(k => new { k.SpellId, k.HeroId });
+
+            modelBuilder.Entity<HeroSpells>()
+                .HasOne(s => s.Spell)
+                .WithMany(hs => hs.HeroSpells)
+                .HasForeignKey(s => s.SpellId);
+
+            modelBuilder.Entity<HeroSpells>()
+                .HasOne(h => h.Hero)
+                .WithMany(hs => hs.HeroSpells)
+                .HasForeignKey(h => h.HeroId);
 
             modelBuilder.Entity<AppUser>(appUser =>
             {

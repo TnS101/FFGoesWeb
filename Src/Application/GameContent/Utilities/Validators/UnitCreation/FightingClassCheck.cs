@@ -1,10 +1,12 @@
 ﻿namespace Application.GameContent.Utilities.Validators.UnitCreation
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
     using Domain.Base;
     using Domain.Entities.Game.Units;
+    using Microsoft.EntityFrameworkCore;
 
     public class FightingClassCheck
     {
@@ -65,6 +67,17 @@
             }
 
             var fightingClass = await context.FightingClasses.FindAsync(fightingClassId);
+
+            var spells = await context.Spells.Where(s => s.ClassType == fightingClassType).ToListAsync();
+
+            foreach (var spell in spells)
+            {
+                context.HeroesSpells.Add(new HeroSpells
+                {
+                    HeroId = hero.Id,
+                    SpellId = spell.Id,
+                });
+            }
 
             this.statIncrement.Increment(fightingClass, hero);
 

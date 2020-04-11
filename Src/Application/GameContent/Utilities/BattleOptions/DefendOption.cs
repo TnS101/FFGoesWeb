@@ -4,16 +4,20 @@
 
     public class DefendOption
     {
+        public DefendOption()
+        {
+        }
+
         public void Defend(Unit caster)
         {
             double armorBonus = 0;
             if (caster.ClassType == null)
             {
-                armorBonus += 0.30;
+                armorBonus += 0.2;
             }
             else
             {
-                armorBonus += 0.40;
+                armorBonus += 0.3;
             }
 
             if (caster.CurrentHP <= 0)

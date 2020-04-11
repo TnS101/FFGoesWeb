@@ -4,18 +4,19 @@
 
     public class HealCheck
     {
+        public HealCheck()
+        {
+        }
+
         public void Check(Unit caster, Unit target, double manaRequirment, double healEffect, ManaCheck manaCheck)
         {
             if (manaCheck.SpellManaCheck(caster, manaRequirment) == true)
             {
-                if (target.CurrentHP <= target.MaxHP - healEffect)
+                target.CurrentHP += healEffect;
+
+                if (target.CurrentHP > target.MaxHP)
                 {
-                    target.CurrentHP += healEffect;
-                }
-                else
-                {
-                    double overHeal = target.CurrentHP + healEffect - target.MaxHP;
-                    target.CurrentHP += target.MaxHP - target.CurrentHP;
+                    target.CurrentHP = target.MaxHP;
                 }
             }
         }

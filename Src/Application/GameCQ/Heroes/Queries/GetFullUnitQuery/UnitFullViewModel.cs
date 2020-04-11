@@ -1,4 +1,7 @@
-﻿namespace Application.GameCQ.Heroes.Queries.GetFullUnitQuery
+﻿using Domain.Entities.Game.Units;
+using System.Collections.Generic;
+
+namespace Application.GameCQ.Heroes.Queries.GetFullUnitQuery
 {
     public class UnitFullViewModel
     {
@@ -61,5 +64,7 @@
         public double ProffesionXP { get; set; }
 
         public double ProffesionXPCap { get; set; }
+
+        public ICollection<HeroSpells> Spells { get; set; }
     }
 }

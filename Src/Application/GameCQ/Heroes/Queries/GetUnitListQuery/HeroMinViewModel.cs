@@ -1,7 +1,5 @@
 ﻿namespace Application.GameCQ.Heroes.Queries.GetUnitListQuery
 {
-    using System;
-
     public class HeroMinViewModel
     {
         public string Id { get; set; }

@@ -4,6 +4,10 @@
 
     public class EscapeOption
     {
+        public EscapeOption()
+        {
+        }
+
         public void Escape(UnitFullViewModel hero)
         {
             double xpLoss = hero.XP * 0.1;
