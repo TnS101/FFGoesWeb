@@ -7,7 +7,7 @@
             this.Count = 1;
         }
 
-        public int ConsumeableId { get; set; }
+        public int? ConsumeableId { get; set; }
 
         public Consumeable Consumeable { get; set; }
 

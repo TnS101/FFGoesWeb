@@ -23,8 +23,43 @@
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
             var hero = await this.context.Heroes.FindAsync(request.Player.Id);
+            if (request.Enemy.CurrentHP <= -0.00000000000001)
+            {
+                var endOption = new EndOption();
 
-            if (request.YourTurn && request.Enemy.CurrentHP > 0 && hero.CurrentHP > 0)
+                request.Enemy.CurrentHP = 0;
+
+                await endOption.End(hero, request.Enemy, request.ZoneName, this.context);
+
+                if (hero.XP >= hero.XPCap)
+                {
+                    var level = new Level();
+
+                    await level.Up(hero, this.context);
+
+                    this.context.Heroes.Update(hero);
+                    await this.context.SaveChangesAsync(cancellationToken);
+
+                    return GConst.LevelUp;
+                }
+
+                this.context.Heroes.Update(hero);
+                await this.context.SaveChangesAsync(cancellationToken);
+
+                return GConst.End;
+            }
+
+            if (hero.CurrentHP <= 0)
+            {
+                hero.CurrentHP = 0;
+
+                this.context.Heroes.Update(hero);
+
+                await this.context.SaveChangesAsync(cancellationToken);
+
+                return GConst.UnitKilled;
+            }
+            else if (request.YourTurn && request.Enemy.CurrentHP > 0)
             {
                 if (request.Command == "Attack")
                 {
@@ -60,41 +95,21 @@
 
                 if (!request.YourTurn)
                 {
-                   request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.context);
+                    request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.context);
                 }
 
                 await this.context.SaveChangesAsync(cancellationToken);
 
                 return GConst.BattleCommand;
             }
-            else if (request.Enemy.CurrentHP <= -0.001)
+
+            if (request.Enemy.CurrentHP == 0)
             {
-                var endOption = new EndOption();
-
-                request.Enemy.CurrentHP = 0;
-
-                await endOption.End(hero, request.Enemy, request.ZoneName, this.context);
-
-                if (hero.XP >= hero.XPCap)
-                {
-                    var level = new Level();
-
-                    await level.Up(hero, this.context);
-
-                    this.context.Heroes.Update(hero);
-                    await this.context.SaveChangesAsync(cancellationToken);
-
-                    return GConst.LevelUp;
-                }
-
-                this.context.Heroes.Update(hero);
-                await this.context.SaveChangesAsync(cancellationToken);
-
                 return GConst.End;
             }
             else
             {
-                return GConst.UnitKilled;
+                return GConst.BattleCommand;
             }
         }
     }

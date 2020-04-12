@@ -6,13 +6,11 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
 
     public class GetPersonalItemsQueryHandler : IRequestHandler<GetPersonalItemsQuery, ItemListViewModel>
     {
@@ -63,13 +61,16 @@
 
             var weapons = new List<Weapon>();
 
-            foreach (var baseWeapon in this.context.Weapons)
+            if (inventory.Count() > 0)
             {
-                foreach (var item in inventory)
+                foreach (var baseWeapon in this.context.Weapons.ToList())
                 {
-                    if (item.WeaponId == baseWeapon.Id)
+                    foreach (var item in inventory)
                     {
-                        weapons.Add(baseWeapon);
+                        if (item.WeaponId == baseWeapon.Id)
+                        {
+                            weapons.Add(baseWeapon);
+                        }
                     }
                 }
             }
@@ -81,6 +82,7 @@
                     Id = i.Id,
                     Name = i.Name,
                     ImageURL = i.ImageURL,
+                    Slot = i.Slot,
                 }),
             };
         }
@@ -109,6 +111,7 @@
                     Id = i.Id,
                     Name = i.Name,
                     ImageURL = i.ImageURL,
+                    Slot = i.Slot,
                 }),
             };
         }
@@ -137,6 +140,7 @@
                     Id = i.Id,
                     Name = i.Name,
                     ImageURL = i.ImageURL,
+                    Slot = i.Slot,
                 }),
             };
         }
@@ -165,6 +169,7 @@
                     Id = i.Id,
                     Name = i.Name,
                     ImageURL = i.ImageURL,
+                    Slot = "Treasure",
                 }),
             };
         }
@@ -193,36 +198,48 @@
                     Id = i.Id,
                     Name = i.Name,
                     ImageURL = i.ImageURL,
+                    Slot = "Treasure Key",
                 }),
             };
         }
 
         private ItemListViewModel GetMaterials(Hero hero)
         {
-            var inventory = this.context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId);
-
-            var materials = new List<Material>();
-
-            foreach (var baseMaterial in this.context.Materials)
+            if (this.context.MaterialsInventories.ToList().Any(mi => mi.InventoryId == hero.InventoryId))
             {
-                foreach (var item in inventory)
+                var inventory = this.context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).ToList();
+
+                var materials = new List<Material>();
+
+                if (inventory.Count > 0)
                 {
-                    if (item.MaterialId == baseMaterial.Id)
+                    foreach (var baseMaterial in this.context.Materials)
                     {
-                        materials.Add(baseMaterial);
+                        foreach (var item in inventory)
+                        {
+                            if (item.MaterialId == baseMaterial.Id)
+                            {
+                                materials.Add(baseMaterial);
+                            }
+                        }
                     }
                 }
-            }
 
-            return new ItemListViewModel
-            {
-                Items = materials.Select(i => new ItemMinViewModel
+                return new ItemListViewModel
                 {
-                    Id = i.Id,
-                    Name = i.Name,
-                    ImageURL = i.ImageURL,
-                }),
-            };
+                    Items = materials.Select(i => new ItemMinViewModel
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        ImageURL = i.ImageURL,
+                        Slot = "Material",
+                    }),
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

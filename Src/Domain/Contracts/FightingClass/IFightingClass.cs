@@ -12,11 +12,11 @@
 
         double MaxHP { get; }
 
-        int HealthRegen { get; }
+        double HealthRegen { get; }
 
         double MaxMana { get; }
 
-        int ManaRegen { get; }
+        double ManaRegen { get; }
 
         double AttackPower { get; }
 

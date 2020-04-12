@@ -7,7 +7,7 @@
             this.Count = 1;
         }
 
-        public int ToolId { get; set; }
+        public int? ToolId { get; set; }
 
         public Tool Tool { get; set; }
 

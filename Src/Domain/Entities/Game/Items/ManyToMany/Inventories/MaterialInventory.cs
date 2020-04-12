@@ -7,7 +7,7 @@
             this.Count = 1;
         }
 
-        public int MaterialId { get; set; }
+        public int? MaterialId { get; set; }
 
         public Material Material { get; set; }
 

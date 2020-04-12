@@ -53,7 +53,6 @@
     using Application.GameCQ.Heroes.Queries.GetUnitIdQuery;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Application.GameCQ.Items.Commands.Delete;
-    using Application.GameCQ.Items.Commands.Update;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using Application.GameCQ.Monsters.Commands.Create;
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
@@ -112,7 +111,6 @@
             services.AddScoped<IRequestHandler<GenerateMonsterCommand, Monster>, GenerateMonsterCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateEquipmentCommand, string>, UpdateEquipmentCommandHandler>();
             services.AddScoped<IRequestHandler<DiscardItemCommand, string>, DiscardItemCommandHandler>();
-            services.AddScoped<IRequestHandler<LootItemCommand>, LootItemCommandHandler>();
             services.AddScoped<IRequestHandler<OpenTreasureCommand, string>, OpenTreasureCommandHandler>();
             services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();
             services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();

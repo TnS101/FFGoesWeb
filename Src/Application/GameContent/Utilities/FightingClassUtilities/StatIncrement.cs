@@ -35,40 +35,18 @@
 
         public void MonsterIncrement(Monster baseMonster, Monster monster)
         {
-            int step = 0;
-
-            if (monster.Level == 4)
-            {
-                step = monster.Level + 2;
-            }
-            else if (monster.Level == 5)
-            {
-                step = 2 * monster.Level;
-            }
-            else if (monster.Level > 5)
-            {
-                int lastStep = 6 + monster.Level - 1;
-                step = monster.Level - 1 + lastStep;
-            }
-            else if (monster.Level > 6)
-            {
-                int lastStep = ;
-            }
-            else
-            {
-                step = monster.Level;
-            }
+            int step = this.StepCalculator(monster.Level);
 
             monster.Id = baseMonster.Id;
             monster.Name = baseMonster.Name;
             monster.MaxHP = baseMonster.MaxHP + (step * 11);
-            monster.HealthRegen = baseMonster.HealthRegen + (step * 1.2);
+            monster.HealthRegen = baseMonster.HealthRegen + (step * 1.15);
             monster.MaxMana = baseMonster.MaxMana + (step * 11);
-            monster.ManaRegen = baseMonster.ManaRegen + (step * 1.2);
+            monster.ManaRegen = baseMonster.ManaRegen + (step * 1.1);
             monster.AttackPower = baseMonster.AttackPower + (step * 2.22);
-            monster.MagicPower = baseMonster.MagicPower + (step * 2.82);
-            monster.ArmorValue = baseMonster.ArmorValue + (step * 1.15);
-            monster.ResistanceValue = baseMonster.ResistanceValue + (step * 1.35);
+            monster.MagicPower = baseMonster.MagicPower + (step * 2.5);
+            monster.ArmorValue = baseMonster.ArmorValue + (step * 1);
+            monster.ResistanceValue = baseMonster.ResistanceValue + (step * 1.2);
             monster.CritChance = baseMonster.CritChance + (monster.Level * 0.04);
 
             monster.ImageURL = baseMonster.ImageURL.ToString();
@@ -83,6 +61,34 @@
             monster.CurrentArmorValue = monster.ArmorValue;
             monster.CurrentResistanceValue = monster.ResistanceValue;
             monster.CurrentCritChance = monster.CritChance;
+        }
+
+        private int StepCalculator(int monsterLevel)
+        {
+            if (monsterLevel == 4)
+            {
+                return 6;
+            }
+            else if (monsterLevel == 5)
+            {
+                return 6 + monsterLevel - 1;
+            }
+            else if (monsterLevel > 5)
+            {
+                int repeatSteps = monsterLevel - 1;
+                int step = 0;
+
+                for (int i = 1; i <= repeatSteps; i++)
+                {
+                    step += monsterLevel - i;
+                }
+
+                return step;
+            }
+            else
+            {
+                return monsterLevel;
+            }
         }
     }
 }

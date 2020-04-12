@@ -8354,18 +8354,7 @@ span.mini-account .form-row-last {
         outline: 1px dotted;
     }
 
-#site-navigation {
-    font-family: 'Rajdhani', Helvetica, Arial, Verdana, sans-serif;
-    font-size: 17px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .07em;
-    background-color: rgba(45, 54, 76, 0.77);
-    width: 1986px;
-    height: 100px;
-    margin-left: -150px;
-    padding-top: 20px
-}
+
 
 #primary-menu {
     margin: 0;
@@ -10021,9 +10010,6 @@ p.has-background {
     #site-navigation {
         display: none;
         width: 100%;
-        background: #2d364c;
-        border-radius: 3px;
-        box-shadow: 0 0 2px rgba(255,255,255,.3);
     }
 
         #site-navigation.menu-open {
@@ -12203,31 +12189,13 @@ pre.wp-block-verse {
 
 @media only screen and (max-width: 1024px) {
     #site-navigation {
-        background: #063500;
+        background: #7e5050;
     }
 }
 
-i {
-    color: #ffd400
-}
 
-    i:hover {
-        animation: 0.8s;
-        animation-name: iconHover;
-        color: #f8d39e;
-    }
 
-@keyframes iconHover {
-    from {
-        color: #ffd400;
-        opacity: 0.2;
-    }
 
-    to {
-        color: #f8d39e;
-        opacity: 1;
-    }
-}
 
 @keyframes bounce {
     20%,53%,80%,from,to {
@@ -13080,32 +13048,16 @@ hr {
     padding-top: 10px;
 }
 
-.main-gradient {
-    background-image: repeating-linear-gradient(180deg,#2d364c 20%, rgba(255, 255, 255, 0.00) 120%);
-    background-color: #d0d3d7;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+
 
 .big-gradient-background {
     background-image: linear-gradient(180deg, #2d364c 40%, rgba(255, 255, 255, 0.00) 130%);
     height: 220px
 }
 
-.main-font-color {
-    color: #d0d3d7;
-}
 
-.main-nav-bar {
-    background-color: rgb(45, 54, 76);
-    width: 1985px;
-    height: 60px;
-    margin-left: -25px;
-    padding-top: 28px;
-    position:relative;
-}
+
+
 
 .item-padding
 {
@@ -13118,7 +13070,11 @@ hr {
 }
 
 .secondary-font-color {
-    color: #2d364c
+    color: #2b5568
+}
+
+.main-font-color {
+    color: #2b5568;
 }
 
 .primary-background-color {
@@ -13127,8 +13083,64 @@ hr {
 }
 
 i {
-    color: #92b9a4
+    color: #fcf0e3
 }
+
+
+
+.main-nav-bar {
+    background-color: #c39873;
+    width: 1985px;
+    height: 60px;
+    margin-left: -25px;
+    padding-top: 18px;
+    position: relative;
+}
+
+
+#site-navigation {
+    font-family: 'Rajdhani', Helvetica, Arial, Verdana, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    background-color: #c39873;
+    width: 1986px;
+    height: 100px;
+    margin-left: -150px;
+    padding-top: 20px;
+}
+
+
+
+.main-gradient {
+    background: rgb(195,151,114);
+    background: repeating-linear-gradient(180deg, rgba(195,151,114,1) 8%, rgba(255,248,241,1) 100%);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+i:hover {
+    animation: 0.8s;
+    animation-name: iconHover;
+    color: #346175;
+}
+
+@keyframes iconHover {
+    from {
+        color: #fcf0e3;
+        opacity: 0.2;
+    }
+
+    to {
+        color: #346175;
+        opacity: 1;
+    }
+}
+
 
 .item-margin
 {
@@ -13162,6 +13174,16 @@ i {
 .flip-vertical-fwd {
     -webkit-animation: flip-vertical-fwd 3s cubic-bezier(.175,.885,.32,1.275) infinite both;
     animation: flip-vertical-fwd 3s cubic-bezier(.175,.885,.32,1.275) infinite both
+}
+
+.main-border {
+    border-top: 60px;
+    border-top-style: solid;
+    border-radius: 1200px;
+    border-top-color: #797e8b;
+    border-bottom: 60px;
+    border-bottom-style: solid;
+    border-bottom-color: #797e8b;
 }
 
 .has-narrow-width

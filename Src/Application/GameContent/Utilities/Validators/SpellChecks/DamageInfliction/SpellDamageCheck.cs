@@ -1,22 +1,32 @@
 ﻿namespace Application.GameContent.Utilities.Validators.SpellChecks.DamageInfliction
 {
+    using Application.GameContent.Utilities.Validators.Battle;
     using Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
     using Domain.Base;
 
     public class SpellDamageCheck
     {
+        private readonly CritCheck critCheck;
+
         public SpellDamageCheck()
         {
+            this.critCheck = new CritCheck();
         }
 
-        public void Check(Unit caster, Unit target, double manaRequirment, double damage, ManaCheck manaCheck, string damageType)
+        public void Check(Unit caster, Unit target, double manaRequirment, double damage, ManaCheck manaCheck, string damageType, double resistanceAffect)
         {
+            damage = this.critCheck.Check(damage, caster.CritChance);
+
             if (manaCheck.SpellManaCheck(caster, manaRequirment))
             {
                 if (damageType == "Physical")
                 {
-                    if (damage > target.CurrentArmorValue)
+                    double protection = target.CurrentArmorValue * resistanceAffect;
+
+                    if (damage > protection)
                     {
+                        damage -= protection;
+
                         target.CurrentHP -= damage;
                     }
                     else
@@ -26,8 +36,12 @@
                 }
                 else if (damageType == "Magical")
                 {
-                    if (damage > target.CurrentResistanceValue)
+                    double protection = target.CurrentResistanceValue * resistanceAffect;
+
+                    if (damage > protection)
                     {
+                        damage -= protection;
+
                         target.CurrentHP -= damage;
                     }
                     else
@@ -37,10 +51,12 @@
                 }
                 else if (damageType == "Mixed")
                 {
-                    double protection = (target.CurrentResistanceValue / 2) + (target.CurrentArmorValue / 2);
+                    double protection = (target.CurrentResistanceValue * resistanceAffect / 2) + (target.CurrentArmorValue * resistanceAffect / 2);
 
                     if (damage > protection)
                     {
+                        damage -= protection;
+
                         target.CurrentHP -= damage;
                     }
                     else
@@ -49,11 +65,6 @@
                         target.CurrentArmorValue -= target.CurrentArmorValue * 0.15;
                     }
                 }
-            }
-
-            if (target.CurrentHP <= damage)
-            {
-                target.CurrentHP = 0;
             }
         }
     }

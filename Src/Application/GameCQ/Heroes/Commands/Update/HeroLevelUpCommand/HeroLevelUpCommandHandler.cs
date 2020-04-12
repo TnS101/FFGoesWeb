@@ -3,7 +3,6 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Utilities.LevelUtility;
     using MediatR;
 
     public class HeroLevelUpCommandHandler : IRequestHandler<HeroLevelUpCommand>
@@ -21,20 +20,26 @@
 
             if (request.StatPick == "Attack")
             {
-
+                hero.AttackPower += 2 * hero.Level;
+                hero.CurrentAttackPower = hero.AttackPower;
             }
             else if (request.StatPick == "Health")
             {
-
+                hero.MaxHP += 9 * hero.Level;
+                hero.CurrentHP = hero.MaxHP;
             }
             else if (request.StatPick == "Mana")
             {
-
+                hero.MaxMana += 9.3 * hero.Level;
+                hero.CurrentMana = hero.MaxMana;
             }
             else if (request.StatPick == "Magic Power")
             {
-                hero.
+                hero.MagicPower += 2.15 * hero.Level;
+                hero.CurrentMagicPower = hero.MagicPower;
             }
+
+            this.context.Heroes.Update(hero);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

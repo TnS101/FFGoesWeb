@@ -6,7 +6,7 @@
 
 ---------------------{Start}----------------------
 
-172 -> level 4 (3 * 12) | 6*12 + 100 = 172 [4 + 2]
+172 -> level 4 (3 * 12) | 6 * 12 + 100 = 172 [4 + 2]
 
 220 -> level 5 (4 * 12) | 10 * 12 +100 = 220 [5 - 1]
 
@@ -25,3 +25,12 @@
 Conclusion -> {Start} = [level + 2]
 
 Progression = (level - 1) / [level - 1]
+
+Formula Between Progressions ->
+
+Level 4 => 6
+
+Level 5 => 6 + Level - 1
+
+All other Levels => Repeating (Level - 1 [Times]) + (Level - Times[i])
+Basicaly a simple substraction with a for cycle.

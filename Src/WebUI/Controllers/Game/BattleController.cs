@@ -4,7 +4,7 @@
     using Application.GameCQ.Battles.Commands.Update;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
-    using Application.GameCQ.Items.Commands.Update;
+    using Application.GameCQ.Heroes.Queries.GetUnitIdQuery;
     using Application.GameCQ.Monsters.Commands.Create;
     using Domain.Entities.Game.Units;
     using global::Common;
@@ -51,7 +51,7 @@
         [HttpGet]
         public async Task<ActionResult> End()
         {
-            return this.View(await this.Mediator.Send(new LootItemCommand { MonsterId = monster.Id, }));
+            return this.View(await this.Mediator.Send(new GetUnitIdQuery { User = this.User }));
         }
 
         private string[] Stats(UnitFullViewModel playerFullVm)

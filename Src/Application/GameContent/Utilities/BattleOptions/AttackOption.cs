@@ -1,54 +1,42 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
-    using System;
+    using Application.GameContent.Utilities.Validators.Battle;
     using Domain.Base;
 
     public class AttackOption
     {
+        private readonly CritCheck critCheck;
+
         public AttackOption()
         {
+            this.critCheck = new CritCheck();
         }
 
         public void Attack(Unit caster, Unit target)
         {
-            Random rng = new Random();
-
-            int critNumber = rng.Next(0, 100);
-
-            double initialAttackPower = caster.CurrentAttackPower;
-
-            if (critNumber > 0 && critNumber < Math.Floor(caster.CritChance))
-            {
-                caster.CurrentAttackPower *= 2;
-            }
+            double damage = this.critCheck.Check(caster.CurrentAttackPower, caster.CritChance);
 
             if (target.CurrentHP > 0)
             {
-                if (target.CurrentArmorValue >= caster.CurrentAttackPower)
+                if (target.CurrentArmorValue >= damage)
                 {
-                    double armorPenalty = 0;
+                    double armorPenalty;
                     if (target.ClassType != null)
                     {
-                        armorPenalty += 0.80;
+                        armorPenalty = 0.70;
                     }
                     else
                     {
-                        armorPenalty += 0.50;
+                        armorPenalty = 0.30;
                     }
 
                     target.CurrentArmorValue -= armorPenalty * target.CurrentArmorValue;
                 }
                 else
                 {
-                    target.CurrentHP -= caster.CurrentAttackPower - target.CurrentArmorValue;
+                    target.CurrentHP -= damage - target.CurrentArmorValue;
                 }
             }
-            else
-            {
-                target.CurrentHP = 0;
-            }
-
-            caster.CurrentAttackPower = initialAttackPower;
         }
     }
 }

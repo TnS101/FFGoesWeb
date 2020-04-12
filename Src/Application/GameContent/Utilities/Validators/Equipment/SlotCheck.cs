@@ -1,7 +1,9 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Game.Items;
@@ -37,7 +39,7 @@
             this.vegetables = new string[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
-        public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, string fightingClassType, string weaponName, IFFDbContext context, Hero hero, Monster monster, string zoneName)
+        public async Task Check(int fightingClassNumber, int slotNumber, List<int> stats, int fightingClassStatNumber, string fightingClassType, string weaponName, IFFDbContext context, Hero hero, Monster monster, string zoneName)
         {
             if (slotNumber == 0)
             {
@@ -61,7 +63,7 @@
             }
         }
 
-        private async Task WeaponGenerate(int fightingClassNumber, int[] stats, int fightingClassStatNumber, string fightingClassType, string weaponName, IFFDbContext context, Hero hero)
+        private async Task WeaponGenerate(int fightingClassNumber, List<int> stats, int fightingClassStatNumber, string fightingClassType, string weaponName, IFFDbContext context, Hero hero)
         {
             string imageURL = string.Empty;
 
@@ -104,7 +106,7 @@
             });
         }
 
-        private async Task TrinketGenerate(int[] stats, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
+        private async Task TrinketGenerate(List<int> stats, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
         {
             Trinket templateTrinket = new Trinket
             {
@@ -139,7 +141,7 @@
             });
         }
 
-        private async Task ArmorGenerate(int[] stats, int slotNumber, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
+        private async Task ArmorGenerate(List<int> stats, int slotNumber, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
         {
             Armor templateArmor = new Armor
             {
@@ -177,8 +179,8 @@
 
             context.ArmorsInventories.Add(new ArmorInventory
             {
-                InventoryId = hero.InventoryId,
                 ArmorId = armorId,
+                InventoryId = hero.InventoryId,
             });
         }
 

@@ -1,0 +1,34 @@
+﻿@model Application.GameCQ.Items.Queries.GetPersonalItemsQuery.ItemListViewModel
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Inventory</title>
+    <partial name="_NavBar">
+</head>
+<body>
+    <div class="has-text-align-center">
+        <h1 class="secondary-font-color">Your Inventory</h1>
+        <br />
+        <div class="item-padding">
+            @if (Model != null)
+            {
+                <p class="main-font-color has-large-font-size">Currently review your @Model.Items.FirstOrDefault().Slot.Append('s').ToString()</p>
+                foreach (var item in Model.Items)
+                {
+                    <div class="item-padding">
+                        <img src="@item." alt="Item Image" />
+                        <p class="main-font-color has-normal-font-size">@item.Name</p>
+                        <hr />
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
             this.Count = 1;
         }
 
-        public int TrinketId { get; set; }
+        public int? TrinketId { get; set; }
 
         public Trinket Trinket { get; set; }
 

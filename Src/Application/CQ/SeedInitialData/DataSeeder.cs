@@ -764,7 +764,7 @@
                 MonsterName = "Bear",
                 Rarity = "Rare",
                 ImageURL = "/images/Sprites/Bear-Rare.png",
-                StatAmplifier = 0.15,
+                StatAmplifier = 0.1,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -772,7 +772,7 @@
                 MonsterName = "Bear",
                 Rarity = "Heroic",
                 ImageURL = "/images/Sprites/Bear-Heroic.png",
-                StatAmplifier = 0.3,
+                StatAmplifier = 0.2,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -780,7 +780,7 @@
                 MonsterName = "Demon",
                 Rarity = "Rare",
                 ImageURL = "/images/Sprites/Demon-Rare.png",
-                StatAmplifier = 0.15,
+                StatAmplifier = 0.1,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -788,7 +788,7 @@
                 MonsterName = "Demon",
                 Rarity = "Heroic",
                 ImageURL = "/images/Sprites/Demon-Heroic.png",
-                StatAmplifier = 0.3,
+                StatAmplifier = 0.2,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -796,7 +796,7 @@
                 MonsterName = "Giant",
                 Rarity = "Rare",
                 ImageURL = "/images/Sprites/Giant-Rare.png",
-                StatAmplifier = 0.15,
+                StatAmplifier = 0.1,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -804,7 +804,7 @@
                 MonsterName = "Giant",
                 Rarity = "Heroic",
                 ImageURL = "/images/Sprites/Giant-Heroic.png",
-                StatAmplifier = 0.3,
+                StatAmplifier = 0.2,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -812,7 +812,7 @@
                 MonsterName = "Gryphon",
                 Rarity = "Rare",
                 ImageURL = "/images/Sprites/Gryphon-Rare.png",
-                StatAmplifier = 0.15,
+                StatAmplifier = 0.1,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -820,7 +820,7 @@
                 MonsterName = "Gryphon",
                 Rarity = "Heroic",
                 ImageURL = "/images/Sprites/Gryphon-Heroic.png",
-                StatAmplifier = 0.3,
+                StatAmplifier = 0.2,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -828,7 +828,7 @@
                 MonsterName = "Reptile",
                 Rarity = "Rare",
                 ImageURL = "/images/Sprites/Reptile-Rare.png",
-                StatAmplifier = 0.15,
+                StatAmplifier = 0.1,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -836,7 +836,7 @@
                 MonsterName = "Reptile",
                 Rarity = "Heroic",
                 ImageURL = "/images/Sprites/Reptile-Heroic.png",
-                StatAmplifier = 0.3,
+                StatAmplifier = 0.2,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -844,7 +844,7 @@
                 MonsterName = "Saint",
                 Rarity = "Rare",
                 ImageURL = "/images/Sprites/Saint-Rare.png",
-                StatAmplifier = 0.15,
+                StatAmplifier = 0.1,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -852,7 +852,7 @@
                 MonsterName = "Saint",
                 Rarity = "Heroic",
                 ImageURL = "/images/Sprites/Saint-Heroic.png",
-                StatAmplifier = 0.3,
+                StatAmplifier = 0.2,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -860,7 +860,7 @@
                 MonsterName = "Skeleton",
                 Rarity = "Rare",
                 ImageURL = "/images/Sprites/Skeleton-Rare.png",
-                StatAmplifier = 0.15,
+                StatAmplifier = 0.1,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -868,7 +868,7 @@
                 MonsterName = "Skeleton",
                 Rarity = "Heroic",
                 ImageURL = "/images/Sprites/Skeleton-Heroic.png",
-                StatAmplifier = 0.3,
+                StatAmplifier = 0.2,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -876,7 +876,7 @@
                 MonsterName = "Wyrm",
                 Rarity = "Rare",
                 ImageURL = "/images/Sprites/Wyrm-Rare.png",
-                StatAmplifier = 0.15,
+                StatAmplifier = 0.1,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -884,7 +884,7 @@
                 MonsterName = "Wyrm",
                 Rarity = "Heroic",
                 ImageURL = "/images/Sprites/Wyrm-Heroic.png",
-                StatAmplifier = 0.3,
+                StatAmplifier = 0.2,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -892,7 +892,7 @@
                 MonsterName = "Zombie",
                 Rarity = "Rare",
                 ImageURL = "/images/Sprites/Zombie-Rare.png",
-                StatAmplifier = 0.15,
+                StatAmplifier = 0.1,
             });
 
             this.context.MonstersRarities.Add(new MonsterRarity
@@ -900,7 +900,7 @@
                 MonsterName = "Zombie",
                 Rarity = "Heroic",
                 ImageURL = "/images/Sprites/Zombie-Heroic.png",
-                StatAmplifier = 0.3,
+                StatAmplifier = 0.2,
             });
 
             await this.context.SaveChangesAsync(cancellationToken);
@@ -1060,15 +1060,15 @@
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Warrior",
-                MaxHP = 240,
-                HealthRegen = 2,
-                MaxMana = 100,
-                ManaRegen = 5,
-                AttackPower = 25,
-                MagicPower = 10,
-                ArmorValue = 5,
-                ResistanceValue = 3,
-                CritChance = 3,
+                MaxHP = 260,
+                HealthRegen = 8.9,
+                MaxMana = 110,
+                ManaRegen = 6.2,
+                AttackPower = 23,
+                MagicPower = 8,
+                ArmorValue = 5.8,
+                ResistanceValue = 4,
+                CritChance = 3.8,
                 ImageURL = "/images/Sprites/Warrior.png",
                 Description = "If you want to spam one button and lose brain cells simultaneously, you should probably play CS: GO." +
                 "Main Stat: Strength.",
@@ -1077,14 +1077,14 @@
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Hunter",
-                MaxHP = 200,
-                HealthRegen = 2,
-                MaxMana = 100,
-                ManaRegen = 5,
-                AttackPower = 32,
-                MagicPower = 12,
-                ArmorValue = 3.5,
-                ResistanceValue = 2.5,
+                MaxHP = 215,
+                HealthRegen = 6.4,
+                MaxMana = 110,
+                ManaRegen = 6.6,
+                AttackPower = 29,
+                MagicPower = 13,
+                ArmorValue = 4.5,
+                ResistanceValue = 3.5,
                 CritChance = 6,
                 ImageURL = "/images/Sprites/Hunter.png",
                 Description = "He could have a shotgun but that would be way too much OP." +
@@ -1094,15 +1094,15 @@
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Mage",
-                MaxHP = 200,
-                HealthRegen = 3,
-                MaxMana = 130,
+                MaxHP = 210,
+                HealthRegen = 5.8,
+                MaxMana = 140,
                 ManaRegen = 10,
                 AttackPower = 18,
-                MagicPower = 26,
-                ArmorValue = 2,
-                ResistanceValue = 8,
-                CritChance = 2,
+                MagicPower = 24,
+                ArmorValue = 3,
+                ResistanceValue = 8.8,
+                CritChance = 2.8,
                 ImageURL = "/images/Sprites/Mage.png",
                 Description = "Like cards? Go to Vegas. Like bunnies? Open a rabbit farm. Want to 1-shot someone? [CLICK ME]!" +
                 "Main Stat: Intellect.",
@@ -1111,15 +1111,15 @@
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Naturalist",
-                MaxHP = 220,
-                HealthRegen = 3,
-                MaxMana = 120,
+                MaxHP = 225,
+                HealthRegen = 9.6,
+                MaxMana = 130,
                 ManaRegen = 12,
                 AttackPower = 15,
-                MagicPower = 28,
-                ArmorValue = 5,
-                ResistanceValue = 2.2,
-                CritChance = 2,
+                MagicPower = 22,
+                ArmorValue = 4.8,
+                ResistanceValue = 3.2,
+                CritChance = 4,
                 ImageURL = "/images/Sprites/Druid.png",
                 Description = "Don't worry. I've already donated 5 bucks to that *Beast* guy." +
                 "Main Stat: Spirit.",
@@ -1128,15 +1128,15 @@
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Necroid",
-                MaxHP = 180,
-                HealthRegen = 4,
-                MaxMana = 140,
+                MaxHP = 200,
+                HealthRegen = 6.8,
+                MaxMana = 150,
                 ManaRegen = 10,
                 AttackPower = 15,
                 MagicPower = 30,
-                ArmorValue = 2.5,
-                ResistanceValue = 2,
-                CritChance = 2,
+                ArmorValue = 3.6,
+                ResistanceValue = 4,
+                CritChance = 3,
                 ImageURL = "/images/Sprites/Necroid.png",
                 Description = "Actually, you don't wanna know about this guy. I've warned you." +
                 "Main Stat: Intellect.",
@@ -1145,15 +1145,15 @@
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Paladin",
-                MaxHP = 220,
-                HealthRegen = 2,
-                MaxMana = 110,
-                ManaRegen = 6,
+                MaxHP = 225,
+                HealthRegen = 10,
+                MaxMana = 120,
+                ManaRegen = 8,
                 AttackPower = 22,
-                MagicPower = 18,
-                ArmorValue = 4,
-                ResistanceValue = 5,
-                CritChance = 3,
+                MagicPower = 16,
+                ArmorValue = 6,
+                ResistanceValue = 7.3,
+                CritChance = 4,
                 ImageURL = "/images/Sprites/Paladin.png",
                 Description = "Damage? Got it. Health? Got it. Girlfriend? ... :(" +
                "Main Stat: Strength.",
@@ -1162,15 +1162,15 @@
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Priest",
-                MaxHP = 170,
-                HealthRegen = 5,
+                MaxHP = 190,
+                HealthRegen = 8,
                 MaxMana = 180,
-                ManaRegen = 10,
-                AttackPower = 15,
-                MagicPower = 30,
-                ArmorValue = 2,
-                ResistanceValue = 4,
-                CritChance = 2,
+                ManaRegen = 12,
+                AttackPower = 15.6,
+                MagicPower = 28,
+                ArmorValue = 3,
+                ResistanceValue = 5.6,
+                CritChance = 3,
                 ImageURL = "/images/Sprites/Priest.png",
                 Description = "Don't worry. He won't molest you." +
                "Main Stat: Spirit.",
@@ -1179,15 +1179,15 @@
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Rogue",
-                MaxHP = 180,
-                HealthRegen = 3,
-                MaxMana = 100,
-                ManaRegen = 5,
-                AttackPower = 33,
-                MagicPower = 8,
-                ArmorValue = 3,
-                ResistanceValue = 1,
-                CritChance = 8,
+                MaxHP = 195,
+                HealthRegen = 6,
+                MaxMana = 110,
+                ManaRegen = 6,
+                AttackPower = 26,
+                MagicPower = 7.2,
+                ArmorValue = 3.8,
+                ResistanceValue = 2.5,
+                CritChance = 6.3,
                 ImageURL = "/images/Sprites/Rogue.png",
                 Description = "He steals money. Enough said, you greedy bastard." +
                "Main Stat: Agility.",
@@ -1196,15 +1196,15 @@
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Shaman",
-                MaxHP = 180,
-                HealthRegen = 2,
-                MaxMana = 115,
-                ManaRegen = 12,
+                MaxHP = 210,
+                HealthRegen = 7,
+                MaxMana = 130,
+                ManaRegen = 11,
                 AttackPower = 20,
-                MagicPower = 20,
-                ArmorValue = 3,
-                ResistanceValue = 5,
-                CritChance = 2,
+                MagicPower = 18,
+                ArmorValue = 4,
+                ResistanceValue = 6,
+                CritChance = 4,
                 ImageURL = "/images/Sprites/Shaman.png",
                 Description = "Freezing, zapping and stoning people to death was never such fun." +
                "Main Stat: Stamina.",
@@ -1649,12 +1649,12 @@
             this.context.Spells.Add(new Spell
             {
                 Name = "Water Ball",
-                ManaRequirement = 0.3,
+                ManaRequirement = 0.2,
                 ClassType = "Mage",
                 Type = "Damage,Magical,Self",
                 Power = 0.7,
                 AdditionalEffect = "mRegen,Positive",
-                EffectPower = 1.3,
+                EffectPower = 0.22,
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
@@ -1664,7 +1664,7 @@
                 ManaRequirement = 0.25,
                 ClassType = "Mage",
                 Type = "Damage,Magical/MaxHP,Self/Target",
-                Power = 0.6,
+                Power = 0.8,
                 SecondaryPower = 0.05,
                 AdditionalEffect = "hRegen,Negative",
                 EffectPower = 0.35,
@@ -1888,9 +1888,9 @@
                 ManaRequirement = 0.12,
                 ClassType = "Rogue",
                 Type = "Damage,Physical,Self",
-                Power = 1.08,
+                Power = 1.05,
                 AdditionalEffect = "Attack,Positive",
-                EffectPower = 0.1,
+                EffectPower = 0.08,
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
@@ -1982,7 +1982,7 @@
             this.context.Spells.Add(new Spell
             {
                 Name = "Head Smash",
-                ManaRequirement = 0.38,
+                ManaRequirement = 0.35,
                 ClassType = "Warrior",
                 Type = "Damage,Physical,Self",
                 Power = 1.3,
@@ -2004,12 +2004,12 @@
             this.context.Spells.Add(new Spell
             {
                 Name = "Raging Blow",
-                ManaRequirement = 0.15,
+                ManaRequirement = 0.13,
                 ClassType = "Warrior",
                 Type = "Damage,Physical,Self",
                 Power = 1,
                 AdditionalEffect = "mRegen,Positive",
-                EffectPower = 0.14,
+                EffectPower = 0.24,
                 ResistanceAffect = 0.8,
                 BuffOrEffectTarget = "Self",
             });

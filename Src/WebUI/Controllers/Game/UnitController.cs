@@ -68,9 +68,9 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Inventory([FromQuery]string id)
+        public async Task<ActionResult> Inventory([FromQuery]string id, [FromForm]string slot)
         {
-            return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id }));
+            return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
         }
 
         [HttpGet]

@@ -3,43 +3,93 @@
     ViewData["Title"] = "Info";
     Layout = "_Layout";
 }
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Unit Info</title>
-        <partial name="_NavBar">
-    </head>
-    <body>
-        <div class="container">
-            <h1 class="has-text-align-center secondary-font-color">Unit Info</h1>
-            <div class="container">
-                <img src="@Model.ImageURL" class="item-padding aligncenter" alt="Unit Image" />
-                <h3 class="has-text-align-center main-font-color item-padding">Class : @Model.ClassType</h3>
-                <h3 class="has-text-align-center main-font-color">Race : @Model.Race</h3>
-                <div class="has-text-align-center">
-                    <i class="fas fa-heartbeat has-huge-font-size"><progress class="item-padding aligncenter" value="@Model.CurrentHP" max="@Model.MaxHP"></progress></i>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Info</title>
+    <partial name="_NavBar">
+</head>
+<body>
+    <div class="has-text-align-center">
+        <h1 class="secondary-font-color">Unit Info</h1>
+        <hr />
+        <br />
+        <div class="item-padding">
+            <a asp-controller="Unit" asp-action="Inventory" asp-route-id="@Model.Id"><h2 class="main-font-color">Inventory</h2></a>
+            <hr />
+            <a asp-controller="Unit" asp-action="Equipment" asp-route-id="@Model.Id"><h2 class="main-font-color">Equipment</h2></a>
+            <hr />
+        </div>
+    </div>
+    
+    <div class="container has-text-align-center item-padding">
+        <div class="container item-padding main-border">
+            <img src="@Model.ImageURL" class="item-padding aligncenter" alt="Unit Image" />
+            <div class="item-padding">
+                <hr style="width:1250px"/>
+                <br />
+                <h3 class="main-font-color">Class : @Model.ClassType</h3>
+                <hr style="width:1300px"/>
+                <br />
+                <h3 class="main-font-color">Race : @Model.Race</h3>
+                <hr style="width:1330px"/>
+                <div class="has-text-align-center item-padding">
+                    <h3 class="main-font-color"><img src="~/images/Icons/Heart.png" alt="Health" />  Health</h3>
+                    <progress class="item-padding aligncenter has-large-font-size" value="@Model.CurrentHP" max="@Model.MaxHP"></progress>
+                    <br />
+                    <hr />
                 </div>
-                <div class="item-padding has-text-align-center">
-                    <progress class="item-padding aligncenter" value="@Model.CurrentMana" max="@Model.MaxMana"></progress>
-                </div>
-                <h3 class="has-text-align-center main-font-color item-padding">Health Regen : @Model.HealthRegen</h3>
-                <h3 class="has-text-align-center main-font-color item-padding">Mana Regen : @Model.ManaRegen</h3>
-                <h3 class="has-text-align-center main-font-color item-padding">Attack Power : @Model.AttackPower</h3>
-                <h3 class="has-text-align-center main-font-color item-padding"><i class="fas fa-hand-sparkles"></i> Magic Power : @Model.MagicPower</h3>
-                <h3 class="has-text-align-center main-font-color item-padding">Armor : @Model.ArmorValue</h3>
-                <h3 class="has-text-align-center main-font-color item-padding">Resistance : @Model.ResistanceValue</h3>
-                <h3 class="has-text-align-center main-font-color item-padding">Level : @Model.Level</h3>
                 <div class="item-padding">
-                    <progress class="item-padding aligncenter" value="@Model.XP" max="@Model.XPCap"></progress>
+                    <h3 class="main-font-color"><img src="~/images/Icons/mana.png" alt="Mana" /> Mana</h3>
+                    <progress class="item-padding aligncenter has-large-font-size progress-bar progress-bar-danger" value="@Model.CurrentMana" max="@Model.MaxMana"></progress>
+                    <br />
+                    <hr />
                 </div>
-                <h3 class="has-text-align-center main-font-color item-padding">Gold : @Model.GoldAmount</h3>
-            </div>
-            <div class="container item-padding">
-                <a asp-controller="Unit" asp-action="Inventory" asp-route-id="@Model.Id"><h2 class="has-text-align-center main-font-color">Inventory</h2></a>
-            </div>
-            <div class="container item-padding">
-                <a asp-controller="Unit" asp-action="Equipment" asp-route-id="@Model.Id"><h2 class="has-text-align-center main-font-color">Equipment</h2></a>
+                <div class="item-padding">
+                    <h3 class="main-font-color"><img src="~/images/Icons/HpRegen.png" alt="Health Regen" width="56" /> Health Regen : @Model.HealthRegen.ToString("f2")</h3>
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <h3 class="main-font-color"><img src="~/images/Icons/ManaRegen.png" alt="Mana Regen" width="57" /> Mana Regen : @Model.ManaRegen.ToString("f2")</h3>
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <h3 class="main-font-color"><img src="~/images/Icons/attack.png" alt="Attack Power" width="56" /> Attack Power : @Model.AttackPower.ToString("f2")</h3>
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <h3 class="main-font-color"><img src="~/images/Icons/Wand.png" alt="Magic Power" width="56" /> Magic Power : @Model.MagicPower.ToString("f2")</h3>
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <h3 class="main-font-color"><img src="~/images/Icons/Helm.png" alt="Armor" width="57" /> Armor : @Model.ArmorValue.ToString("f2")</h3>
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <h3 class="main-font-color"><img src="~/images/Icons/Cap.png" alt="Resistance" width="57" /> Resistance : @Model.ResistanceValue.ToString("f2")</h3>
+                    <hr style="width:1300px" />
+                </div>
+                <div class="item-padding">
+                    <h3 class="main-font-color"><i class="fas fa-certificate main-font-color has-large-font-size"></i> Level : @Model.Level</h3>
+                    <hr style="width:1230px"/>
+                </div>
+                <div class="item-padding">
+                    <h3 class="main-font-color">Experience</h3>
+                    <i class="icofont-hand-thunder icofont-4x main-font-color"></i>
+                    <br />
+                    <progress class="item-padding aligncenter" value="@Model.XP" max="@Model.XPCap"></progress>
+                    <br />
+                    <hr style="width:930px" />
+                </div>
+                <div class="item-padding">
+                    <i class="icofont-coins icofont-3x main-font-color"></i>
+                    <h3 class="has-text-align-center main-font-color item-padding">Gold : @Model.GoldAmount</h3>
+                </div>
             </div>
         </div>
-    </body>
-    </html>
+        <br />
+        <br />
+        <br />
+    </div>
+</body>
+</html>
 

@@ -16,11 +16,11 @@
 
         public double MaxHP { get; set; }
 
-        public int HealthRegen { get; set; }
+        public double HealthRegen { get; set; }
 
         public double MaxMana { get; set; }
 
-        public int ManaRegen { get; set; }
+        public double ManaRegen { get; set; }
 
         public double AttackPower { get; set; }
 

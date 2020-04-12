@@ -7,5 +7,7 @@
         public string Name { get; set; }
 
         public string ImageURL { get; set; }
+
+        public string Slot { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Application.GameContent.Utilities.Generators
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Validators.Equipment;
@@ -17,7 +18,7 @@
 
         public async Task Generate(Hero hero, IFFDbContext context, Monster monster, string zoneName)
         {
-            var stats = new int[] { };
+            var stats = new List<int>();
             int fightingClassStatNumber = this.rng.Next(hero.Level, hero.Level + 5);
             int statNumber = this.rng.Next(0, 10);
             int slotNumber = this.rng.Next(0, 10);
@@ -29,15 +30,15 @@
             {
                 if (statNumber <= 6)
                 {
-                    stats[i] = hero.Level;
+                    stats.Add(hero.Level);
                 }
                 else if (statNumber > 6 && statNumber <= 8)
                 {
-                    stats[i] = hero.Level * 2;
+                    stats.Add(hero.Level * 2);
                 }
                 else
                 {
-                    stats[i] = hero.Level * 3;
+                    stats.Add(hero.Level * 3);
                 }
             }
 

@@ -45,14 +45,13 @@
             <a asp-controller="Battle" asp-action="Command" asp-route-command="Attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack" /></a>
             <a asp-controller="Battle" asp-action="Command" asp-route-command="Defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
             <form asp-controller="Battle" asp-action="Command" asp-route-command="SpellCast" method="get">
-                @foreach (var spell in this.context.Spells.Where(s => s.ClassType == playerClassType))
-                {
-                    <select name="spellName">
+                <select name="spellName">
+                    @foreach (var spell in this.context.Spells.Where(s => s.ClassType == playerClassType))
+                    {
                         <option value="@spell.Name">@spell.Name</option>
-                    </select>
-                    <input type="submit" name="name" value="Cast" />
-                    <br />
-                }
+                    }
+                </select>
+                <input type="submit" name="name" value="Cast" />
             </form>
             <a asp-controller="Battle" asp-action="Command" asp-route-command="Escape">Escape</a>
         </div>
