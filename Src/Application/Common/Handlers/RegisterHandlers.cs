@@ -12,7 +12,6 @@
     using Application.CQ.Admin.Moderation.Feedbacks.Commands.Delete.DeleteFeedbackCommand;
     using Application.CQ.Admin.Moderation.Feedbacks.Commands.Update;
     using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
-    using Application.CQ.Common.Commands;
     using Application.CQ.Forum.Topic.Commands.Create;
     using Application.CQ.Forum.Topic.Commands.Delete;
     using Application.CQ.Forum.Topic.Commands.Update;
@@ -88,7 +87,6 @@
             services.AddScoped<IRequestHandler<CreateItemCommand, string>, CreateItemCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteItemCommand, string>, DeleteItemCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateItemCommand, string>, UpdateItemCommandHandler>();
-            services.AddScoped<IRequestHandler<CustomLogoutCommand, string>, CustomLogoutCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteFeedbackCommand, string>, DeleteFeedbackCommandHandler>();
             services.AddScoped<IRequestHandler<AcceptFeedbackCommand, string>, AcceptFeedbackCommandHandler>();
             services.AddScoped<IRequestHandler<FeedbackTaskDoneCommand, string>, FeedbackTaskDoneCommandHandler>();

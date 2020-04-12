@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="has-text-align-center item-padding main-gradient fade-in">
-        <h1 class="main-font-color">Your Battle Units</h1>
+        <h2 class="main-font-color has-large-font-size">Your Battle Units</h2>
         <br />
         <hr />
         <div class="item-padding ">
@@ -15,9 +15,9 @@
             {
                 if (!unit.IsSelected)
                 {
-                    <form  asp-controller="Unit" class="has-text-align-center" asp-action="Select" method="post">
+                    <form asp-controller="Unit" class="has-text-align-center" asp-action="Select" method="post">
                         <input type="hidden" name="id" value="@unit.Id" />
-                        <input  type="submit" name="name" value="Select" />
+                        <input type="submit" name="name" value="Select" />
                     </form>
                 }
                 else
@@ -25,27 +25,33 @@
                     <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-large-font-size main-font-color"></i></a>
                 }
                 <div class="item-padding">
-                    <a asp-controller="Unit" asp-action="Info" asp-route-id="@unit.Id" class="has-text-align-center"><p class="has-large-font-size">@unit.Name</p></a>
+                    <a asp-controller="Unit" asp-action="Info" asp-route-id="@unit.Id" class="has-text-align-center"><p class="has-large-font-size light-font-color">@unit.Name</p></a>
                     <hr class="has-narrow-width" />
                     <h3><img src="@unit.IconURL" alt="" />@unit.ClassType</h3>
                     <hr class="has-narrow-width" />
-                    <h3><i class="fas fa-certificate"></i>@unit.Level</h3>
+                    <h3><i class="fas fa-certificate main-font-color"></i> @unit.Level</h3>
                     <hr class="has-narrow-width" />
-                    <h3><i class="fas fa-heartbeat"></i>@unit.CurrentHP.ToString("f2") / @unit.MaxHP.ToString("f2")</h3>
+                    <h3><i class="fas fa-heartbeat main-font-color"></i> @unit.CurrentHP.ToString("f2") / @unit.MaxHP.ToString("f2")</h3>
                     <hr class="has-narrow-width" />
-                    <h3><i class="fas fa-bolt"></i>@unit.Energy / 30</h3>
-                    <h3><i class="fas fa-hammer"></i>@unit.ProfessionEnergy / 10</h3>
-                    <h3><i class="fas fa-fist-raised"></i>@unit.PvPEnergy / 15</h3>
+                    <h3><i class="fas fa-bolt main-font-color"></i> @unit.Energy / 30</h3>
+                    <hr class="has-narrow-width" />
+                    <h3><i class="fas fa-hammer main-font-color"></i> @unit.ProfessionEnergy / 10</h3>
+                    <hr class="has-narrow-width" />
+                    <h3><i class="fas fa-fist-raised main-font-color"></i> @unit.PvPEnergy / 15</h3>
+                    <hr class="has-narrow-width" />
 
                     <form asp-controller="Unit" asp-action="Delete" method="post" class="item-padding">
                         <input type="hidden" name="id" value="@unit.Id" />
                         <input type="submit" name="name" value="Delete" />
                     </form>
                 </div>
-                <hr class="item-padding" />
+                <br/>
+                <hr />
             }
         </div>
-        <p class="has-large-font-size main-font-color has-text-align-center"><a asp-controller="Unit" asp-action="Create">Create</a> a new one!</p>
+        <div class="item-padding">
+            <p class="has-large-font-size main-font-color has-text-align-center"><a asp-controller="Unit" asp-action="Create">Create</a> a new one!</p>
+        </div>
     </div>
 </body>
 

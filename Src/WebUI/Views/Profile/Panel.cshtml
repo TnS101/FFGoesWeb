@@ -10,17 +10,20 @@
 <body class="main-gradient">
     <div class="item-padding has-text-align-center fade-in">
         <h2 class="secondary-font-color has-huge-font-size">@Model.UserName</h2>
+        <div class="item-padding">
+
+        </div>
         <hr />
         <div class="item-padding">
             <h2 class="main-font-color has-large-font-size">Social</h2>
             <h3 class="item-padding">Your status is <a asp-controller="Profile" asp-action="Status" class="main-font-color"><i class="@Model.StatusIClass has-huge-font-size main-font-color"></i> Change</a></h3>
             @if (Model.Friends == 1)
             {
-                <h3 class="item-padding">You have made @Model.Friends <a asp-controller="Profile" asp-action="Friends" class="main-font-color"><i class="fas fa-user-friends has-huge-font-size text-color"></i> <span class="main-font-color"> Friend</span></a></h3>
+                <h3 class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All" class="main-font-color"><i class="fas fa-user-friends has-huge-font-size text-color"></i> <span class="main-font-color"> Friend</span></a></h3>
             }
             else
             {
-                <h3 class="item-padding">You have made @Model.Friends <a asp-controller="Profile" asp-action="Friends"><i class="fas fa-user-friends has-huge-font-size main-font-color"></i><span class="main-font-color"> Friends</span></a></h3>
+                <h3 class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All"><i class="fas fa-user-friends has-huge-font-size main-font-color"></i><span class="main-font-color"> Friends</span></a></h3>
             }
             @if (Model.Topics == 1)
             {

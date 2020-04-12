@@ -1,9 +1,6 @@
 ﻿namespace WebUI.Areas.Administrator.Controllers
 {
     using System.Threading.Tasks;
-    using Application.CQ.Admin.Users.Queries;
-    using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
-    using Application.CQ.Common.Commands;
     using Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -36,12 +33,6 @@
         public async Task<ActionResult> ClassCatalog()
         {
             return this.View();
-        }
-
-        [HttpPut]
-        public async Task<ActionResult> Logout()
-        {
-            return this.Redirect(await this.Mediator.Send(new CustomLogoutCommand { }));
         }
     }
 }

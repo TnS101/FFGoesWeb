@@ -23,6 +23,9 @@
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
             var hero = await this.context.Heroes.FindAsync(request.Player.Id);
+
+            int initialGold = hero.GoldAmount;
+
             if (request.Enemy.CurrentHP <= -0.00000000000001)
             {
                 var endOption = new EndOption();
@@ -57,6 +60,8 @@
 
                 await this.context.SaveChangesAsync(cancellationToken);
 
+                hero.GoldAmount = initialGold;
+
                 return GConst.UnitKilled;
             }
             else if (request.YourTurn && request.Enemy.CurrentHP > 0)
@@ -88,6 +93,9 @@
 
                     escapeOption.Escape(request.Player);
                     await this.context.SaveChangesAsync(cancellationToken);
+
+                    hero.GoldAmount = initialGold;
+
                     return GConst.EscapeCommand;
                 }
 

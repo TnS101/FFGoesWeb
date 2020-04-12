@@ -10,19 +10,18 @@
 </head>
 <body>
     <div class="has-text-align-center fade-in">
-        <h1 class="secondary-font-color">Unit Info</h1>
+        <h2 class="secondary-font-color has-large-font-size">Unit Info</h2>
         <hr />
-        <br />
         <div class="item-padding">
-            <a asp-controller="Unit" asp-action="Inventory" asp-route-id="@Model.Id"><h2 class="main-font-color">Inventory</h2></a>
+            <h2><a asp-controller="Unit" asp-action="Inventory" asp-route-id="@Model.Id"><span class="light-font-color">Inventory</span></a></h2>
             <hr />
-            <a asp-controller="Unit" asp-action="Equipment" asp-route-id="@Model.Id"><h2 class="main-font-color">Equipment</h2></a>
+            <h2><a asp-controller="Unit" asp-action="Equipment" asp-route-id="@Model.Id"><span class="light-font-color">Equipment</span></a></h2>
             <hr />
         </div>
     </div>
     
     <div class="container has-text-align-center item-padding">
-        <div class="container item-padding main-border">
+        <div class="container item-padding hero-border">
             <img src="@Model.ImageURL" class="item-padding aligncenter" alt="Unit Image" />
             <div class="item-padding">
                 <hr style="width:1250px"/>

@@ -10,6 +10,9 @@
 <body class="secondary-background-color">
     <div class="container has-text-align-center fade-in">
         <h1 class="secondary-font-color item-padding has-larger-font-size">Monsters</h1>
+        <div class="item-padding">
+        </div>
+        <hr />
         @foreach (var monster in Model.Monsters)
         {
             <div class="main-gradient secondary-background-color" style="padding-top:100px">
@@ -23,7 +26,7 @@
                 </div>
             </div>
 
-            <hr class="secondary-font-color"/>
+            <hr class="secondary-font-color" />
             <br />
         }
     </div>

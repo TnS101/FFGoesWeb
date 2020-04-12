@@ -13087,7 +13087,9 @@ i {
     color: #fcf0e3
 }
 
-
+.light-font-color {
+    color: #fcf0e3
+}
 
 .main-nav-bar {
     background-color: #c39873;
@@ -13147,8 +13149,6 @@ i.text-color:hover {
     animation-name: secondaryIconHover;
     color: #fcf0e3;
 }
-
-.ng
 
 @keyframes secondaryIconHover {
     from
@@ -13211,14 +13211,14 @@ to {
     animation: flip-vertical-fwd 3s cubic-bezier(.175,.885,.32,1.275) infinite both
 }
 
-.main-border {
+.hero-border {
     border-top: 60px;
     border-top-style: solid;
     border-radius: 1200px;
-    border-top-color: #797e8b;
+    border-top-color: #e2c9b4;
     border-bottom: 60px;
     border-bottom-style: solid;
-    border-bottom-color: #797e8b;
+    border-bottom-color: #e2c9b4;
 }
 
 .has-narrow-width {
@@ -13240,8 +13240,8 @@ to {
 }
 
 rotate-vert-center {
-    -webkit-animation: rotate-vert-center 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
-    animation: rotate-vert-center 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+    -webkit-animation: rotate-vert-center 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+    animation: rotate-vert-center 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
 }
 
 @-webkit-keyframes rotate-vert-center {
@@ -13291,4 +13291,12 @@ rotate-vert-center {
     100% {
         opacity: 1;
     }
+}
+
+.topic-content-border {
+    border: 15px;
+    border-color: #fcf0e2;
+    border-style: solid;
+    border-radius: 80px;
+    background-color: #fcf3e5;
 }

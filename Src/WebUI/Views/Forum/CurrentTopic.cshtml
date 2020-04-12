@@ -8,33 +8,40 @@
     <partial name="_ForumNavBar">
 </head>
 <body>
-    <div class="has-text-align-center fade-in">
-        <h1>@Model.Title</h1>
-        <div class="item-padding has-text-align-center">
-            <h2 class="main-font-color">@Model.Content</h2>
-            <h3 class="main-font-color">@Model.CreateOn.Date</h3>
-        </div>
-        <div class="item-margin">
-            @if (Model.Comments.Count() == 0)
-            {
-                <h2 class="main-font-color">No comments yet... Be the first to write <a asp-controller="Comment" asp-action="Create" asp-route-id="@Model.Id">one</a></h2>
-            }
-            else
-            {
-                @foreach (var comment in Model.Comments)
+    <div class="has-text-align-center fade-in item-padding">
+        <h2 class="has-large-font-size">@Model.Title</h2>
+        <div class="item-padding">
+            <hr />
+            <div class="item-padding container topic-content-border">
+                <h2 class="main-font-color">@Model.Content</h2>
+            </div>
+            <div class="item-padding">
+                <h3 class="main-font-color">Posted on @Model.CreateOn</h3>
+            </div>
+            <div class="item-margin">
+                @if (Model.Comments.Count() == 0)
                 {
+                    <h2 class="main-font-color">No comments yet... Be the first to write <a asp-controller="Comment" asp-action="Create" asp-route-id="@Model.Id">one</a></h2>
+                }
+                else
+                {
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <div class="item-padding">
+                            <p class="main-font-color has-medium-font-size"><a asp-controller="User" data-ajax="true" asp-action="Profile" asp-route-id="@comment.UserId"></a></p>
+                            <p class="main-font-color has-medium-font-size">@comment.Content</p>
+                            <a asp-controller="Comment" asp-action="Like" asp-route-id="@comment.Id"><i class="fas fa-thumbs-up has-large-font-size main-font-color"></i></a>@comment.Likes <a asp-controller="Comment" asp-action="Replies"><i class="fas fa-comments has-large-font-size main-font-color"></i></a>@comment.Replies.Count
+                            <div class="item-padding"></div>
+                            <hr />
+                        </div>
+                    }
                     <div class="item-padding">
-                        <p class="main-font-color has-medium-font-size"><a asp-controller="User" data-ajax="true" asp-action="Profile" asp-route-id="@comment.UserId"></a></p>
-                        <p class="main-font-color has-medium-font-size">@comment.Content</p>
-                        <a asp-controller="Comment" asp-action="Like" asp-route-id="@comment.Id"><i class="fas fa-thumbs-up has-medium-font-size"></i></a>@comment.Likes <a asp-controller="Comment" asp-action="Replies"><i class="fas fa-comments has-medium-font-size"></i></a>@comment.Replies.Count
-                        <hr />
+                        <a asp-controller="Comment" asp-action="Create" asp-route-id="@Model.Id"><p class="has-large-font-size main-font-color">Leave another Coment?</p></a>
                     </div>
                 }
-                <div class="item-padding">
-                    <a asp-controller="Comment" asp-action="Create" asp-route-id="@Model.Id"><p class="has-large-font-size main-font-color">Leave a Coment?</p></a>
-                </div>
-            }
+            </div>
         </div>
+
     </div>
 </body>
 </html>

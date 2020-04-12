@@ -24,9 +24,9 @@
     </script>
 </head>
 <body>
-    <div id="page" class="fade-in">
+    <div id="page" class="fade-in item-padding">
         <header>
-            <div>
+            <div class="item-padding">
                 <h1 class="site-title"><a asp-controller="Home" asp-action="Index"><span class="secondary-font-color">Final Fantasy Tryout</span></a></h1>
                 @if (!Model.Identity.IsAuthenticated)
                 {
@@ -38,7 +38,7 @@
                 {
                     <div class="container">
                         <h1 class="main-font-color has-text-align-center">Final Fantasy Tryout is an individual project by Hristo Todorov.</h1>
-                        <h2 class="main-font-color has-text-align-center">The game is very simple : Attack, Endure, Win!</h2>
+                        <h2 class="main-font-color has-text-align-center">The Game rules are very simple : Attack, Endure, Win!</h2>
                     </div>
                 }
 
