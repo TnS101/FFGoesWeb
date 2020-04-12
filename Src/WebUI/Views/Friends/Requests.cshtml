@@ -9,81 +9,81 @@
     <partial name="_SocialNavBar">
 </head>
 <body>
-    @if (Model.FriendRequests.Count() > 0)
-    {
-        <h1 class="has-text-align-center secondary-font-color">Your Current Friend Requests</h1>
-        <br />
-        <div class="item-padding has-text-align-center">
-            @foreach (var friendRequest in Model.FriendRequests)
-            {
-                if (DateTime.UtcNow.Minute - friendRequest.SentOn.Minute < 1)
+    <div class="has-text-align-center fade-in">
+        @if (Model.FriendRequests.Count() > 0)
+        {
+            <h1 class="secondary-font-color">Your Current Friend Requests</h1>
+            <br />
+            <div class="item-padding has-text-align-center">
+                @foreach (var friendRequest in Model.FriendRequests)
                 {
-                    <p class="main-font-color has-large-font-size">@friendRequest.SenderName has sent you a Friend Request just now.</p>
-                }
-                else if (DateTime.UtcNow.Hour - friendRequest.SentOn.Hour < 1)
-                {
-                    int difference = DateTime.UtcNow.Minute - friendRequest.SentOn.Minute;
+                    if (DateTime.UtcNow.Minute - friendRequest.SentOn.Minute < 1)
+                    {
+                        <p class="main-font-color has-large-font-size">@friendRequest.SenderName has sent you a Friend Request just now.</p>
+                    }
+                    else if (DateTime.UtcNow.Hour - friendRequest.SentOn.Hour < 1)
+                    {
+                        int difference = DateTime.UtcNow.Minute - friendRequest.SentOn.Minute;
 
-                    <p class="main-font-color has-large-font-size">
-                        @friendRequest.SenderName has sent you a Friend Request @difference minutes ago.
-                    </p>
+                        <p class="main-font-color has-large-font-size">
+                            @friendRequest.SenderName has sent you a Friend Request @difference minutes ago.
+                        </p>
+                    }
+                    else if (DateTime.UtcNow.Day - friendRequest.SentOn.Day < 1)
+                    {
+                        int difference = DateTime.UtcNow.Day - friendRequest.SentOn.Day;
+                        <p class="main-font-color has-large-font-size">
+                            @friendRequest.SenderName has sent you a Friend Request @difference hours ago.
+                        </p>
+                    }
+                    else if (DateTime.UtcNow.Day - friendRequest.SentOn.Day == 1)
+                    {
+                        <p class="main-font-color has-large-font-size">
+                            @friendRequest.SenderName has sent you a Friend Request yesterday.
+                        </p>
+                    }
+                    else if (DateTime.UtcNow.Day - friendRequest.SentOn.Day > 1)
+                    {
+                        int difference = DateTime.UtcNow.Day - friendRequest.SentOn.Day;
+                        <p class="main-font-color has-large-font-size">
+                            @friendRequest.SenderName has sent you a Friend Request @difference days ago.
+                        </p>
+                    }
+                    else if (DateTime.UtcNow.Month - friendRequest.SentOn.Month == 1)
+                    {
+                        <p class="main-font-color has-large-font-size">
+                            @friendRequest.SenderName has sent you a Friend Request a month ago.
+                        </p>
+                    }
+                    else if (DateTime.UtcNow.Month - friendRequest.SentOn.Month > 1)
+                    {
+                        int difference = DateTime.UtcNow.Month - friendRequest.SentOn.Month;
+                        <p class="main-font-color has-large-font-size">
+                            @friendRequest.SenderName has sent you a Friend Request @difference months ago.
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="main-font-color has-large-font-size">
+                            @friendRequest.SenderName has sent you a Friend Request a long time ago.
+                        </p>
+                    }
+                    <form asp-controller="Friends" asp-action="AcceptRequest" method="post">
+                        <input type="text" name="requestId" value="@friendRequest.Id" />
+                        <input type="submit" name="button" value="Accept" />
+                    </form>
+                    <form asp-controller="Friends" asp-action="Delete" method="delete">
+                        <input type="text" name="requestId" value="@friendRequest.Id" />
+                        <input type="submit" name="button" value="Delete" />
+                    </form>
                 }
-                else if (DateTime.UtcNow.Day - friendRequest.SentOn.Day < 1)
-                {
-                    int difference = DateTime.UtcNow.Day - friendRequest.SentOn.Day;
-                    <p class="main-font-color has-large-font-size">
-                        @friendRequest.SenderName has sent you a Friend Request @difference hours ago.
-                    </p>
-                }
-                else if (DateTime.UtcNow.Day - friendRequest.SentOn.Day == 1)
-                {
-                    <p class="main-font-color has-large-font-size">
-                        @friendRequest.SenderName has sent you a Friend Request yesterday.
-                    </p>
-                }
-                else if (DateTime.UtcNow.Day - friendRequest.SentOn.Day > 1)
-                {
-                    int difference = DateTime.UtcNow.Day - friendRequest.SentOn.Day;
-                    <p class="main-font-color has-large-font-size">
-                        @friendRequest.SenderName has sent you a Friend Request @difference days ago.
-                    </p>
-                }
-                else if (DateTime.UtcNow.Month - friendRequest.SentOn.Month == 1)
-                {
-                    <p class="main-font-color has-large-font-size">
-                        @friendRequest.SenderName has sent you a Friend Request a month ago.
-                    </p>
-                }
-                else if (DateTime.UtcNow.Month - friendRequest.SentOn.Month > 1)
-                {
-                    int difference = DateTime.UtcNow.Month - friendRequest.SentOn.Month;
-                    <p class="main-font-color has-large-font-size">
-                        @friendRequest.SenderName has sent you a Friend Request @difference months ago.
-                    </p>
-                }
-                else
-                {
-                    <p class="main-font-color has-large-font-size">
-                        @friendRequest.SenderName has sent you a Friend Request a long time ago.
-                    </p>
-                }
-                <form asp-controller="Friends" asp-action="AcceptRequest" method="post">
-                    <input type="text" name="requestId" value="@friendRequest.Id" />
-                    <input type="submit" name="button" value="Accept" />
-                </form>
-                <form asp-controller="Friends" asp-action="Delete" method="delete">
-                    <input type="text" name="requestId" value="@friendRequest.Id" />
-                    <input type="submit" name="button" value="Delete" />
-                </form>
-            }
-        </div>
-    }
-    else
-    {
-        <h1 class="has-text-align-center secondary-font-color">You currently don't have any Friend Requests</h1>
-    }
-    <div>
-
+            </div>
+        }
+        else
+        {
+            <h1 class="secondary-font-color">You currently don't have any Friend Requests</h1>
+        }
     </div>
+
 </body>
 </html>

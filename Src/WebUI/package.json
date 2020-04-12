@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "name": "ff",
+  "private": true,
+  "devDependencies": {
+  },
+  "dependencies": {
+    "angular-animate": "1.7.9"
+  }
+}

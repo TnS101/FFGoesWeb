@@ -6,8 +6,10 @@
     <partial name="_NavBar">
 </head>
 <body>
-    <div class="has-text-align-center item-padding main-gradient">
-        <h1>Your Battle Units</h1>
+    <div class="has-text-align-center item-padding main-gradient fade-in">
+        <h1 class="main-font-color">Your Battle Units</h1>
+        <br />
+        <hr />
         <div class="item-padding ">
             @foreach (var unit in Model.Heroes)
             {
@@ -20,7 +22,7 @@
                 }
                 else
                 {
-                    <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-large-font-size"></i></a>
+                    <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-large-font-size main-font-color"></i></a>
                 }
                 <div class="item-padding">
                     <a asp-controller="Unit" asp-action="Info" asp-route-id="@unit.Id" class="has-text-align-center"><p class="has-large-font-size">@unit.Name</p></a>

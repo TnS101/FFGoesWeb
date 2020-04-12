@@ -8,12 +8,12 @@
     <partial name="_SocialNavBar">
 </head>
 <body>
-    <div>
+    <div class="has-text-align-center fade-in">
         @if (Model.Users.Count() > 0)
         {
             foreach (var friend in Model.Users)
             {
-                <div class="has-text-align-center item-padding">
+                <div class="item-padding">
                     <p class="main-font-color has-large-font-size"><a asp-controller="Friends" asp-action="ViewProfile" asp-route-id="@friend.Id">@friend.UserName</a></p>
                     <a asp-controller="Message" asp-action="All" asp-route-id="@friend.Id"><i class="far fa-comment-alt has-large-font-size"></i></a>
                     <form asp-controller="Friends" asp-action="Remove" method="delete">

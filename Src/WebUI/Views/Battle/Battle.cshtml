@@ -4,15 +4,13 @@
     ViewData["Title"] = "Battle";
 }
 <head>
-    <meta http-equiv="refresh" content="1.2;url=https://localhost:44312/Battle/Command">
+    <meta http-equiv="refresh" content="1.3;url=https://localhost:44312/Battle/Command">
+    <partial name="_NavBar">
 </head>
 <body>
-    <partial name="_NavBar">
-        <div class="container has-text-align-center">
-            <h2 class="site-title">Battle started!</h2>
-            <p class="site-title">You are fighting against : @Model</p>
-        </div>
-        <form action="/" method="post">
-        </form>
+    <div class="container has-text-align-center fade-in">
+        <h2 class="site-title">Battle started!</h2>
+        <p class="site-title">You are fighting against : @Model</p>
+    </div>
 </body>
 <partial name="_Footer">

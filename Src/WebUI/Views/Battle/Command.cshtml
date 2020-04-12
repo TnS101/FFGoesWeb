@@ -22,38 +22,40 @@
     <title>Command</title>
 </head>
 <body>
-    <h2 style="text-align:center">@playerName  vs  @enemyName</h2>
-    <div class="action-div">
-        <img src="@playerImage" alt="Player" width="80" height="80" />
-        <img src="@imagePath" alt="Enemy" style="padding-left:250px" />
-        <br />
-
-        <progress id="playerDamage" value="@double.Parse(playerAttack)" hidden></progress>
-        <progress id="enemyDamage" value="@double.Parse(enemyAttack)" hidden></progress>
-        <br />
-        <div>
-            <progress class="player-healthBar" id="playerHealth" value="@double.Parse(playerCurrentHP)" max="@double.Parse(playerMaxHP)"></progress>
-            <progress class="healthBar" id="enemyHealth" value="@double.Parse(enemyCurrentHP)" max="@double.Parse(enemyMaxHP)"></progress>
+    <div class="fade-in">
+        <h2 style="text-align:center">@playerName  vs  @enemyName</h2>
+        <div class="action-div">
+            <img src="@playerImage" alt="Player" width="80" height="80" />
+            <img src="@imagePath" alt="Enemy" style="padding-left:250px" />
             <br />
-            <br />
-            <progress class="player-manaBar" id="playerMana" value="@double.Parse(playerCurrentMana)" max="@double.Parse(playerMaxMana)"></progress>
-            <progress class="manaBar" id="enemyMana" value="@double.Parse(enemyCurrentMana)" max="@double.Parse(enemyMaxMana)"></progress>
-            <p class="versus">⚔️</p>
 
-        </div>
-        <div class="container battle-container">
-            <a asp-controller="Battle" asp-action="Command" asp-route-command="Attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack" /></a>
-            <a asp-controller="Battle" asp-action="Command" asp-route-command="Defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
-            <form asp-controller="Battle" asp-action="Command" asp-route-command="SpellCast" method="get">
-                <select name="spellName">
-                    @foreach (var spell in this.context.Spells.Where(s => s.ClassType == playerClassType))
-                    {
-                        <option value="@spell.Name">@spell.Name</option>
-                    }
-                </select>
-                <input type="submit" name="name" value="Cast" />
-            </form>
-            <a asp-controller="Battle" asp-action="Command" asp-route-command="Escape">Escape</a>
+            <progress id="playerDamage" value="@double.Parse(playerAttack)" hidden></progress>
+            <progress id="enemyDamage" value="@double.Parse(enemyAttack)" hidden></progress>
+            <br />
+            <div>
+                <progress class="player-healthBar" id="playerHealth" value="@double.Parse(playerCurrentHP)" max="@double.Parse(playerMaxHP)"></progress>
+                <progress class="healthBar" id="enemyHealth" value="@double.Parse(enemyCurrentHP)" max="@double.Parse(enemyMaxHP)"></progress>
+                <br />
+                <br />
+                <progress class="player-manaBar" id="playerMana" value="@double.Parse(playerCurrentMana)" max="@double.Parse(playerMaxMana)"></progress>
+                <progress class="manaBar" id="enemyMana" value="@double.Parse(enemyCurrentMana)" max="@double.Parse(enemyMaxMana)"></progress>
+                <p class="versus">⚔️</p>
+
+            </div>
+            <div class="container battle-container">
+                <a asp-controller="Battle" asp-action="Command" asp-route-command="Attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack" /></a>
+                <a asp-controller="Battle" asp-action="Command" asp-route-command="Defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
+                <form asp-controller="Battle" asp-action="Command" asp-route-command="SpellCast" method="get">
+                    <select name="spellName">
+                        @foreach (var spell in this.context.Spells.Where(s => s.ClassType == playerClassType))
+                        {
+                            <option value="@spell.Name">@spell.Name</option>
+                        }
+                    </select>
+                    <input type="submit" name="name" value="Cast" />
+                </form>
+                <a asp-controller="Battle" asp-action="Command" asp-route-command="Escape">Escape</a>
+            </div>
         </div>
     </div>
     <partial name="_Footer">

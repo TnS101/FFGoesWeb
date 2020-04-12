@@ -8,45 +8,46 @@
     <partial name="_WorldNavBar">
 </head>
 <body>
-    @if (Model.Heroes.Count() == 0)
-    {
-        <div class="has-text-align-center item-padding">
-            <h2 class="secondary-font-color">Please, <a asp-controller="Unit" asp-action="Create">Create</a> a unit first before starting your adventure!</h2>
-        </div>
-
-    }
-    else if (!Model.Heroes.Any(u => u.IsSelected))
-    {
-        <div class="has-text-align-center item-padding">
-            <h2 class="secondary-font-color">Please, <a asp-controller="Unit" asp-action="All">Select</a> a unit first before starting your adventure!</h2>
-        </div>
-    }
-    else
-    {
-        if (Model.Heroes.FirstOrDefault(h => h.IsSelected).CurrentHP == 0)
+    <div class="fade-in">
+        @if (Model.Heroes.Count() == 0)
         {
             <div class="has-text-align-center item-padding">
-                <h2 class="secondary-font-color">
-                    Your Hero is heavily injured! Please, visit the <a asp-controller="Shop" asp-action="Home">Shop</a>
-                    or the <a asp-controller="Auction" asp-action="Home">Auction</a> to buy Healing Items, or Select a different
-                    <a asp-controller="Unit" asp-action="All">Hero</a>.
-                </h2>
+                <h2 class="secondary-font-color">Please, <a asp-controller="Unit" asp-action="Create">Create</a> a unit first before starting your adventure!</h2>
+            </div>
 
+        }
+        else if (!Model.Heroes.Any(u => u.IsSelected))
+        {
+            <div class="has-text-align-center item-padding">
+                <h2 class="secondary-font-color">Please, <a asp-controller="Unit" asp-action="All">Select</a> a unit first before starting your adventure!</h2>
             </div>
         }
         else
         {
-            <div class="has-text-align-center item-padding">
-                <h2 class="secondary-font-color">Welcome to the World of FF! Lets start walking around!</h2>
-                <div class="item-margin">
-                    <a asp-controller="World" asp-action="Explore"><i style="font-size:80px" class="fas fa-shoe-prints has-huge-font-size"></i></a>
-                </div>
-            </div>
-        }
-    }
-    <div class="item-margin">
-        <partial name="_Footer">
-    </div>
+            if (Model.Heroes.FirstOrDefault(h => h.IsSelected).CurrentHP == 0)
+            {
+                <div class="has-text-align-center item-padding">
+                    <h2 class="secondary-font-color">
+                        Your Hero is heavily injured! Please, visit the <a asp-controller="Shop" asp-action="Home">Shop</a>
+                        or the <a asp-controller="Auction" asp-action="Home">Auction</a> to buy Healing Items, or Select a different
+                        <a asp-controller="Unit" asp-action="All">Hero</a>.
+                    </h2>
 
+                </div>
+            }
+            else
+            {
+                <div class="has-text-align-center item-padding">
+                    <h2 class="secondary-font-color">Welcome to the World of FF! Lets start walking around!</h2>
+                    <div class="item-margin">
+                        <a asp-controller="World" asp-action="Explore"><i style="font-size:80px" class="fas fa-shoe-prints has-huge-font-size"></i></a>
+                    </div>
+                </div>
+            }
+        }
+        <div class="item-margin">
+            <partial name="_Footer">
+        </div>
+    </div>
 </body>
 </html>

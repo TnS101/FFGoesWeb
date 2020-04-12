@@ -8727,7 +8727,7 @@ span.mini-account .form-row-last {
     line-height: 32px;
     margin-top: -7px;
     position: fixed;
-    bottom : 0
+    bottom: 0
 }
 
 #footer-menu li {
@@ -12158,9 +12158,8 @@ pre.wp-block-verse {
     font-size: 16px
 }
 
-.has-normal-font-size
-{
-    font-size:28px;
+.has-normal-font-size {
+    font-size: 28px;
 }
 
 .has-medium-font-size {
@@ -13034,7 +13033,7 @@ hr {
 
 .site-background {
     background-color: #2d364c;
-    background-repeat:repeat-y;
+    background-repeat: repeat-y;
 }
 
 .image-name {
@@ -13059,18 +13058,20 @@ hr {
 
 
 
-.item-padding
-{
+.item-padding {
     padding-top: 30px;
 }
 
-.nav-font-size
-{
-    font-size:30px;
+.nav-font-size {
+    font-size: 30px;
 }
 
 .secondary-font-color {
     color: #2b5568
+}
+
+.text-color {
+    color: #2f3032;
 }
 
 .main-font-color {
@@ -13079,7 +13080,7 @@ hr {
 
 .primary-background-color {
     background-color: #2d364c;
-    background-repeat:repeat-y
+    background-repeat: repeat-y
 }
 
 i {
@@ -13129,10 +13130,45 @@ i:hover {
     color: #346175;
 }
 
+i.secondary-font-color:hover {
+    animation: 0.8s;
+    animation-name: secondaryIconHover;
+    color: #fcf0e3;
+}
+
+i.main-font-color:hover {
+    animation: 0.8s;
+    animation-name: secondaryIconHover;
+    color: #fcf0e3;
+}
+
+i.text-color:hover {
+    animation: 0.8s;
+    animation-name: secondaryIconHover;
+    color: #fcf0e3;
+}
+
+.ng
+
+@keyframes secondaryIconHover {
+    from
+
+{
+    color: #346175;
+    opacity: 0.8;
+}
+
+to {
+    color: #fcf0e3;
+    opacity: 1;
+}
+
+}
+
 @keyframes iconHover {
     from {
         color: #fcf0e3;
-        opacity: 0.2;
+        opacity: 0.8;
     }
 
     to {
@@ -13142,9 +13178,8 @@ i:hover {
 }
 
 
-.item-margin
-{
-    margin-top:80px
+.item-margin {
+    margin-top: 80px
 }
 
 @-webkit-keyframes flip-vertical-fwd {
@@ -13186,10 +13221,10 @@ i:hover {
     border-bottom-color: #797e8b;
 }
 
-.has-narrow-width
-{
-    width:200px;
+.has-narrow-width {
+    width: 200px;
 }
+
 @media screen and (max-width: 500px) {
     .main-nav-bar li {
         float: none;
@@ -13201,7 +13236,7 @@ i:hover {
 
 .secondary-background-color {
     background-color: #bdc0c6;
-    background-repeat:round
+    background-repeat: round
 }
 
 rotate-vert-center {
@@ -13230,5 +13265,30 @@ rotate-vert-center {
     100% {
         -webkit-transform: rotateY(360deg);
         transform: rotateY(360deg);
+    }
+}
+
+.fade-in {
+    -webkit-animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

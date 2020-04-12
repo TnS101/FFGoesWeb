@@ -7,13 +7,15 @@
     <partial name="_SocialNavBar">
 </head>
 <body>
-    <h1 class="has-text-align-center secondary-font-color">Welcome to your Social Panel!</h1>
-    <div class="has-text-align-center item-padding">
-        <br />
-        <p class="main-font-color has-large-font-size">
-            Here you can track your Social Activities, such as <a asp-controller="Friends" asp-action="Requests">Friend Requests</a>,
-            <a asp-controller="Notification" asp-action="All">Notifications</a> and <a asp-controller="Friends" asp-action="All">Messages</a>.
-        </p>
+    <div class="fade-in">
+        <h1 class="has-text-align-center secondary-font-color">Welcome to your Social Panel!</h1>
+        <div class="has-text-align-center item-padding">
+            <br />
+            <p class="main-font-color has-large-font-size">
+                Here you can track your Social Activities, such as <a asp-controller="Friends" asp-action="Requests">Friend Requests</a>,
+                <a asp-controller="Notification" asp-action="All">Notifications</a> and <a asp-controller="Friends" asp-action="All">Messages</a>.
+            </p>
+        </div>
     </div>
 </body>
 </html>
