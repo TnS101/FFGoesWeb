@@ -9,17 +9,19 @@
     <partial name="_NavBar">
 </head>
 <body>
-
-    <div class="has-text-align-center">
-        <div class="modal-header">
-            <h1 class="has-text-align-center">Statuses</h1>
+    <div class="has-text-align-center fade-in">
+        <div class="modal-header item-padding">
+            <h1 class="has-text-align-center has-large-font-size main-font-color">Statuses</h1>
+            <div class="item-padding">
+                <hr />
+            </div>
+            <ul id="primary-menu" style="list-style:none; padding-left:340px">
+                @foreach (var status in Model.Statuses)
+                {
+                    <li class="item-padding"><a asp-controller="Profile" asp-action="UpdateStatus" asp-route-id="@status.Id"><i class="@status.IClass has-huge-font-size main-font-color"></i></a></li>
+                }
+            </ul>
         </div>
-        <ul id="site-usp" style="list-style:none;">
-            @foreach (var status in Model.Statuses)
-            {
-                <li class="item-padding"><a asp-controller="Profile" asp-action="UpdateStatus" asp-route-id="@status.Id"> <i class="@status.IClass has-huge-font-size"></i></a></li>
-            }
-        </ul>
     </div>
 </body>
 
