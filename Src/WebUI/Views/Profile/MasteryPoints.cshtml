@@ -9,11 +9,13 @@
     <partial name="_NavBar">
 </head>
 <body>
-    <div class="fade-in">
+    <div class="fade-in item-padding">
         @if (Model.Heroes.Any(h => h.Mastery > 0))
         {
-            <h1 class="has-text-align-center secondary-font-color">Your Heroes and their Mastery Points.</h1>
-            <br />
+            <h2 class="has-text-align-center secondary-font-color has-large-font-size">Your Heroes and their Mastery Points</h2>
+            <div class="item-padding">
+                <hr />
+            </div>
             foreach (var hero in Model.Heroes.OrderByDescending(h => h.Mastery))
             {
                 <div class="has-text-align-center has-narrow-width">
@@ -27,16 +29,18 @@
         }
         else
         {
-            <h1 class="has-text-align-center secondary-font-color">You currently do not have Mastery Points.</h1>
-            <br />
+            <h2 class="has-text-align-center secondary-font-color has-large-font-size">You currently do not have Mastery Points.</h2>
+            <div class="item-padding">
+                <hr />
+            </div>
             <div class="item-padding has-text-align-center">
-                <h2 class="main-font-color">Mastery Points are achieved by leveling up your <a asp-controller="Unit" asp-action="All">Heroes</a>.</h2>
+                <h2 class="main-font-color">Mastery Points are achieved by leveling up your <a asp-controller="Unit" asp-action="All"><em class="main-font-color">Heroes.</em></a></h2>
             </div>
             <div class="item-padding has-text-align-center">
                 <h2 class="main-font-color">Leveling up a Hero to level 10 grants you 100 Mastery Points. Each level after grants you 15 points.</h2>
             </div>
             <div class="item-padding has-text-align-center">
-                <h2 class="main-font-color">Every step of your progress will be displayed here. Happy <a asp-controller="World" asp-action="Home">Farming</a>!</h2>
+                <h2 class="main-font-color">Every step of your progress will be displayed here. Happy <a asp-controller="World" asp-action="Home"><em class="main-font-color">Farming!</em></a></h2>
             </div>
         }
         <div class="item-padding has-text-align-center">

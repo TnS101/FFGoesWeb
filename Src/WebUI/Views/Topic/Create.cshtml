@@ -1,42 +1,47 @@
 ﻿@model string[]
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <partial name="_ForumNavBar">
-    </head>
-    <body>
-        <div class="item-padding fade-in">
-            <form asp-controller="Topic" asp-action="Create" method="post">
-                <div class="item-padding">
-                    <input type="text" name="title" value="" placeholder="Title..." />
-                </div>
-                <div class="item-padding has-text-align-center">
-                    <select name="category">
-                        <option value="Game">Game</option>
-                        <option value="Social">Social</option>
-                        <option value="Complain">Complain</option>
-                        <option value="Ideas">Ideas</option>
-                    </select>
-                </div>
-                
-                <div class="item-padding">
-                    <input type="text" name="content" value="" placeholder="Your thoughts..." />
-                </div>
-                <div class="item-padding has-text-align-center">
-                    <input type="submit" name="name" value="Create" />
-                </div>
-                <div class="item-padding">
-                </div>
-                <hr />
-            </form>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <partial name="_ForumNavBar">
+</head>
+<body>
+    <div class="item-padding has-text-align-center fade-in">
+        <h2 class="has-large-font-size main-font-color">Show others what you think</h2>
+        <div class="item-padding">
+            <hr />
         </div>
-
-        <div class="item-padding has-text-align-center">
+        <div class="item-padding has-text-align-center fade-out">
             @if (Model != null)
             {
                 <p class="main-font-color has-large-font-size">@Model[1]</p>
             }
         </div>
-        
-    </body>
-    </html>
+        <form asp-controller="Topic" asp-action="Create" method="post">
+            <div class="item-padding">
+                <input type="text" name="title" value="" placeholder="Title..." />
+            </div>
+            <div class="item-padding has-text-align-center">
+                <select name="category" class="has-narrow-width">
+                    <option value="Game">Game</option>
+                    <option value="Social">Social</option>
+                    <option value="Complain">Complain</option>
+                    <option value="Ideas">Ideas</option>
+                </select>
+            </div>
+
+            <div class="item-padding">
+                <textarea rows="10" cols="100" name="content" class="topic-content-input" placeholder="Your thoughts"></textarea>
+            </div>
+            <div class="item-padding has-text-align-center">
+                <input type="submit" name="name" value="Create" />
+            </div>
+            <div class="item-padding">
+            </div>
+            <hr />
+        </form>
+    </div>
+
+    
+
+</body>
+</html>

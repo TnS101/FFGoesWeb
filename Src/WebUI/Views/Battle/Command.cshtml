@@ -20,13 +20,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Command</title>
+    <partial name="_WorldNavBar">
+        <script>
+            $(document).ready(function () {
+                $('#attack1').click(function () {
+                    $('#hero').toggleClass('roll-in-bottom');
+                    $('#enemy').toggleClass('jello').delay(500);
+                    $('#enemy').toggleClass('aligncenter');
+                });
+            })
+
+        </script>
 </head>
 <body>
-    <div class="fade-in">
+    <div id="page" class="fade-in">
         <h2 style="text-align:center">@playerName  vs  @enemyName</h2>
         <div class="action-div">
-            <img src="@playerImage" alt="Player" width="80" height="80" />
-            <img src="@imagePath" alt="Enemy" style="padding-left:250px" />
+            <img src="@playerImage" alt="Player" width="80" height="80" id="hero" />
+            <img src="@imagePath" alt="Enemy" style="padding-left:250px" id="enemy" />
             <br />
 
             <progress id="playerDamage" value="@double.Parse(playerAttack)" hidden></progress>
@@ -43,8 +54,8 @@
 
             </div>
             <div class="container battle-container">
-                <a asp-controller="Battle" asp-action="Command" asp-route-command="Attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack" /></a>
-                <a asp-controller="Battle" asp-action="Command" asp-route-command="Defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
+                <a asp-controller="Battle" asp-action="Command" asp-route-command="Attack" id="attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack"/></a>
+                <a asp-controller="Battle" asp-action="Command" asp-route-command="Defend" id="defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
                 <form asp-controller="Battle" asp-action="Command" asp-route-command="SpellCast" method="get">
                     <select name="spellName">
                         @foreach (var spell in this.context.Spells.Where(s => s.ClassType == playerClassType))
@@ -52,7 +63,8 @@
                             <option value="@spell.Name">@spell.Name</option>
                         }
                     </select>
-                    <input type="submit" name="name" value="Cast" />
+                    <input type="button" name="name" value="A test" id="attack1" />
+                    <input type="submit" name="name" value="Cast" id="spell" />
                 </form>
                 <a asp-controller="Battle" asp-action="Command" asp-route-command="Escape">Escape</a>
             </div>

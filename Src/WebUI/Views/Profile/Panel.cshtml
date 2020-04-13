@@ -6,17 +6,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" class="main-gradient">
 <head>
     <partial name="_NavBar">
+        <script>
+
+            
+
+        </script>
 </head>
 <body class="main-gradient">
     <div class="item-padding has-text-align-center fade-in">
         <h2 class="secondary-font-color has-huge-font-size">@Model.UserName</h2>
         <div class="item-padding">
-
         </div>
         <hr />
         <div class="item-padding">
             <h2 class="main-font-color has-large-font-size">Social</h2>
             <h3 class="item-padding">Your status is <a asp-controller="Profile" asp-action="Status" class="main-font-color"><i class="@Model.StatusIClass has-huge-font-size main-font-color"></i> Change</a></h3>
+            <input type="button" name="name" value="" id="button" />
+            <div class="item-padding">
+                <ul id="statuses">
+
+                </ul>
+            </div>
             @if (Model.Friends == 1)
             {
                 <h3 class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All" class="main-font-color"><i class="fas fa-user-friends has-huge-font-size text-color"></i> <span class="main-font-color"> Friend</span></a></h3>
@@ -33,42 +43,39 @@
             {
                 <h3 class="item-padding">You have created @Model.Topics <a asp-controller="Profile" asp-action="Topics" class="main-font-color"><i class="fas fa-stream has-huge-font-size main-font-color"></i> Topics</a></h3>
             }
-        <br />
+            <br />
             <hr />
         </div>
         <div class="item-padding">
             <h2 class="main-font-color has-large-font-size">Game</h2>
             @if (Model.Units == 1)
             {
-                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Unit" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised has-huge-font-size"></i>Hero</a></h3>
+                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Unit" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Hero</a></h3>
             }
             else
             {
-                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Unit" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised has-huge-font-size"></i>Heroes</a></h3>
+                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Unit" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Heroes</a></h3>
             }
             @if (Model.MasteryPoints == 1)
             {
-                <h3 class="item-padding">You have achieved @Model.MasteryPoints <a asp-controller="Profile" asp-action="MasteryPoints" class="main-font-color"><i class="fas fa-meteor icon-color has-huge-font-size"></i>Mastery Point</a></h3>
+                <h3 class="item-padding">You have achieved @Model.MasteryPoints <a asp-controller="Profile" asp-action="MasteryPoints" class="main-font-color"><i class="fas fa-meteor icon-color main-font-color has-huge-font-size"></i>Mastery Point</a></h3>
             }
             else
             {
-                <h3 class="item-padding">You have achieved @Model.MasteryPoints <a asp-controller="Profile" asp-action="MasteryPoints" class="main-font-color"><i class="fas fa-meteor icon-color has-huge-font-size"></i>Mastery Points</a></h3>
+                <h3 class="item-padding">You have achieved @Model.MasteryPoints <a asp-controller="Profile" asp-action="MasteryPoints" class="main-font-color"><i class="fas fa-meteor icon-color main-font-color has-huge-font-size"></i>Mastery Points</a></h3>
             }
+            <br />
             <hr />
         </div>
         <div class="item-padding">
             <h2 class="main-font-color has-large-font-size">Other</h2>
             @if (Model.ForumPoints == 1)
             {
-                <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up has-huge-font-size"></i>Forum Point</a></h3>
+                <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up main-font-color has-huge-font-size"></i>Forum Point</a></h3>
             }
             else
             {
-                <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up has-huge-font-size"></i>Forum Points</a></h3>
-            }
-            @if (Model.Feedbacks == 1)
-            {
-                <h3 class="item-padding">Your <a asp-controller="Profile" asp-action="Feedbacks" class="main-font-color">Feedback</a> has made the game @Model.Feedbacks times better and you have recieved @Model.Stars Supporter <i class="far fa-star"></i> for your great ideas!</h3>
+                <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up main-font-color has-huge-font-size"></i>Forum Points</a></h3>
             }
 
             @if (Model.LastFeedbackSentOn.HasValue && DateTime.UtcNow.Day - Model.LastFeedbackSentOn.Value.Day >= 1)
@@ -90,32 +97,29 @@
                     </label>
                 </form>
             }
-            @if(Model.LastFeedbackSentOn is null)
+
+            @if (Model.Feedbacks == 0)
             {
                 <div class="item-padding">
-                    <p class="main-font-color has-medium-font-size">Send your first Feedback?</p>
-                    <form asp-controller="Profile" asp-action="LeaveFeedback" method="post">
+                    <p class="main-font-color has-normal-font-size">Send your first Feedback?</p>
+                    <form asp-controller="Profile" asp-action="LeaveFeedback" method="post" class="item-padding">
                         <label for="feedback">
-                            <input id="feedback" class="item-padding" type="text" name="feedback" value="" />
+                            <input id="feedback" class="item-padding" type="text" name="feedback" value="" placeholder="I think that..." />
                         </label>
                         <label for="rate">
                             Rate us?
                             <select name="rate">
-                                <option selected value="1">1</option>
+                                <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option selected value="5">5</option>
                             </select>
-                            <input type="submit" name="name" value="Send" />
                         </label>
+                        <input type="submit" name="name" value="Send" />
                     </form>
                 </div>
-            }
 
-            @if (Model.Feedbacks == 0)
-            {
-                <h3 class="item-padding">You still haven't left us a <a asp-controller="Profile" asp-action="LeaveFeedback" class="main-font-color">Feedback</a>. Care to share your thoughts?</h3>
                 <h3 class="item-padding">
                     Note: Every accepted Feedback grants you Supporter <i class="far fa-star"></i> which can be used to buy Exclusive Items!
                     In order to motivate people to be more communicative we will give you a <em class="main-font-color">Reward</em> for your first Feedback, regardless if it is accepted or not.
@@ -125,7 +129,7 @@
 
             @if (Model.Feedbacks > 0)
             {
-                <h3 class="item-padding">Your <a asp-controller="Profile" asp-action="Feedbacks" class="main-font-color">Feedback</a> has made the game better and you have recieved @Model.Stars Supporter <i class="far fa-star"></i> for your great ideas!</h3>
+                <h3 class="item-padding">Your <a asp-controller="Profile" asp-action="Feedbacks" class="main-font-color">Feedback</a> has made the game better and you have recieved @Model.Stars Supporter <i class="far fa-star main-font-color"></i> for your great ideas!</h3>
             }
 
 
@@ -142,7 +146,9 @@
 
         </div>
     </div>
-    <partial name="_Footer">
+    <div class="item-padding">
+        <partial name="_Footer">
+    </div>
 </body>
 </html>
 

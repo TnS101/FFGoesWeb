@@ -8,6 +8,8 @@
 
         public int OnlineTime { get; set; }
 
-        public string Role { get; set; }
+        public int MasteryPoints { get; set; }
+
+        public int ForumPoints { get; set; }
     }
 }

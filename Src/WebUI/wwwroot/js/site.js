@@ -47,12 +47,24 @@ function getFeedback() {
             dataType: "html",
             contentType: 'application/html; charset=utf-8',
         })
-        .success(function success()
-        {
+        .success(function success() {
             $('#feedback').html();
         });
 }
 
+$(function () {
+    var $statuses = $('#statuses');
+
+    $.ajax({
+        type: "GET",
+        url: '/Profile/Statuses',
+        success: function (Statuses) {
+            $.each(Statuses, function(i, emojiStatus) {
+                $statuses.append('<li><i class="' + emojiStatus.name + '"> </i></li>');
+            });
+        }
+    })
+})
 
 
 

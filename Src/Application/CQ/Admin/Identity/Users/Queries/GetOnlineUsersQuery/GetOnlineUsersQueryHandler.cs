@@ -30,15 +30,6 @@
             var loginCookie = cookies["userLogin"];
             var users = await this.context.AppUsers.Where(au => au.IsOnline).ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync();
 
-            if (request.Role is null)
-            {
-                // users = new UserListViewModel { Users = await this.context.Users.ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync() };
-            }
-            else
-            {
-                // users = new UserListViewModel { Users = await this.context.Users.Where(u => (request.Role)).ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync() };
-            }
-
             if (users.Count() > 0)
             {
                 foreach (var user in users)

@@ -27,7 +27,7 @@
         // Redirects
         public const string CommentCommandRedirect = "/Forum/CurrentTopic/id?id={0}";
         public const string FriendCommandRedirect = "/Friends/All/";
-        public const string TopicCommandRedirect = @"Forum\Home";
+        public const string TopicCommandRedirect = "/Forum/Home";
         public const string CreateTopicErrorRedirect = @"\Create";
         public const string CreateMessageCommandRedirect = "/Profile/Friends";
         public const string MessageCommandRedirect = "/Profile/Chats";

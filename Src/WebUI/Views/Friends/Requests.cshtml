@@ -9,12 +9,12 @@
     <partial name="_SocialNavBar">
 </head>
 <body>
-    <div class="has-text-align-center fade-in">
+    <div class="has-text-align-center item-padding fade-in">
         @if (Model.FriendRequests.Count() > 0)
         {
             <h1 class="secondary-font-color">Your Current Friend Requests</h1>
-            <br />
             <div class="item-padding has-text-align-center">
+                <hr />
                 @foreach (var friendRequest in Model.FriendRequests)
                 {
                     if (DateTime.UtcNow.Minute - friendRequest.SentOn.Minute < 1)
@@ -82,6 +82,7 @@
         else
         {
             <h1 class="secondary-font-color">You currently don't have any Friend Requests</h1>
+            <div class="item-padding"><hr /></div>
         }
     </div>
 

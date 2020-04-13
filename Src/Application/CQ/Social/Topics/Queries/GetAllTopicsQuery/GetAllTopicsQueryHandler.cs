@@ -69,18 +69,39 @@
                 .OrderByDescending(t => t.CreateOn)
                 .ToListAsync();
 
-            if (request.Filter is null)
+            if (request.Filter.Count() == 0 || request.Filter.Count() >= 4)
             {
                 return new TopicListViewModel
                 {
                     Topics = topics,
                 };
             }
-
-            return new TopicListViewModel
+            else if (request.Filter.Count() == 1)
             {
-                Topics = topics.Where(t => t.Category == request.Filter),
-            };
+                string singleFilter = request.Filter.FirstOrDefault();
+
+                return new TopicListViewModel
+                {
+                    Topics = topics.Where(t => t.Category == singleFilter),
+                };
+            }
+            else
+            {
+                if (request.Filter.Count() == 2)
+                {
+                    return new TopicListViewModel
+                    {
+                        Topics = topics.Where(t => t.Category == request.Filter[0] || t.Category == request.Filter[1]),
+                    };
+                }
+                else
+                {
+                    return new TopicListViewModel
+                    {
+                        Topics = topics.Where(t => t.Category == request.Filter[0] || t.Category == request.Filter[1] || t.Category == request.Filter[2]),
+                    };
+                }
+            }
         }
     }
 }

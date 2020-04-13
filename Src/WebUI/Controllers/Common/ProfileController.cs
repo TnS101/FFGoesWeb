@@ -4,6 +4,7 @@
     using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
     using Application.CQ.Users.Feedbacks.Command;
     using Application.CQ.Users.Feedbacks.Queries;
+    using Application.CQ.Users.Queries.GetCurrentUser;
     using Application.CQ.Users.Queries.Panel;
     using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
@@ -27,6 +28,12 @@
             return this.PartialView("_Statuses", await this.Mediator.Send(new GetAllStatusesQuery { }));
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Statuses()
+        {
+            return this.Json(await this.Mediator.Send(new GetAllStatusesQuery { }));
+        }
+
         [HttpGet("/UpdateStatus/id")]
         public async Task<ActionResult> UpdateStatus([FromQuery]int id)
         {
@@ -48,7 +55,7 @@
         [HttpGet]
         public async Task<ActionResult> ForumPoints()
         {
-            return this.View(await this.UserManager.GetUserAsync(this.User));
+            return this.View(await this.Mediator.Send(new GetCurrentUserQuery { User = this.User }));
         }
 
         [HttpPost]

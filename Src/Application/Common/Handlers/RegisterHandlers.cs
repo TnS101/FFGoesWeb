@@ -33,6 +33,7 @@
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Users.Feedbacks.Command;
     using Application.CQ.Users.Feedbacks.Queries;
+    using Application.CQ.Users.Queries.GetCurrentUser;
     using Application.CQ.Users.Queries.Panel;
     using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
@@ -158,6 +159,7 @@
             services.AddScoped<IRequestHandler<GetCurrentFriendQuery, UserViewModel>, GetCurrentFriendQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalNotificationsQuery, NotificationListViewModel>, GetPersonalNotificationsQueryHandler>();
             services.AddScoped<IRequestHandler<GetUnitIdQuery, UnitIdViewModel>, GetUnitIdQueryHandler>();
+            services.AddScoped<IRequestHandler<GetCurrentUserQuery, UserPartialViewModel>, GetCurrentUserQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

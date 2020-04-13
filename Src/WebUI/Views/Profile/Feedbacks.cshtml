@@ -1,11 +1,6 @@
 ﻿@model Application.CQ.Users.Feedbacks.Queries.FeedbackListViewModel
 
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -13,22 +8,27 @@
     <partial name="_NavBar">
 </head>
 <body>
-    <div class="fade-in">
+    <div class="fade-in item-padding">
         <h1 class="has-text-align-center secondary-font-color">Your Feedback's progress</h1>
         <div class="item-padding has-text-align-center">
+            <hr />
             @foreach (var feedback in Model.Feedbacks)
             {
                 <div class="item-padding">
-                    <p class="main-font-color has-medium-font-size">@feedback.Content</p>
-                    <p class="main-font-color has-medium-font-size">Your Rate : @feedback.Rate</p>
+                    <p class="main-font-color has-normal-font-size">@feedback.Content</p>
+                    <p class="main-font-color has-normal-font-size">Your Rate : @feedback.Rate</p>
                     @if (feedback.IsAccepted)
                     {
                         <img src="~/images/FeedbackAccepted.png" alt="Feedback Is Accepted" />
                         <p class="main-font-color has-medium-font-size">Reward : <i class="far fa-star"></i> @feedback.Stars</p>
+                        <div class="item-padding">
+                        </div>
                     }
                     else
                     {
                         <img src="~/images/FeedbackNotAccepted.png" alt="Feedback Still Not Accepted" />
+                        <div class="item-padding">
+                        </div>
                     }
                     <hr />
                 </div>

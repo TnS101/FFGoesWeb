@@ -4,14 +4,19 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <partial name="_ForumNavBar">
 </head>
 <body>
-    <div class="has-text-align-center fade-in">
+    <hr />
+    <div class="has-text-align-center fade-in item-padding">
         <form asp-controller="Comment" asp-action="Create" method="post">
             <input type="hidden" name="topicId" value="@Model"/>
-            <input type="text" name="content" value="" placeholder="Write something..."/>
-            <input type="submit" name="name" value="Submit" />
+            <textarea rows="6" cols="100" name="content" placeholder="Write something..." class="comment-content-input"></textarea>
+            <br />
+            <br />
+            <input type="submit" class="main-button item-padding" name="name" value="Comment" />
         </form>
     </div>
+    <div class="item-padding"><hr /></div>
 </body>
 </html>

@@ -9,10 +9,10 @@
     <partial name="_NavBar">
 </head>
 <body>
-    <div class="has-text-align-center fade-in">
+    <div class="has-text-align-center item-padding fade-in">
         <h2 class="secondary-font-color has-large-font-size">Unit Info</h2>
-        <hr />
-        <div class="item-padding">
+        <div class="item-padding"><hr /></div>
+        <div>
             <h2><a asp-controller="Unit" asp-action="Inventory" asp-route-id="@Model.Id"><span class="light-font-color">Inventory</span></a></h2>
             <hr />
             <h2><a asp-controller="Unit" asp-action="Equipment" asp-route-id="@Model.Id"><span class="light-font-color">Equipment</span></a></h2>

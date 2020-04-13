@@ -12,7 +12,7 @@
     public class ForumController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> Home([FromQuery]string check)
+        public async Task<ActionResult> Home([FromQuery]string[] check)
         {
             return this.View(await this.Mediator.Send(new GetAllTopicsQuery { Filter = check }));
         }

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Application.CQ.Users.Queries.Panel
+﻿namespace Application.CQ.Users.Queries.Panel
 {
+    using System;
+
     public class UserPanelViewModel
     {
         public UserPanelViewModel()

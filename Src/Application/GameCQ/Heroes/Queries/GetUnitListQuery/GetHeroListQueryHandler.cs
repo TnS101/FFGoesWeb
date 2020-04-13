@@ -143,15 +143,11 @@
                                 continue;
                             }
 
-                            if (this.context.EnergyChanges.Where(ec => ec.Type == energyChange.Type && ec.HeroId == hero.Id).Count() == 0)
-                            {
-                                await this.context.EnergyChanges.AddAsync(regeneration);
-                            }
+                            await this.context.EnergyChanges.AddAsync(regeneration);
+                            this.context.EnergyChanges.Remove(energyChange);
 
                             break;
                         }
-
-                        this.context.EnergyChanges.Remove(energyChange);
                     }
 
                     if (energy == energyCap)

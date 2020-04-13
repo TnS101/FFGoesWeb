@@ -7,9 +7,8 @@
 </head>
 <body>
     <div class="has-text-align-center item-padding main-gradient fade-in">
-        <h2 class="main-font-color has-large-font-size">Your Battle Units</h2>
-        <br />
-        <hr />
+        <h2 class="main-font-color has-large-font-size">Your Heroes</h2>
+        <div class="item-padding"><hr /></div>
         <div class="item-padding ">
             @foreach (var unit in Model.Heroes)
             {
@@ -22,7 +21,7 @@
                 }
                 else
                 {
-                    <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-large-font-size main-font-color"></i></a>
+                    <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-larger-font-size main-font-color"></i></a>
                 }
                 <div class="item-padding">
                     <a asp-controller="Unit" asp-action="Info" asp-route-id="@unit.Id" class="has-text-align-center"><p class="has-large-font-size light-font-color">@unit.Name</p></a>
@@ -42,7 +41,7 @@
 
                     <form asp-controller="Unit" asp-action="Delete" method="post" class="item-padding">
                         <input type="hidden" name="id" value="@unit.Id" />
-                        <input type="submit" name="name" value="Delete" />
+                        <input type="submit" name="name" class="main-button" value="Delete" />
                     </form>
                 </div>
                 <br/>
@@ -52,6 +51,7 @@
         <div class="item-padding">
             <p class="has-large-font-size main-font-color has-text-align-center"><a asp-controller="Unit" asp-action="Create">Create</a> a new one!</p>
         </div>
+        <div class="item-padding"><hr /></div>
     </div>
 </body>
 
