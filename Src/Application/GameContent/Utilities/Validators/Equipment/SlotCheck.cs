@@ -51,7 +51,7 @@
             }
             else if (slotNumber == 2 || slotNumber == 3)
             {
-                await this.ArmorGenerate(stats, slotNumber, fightingClassStatNumber, fightingClassType, context, hero);
+                await this.ArmorGenerate(stats, fightingClassStatNumber, fightingClassType, context, hero);
             }
             else if (slotNumber == 4 || slotNumber == 5)
             {
@@ -87,7 +87,7 @@
 
             this.fightingClassStatCheck.Check(templateWeapon, fightingClassType, fightingClassStatNumber);
 
-            int weaponId = 0;
+            int weaponId;
             if (!context.Weapons.Contains(templateWeapon))
             {
                 await context.Weapons.AddAsync(templateWeapon);
@@ -99,7 +99,7 @@
                 weaponId = weapon.Id;
             }
 
-            context.WeaponsInventories.Where(w => w.InventoryId == hero.InventoryId).ToList().Add(new WeaponInventory
+            context.WeaponsInventories.Add(new WeaponInventory
             {
                 InventoryId = hero.InventoryId,
                 WeaponId = weaponId,
@@ -134,14 +134,14 @@
                 trinketId = trinket.Id;
             }
 
-            context.TrinketsInventories.Where(t => t.InventoryId == hero.InventoryId).ToList().Add(new TrinketInventory
+            context.TrinketsInventories.Add(new TrinketInventory
             {
                 InventoryId = hero.InventoryId,
                 TrinketId = trinketId,
             });
         }
 
-        private async Task ArmorGenerate(List<int> stats, int slotNumber, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
+        private async Task ArmorGenerate(List<int> stats, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
         {
             Armor templateArmor = new Armor
             {
@@ -164,7 +164,7 @@
 
             this.fightingClassStatCheck.Check(templateArmor, fightingClassType, fightingClassStatNumber);
 
-            int armorId = 0;
+            int armorId;
 
             if (!context.Armors.Contains(templateArmor))
             {
@@ -317,7 +317,7 @@
         {
             int materialNumber = this.rng.Next(0, 10);
 
-            var materialName = string.Empty;
+            string materialName = string.Empty;
 
             while (true)
             {

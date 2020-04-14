@@ -44,6 +44,8 @@
 
             var slotCheck = new SlotCheck();
 
+            slotNumber = 0;
+
             await slotCheck.Check(fightingClassStatNumber, slotNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, context, hero, monster, zoneName);
         }
     }

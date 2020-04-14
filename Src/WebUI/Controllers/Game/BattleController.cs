@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using Application.GameCQ.Battles.Commands.Update;
+    using Application.GameCQ.Battles.Queries.GetBattleUnitsQuery;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetUnitIdQuery;
@@ -35,36 +36,27 @@
         {
             hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
 
-            return this.View(@"\Command", this.Stats(hero));
+            var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { Hero = hero, Enemy = monster });
+
+            return this.View(@"\Command", battleUnits);
         }
 
-        [HttpGet("Battle/Command/command")]
-        public async Task<ActionResult> Command([FromQuery]string command, [FromQuery]string spellName)
+        [HttpPost]
+        public async Task<ActionResult> Command([FromForm]string command, [FromForm]string spellName)
         {
             hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
 
+            var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { Hero = hero, Enemy = monster });
+
             return this.View(
                 await this.Mediator.Send(new BattleOptionsCommand
-                { Command = command, Player = hero, Enemy = monster, YourTurn = yourTurn, SpellName = spellName, ZoneName = zoneName }), this.Stats(hero));
+                { Command = command, Player = hero, Enemy = monster, YourTurn = yourTurn, SpellName = spellName, ZoneName = zoneName }), battleUnits);
         }
 
         [HttpGet]
         public async Task<ActionResult> End()
         {
             return this.View(await this.Mediator.Send(new GetUnitIdQuery { User = this.User }));
-        }
-
-        private string[] Stats(UnitFullViewModel playerFullVm)
-        {
-            return new string[]
-            {
-                playerFullVm.Name, monster.Name, monster.ImageURL,
-                playerFullVm.CurrentHP.ToString(), playerFullVm.MaxHP.ToString(), monster.CurrentHP.ToString(), monster.MaxHP.ToString(),
-                playerFullVm.CurrentAttackPower.ToString(), monster.CurrentAttackPower.ToString(), playerFullVm.CurrentMana.ToString(),
-                playerFullVm.MaxMana.ToString(), monster.MaxMana.ToString(), playerFullVm.MagicPower.ToString(),
-                playerFullVm.CurrentMagicPower.ToString(), monster.MagicPower.ToString(), monster.CurrentMagicPower.ToString(), playerFullVm.ImageURL,
-                playerFullVm.ClassType,
-            };
         }
     }
 }

@@ -49,7 +49,7 @@
             this.CreateMap<Status, StatusFullViewModel>();
             this.CreateMap<Hero, HeroMinViewModel>();
             this.CreateMap<Hero, UnitPartialViewModel>();
-            this.CreateMap<Hero, UnitFullViewModel>();
+            this.CreateMap<Hero, UnitFullViewModel>().ForMember(h => h.Spells, opt => opt.Ignore());
             this.CreateMap<FightingClass, FightingClassMinViewModel>();
             this.CreateMap<Monster, MonsterMinViewModel>();
             this.CreateMap<Monster, UnitFullViewModel>();

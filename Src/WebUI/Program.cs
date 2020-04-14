@@ -1,6 +1,7 @@
 ﻿namespace WebUI
 {
     using System.Threading.Tasks;
+    using System.Web.Optimization;
     using Application.SeedInitialData;
     using Common;
     using Domain.Entities.Common;

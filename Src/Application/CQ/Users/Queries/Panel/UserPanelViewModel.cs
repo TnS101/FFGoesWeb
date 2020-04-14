@@ -1,16 +1,21 @@
 ﻿namespace Application.CQ.Users.Queries.Panel
 {
     using System;
+    using System.Collections.Generic;
+    using Domain.Entities.Common.Social;
 
     public class UserPanelViewModel
     {
         public UserPanelViewModel()
         {
+            this.Statuses = new HashSet<Status>();
         }
 
         public string Id { get; set; }
 
         public string UserName { get; set; }
+
+        public ICollection<Status> Statuses { get; set; }
 
         public string StatusIClass { get; set; }
 

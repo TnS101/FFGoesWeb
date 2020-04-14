@@ -8,6 +8,7 @@
     using Domain.Entities.Common.Social;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class UserPanelQueryHandler : IRequestHandler<UserPanelQuery, UserPanelViewModel>
     {
@@ -31,6 +32,8 @@
             var feedbacks = this.context.Feedbacks.Where(f => f.UserId == user.Id);
 
             var friends = this.context.AppUsers.Where(f => f.FriendId == user.Id);
+
+            var statuses = await this.context.Statuses.ToListAsync();
 
             if (!this.context.UserStatuses.Any(u => u.UserId == user.Id))
             {
@@ -59,6 +62,7 @@
                     ForumPoints = user.ForumPoints,
                     Friends = friends.Count(),
                     Units = units.Count(),
+                    Statuses = statuses,
                 };
             }
             else
@@ -90,6 +94,7 @@
                     ForumPoints = user.ForumPoints,
                     Friends = friends.Count(),
                     Units = units.Count(),
+                    Statuses = statuses,
                 };
             }
         }

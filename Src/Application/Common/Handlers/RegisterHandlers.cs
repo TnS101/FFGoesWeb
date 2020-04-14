@@ -41,6 +41,7 @@
     using Application.CQ.Users.Tickets.Command.Messages;
     using Application.CQ.Users.Tickets.Command.Topics;
     using Application.GameCQ.Battles.Commands.Update;
+    using Application.GameCQ.Battles.Queries.GetBattleUnitsQuery;
     using Application.GameCQ.Equipments.Commands.Update;
     using Application.GameCQ.Equipments.Queries;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
@@ -160,6 +161,7 @@
             services.AddScoped<IRequestHandler<GetPersonalNotificationsQuery, NotificationListViewModel>, GetPersonalNotificationsQueryHandler>();
             services.AddScoped<IRequestHandler<GetUnitIdQuery, UnitIdViewModel>, GetUnitIdQueryHandler>();
             services.AddScoped<IRequestHandler<GetCurrentUserQuery, UserPartialViewModel>, GetCurrentUserQueryHandler>();
+            services.AddScoped<IRequestHandler<GetBattleUnitsQuery, BattleUnitsViewModel>, GetBattleUnitsQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

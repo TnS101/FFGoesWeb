@@ -2,26 +2,11 @@
 @{
     Layout = "_Layout";
 }
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 <head>
     <partial name="_NavBar">
 </head>
 <body>
-    <div class="has-text-align-center fade-in">
-        <div class="modal-header item-padding">
-            <h1 class="has-text-align-center has-large-font-size main-font-color">Statuses</h1>
-            <div class="item-padding">
-                <hr />
-            </div>
-            <ul id="primary-menu" style="list-style:none; padding-left:340px">
-                @foreach (var status in Model.Statuses)
-                {
-                    <li class="item-padding"><a asp-controller="Profile" asp-action="UpdateStatus" asp-route-id="@status.Id"><i class="@status.IClass has-huge-font-size main-font-color"></i></a></li>
-                }
-            </ul>
-        </div>
-    </div>
+    
 </body>
 

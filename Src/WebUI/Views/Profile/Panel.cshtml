@@ -7,8 +7,23 @@
 <head>
     <partial name="_NavBar">
         <script>
+            $(document).ready(function showStatuses() {
 
-            
+                var show = $('#show');
+                var statuses = $('#statuses');
+                var friends = $('#friends');
+                var statusMenu = $('#menu');
+
+                show.on("mouseenter", function () {
+                    statuses.show();
+                    friends.hide();
+                });
+
+                statusMenu.on("mouseleave", function () {
+                    statuses.hide();
+                    friends.show();
+                })
+            })
 
         </script>
 </head>
@@ -20,20 +35,27 @@
         <hr />
         <div class="item-padding">
             <h2 class="main-font-color has-large-font-size">Social</h2>
-            <h3 class="item-padding">Your status is <a asp-controller="Profile" asp-action="Status" class="main-font-color"><i class="@Model.StatusIClass has-huge-font-size main-font-color"></i> Change</a></h3>
-            <input type="button" name="name" value="" id="button" />
-            <div class="item-padding">
-                <ul id="statuses">
-
-                </ul>
+            <div>
+                <h3 class="item-padding">Your status is <i id="show" onclick="true" class="@Model.StatusIClass has-huge-font-size main-font-color" style="cursor: pointer;"></i></h3>
             </div>
+            <div id="statuses" hidden class="fade-in" style="margin-bottom:46px">
+                <div id="menu">
+                    <ul id="primary-menu" style="list-style:none; padding-left:340px">
+                        @foreach (var status in Model.Statuses)
+                        {
+                            <li><a asp-controller="Profile" asp-action="UpdateStatus" asp-route-id="@status.Id"><i class="@status.IClass has-huge-font-size main-font-color"></i></a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
             @if (Model.Friends == 1)
             {
-                <h3 class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All" class="main-font-color"><i class="fas fa-user-friends has-huge-font-size text-color"></i> <span class="main-font-color"> Friend</span></a></h3>
+                <h3 id="friends" class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All" class="main-font-color"><i class="fas fa-user-friends has-huge-font-size text-color"></i> <span class="main-font-color"> Friend</span></a></h3>
             }
             else
             {
-                <h3 class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All"><i class="fas fa-user-friends has-huge-font-size main-font-color"></i><span class="main-font-color"> Friends</span></a></h3>
+                <h3 id="friends" class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All"><i class="fas fa-user-friends has-huge-font-size main-font-color"></i><span class="main-font-color"> Friends</span></a></h3>
             }
             @if (Model.Topics == 1)
             {

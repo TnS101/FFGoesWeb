@@ -5,7 +5,7 @@
 }
 <h2 class="secondary-font-color has-text-align-center">@ViewData["Title"]</h2>
 
-<div class="row has-text-align-center">
+<div class="row has-text-align-center fade-in">
     <div class="col-md-4 has-text-align-center">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <hr />
@@ -31,39 +31,10 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger main-font-color"></span>
             </div>
             <div class="item-padding">
-                <button type="submit" class="btn btn-default main-font-color has-medium-font-size">Register</button>
+                <button type="submit" class="btn btn-default main-font-color main-button">Register</button>
             </div>
+            <div class="item-padding"><hr /></div>
         </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2 has-text-align-center item-padding">
-        <section>
-            <h4 class="main-font-color">Use another service to register.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p class="main-font-color">
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-default main-font-color" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
     </div>
 </div>
 

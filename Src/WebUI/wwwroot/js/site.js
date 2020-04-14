@@ -52,19 +52,7 @@ function getFeedback() {
         });
 }
 
-$(function () {
-    var $statuses = $('#statuses');
 
-    $.ajax({
-        type: "GET",
-        url: '/Profile/Statuses',
-        success: function (Statuses) {
-            $.each(Statuses, function(i, emojiStatus) {
-                $statuses.append('<li><i class="' + emojiStatus.name + '"> </i></li>');
-            });
-        }
-    })
-})
 
 
 

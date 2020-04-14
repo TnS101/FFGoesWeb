@@ -80,7 +80,7 @@
                     defendOption.Defend(hero);
                 }
 
-                if (request.Command == null)
+                if (request.Command == "Spell")
                 {
                     var spellCastOption = new SpellCastOption();
 

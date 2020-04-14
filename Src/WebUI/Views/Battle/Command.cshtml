@@ -1,72 +1,90 @@
-﻿@inject Application.Common.Interfaces.IFFDbContext context
-@model string[]
+﻿@model Application.GameCQ.Battles.Queries.GetBattleUnitsQuery.BattleUnitsViewModel
 @{
-    string playerName = Model[0];
-    string enemyName = Model[1];
-    string imagePath = Model[2];
-    string playerCurrentHP = Model[3];
-    string playerMaxHP = Model[4];
-    string enemyCurrentHP = Model[5];
-    string enemyMaxHP = Model[6];
-    string playerAttack = Model[7];
-    string enemyAttack = Model[8];
-    string playerCurrentMana = Model[9];
-    string playerMaxMana = Model[10];
-    string enemyCurrentMana = Model[11];
-    string enemyMaxMana = Model[12];
-    string playerImage = Model[16];
-    string playerClassType = Model[17];
+    
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Command</title>
     <partial name="_WorldNavBar">
+
         <script>
             $(document).ready(function () {
-                $('#attack1').click(function () {
-                    $('#hero').toggleClass('roll-in-bottom');
-                    $('#enemy').toggleClass('jello').delay(500);
-                    $('#enemy').toggleClass('aligncenter');
-                });
-            })
 
+                var battleAction = $('#action');
+
+                var hero = $('#hero');
+                var enemy = $('#enemy');
+
+                $("select.command").change(function () {
+                    var battleOption = $(this).children('option:selected').val();
+
+                    if (battleOption === 'Spell') {
+                        $('#spells').removeAttr('hidden');
+
+                    } else {
+                        $('#spells').attr('hidden', true);
+                    }
+
+                    battleAction.click(function () {
+
+                        if (battleOption === 'Attack') {
+                            hero.toggleClass('roll-in-bottom');
+                            enemy.toggleClass('jello enemy-hit');
+
+                        } if (battleOption === 'Defend') {
+                            hero.toggleClass('jello enemy-hit');
+                            enemy.toggleClass('roll-in-bottom');
+
+                        } if (battleOption === 'SpellCast') {
+                        }
+                    });
+                })
+            })
         </script>
 </head>
 <body>
-    <div id="page" class="fade-in">
-        <h2 style="text-align:center">@playerName  vs  @enemyName</h2>
-        <div class="action-div">
-            <img src="@playerImage" alt="Player" width="80" height="80" id="hero" />
-            <img src="@imagePath" alt="Enemy" style="padding-left:250px" id="enemy" />
+    <div class="fade-in aligncenter has-text-align-center">
+        <h2 style="text-align:center">@Model.Hero.Name  vs  @Model.Enemy.Name</h2>
+        <div>
+            <img src="@Model.Hero.ImageURL" alt="Player" width="80" height="80" id="hero" />
+            <img src="@Model.Enemy.ImageURL" alt="Enemy" style="padding-left:250px;" id="enemy" />
             <br />
 
-            <progress id="playerDamage" value="@double.Parse(playerAttack)" hidden></progress>
-            <progress id="enemyDamage" value="@double.Parse(enemyAttack)" hidden></progress>
+            <progress id="playerDamage" value="@Model.Hero.CurrentAttackPower" hidden></progress>
+            <progress id="enemyDamage" value="@Model.Enemy.CurrentAttackPower" hidden></progress>
             <br />
             <div>
-                <progress class="player-healthBar" id="playerHealth" value="@double.Parse(playerCurrentHP)" max="@double.Parse(playerMaxHP)"></progress>
-                <progress class="healthBar" id="enemyHealth" value="@double.Parse(enemyCurrentHP)" max="@double.Parse(enemyMaxHP)"></progress>
+                <progress class="player-healthBar" id="playerHealth" value="@Model.Hero.CurrentHP" max="@Model.Hero.MaxHP"></progress>
+                <progress class="healthBar" id="enemyHealth" value="@Model.Enemy.CurrentHP" max="@Model.Enemy.MaxHP"></progress>
                 <br />
                 <br />
-                <progress class="player-manaBar" id="playerMana" value="@double.Parse(playerCurrentMana)" max="@double.Parse(playerMaxMana)"></progress>
-                <progress class="manaBar" id="enemyMana" value="@double.Parse(enemyCurrentMana)" max="@double.Parse(enemyMaxMana)"></progress>
-                <p class="versus">⚔️</p>
-
+                <progress class="player-manaBar" id="playerMana" value="@Model.Hero.CurrentMana" max="@Model.Hero.MaxMana"></progress>
+                <progress class="manaBar" id="enemyMana" value="@Model.Enemy.CurrentMana" max="@Model.Enemy.MaxMana"></progress>
+                <div class="item-padding"><hr /></div>
             </div>
-            <div class="container battle-container">
-                <a asp-controller="Battle" asp-action="Command" asp-route-command="Attack" id="attack"><img class="attack" src="~/images/Icons/attack.png" alt="Attack"/></a>
-                <a asp-controller="Battle" asp-action="Command" asp-route-command="Defend" id="defend"><img src="~/images/Icons/shield.png" alt="Defend" /></a>
-                <form asp-controller="Battle" asp-action="Command" asp-route-command="SpellCast" method="get">
-                    <select name="spellName">
-                        @foreach (var spell in this.context.Spells.Where(s => s.ClassType == playerClassType))
-                        {
-                            <option value="@spell.Name">@spell.Name</option>
-                        }
+            <div class="item-padding">
+                <form asp-controller="Battle" asp-action="Command" method="post">
+                    <select class="command">
+                        <option value="Attack">Attack</option>
+                        <option value="Defend">Defend</option>
+                        <option value="Spell">Spell</option>
+                        <option value="Escape">Escape</option>
                     </select>
-                    <input type="button" name="name" value="A test" id="attack1" />
-                    <input type="submit" name="name" value="Cast" id="spell" />
+                    <div class="item-padding fade-in" hidden id="spells">
+                        <select name="spellName">
+                            @foreach (var spell in Model.Hero.Spells)
+                            {
+                                <option value="@spell.Name">@spell.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="item-padding">
+                        <input type="submit" class="main-button" name="button" id="action" value="Action" />
+                    </div>
                 </form>
-                <a asp-controller="Battle" asp-action="Command" asp-route-command="Escape">Escape</a>
+                <div class="item-padding">
+                </div>    
+                
             </div>
         </div>
     </div>

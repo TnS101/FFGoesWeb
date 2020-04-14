@@ -7,7 +7,7 @@
             this.Count = 1;
         }
 
-        public int? TreasureId { get; set; }
+        public int TreasureId { get; set; }
 
         public Treasure Treasure { get; set; }
 

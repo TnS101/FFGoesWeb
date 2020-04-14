@@ -1,22 +1,22 @@
 ﻿@{
     Layout = "_Layout";
 }
-
-<header id="masthead" class="site-h full" style="top: -42px;margin-left:-140px;position:fixed">
+<header id="masthead" class="site-header full" style="top: -42px;margin-left:-150px;position:fixed">
     <div class="container">
-        <div id="site-navigation" role="navigation">
-            <div class="main-nav-bar">
-                <ul id="primary-menu" class="nav-font-size">
-                    <li style="padding-left:420px" class="page_item page-item-9"><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Home</a></li>
-                    <li class="page_item page-item-9"><a asp-controller="Profile" asp-action="Panel"><i class="fas fa-user-circle"></i>Profile</a></li>
-                    <li class="page_item page-item-8"><a asp-controller="World" asp-action="Home"><i class="fas fa-globe-americas"></i>World</a></li>
-                    <li class="page_item page-item-8"><a asp-controller="Forum" asp-action="Home"><i class="fas fa-text-width"></i>Forum</a></li>
-                    <li class="page_item page-item-8"><a asp-controller="Social" asp-action="Home"><i class="fas fa-users"></i>Social</a></li>
-                    <li class="page_item page-item-8"><a asp-controller="Home" asp-action="PrivacyPolicy"><i class="fas fa-eye"></i>Privacy Policy</a></li>
-                    <li class="page_item page-item-2"><a href="https://localhost:44312/Identity/Account/Logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        <nav id="site-navigation" role="navigation">
+                <ul id="primary-menu" class="nav-font-size main-nav-bar">
+                    <li style="padding-left:420px"><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Home</a></li>
+                    <li><a asp-controller="Profile" asp-action="Panel"><i class="fas fa-user-circle"></i>Profile</a></li>
+                    <li>
+                        <a asp-controller="World" asp-action="Home"><i class="fas fa-globe-americas"></i>World</a>
+                    </li>
+                    <li><a asp-controller="Forum" asp-action="Home"><i class="fas fa-text-width"></i>Forum</a></li>
+                    <li><a asp-controller="Social" asp-action="Home"><i class="fas fa-users"></i>Social</a></li>
+                    <li><a asp-controller="Home" asp-action="PrivacyPolicy"><i class="fas fa-eye"></i>Privacy Policy</a></li>
+                    <li><a href="https://localhost:44312/Identity/Account/Logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
                 </ul>
-            </div>
-        </div>
+        </nav>
     </div>
 </header>
+
 
