@@ -9,6 +9,7 @@
 <head>
     <title>Home</title>
     <partial name="_ForumNavBar">
+       
 </head>
 <body class="primary-background-color">
     @if (Model.Topics.Count() == 0)
@@ -64,7 +65,6 @@
             <div class="has-text-align-center item-padding">
                 <p class="main-font-color has-large-font-size">[@topic.Category]<a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id"><span class="light-font-color">@topic.Title</span></a> by <a asp-controller="User" asp-action="Profile" asp-route-id="@topic.UserId"><em class="text-color">@topic.UserName</em></a></p>
                 <i class="fas fa-thumbs-up has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Likes</b> <i class="fas fa-comments has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Comments</b>
-                <a asp-controller="Report" asp-action="ReportTopic" asp-route-id="@topic.Id"><i class="fas fa-exclamation-circle has-large-font-size"></i></a>
                 <div class="item-padding">
                 </div>
                 <hr />

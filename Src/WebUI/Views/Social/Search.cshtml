@@ -1,0 +1,44 @@
+﻿@model string[]
+<!DOCTYPE html>
+@{
+    Layout = "_Layout";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+    <partial name="_SocialNavBar">
+       
+</head>
+<body>
+    <div class="fade-in item-padding has-text-align-center">
+        <h2 class="main-font-color has-large-font-size">Results</h2>
+        <div class="item-padding">
+            <hr />
+        </div>
+        <div class="item-padding">
+            @if (Model.Count() == 1)
+            {
+                string errorMessage = Model[0];
+                <p class="has-huge-font-size main-font-color">
+                    @errorMessage
+                </p>
+            }
+            else
+            {
+                string userId = Model[0];
+                string userName = Model[1];
+                <p class="has-huge-font-size main-font-color">
+                    <a asp-controller="User">content</a>
+                </p>
+            }
+
+        </div>
+    </div>
+
+    <div id="spinner">
+
+    </div>
+
+</body>
+</html>

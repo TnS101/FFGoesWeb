@@ -34,7 +34,7 @@
 
         public string Content { get; set; }
 
-        public string ReportedUserName { get; set; }
+        public string ReportedUserId { get; set; }
 
         public string AdditionalInformation { get; set; }
 

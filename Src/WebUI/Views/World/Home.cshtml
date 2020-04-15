@@ -12,7 +12,7 @@
         @if (Model.Heroes.Count() == 0)
         {
             <div class="has-text-align-center item-padding">
-                <h2 class="secondary-font-color has-large-font-size">Please, <a asp-controller="Unit" asp-action="Create">Create</a> a unit first before starting your adventure!</h2>
+                <h2 class="secondary-font-color has-large-font-size">Please, <a asp-controller="Unit" asp-action="Create"><span class="light-font-color">Create</span></a> a unit first before starting your adventure!</h2>
                 <div class="item-padding"></div>
                 <hr />
             </div>
@@ -21,7 +21,7 @@
         else if (!Model.Heroes.Any(u => u.IsSelected))
         {
             <div class="has-text-align-center item-padding">
-                <h2 class="secondary-font-color has-large-font-size">Please, <a asp-controller="Unit" asp-action="All">Select</a> a unit first before starting your adventure!</h2>
+                <h2 class="secondary-font-color has-large-font-size">Please, <a asp-controller="Unit" asp-action="All"><span class="light-font-color">Select</span></a> a unit first before starting your adventure!</h2>
                 <div class="item-padding"></div>
                 <hr />
             </div>
@@ -32,9 +32,9 @@
             {
                 <div class="has-text-align-center item-padding">
                     <h2 class="secondary-font-color has-large-font-size">
-                        Your Hero is heavily injured! Please, visit the <a asp-controller="Shop" asp-action="Home">Shop</a>
-                        or the <a asp-controller="Auction" asp-action="Home">Auction</a> to buy Healing Items, or Select a different
-                        <a asp-controller="Unit" asp-action="All">Hero</a>.
+                        Your Hero is heavily injured! Please, visit the <a asp-controller="Shop" asp-action="Home"><span class="light-font-color">Shop</span></a>
+                        or the <a asp-controller="Auction" asp-action="Home"><span class="light-font-color">Auction</span></a> to buy Healing Items, or Select a different
+                        <a asp-controller="Unit" asp-action="All"><span class="light-font-color">Hero</span></a>.
                     </h2>
                     <div class="item-padding"></div>
                     <hr />

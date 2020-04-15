@@ -6,39 +6,125 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <partial name="_ForumNavBar">
+        <script>
+            $(document).ready(function () {
+
+                var reportButton = $('#report-button');
+                var reportPanel = $('#report-panel');
+                var firstCommentButton = $('#first-comment-button');
+                var commentButton = $('#comment-button');
+                var commentPanel = $('#comment-panel');
+                var editButton = $('#edit-button');
+
+                editButton.click(function () {
+                    $('#edit-panel').show();
+                })
+
+                reportButton.click(function () {
+                    reportButton.addClass('selected-main-font-color');
+                    reportPanel.show();
+                    return false;
+                })
+
+                firstCommentButton.click(function () {
+                    commentPanel.show();
+                    window.scrollTo('#comment-panel');
+                })
+
+                commentButton.click(function () {
+                    commentPanel.show();
+                    $('html, body').animate({ scrollTop: commentButton.offset().top - 10 }, 'slow');
+                })
+            })
+        </script>
 </head>
 <body>
     <div class="has-text-align-center fade-in item-padding">
         <h2 class="has-large-font-size">@Model.Title</h2>
         <div class="item-padding">
             <hr />
+            <br />
             <div class="item-padding container topic-content-border">
                 <h2 class="main-font-color">@Model.Content</h2>
             </div>
             <div class="item-padding">
                 <h3 class="main-font-color">Posted on @Model.CreateOn</h3>
             </div>
-            <div class="item-margin">
+
+            <i id="report-button" onclick="true" style="cursor: pointer" class="icofont-exclamation-circle main-font-color icofont-4x"></i>
+
+            <div id="report-panel" hidden class="fade-in item-padding">
+                <form asp-controller="Social" asp-action="ReportContent" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <input type="hidden" name="contentType" value="Topic" />
+                    <select class="aligncenter " name="category">
+                        <option value="Racism">Racism</option>
+                        <option selected value="Hate Speech">Hate Speech</option>
+                        <option value="Homophobia">Homophobia</option>
+                        <option value="Cursing">Cursing</option>
+                        <option value="Spam">Spam</option>
+                    </select>
+                    <div class="item-padding">
+                        <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." />
+                    </div>
+                    <div class="item-padding">
+                        <input type="submit" name="button" class="main-button" value="Send" />
+                    </div>
+                </form>
+            </div>
+            <hr />
+            <div class="item-padding">
                 @if (Model.Comments.Count() == 0)
                 {
-                    <h2 class="main-font-color">No comments yet... Be the first to write <a asp-controller="Comment" asp-action="Create" asp-route-id="@Model.Id">one</a></h2>
+                    <h2 class="main-font-color">No comments yet... Be the first to write <i onclick="true" style="cursor:pointer" id="first-comment-button">One</i></h2>
+
                 }
                 else
                 {
-                    @foreach (var comment in Model.Comments)
+                    @foreach (var comment in Model.Comments.OrderByDescending(c => c.CreatedOn))
                     {
                         <div class="item-padding">
-                            <p class="main-font-color has-medium-font-size"><a asp-controller="User" data-ajax="true" asp-action="Profile" asp-route-id="@comment.UserId"></a></p>
-                            <p class="main-font-color has-medium-font-size">@comment.Content</p>
-                            <a asp-controller="Comment" asp-action="Like" asp-route-id="@comment.Id"><i class="fas fa-thumbs-up has-large-font-size main-font-color"></i></a>@comment.Likes <a asp-controller="Comment" asp-action="Replies"><i class="fas fa-comments has-large-font-size main-font-color"></i></a>@comment.Replies.Count
+                            <p class="main-font-color has-medium-font-size"><a asp-controller="User" asp-action="Profile" asp-route-id="@comment.UserId"></a></p>
+                            <p class="main-font-color has-normal-font-size">@comment.Content</p>
+                            <a asp-controller="Comment" asp-action="Like" asp-route-id="@comment.Id">
+                                <i class="fas fa-thumbs-up has-large-font-size main-font-color"></i>
+                            </a>@comment.Likes <a asp-controller="Comment" asp-action="Replies">
+                                <i class="fas fa-comments has-large-font-size main-font-color"></i>
+                            </a>@comment.Replies.Count
+                            @if (this.UserManager.GetUserAsync(this.User).Result.Id == comment.UserId)
+                            {
+                                <i class="fas fa-edit main-font-color has-large-font-size" onclick="true" style="cursor: pointer" id="edit-button"></i>
+                                <div id="edit-panel" class="fade-in" hidden>
+                                    <form asp-controller="Comment" asp-action="Edit" class="item-padding">
+                                        <input type="hidden" name="id" value="@comment.Id" />
+                                        <input type="text" name="content" value="" />
+                                        <div class="item-padding">
+                                            <input type="submit" class="main-button" name="button" value="Edit" />
+                                        </div>
+                                    </form>
+                                </div>
+                            }
                             <div class="item-padding"></div>
                             <hr />
                         </div>
                     }
                     <div class="item-padding">
-                        <a asp-controller="Comment" asp-action="Create" asp-route-id="@Model.Id"><p class="has-large-font-size main-font-color">Leave another Coment?</p></a>
+                        <p class="has-large-font-size main-font-color" onclick="true" style="cursor: pointer" id="comment-button">Leave another Coment?</p>
                     </div>
+
+
                 }
+
+                <div class="fade-in" id="comment-panel" hidden>
+                    <form asp-controller="Comment" asp-action="Create" method="post" class="item-padding">
+                        <input type="hidden" name="topicId" value="@Model.Id" />
+                        <textarea rows="6" cols="100" name="content" placeholder="Write something..." class="comment-content-input"></textarea>
+                        <br />
+                        <br />
+                        <input type="submit" class="main-button item-padding" name="name" value="Comment" />
+                        <div class="item-padding"><hr /></div>
+                    </form>
+                </div>
             </div>
         </div>
 

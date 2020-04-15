@@ -1061,7 +1061,7 @@
             {
                 ClassType = "Warrior",
                 MaxHP = 260,
-                HealthRegen = 8.9,
+                HealthRegen = 6.1,
                 MaxMana = 110,
                 ManaRegen = 6.2,
                 AttackPower = 23,
@@ -1078,7 +1078,7 @@
             {
                 ClassType = "Hunter",
                 MaxHP = 215,
-                HealthRegen = 6.4,
+                HealthRegen = 4,
                 MaxMana = 110,
                 ManaRegen = 6.6,
                 AttackPower = 29,
@@ -1095,7 +1095,7 @@
             {
                 ClassType = "Mage",
                 MaxHP = 210,
-                HealthRegen = 5.8,
+                HealthRegen = 3.8,
                 MaxMana = 140,
                 ManaRegen = 10,
                 AttackPower = 18,
@@ -1112,7 +1112,7 @@
             {
                 ClassType = "Naturalist",
                 MaxHP = 225,
-                HealthRegen = 9.6,
+                HealthRegen = 5,
                 MaxMana = 130,
                 ManaRegen = 12,
                 AttackPower = 15,
@@ -1129,7 +1129,7 @@
             {
                 ClassType = "Necroid",
                 MaxHP = 200,
-                HealthRegen = 6.8,
+                HealthRegen = 4,
                 MaxMana = 150,
                 ManaRegen = 10,
                 AttackPower = 15,
@@ -1146,7 +1146,7 @@
             {
                 ClassType = "Paladin",
                 MaxHP = 225,
-                HealthRegen = 10,
+                HealthRegen = 6,
                 MaxMana = 120,
                 ManaRegen = 8,
                 AttackPower = 22,
@@ -1163,7 +1163,7 @@
             {
                 ClassType = "Priest",
                 MaxHP = 190,
-                HealthRegen = 8,
+                HealthRegen = 5,
                 MaxMana = 180,
                 ManaRegen = 12,
                 AttackPower = 15.6,
@@ -1180,7 +1180,7 @@
             {
                 ClassType = "Rogue",
                 MaxHP = 195,
-                HealthRegen = 6,
+                HealthRegen = 3,
                 MaxMana = 110,
                 ManaRegen = 6,
                 AttackPower = 26,
@@ -1197,7 +1197,7 @@
             {
                 ClassType = "Shaman",
                 MaxHP = 210,
-                HealthRegen = 7,
+                HealthRegen = 5,
                 MaxMana = 130,
                 ManaRegen = 11,
                 AttackPower = 20,

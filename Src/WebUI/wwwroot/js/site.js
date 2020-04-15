@@ -25,36 +25,6 @@ let enemyDamage = document.getElementById("enemyDamage");
 playerHealth.value -= enemyDamage.value;
 enemyHealth.value -= playerDamage.value;
 
-$(function () {
-    $('i').click(function (ev) {
-        $('i').toggleClass('slideInUp');
-        ev.preventDefault();
-    });
-});
-
-$(function () {
-    $('#leave-feedback').click(function () {
-        jQuery.get('/ Profile/LeaveFeedback');
-        getFeedback();
-    });
-})
-
-function getFeedback() {
-    $ajax(
-        {
-            type: "GET",
-            url: '/ Profile/LeaveFeedback',
-            dataType: "html",
-            contentType: 'application/html; charset=utf-8',
-        })
-        .success(function success() {
-            $('#feedback').html();
-        });
-}
-
-
-
-
 
 
 /*! jQuery v1.12.4 | (c) jQuery Foundation | jquery.org/license | WordPress 2019-05-16 */

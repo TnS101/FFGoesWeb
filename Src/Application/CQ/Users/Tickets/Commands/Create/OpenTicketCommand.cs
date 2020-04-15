@@ -1,16 +1,18 @@
-﻿namespace Application.CQ.Users.Tickets.Command.Comments
+﻿namespace Application.CQ.Users.Tickets.Commands.Create
 {
     using System.Security.Claims;
     using MediatR;
 
-    public class OpenCommentTicketCommand : IRequest<string>
+    public class OpenTicketCommand : IRequest<string>
     {
-        public string CommentId { get; set; }
+        public string ContentId { get; set; }
 
         public ClaimsPrincipal Sender { get; set; }
 
         public string Category { get; set; }
 
         public string AdditionalInformation { get; set; }
+
+        public string ContentType { get; set; }
     }
 }

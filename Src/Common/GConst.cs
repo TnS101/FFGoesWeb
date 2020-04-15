@@ -27,14 +27,14 @@
         // Redirects
         public const string CommentCommandRedirect = "/Forum/CurrentTopic/id?id={0}";
         public const string FriendCommandRedirect = "/Friends/All/";
-        public const string TopicCommandRedirect = "/Forum/Home";
+        public const string TopicCommandRedirect = @"\Forum\Home";
         public const string CreateTopicErrorRedirect = @"\Create";
         public const string CreateMessageCommandRedirect = "/Profile/Friends";
         public const string MessageCommandRedirect = "/Profile/Chats";
         public const string HomeRedirect = "/";
         public const string FeedbackRedirect = "/Admin/Feedbacks";
         public const string SendFeedbackRedirect = "Profile/Feedbacks";
-        public const string OpenCommentTicketRedirect = "/Forum/CurrentTopic{0}";
+        public const string OpenCommentTicketRedirect = "/Social/TicketSent";
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
         public const string TicketCommandRedirect = "/Moderator/Tickets";
         public const string ToDoListRedirect = "/Admin/ToDoList";
@@ -59,6 +59,7 @@
         public const string PasswordError = "Password must contain only letters or digts, at least one uppercase letter, one digit, one non alphanumeric character and must be at least 8 characters long.";
         public const string EmailError = "Invalid Email Address.";
         public const string AllowedUnitsError = "You already have {0} Heroes! Delete a Hero or purchase more Hero Slots.";
+        public const string UserNotFound = "User : {0} was not found.";
 
         //Notification types
         public const string WarningType = "Warning";

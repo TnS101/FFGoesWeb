@@ -22,14 +22,14 @@
             return this.Redirect(await this.Mediator.Send(new CreateCommentCommand { TopicId = topicId, Content = content, User = this.User }));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Delete([FromQuery]string id)
+        [HttpDelete]
+        public async Task<ActionResult> Delete([FromForm]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteCommentCommand { CommentId = id }));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Edit([FromQuery]string id, [FromForm]string content)
+        [HttpPost]
+        public async Task<ActionResult> Edit([FromForm]string id, [FromForm]string content)
         {
             return this.Redirect(await this.Mediator.Send(new EditCommentCommand { Content = content, CommentId = id }));
         }

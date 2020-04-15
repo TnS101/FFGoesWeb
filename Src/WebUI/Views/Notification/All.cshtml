@@ -29,36 +29,53 @@
 
                         <p class="has-medium-font-size">@notification.Type</p>
                         <p class="has-medium-font-size"><em>@notification.Content</em></p>
-                        @if (DateTime.UtcNow.Minute - notification.RecievedOn.Minute < 1)
+
+                        @{
+                            var timeSpan = DateTime.UtcNow - notification.RecievedOn;
+                        }
+
+                        @if (timeSpan.Minutes < 1)
                         {
                             <p class="main-font-color has-large-font-size">Just Now.</p>
                         }
-                        else if (DateTime.UtcNow.Hour - notification.RecievedOn.Hour < 1)
+                        else if (timeSpan.Hours < 1)
                         {
-                            int difference = DateTime.UtcNow.Minute - notification.RecievedOn.Minute;
+                            int difference = timeSpan.Minutes;
 
                             <p class="main-font-color has-large-font-size">
                                 @difference Minutes Ago.
                             </p>
                         }
-                        else if (DateTime.UtcNow.Day - notification.RecievedOn.Day < 1)
+                        else if (timeSpan.Days < 1)
                         {
-                            int difference = DateTime.UtcNow.Day - notification.RecievedOn.Day;
+                            int difference = timeSpan.Hours;
                             <p class="main-font-color has-large-font-size">
                                 @difference Hours Ago.
                             </p>
                         }
-                        else if (DateTime.UtcNow.Day - notification.RecievedOn.Day == 1)
+                        else if (timeSpan.Days == 1)
                         {
                             <p class="main-font-color has-large-font-size">
                                 Yesterday.
                             </p>
                         }
-                        else if (DateTime.UtcNow.Day - notification.RecievedOn.Day > 1)
+                        else if (timeSpan.Days > 1)
                         {
-                            int difference = DateTime.UtcNow.Day - notification.RecievedOn.Day;
+                            int difference = timeSpan.Days;
                             <p class="main-font-color has-large-font-size">
                                 @difference Days Ago.
+                            </p>
+                        }
+                        else if (timeSpan.Days > 30)
+                        {
+                            <p class="main-font-color has-large-font-size">
+                                Last Month.
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="main-font-color has-large-font-size">
+                                Long time ago.
                             </p>
                         }
                     </div>

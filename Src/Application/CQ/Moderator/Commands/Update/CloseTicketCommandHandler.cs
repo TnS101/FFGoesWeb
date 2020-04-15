@@ -26,9 +26,9 @@
         {
             var ticket = await this.context.Tickets.FindAsync(request.TicketId);
 
-            var sender = this.context.AppUsers.FirstOrDefault(s => s.UserName == ticket.ReportedUserName);
+            var sender = this.context.AppUsers.FirstOrDefault(s => s.UserName == ticket.ReportedUserId);
 
-            var reportedUser = await this.userManager.FindByNameAsync(ticket.ReportedUserName);
+            var reportedUser = await this.userManager.FindByNameAsync(ticket.ReportedUserId);
 
             await this.DeleteAction(ticket);
 

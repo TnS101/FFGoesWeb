@@ -20,14 +20,13 @@
         {
             var stats = new List<int>();
             int fightingClassStatNumber = this.rng.Next(hero.Level, hero.Level + 5);
-            int statNumber = this.rng.Next(0, 10);
             int slotNumber = this.rng.Next(0, 10);
-            string fightingClassType = string.Empty;
-            string weaponName = string.Empty;
-            string imageURL = string.Empty;
+            int fightingClassNumber = this.rng.Next(0,10);
 
             for (int i = 0; i < 8; i++)
             {
+                int statNumber = this.rng.Next(0, 10);
+
                 if (statNumber <= 6)
                 {
                     stats.Add(hero.Level);
@@ -44,9 +43,9 @@
 
             var slotCheck = new SlotCheck();
 
-            slotNumber = 0;
+            slotNumber = 2;
 
-            await slotCheck.Check(fightingClassStatNumber, slotNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, context, hero, monster, zoneName);
+            await slotCheck.Check(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero, monster, zoneName);
         }
     }
 }

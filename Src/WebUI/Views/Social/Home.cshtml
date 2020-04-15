@@ -17,6 +17,17 @@
                 <a asp-controller="Notification" asp-action="All"><em class="main-font-color">Notifications</em></a>
                 and <a asp-controller="Friends" asp-action="All"><em class="main-font-color">Messages</em></a>.
             </p>
+            <div class="item-padding">
+                <form asp-controller="Social" asp-action="Search" method="get">
+                    <input type="text" name="userName" value="" placeholder="Search for users..." />
+                    <div class="item-padding">
+                        <input type="submit" name="name" class="main-button" value="Search" />
+                    </div>
+                </form>
+                <div class="item-padding">
+                    <hr />
+                </div>
+            </div>
         </div>
     </div>
 </body>

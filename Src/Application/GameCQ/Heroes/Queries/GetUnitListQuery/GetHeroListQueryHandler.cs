@@ -96,37 +96,36 @@
                         energy = hero.CurrentMana;
                     }
 
-                    if (energy < energyCap && DateTime.UtcNow.Minute - energyChange.LastChangedOn.Minute >= rechargeTime)
+                    var timeSpan = DateTime.UtcNow - energyChange.LastChangedOn;
+
+                    if (energy < energyCap && timeSpan.Minutes >= rechargeTime)
                     {
+                        int recoveryTimes = timeSpan.Minutes / rechargeTime;
+
                         if (energyChange.Type == "Walk")
                         {
-                            hero.Energy++;
+                            hero.Energy += recoveryTimes;
                         }
                         else if (energyChange.Type == "Profession")
                         {
-                            hero.ProfessionEnergy++;
+                            hero.ProfessionEnergy += recoveryTimes;
                         }
                         else if (energyChange.Type == "PvP")
                         {
-                            hero.PvPEnergy++;
+                            hero.PvPEnergy += recoveryTimes;
                         }
                         else if (energyChange.Type == "Health")
                         {
-                            hero.CurrentHP += 0.1 * hero.MaxHP;
-
-                            if (hero.MaxHP < hero.CurrentHP)
-                            {
-                                hero.CurrentHP = hero.MaxHP;
-                            }
+                            hero.CurrentHP += (0.1 * hero.MaxHP) * recoveryTimes;
                         }
                         else if (energyChange.Type == "Mana")
                         {
                             hero.CurrentMana += 0.1 * hero.MaxMana;
+                        }
 
-                            if (hero.MaxMana < hero.CurrentMana)
-                            {
-                                hero.CurrentMana = hero.MaxMana;
-                            }
+                        if (energy > energyCap)
+                        {
+                            energy = energyCap;
                         }
 
                         while (true)
@@ -164,6 +163,20 @@
 
         private async Task MainStatsRegen(Hero hero)
         {
+            if (hero.CurrentHP <= 0)
+            {
+                hero.CurrentHP = 0;
+            }
+            else if (hero.CurrentHP > hero.MaxHP)
+            {
+                hero.CurrentHP = hero.MaxHP;
+            }
+
+            if (hero.CurrentMana > hero.MaxMana)
+            {
+                hero.CurrentMana = hero.MaxMana;
+            }
+
             if (this.context.EnergyChanges.Where(ec => ec.Type == "Health" && ec.HeroId == hero.Id).Count() == 0)
             {
                 if (hero.CurrentHP < hero.MaxHP)

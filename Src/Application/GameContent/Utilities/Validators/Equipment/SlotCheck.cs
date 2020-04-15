@@ -39,19 +39,19 @@
             this.vegetables = new string[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
-        public async Task Check(int fightingClassNumber, int slotNumber, List<int> stats, int fightingClassStatNumber, string fightingClassType, string weaponName, IFFDbContext context, Hero hero, Monster monster, string zoneName)
+        public async Task Check(int fightingClassNumber, int slotNumber, List<int> stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, Monster monster, string zoneName)
         {
             if (slotNumber == 0)
             {
-                await this.WeaponGenerate(fightingClassNumber, stats, fightingClassStatNumber, fightingClassType, weaponName, context, hero);
+                await this.WeaponGenerate(fightingClassNumber, stats, fightingClassStatNumber, context, hero);
             }
             else if (slotNumber == 1)
             {
-                await this.TrinketGenerate(stats, fightingClassStatNumber, fightingClassType, context, hero);
+                await this.TrinketGenerate(stats, fightingClassStatNumber, fightingClassNumber, context, hero);
             }
             else if (slotNumber == 2 || slotNumber == 3)
             {
-                await this.ArmorGenerate(stats, fightingClassStatNumber, fightingClassType, context, hero);
+                await this.ArmorGenerate(stats, fightingClassStatNumber, fightingClassNumber, context, hero);
             }
             else if (slotNumber == 4 || slotNumber == 5)
             {
@@ -63,29 +63,21 @@
             }
         }
 
-        private async Task WeaponGenerate(int fightingClassNumber, List<int> stats, int fightingClassStatNumber, string fightingClassType, string weaponName, IFFDbContext context, Hero hero)
+        private async Task WeaponGenerate(int fightingClassNumber, List<int> stats, int fightingClassStatNumber, IFFDbContext context, Hero hero)
         {
-            string imageURL = string.Empty;
-
-            var weaponCheck = new WeaponCheck();
-
-            weaponCheck.Check(fightingClassNumber, fightingClassType, weaponName, imageURL, this.rng);
-
             Weapon templateWeapon = new Weapon
             {
-                Name = $"{fightingClassType}'s {weaponName}",
                 AttackPower = stats[0],
-                ClassType = fightingClassType,
                 Agility = stats[1],
                 Stamina = stats[2],
                 Strength = stats[3],
                 Level = stats[4],
                 Intellect = stats[5],
                 Spirit = stats[6],
-                ImageURL = imageURL,
+                Type = "Weapon",
             };
 
-            this.fightingClassStatCheck.Check(templateWeapon, fightingClassType, fightingClassStatNumber);
+            this.fightingClassStatCheck.Check(templateWeapon, fightingClassStatNumber, fightingClassNumber, this.rng);
 
             int weaponId;
             if (!context.Weapons.Contains(templateWeapon))
@@ -99,28 +91,27 @@
                 weaponId = weapon.Id;
             }
 
-            context.WeaponsInventories.Add(new WeaponInventory
+            await context.WeaponsInventories.AddAsync(new WeaponInventory
             {
                 InventoryId = hero.InventoryId,
                 WeaponId = weaponId,
             });
         }
 
-        private async Task TrinketGenerate(List<int> stats, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
+        private async Task TrinketGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero)
         {
             Trinket templateTrinket = new Trinket
             {
-                Name = $"{fightingClassType}'s Trinket",
                 Strength = stats[0],
-                ClassType = fightingClassType,
                 Stamina = stats[1],
                 Intellect = stats[2],
                 Spirit = stats[3],
                 Agility = stats[4],
                 Level = stats[5],
+                Type = "Trinket",
                 ImageURL = "https://gamepedia.cursecdn.com/wowpedia/4/43/Inv_trinket_80_alchemy02.png?version=95bdfece62d89349b5effa0bf80956d3",
             };
-            this.fightingClassStatCheck.Check(templateTrinket, fightingClassType, fightingClassStatNumber);
+            this.fightingClassStatCheck.Check(templateTrinket, fightingClassStatNumber, fightingClassNumber, this.rng);
 
             int trinketId = 0;
             if (!context.Trinkets.Contains(templateTrinket))
@@ -134,18 +125,17 @@
                 trinketId = trinket.Id;
             }
 
-            context.TrinketsInventories.Add(new TrinketInventory
+            await context.TrinketsInventories.AddAsync(new TrinketInventory
             {
                 InventoryId = hero.InventoryId,
                 TrinketId = trinketId,
             });
         }
 
-        private async Task ArmorGenerate(List<int> stats, int fightingClassStatNumber, string fightingClassType, IFFDbContext context, Hero hero)
+        private async Task ArmorGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero)
         {
             Armor templateArmor = new Armor
             {
-                Name = $"{fightingClassType}'s Armor",
                 ArmorValue = stats[0],
                 ResistanceValue = stats[1],
                 Level = stats[2],
@@ -154,32 +144,37 @@
                 Stamina = stats[5],
                 Agility = stats[6],
                 Intellect = stats[7],
+                Type = "Armor",
             };
 
-            var armorCheck = new ArmorCheck();
-
-            armorCheck.Check(templateArmor, this.rng, fightingClassType, stats[0]);
-
-            templateArmor.ClassType = fightingClassType;
-
-            this.fightingClassStatCheck.Check(templateArmor, fightingClassType, fightingClassStatNumber);
-
-            int armorId;
+            this.fightingClassStatCheck.Check(templateArmor, fightingClassStatNumber, fightingClassNumber, this.rng);
 
             if (!context.Armors.Contains(templateArmor))
             {
-                await context.Armors.AddAsync(templateArmor);
-                armorId = templateArmor.Id;
-            }
-            else
-            {
-                var armor = await context.Armors.FirstOrDefaultAsync(a => a.Equals(templateArmor));
-                armorId = armor.Id;
+                await context.Armors.AddAsync(new Armor
+                {
+                    Name = templateArmor.Name,
+                    ClassType = templateArmor.ClassType,
+                    ArmorValue = templateArmor.ArmorValue,
+                    ResistanceValue = templateArmor.ResistanceValue,
+                    Level = templateArmor.Level,
+                    Spirit = templateArmor.Spirit,
+                    Strength = templateArmor.Strength,
+                    Stamina = templateArmor.Stamina,
+                    Agility = templateArmor.Agility,
+                    Intellect = templateArmor.Intellect,
+                    Type = "Armor",
+                    Slot = templateArmor.Slot,
+                });
+
+                await context.SaveChangesAsync(CancellationToken.None);
             }
 
-            context.ArmorsInventories.Add(new ArmorInventory
+            var armor = await context.Armors.FirstOrDefaultAsync(a => a.Equals(templateArmor));
+
+            await context.ArmorsInventories.AddAsync(new ArmorInventory
             {
-                ArmorId = armorId,
+                ArmorId = armor.Id,
                 InventoryId = hero.InventoryId,
             });
         }
