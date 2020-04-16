@@ -2,7 +2,6 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
-    using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
     using Application.CQ.Admin.Moderation.Feedbacks.Commands.Delete.DeleteFeedbackCommand;
     using Application.CQ.Admin.Moderation.Feedbacks.Commands.Update;
     using Common;
@@ -18,12 +17,6 @@
         public async Task<ActionResult> Feedbacks()
         {
             return this.View(await this.Mediator.Send(new GetAllFeedbacksQuery { }));
-        }
-
-        [HttpGet]
-        public async Task<ActionResult> CurrentFeedback([FromQuery]int id)
-        {
-            return this.View(await this.Mediator.Send(new GetCurrentFeedbackQuery { FeedbackId = id }));
         }
 
         [HttpDelete]

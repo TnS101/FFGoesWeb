@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Contracts.Items.AdditionalTypes;
-    using Domain.Entities.Game.Items;
     using global::Common;
     using MediatR;
 
@@ -53,16 +52,12 @@
         {
             var weapon = await this.context.Weapons.FindAsync(request.Id);
 
-            if (request.NewAttackPower == 0)
+            if (request.NewAttackPower > 0)
             {
-                request.NewAttackPower = weapon.AttackPower;
+                weapon.AttackPower = request.NewAttackPower;
             }
 
             this.BaseItemsNullCheck(request, weapon);
-
-            this.BaseItemsStatsSet(request, weapon);
-
-            weapon.AttackPower = request.NewAttackPower;
 
             this.context.Weapons.Update(weapon);
         }
@@ -71,23 +66,17 @@
         {
             var armor = await this.context.Armors.FindAsync(request.Id);
 
-            if (request.NewArmorValue == 0)
+            if (request.NewArmorValue > 0)
             {
-                request.NewArmorValue = armor.ArmorValue;
+                armor.ArmorValue = request.NewArmorValue;
             }
 
-            if (request.NewResistanceValue == 0)
+            if (request.NewResistanceValue > 0)
             {
-                request.NewResistanceValue = armor.ArmorValue;
+                armor.ResistanceValue = request.NewResistanceValue;
             }
 
             this.BaseItemsNullCheck(request, armor);
-
-            this.BaseItemsStatsSet(request, armor);
-
-            armor.ArmorValue = request.NewArmorValue;
-
-            armor.ResistanceValue = request.NewResistanceValue;
 
             this.context.Armors.Update(armor);
         }
@@ -97,8 +86,6 @@
             var trinket = await this.context.Trinkets.FindAsync(request.Id);
 
             this.BaseItemsNullCheck(request, trinket);
-
-            this.BaseItemsStatsSet(request, trinket);
 
             this.context.Trinkets.Update(trinket);
         }
@@ -118,12 +105,10 @@
 
             this.TreasureStatsHandler(request, treasure);
 
-            if (request.Reward == 0)
+            if (request.Reward > 0)
             {
-                request.Reward = treasure.Reward;
+                treasure.Reward = request.Reward;
             }
-
-            treasure.Reward = request.Reward;
 
             this.context.Treasures.Update(treasure);
         }
@@ -141,107 +126,85 @@
 
         private void TreasureStatsHandler(UpdateItemCommand request, ITreasure treasure)
         {
-            if (string.IsNullOrWhiteSpace(request.NewName))
+            if (!string.IsNullOrWhiteSpace(request.NewName))
             {
-                request.NewName = treasure.Name;
+                treasure.Name = request.NewName;
             }
 
-            if (string.IsNullOrWhiteSpace(request.Rarity))
+            if (!string.IsNullOrWhiteSpace(request.Rarity))
             {
-                request.Rarity = treasure.Rarity;
+                treasure.Rarity = request.Rarity;
             }
-
-            treasure.Rarity = request.Rarity;
         }
 
         private void MaterialStatsHandler(UpdateItemCommand request, IMaterial material)
         {
-            if (string.IsNullOrWhiteSpace(request.NewName))
+            if (!string.IsNullOrWhiteSpace(request.NewName))
             {
-                request.NewName = material.Name;
+                material.Name = request.NewName;
             }
 
-            if (request.NewBuyPrice == 0)
+            if (request.NewBuyPrice > 0)
             {
-                request.NewBuyPrice = material.BuyPrice;
+                material.BuyPrice = request.NewBuyPrice;
             }
 
-            if (request.NewSellPrice == 0)
+            if (request.NewSellPrice > 0)
             {
-                request.NewSellPrice = material.SellPrice;
+                material.SellPrice = request.NewSellPrice;
             }
-
-            material.BuyPrice = request.NewBuyPrice;
-
-            material.Name = request.NewName;
-
-            material.SellPrice = request.NewSellPrice;
-        }
-
-        private void BaseItemsStatsSet(UpdateItemCommand request, IBaseItem item)
-        {
-            item.Name = request.NewName;
-            item.Level = request.NewLevel;
-            item.ClassType = request.NewClassType;
-            item.Stamina = request.NewStamina;
-            item.Strength = request.NewStrength;
-            item.Agility = request.NewAgility;
-            item.Intellect = request.NewIntellect;
-            item.Spirit = request.NewSpirit;
-            item.SellPrice = request.NewSellPrice;
-            item.BuyPrice = request.NewBuyPrice;
         }
 
         private void BaseItemsNullCheck(UpdateItemCommand request, IBaseItem item)
         {
-            if (string.IsNullOrWhiteSpace(request.NewName))
+            if (!string.IsNullOrWhiteSpace(request.NewName))
             {
-                request.NewName = item.Name;
+                item.Name = request.NewName;
             }
 
-            if (request.NewBuyPrice == 0)
+            if (request.NewBuyPrice > 0)
             {
-                request.NewBuyPrice = item.BuyPrice;
+                item.BuyPrice = request.NewBuyPrice;
             }
 
-            if (request.NewSellPrice == 0)
+            if (request.NewSellPrice > 0)
             {
-                request.NewSellPrice = item.SellPrice;
+                item.SellPrice = request.NewSellPrice;
             }
 
-            if (request.NewLevel == 0)
+            if (request.NewLevel > 0)
             {
-                request.NewLevel = item.Level;
+                item.Level = request.NewLevel;
             }
 
-            if (string.IsNullOrWhiteSpace(request.NewClassType))
+            if (!string.IsNullOrWhiteSpace(request.NewClassType))
             {
-                request.NewClassType = item.ClassType;
+                item.ClassType = request.NewClassType;
             }
 
-            if (request.NewStamina == 0)
+            if (request.NewStamina > 0)
             {
-                request.NewStamina = item.Stamina;
+                item.Stamina = request.NewStamina;
             }
 
-            if (request.NewStrength == 0)
+            if (request.NewStrength > 0)
             {
-                request.NewStrength = item.Strength;
+                item.Strength = request.NewStrength;
             }
 
-            if (request.NewAgility == 0)
+            if (request.NewAgility > 0)
             {
-                request.NewAgility = item.Agility;
+                item.Agility = request.NewAgility;
             }
 
-            if (request.NewIntellect == 0)
+            if (request.NewIntellect > 0)
             {
-                request.NewIntellect = item.Intellect;
+                item.Intellect = request.NewIntellect;
             }
 
-            if (request.NewSpirit == 0)
+            if (request.NewSpirit > 0)
             {
-                request.NewSpirit = item.Spirit;
+                item.Spirit = request.NewSpirit;
             }
         }
     }

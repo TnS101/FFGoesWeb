@@ -41,5 +41,11 @@
         {
             return this.View();
         }
+
+        [HttpGet]
+        public ActionResult Error()
+        {
+            return this.View();
+        }
     }
 }

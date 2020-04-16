@@ -1025,11 +1025,11 @@ a {
 #primary-menu {
     margin: 0;
     color: #fff;
-    height:50px;
+    height: 50px;
 }
 
     #primary-menu li {
-        float:left;
+        float: left;
         list-style: none;
     }
 
@@ -1079,7 +1079,7 @@ a {
         box-shadow: 0 0 2px rgba(255,255,255,.3);
         margin: 0;
         border-radius: 0 0 3px 3px;
-        z-index:1;
+        z-index: 1;
         transition: all 0.3s ease;
     }
 
@@ -2808,8 +2808,8 @@ rotate-vert-center {
 }
 
 .fade-out {
-    -webkit-animation: fade-out 3s ease-out alternate both;
-    animation: fade-out 3s ease-out alternate both;
+    -webkit-animation: fade-out 0.8s ease-out alternate both;
+    animation: fade-out 0.8s ease-out alternate both;
 }
 
 @keyframes fade-out {
@@ -2990,5 +2990,97 @@ rotate-vert-center {
         -webkit-transform-origin: top;
         transform-origin: top;
         opacity: 1;
+    }
+}
+
+.is-clickable {
+    cursor: pointer;
+}
+
+#scroll-top {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    outline: none; /* Remove outline */
+    padding: 15px; /* Some padding */
+}
+
+    #scroll-top:hover {
+        animation: 0.8s;
+        animation-name: scrollTopHover;
+        color: #c39873;
+    }
+
+.popup {
+    position: fixed;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: #fcf0e3;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+    width:60%;
+}
+
+@keyframes scrollTopHover {
+    from {
+        color: #2b5568;
+        opacity: 0.7;
+    }
+
+    to {
+        color: #c39873;
+        opacity: 1;
+    }
+}
+
+.blur-all {
+    animation: 0.8s;
+    animation-name: blurAll;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+}
+
+@keyframes blurAll {
+    from {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+
+    to {
+        -webkit-filter: blur(10px);
+        -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+    }
+}
+
+.blur-back {
+    animation: 0.8s;
+    animation-name: blurBack;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+}
+
+@keyframes blurBack {
+    from {
+        -webkit-filter: blur(10px);
+        -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+    }
+
+    to {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
     }
 }

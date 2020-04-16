@@ -1,13 +1,13 @@
 ﻿namespace Application.SeedInitialData
 {
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common.Social;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using global::Domain.Entities.Common;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class DataSeeder
     {

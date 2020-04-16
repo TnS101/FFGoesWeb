@@ -76,6 +76,10 @@
                    options.CheckConsentNeeded = context => true;
                    options.MinimumSameSitePolicy = SameSiteMode.None;
                });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -86,6 +90,7 @@
                 app.UseStaticFiles();
                 app.UseCookiePolicy();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();

@@ -34,5 +34,13 @@
         {
             return this.View();
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Logout()
+        {
+            await this.SignInManager.SignOutAsync();
+
+            return this.View();
+        }
     }
 }

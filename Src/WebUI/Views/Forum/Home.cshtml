@@ -2,14 +2,14 @@
 
 @{
     ViewData["Title"] = "Home";
-    Layout = "_Layout";
+    var user = await this.UserManager.GetUserAsync(this.User);
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Home</title>
     <partial name="_ForumNavBar">
-       
+
 </head>
 <body class="primary-background-color">
     @if (Model.Topics.Count() == 0)
@@ -18,7 +18,7 @@
             <h2 class="secondary-font-color has-large-font-size">No content to display</h2>
             <div class="item-padding">
             </div>
-            <form asp-controller="Forum" asp-action="Home" method="get" class="aligncenter" style="width:1928px">
+            <form asp-controller="Forum" asp-action="Home" method="get" class="aligncenter">
                 <hr />
                 <p class="has-normal-font-size">
                     <label for="game">Game </label>
@@ -31,7 +31,7 @@
                     <input type="checkbox" name="check" id="ideas" value="" />
                     <input type="submit" name="button" value="Filter" />
                 </p>
-                
+
             </form>
             <hr />
         </div>
@@ -41,7 +41,7 @@
     {
         <div class="has-text-align-center item-padding fade-in">
             <h1 class="secondary-font-color has-large-font-size">All Topics</h1>
-            <div class="item-padding has-text-align-center aligncenter" style="width:1928px">
+            <div class="item-padding has-text-align-center aligncenter">
                 <form asp-controller="Forum" asp-action="Home" method="get" class="aligncenter">
                     <hr />
                     <p class="has-normal-font-size">
@@ -63,8 +63,14 @@
         foreach (var topic in Model.Topics)
         {
             <div class="has-text-align-center item-padding">
-                <p class="main-font-color has-large-font-size">[@topic.Category]<a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id"><span class="light-font-color">@topic.Title</span></a> by <a asp-controller="User" asp-action="Profile" asp-route-id="@topic.UserId"><em class="text-color">@topic.UserName</em></a></p>
-                <i class="fas fa-thumbs-up has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Likes</b> <i class="fas fa-comments has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Comments</b>
+                <p class="main-font-color has-normal-font-size">[@topic.Category]<a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id"><span class="main-font-color">@topic.Title</span></a> by <a asp-controller="User" asp-action="Profile" asp-route-id="@topic.UserId"><em class="text-color">@topic.UserName</em></a></p>
+                <i class="fas fa-thumbs-up has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Likes</b> <a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id">
+                    <i class="fas fa-comments has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Comments</b>
+                </a>
+                @if (topic.UserId == user.Id)
+                {
+                    <a asp-controller="Topic" asp-action="Delete" asp-route-id="@topic.Id"><i class="icofont-trash icofont-2x"></i></a>
+                }
                 <div class="item-padding">
                 </div>
                 <hr />

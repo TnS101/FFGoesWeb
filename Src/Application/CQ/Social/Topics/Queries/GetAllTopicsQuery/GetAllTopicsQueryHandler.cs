@@ -64,6 +64,7 @@
                 UserName = t.User.UserName,
                 CreateOn = t.CreateOn,
                 Likes = t.Likes,
+                UserId = t.UserId,
                 Comments = t.Comments.Count(),
             })
                 .OrderByDescending(t => t.CreateOn)

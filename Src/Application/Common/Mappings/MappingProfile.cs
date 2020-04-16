@@ -1,6 +1,5 @@
 ﻿namespace Application.Common.Mappings
 {
-    using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
     using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
@@ -44,7 +43,6 @@
             this.CreateMap<Ticket, TicketPartialViewModel>();
             this.CreateMap<Ticket, TicketFullViewModel>();
             this.CreateMap<Feedback, FeedbackFullViewModel>();
-            this.CreateMap<Feedback, FeedbackPartialViewModel>();
             this.CreateMap<Feedback, FeedbackTaskViewModel>();
             this.CreateMap<Status, StatusFullViewModel>();
             this.CreateMap<Hero, HeroMinViewModel>();

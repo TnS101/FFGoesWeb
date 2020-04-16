@@ -4,11 +4,13 @@
     using Application.CQ.Admin.GameContent.Items.Commands.Delete;
     using Application.CQ.Admin.GameContent.Items.Commands.Update;
     using Application.CQ.Admin.GameContent.Items.Queries;
+    using Application.CQ.Admin.GameContent.Spells.Commands.Create;
+    using Application.CQ.Admin.GameContent.Spells.Commands.Delete;
+    using Application.CQ.Admin.GameContent.Spells.Commands.Update;
     using Application.CQ.Admin.GameContent.Spells.Queries;
     using Application.CQ.Admin.Moderation.Feedback.Commands.Delete.FeedbackTaskDoneCommand;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
-    using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
     using Application.CQ.Admin.Moderation.Feedbacks.Commands.Delete.DeleteFeedbackCommand;
     using Application.CQ.Admin.Moderation.Feedbacks.Commands.Update;
     using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
@@ -90,6 +92,9 @@
             services.AddScoped<IRequestHandler<DeleteFeedbackCommand, string>, DeleteFeedbackCommandHandler>();
             services.AddScoped<IRequestHandler<AcceptFeedbackCommand, string>, AcceptFeedbackCommandHandler>();
             services.AddScoped<IRequestHandler<FeedbackTaskDoneCommand, string>, FeedbackTaskDoneCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateSpellCommand, string>, CreateSpellCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateSpellCommand, string>, UpdateSpellCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteSpellCommand, string>, DeleteSpellCommandHandler>();
         }
 
         private void AdminQueries(IServiceCollection services)
@@ -99,7 +104,6 @@
             services.AddScoped<IRequestHandler<GetAllSpellsQuery, SpellListViewModel>, GetAllSpellsQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllItemsQuery, ItemListViewModel>, GetAllItemsQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllFeedbacksQuery, FeedbacksListViewModel>, GetAllFeedbacksQueryHandler>();
-            services.AddScoped<IRequestHandler<GetCurrentFeedbackQuery, FeedbackFullViewModel>, GetCurrentFeedbackQueryHandler>();
             services.AddScoped<IRequestHandler<ToDoList, FeedbackTaskListViewModel>, ToDoListHandler>();
         }
 

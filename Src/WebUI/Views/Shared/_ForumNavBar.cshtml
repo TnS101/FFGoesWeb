@@ -13,7 +13,7 @@
                         <li style="padding-left:600px" class="page_item page-item-9"><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Back to Main Page</a></li>
                         <li class="page_item page-item-2"><a asp-controller="Forum" asp-action="Home"><i class="fas fa-text-width"></i>Forum</a></li>
                         <li class="page_item page-item-2"><a asp-controller="Topic" asp-action="Create"><i class="fas fa-pen-alt"></i>Create Topic</a></li>
-                        <li class="page_item page-item-2"><a href="https://localhost:44312/Identity/Account/Logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                        <li><a asp-area="Identity" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
                     </ul>
                 </div>
             </div>

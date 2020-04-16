@@ -13,6 +13,13 @@
                 var statuses = $('#statuses');
                 var friends = $('#friends');
                 var statusMenu = $('#menu');
+                var feedbackButton = $('.feedback-button');
+                var feedbackPanel = $('#feedback-panel');
+
+                feedbackButton.click(function () {
+                    feedbackPanel.show();
+                    $('html, body').animate({ scrollTop: feedbackButton.offset().top - 10 }, 'slow');
+                })
 
                 show.on("mouseenter", function () {
                     statuses.show();
@@ -102,13 +109,25 @@
 
             @if (Model.LastFeedbackSentOn.HasValue && DateTime.UtcNow.Day - Model.LastFeedbackSentOn.Value.Day >= 1)
             {
+                <div class="item-padding">
+                    <p onclick="" class="feedback-button is-clickable main-font-color has-normal-font-size">Leave your Daily Feedback?</p>
+                </div>
+            }
+
+            @if (Model.Feedbacks == 0)
+            {
+                <div class="item-padding">
+                    <p onclick="" class="feedback-button is-clickable main-font-color has-normal-font-size">Leave your first Feedback?</p>
+                </div>
+            }
+            <div class="item-padding fade-in" id="feedback-panel" hidden>
                 <form asp-controller="Profile" asp-action="LeaveFeedback" method="post">
                     <label for="feedback">
                         <input id="feedback" class="item-padding" type="text" name="feedback" value="" />
                     </label>
                     <label for="rate">
-                        Rate us?
-                        <select name="rate">
+                        <span class="has-medium-font-size main-font-color item-padding">Rate us?</span>
+                        <select name="rate" id="rate" class="has-narrow-width">
                             <option selected value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -118,40 +137,19 @@
                         <input type="submit" name="name" value="Send" />
                     </label>
                 </form>
-            }
-
-            @if (Model.Feedbacks == 0)
-            {
-                <div class="item-padding">
-                    <p class="main-font-color has-normal-font-size">Send your first Feedback?</p>
-                    <form asp-controller="Profile" asp-action="LeaveFeedback" method="post" class="item-padding">
-                        <label for="feedback">
-                            <input id="feedback" class="item-padding" type="text" name="feedback" value="" placeholder="I think that..." />
-                        </label>
-                        <label for="rate">
-                            Rate us?
-                            <select name="rate">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option selected value="5">5</option>
-                            </select>
-                        </label>
-                        <input type="submit" name="name" value="Send" />
-                    </form>
-                </div>
-
-                <h3 class="item-padding">
-                    Note: Every accepted Feedback grants you Supporter <i class="far fa-star"></i> which can be used to buy Exclusive Items!
-                    In order to motivate people to be more communicative we will give you a <em class="main-font-color">Reward</em> for your first Feedback, regardless if it is accepted or not.
-                </h3>
-                <h3 class="item-padding"><b style="color:red">Important!</b> You can only leave 1 Feedback a day. Make it count.</h3>
-            }
+            </div>
 
             @if (Model.Feedbacks > 0)
             {
                 <h3 class="item-padding">Your <a asp-controller="Profile" asp-action="Feedbacks" class="main-font-color">Feedback</a> has made the game better and you have recieved @Model.Stars Supporter <i class="far fa-star main-font-color"></i> for your great ideas!</h3>
+            }
+            else
+            {
+                <h3 class="item-padding">
+                    Note: Every accepted Feedback grants you Supporter <i class="far fa-star main-font-color"></i> which can be used to buy Exclusive Items!
+                    In order to motivate people to be more communicative we will give you a <em class="main-font-color">Reward</em> for your first Feedback, regardless if it is accepted or not.
+                </h3>
+                <h3 class="item-padding"><b style="color:red">Important!</b> You can only leave 1 Feedback a day. Make it count.</h3>
             }
 
 

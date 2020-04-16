@@ -13,6 +13,9 @@ using Common;
 using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Options;
 
 namespace WebUI.Areas.Identity.Pages.Account
 {
@@ -28,25 +31,9 @@ namespace WebUI.Areas.Identity.Pages.Account
             _logger = logger;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
-        }
-
-        public async Task<IActionResult> OnPost(string returnUrl = null)
-        {
-            this.HttpContext.Session.Remove(".AspNetCore.Identity.Application");
-
             await _signInManager.SignOutAsync();
-
-            _logger.LogInformation("User logged out.");
-            if (returnUrl != null)
-            {
-                return this.LocalRedirect(returnUrl);
-            }
-            else
-            {
-                return Redirect("/");
-            }
         }
     }
 }

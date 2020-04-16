@@ -47,7 +47,8 @@
         public const string EnemyEncounterRedirect = "EnemyEncounter";
         public const string UnitCreationErrorRedirect = "/Unit/Create";
         public const string SuccesfulFeedbackRedirect = @"\FeedbackSuccess";
-        public const string ErrorRedirect = "Error";
+        public const string ErrorRedirect = @"\Home\Error";
+        public const string SpellCommandRedirect = @"\GameContent\Spells";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";

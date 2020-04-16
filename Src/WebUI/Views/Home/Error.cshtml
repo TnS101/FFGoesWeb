@@ -7,10 +7,13 @@
     <partial name="_NavBar">
 </head>
 <body>
-    <div class="has-text-align-center fade-in">
+    <div class="has-text-align-center item-padding fade-in">
         <h1 class="secondary-font-color">Something went wrong. Please, try again later!</h1>
         <div class="item-padding">
-            <p class="main-font-color has-large-font-size">Are we going back <a asp-controller="Home" asp-action="Index">Home</a>?</p>
+            <hr />
+            <div class="item-padding">
+                <p class="main-font-color has-large-font-size">Are we going back <a asp-controller="Home" asp-action="Index"><span class="light-font-color">Home?</span></a></p>
+            </div>
         </div>
     </div>
 </body>

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using Domain.Entities.Common;
     using Domain.Entities.Common.Social;
+    using Domain.Entities.Moderation;
 
     public class TopicFullViewModel
     {
@@ -24,5 +25,9 @@
         public DateTime CreateOn { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+
+        public ICollection<string> TopicTicketsIds { get; set; }
+
+        public Queue<string> CommentTicketsIds { get; set; }
     }
 }

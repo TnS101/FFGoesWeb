@@ -24,7 +24,7 @@
             return this.View(await this.Mediator.Send(new CreateTopicCommand { Title = title, Category = category, Content = content, User = this.User }));
         }
 
-        [HttpDelete]
+        [HttpGet("/Topic/Delete/id")]
         public async Task<ActionResult> Delete([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = id }));

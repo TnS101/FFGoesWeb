@@ -10,6 +10,7 @@
     using Application.CQ.Users.Statuses.Queries;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using global::Common;
+    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 

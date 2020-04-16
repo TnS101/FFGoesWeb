@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <div class="form-group item-padding">
-                                <button type="submit" class="btn btn-default main-font-color has-medium-font-size">Log in</button>
+                                <button type="submit" class="main-button">Log in</button>
                             </div>
                             <div class="form-group item-padding">
                                 <p>
@@ -50,32 +50,7 @@
                 </div>
                 <div class="col-md-6 col-md-offset-2 item-padding">
                     <section>
-                        <h4>Use another service to log in.</h4>
                         <hr />
-                        @{
-                            if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                            {
-                                <div>
-                                    <p class="main-font-color">
-                                        There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                                        for details on setting up this ASP.NET application to support logging in via external services.
-                                    </p>
-                                </div>
-                            }
-                            else
-                            {
-                                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                    <div>
-                                        <p>
-                                            @foreach (var provider in Model.ExternalLogins)
-                                            {
-                                                <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                            }
-                                        </p>
-                                    </div>
-                                </form>
-                            }
-                        }
                     </section>
                 </div>
             </div>

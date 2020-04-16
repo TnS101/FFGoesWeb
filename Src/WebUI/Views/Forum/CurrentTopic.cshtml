@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "CurrentTopic";
+    var user = await this.UserManager.GetUserAsync(this.User);
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,21 +15,25 @@
                 var firstCommentButton = $('#first-comment-button');
                 var commentButton = $('#comment-button');
                 var commentPanel = $('#comment-panel');
-                var editButton = $('#edit-button');
+                var editButton = $('.edit-button');
+                var commentReportButton = $('#comment-report-button');
 
                 editButton.click(function () {
-                    $('#edit-panel').show();
+                    $('.edit-panel').show();
+                })
+
+                commentReportButton.click(function () {
+                    $('#comment-report-panel').show();
                 })
 
                 reportButton.click(function () {
-                    reportButton.addClass('selected-main-font-color');
                     reportPanel.show();
                     return false;
                 })
 
                 firstCommentButton.click(function () {
                     commentPanel.show();
-                    window.scrollTo('#comment-panel');
+                    $('html, body').animate({ scrollTop: firstCommentButton.offset().top - 10 }, 'slow');
                 })
 
                 commentButton.click(function () {
@@ -48,10 +53,13 @@
                 <h2 class="main-font-color">@Model.Content</h2>
             </div>
             <div class="item-padding">
-                <h3 class="main-font-color">Posted on @Model.CreateOn</h3>
+                <h3 class="main-font-color">Posted on @Model.CreateOn.ToString("MM/dd/yyyy H:mm")</h3>
             </div>
 
-            <i id="report-button" onclick="true" style="cursor: pointer" class="icofont-exclamation-circle main-font-color icofont-4x"></i>
+            @if (!Model.TopicTicketsIds.Contains(user.Id))
+            {
+                <a id="report-button" class="is-clickable" onclick="true"><i class="icofont-exclamation-circle main-font-color icofont-4x"></i></a>
+            }
 
             <div id="report-panel" hidden class="fade-in item-padding">
                 <form asp-controller="Social" asp-action="ReportContent" method="post">
@@ -91,10 +99,10 @@
                             </a>@comment.Likes <a asp-controller="Comment" asp-action="Replies">
                                 <i class="fas fa-comments has-large-font-size main-font-color"></i>
                             </a>@comment.Replies.Count
-                            @if (this.UserManager.GetUserAsync(this.User).Result.Id == comment.UserId)
+                            @if (user.Id == comment.UserId)
                             {
-                                <i class="fas fa-edit main-font-color has-large-font-size" onclick="true" style="cursor: pointer" id="edit-button"></i>
-                                <div id="edit-panel" class="fade-in" hidden>
+                                <a class="edit-button is-clickable" onclick="true"><i class="fas fa-edit main-font-color has-large-font-size"></i></a>
+                                <div class="edit-panel fade-in" hidden>
                                     <form asp-controller="Comment" asp-action="Edit" class="item-padding">
                                         <input type="hidden" name="id" value="@comment.Id" />
                                         <input type="text" name="content" value="" />
@@ -104,6 +112,30 @@
                                     </form>
                                 </div>
                             }
+                            @if (!Model.CommentTicketsIds.Contains(user.Id))
+                            {
+                                <i id="comment-report-button" onclick="true" style="cursor: pointer" class="icofont-exclamation-circle main-font-color icofont-3x"></i>
+                                <div hidden id="comment-report-panel" class="fade-in item-padding">
+                                    <form asp-controller="Social" asp-action="ReportContent" method="post">
+                                        <input type="hidden" name="id" value="@comment.Id" />
+                                        <input type="hidden" name="contentType" value="Comment" />
+                                        <select class="aligncenter " name="category">
+                                            <option value="Racism">Racism</option>
+                                            <option selected value="Hate Speech">Hate Speech</option>
+                                            <option value="Homophobia">Homophobia</option>
+                                            <option value="Cursing">Cursing</option>
+                                            <option value="Spam">Spam</option>
+                                        </select>
+                                        <div class="item-padding">
+                                            <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." />
+                                        </div>
+                                        <div class="item-padding">
+                                            <input type="submit" name="button" class="main-button" value="Send" />
+                                        </div>
+                                    </form>
+                                </div>
+                            }
+
                             <div class="item-padding"></div>
                             <hr />
                         </div>
