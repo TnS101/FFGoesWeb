@@ -21,7 +21,14 @@
         [HttpPost]
         public async Task<ActionResult> Create([FromForm]string title, [FromForm]string category, [FromForm]string content)
         {
-            return this.View(await this.Mediator.Send(new CreateTopicCommand { Title = title, Category = category, Content = content, User = this.User }));
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content))
+            {
+                return this.View(GConst.CreateTopicErrorRedirect, GConst.FillAllFieldsError);
+            }
+
+            await this.Mediator.Send(new CreateTopicCommand { Title = title, Category = category, Content = content, User = this.User });
+
+            return this.Redirect(GConst.TopicCommandRedirect);
         }
 
         [HttpGet("/Topic/Delete/id")]
@@ -36,11 +43,17 @@
             return this.View();
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<ActionResult> Edit([FromQuery]string id, [FromForm]string title, [FromForm]string category,
             [FromForm]string content)
         {
             return this.Redirect(await this.Mediator.Send(new EditTopicCommand { TopicId = id, Title = title, Category = category, Content = content }));
+        }
+
+        [HttpGet]
+        public ActionResult InModeration()
+        {
+            return this.View();
         }
     }
 }

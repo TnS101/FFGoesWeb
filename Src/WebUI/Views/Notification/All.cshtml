@@ -27,8 +27,10 @@
                             <i class="fas fa-people-arrows has-large-font-size"></i>
                         }
 
-                        <p class="has-medium-font-size">@notification.Type</p>
+                        <p class="has-normal-font-size">@notification.Type</p>
+                        <br />
                         <p class="has-medium-font-size"><em>@notification.Content</em></p>
+                        <br />
 
                         @{
                             var timeSpan = DateTime.UtcNow - notification.RecievedOn;
@@ -36,51 +38,59 @@
 
                         @if (timeSpan.Minutes < 1)
                         {
-                            <p class="main-font-color has-large-font-size">Just Now.</p>
+                            <p class="main-font-color has-large-font-size">Just Now</p>
                         }
                         else if (timeSpan.Hours < 1)
                         {
                             int difference = timeSpan.Minutes;
 
                             <p class="main-font-color has-large-font-size">
-                                @difference Minutes Ago.
+                                @difference Minutes Ago
+                            </p>
+                        }
+                        else if (timeSpan.Hours == 1)
+                        {
+                            <p class="main-font-color has-large-font-size">
+                                An Hour Ago
                             </p>
                         }
                         else if (timeSpan.Days < 1)
                         {
                             int difference = timeSpan.Hours;
                             <p class="main-font-color has-large-font-size">
-                                @difference Hours Ago.
+                                @difference Hours Ago
                             </p>
                         }
                         else if (timeSpan.Days == 1)
                         {
                             <p class="main-font-color has-large-font-size">
-                                Yesterday.
+                                Yesterday
                             </p>
                         }
                         else if (timeSpan.Days > 1)
                         {
                             int difference = timeSpan.Days;
                             <p class="main-font-color has-large-font-size">
-                                @difference Days Ago.
+                                @difference Days Ago
                             </p>
                         }
                         else if (timeSpan.Days > 30)
                         {
                             <p class="main-font-color has-large-font-size">
-                                Last Month.
+                                Last Month
                             </p>
                         }
                         else
                         {
                             <p class="main-font-color has-large-font-size">
-                                Long time ago.
+                                Long time ago
                             </p>
                         }
                     </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
                 }
-
             </div>
         }
         else

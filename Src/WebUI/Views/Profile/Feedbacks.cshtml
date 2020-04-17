@@ -12,7 +12,7 @@
         <h1 class="has-text-align-center secondary-font-color">Your Feedback's progress</h1>
         <div class="item-padding has-text-align-center">
             <hr />
-            @foreach (var feedback in Model.Feedbacks)
+            @foreach (var feedback in Model.Feedbacks.OrderByDescending(f => f.SentOn).ThenByDescending(f => f.IsAccepted))
             {
                 <div class="item-padding">
                     <p class="main-font-color has-normal-font-size">@feedback.Content</p>
@@ -20,7 +20,9 @@
                     @if (feedback.IsAccepted)
                     {
                         <img src="~/images/FeedbackAccepted.png" alt="Feedback Is Accepted" />
-                        <p class="main-font-color has-medium-font-size">Reward : <i class="far fa-star"></i> @feedback.Stars</p>
+                        <br />
+                        <br/>
+                        <p class="main-font-color has-normal-font-size">Reward : <i class="far fa-star"></i> @feedback.Stars</p>
                         <div class="item-padding">
                         </div>
                     }

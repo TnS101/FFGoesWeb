@@ -26,11 +26,23 @@
             }
             else
             {
+                var user = await this.UserManager.GetUserAsync(this.User);
                 string userId = Model[0];
                 string userName = Model[1];
-                <p class="has-huge-font-size main-font-color">
-                    <a asp-controller="User">content</a>
-                </p>
+
+                @if (user.Id == userId)
+                {
+                    <p class="has-huge-font-size main-font-color">
+                        <a asp-controller="Profile" asp-action="Panel"><span class="light-font-color">@userName (You)</span></a>
+                    </p>
+                }
+                else
+                {
+                    <p class="has-huge-font-size main-font-color">
+                        <a asp-controller="Profile" asp-action="CurrentUser" asp-route-id="@userId"><span class="light-font-color">@userName</span></a>
+                    </p>
+                }
+
             }
 
         </div>

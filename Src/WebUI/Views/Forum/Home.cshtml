@@ -63,7 +63,18 @@
         foreach (var topic in Model.Topics)
         {
             <div class="has-text-align-center item-padding">
-                <p class="main-font-color has-normal-font-size">[@topic.Category]<a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id"><span class="main-font-color">@topic.Title</span></a> by <a asp-controller="User" asp-action="Profile" asp-route-id="@topic.UserId"><em class="text-color">@topic.UserName</em></a></p>
+                <p class="main-font-color has-normal-font-size">
+                    [@topic.Category]<a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id"><span class="main-font-color">@topic.Title</span></a>
+                    by @if (user.Id == topic.UserId)
+                    {
+                        <a asp-controller="Profile" asp-action="Panel"><em class="text-color">@topic.UserName (You)</em></a>
+
+                    }
+                    else
+                    {
+                        <a asp-controller="Profile" asp-action="CurrentUser" asp-route-id="@topic.UserId"><em class="text-color">@topic.UserName</em></a>
+                    }
+                </p>
                 <i class="fas fa-thumbs-up has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Likes</b> <a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id">
                     <i class="fas fa-comments has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Comments</b>
                 </a>

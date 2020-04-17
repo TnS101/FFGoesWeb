@@ -13,7 +13,7 @@
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class CreateTopicCommandHandler : IRequestHandler<CreateTopicCommand, string[]>
+    public class CreateTopicCommandHandler : IRequestHandler<CreateTopicCommand>
     {
         private readonly IFFDbContext context;
         private readonly UserManager<AppUser> userManager;
@@ -24,29 +24,24 @@
             this.userManager = userManager;
         }
 
-        public async Task<string[]> Handle(CreateTopicCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateTopicCommand request, CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            if (request.Title != null && request.Content != null)
+            await this.context.Topics.AddAsync(new Domain.Entities.Common.Social.Topic
             {
-                await this.context.Topics.AddAsync(new Domain.Entities.Common.Social.Topic
-                {
-                    Title = request.Title,
-                    Category = request.Category,
-                    Content = request.Content,
-                    UserId = user.Id,
-                    Comments = new List<Comment>(),
-                    Likes = 0,
-                    CreateOn = DateTime.UtcNow,
-                });
+                Title = request.Title,
+                Category = request.Category,
+                Content = request.Content,
+                UserId = user.Id,
+                Comments = new List<Comment>(),
+                Likes = 0,
+                CreateOn = DateTime.UtcNow,
+            });
 
-                await this.context.SaveChangesAsync(cancellationToken);
+            await this.context.SaveChangesAsync(cancellationToken);
 
-                return new string[] { GConst.TopicCommandRedirect, string.Empty };
-            }
-
-            return new string[] { GConst.CreateTopicErrorRedirect, "Please, fill all fields!" };
+            return Unit.Value;
         }
     }
 }

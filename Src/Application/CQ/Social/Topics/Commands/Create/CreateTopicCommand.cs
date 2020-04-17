@@ -1,10 +1,9 @@
 ﻿namespace Application.CQ.Forum.Topic.Commands.Create
 {
-    using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
     using MediatR;
 
-    public class CreateTopicCommand : IRequest<string[]>
+    public class CreateTopicCommand : IRequest
     {
         public ClaimsPrincipal User { get; set; }
 

@@ -3,8 +3,8 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Domain.Entities.Common;
     using Application.Common.Interfaces;
+    using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -24,17 +24,22 @@
         {
             var reciever = await this.userManager.GetUserAsync(request.Reciever);
 
-            var friendRequests = await this.context.FriendRequests.Where(fr => fr.UserId == reciever.Id).Select(fr => new FriendRequestFullViewModel
+            var friendRequest = await this.context.FriendRequests.FindAsync(request.RequestId);
+
+            if (friendRequest == null)
             {
-                SenderName = fr.SenderName,
-                SentOn = fr.SentOn,
-            })
-                .OrderByDescending(s => s.SentOn)
-                .ToListAsync();
+                return null;
+            }
 
             return new FriendRequestListViewModel
             {
-                FriendRequests = friendRequests,
+                FriendRequests = await this.context.FriendRequests.Where(fr => fr.UserId == reciever.Id).Select(fr => new FriendRequestFullViewModel
+                {
+                    SenderName = friendRequest.SenderName,
+                    SentOn = friendRequest.SentOn,
+                })
+                .OrderByDescending(s => s.SentOn)
+                .ToListAsync(),
             };
         }
     }

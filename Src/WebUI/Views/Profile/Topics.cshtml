@@ -10,10 +10,11 @@
     <div class="item-padding has-text-align-center fade-in">
         @if (Model.Topics.Count() == 0)
         {
-            <div class="item-padding">
                 <h2 class="main-font-color has-large-font-size">You currently don't have any Topics.</h2>
-                <p class="item-padding main-font-color has-large-font-size"><a asp-controller="Topic" asp-action="Create">Create</a> one?</p>
-            </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <p class="item-padding main-font-color has-large-font-size"><a asp-controller="Topic" asp-action="Create"><span class="light-font-color">Create one?</span></a></p>
         }
         else
         {
@@ -27,6 +28,7 @@
                     <p class="main-font-color has-large-font-size">[@topic.Category]@topic.Title</p>
                     <i class="fas fa-thumbs-up has-large-font-size"></i><b class="has-medium-font-size">@topic.Likes</b> <i class="fas fa-comments has-large-font-size"></i><b class="has-medium-font-size">@topic.Comments</b>
                     <a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id"><i class="fas fa-external-link-alt has-large-font-size"></i></a>
+                    <a asp-controller="Topic" asp-action="Delete" asp-route-id="@topic.Id"><i class="icofont-trash has-large-font-size"></i></a>
                     <div class="item-padding">
                         <hr />
                     </div>

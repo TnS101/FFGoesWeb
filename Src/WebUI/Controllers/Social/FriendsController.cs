@@ -7,7 +7,6 @@
     using Application.CQ.Social.FriendRequests.Commands.Update;
     using Application.CQ.Social.Friends.Commands.Delete;
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
-    using Application.CQ.Social.Friends.Queries.GetCurrentFriendQuery;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -50,12 +49,6 @@
         public async Task<ActionResult> Remove([FromForm]string friendId)
         {
             return this.Redirect(await this.Mediator.Send(new RemoveFriendCommand { User = this.User, FriendId = friendId }));
-        }
-
-        [HttpGet("/FriendsController/ViewProfile/id")]
-        public async Task<ActionResult> ViewProfile([FromQuery]string id)
-        {
-            return this.View(await this.Mediator.Send(new GetCurrentFriendQuery { FriendId = id }));
         }
     }
 }

@@ -7,10 +7,10 @@
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.Social.Comments.Queries.GetCurrentCommentQuery;
-    using Application.CQ.Social.Friends.Queries.GetCurrentFriendQuery;
     using Application.CQ.Social.Message.Queries;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Users.Feedbacks.Queries;
+    using Application.CQ.Users.Queries.GetCurrentUser;
     using Application.CQ.Users.Statuses.Queries;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
@@ -53,7 +53,6 @@
             this.CreateMap<Monster, UnitFullViewModel>();
             this.CreateMap<Comment, CommentMinViewModel>();
             this.CreateMap<Monster, MonsterFullViewModel>();
-            this.CreateMap<AppUser, UserViewModel>();
             this.CreateMap<Notification, NotificationFullViewModel>();
             this.CreateMap<Material, ItemMinViewModel>();
             this.CreateMap<Tool, ItemMinViewModel>();

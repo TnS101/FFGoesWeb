@@ -107,12 +107,23 @@
                 <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up main-font-color has-huge-font-size"></i>Forum Points</a></h3>
             }
 
-            @if (Model.LastFeedbackSentOn.HasValue && DateTime.UtcNow.Day - Model.LastFeedbackSentOn.Value.Day >= 1)
-            {
-                <div class="item-padding">
-                    <p onclick="" class="feedback-button is-clickable main-font-color has-normal-font-size">Leave your Daily Feedback?</p>
-                </div>
+
+            @{
+                int days = 0;
+                if (Model.LastFeedbackSentOn.HasValue)
+                {
+                    days = (DateTime.UtcNow - Model.LastFeedbackSentOn.Value).Days;
+                }
+
+                if (days >= 1)
+                {
+                    <div class="item-padding">
+                        <p onclick="" class="feedback-button is-clickable main-font-color has-normal-font-size">Leave your Daily Feedback?</p>
+                    </div>
+                }
+
             }
+
 
             @if (Model.Feedbacks == 0)
             {

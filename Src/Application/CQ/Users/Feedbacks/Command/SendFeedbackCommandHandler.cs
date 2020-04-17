@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Moderation;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -24,14 +25,21 @@
         {
             var sender = await this.userManager.GetUserAsync(request.Sender);
 
-            if (sender.LastFeedbackSentOn.HasValue && DateTime.UtcNow.Day - sender.LastFeedbackSentOn.Value.Day <= 1)
+            var days = (DateTime.UtcNow - sender.LastFeedbackSentOn.Value).Days;
+
+            if (sender.LastFeedbackSentOn != null && days <= 1)
+            {
+                return GConst.ErrorRedirect;
+            }
+
+            if (string.IsNullOrWhiteSpace(request.Content))
             {
                 return GConst.ErrorRedirect;
             }
 
             sender.LastFeedbackSentOn = DateTime.UtcNow;
 
-            this.context.Feedbacks.Add(new Domain.Entities.Moderation.Feedback
+            this.context.Feedbacks.Add(new Feedback
             {
                 Content = request.Content,
                 IsAccepted = false,

@@ -27,29 +27,33 @@
 
             var comments = await this.context.Comments.Where(c => c.TopicId == topicToRemove.Id).ToListAsync();
 
-            if (comments != null)
+            if (comments.Count() > 0)
             {
-                if (this.context.Tickets.Any(t => t.CommentId == comments.FirstOrDefault().Id))
+                foreach (var ticket in this.context.Tickets)
                 {
-                    return GConst.ErrorRedirect;
+                    foreach (var comment in comments)
+                    {
+                        if (ticket.CommentId == comment.Id)
+                        {
+                            return GConst.InModerationRedirect;
+                        }
+                    }
                 }
-                else
-                {
-                    this.context.Comments.RemoveRange(comments);
 
-                    await this.context.SaveChangesAsync(cancellationToken);
+                this.context.Comments.RemoveRange(comments);
 
-                    this.context.Topics.Remove(topicToRemove);
+                await this.context.SaveChangesAsync(cancellationToken);
 
-                    await this.context.SaveChangesAsync(cancellationToken);
+                this.context.Topics.Remove(topicToRemove);
 
-                    return GConst.TopicCommandRedirect;
-                }
+                await this.context.SaveChangesAsync(cancellationToken);
+
+                return GConst.TopicCommandRedirect;
             }
 
-            if (topicTickets != null)
+            if (topicTickets.Count() > 0)
             {
-                return GConst.ErrorRedirect;
+                return GConst.InModerationRedirect;
             }
 
             this.context.Comments.RemoveRange(comments);

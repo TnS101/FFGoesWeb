@@ -1,8 +1,10 @@
 ﻿namespace Application.CQ.Admin.Moderation.Feedbacks.Commands.Update
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
+    using Domain.Entities.Common.Social;
     using global::Common;
     using MediatR;
 
@@ -21,9 +23,24 @@
 
             var user = await this.context.AppUsers.FindAsync(feedBack.UserId);
 
+            if (request.Stars == 0)
+            {
+                request.Stars = 1;
+            }
+
             user.Stars += request.Stars;
 
             feedBack.IsAccepted = true;
+            feedBack.Stars = request.Stars;
+
+            await this.context.Notifications.AddAsync(new Notification
+            {
+                ApplicationSection = "Game",
+                Type = "Reward",
+                UserId = user.Id,
+                Content = string.Format(GConst.AcceptedFeedback, user.UserName, request.Stars),
+                RecievedOn = DateTime.UtcNow,
+            });
 
             this.context.Feedbacks.Update(feedBack);
 
@@ -31,7 +48,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return string.Format(GConst.AcceptedFeedback, user.UserName, request.Stars);
+            return GConst.FeedbackCommandRedirect;
         }
     }
 }

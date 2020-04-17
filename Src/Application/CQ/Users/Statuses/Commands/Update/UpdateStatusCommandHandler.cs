@@ -32,7 +32,7 @@
 
             if (request.StatusId == 0)
             {
-                return GConst.ProfileRedirect;
+                return $"{GConst.ProfileRedirect}#statuses";
             }
 
             this.context.UserStatuses.Add(new UserStatus
@@ -43,7 +43,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return GConst.ProfileRedirect;
+            return $"{GConst.ProfileRedirect}#statuses";
         }
     }
 }

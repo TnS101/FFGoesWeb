@@ -19,14 +19,14 @@
             return this.View(await this.Mediator.Send(new GetAllFeedbacksQuery { }));
         }
 
-        [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]int id)
+        [HttpPost]
+        public async Task<ActionResult> Delete([FromForm]int id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteFeedbackCommand { FeedbackId = id }));
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Accept([FromQuery]int id, [FromBody]int stars)
+        [HttpPost]
+        public async Task<ActionResult> Accept([FromForm]int id, [FromForm]int stars)
         {
             return this.Redirect(await this.Mediator.Send(new AcceptFeedbackCommand { FeedbackId = id, Stars = stars }));
         }

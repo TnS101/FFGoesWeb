@@ -70,5 +70,11 @@
         {
             return this.View(await this.Mediator.Send(new GetPersonalFeedbacksQuery { User = this.User }));
         }
+
+        [HttpGet("/Profile/User/id")]
+        public async Task<ActionResult> CurrentUser([FromQuery] string id)
+        {
+            return this.View(await this.Mediator.Send(new GetCurrentUserQuery { UserId = id }));
+        }
     }
 }

@@ -29,7 +29,6 @@
     using Application.CQ.Social.FriendRequests.Commands.Delete;
     using Application.CQ.Social.FriendRequests.Commands.Update;
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
-    using Application.CQ.Social.Friends.Queries.GetCurrentFriendQuery;
     using Application.CQ.Social.Message.Commands.Create;
     using Application.CQ.Social.Message.Queries;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
@@ -119,7 +118,7 @@
             services.AddScoped<IRequestHandler<CreateHeroCommand, string>, CreateHeroCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteHeroCommand, string>, DeleteHeroCommandHandler>();
             services.AddScoped<IRequestHandler<HeroLevelUpCommand>, HeroLevelUpCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateTopicCommand, string[]>, CreateTopicCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateTopicCommand, Unit>, CreateTopicCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteTopicCommand, string>, DeleteTopicCommandHandler>();
             services.AddScoped<IRequestHandler<EditTopicCommand, string>, EditTopicCommandHandler>();
             services.AddScoped<IRequestHandler<CreateCommentCommand, string>, CreateCommentCommandHandler>();
@@ -157,7 +156,6 @@
             services.AddScoped<IRequestHandler<GetAllFriendsQuery, UserListViewModel>, GetAllFriendsQueryHandler>();
             services.AddScoped<IRequestHandler<GetMonsterInfoQuery, MonsterFullViewModel>, GetMonsterInfoQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalFeedbacksQuery, FeedbackListViewModel>, GetPersonalFeedbacksQueryHandler>();
-            services.AddScoped<IRequestHandler<GetCurrentFriendQuery, UserViewModel>, GetCurrentFriendQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalNotificationsQuery, NotificationListViewModel>, GetPersonalNotificationsQueryHandler>();
             services.AddScoped<IRequestHandler<GetUnitIdQuery, UnitIdViewModel>, GetUnitIdQueryHandler>();
             services.AddScoped<IRequestHandler<GetCurrentUserQuery, UserPartialViewModel>, GetCurrentUserQueryHandler>();

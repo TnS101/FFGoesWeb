@@ -1,4 +1,4 @@
-﻿@model string[]
+﻿@model string
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,10 +10,10 @@
         <div class="item-padding">
             <hr />
         </div>
-        <div class="item-padding has-text-align-center fade-out">
-            @if (Model != null)
+        <div class="item-padding has-text-align-center fade-in">
+            @if (Model != string.Empty)
             {
-                <p class="main-font-color has-large-font-size">@Model[1]</p>
+                <p class="main-font-color has-large-font-size">@Model</p>
             }
         </div>
         <form asp-controller="Topic" asp-action="Create" method="post">
@@ -41,7 +41,7 @@
         </form>
     </div>
 
-    
+
 
 </body>
 </html>

@@ -17,11 +17,11 @@
 
         public async Task<string> Handle(DeleteFeedbackCommand request, CancellationToken cancellationToken)
         {
-            this.context.Feedbacks.Remove(await this.context.Feedbacks.FindAsync(request.FeedbackId)); // might be a DeadLock
+            this.context.Feedbacks.Remove(await this.context.Feedbacks.FindAsync(request.FeedbackId));
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return GConst.FeedbackRedirect;
+            return GConst.FeedbackCommandRedirect;
         }
     }
 }
