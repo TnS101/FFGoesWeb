@@ -18,7 +18,7 @@
 
         public int Reward { get; set; }
 
-        public string ImageURL { get; set; }
+        public string ImagePath { get; set; }
 
         public ICollection<TreasureInventory> TreasureInventories { get; set; }
     }

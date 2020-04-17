@@ -50,6 +50,8 @@ namespace WebUI.Areas.Identity.Pages.Account
         {
             [Required]
             [Display(Name = "User Name")]
+            [RegularExpression(GConst.UsernameFilter,ErrorMessage = "Username should only contain lower case characters and/or digits.")]
+            [SwearFilter(GConst.SwearFilter, ErrorMessage = "Keep things Clean!!!")]
             [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
             public string UserName { get; set; }
 
@@ -68,6 +70,11 @@ namespace WebUI.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+        }
+
+        public class SwearFilter : RegularExpressionAttribute
+        {
+            public SwearFilter(string pattern) : base(pattern) { }
         }
 
         public async Task OnGetAsync(string returnUrl = null)

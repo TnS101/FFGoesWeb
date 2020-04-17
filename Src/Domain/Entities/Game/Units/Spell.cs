@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Domain.Entities.Game.Units.ManyToMany;
+using System.Collections.Generic;
 
 namespace Domain.Entities.Game.Units
 {

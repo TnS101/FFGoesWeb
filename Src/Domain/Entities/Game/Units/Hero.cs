@@ -3,6 +3,7 @@
     using Domain.Base;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Units.ManyToMany;
     using System;
     using System.Collections.Generic;
 
@@ -10,15 +11,7 @@
     {
         public Hero()
         {
-            this.Level = 1;
-            this.XPCap = 100;
-            this.GoldAmount = 100;
-            this.Energy = 30;
-            this.ProfessionEnergy = 10;
-            this.PvPEnergy = 15;
             this.Id = Guid.NewGuid().ToString();
-            this.IsSelected = false;
-            this.Type = "Player";
             this.EnergyChanges = new HashSet<EnergyChange>();
             this.HeroSpells = new HashSet<HeroSpells>();
         }
@@ -105,7 +98,7 @@
 
         public int Mastery { get; set; }
 
-        public override string ImageURL { get; set; }
+        public override string ImagePath { get; set; }
 
         public bool IsSelected { get; set; }
 
@@ -115,9 +108,9 @@
 
         public int PvPPoints { get; set; }
 
-        public string IconURL { get; set; }
+        public string IconPath { get; set; }
 
-        public int GearScore { get; set; }
+        public int EquipmentScore { get; set; }
 
         public ICollection<HeroSpells> HeroSpells { get; set; }
 

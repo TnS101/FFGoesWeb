@@ -74,7 +74,7 @@
                 Level = stats[4],
                 Intellect = stats[5],
                 Spirit = stats[6],
-                Type = "Weapon",
+                Slot = "Weapon",
             };
 
             this.fightingClassStatCheck.Check(templateWeapon, fightingClassStatNumber, fightingClassNumber, this.rng);
@@ -108,8 +108,8 @@
                 Spirit = stats[3],
                 Agility = stats[4],
                 Level = stats[5],
-                Type = "Trinket",
-                ImageURL = "https://gamepedia.cursecdn.com/wowpedia/4/43/Inv_trinket_80_alchemy02.png?version=95bdfece62d89349b5effa0bf80956d3",
+                Slot = "Trinket",
+                ImagePath = "https://gamepedia.cursecdn.com/wowpedia/4/43/Inv_trinket_80_alchemy02.png?version=95bdfece62d89349b5effa0bf80956d3",
             };
             this.fightingClassStatCheck.Check(templateTrinket, fightingClassStatNumber, fightingClassNumber, this.rng);
 
@@ -144,7 +144,7 @@
                 Stamina = stats[5],
                 Agility = stats[6],
                 Intellect = stats[7],
-                Type = "Armor",
+                Slot = "Armor",
             };
 
             this.fightingClassStatCheck.Check(templateArmor, fightingClassStatNumber, fightingClassNumber, this.rng);

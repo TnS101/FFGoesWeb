@@ -18,7 +18,6 @@
             this.ConsumeableInventories = new HashSet<ConsumeableInventory>();
             this.ToolInventories = new HashSet<ToolInventory>();
             this.HeroId = heroId;
-            this.Capacity = 50;
             this.Id = Guid.NewGuid().ToString();
         }
 

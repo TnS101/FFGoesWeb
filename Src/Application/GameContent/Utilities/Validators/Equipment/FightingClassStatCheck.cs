@@ -11,17 +11,17 @@
 
         public void Check(IBaseItem item, int fightingClassStatNumber, int fightingClassNumber, Random rng)
         {
-            if (item.Type == "Weapon")
+            if (item.Slot == "Weapon")
             {
                 this.WeaponCheck(item, fightingClassNumber, rng);
             }
-            else if (item.Type == "Armor")
+            else if (item.Slot == "Trinket")
             {
-                this.ArmorCheck(item, rng);
+                item.ClassType = "Any";
             }
             else
             {
-                item.ClassType = "Any";
+                this.ArmorCheck(item, rng);
             }
 
             if (item.ClassType != "Any")
@@ -47,37 +47,37 @@
             if (slotNumber == 0)
             {
                 item.Slot = "Helmet";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/archive/7/75/20180822163637%21Inv_helm_armor_voidelf_d_01.png?version=7de9cbcce2a59bd472985129e6af7e81";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/archive/7/75/20180822163637%21Inv_helm_armor_voidelf_d_01.png?version=7de9cbcce2a59bd472985129e6af7e81";
             }
             else if (slotNumber == 1)
             {
                 item.Slot = "Chestplate";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/b/bb/Inv_chest_samurai.png?version=f5631859203ea398622deb50e0c95847";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/b/bb/Inv_chest_samurai.png?version=f5631859203ea398622deb50e0c95847";
             }
             else if (slotNumber == 2)
             {
                 item.Slot = "Shoulder";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/e/e4/Inv_shoulder_13.png?version=87153248a8d840ad34383507d2b11638";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/e/e4/Inv_shoulder_13.png?version=87153248a8d840ad34383507d2b11638";
             }
             else if (slotNumber == 3)
             {
                 item.Slot = "Bracer";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/8/87/Inv_bracer_22b.png?version=d5d42675bba996ac4daa904874398a4a";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/8/87/Inv_bracer_22b.png?version=d5d42675bba996ac4daa904874398a4a";
             }
             else if (slotNumber == 4)
             {
                 item.Slot = "Boots";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/6/6d/Inv_boots_armor_dwarf_d_01.png?version=47cf645fde9bd16e155aa222da62a49d";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/6/6d/Inv_boots_armor_dwarf_d_01.png?version=47cf645fde9bd16e155aa222da62a49d";
             }
             else if (slotNumber == 5)
             {
                 item.Slot = "Leggings";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/7/70/Inv_pant_zandalariclothes_a_01.png?version=d9a4d072389d2349d57517642222169d";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/7/70/Inv_pant_zandalariclothes_a_01.png?version=d9a4d072389d2349d57517642222169d";
             }
             else if (slotNumber == 6)
             {
                 item.Slot = "Gloves";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/c/ca/Inv_glove_mail_draenordungeon_c_01.png?version=30cf3357b49e25c4c79bbdfbf2828de5";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/c/ca/Inv_glove_mail_draenordungeon_c_01.png?version=30cf3357b49e25c4c79bbdfbf2828de5";
             }
 
             string thirdClassOrder;
@@ -130,7 +130,7 @@
             {
                 item.Name = "Bow";
                 item.ClassType = "Hunter";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/2/25/Inv_bow_2h_crossbow_pandariaquest_b_01.png?version=39ef329a636b6b20101f58d95b052ae1";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/2/25/Inv_bow_2h_crossbow_pandariaquest_b_01.png?version=39ef329a636b6b20101f58d95b052ae1";
             }
             else if (fightingClassNumber == 1)
             {
@@ -150,7 +150,7 @@
                 }
 
                 item.Name = "Orb";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/e/e3/Inv_offhand_1h_artifactfelomelorn_d_05.png?version=08259f7865dcd745e1ed25493084ad16";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/e/e3/Inv_offhand_1h_artifactfelomelorn_d_05.png?version=08259f7865dcd745e1ed25493084ad16";
             }
             else if (fightingClassNumber == 2)
             {
@@ -166,13 +166,13 @@
                 }
 
                 item.Name = "Branch";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/f/f6/Inv_offhand_1h_panprog_b_01.png?version=813ea93dc3cf6a55ddd2738921e4664f";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/f/f6/Inv_offhand_1h_panprog_b_01.png?version=813ea93dc3cf6a55ddd2738921e4664f";
             }
             else if (fightingClassNumber == 3)
             {
                 item.Name = "Skull";
                 item.ClassType = "Necroid";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/6/64/Inv_offhand_1h_artifactskulloferedar_d_05.png?version=dcaafe0c3fede58ec3337af475bf4ebf";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/6/64/Inv_offhand_1h_artifactskulloferedar_d_05.png?version=dcaafe0c3fede58ec3337af475bf4ebf";
             }
             else if (fightingClassNumber == 4)
             {
@@ -192,7 +192,7 @@
                     item.ClassType = "Warrior,Shaman,Paladin";
                 }
 
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/c/ce/Inv_hammer_2h_maul_a_01_hd.png?version=2bfd8096c02f7be3e649a75aaff9e53a";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/c/ce/Inv_hammer_2h_maul_a_01_hd.png?version=2bfd8096c02f7be3e649a75aaff9e53a";
             }
             else if (fightingClassNumber == 5)
             {
@@ -216,13 +216,13 @@
                 }
 
                 item.Name = "Staff";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/c/c9/Inv_staff_32.png?version=9c90f83ed280fc5eecf8f4873b9ffa74";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/c/c9/Inv_staff_32.png?version=9c90f83ed280fc5eecf8f4873b9ffa74";
             }
             else if (fightingClassNumber == 6)
             {
                 item.Name = "Dagger";
                 item.ClassType = "Rogue";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/1/14/Inv_knife_1h_panprog_b_02.png?version=f8ae8095c58b44e82dab6370b441cd67";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/1/14/Inv_knife_1h_panprog_b_02.png?version=f8ae8095c58b44e82dab6370b441cd67";
             }
             else if (fightingClassNumber == 7)
             {
@@ -238,7 +238,7 @@
                 }
 
                 item.Name = "Club";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/0/0b/Inv_mace_15.png?version=c444074b161e67419bdf6d196f576e5a";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/0/0b/Inv_mace_15.png?version=c444074b161e67419bdf6d196f576e5a";
             }
             else if (fightingClassNumber == 8)
             {
@@ -254,7 +254,7 @@
                 }
 
                 item.Name = "Sword";
-                item.ImageURL = "https://gamepedia.cursecdn.com/wowpedia/d/d9/Inv_sword_14.png?version=7123f079f5c9c6af52d66e3f835d7c31";
+                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/d/d9/Inv_sword_14.png?version=7123f079f5c9c6af52d66e3f835d7c31";
             }
         }
 

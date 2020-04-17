@@ -8,7 +8,7 @@
 
         string ClassType { get; set; }
 
-        string ImageURL { get; set; }
+        string ImagePath { get; set; }
 
         int Stamina { get; set; }
 

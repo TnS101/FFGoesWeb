@@ -52,7 +52,7 @@
 
         public virtual double CurrentCritChance { get; set; }
 
-        public virtual string ImageURL { get; set; }
+        public virtual string ImagePath { get; set; }
 
         public virtual int GoldAmount { get; set; }
     }

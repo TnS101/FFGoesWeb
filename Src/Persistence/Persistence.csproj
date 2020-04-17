@@ -25,6 +25,8 @@
   <ItemGroup>
     <Folder Include="Configurations\Common\" />
     <Folder Include="Configurations\Game\" />
+    <Folder Include="Configurations\Moderation\" />
+    <Folder Include="Configurations\Social\" />
   </ItemGroup>
 
 </Project>

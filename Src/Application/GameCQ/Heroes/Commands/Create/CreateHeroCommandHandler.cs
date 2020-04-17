@@ -47,7 +47,7 @@
                 ClassType = request.ClassType,
                 Race = request.Race,
                 UserId = user.Id,
-                ImageURL = string.Empty,
+                ImagePath = string.Empty,
             };
 
             hero.Inventory = new Inventory(hero.Id);

@@ -20,6 +20,12 @@
 
         public bool IsCraftable { get; set; }
 
+        public int BuyPrice { get; set; }
+
+        public int SellPrice { get; set; }
+
+        public string ImagePath { get; set; }
+
         public ICollection<ConsumeableInventory> ConsumeableInventories { get; set; }
     }
 }

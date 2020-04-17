@@ -29,8 +29,8 @@
             hero.CurrentResistanceValue = fightingClass.ResistanceValue;
             hero.CritChance = fightingClass.CritChance;
             hero.CurrentCritChance = fightingClass.CritChance;
-            hero.ImageURL = fightingClass.ImageURL.ToString();
-            hero.IconURL = fightingClass.IconURL.ToString();
+            hero.ImagePath = fightingClass.ImagePath.ToString();
+            hero.IconPath = fightingClass.IconPath.ToString();
         }
 
         public void MonsterIncrement(Monster baseMonster, Monster monster)
@@ -49,7 +49,7 @@
             monster.ResistanceValue = baseMonster.ResistanceValue + (step * 1.2);
             monster.CritChance = baseMonster.CritChance + (monster.Level * 0.04);
 
-            monster.ImageURL = baseMonster.ImageURL.ToString();
+            monster.ImagePath = baseMonster.ImagePath.ToString();
 
             // Stat Set
             monster.CurrentHP = monster.MaxHP;

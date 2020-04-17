@@ -1,6 +1,7 @@
 ﻿namespace Domain.Entities.Game.Units
 {
     using Domain.Base;
+    using Domain.Entities.Game.Units.OneToOne;
 
     public class Monster : Unit
     {
@@ -19,7 +20,7 @@
 
         public override int Level { get; set; }
 
-        public override string ImageURL { get; set; }
+        public override string ImagePath { get; set; }
 
         public override double MaxHP { get; set; }
 

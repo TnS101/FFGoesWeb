@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Game.Units
+﻿namespace Domain.Entities.Game.Units.ManyToMany
 {
     public class HeroSpells
     {

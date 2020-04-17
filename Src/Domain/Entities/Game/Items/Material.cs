@@ -29,7 +29,7 @@
 
         public string RelatedMaterials { get; set; }
 
-        public string ImageURL { get; set; }
+        public string ImagePath { get; set; }
 
         public bool IsRefineable { get; set; }
 

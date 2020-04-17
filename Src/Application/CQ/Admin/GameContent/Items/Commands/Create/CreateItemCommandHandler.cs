@@ -62,7 +62,7 @@
                 AttackPower = request.AttackPower,
                 Slot = request.Slot,
                 SellPrice = request.SellPrice,
-                ImageURL = request.ImageURL,
+                ImagePath = request.ImageURL,
             });
         }
 
@@ -83,7 +83,7 @@
                 Slot = request.Slot,
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
-                ImageURL = request.ImageURL,
+                ImagePath = request.ImageURL,
             });
         }
 
@@ -102,7 +102,7 @@
                 Slot = request.Slot,
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
-                ImageURL = request.ImageURL,
+                ImagePath = request.ImageURL,
             });
         }
 
@@ -113,7 +113,7 @@
                 Name = request.Name,
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
-                ImageURL = request.ImageURL,
+                ImagePath = request.ImageURL,
             });
         }
 
@@ -124,7 +124,7 @@
                 Name = request.Name,
                 Rarity = request.Rarity,
                 Reward = request.Reward,
-                ImageURL = request.ImageURL,
+                ImagePath = request.ImageURL,
             });
         }
 
@@ -134,7 +134,7 @@
             {
                 Name = request.Name,
                 Rarity = request.Rarity,
-                ImageURL = request.ImageURL,
+                ImagePath = request.ImageURL,
             });
         }
     }

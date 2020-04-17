@@ -12,7 +12,6 @@
             this.WeaponEquipments = new HashSet<WeaponEquipment>();
             this.ArmorEquipments = new HashSet<ArmorEquipment>();
             this.TrinketEquipments = new HashSet<TrinketEquipment>();
-            this.Capacity = 9;
             this.HeroId = heroId;
             this.Id = Guid.NewGuid().ToString();
         }

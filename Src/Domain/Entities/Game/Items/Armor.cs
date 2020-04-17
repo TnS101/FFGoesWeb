@@ -42,7 +42,7 @@
 
         public int BuyPrice { get; set; }
 
-        public string ImageURL { get; set; }
+        public string ImagePath { get; set; }
 
         public bool IsCraftable { get; set; }
 
