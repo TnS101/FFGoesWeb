@@ -1,5 +1,7 @@
-﻿namespace Domain.Entities.Common.Social
+﻿namespace Domain.Entities.Social
 {
+    using Domain.Entities.Common;
+
     public class UserStatus
     {
         public UserStatus()

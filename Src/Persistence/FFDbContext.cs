@@ -6,8 +6,8 @@
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
     using global::Domain.Entities.Common;
-    using global::Domain.Entities.Common.Social;
     using global::Domain.Entities.Moderation;
+    using global::Domain.Entities.Social;
     using global::Domain.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;

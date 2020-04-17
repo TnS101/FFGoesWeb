@@ -23,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configurations\" />
+    <Folder Include="Configurations\Common\" />
+    <Folder Include="Configurations\Game\" />
   </ItemGroup>
 
 </Project>

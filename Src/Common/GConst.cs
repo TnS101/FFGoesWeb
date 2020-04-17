@@ -62,7 +62,8 @@
         public const string EmailError = "Invalid Email Address.";
         public const string AllowedUnitsError = "You already have {0} Heroes! Delete a Hero or purchase more Hero Slots.";
         public const string UserNotFound = "User : {0} was not found.";
-        public const string FillAllFieldsError = "Please, fill all fields!";
+        public const string FillAllFieldsError = "Please, fill all fields";
+        public const string TitleError = "Title should be between 5 and 30 characters";
 
         //Notification types
         public const string WarningType = "Warning";

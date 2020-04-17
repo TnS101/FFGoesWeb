@@ -1,15 +1,14 @@
 ﻿namespace Application.CQ.Users.Statuses.Commands.Update
 {
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Domain.Entities.Common;
     using Application.Common.Interfaces;
+    using Domain.Entities.Common;
+    using Domain.Entities.Social;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using Domain.Entities.Common.Social;
 
     public class UpdateStatusCommandHandler : IRequestHandler<UpdateStatusCommand, string>
     {

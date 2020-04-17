@@ -26,6 +26,11 @@
                 return this.View(GConst.CreateTopicErrorRedirect, GConst.FillAllFieldsError);
             }
 
+            if (title.Length < 5 || title.Length > 30)
+            {
+                return this.View(GConst.CreateTopicErrorRedirect, GConst.TitleError);
+            }
+
             await this.Mediator.Send(new CreateTopicCommand { Title = title, Category = category, Content = content, User = this.User });
 
             return this.Redirect(GConst.TopicCommandRedirect);

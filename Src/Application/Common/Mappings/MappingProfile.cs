@@ -7,10 +7,9 @@
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.Social.Comments.Queries.GetCurrentCommentQuery;
-    using Application.CQ.Social.Message.Queries;
+    using Application.CQ.Social.Messages.Queries;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Users.Feedbacks.Queries;
-    using Application.CQ.Users.Queries.GetCurrentUser;
     using Application.CQ.Users.Statuses.Queries;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
@@ -22,10 +21,10 @@
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using Domain.Entities.Common;
-    using Domain.Entities.Common.Social;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using Domain.Entities.Moderation;
+    using Domain.Entities.Social;
 
     public class MappingProfile : Profile
     {

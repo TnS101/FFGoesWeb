@@ -1,10 +1,10 @@
 ﻿namespace WebUI.Controllers.Social
 {
     using System.Threading.Tasks;
-    using Application.CQ.Social.FriendRequest.Queries;
     using Application.CQ.Social.FriendRequests.Commands.Create;
     using Application.CQ.Social.FriendRequests.Commands.Delete;
     using Application.CQ.Social.FriendRequests.Commands.Update;
+    using Application.CQ.Social.FriendRequests.Queries;
     using Application.CQ.Social.Friends.Commands.Delete;
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
     using global::Common;

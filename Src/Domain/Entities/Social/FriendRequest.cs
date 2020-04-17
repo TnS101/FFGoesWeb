@@ -1,5 +1,6 @@
-﻿namespace Domain.Entities.Common.Social
+﻿namespace Domain.Entities.Social
 {
+    using Domain.Entities.Common;
     using System;
 
     public class FriendRequest

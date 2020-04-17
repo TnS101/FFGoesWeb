@@ -1,7 +1,7 @@
 ﻿namespace Domain.Entities.Moderation
 {
     using Domain.Entities.Common;
-    using Domain.Entities.Common.Social;
+    using Domain.Entities.Social;
     using System;
 
     public class Ticket

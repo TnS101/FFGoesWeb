@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using Domain.Entities.Common.Social;
+    using Domain.Entities.Social;
 
     public class UserPanelViewModel
     {

@@ -2,14 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
-    using Domain.Entities.Common.Social;
-    using global::Common;
+    using Domain.Entities.Social;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
@@ -28,7 +25,7 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            await this.context.Topics.AddAsync(new Domain.Entities.Common.Social.Topic
+            await this.context.Topics.AddAsync(new Topic
             {
                 Title = request.Title,
                 Category = request.Category,

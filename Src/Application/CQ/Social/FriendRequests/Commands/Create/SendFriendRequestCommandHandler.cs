@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Social;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -26,7 +27,7 @@
 
             var reciever = await this.context.AppUsers.FindAsync(request.RecieverId);
 
-            reciever.FriendRequests.Add(new Domain.Entities.Common.Social.FriendRequest
+            reciever.FriendRequests.Add(new FriendRequest
             {
                 SenderName = sender.UserName,
                 SentOn = DateTime.UtcNow,

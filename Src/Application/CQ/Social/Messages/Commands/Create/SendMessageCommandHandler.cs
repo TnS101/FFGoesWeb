@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Social.Message.Commands.Create
+﻿namespace Application.CQ.Social.Messages.Commands.Create
 {
     using System;
     using System.Linq;
@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Social;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -32,7 +33,7 @@
                 request.Content = "[blank]";
             }
 
-            reciever.Messages.Add(new Domain.Entities.Common.Social.Message
+            reciever.Messages.Add(new Message
             {
                 Content = request.Content,
                 SenderName = sender.UserName,

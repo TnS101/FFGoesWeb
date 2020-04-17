@@ -24,13 +24,13 @@
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.Social.Comments.Commands.Create;
-    using Application.CQ.Social.FriendRequest.Queries;
     using Application.CQ.Social.FriendRequests.Commands.Create;
     using Application.CQ.Social.FriendRequests.Commands.Delete;
     using Application.CQ.Social.FriendRequests.Commands.Update;
+    using Application.CQ.Social.FriendRequests.Queries;
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
-    using Application.CQ.Social.Message.Commands.Create;
-    using Application.CQ.Social.Message.Queries;
+    using Application.CQ.Social.Messages.Commands.Create;
+    using Application.CQ.Social.Messages.Queries;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Users.Feedbacks.Command;
     using Application.CQ.Users.Feedbacks.Queries;

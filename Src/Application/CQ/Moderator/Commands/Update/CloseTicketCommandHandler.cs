@@ -5,8 +5,8 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
-    using Domain.Entities.Common.Social;
     using Domain.Entities.Moderation;
+    using Domain.Entities.Social;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -104,7 +104,7 @@
         {
             if (reportedUser.Warnings == 2)
             {
-                reportedUser.Notifications.Add(new Domain.Entities.Common.Social.Notification
+                reportedUser.Notifications.Add(new Notification
                 {
                     Content = string.Format(GConst.WarningMessage, reportedUser.UserName, reportedUser.Warnings),
                     UserId = reportedUser.Id,
@@ -114,7 +114,7 @@
 
             if (reportedUser.Warnings > 2)
             {
-                reportedUser.Notifications.Add(new Domain.Entities.Common.Social.Notification
+                reportedUser.Notifications.Add(new Notification
                 {
                     Content = string.Format(GConst.PenaltyType, reportedUser.UserName, 1),
                     UserId = reportedUser.Id,
@@ -124,7 +124,7 @@
 
             if (reportedUser.Warnings > 3)
             {
-                reportedUser.Notifications.Add(new Domain.Entities.Common.Social.Notification
+                reportedUser.Notifications.Add(new Notification
                 {
                     Content = string.Format(GConst.PenaltyType, reportedUser.UserName, 3),
                     UserId = reportedUser.Id,

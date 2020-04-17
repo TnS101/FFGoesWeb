@@ -1,8 +1,8 @@
 ﻿namespace WebUI.Controllers.Social
 {
     using System.Threading.Tasks;
-    using Application.CQ.Social.Message.Commands.Create;
-    using Application.CQ.Social.Message.Queries;
+    using Application.CQ.Social.Messages.Commands.Create;
+    using Application.CQ.Social.Messages.Queries;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

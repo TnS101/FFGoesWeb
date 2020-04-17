@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Social.FriendRequest.Queries
+﻿namespace Application.CQ.Social.FriendRequests.Queries
 {
     using System.Security.Claims;
     using MediatR;

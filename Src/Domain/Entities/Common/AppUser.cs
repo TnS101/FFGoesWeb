@@ -1,7 +1,7 @@
 ﻿namespace Domain.Entities.Common
 {
     using Domain.Common;
-    using Domain.Entities.Common.Social;
+    using Domain.Entities.Social;
     using Domain.Entities.Game.Units;
     using Domain.Entities.Moderation;
     using Microsoft.AspNetCore.Identity;

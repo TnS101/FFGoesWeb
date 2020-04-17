@@ -4,7 +4,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common.Social;
+    using Domain.Entities.Social;
     using global::Common;
     using MediatR;
 

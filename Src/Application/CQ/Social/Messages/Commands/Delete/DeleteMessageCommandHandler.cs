@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Social.Message.Commands.Create
+﻿namespace Application.CQ.Social.Messages.Commands.Create
 {
     using System.Threading;
     using System.Threading.Tasks;

@@ -3,8 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Domain.Entities.Common;
-    using Domain.Entities.Common.Social;
-    using Domain.Entities.Moderation;
+    using Domain.Entities.Social;
 
     public class TopicFullViewModel
     {

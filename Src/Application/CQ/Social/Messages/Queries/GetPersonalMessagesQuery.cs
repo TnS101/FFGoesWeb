@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Social.Message.Queries
+﻿namespace Application.CQ.Social.Messages.Queries
 {
     using System.Security.Claims;
     using MediatR;
