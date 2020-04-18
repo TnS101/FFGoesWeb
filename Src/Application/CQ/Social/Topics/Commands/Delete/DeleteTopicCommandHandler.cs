@@ -1,11 +1,9 @@
-﻿namespace Application.CQ.Forum.Topic.Commands.Delete
+﻿namespace Application.CQ.Social.Topics.Commands.Delete
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Domain.Entities.Moderation;
     using global::Common;
     using MediatR;
     using Microsoft.EntityFrameworkCore;

@@ -15,11 +15,11 @@
                 .IsRequired();
 
             builder.Property(t => t.Rarity)
-                .HasMaxLength(10)
+                .HasMaxLength(20)
                 .IsRequired();
 
             builder.Property(t => t.ImagePath)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
         }
     }

@@ -6,6 +6,7 @@
     using Application.Common.Interfaces;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
+    using Domain.Entities.Game.Units.OneToOne;
     using Domain.Entities.Social;
     using global::Domain.Entities.Common;
 
@@ -20,8 +21,6 @@
 
         public async Task SeedAsync(CancellationToken cancellationToken)
         {
-            await this.SeedUsersAsync(cancellationToken);
-
             await this.SeedPlayerSpellsAsync(cancellationToken);
 
             await this.SeedFigthingClassesAsync(cancellationToken);
@@ -50,6 +49,7 @@
                 IsRefineable = true,
                 FuelCount = 1,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Walnut Log",
@@ -58,7 +58,8 @@
                 IsRefineable = true,
                 FuelCount = 2,
             });
-            this.context.Materials.Add(new Material
+            this.
+                context.Materials.Add(new Material
             {
                 Name = "Birch Log",
                 Type = "Wood",
@@ -66,6 +67,7 @@
                 IsRefineable = true,
                 FuelCount = 1,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Mahogany Log",
@@ -74,6 +76,7 @@
                 IsRefineable = true,
                 FuelCount = 1,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Coal Ore",
@@ -81,6 +84,7 @@
                 ImagePath = "/images/Items/Coal-Ore.png",
                 FuelCount = 3,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Copper Ore",
@@ -88,6 +92,7 @@
                 ImagePath = "/images/Items/Copper-Ore.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Iron Ore",
@@ -95,6 +100,7 @@
                 ImagePath = "/images/Items/Iron-Ore.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Gold Ore",
@@ -102,6 +108,7 @@
                 ImagePath = "/images/Items/Gold-Ore.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Leather Scraps",
@@ -109,6 +116,7 @@
                 ImagePath = "/images/Items/Leather-Scraps.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Animal Fur",
@@ -116,6 +124,7 @@
                 ImagePath = "/images/Items/Animal-Fur.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Light Leather",
@@ -123,6 +132,7 @@
                 ImagePath = "/images/Items/Light-Leather.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Fine Leather",
@@ -130,6 +140,7 @@
                 ImagePath = "/images/Items/Fine-Leather.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Cotton",
@@ -137,6 +148,7 @@
                 ImagePath = "/images/Items/Cotton.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Linen Cloth",
@@ -144,6 +156,7 @@
                 ImagePath = "/images/Items/Linen-Cloth.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Silk",
@@ -151,24 +164,28 @@
                 ImagePath = "/images/Items/Silk.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Mint",
                 Type = "Herb",
                 ImagePath = "/images/Items/Mint.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Coriander",
                 Type = "Herb",
                 ImagePath = "/images/Items/Coriander.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Lavender",
                 Type = "Herb",
                 ImagePath = "/images/Items/Lavender.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Buttercup",
@@ -176,6 +193,7 @@
                 ImagePath = "/images/Items/Herb-Essence.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Water Essence",
@@ -183,6 +201,7 @@
                 ImagePath = "/images/Items/Water-Essence.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Earth Essence",
@@ -190,6 +209,7 @@
                 ImagePath = "/images/Items/Earth-Essence.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Air Essence",
@@ -197,6 +217,7 @@
                 ImagePath = "/images/Items/Air-Essence.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Fire Essence",
@@ -204,6 +225,7 @@
                 ImagePath = "/images/Items/Fire-Essence.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Shiny Scale",
@@ -211,6 +233,7 @@
                 ImagePath = "/images/Items/Shiny-Scale.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Transparent Scale",
@@ -218,6 +241,7 @@
                 ImagePath = "/images/Items/Transparent-Scale.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Golden Necklace",
@@ -226,6 +250,7 @@
                 ImagePath = "/images/Items/Golden-Necklace.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Hard Scale",
@@ -233,6 +258,7 @@
                 ImagePath = "/images/Items/Hard-Scale.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Tomato",
@@ -240,6 +266,7 @@
                 ImagePath = "/images/Items/Tomato.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Lettuce",
@@ -247,6 +274,7 @@
                 ImagePath = "/images/Items/Lettuce.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Turnip",
@@ -254,6 +282,7 @@
                 ImagePath = "/images/Items/Turnip.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Pumpkin",
@@ -269,12 +298,14 @@
                 Type = "Wood",
                 ImagePath = "/images/Items/Dry-Branch.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Green Leaves",
                 Type = "Wood",
                 ImagePath = "/images/Items/Green-Leaves.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Tree Stump",
@@ -283,6 +314,7 @@
                 IsRefineable = true,
                 FuelCount = 1,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Acorn",
@@ -290,6 +322,7 @@
                 ImagePath = "/images/Items/Acorn.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Granite",
@@ -297,6 +330,7 @@
                 ImagePath = "/images/Items/Granite.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Marble",
@@ -304,6 +338,7 @@
                 ImagePath = "/images/Items/Marble.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Quartzite",
@@ -311,6 +346,7 @@
                 ImagePath = "/images/Items/Quartzite.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Obsidian",
@@ -318,6 +354,7 @@
                 ImagePath = "/images/Items/Obsidian.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Animal Stomach",
@@ -325,6 +362,7 @@
                 ImagePath = "/images/Items/Animal-Stomach.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Animal Skull",
@@ -333,6 +371,7 @@
                 ImagePath = "/images/Items/Animal-Skull.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Animal Bones",
@@ -341,12 +380,14 @@
                 ImagePath = "/images/Items/Animal-Bones.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Fangs",
                 Type = "Bones",
                 ImagePath = "/images/Items/Fangs.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "T-Shirt",
@@ -355,6 +396,7 @@
                 ImagePath = "/images/Items/T-Shirt.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Shoes",
@@ -363,6 +405,7 @@
                 ImagePath = "/images/Items/Shoes.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Pants",
@@ -371,24 +414,28 @@
                 ImagePath = "/images/Items/Pants.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Human Soul",
                 Type = "Essence",
                 ImagePath = "/images/Items/Human-Soul.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Rose",
                 Type = "Plant",
                 ImagePath = "/images/Items/Rose.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Daisy",
                 Type = "Plant",
                 ImagePath = "/images/Items/Daisy.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Clay Pot",
@@ -397,6 +444,7 @@
                 ImagePath = "/images/Items/Clay-Pot.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Plastic Vase",
@@ -404,6 +452,7 @@
                 ImagePath = "/images/Items/Plastic-Vase.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Life Essence",
@@ -411,6 +460,7 @@
                 ImagePath = "/images/Items/Life-Essence.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Light Essence",
@@ -418,6 +468,7 @@
                 ImagePath = "/images/Items/Light-Essence.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Shadow Essence",
@@ -425,6 +476,7 @@
                 ImagePath = "/images/Items/Shadow-Essence.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Death Essence",
@@ -432,6 +484,7 @@
                 ImagePath = "/images/Items/Death-Essence.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "String",
@@ -439,6 +492,7 @@
                 ImagePath = "/images/Items/String.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Puffer Fish",
@@ -447,6 +501,7 @@
                 ImagePath = "/images/Items/Puffer-Fish.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Turtle Eggs",
@@ -454,6 +509,7 @@
                 ImagePath = "/images/Items/Turtle-Eggs.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Bottled Message",
@@ -462,6 +518,7 @@
                 ImagePath = "/images/Items/Bottled-Message.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Potato",
@@ -469,6 +526,7 @@
                 ImagePath = "/images/Items/Potato.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Corn",
@@ -476,6 +534,7 @@
                 ImagePath = "/images/Items/Can.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Garden Shovel",
@@ -484,6 +543,7 @@
                 ImagePath = "/images/Items/Garden-Shovel.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Watering Can",
@@ -492,6 +552,7 @@
                 ImagePath = "/images/Items/Watering-Can.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Broken Glass Cup",
@@ -499,6 +560,7 @@
                 ImagePath = "/images/Items/Broken-Glass-Cup.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Stale Hotdog",
@@ -506,6 +568,7 @@
                 ImagePath = "/images/Items/Stale-Hotdog.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Crushed Can",
@@ -522,18 +585,21 @@
                 ImagePath = "/images/Items/Rubber-Band.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Animal Blood",
                 Type = "Junk",
                 ImagePath = "/images/Items/Animal-Blood.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Dead Critters",
                 Type = "Junk",
                 ImagePath = "/images/Items/Dead-Critters.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Broken Skull",
@@ -541,6 +607,7 @@
                 ImagePath = "/images/Items/Broken-Skull.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Broken Watch",
@@ -549,6 +616,7 @@
                 ImagePath = "/images/Items/Broken-Watch.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Empty Plastic Bottle",
@@ -557,6 +625,7 @@
                 ImagePath = "/images/Items/Empty-Plastic-Bottle.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Broken Cogs",
@@ -565,6 +634,7 @@
                 ImagePath = "/images/Items/Broken-Cogs.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Rusty Pipes",
@@ -573,6 +643,7 @@
                 ImagePath = "/images/Items/Rusty-Pipes.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Dead Battery",
@@ -581,6 +652,7 @@
                 ImagePath = "/images/Items/Dead-Battery.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Cracked Water Orb",
@@ -589,6 +661,7 @@
                 ImagePath = "https://ibb.co/K0GgNk2",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Coal Piece",
@@ -596,18 +669,21 @@
                 ImagePath = "/images/Items/Coal-Piece.png",
                 IsRefineable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Water Flask",
                 Type = "Junk",
                 ImagePath = "/images/Items/Water-Flask.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Worm",
                 Type = "Junk",
                 ImagePath = "/images/Items/Worm.png",
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Withered Roots",
@@ -616,6 +692,7 @@
                 ImagePath = "/images/Items/Withered-Roots.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Mud",
@@ -624,6 +701,7 @@
                 ImagePath = "/images/Items/Mud.png",
                 IsDisolveable = true,
             });
+
             this.context.Materials.Add(new Material
             {
                 Name = "Broken Branches",
@@ -644,6 +722,7 @@
                 ImageURL = "/images/Items/Saw.png",
                 BuyPrice = 20,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Hammer",
@@ -651,6 +730,7 @@
                 ImageURL = "/images/Items/Hammer.png",
                 BuyPrice = 20,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Sandpaper",
@@ -658,6 +738,7 @@
                 ImageURL = "/images/Items/Sandpaper.png",
                 BuyPrice = 10,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Anvil",
@@ -665,6 +746,7 @@
                 ImageURL = "/images/Items/Anvil.png",
                 BuyPrice = 60,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Knife",
@@ -672,6 +754,7 @@
                 ImageURL = "/images/Items/Knife.png",
                 BuyPrice = 20,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Needle",
@@ -679,6 +762,7 @@
                 ImageURL = "/images/Items/Needle.png",
                 BuyPrice = 10,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Ruler",
@@ -686,6 +770,7 @@
                 ImageURL = "/images/Items/Ruler.png",
                 BuyPrice = 30,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Scissors",
@@ -693,6 +778,7 @@
                 ImageURL = "/images/Items/Scissors.png",
                 BuyPrice = 40,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Knitting Kit",
@@ -700,6 +786,7 @@
                 ImageURL = "/images/Items/Knitting-Kit.png",
                 BuyPrice = 10,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Mortar and Pestle",
@@ -707,6 +794,7 @@
                 ImageURL = "/images/Items/Mortar-and-Pestle.png",
                 BuyPrice = 60,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Protective Mask",
@@ -714,6 +802,7 @@
                 ImageURL = "/images/Items/Protective-Mask.png",
                 BuyPrice = 20,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Cooling Rod",
@@ -721,6 +810,7 @@
                 ImageURL = "/images/Items/Cooling-Rod.png",
                 BuyPrice = 40,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Heavy Sandpaper",
@@ -728,6 +818,7 @@
                 ImageURL = "/images/Items/Heavy-Sandpaper.png",
                 BuyPrice = 30,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Mixing Bowl",
@@ -735,23 +826,13 @@
                 ImageURL = "/images/Items/Mixing-Bowl.png",
                 BuyPrice = 50,
             });
+
             this.context.Tools.Add(new Tool
             {
                 Name = "Cutting Board",
                 Durability = 30,
                 ImageURL = "/images/Items/Cutting-Board.png",
                 BuyPrice = 30,
-            });
-
-            await this.context.SaveChangesAsync(cancellationToken);
-        }
-
-        private async Task SeedUsersAsync(CancellationToken cancellationToken)
-        {
-            this.context.AppUsers.Add(new AppUser
-            {
-                UserName = "Pesho the Slayer [Not a real user]",
-                Heroes = new List<Hero>(),
             });
 
             await this.context.SaveChangesAsync(cancellationToken);
@@ -1074,6 +1155,7 @@
                 "Main Stat: Strength.",
                 IconPath = "/images/Icons/Warrior-Icon.png",
             });
+
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Hunter",
@@ -1091,6 +1173,7 @@
                "Main Stat: Agility.",
                 IconPath = "/images/Icons/Hunter-Icon.png",
             });
+
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Mage",
@@ -1108,6 +1191,7 @@
                 "Main Stat: Intellect.",
                 IconPath = "/images/Icons/Mage-Icon.png",
             });
+
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Naturalist",
@@ -1125,6 +1209,7 @@
                 "Main Stat: Spirit.",
                 IconPath = "/images/Icons/Druid-Icon.png",
             });
+
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Necroid",
@@ -1142,6 +1227,7 @@
                 "Main Stat: Intellect.",
                 IconPath = "/images/Icons/Necroid-Icon.png",
             });
+
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Paladin",
@@ -1159,6 +1245,7 @@
                "Main Stat: Strength.",
                 IconPath = "/images/Icons/Paladin-Icon.png",
             });
+
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Priest",
@@ -1176,6 +1263,7 @@
                "Main Stat: Spirit.",
                 IconPath = "/images/Icons/Priest-Icon.png",
             });
+
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Rogue",
@@ -1193,6 +1281,7 @@
                "Main Stat: Agility.",
                 IconPath = "/images/Icons/Rogue-Icon.png",
             });
+
             this.context.FightingClasses.Add(new FightingClass
             {
                 ClassType = "Shaman",
@@ -1226,6 +1315,7 @@
                 Power = 0.2,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Bite",
@@ -1238,6 +1328,7 @@
                 BuffOrEffectTarget = "Target",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Thick Hide",
@@ -1247,6 +1338,7 @@
                 Power = 0.8,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Lick Wounds",
@@ -1267,6 +1359,7 @@
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Shadow Punch",
@@ -1276,6 +1369,7 @@
                 Power = 1.2,
                 ResistanceAffect = 0.9,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Eye Of The Void",
@@ -1285,6 +1379,7 @@
                 Power = 0.33,
                 BuffOrEffectTarget = "Target",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Ripping Hell-Fire",
@@ -1307,6 +1402,7 @@
                 EffectPower = 0.18,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Calming Mind",
@@ -1316,6 +1412,7 @@
                 Power = 0.3,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Raging Mind",
@@ -1327,6 +1424,7 @@
                 EffectPower = 0.18,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Overpowering Fist",
@@ -1347,6 +1445,7 @@
                 Power = 1.18,
                 ResistanceAffect = 0.5,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Petryfying Gaze",
@@ -1356,6 +1455,7 @@
                 Power = 0.42,
                 BuffOrEffectTarget = "Target",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Gust",
@@ -1365,6 +1465,7 @@
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Peck",
@@ -1385,6 +1486,7 @@
                 Power = 1.2,
                 ResistanceAffect = 0.9,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Reflelcting Scales",
@@ -1397,6 +1499,7 @@
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Skin Change",
@@ -1408,6 +1511,7 @@
                 EffectPower = 0.25,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Scratch",
@@ -1427,6 +1531,7 @@
                 Type = "Heal,Magical,Self",
                 Power = 1.8,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Illumination",
@@ -1438,6 +1543,7 @@
                 EffectPower = 0.2,
                 BuffOrEffectTarget = "Target",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Holy Smite",
@@ -1447,6 +1553,7 @@
                 Power = 1,
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Judgement Day",
@@ -1472,6 +1579,7 @@
                 EffectPower = 0.1,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Wrath Of The Necropolis",
@@ -1482,6 +1590,7 @@
                 SecondaryPower = 0.65,
                 ResistanceAffect = 0.7,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Suffocation",
@@ -1495,6 +1604,7 @@
                 BuffOrEffectTarget = "Target",
                 ResistanceAffect = 0,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Horrifying Scream",
@@ -1518,6 +1628,7 @@
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Dive",
@@ -1529,6 +1640,7 @@
                 EffectPower = 0.35,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Hyper Speed",
@@ -1538,6 +1650,7 @@
                 Power = 0.6,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Thunder",
@@ -1564,6 +1677,7 @@
                 BuffOrEffectTarget = "Target",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Feed",
@@ -1576,6 +1690,7 @@
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Mutation",
@@ -1587,6 +1702,7 @@
                 EffectPower = 0.6,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Decay",
@@ -1598,6 +1714,7 @@
                 EffectPower = 0.2,
                 BuffOrEffectTarget = "Self",
             });
+
             await this.context.SaveChangesAsync(cancellationToken);
         }
 
@@ -1616,6 +1733,7 @@
                 BuffOrEffectTarget = "Self",
                 EffectPower = 0.05,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Grass Hop",
@@ -1625,6 +1743,7 @@
                 Power = 0.7,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Poison Shot",
@@ -1635,6 +1754,7 @@
                 SecondaryPower = 0.7,
                 ResistanceAffect = 0.5,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Sharp Eye",
@@ -1658,6 +1778,7 @@
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Fire Ball",
@@ -1671,6 +1792,7 @@
                 BuffOrEffectTarget = "Target",
                 ResistanceAffect = 0.7,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Mana Conversion",
@@ -1682,6 +1804,7 @@
                 EffectPower = 0.2,
                 BuffOrEffectTarget = "Self/Target",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "All-Out Blast!",
@@ -1707,6 +1830,7 @@
                 EffectPower = 0.3,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Thorn Blast",
@@ -1719,6 +1843,7 @@
                 BuffOrEffectTarget = "Target",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Nature's Gift",
@@ -1731,6 +1856,7 @@
                 SecondaryPower = 0.05,
                 BuffOrEffectTarget = "Caster/Target",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Pouring Rain",
@@ -1757,6 +1883,7 @@
                 BuffOrEffectTarget = "Target",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Life Syphon",
@@ -1770,6 +1897,7 @@
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Arcane Bane",
@@ -1779,6 +1907,7 @@
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Mutual Darkness",
@@ -1804,8 +1933,8 @@
                 EffectPower = 0.1,
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 0.7,
-
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Burning Light",
@@ -1814,8 +1943,8 @@
                 Type = "Damage,Magical,Self",
                 Power = 1.1,
                 ResistanceAffect = 1,
-
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Vicious Spell-Guard",
@@ -1824,8 +1953,8 @@
                 Type = "Buff,Res,Self,Positive",
                 Power = 0.55,
                 BuffOrEffectTarget = "Self",
-
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Divine Rune",
@@ -1845,6 +1974,7 @@
                 Type = "Heal,Magical,Self",
                 Power = 1.1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Mana Drain",
@@ -1855,8 +1985,8 @@
                 AdditionalEffect = "Mana,Positive",
                 SecondaryPower = 0.2,
                 BuffOrEffectTarget = "Target/Self",
-
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Staff Smash",
@@ -1869,6 +1999,7 @@
                 BuffOrEffectTarget = "Target",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Blessing",
@@ -1894,6 +2025,7 @@
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Poison Dagger",
@@ -1904,6 +2036,7 @@
                 SecondaryPower = 1.1,
                 ResistanceAffect = 0.6,
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Evasion",
@@ -1915,6 +2048,7 @@
                 EffectPower = 0.35,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Thievery",
@@ -1939,6 +2073,7 @@
                 ResistanceAffect = 1,
                 BuffOrEffectTarget = "Target",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Earth Strike",
@@ -1952,6 +2087,7 @@
                 ResistanceAffect = 1,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Flame Strike",
@@ -1990,8 +2126,8 @@
                 EffectPower = 0.08,
                 ResistanceAffect = 1,
                 BuffOrEffectTarget = "Self",
-
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Hyper Strength",
@@ -2001,6 +2137,7 @@
                 Power = 0.2,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Raging Blow",
@@ -2013,6 +2150,7 @@
                 ResistanceAffect = 0.8,
                 BuffOrEffectTarget = "Self",
             });
+
             this.context.Spells.Add(new Spell
             {
                 Name = "Disarm",

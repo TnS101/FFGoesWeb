@@ -1,11 +1,11 @@
 ﻿namespace Application.GameContent.Utilities.Generators
 {
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
     using Domain.Entities.Game.Units;
+    using Domain.Entities.Game.Units.OneToOne;
     using Microsoft.EntityFrameworkCore;
 
     public class EnemyGenerator

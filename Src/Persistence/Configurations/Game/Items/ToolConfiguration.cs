@@ -11,7 +11,7 @@
             builder.HasKey(t => t.Id);
 
             builder.Property(t => t.Name)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Forum.Topic.Commands.Create
+﻿namespace Application.CQ.Social.Topics.Commands.Create
 {
     using System;
     using System.Collections.Generic;

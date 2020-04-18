@@ -54,10 +54,8 @@
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";
         public const string ConfirmPasswordError = "Passwords must match.";
-        public const string LengthException = "{0} length must be between {1} and {2} characters.";
         public const string IdentityInUse = "{0} is in use, please choose another {0}.";
-        public const string RequiredField = "This Field is required";
-        public const string UsernameError = "Username must contain only letters or digits and must be at least 5 characters long.";
+        public const string UsernameError = "Username must contain only letters or digits.";
         public const string PasswordError = "Password must contain only letters or digts, at least one uppercase letter, one digit, one non alphanumeric character and must be at least 8 characters long.";
         public const string EmailError = "Invalid Email Address.";
         public const string AllowedUnitsError = "You already have {0} Heroes! Delete a Hero or purchase more Hero Slots.";
@@ -81,6 +79,12 @@
         // Messages
         public const string WarningMessage = "{0}, you have reached {1} warnings! Recieving another warning will be a resulting a penalty!";
         public const string PenaltyMessage = "{0}, you have been muted for {1} day(s)!";
+        public const string SwearMessage = "Please, keep things CLEAN!!!";
+        public const string SpamMessage = "Please, do not SPAM duplicate characters!";
+        public const string LengthMessage = "{0} length must be between {2} and {1} characters.";
+        public const string RequiredMessage = "This Field is required";
+        public const string ContentMessage = "{0} can only have upper case letters, lower case letters or digits.";
+
 
         // Moderation(tickets)
         public const string RemovedContentMessage = "This {0} was removed by violating our rules (Reason : {1}).";
@@ -102,18 +106,16 @@
         public const string UnitKilled = @"\Unit/Killed";
 
         // Filters (Regex)
-        public const string UsernameFilter = @"\b(\d*[a-z]+\d*)\b";
-        public const string SwearFilter = @"^[a@][s\$][s\$]$[a@][s\$][s\$]h[o0][l1][e3][s\$]?b
-                                            [a@][s\$][t\+][a@]rd b[e3][a@][s\$][t\+][i1][a@]?[l1]([i1][t\+]y)?b[e3][a@][s\$][t\+][i1][l1][i1][t\+]yb[e3][s\$][t\+][i1]
-                                            [a@][l1]([i1][t\+]y)?b[i1][t\+]ch[s\$]?b[i1][t\+]ch[e3]r[s\$]?b[i1][t\+]ch[e3][s\$]b[i1][t\+]ch[i1]ng?b[l1][o0]wj[o0]b[s\$]?c[l1][i1][t\+]^(c|k|c
-                                            k|q)[o0](c|k|ck|q)[s\$]?$(c|k|ck|q)[o0](c|k|ck|q)[s\$]u(c|k|ck|q)[o0](c|k|ck|q)[s\$]u(c|k|ck|q)[e3]d (c|k|ck|q)[o0](c|k|ck|q)[s\$]u(c|k|ck|q)[e3]r(c|k|
-                                            ck|q)[o0](c|k|ck|q)[s\$]u(c|k|ck|q)[i1]ng(c|k|ck|q)[o0](c|k|ck|q)[s\$]u(c|k|ck|q)[s\$]^cum[s\$]?$cumm??[e3]rcumm?[i1]ngcock(c|k|ck|q)um[s\$]h[o0][t\+](c|k|ck
-                                            |q)un[i1][l1][i1]ngu[s\$](c|k|ck|q)un[i1][l1][l1][i1]ngu[s\$](c|k|ck|q)unn[i1][l1][i1]ngu[s\$](c|k|ck|q)un[t\+][s\$]?(c|k|ck|q)un[t\+][l1][i1](c|k|ck|q)(c|k|ck
-                                            |q)un[t\+][l1][i1](c|k|ck|q)[e3]r(c|k|ck|q)un[t\+][l1][i1](c|k|ck|q)[i1]ngcyb[e3]r(ph|f)u(c|k|ck|q)d[a@]mnd[i1]ckd[i1][l1]d[o0]d[i1][l1]d[o0][s\$]d[i1]n(c|k|ck|q)d[
-                                            i1]n(c|k|ck|q)[s\$][e3]j[a@]cu[l1](ph|f)[a@]g[s\$]?(ph|f)[a@]gg[i1]ng(ph|f)[a@]gg?[o0][t\+][s\$]?(ph|f)[a@]gg[s\$](ph|f)[e3][l1][l1]?[a@][t\+][i1][o0](ph|f)u(c|k|ck|q)
-                                            (ph|f)u(c|k|ck|q)[s\$]?g[a@]ngb[a@]ng[s\$]?g[a@]ngb[a@]ng[e3]dg[a@]yh[o0]m?m[o0]h[o0]rnyj[a@](c|k|ck|q)\-?[o0](ph|f)(ph|f)?j[e3]rk\-?[o0](ph|f)(ph|f)?j[i1][s\$z][s\$z]?m?[c
-                                            k][o0]ndum[s\$]?mast(e|ur)b(8|ait|ate)n[i1]gg?[e3]r[s\$]?[o0]rg[a@][s\$][i1]m[s\$]?[o0]rg[a@][s\$]m[s\$]?p[e3]nn?[i1][s\$]p[i1][s\$][s\$]p[i1][s\$][s\$][o0](ph|f)(ph|f) p[
-                                            o0]rnp[o0]rn[o0][s\$]?p[o0]rn[o0]gr[a@]phypr[i1]ck[s\$]?pu[s\$][s\$][i1][e3][s\$]pu[s\$][s\$]y[s\$]?[s\$][e3]x[s\$]h[i1][t\+][s\$]?[s\$][l1]u[t\+][s\$]?[s\$]mu[t\+][s\$]
-                                            ?[s\$]punk[s\$]?[t\+]w[a@][t\+][s\$]?";
+        public const string UsernameFilter = @"(\d*[a-z]+\d*)";
+        public const string ContentFilter = @"([A-Z]*[a-z]*[0-9]*\s*)";
+        public const string SpamFilter = @"^((?!a{3,}|b{3,}|c{3,}|d{3,}|e{3,}|f{3,}g{3,}|h{3,}|i{3,}|j{3,}|k{3,}|l{3,}|m{3,}|n{3,}|o{3,}|p{3,}|q{3,}|
+                                                    r{3,}|s{3,}|t{3,}|u{3,}|v{3,}|w{3,}|x{3,}|y{3,}|z{3,}|A{3,}|B{3,}|C{3,}|D{3,}|E{3,}|F{3,}G{3,}
+                                                    |H{3,}|I{3,}|J{3,}|K{3,}|L{3,}|M{3,}|N{3,}|O{3,}|P{3,}|Q{3,}|R{3,}|S{3,}|T{3,}|U
+                                                    {3,}|V{3,}|W{3,}|X{3,}|Y{3,}|Z{3,}|1{6,}|2{6,}|3{6,}|4{6,}|5{6,}|6{6,}|7{6,}|8{6,}|9{6,}).)*$";
+
+        public const string SwearFilter = @"^((?!arse|asshole|orgy|squirt|threesome|fingering|fisting|hentai|masturbate|masturbation|gangbang|doublepenetration|creampie
+                                            |cuckold|tits|bukkake|bitch|horseshit|bondage|bisexual|twat|crap|shitass|wank|cum|boobjob|dickhead|slut|whore|prostitute|suicide|shit|fuck|suicidal|anal|oral|sex|cunt|clitoris|
+                                            deepthroat|cock|nigger|niger|nigor|nigra|nigre|nigar|niggur|nigga|niggah|niggar|nigguh|niggress|nigette|kys|hardon|testicle|scrote|schlong|prick|nutsack|fuckstick|asshat|idiot|
+                                            dickhole|cockfucker|cockface|cockburger|cockbite|clitface|assshit|asssucker|assmunch|assmonkey|bigass|bigdick|asscock|asshead).)*$";
     }
 }

@@ -22,7 +22,6 @@
             this.Comments = new HashSet<Comment>();
             this.Notifications = new HashSet<Notification>();
             this.Feedbacks = new HashSet<Feedback>();
-            this.AllowedHeroes = 4;
 
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();

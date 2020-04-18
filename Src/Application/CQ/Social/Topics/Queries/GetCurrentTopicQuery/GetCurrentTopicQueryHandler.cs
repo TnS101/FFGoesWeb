@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery
+﻿namespace Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery
 {
     using System.Collections.Generic;
     using System.Linq;

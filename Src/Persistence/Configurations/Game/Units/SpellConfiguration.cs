@@ -10,20 +10,22 @@
         {
             builder.HasKey(s => s.Id);
 
-            builder.Property(s => s.Type)
-                .HasMaxLength(20)
-                .IsRequired();
-
-            builder.Property(s => s.BuffOrEffectTarget)
-                .HasMaxLength(15)
-                .IsRequired();
-
-            builder.Property(s => s.AdditionalEffect)
+            builder.Property(s => s.Name)
                 .HasMaxLength(30)
                 .IsRequired();
 
+            builder.Property(s => s.Type)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            builder.Property(s => s.BuffOrEffectTarget)
+                .HasMaxLength(20);
+
+            builder.Property(s => s.AdditionalEffect)
+                .HasMaxLength(50);
+
             builder.Property(s => s.ClassType)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsRequired();
         }
     }

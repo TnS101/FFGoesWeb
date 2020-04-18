@@ -1,7 +1,7 @@
 ﻿namespace WebUI.Controllers.Common
 {
     using System.Threading.Tasks;
-    using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
+    using Application.CQ.Social.Topics.Queries.GetAllTopicsQuery;
     using Application.CQ.Users.Feedbacks.Command;
     using Application.CQ.Users.Feedbacks.Queries;
     using Application.CQ.Users.Queries.GetCurrentUser;
@@ -10,7 +10,6 @@
     using Application.CQ.Users.Statuses.Queries;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using global::Common;
-    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 

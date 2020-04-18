@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery
+﻿namespace Application.CQ.Social.Topics.Queries.GetAllTopicsQuery
 {
     using System.Linq;
     using System.Threading;

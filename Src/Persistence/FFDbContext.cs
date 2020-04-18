@@ -121,8 +121,6 @@
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(FFDbContext).Assembly);
 
-            modelBuilder.Entity<UserStatus>().HasKey(k => new { k.UserId });
-
             modelBuilder.Entity<AppUser>(appUser =>
             {
                 appUser
@@ -146,35 +144,6 @@
                     .IsRequired()
                     .OnDelete(DeleteBehavior.Restrict);
             });
-        }
-
-        private void HeroEquipmentRelation(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Equipment>()
-           .HasOne(h => h.Hero)
-           .WithOne(e => e.Equipment)
-           .HasForeignKey<Equipment>(h => h.HeroId);
-        }
-
-        private void HeroInventoryRelation(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Inventory>()
-           .HasOne(u => u.Hero)
-           .WithOne(i => i.Inventory)
-           .HasForeignKey<Inventory>(u => u.HeroId);
-        }
-
-        private void MonsterRarityRelation(ModelBuilder modelBuilder)
-        {
-            
-        }
-
-        private void CommentReplyRelation(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Comment>()
-            .HasMany(p => p.Replies)
-            .WithOne(t => t.Reply)
-            .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -13,10 +13,12 @@
             builder.Property(i => i.HeroId)
                 .IsRequired();
 
-            builder.OwnsOne(i => i.Hero);
-
             builder.Property(i => i.Capacity)
                 .HasDefaultValue(50);
+
+            builder.HasOne(u => u.Hero)
+           .WithOne(i => i.Inventory)
+           .HasForeignKey<Inventory>(u => u.HeroId);
         }
     }
 }

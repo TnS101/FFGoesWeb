@@ -11,19 +11,19 @@
             builder.HasKey(f => f.Id);
 
             builder.Property(f => f.ClassType)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsRequired();
 
             builder.Property(f => f.Description)
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsRequired();
 
             builder.Property(f => f.IconPath)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(f => f.ImagePath)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
         }
     }

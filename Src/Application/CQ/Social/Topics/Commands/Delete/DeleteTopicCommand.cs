@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Forum.Topic.Commands.Delete
+﻿namespace Application.CQ.Social.Topics.Commands.Delete
 {
     using System.Security.Claims;
     using MediatR;

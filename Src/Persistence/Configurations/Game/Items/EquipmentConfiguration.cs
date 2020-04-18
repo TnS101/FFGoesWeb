@@ -15,6 +15,10 @@
 
             builder.Property(e => e.Capacity)
                 .HasDefaultValue(9);
+
+            builder.HasOne(h => h.Hero)
+           .WithOne(e => e.Equipment)
+           .HasForeignKey<Equipment>(h => h.HeroId);
         }
     }
 }

@@ -11,3 +11,6 @@ dotnet_diagnostic.SA1108.severity = silent
 
 # SA1401: Fields should be private
 dotnet_diagnostic.SA1401.severity = none
+
+# SA1402: File may only contain a single type
+dotnet_diagnostic.SA1402.severity = none

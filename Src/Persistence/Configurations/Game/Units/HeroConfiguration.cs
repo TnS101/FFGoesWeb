@@ -24,7 +24,7 @@
                 .IsRequired();
 
             builder.Property(h => h.ClassType)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsRequired();
 
             builder.Property(h => h.Race)
@@ -32,11 +32,11 @@
                 .IsRequired();
 
             builder.Property(h => h.IconPath)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(h => h.ImagePath)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(h => h.Type)

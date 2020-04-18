@@ -23,7 +23,7 @@
                 .IsRequired();
 
             builder.Property(a => a.ImagePath)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(a => a.Type)

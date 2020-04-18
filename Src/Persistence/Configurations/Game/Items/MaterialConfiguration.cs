@@ -10,14 +10,12 @@
         {
             builder.HasKey(m => m.Id);
 
-            builder.OwnsOne(m => m.Tool);
-
             builder.Property(m => m.Name)
                 .HasMaxLength(30)
                 .IsRequired();
 
             builder.Property(m => m.ImagePath)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
         }
     }

@@ -1,4 +1,4 @@
-﻿@model Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery.TopicFullViewModel
+﻿@model Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery.TopicFullViewModel
 
 @{
     ViewData["Title"] = "CurrentTopic";
@@ -146,7 +146,6 @@
 
 
                 }
-
                 <div class="fade-in" id="comment-panel" hidden>
                     <form asp-controller="Comment" asp-action="Create" method="post" class="item-padding">
                         <input type="hidden" name="topicId" value="@Model.Id" />

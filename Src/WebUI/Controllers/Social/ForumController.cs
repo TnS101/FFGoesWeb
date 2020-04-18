@@ -1,8 +1,8 @@
 ﻿namespace WebUI.Controllers.Social
 {
     using System.Threading.Tasks;
-    using Application.CQ.Forum.Topic.Queries.GetAllTopicsQuery;
-    using Application.CQ.Forum.Topic.Queries.GetCurrentTopicQuery;
+    using Application.CQ.Social.Topics.Queries.GetAllTopicsQuery;
+    using Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

@@ -1,9 +1,9 @@
 ﻿namespace WebUI.Controllers.Social
 {
     using System.Threading.Tasks;
-    using Application.CQ.Forum.Topic.Commands.Create;
-    using Application.CQ.Forum.Topic.Commands.Delete;
-    using Application.CQ.Forum.Topic.Commands.Update;
+    using Application.CQ.Social.Topics.Commands.Create;
+    using Application.CQ.Social.Topics.Commands.Delete;
+    using Application.CQ.Social.Topics.Commands.Update;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -19,19 +19,14 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromForm]string title, [FromForm]string category, [FromForm]string content)
+        public async Task<ActionResult> Create([Bind("Title,Category,Content")] CreateTopicCommand createTopic)
         {
-            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content))
+            if (!this.ModelState.IsValid)
             {
-                return this.View(GConst.CreateTopicErrorRedirect, GConst.FillAllFieldsError);
+                return this.View(createTopic);
             }
 
-            if (title.Length < 5 || title.Length > 30)
-            {
-                return this.View(GConst.CreateTopicErrorRedirect, GConst.TitleError);
-            }
-
-            await this.Mediator.Send(new CreateTopicCommand { Title = title, Category = category, Content = content, User = this.User });
+            await this.Mediator.Send(new CreateTopicCommand { Title = createTopic.Title, Category = createTopic.Category, Content = createTopic.Content, User = this.User });
 
             return this.Redirect(GConst.TopicCommandRedirect);
         }

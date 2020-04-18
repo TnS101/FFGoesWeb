@@ -4,8 +4,8 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
-    using Domain.Base;
     using Domain.Entities.Game.Units;
+    using Domain.Entities.Game.Units.ManyToMany;
     using Microsoft.EntityFrameworkCore;
 
     public class FightingClassCheck

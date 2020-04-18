@@ -23,11 +23,11 @@
                 .IsRequired();
 
             builder.Property(w => w.ImagePath)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(w => w.Type)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsRequired();
         }
     }

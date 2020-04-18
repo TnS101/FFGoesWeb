@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Forum.Topic.Commands.Update
+﻿namespace Application.CQ.Social.Topics.Commands.Update
 {
     using System;
     using System.Threading;
