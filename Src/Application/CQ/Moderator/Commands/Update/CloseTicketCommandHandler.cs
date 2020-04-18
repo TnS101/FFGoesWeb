@@ -10,6 +10,7 @@
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class CloseTicketCommandHandler : IRequestHandler<CloseTicketCommand, string>
     {
@@ -56,7 +57,9 @@
             {
                 var comment = await this.context.Comments.FindAsync(ticket.CommentId);
 
-                comment.Likes = 0;
+                var likesToRemove = await this.context.Likes.Where(l => l.CommentId == comment.Id).ToListAsync();
+
+                this.context.Likes.RemoveRange(likesToRemove);
 
                 comment.IsRemoved = true;
 
@@ -74,7 +77,9 @@
 
                 var comments = this.context.Comments.FirstOrDefault(c => c.TopicId == topic.Id);
 
-                topic.Likes = 0;
+                var likesToRemove = await this.context.Likes.Where(l => l.CommentId == topic.Id).ToListAsync();
+
+                this.context.Likes.RemoveRange(likesToRemove);
 
                 topic.IsRemoved = true;
 

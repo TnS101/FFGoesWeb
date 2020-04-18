@@ -32,7 +32,7 @@
                 Content = request.Content,
                 UserId = user.Id,
                 Comments = new List<Comment>(),
-                Likes = 0,
+                Likes = new List<Like>(),
                 CreateOn = DateTime.UtcNow,
             });
 

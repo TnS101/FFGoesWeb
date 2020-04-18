@@ -32,9 +32,14 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromForm]string fightingClass, [FromForm]string race, [FromForm]string name)
+        public async Task<ActionResult> Create([Bind("FightingClass,Race,Name")] CreateHeroCommand hero)
         {
-            return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = fightingClass, Race = race, Name = name, User = this.User }));
+            if (!this.ModelState.IsValid)
+            {
+                return this.Redirect(GConst.UnitCommandRedirect);
+            }
+
+            return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = hero.ClassType, Race = hero.Race, Name = hero.Name, User = this.User }));
         }
 
         [HttpPost]

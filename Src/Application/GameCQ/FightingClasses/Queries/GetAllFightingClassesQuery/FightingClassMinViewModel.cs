@@ -8,8 +8,8 @@
 
         public string Description { get; set; }
 
-        public string IconURL { get; set; }
+        public string IconPath { get; set; }
 
-        public string ImageURL { get; set; }
+        public string ImagePath { get; set; }
     }
 }

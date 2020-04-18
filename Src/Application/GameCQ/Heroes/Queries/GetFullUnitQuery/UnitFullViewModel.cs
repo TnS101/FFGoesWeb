@@ -60,7 +60,7 @@
 
         public double XPCap { get; set; }
 
-        public string ImageURL { get; set; }
+        public string ImagePath { get; set; }
 
         public int GoldAmount { get; set; }
 

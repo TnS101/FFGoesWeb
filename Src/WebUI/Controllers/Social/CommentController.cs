@@ -2,6 +2,8 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Social.Comments.Commands.Create;
+    using Application.CQ.Social.Likes.Command.Create;
+    using Application.CQ.Social.Likes.Command.Delete;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -32,6 +34,18 @@
         public async Task<ActionResult> Edit([FromForm]string id, [FromForm]string content)
         {
             return this.Redirect(await this.Mediator.Send(new EditCommentCommand { Content = content, CommentId = id }));
+        }
+
+        [HttpGet("/Comment/Like/id")]
+        public async Task<ActionResult> Like([FromQuery]string id)
+        {
+            return this.Redirect(await this.Mediator.Send(new LeaveLikeCommand { CommentId = id, User = this.User }));
+        }
+
+        [HttpGet("/Comment/Dislike/id")]
+        public async Task<ActionResult> Dislike([FromQuery]string id)
+        {
+            return this.Redirect(await this.Mediator.Send(new DislikeCommand { CommentId = id, User = this.User }));
         }
     }
 }

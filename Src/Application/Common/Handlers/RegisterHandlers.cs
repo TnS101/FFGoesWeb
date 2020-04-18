@@ -24,6 +24,8 @@
     using Application.CQ.Social.FriendRequests.Commands.Update;
     using Application.CQ.Social.FriendRequests.Queries;
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
+    using Application.CQ.Social.Likes.Command.Create;
+    using Application.CQ.Social.Likes.Command.Delete;
     using Application.CQ.Social.Messages.Commands.Create;
     using Application.CQ.Social.Messages.Queries;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
@@ -135,6 +137,8 @@
             services.AddScoped<IRequestHandler<ExploreCommand, string>, ExploreCommandHandler>();
             services.AddScoped<IRequestHandler<SendFeedbackCommand, string>, SendFeedbackCommandHandler>();
             services.AddScoped<IRequestHandler<OpenTicketCommand, string>, OpenTicketCommandHandler>();
+            services.AddScoped<IRequestHandler<LeaveLikeCommand, string>, LeaveLikeCommandHandler>();
+            services.AddScoped<IRequestHandler<DislikeCommand, string>, DislikeCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)

@@ -25,35 +25,55 @@
         {
             var sender = await this.userManager.GetUserAsync(request.Sender);
 
-            var days = (DateTime.UtcNow - sender.LastFeedbackSentOn.Value).Days;
-
-            if (sender.LastFeedbackSentOn != null && days <= 1)
+            if (sender.LastFeedbackSentOn != null)
             {
-                return GConst.ErrorRedirect;
+                var days = (DateTime.UtcNow - sender.LastFeedbackSentOn.Value).Days;
+
+                if (days <= 1)
+                {
+                    return GConst.ErrorRedirect;
+                }
+                else
+                {
+                    sender.LastFeedbackSentOn = DateTime.UtcNow;
+
+                    this.context.Feedbacks.Add(new Feedback
+                    {
+                        Content = request.Content,
+                        IsAccepted = false,
+                        SentOn = DateTime.UtcNow,
+                        Stars = 0,
+                        UserId = sender.Id,
+                        Rate = request.Rate,
+                    });
+
+                    this.context.AppUsers.Update(sender);
+
+                    await this.context.SaveChangesAsync(cancellationToken);
+
+                    return GConst.SuccesfulFeedbackRedirect;
+                }
             }
-
-            if (string.IsNullOrWhiteSpace(request.Content))
+            else
             {
-                return GConst.ErrorRedirect;
+                sender.LastFeedbackSentOn = DateTime.UtcNow;
+
+                this.context.Feedbacks.Add(new Feedback
+                {
+                    Content = request.Content,
+                    IsAccepted = false,
+                    SentOn = DateTime.UtcNow,
+                    Stars = 0,
+                    UserId = sender.Id,
+                    Rate = request.Rate,
+                });
+
+                this.context.AppUsers.Update(sender);
+
+                await this.context.SaveChangesAsync(cancellationToken);
+
+                return GConst.SuccesfulFeedbackRedirect;
             }
-
-            sender.LastFeedbackSentOn = DateTime.UtcNow;
-
-            this.context.Feedbacks.Add(new Feedback
-            {
-                Content = request.Content,
-                IsAccepted = false,
-                SentOn = DateTime.UtcNow,
-                Stars = 0,
-                UserId = sender.Id,
-                Rate = request.Rate,
-            });
-
-            this.context.AppUsers.Update(sender);
-
-            await this.context.SaveChangesAsync(cancellationToken);
-
-            return GConst.SuccesfulFeedbackRedirect;
         }
     }
 }

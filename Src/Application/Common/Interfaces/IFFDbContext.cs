@@ -96,6 +96,8 @@
 
         DbSet<HeroSpells> HeroesSpells { get; set; }
 
+        DbSet<Like> Likes { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

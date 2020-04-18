@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using Application.CQ.Users.Feedbacks.Command;
     using Domain.Entities.Social;
 
     public class UserPanelViewModel
@@ -36,5 +37,7 @@
         public int Friends { get; set; }
 
         public DateTime? LastFeedbackSentOn { get; set; }
+
+        public SendFeedbackCommand Feedback { get; set; }
     }
 }

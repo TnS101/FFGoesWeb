@@ -128,13 +128,17 @@
             @if (Model.Feedbacks == 0)
             {
                 <div class="item-padding">
-                    <p onclick="" class="feedback-button is-clickable main-font-color has-normal-font-size">Leave your first Feedback?</p>
+                    <p onclick="" class="feedback-button is-clickable main-font-color has-normal-font-size" id="feedback-button">Leave your first Feedback?</p>
                 </div>
             }
+            <div class="item-padding">
+                <span asp-validation-for="@Model.Feedback.Content" class="has-medium-font-size main-font-color fade-in"></span>
+            </div>
             <div class="item-padding fade-in" id="feedback-panel" hidden>
-                <form asp-controller="Profile" asp-action="LeaveFeedback" method="post">
+                <form asp-controller="Profile" asp-action="SendFeedback" method="post">
                     <label for="feedback">
-                        <input id="feedback" class="item-padding" type="text" name="feedback" value="" />
+                        <input id="feedback" class="item-padding" type="text" name="content" value="" />
+
                     </label>
                     <label for="rate">
                         <span class="has-medium-font-size main-font-color item-padding">Rate us?</span>

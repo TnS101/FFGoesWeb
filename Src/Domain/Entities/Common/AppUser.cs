@@ -22,6 +22,7 @@
             this.Comments = new HashSet<Comment>();
             this.Notifications = new HashSet<Notification>();
             this.Feedbacks = new HashSet<Feedback>();
+            this.Likes = new HashSet<Like>();
 
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
@@ -75,6 +76,8 @@
         public ICollection<Notification> Notifications { get; set; }
 
         public ICollection<Feedback> Feedbacks { get; set; }
+
+        public ICollection<Like> Likes { get; set; }
 
         public virtual ICollection<AppUser> Friends { get; set; }
 

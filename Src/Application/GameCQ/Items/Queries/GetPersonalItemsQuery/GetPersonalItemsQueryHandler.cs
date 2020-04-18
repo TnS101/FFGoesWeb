@@ -81,7 +81,7 @@
                 {
                     Id = i.Id,
                     Name = i.Name,
-                    ImageURL = i.ImagePath,
+                    ImagePath = i.ImagePath,
                     Slot = i.Slot,
                 }),
             };
@@ -110,7 +110,7 @@
                 {
                     Id = i.Id,
                     Name = i.Name,
-                    ImageURL = i.ImagePath,
+                    ImagePath = i.ImagePath,
                     Slot = i.Slot,
                 }),
             };
@@ -139,7 +139,7 @@
                 {
                     Id = i.Id,
                     Name = i.Name,
-                    ImageURL = i.ImagePath,
+                    ImagePath = i.ImagePath,
                     Slot = i.Slot,
                 }),
             };
@@ -168,7 +168,7 @@
                 {
                     Id = i.Id,
                     Name = i.Name,
-                    ImageURL = i.ImagePath,
+                    ImagePath = i.ImagePath,
                     Slot = "Treasure",
                 }),
             };
@@ -197,7 +197,7 @@
                 {
                     Id = i.Id,
                     Name = i.Name,
-                    ImageURL = i.ImagePath,
+                    ImagePath = i.ImagePath,
                     Slot = "Treasure Key",
                 }),
             };
@@ -231,7 +231,7 @@
                     {
                         Id = i.Id,
                         Name = i.Name,
-                        ImageURL = i.ImagePath,
+                        ImagePath = i.ImagePath,
                         Slot = "Material",
                     }),
                 };

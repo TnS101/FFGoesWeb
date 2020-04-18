@@ -12,6 +12,7 @@
             this.Comments = new HashSet<Comment>();
             this.Tickets = new HashSet<Ticket>();
             this.Id = Guid.NewGuid().ToString();
+            this.Likes = new HashSet<Like>();
         }
 
         public string Id { get; set; }
@@ -26,8 +27,6 @@
 
         public string Content { get; set; }
 
-        public int Likes { get; set; }
-
         public bool IsRemoved { get; set; }
 
         public DateTime CreateOn { get; set; }
@@ -37,5 +36,7 @@
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; }
+
+        public ICollection<Like> Likes { get; set; }
     }
 }

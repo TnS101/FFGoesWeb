@@ -1,6 +1,8 @@
 ﻿namespace Application.CQ.Social.Topics.Queries.GetAllTopicsQuery
 {
     using System;
+    using System.Collections.Generic;
+    using Domain.Entities.Social;
 
     public class TopicPartialViewModel
     {
@@ -14,7 +16,7 @@
 
         public string Category { get; set; }
 
-        public int Likes { get; set; }
+        public ICollection<Like> Likes { get; set; }
 
         public DateTime CreateOn { get; set; }
 

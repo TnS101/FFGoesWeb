@@ -719,7 +719,7 @@
             {
                 Name = "Saw",
                 Durability = 10,
-                ImageURL = "/images/Items/Saw.png",
+                ImagePath = "/images/Items/Saw.png",
                 BuyPrice = 20,
             });
 
@@ -727,7 +727,7 @@
             {
                 Name = "Hammer",
                 Durability = 10,
-                ImageURL = "/images/Items/Hammer.png",
+                ImagePath = "/images/Items/Hammer.png",
                 BuyPrice = 20,
             });
 
@@ -735,7 +735,7 @@
             {
                 Name = "Sandpaper",
                 Durability = 10,
-                ImageURL = "/images/Items/Sandpaper.png",
+                ImagePath = "/images/Items/Sandpaper.png",
                 BuyPrice = 10,
             });
 
@@ -743,7 +743,7 @@
             {
                 Name = "Anvil",
                 Durability = 30,
-                ImageURL = "/images/Items/Anvil.png",
+                ImagePath = "/images/Items/Anvil.png",
                 BuyPrice = 60,
             });
 
@@ -751,7 +751,7 @@
             {
                 Name = "Knife",
                 Durability = 10,
-                ImageURL = "/images/Items/Knife.png",
+                ImagePath = "/images/Items/Knife.png",
                 BuyPrice = 20,
             });
 
@@ -759,7 +759,7 @@
             {
                 Name = "Needle",
                 Durability = 20,
-                ImageURL = "/images/Items/Needle.png",
+                ImagePath = "/images/Items/Needle.png",
                 BuyPrice = 10,
             });
 
@@ -767,7 +767,7 @@
             {
                 Name = "Ruler",
                 Durability = 50,
-                ImageURL = "/images/Items/Ruler.png",
+                ImagePath = "/images/Items/Ruler.png",
                 BuyPrice = 30,
             });
 
@@ -775,7 +775,7 @@
             {
                 Name = "Scissors",
                 Durability = 20,
-                ImageURL = "/images/Items/Scissors.png",
+                ImagePath = "/images/Items/Scissors.png",
                 BuyPrice = 40,
             });
 
@@ -783,7 +783,7 @@
             {
                 Name = "Knitting Kit",
                 Durability = 20,
-                ImageURL = "/images/Items/Knitting-Kit.png",
+                ImagePath = "/images/Items/Knitting-Kit.png",
                 BuyPrice = 10,
             });
 
@@ -791,7 +791,7 @@
             {
                 Name = "Mortar and Pestle",
                 Durability = 30,
-                ImageURL = "/images/Items/Mortar-and-Pestle.png",
+                ImagePath = "/images/Items/Mortar-and-Pestle.png",
                 BuyPrice = 60,
             });
 
@@ -799,7 +799,7 @@
             {
                 Name = "Protective Mask",
                 Durability = 10,
-                ImageURL = "/images/Items/Protective-Mask.png",
+                ImagePath = "/images/Items/Protective-Mask.png",
                 BuyPrice = 20,
             });
 
@@ -807,7 +807,7 @@
             {
                 Name = "Cooling Rod",
                 Durability = 20,
-                ImageURL = "/images/Items/Cooling-Rod.png",
+                ImagePath = "/images/Items/Cooling-Rod.png",
                 BuyPrice = 40,
             });
 
@@ -815,7 +815,7 @@
             {
                 Name = "Heavy Sandpaper",
                 Durability = 20,
-                ImageURL = "/images/Items/Heavy-Sandpaper.png",
+                ImagePath = "/images/Items/Heavy-Sandpaper.png",
                 BuyPrice = 30,
             });
 
@@ -823,7 +823,7 @@
             {
                 Name = "Mixing Bowl",
                 Durability = 30,
-                ImageURL = "/images/Items/Mixing-Bowl.png",
+                ImagePath = "/images/Items/Mixing-Bowl.png",
                 BuyPrice = 50,
             });
 
@@ -831,7 +831,7 @@
             {
                 Name = "Cutting Board",
                 Durability = 30,
-                ImageURL = "/images/Items/Cutting-Board.png",
+                ImagePath = "/images/Items/Cutting-Board.png",
                 BuyPrice = 30,
             });
 
@@ -844,7 +844,7 @@
             {
                 MonsterName = "Bear",
                 Rarity = "Rare",
-                ImageURL = "/images/Sprites/Bear-Rare.png",
+                ImagePath = "/images/Sprites/Bear-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -852,7 +852,7 @@
             {
                 MonsterName = "Bear",
                 Rarity = "Heroic",
-                ImageURL = "/images/Sprites/Bear-Heroic.png",
+                ImagePath = "/images/Sprites/Bear-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -860,7 +860,7 @@
             {
                 MonsterName = "Demon",
                 Rarity = "Rare",
-                ImageURL = "/images/Sprites/Demon-Rare.png",
+                ImagePath = "/images/Sprites/Demon-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -868,7 +868,7 @@
             {
                 MonsterName = "Demon",
                 Rarity = "Heroic",
-                ImageURL = "/images/Sprites/Demon-Heroic.png",
+                ImagePath = "/images/Sprites/Demon-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -876,7 +876,7 @@
             {
                 MonsterName = "Giant",
                 Rarity = "Rare",
-                ImageURL = "/images/Sprites/Giant-Rare.png",
+                ImagePath = "/images/Sprites/Giant-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -884,7 +884,7 @@
             {
                 MonsterName = "Giant",
                 Rarity = "Heroic",
-                ImageURL = "/images/Sprites/Giant-Heroic.png",
+                ImagePath = "/images/Sprites/Giant-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -892,7 +892,7 @@
             {
                 MonsterName = "Gryphon",
                 Rarity = "Rare",
-                ImageURL = "/images/Sprites/Gryphon-Rare.png",
+                ImagePath = "/images/Sprites/Gryphon-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -900,7 +900,7 @@
             {
                 MonsterName = "Gryphon",
                 Rarity = "Heroic",
-                ImageURL = "/images/Sprites/Gryphon-Heroic.png",
+                ImagePath = "/images/Sprites/Gryphon-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -908,7 +908,7 @@
             {
                 MonsterName = "Reptile",
                 Rarity = "Rare",
-                ImageURL = "/images/Sprites/Reptile-Rare.png",
+                ImagePath = "/images/Sprites/Reptile-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -916,7 +916,7 @@
             {
                 MonsterName = "Reptile",
                 Rarity = "Heroic",
-                ImageURL = "/images/Sprites/Reptile-Heroic.png",
+                ImagePath = "/images/Sprites/Reptile-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -924,7 +924,7 @@
             {
                 MonsterName = "Saint",
                 Rarity = "Rare",
-                ImageURL = "/images/Sprites/Saint-Rare.png",
+                ImagePath = "/images/Sprites/Saint-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -932,7 +932,7 @@
             {
                 MonsterName = "Saint",
                 Rarity = "Heroic",
-                ImageURL = "/images/Sprites/Saint-Heroic.png",
+                ImagePath = "/images/Sprites/Saint-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -940,7 +940,7 @@
             {
                 MonsterName = "Skeleton",
                 Rarity = "Rare",
-                ImageURL = "/images/Sprites/Skeleton-Rare.png",
+                ImagePath = "/images/Sprites/Skeleton-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -948,7 +948,7 @@
             {
                 MonsterName = "Skeleton",
                 Rarity = "Heroic",
-                ImageURL = "/images/Sprites/Skeleton-Heroic.png",
+                ImagePath = "/images/Sprites/Skeleton-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -956,7 +956,7 @@
             {
                 MonsterName = "Wyrm",
                 Rarity = "Rare",
-                ImageURL = "/images/Sprites/Wyrm-Rare.png",
+                ImagePath = "/images/Sprites/Wyrm-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -964,7 +964,7 @@
             {
                 MonsterName = "Wyrm",
                 Rarity = "Heroic",
-                ImageURL = "/images/Sprites/Wyrm-Heroic.png",
+                ImagePath = "/images/Sprites/Wyrm-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -972,7 +972,7 @@
             {
                 MonsterName = "Zombie",
                 Rarity = "Rare",
-                ImageURL = "/images/Sprites/Zombie-Rare.png",
+                ImagePath = "/images/Sprites/Zombie-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -980,7 +980,7 @@
             {
                 MonsterName = "Zombie",
                 Rarity = "Heroic",
-                ImageURL = "/images/Sprites/Zombie-Heroic.png",
+                ImagePath = "/images/Sprites/Zombie-Heroic.png",
                 StatAmplifier = 0.2,
             });
 

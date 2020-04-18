@@ -18,7 +18,7 @@
 
         public async Task<string> Handle(EditTopicCommand request, CancellationToken cancellationToken)
         {
-            var topic = await this.context.Topics.FindAsync(request.TopicId);
+            var topic = await this.context.Topics.FindAsync(request.Id);
 
             if (string.IsNullOrWhiteSpace(request.Title))
             {

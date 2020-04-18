@@ -1,5 +1,6 @@
 ﻿namespace Application.CQ.Users.Queries.Panel
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -105,7 +106,33 @@
 
             var comments = this.context.Comments.Where(c => c.UserId == user.Id && !c.IsRemoved);
 
-            user.ForumPoints = topics.Sum(t => t.Likes) + comments.Sum(c => c.Likes);
+            var topicLikes = new Queue<Like>();
+
+            var commentLikes = new Queue<Like>();
+
+            foreach (var like in this.context.Likes)
+            {
+                foreach (var topic in topics)
+                {
+                    if (like.TopicId == topic.Id)
+                    {
+                        topicLikes.Enqueue(like);
+                    }
+                }
+            }
+
+            foreach (var like in this.context.Likes)
+            {
+                foreach (var comment in comments)
+                {
+                    if (like.CommentId == comment.Id)
+                    {
+                        commentLikes.Enqueue(like);
+                    }
+                }
+            }
+
+            user.ForumPoints = topicLikes.Count + commentLikes.Count;
         }
     }
 }

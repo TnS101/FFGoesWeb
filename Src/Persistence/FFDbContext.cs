@@ -7,6 +7,7 @@
     using Domain.Entities.Game.Units;
     using Domain.Entities.Game.Units.ManyToMany;
     using Domain.Entities.Game.Units.OneToOne;
+    using Domain.Entities.Social;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Moderation;
     using global::Domain.Entities.Social;
@@ -102,6 +103,8 @@
         public DbSet<EnergyChange> EnergyChanges { get; set; }
 
         public DbSet<HeroSpells> HeroesSpells { get; set; }
+
+        public DbSet<Like> Likes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

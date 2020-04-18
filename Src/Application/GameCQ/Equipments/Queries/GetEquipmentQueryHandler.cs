@@ -59,7 +59,7 @@
                 Items = (List<ItemMinViewModel>)trinkets.Select(w => new ItemMinViewModel
                 {
                     Id = w.Id,
-                    ImageURL = w.ImagePath,
+                    ImagePath = w.ImagePath,
                     Name = w.Name,
                 }),
             };
@@ -94,7 +94,7 @@
             {
                 Items = (List<ItemMinViewModel>)armors.Select(w => new ItemMinViewModel
                 {
-                    ImageURL = w.ImagePath,
+                    ImagePath = w.ImagePath,
                     Name = w.Name,
                 }),
             };
@@ -124,7 +124,7 @@
                 Items = (List<ItemMinViewModel>)weapons.Select(w => new ItemMinViewModel
                 {
                     Id = w.Id,
-                    ImageURL = w.ImagePath,
+                    ImagePath = w.ImagePath,
                     Name = w.Name,
                 }),
             };

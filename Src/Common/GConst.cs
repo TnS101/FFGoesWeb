@@ -50,6 +50,7 @@
         public const string ErrorRedirect = @"\Error";
         public const string SpellCommandRedirect = @"\GameContent\Spells";
         public const string InModerationRedirect = @"\Topic\InModeration";
+        public const string FeedbackErrorRedirect = "/Profile/Panel#feedback-button";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";

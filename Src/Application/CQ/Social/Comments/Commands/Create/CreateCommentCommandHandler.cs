@@ -37,7 +37,7 @@
                 Content = request.Content,
                 UserId = user.Id,
                 CreatedOn = DateTime.UtcNow,
-                Likes = 0,
+                Likes = new List<Like>(),
                 Replies = new List<Comment>(),
                 TopicId = request.TopicId,
             });

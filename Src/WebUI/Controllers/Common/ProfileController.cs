@@ -59,9 +59,14 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> LeaveFeedback([FromForm]string feedback, [FromForm]int rate)
+        public async Task<ActionResult> SendFeedback([Bind("Content,Rate")] SendFeedbackCommand feedback)
         {
-            return this.View(await this.Mediator.Send(new SendFeedbackCommand { Content = feedback, Sender = this.User, Rate = rate }));
+            if (!this.ModelState.IsValid)
+            {
+                return this.Redirect(GConst.FeedbackErrorRedirect);
+            }
+
+            return this.View(await this.Mediator.Send(new SendFeedbackCommand { Content = feedback.Content, Rate = feedback.Rate, Sender = this.User }));
         }
 
         [HttpGet]

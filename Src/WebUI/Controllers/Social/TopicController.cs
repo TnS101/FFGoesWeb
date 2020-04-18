@@ -1,9 +1,12 @@
 ﻿namespace WebUI.Controllers.Social
 {
     using System.Threading.Tasks;
+    using Application.CQ.Social.Likes.Command.Create;
+    using Application.CQ.Social.Likes.Command.Delete;
     using Application.CQ.Social.Topics.Commands.Create;
     using Application.CQ.Social.Topics.Commands.Delete;
     using Application.CQ.Social.Topics.Commands.Update;
+    using Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -19,14 +22,14 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([Bind("Title,Category,Content")] CreateTopicCommand createTopic)
+        public async Task<ActionResult> Create([Bind("Title,Category,Content")] CreateTopicCommand topic)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(createTopic);
+                return this.View(topic);
             }
 
-            await this.Mediator.Send(new CreateTopicCommand { Title = createTopic.Title, Category = createTopic.Category, Content = createTopic.Content, User = this.User });
+            await this.Mediator.Send(new CreateTopicCommand { Title = topic.Title, Category = topic.Category, Content = topic.Content, User = this.User });
 
             return this.Redirect(GConst.TopicCommandRedirect);
         }
@@ -37,17 +40,33 @@
             return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = id }));
         }
 
-        [HttpGet]
-        public ActionResult Edit()
+        [HttpGet("/Topic/Edit/id")]
+        public async Task<ActionResult> Edit([FromQuery]string id)
         {
-            return this.View();
+            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit([FromQuery]string id, [FromForm]string title, [FromForm]string category,
-            [FromForm]string content)
+        public async Task<ActionResult> Edit([Bind("Title,Category,Content")] TopicFullViewModel topic, [FromForm]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new EditTopicCommand { TopicId = id, Title = title, Category = category, Content = content }));
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(topic);
+            }
+
+            return this.Redirect(await this.Mediator.Send(new EditTopicCommand { Id = id, Title = topic.Title, Category = topic.Category, Content = topic.Content }));
+        }
+
+        [HttpGet("/Topic/Like/id")]
+        public async Task<ActionResult> Like([FromQuery]string id)
+        {
+            return this.Redirect(await this.Mediator.Send(new LeaveLikeCommand { TopicId = id, User = this.User }));
+        }
+
+        [HttpGet("/Topic/Dislike/id")]
+        public async Task<ActionResult> Dislike([FromQuery]string id)
+        {
+            return this.Redirect(await this.Mediator.Send(new DislikeCommand { TopicId = id, User = this.User }));
         }
 
         [HttpGet]

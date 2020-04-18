@@ -1,6 +1,7 @@
 ﻿namespace WebUI.Controllers.Social
 {
     using System.Threading.Tasks;
+    using Application.CQ.Social.Likes.Command.Create;
     using Application.CQ.Social.Topics.Queries.GetAllTopicsQuery;
     using Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery;
     using global::Common;

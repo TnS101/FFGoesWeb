@@ -18,6 +18,6 @@
 
         public string Rarity { get; set; }
 
-        public string ImageURL { get; set; }
+        public string ImagePath { get; set; }
     }
 }

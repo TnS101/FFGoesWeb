@@ -33,6 +33,12 @@
         }
 
         [HttpGet]
+        public ActionResult TicketSent()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
         public async Task<ActionResult> Search([FromQuery] string userName)
         {
             if (string.IsNullOrEmpty(userName))
@@ -50,11 +56,6 @@
             var user = await this.Mediator.Send(new GetCurrentUserQuery { UserId = userId });
 
             return this.View(@"\Search", new string[] { user.Id, user.UserName });
-        }
-
-        public ActionResult TicketSent()
-        {
-            return this.View();
         }
 
         private async Task<string> SqlInjectionPrevention(string userName)

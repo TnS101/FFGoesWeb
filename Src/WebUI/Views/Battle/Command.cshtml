@@ -46,8 +46,8 @@
     <div class="fade-in aligncenter has-text-align-center">
         <h2 style="text-align:center">@Model.Hero.Name  vs  @Model.Enemy.Name</h2>
         <div>
-            <img src="@Model.Hero.ImageURL" alt="Player" width="80" height="80" id="hero" />
-            <img src="@Model.Enemy.ImageURL" alt="Enemy" style="padding-left:250px;" id="enemy" />
+            <img src="@Model.Hero.ImagePath" alt="Player" width="80" height="80" id="hero" />
+            <img src="@Model.Enemy.ImagePath" alt="Enemy" style="padding-left:250px;" id="enemy" />
             <br />
 
             <progress id="playerDamage" value="@Model.Hero.CurrentAttackPower" hidden></progress>
