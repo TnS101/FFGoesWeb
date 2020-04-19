@@ -4,9 +4,11 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
+    using Domain.Entities.Social;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class AcceptFriendRequestCommandHandler : IRequestHandler<AcceptFriendRequestCommand, string>
     {
@@ -25,13 +27,23 @@
 
             var friendRequest = await this.context.FriendRequests.FindAsync(request.RequestId);
 
-            var friend = await this.context.AppUsers.FindAsync(friendRequest.UserId);
+            var senderName = friendRequest.SenderName;
 
-            user.Friends.Add(friend);
+            var friend = await this.context.AppUsers.FirstOrDefaultAsync(f => f.UserName == senderName);
+
+            await this.context.Friends.AddAsync(new Friend
+            {
+                Id = user.Id,
+                UserId = friend.Id,
+            });
+
+            await this.context.Friends.AddAsync(new Friend
+            {
+                Id = friend.Id,
+                UserId = user.Id,
+            });
 
             this.context.FriendRequests.Remove(friendRequest);
-
-            this.context.AppUsers.Update(user);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

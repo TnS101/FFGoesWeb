@@ -29,7 +29,7 @@
                 .IsRequired();
 
             builder.Property(t => t.AdditionalInformation)
-                .HasMaxLength(60);
+                .HasMaxLength(100);
         }
     }
 }

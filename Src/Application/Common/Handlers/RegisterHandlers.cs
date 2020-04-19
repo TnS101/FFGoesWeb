@@ -23,6 +23,7 @@
     using Application.CQ.Social.FriendRequests.Commands.Delete;
     using Application.CQ.Social.FriendRequests.Commands.Update;
     using Application.CQ.Social.FriendRequests.Queries;
+    using Application.CQ.Social.Friends.Commands.Delete;
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
     using Application.CQ.Social.Likes.Command.Create;
     using Application.CQ.Social.Likes.Command.Delete;
@@ -139,6 +140,7 @@
             services.AddScoped<IRequestHandler<OpenTicketCommand, string>, OpenTicketCommandHandler>();
             services.AddScoped<IRequestHandler<LeaveLikeCommand, string>, LeaveLikeCommandHandler>();
             services.AddScoped<IRequestHandler<DislikeCommand, string>, DislikeCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveFriendCommand, string>, RemoveFriendCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)

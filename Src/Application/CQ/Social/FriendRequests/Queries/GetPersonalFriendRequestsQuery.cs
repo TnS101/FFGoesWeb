@@ -5,8 +5,6 @@
 
     public class GetPersonalFriendRequestsQuery : IRequest<FriendRequestListViewModel>
     {
-        public int RequestId { get; set; }
-
         public ClaimsPrincipal Reciever { get; set; }
     }
 }

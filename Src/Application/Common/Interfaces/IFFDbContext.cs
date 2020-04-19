@@ -98,6 +98,8 @@
 
         DbSet<Like> Likes { get; set; }
 
+        DbSet<Friend> Friends { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

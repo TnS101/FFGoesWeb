@@ -6,6 +6,7 @@
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.Social.Comments.Queries.GetCurrentCommentQuery;
+    using Application.CQ.Social.FriendRequests.Queries;
     using Application.CQ.Social.Messages.Queries;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery;
@@ -35,7 +36,7 @@
             this.CreateMap<Trinket, ItemMinViewModel>();
             this.CreateMap<Material, ItemMinViewModel>();
             this.CreateMap<Spell, SpellFullViewModel>();
-            this.CreateMap<AppUser, UserPartialViewModel>();
+            this.CreateMap<AppUser, UserPartialViewModel>().ForMember(u => u.Friends, opt => opt.Ignore());
             this.CreateMap<Topic, TopicFullViewModel>();
             this.CreateMap<Message, MessageFullViewModel>();
             this.CreateMap<Feedback, FeedbackFulllViewModel>();
@@ -57,6 +58,7 @@
             this.CreateMap<Tool, ItemMinViewModel>();
             this.CreateMap<TreasureKey, ItemMinViewModel>();
             this.CreateMap<Treasure, ItemMinViewModel>();
+            this.CreateMap<FriendRequest, FriendRequestFullViewModel>();
         }
     }
 }

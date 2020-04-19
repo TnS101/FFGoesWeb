@@ -14,11 +14,11 @@
                 .IsRequired();
 
             builder.Property(t => t.Title)
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(t => t.Category)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsRequired();
 
             builder.Property(t => t.Content)

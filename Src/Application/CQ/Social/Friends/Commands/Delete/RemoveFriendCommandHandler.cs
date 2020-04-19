@@ -7,6 +7,7 @@
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class RemoveFriendCommandHandler : IRequestHandler<RemoveFriendCommand, string>
     {
@@ -23,11 +24,15 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            var friend = await this.context.AppUsers.FindAsync(request.FriendId);
+            var friend = await this.context.Friends.FirstOrDefaultAsync(f => f.Id == request.FriendId);
 
-            user.Friends.Remove(friend);
+            var userFriend = await this.context.Friends.FirstOrDefaultAsync(f => f.Id == user.Id);
 
-            this.context.AppUsers.Update(friend);
+            this.context.Friends.Remove(friend);
+
+            this.context.Friends.Remove(userFriend);
+
+            await this.context.SaveChangesAsync(cancellationToken);
 
             return GConst.FriendCommandRedirect;
         }

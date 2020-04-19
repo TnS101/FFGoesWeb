@@ -10,53 +10,63 @@
 </head>
 <body>
     <div class="has-text-align-center item-padding fade-in">
-        @if (Model != null)
+        @if (Model.FriendRequests.Count() > 0)
         {
             <h1 class="secondary-font-color">Your Current Friend Requests</h1>
             <div class="item-padding has-text-align-center">
                 <hr />
-                @foreach (var friendRequest in Model.FriendRequests)
-                {
-                    var timeSpan = (DateTime.UtcNow - friendRequest.SentOn);
+                <div class="item-padding">
+                    @foreach (var friendRequest in Model.FriendRequests.OrderByDescending(f => f.SentOn))
+                    {
+                        var timeSpan = (DateTime.UtcNow - friendRequest.SentOn);
 
-                    if (timeSpan.Minutes < 1)
-                    {
-                        <p class="main-font-color has-large-font-size">@friendRequest.SenderName has sent you a Friend Request just now.</p>
+                        if (timeSpan.Minutes < 1)
+                        {
+                            <p class="main-font-color has-large-font-size">@friendRequest.SenderName has sent you a Friend Request just now.</p>
+                        }
+                        else if (timeSpan.Hours < 1)
+                        {
+                            <p class="main-font-color has-large-font-size">
+                                @friendRequest.SenderName has sent you a Friend Request @timeSpan.Minutes minutes ago.
+                            </p>
+                        }
+                        else if (timeSpan.Days < 1)
+                        {
+                            <p class="main-font-color has-large-font-size">
+                                @friendRequest.SenderName has sent you a Friend Request @timeSpan.Hours hours ago.
+                            </p>
+                        }
+                        else if (timeSpan.Days == 1)
+                        {
+                            <p class="main-font-color has-large-font-size">
+                                @friendRequest.SenderName has sent you a Friend Request yesterday.
+                            </p>
+                        }
+                        else if (timeSpan.Days > 1)
+                        {
+                            <p class="main-font-color has-large-font-size">
+                                @friendRequest.SenderName has sent you a Friend Request @timeSpan.Days days ago.
+                            </p>
+                        }
+                        <div class="item-padding">
+                            <form asp-controller="Friends" asp-action="AcceptRequest" method="post">
+                                <input type="hidden" name="requestId" value="@friendRequest.Id" />
+                                <input type="submit" name="button" class="main-button" value="Accept" />
+                            </form>
+                        </div>
+
+                        <div class="item-padding">
+                            <form asp-controller="Friends" asp-action="Delete" method="delete">
+                                <input type="hidden" name="requestId" value="@friendRequest.Id" />
+                                <input type="submit" name="button" class="main-button" value="Delete" />
+                            </form>
+                        </div>
+                        <div class="item-padding">
+                            <hr />
+                        </div>
                     }
-                    else if (timeSpan.Hours < 1)
-                    {
-                        <p class="main-font-color has-large-font-size">
-                            @friendRequest.SenderName has sent you a Friend Request @timeSpan.Minutes minutes ago.
-                        </p>
-                    }
-                    else if (timeSpan.Days < 1)
-                    {
-                        <p class="main-font-color has-large-font-size">
-                            @friendRequest.SenderName has sent you a Friend Request @timeSpan.Hours hours ago.
-                        </p>
-                    }
-                    else if (timeSpan.Days == 1)
-                    {
-                        <p class="main-font-color has-large-font-size">
-                            @friendRequest.SenderName has sent you a Friend Request yesterday.
-                        </p>
-                    }
-                    else if (timeSpan.Days > 1)
-                    {
-                        <p class="main-font-color has-large-font-size">
-                            @friendRequest.SenderName has sent you a Friend Request @timeSpan.Days days ago.
-                        </p>
-                    }
-                    
-                    <form asp-controller="Friends" asp-action="AcceptRequest" method="post">
-                        <input type="text" name="requestId" value="@friendRequest.Id" />
-                        <input type="submit" name="button" value="Accept" />
-                    </form>
-                    <form asp-controller="Friends" asp-action="Delete" method="delete">
-                        <input type="text" name="requestId" value="@friendRequest.Id" />
-                        <input type="submit" name="button" value="Delete" />
-                    </form>
-                }
+
+                </div>
             </div>
         }
         else

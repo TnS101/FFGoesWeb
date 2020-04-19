@@ -106,6 +106,8 @@
 
         public DbSet<Like> Likes { get; set; }
 
+        public DbSet<Friend> Friends { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

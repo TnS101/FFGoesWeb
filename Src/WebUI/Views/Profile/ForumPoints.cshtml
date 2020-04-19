@@ -15,10 +15,10 @@
             <h1 class="has-text-align-center secondary-font-color">You currently have @Model.ForumPoints Forum Points.</h1>
             <div class="item-padding"><hr /></div>
             <div class="has-text-align-center item-padding">
-                <a asp-controller="Comment" asp-action="PointProgress" asp-route-id="@Model.Id"><p class="main-font-color has-large-font-size">Comments</p></a>
+                <a asp-controller="Profile" asp-action="Comments"><p class="main-font-color has-large-font-size">Comments</p></a>
             </div>
             <div class="has-text-align-center item-padding">
-                <a asp-controller="Topic" asp-action="PointProgress" asp-route-id="@Model.Id"><p class="main-font-color has-large-font-size">Topics</p></a>
+                <a asp-controller="Profile" asp-action="Topics"><p class="main-font-color has-large-font-size">Topics</p></a>
             </div>
         }
         else

@@ -14,7 +14,7 @@
         public AppUser()
         {
             this.Heroes = new HashSet<Hero>();
-            this.Friends = new HashSet<AppUser>();
+            this.Friends = new HashSet<Friend>();
             this.FriendRequests = new HashSet<FriendRequest>();
             this.Messages = new HashSet<Message>();
             this.Topics = new HashSet<Topic>();
@@ -30,10 +30,6 @@
             this.IsOnline = true;
         }
 
-        public string FriendId { get; set; }
-
-        [ForeignKey("FriendId")]
-        public virtual AppUser Friend { get; set; }
 
         public int UserStatusId { get; set; }
 
@@ -79,7 +75,7 @@
 
         public ICollection<Like> Likes { get; set; }
 
-        public virtual ICollection<AppUser> Friends { get; set; }
+        public ICollection<Friend> Friends { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

@@ -7,7 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
-    [Authorize(GConst.UserRole)]
+    [Authorize(Roles = GConst.UserRole)]
     public class NotificationController : BaseController
     {
         [HttpGet]
