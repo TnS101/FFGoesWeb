@@ -23,19 +23,6 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> MonsterCatalog()
-        {
-            return this.View();
-        }
-
-        [Authorize]
-        [HttpGet]
-        public async Task<ActionResult> ClassCatalog()
-        {
-            return this.View();
-        }
-
-        [HttpGet]
         public async Task<ActionResult> Logout()
         {
             await this.SignInManager.SignOutAsync();

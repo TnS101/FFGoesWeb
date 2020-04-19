@@ -7,25 +7,73 @@
     <partial name="_AdminNavBar">
 </head>
 <body>
-    <h1 class="has-text-align-center secondary-background-color">Game Content</h1>
-    <div class="container item-padding">
-        <div id="site-branding">
-        </div>
-        <div id="site-navigation" role="navigation" class="has-text-align-center" style="background: linear-gradient(to bottom, #2d364c 12%, #d0d3d7 134%);width:350px;height:680px;margin-left:530px;padding-top:25px">
-            <div class="site-main-menu aligncenter">
-                <ul id="menu" class="demo-menu" style="font-size:35px; width:300px; list-style:none">
-                    <li class="page_item page-item-9 item-padding"><a asp-controller="GameContent" asp-action="Items" asp-route-slot="Weapon"><i class="fas fa-ankh"></i> Weapons</a></li>
-                    <li class="page_item page-item-9 item-padding"><a asp-controller="GameContent" asp-action="Items" asp-route-slot="Armor"><i class="fas fa-ankh"></i> Armors</a></li>
-                    <li class="page_item page-item-9 item-padding"><a asp-controller="GameContent" asp-action="Items" asp-route-slot="Trinket"><i class="fas fa-ankh"></i> Trinkets</a></li>
-                    <li class="page_item page-item-2 item-padding"><a asp-controller="GameContent" asp-action="Items" asp-route-slot="Treasure"><i class="fas fa-gem"></i> Treasures</a></li>
-                    <li class="page_item page-item-2 item-padding"><a asp-controller="GameContent" asp-action="Items" asp-route-slot="Treasure Key"><i class="fas fa-gem"></i> Treasure Keys</a></li>
-                    <li class="page_item page-item-2 item-padding"><a asp-controller="GameContent" asp-action="Items" asp-route-slot="Material"><i class="fas fa-gem"></i> Materials</a></li>
-                    <li class="page_item page-item-2 item-padding"><a asp-controller="GameContent" asp-action="Items" asp-route-slot="Tool"><i class="fas fa-gem"></i> Tools</a></li>
-                    <li class="page_item page-item-2 item-padding"><a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-magic"></i> Spells</a></li>
-                </ul>
+    <div class="item-padding has-text-align-center fade-in">
+        <h2 class="has-text-align-center has-larger-font-size main-font-color">Game Content</h2>
+        <div class="item-padding">
+            <hr />
+            <div class="item-padding">
+                <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Weapon"><i class="icofont-angry-monster main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Weapons</span></a>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Armor"><i class="icofont-shield-alt main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Armor</span></a>
+                </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Trinket"><i class="icofont-woman-bird main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Trinkets</span></a>
+                </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Treasure"><i class="fas fa-gem has-large-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Treasures</span></a>
+                </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Treasure Key"><i class="icofont-key main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Treasure Keys</span></a>
+                </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Material"><i class="icofont-leaf main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Materials</span></a>
+                </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Tool"><i class="fas fa-hammer has-large-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Tools</span></a>
+                </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-magic has-large-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Spells</span></a>
+                </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Monsters"><i class="icofont-tiger-face main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Monsters</span></a>
+                </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Classes"><i class="icofont-magician-hat icofont-3x main-font-color"></i> <span class="has-large-font-size main-font-color">Classes</span></a>
+                </div>
+            </div>
+            <div class="item-padding">
+                <hr />
             </div>
         </div>
     </div>
+
 
 </body>
 

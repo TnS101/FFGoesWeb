@@ -1,0 +1,37 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Application.GameCQ.Monsters.Queries.GetAllMonstersQuery.MonsterListViewModel
+@{
+    Layout = "_Layout";
+}
+<html xmlns="http://www.w3.org/1999/xhtml" class="secondary-background-color">
+<head>
+    <partial name="_AdminNavBar">
+</head>
+<body class="secondary-background-color">
+    <div class="container has-text-align-center fade-in">
+        <h1 class="secondary-font-color item-padding has-larger-font-size">Monsters</h1>
+        <div class="item-padding">
+        </div>
+        <hr />
+        @foreach (var monster in Model.Monsters)
+        {
+            <div class="main-gradient secondary-background-color" style="padding-top:100px">
+                <div style="flex-basis: 33.33%">
+                    <div class="wp-block-image"><figure class="aligncenter size-large is-resized" style="padding-left:650px"><img src="@monster.ImagePath" alt="" width="100" height="100"></figure></div>
+                </div>
+
+                <div class="wp-block-column" style="flex-basis:66.66%">
+                    <h1 class="site-title" style="text-align:center"><a asp-controller="Home" asp-action="MonsterInfo" asp-route-id="@monster.Id">@monster.Name</a></h1>
+                    <h1 class="has-luminous-vivid-amber-color has-text-color has-text-align-center image-description">@monster.Description</h1>
+                </div>
+            </div>
+
+            <hr class="secondary-font-color" />
+            <br />
+        }
+    </div>
+    <partial name="_Footer">
+</body>
+</html>
+
+

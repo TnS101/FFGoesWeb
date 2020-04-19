@@ -1,5 +1,6 @@
 ﻿namespace Application.CQ.Social.FriendRequests.Commands.Update
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
@@ -31,6 +32,19 @@
 
             var friend = await this.context.AppUsers.FirstOrDefaultAsync(f => f.UserName == senderName);
 
+            await this.AddFriends(user, friend);
+
+            await this.SendNotification(user, friend);
+
+            this.context.FriendRequests.Remove(friendRequest);
+
+            await this.context.SaveChangesAsync(cancellationToken);
+
+            return GConst.FriendCommandRedirect;
+        }
+
+        private async Task AddFriends(AppUser user, AppUser friend)
+        {
             await this.context.Friends.AddAsync(new Friend
             {
                 Id = user.Id,
@@ -42,12 +56,18 @@
                 Id = friend.Id,
                 UserId = user.Id,
             });
+        }
 
-            this.context.FriendRequests.Remove(friendRequest);
-
-            await this.context.SaveChangesAsync(cancellationToken);
-
-            return GConst.FriendCommandRedirect;
+        private async Task SendNotification(AppUser user, AppUser friend)
+        {
+            await this.context.Notifications.AddAsync(new Notification
+            {
+                UserId = friend.Id,
+                ApplicationSection = "Social",
+                Type = "Friend",
+                Content = string.Format(GConst.FriendRequestAcceptMessage, user.UserName),
+                RecievedOn = DateTime.UtcNow,
+            });
         }
     }
 }

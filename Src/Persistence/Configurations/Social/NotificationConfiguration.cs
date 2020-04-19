@@ -14,15 +14,15 @@
                 .IsRequired();
 
             builder.Property(n => n.Type)
-                .HasMaxLength(10)
+                .HasMaxLength(20)
                 .IsRequired();
 
             builder.Property(n => n.ApplicationSection)
-                .HasMaxLength(10)
+                .HasMaxLength(20)
                 .IsRequired();
 
             builder.Property(n => n.Content)
-                .HasMaxLength(60)
+                .HasMaxLength(100)
                 .IsRequired();
         }
     }

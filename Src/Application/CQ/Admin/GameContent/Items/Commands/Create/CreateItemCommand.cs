@@ -37,5 +37,17 @@
         public int Reward { get; set; }
 
         public string ImagePath { get; set; }
+
+        public int FuelCount { get; set; }
+
+        public string RelatedMaterials { get; set; }
+
+        public bool IsRefineable { get; set; }
+
+        public bool IsDisolveable { get; set; }
+
+        public bool IsCraftable { get; set; }
+
+        public int Durability { get; set; }
     }
 }

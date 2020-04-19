@@ -6,6 +6,8 @@
     using Application.CQ.Admin.GameContent.Items.Commands.Update;
     using Application.CQ.Admin.GameContent.Items.Queries;
     using Application.CQ.Admin.GameContent.Spells.Queries;
+    using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
+    using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
     using Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -62,7 +64,7 @@
             return this.View();
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<ActionResult> UpdateItem([FromForm]string name, [FromForm]int level,
             [FromForm]string classType, [FromForm]int stamina, [FromForm]int strength, [FromForm]int agility,
             [FromForm]int intellect, [FromForm]int spirit, [FromForm] double attackPower,
@@ -84,8 +86,8 @@
             }));
         }
 
-        [HttpDelete]
-        public async Task<ActionResult> DeleteItem([FromBody]int id)
+        [HttpPost]
+        public async Task<ActionResult> DeleteItem([FromForm]int id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteItemCommand { ItemId = id }));
         }
@@ -94,6 +96,18 @@
         public async Task<ActionResult> Spells()
         {
             return this.View(await this.Mediator.Send(new GetAllSpellsQuery { }));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Monsters()
+        {
+            return this.View(await this.Mediator.Send(new GetAllMonstersQuery { }));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Classes()
+        {
+            return this.View(await this.Mediator.Send(new GetAllFightingClassesQuery { }));
         }
     }
 }

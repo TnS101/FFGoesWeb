@@ -1,0 +1,159 @@
+﻿@model Application.CQ.Admin.GameContent.Items.Commands.Create.CreateItemCommand
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateItem</title>
+    <script>
+        $(document).ready(function () {
+            $('select.slot').change(function () {
+
+                var slotOption = $(this).children('option:selected').val();
+
+                if (slotOption === 'Weapon') {
+                    $('#armor').hide();
+                    $('#resistance').hide();
+                    $('#rarity').hide();
+                    $('#reward').hide();
+
+                }
+                else if(slotOption === 'Armor') {
+                    $('#spells').attr('hidden', true);
+                }
+                else if(slotOption === 'Trinket') {
+                    $('#spells').attr('hidden', true);
+                }
+                else if(slotOption === 'Trinket') {
+                    $('#spells').attr('hidden', true);
+                }
+                else if(slotOption === 'Treasure') {
+                    $('#spells').attr('hidden', true);
+                }
+                else if(slotOption === 'Treasure Key') {
+                    $('#spells').attr('hidden', true);
+                }
+                else if(slotOption === 'Material') {
+                    $('#spells').attr('hidden', true);
+                }
+                else if(slotOption === 'Tool') {
+                    $('#spells').attr('hidden', true);
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="item-padding fade-in has-text-align-center">
+        <h2 class="main-font-color has-large-font-size">Create an Item</h2>
+        <div class="item-padding">
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="CreateItem" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Slot" class="control-label"></label>
+                            <select class="slot">
+                                <option value="Weapon">Weapon</option>
+                                <option value="Armor">Armor</option>
+                                <option value="Trinket">Trinket</option>
+                                <option value="Treasure">Treasure</option>
+                                <option value="Treasure Key">Treasure Key</option>
+                                <option value="Material">Material</option>
+                                <option value="Tool">Tool</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label asp-for="Level" class="control-label"></label>
+                            <input asp-for="Level" class="form-control" />
+                            <span asp-validation-for="Level" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="class-type" style="display:none">
+                            <label asp-for="ClassType" class="control-label"></label>
+                            <input asp-for="ClassType" class="form-control" />
+                            <span asp-validation-for="ClassType" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="stamina" style="display:none">
+                            <label asp-for="Stamina" class="control-label"></label>
+                            <input asp-for="Stamina" class="form-control" />
+                            <span asp-validation-for="Stamina" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="strength" style="display:none">
+                            <label asp-for="Strength" class="control-label"></label>
+                            <input asp-for="Strength" class="form-control" />
+                            <span asp-validation-for="Strength" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="agility" style="display:none">
+                            <label asp-for="Agility" class="control-label"></label>
+                            <input asp-for="Agility" class="form-control" />
+                            <span asp-validation-for="Agility" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="intellect" style="display:none">
+                            <label asp-for="Intellect" class="control-label"></label>
+                            <input asp-for="Intellect" class="form-control" />
+                            <span asp-validation-for="Intellect" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="spirit" style="display:none">
+                            <label asp-for="Spirit" class="control-label"></label>
+                            <input asp-for="Spirit" class="form-control" />
+                            <span asp-validation-for="Spirit" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="attack" style="display:none">
+                            <label asp-for="AttackPower" class="control-label"></label>
+                            <input asp-for="AttackPower" class="form-control" />
+                            <span asp-validation-for="AttackPower" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="armor" style="display:none">
+                            <label asp-for="ArmorValue" class="control-label"></label>
+                            <input asp-for="ArmorValue" class="form-control" />
+                            <span asp-validation-for="ArmorValue" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="resistance" style="display:none">
+                            <label asp-for="ResistanceValue" class="control-label"></label>
+                            <input asp-for="ResistanceValue" class="form-control" />
+                            <span asp-validation-for="ResistanceValue" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label asp-for="SellPrice" class="control-label"></label>
+                            <input asp-for="SellPrice" class="form-control" />
+                            <span asp-validation-for="SellPrice" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label asp-for="BuyPrice" class="control-label"></label>
+                            <input asp-for="BuyPrice" class="form-control" />
+                            <span asp-validation-for="BuyPrice" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="rarity" style="display:none">
+                            <label asp-for="Rarity" class="control-label"></label>
+                            <input asp-for="Rarity" class="form-control" />
+                            <span asp-validation-for="Rarity" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="reward" style="display:none">
+                            <label asp-for="Reward" class="control-label"></label>
+                            <input asp-for="Reward" class="form-control" />
+                            <span asp-validation-for="Reward" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label asp-for="ImagePath" class="control-label"></label>
+                            <input asp-for="ImagePath" class="form-control" />
+                            <span asp-validation-for="ImagePath" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

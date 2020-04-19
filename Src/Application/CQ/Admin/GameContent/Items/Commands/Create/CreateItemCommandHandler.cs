@@ -2,8 +2,9 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Domain.Entities.Game.Items;
     using Application.Common.Interfaces;
+    using Domain.Entities.Game.Items;
+    using global::Common;
     using MediatR;
 
     public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand, string>
@@ -44,7 +45,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return "/Items";
+            return string.Format(GConst.CreateItemRedirect, request.Slot);
         }
 
         private void WeaponCreate(CreateItemCommand request)

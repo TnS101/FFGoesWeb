@@ -51,6 +51,7 @@
         public const string SpellCommandRedirect = @"\GameContent\Spells";
         public const string InModerationRedirect = @"\Topic\InModeration";
         public const string FeedbackErrorRedirect = "/Profile/Panel#feedback-button";
+        public const string CreateItemRedirect = "/Items/slot?slot={0}";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";
@@ -85,7 +86,7 @@
         public const string LengthMessage = "{0} length must be between {2} and {1} characters.";
         public const string RequiredMessage = "This Field is required";
         public const string ContentMessage = "{0} can only have upper case letters, lower case letters or digits.";
-
+        public const string FriendRequestAcceptMessage = "{0} has accepted your friend request and you are now friends!";
 
         // Moderation(tickets)
         public const string RemovedContentMessage = "This {0} was removed by violating our rules (Reason : {1}).";
