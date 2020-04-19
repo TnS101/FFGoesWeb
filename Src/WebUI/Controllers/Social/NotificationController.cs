@@ -2,9 +2,12 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
+    using global::Common;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using WebUI.Controllers.Common;
 
+    [Authorize(GConst.UserRole)]
     public class NotificationController : BaseController
     {
         [HttpGet]

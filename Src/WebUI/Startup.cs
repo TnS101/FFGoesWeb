@@ -87,10 +87,14 @@
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseStaticFiles();
-                app.UseCookiePolicy();
+            }
+            else
+            {
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
             }
 
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();

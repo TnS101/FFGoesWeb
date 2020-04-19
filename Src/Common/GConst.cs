@@ -47,7 +47,7 @@
         public const string EnemyEncounterRedirect = "EnemyEncounter";
         public const string UnitCreationErrorRedirect = "/Unit/Create";
         public const string SuccesfulFeedbackRedirect = @"\FeedbackSuccess";
-        public const string ErrorRedirect = @"\Error";
+        public const string ErrorRedirect = @"\Error\DefaultError";
         public const string SpellCommandRedirect = @"\GameContent\Spells";
         public const string InModerationRedirect = @"\Topic\InModeration";
         public const string FeedbackErrorRedirect = "/Profile/Panel#feedback-button";
