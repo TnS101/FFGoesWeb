@@ -1,5 +1,6 @@
 ﻿namespace Application.Common.Mappings
 {
+    using Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
     using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
@@ -59,6 +60,7 @@
             this.CreateMap<TreasureKey, ItemMinViewModel>();
             this.CreateMap<Treasure, ItemMinViewModel>();
             this.CreateMap<FriendRequest, FriendRequestFullViewModel>();
+            this.CreateMap<Tool, ToolMinViewModel>();
         }
     }
 }

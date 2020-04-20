@@ -3,7 +3,8 @@
     using Application.CQ.Admin.GameContent.Items.Commands.Create;
     using Application.CQ.Admin.GameContent.Items.Commands.Delete;
     using Application.CQ.Admin.GameContent.Items.Commands.Update;
-    using Application.CQ.Admin.GameContent.Items.Queries;
+    using Application.CQ.Admin.GameContent.Items.Queries.GetAllItemsQuery;
+    using Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery;
     using Application.CQ.Admin.GameContent.Spells.Commands.Create;
     using Application.CQ.Admin.GameContent.Spells.Commands.Delete;
     using Application.CQ.Admin.GameContent.Spells.Commands.Update;
@@ -107,6 +108,7 @@
             services.AddScoped<IRequestHandler<GetAllItemsQuery, ItemListViewModel>, GetAllItemsQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllFeedbacksQuery, FeedbacksListViewModel>, GetAllFeedbacksQueryHandler>();
             services.AddScoped<IRequestHandler<ToDoList, FeedbackTaskListViewModel>, ToDoListHandler>();
+            services.AddScoped<IRequestHandler<GetAllToolsQuery, ToolsListViewModel>, GetAllToolsQueryHandler>();
         }
 
         private void UserCommands(IServiceCollection services)

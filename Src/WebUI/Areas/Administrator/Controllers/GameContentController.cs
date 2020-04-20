@@ -5,6 +5,8 @@
     using Application.CQ.Admin.GameContent.Items.Commands.Delete;
     using Application.CQ.Admin.GameContent.Items.Commands.Update;
     using Application.CQ.Admin.GameContent.Items.Queries;
+    using Application.CQ.Admin.GameContent.Items.Queries.GetAllItemsQuery;
+    using Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery;
     using Application.CQ.Admin.GameContent.Spells.Queries;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
@@ -30,16 +32,19 @@
         }
 
         [HttpGet]
-        public ActionResult CreateItem()
+        public async Task<ActionResult> CreateItem()
         {
-            return this.View();
+            return this.View(await this.Mediator.Send(new GetAllToolsQuery { }));
         }
 
         [HttpPost]
         public async Task<ActionResult> CreateItem([FromForm]string name, [FromForm]int level,
             [FromForm]string classType, [FromForm]int stamina, [FromForm]int strength, [FromForm]int agility,
             [FromForm]int intellect, [FromForm]int spirit, [FromForm] double attackPower,
-            [FromForm]double armorValue, [FromForm] double resistanceValue, [FromForm]string slot)
+            [FromForm]double armorValue, [FromForm] double resistanceValue, [FromForm]int sellPrice,
+            [FromForm]int buyPrice, [FromForm]string rarity, [FromForm]int reward, [FromForm]int fuelCount,
+            [FromForm]string relatedMaterials, [FromForm]string materialDiversity, [FromForm]int durability,
+            [FromForm]string materialType, [FromForm]int toolId, [FromForm]string slot)
         {
             return this.Redirect(await this.Mediator.Send(new CreateItemCommand
             {
@@ -54,6 +59,16 @@
                 AttackPower = attackPower,
                 ArmorValue = armorValue,
                 ResistanceValue = resistanceValue,
+                BuyPrice = buyPrice,
+                SellPrice = sellPrice,
+                Durability = durability,
+                FuelCount = fuelCount,
+                Rarity = rarity,
+                MaterialDiversity = materialDiversity,
+                MaterialType = materialType,
+                RelatedMaterials = relatedMaterials,
+                Reward = reward,
+                ToolId = toolId,
                 Slot = slot,
             }));
         }

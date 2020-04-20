@@ -1,4 +1,4 @@
-﻿@model Application.CQ.Admin.GameContent.Items.Commands.Create.CreateItemCommand
+﻿@model Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery.ToolsListViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!DOCTYPE html>
@@ -7,43 +7,195 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>CreateItem</title>
-    <script>
-        $(document).ready(function () {
-            $('select.slot').change(function () {
+    <partial name="_AdminNavBar">
+        <script>
+            $(document).ready(function () {
+                $('select.slot').change(function () {
 
-                var slotOption = $(this).children('option:selected').val();
+                    var slotOption = $(this).children('option:selected').val();
 
-                if (slotOption === 'Weapon') {
-                    $('#armor').hide();
-                    $('#resistance').hide();
-                    $('#rarity').hide();
-                    $('#reward').hide();
+                    if (slotOption === 'Weapon') {
+                        $('#armor').hide();
+                        $('#resistance').hide();
+                        $('#rarity').hide();
+                        $('#reward').hide();
+                        $('#rarity').hide();
+                        $('#fuel').hide();
+                        $('#materials').hide();
+                        $('#refineable').hide();
+                        $('#disolveable').hide();
+                        $('#durability').hide();
+                        $('#craftable').hide();
+                        $('#material-type').hide();
+                        $('#none').hide();
 
-                }
-                else if(slotOption === 'Armor') {
-                    $('#spells').attr('hidden', true);
-                }
-                else if(slotOption === 'Trinket') {
-                    $('#spells').attr('hidden', true);
-                }
-                else if(slotOption === 'Trinket') {
-                    $('#spells').attr('hidden', true);
-                }
-                else if(slotOption === 'Treasure') {
-                    $('#spells').attr('hidden', true);
-                }
-                else if(slotOption === 'Treasure Key') {
-                    $('#spells').attr('hidden', true);
-                }
-                else if(slotOption === 'Material') {
-                    $('#spells').attr('hidden', true);
-                }
-                else if(slotOption === 'Tool') {
-                    $('#spells').attr('hidden', true);
-                }
+                        $('#name').show();
+                        $('#level').show();
+                        $('#class-type').show();
+                        $('#stamina').show();
+                        $('#strength').show();
+                        $('#agility').show();
+                        $('#intellect').show();
+                        $('#spirit').show();
+                        $('#attack').show();
+                        $('#buy').show();
+                        $('#sell').show();
+                    }
+                    else if (slotOption === 'Armor') {
+                        $('#attack').hide();
+                        $('#rarity').hide();
+                        $('#reward').hide();
+                        $('#rarity').hide();
+                        $('#fuel').hide();
+                        $('#materials').hide();
+                        $('#refineable').hide();
+                        $('#disolveable').hide();
+                        $('#durability').hide();
+                        $('#craftable').hide();
+                        $('#material-type').hide();
+                        $('#none').hide();
+
+                        $('#name').show();
+                        $('#level').show();
+                        $('#class-type').show();
+                        $('#stamina').show();
+                        $('#strength').show();
+                        $('#agility').show();
+                        $('#intellect').show();
+                        $('#spirit').show();
+                        $('#armor').show();
+                        $('#resistance').show();
+                        $('#buy').show();
+                        $('#sell').show();
+                    }
+                    else if (slotOption === 'Trinket') {
+                        $('#attack').hide();
+                        $('#armor').hide();
+                        $('#resistance').hide();
+                        $('#rarity').hide();
+                        $('#reward').hide();
+                        $('#rarity').hide();
+                        $('#fuel').hide();
+                        $('#materials').hide();
+                        $('#refineable').hide();
+                        $('#disolveable').hide();
+                        $('#durability').hide();
+                        $('#craftable').hide();
+                        $('#material-type').hide();
+                        $('#none').hide();
+
+                        $('#name').show();
+                        $('#level').show();
+                        $('#stamina').show();
+                        $('#strength').show();
+                        $('#agility').show();
+                        $('#intellect').show();
+                        $('#spirit').show();
+                        $('#buy').show();
+                        $('#sell').show();
+                    }
+                    else if (slotOption === 'Treasure') {
+                        $('#attack').hide();
+                        $('#armor').hide();
+                        $('#resistance').hide();
+                        $('#rarity').hide();
+                        $('#reward').hide();
+                        $('#fuel').hide();
+                        $('#materials').hide();
+                        $('#refineable').hide();
+                        $('#disolveable').hide();
+                        $('#durability').hide();
+                        $('#craftable').hide();
+                        $('#level').hide();
+                        $('#stamina').hide();
+                        $('#strength').hide();
+                        $('#agility').hide();
+                        $('#intellect').hide();
+                        $('#spirit').hide();
+                        $('#buy').hide();
+                        $('#sell').hide();
+                        $('#class-type').hide();
+                        $('#material-type').hide();
+                        $('#none').hide();
+
+                        $('#name').show();
+                        $('#rarity').show();
+                        $('#reward').show();
+                    }
+                    else if (slotOption === 'Treasure Key') {
+                        $('#reward').hide();
+                        $('#attack').hide();
+                        $('#armor').hide();
+                        $('#resistance').hide();
+                        $('#rarity').hide();
+                        $('#reward').hide();
+                        $('#fuel').hide();
+                        $('#materials').hide();
+                        $('#refineable').hide();
+                        $('#disolveable').hide();
+                        $('#durability').hide();
+                        $('#craftable').hide();
+                        $('#level').hide();
+                        $('#stamina').hide();
+                        $('#strength').hide();
+                        $('#agility').hide();
+                        $('#intellect').hide();
+                        $('#spirit').hide();
+                        $('#buy').hide();
+                        $('#sell').hide();
+                        $('#class-type').hide();
+                        $('#material-type').hide();
+                        $('#none').hide();
+
+                        $('#name').show();
+                        $('#rarity').show();
+                    }
+                    else if (slotOption === 'Material') {
+                        $('#reward').hide();
+                        $('#attack').hide();
+                        $('#armor').hide();
+                        $('#resistance').hide();
+                        $('#rarity').hide();
+                        $('#reward').hide();
+                        $('#materials').hide();
+                        $('#refineable').hide();
+                        $('#disolveable').hide();
+                        $('#durability').hide();
+                        $('#craftable').hide();
+                        $('#level').hide();
+                        $('#stamina').hide();
+                        $('#strength').hide();
+                        $('#agility').hide();
+                        $('#intellect').hide();
+                        $('#spirit').hide();
+                        $('#buy').hide();
+                        $('#sell').hide();
+                        $('#class-type').hide();
+
+                        $('#name').show();
+                        $('#material-type').show();
+                        $('#fuel').show();
+                        $('#none').show();
+                        $('#refineable').show();
+                        $('#disolveable').show();
+                        $('#craftable').show();
+
+                        $('input:radio[name="materialDiversity"]').change(function () {
+                            if ($(this).is(':checked') && $(this).val() == 'craftable' || $(this).val() == 'refineable' || $(this).val() == 'disolveable') {
+                                $('#materials').show();
+                                $('#tools').show();
+                            } else {
+                                $('#materials').hide();
+                                $('#tools').hide();
+                            }
+                        })
+                    }
+                    else if (slotOption === 'Tool') {
+                        $('#spells').attr('hidden', true);
+                    }
+                })
             })
-        })
-    </script>
+        </script>
 </head>
 <body>
     <div class="item-padding fade-in has-text-align-center">
@@ -54,9 +206,10 @@
                 <div class="col-md-4">
                     <form asp-action="CreateItem" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="Slot" class="control-label"></label>
-                            <select class="slot">
+                        <div class="form-group item-padding">
+                            <label for="slot" class="contro-label has-normal-font-size has-normal-font-size">Slot : </label>
+                            <select class="slot" id="slot">
+                                <option selected value="None">Nothing Selected</option>
                                 <option value="Weapon">Weapon</option>
                                 <option value="Armor">Armor</option>
                                 <option value="Trinket">Trinket</option>
@@ -66,88 +219,142 @@
                                 <option value="Tool">Tool</option>
                             </select>
                         </div>
-                        <div class="form-group" style="display:none">
-                            <label asp-for="Name" class="control-label"></label>
-                            <input asp-for="Name" class="form-control" />
-                            <span asp-validation-for="Name" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding has-normal-font-size" id="name" style="display:none">
+                            <label for="input-name" class="contro-label has-normal-font-size">Name</label>
+                            <br />
+                            <input id="input-name" name="name" class="form-control" />
                         </div>
-                        <div class="form-group" style="display:none">
-                            <label asp-for="Level" class="control-label"></label>
-                            <input asp-for="Level" class="form-control" />
-                            <span asp-validation-for="Level" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="level" style="display:none">
+                            <label for="input-level" class="contro-label has-normal-font-size">Level</label>
+                            <br />
+                            <input id="input-level" name="level" type="number" min="1" max="10" width="50" height="50" />
                         </div>
-                        <div class="form-group" id="class-type" style="display:none">
-                            <label asp-for="ClassType" class="control-label"></label>
-                            <input asp-for="ClassType" class="form-control" />
-                            <span asp-validation-for="ClassType" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="class-type" style="display:none">
+                            <label for="input-classtype" class="contro-label has-normal-font-size">ClassType</label>
+                            <br />
+                            <input id="input-classtype" name="classType" class="form-control" />
                         </div>
-                        <div class="form-group" id="stamina" style="display:none">
-                            <label asp-for="Stamina" class="control-label"></label>
-                            <input asp-for="Stamina" class="form-control" />
-                            <span asp-validation-for="Stamina" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="stamina" style="display:none">
+                            <label for="input-stamina" class="contro-label has-normal-font-size">Stamina</label>
+                            <br />
+                            <input id="input-stamina" name="stamina" class="form-control" min="1" max="100" />
                         </div>
-                        <div class="form-group" id="strength" style="display:none">
-                            <label asp-for="Strength" class="control-label"></label>
-                            <input asp-for="Strength" class="form-control" />
-                            <span asp-validation-for="Strength" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="strength" style="display:none">
+                            <label for="input-strength" class="contro-label has-normal-font-size">Strength</label>
+                            <br />
+                            <input id="input-strength" name="strength" class="form-control" min="1" max="100" />
                         </div>
-                        <div class="form-group" id="agility" style="display:none">
-                            <label asp-for="Agility" class="control-label"></label>
-                            <input asp-for="Agility" class="form-control" />
-                            <span asp-validation-for="Agility" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="agility" style="display:none">
+                            <label for="input-agility" class="contro-label has-normal-font-size">Agility</label>
+                            <br />
+                            <input id=""input-agility"" name="agility" class="form-control" min="1" max="100" />
                         </div>
-                        <div class="form-group" id="intellect" style="display:none">
-                            <label asp-for="Intellect" class="control-label"></label>
-                            <input asp-for="Intellect" class="form-control" />
-                            <span asp-validation-for="Intellect" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="intellect" style="display:none">
+                            <label for="input-intellect" class="contro-label has-normal-font-size">Intellect</label>
+                            <br />
+                            <input id="input-intellect" name="intellect" class="form-control" min="1" max="100" />
                         </div>
-                        <div class="form-group" id="spirit" style="display:none">
-                            <label asp-for="Spirit" class="control-label"></label>
-                            <input asp-for="Spirit" class="form-control" />
-                            <span asp-validation-for="Spirit" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="spirit" style="display:none">
+                            <label for="input-spirit" class="contro-label has-normal-font-size">Spirit</label>
+                            <br />
+                            <input id="input-spirit" name="spirit" class="form-control" min="1" max="100" />
                         </div>
-                        <div class="form-group" id="attack" style="display:none">
-                            <label asp-for="AttackPower" class="control-label"></label>
-                            <input asp-for="AttackPower" class="form-control" />
-                            <span asp-validation-for="AttackPower" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="attack" style="display:none">
+                            <label for="input-attackpower" class="contro-label has-normal-font-size">AttackPower</label>
+                            <br />
+                            <input id="input-attackpower" name="attackPower" class="form-control" min="1" max="100" />
                         </div>
-                        <div class="form-group" id="armor" style="display:none">
-                            <label asp-for="ArmorValue" class="control-label"></label>
-                            <input asp-for="ArmorValue" class="form-control" />
-                            <span asp-validation-for="ArmorValue" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="armor" style="display:none">
+                            <label for="input-armorvalue" class="contro-label has-normal-font-size">ArmorValue</label>
+                            <br />
+                            <input id="input-armorvalue" name="armorValue" class="form-control" min="1" max="100" />
                         </div>
-                        <div class="form-group" id="resistance" style="display:none">
-                            <label asp-for="ResistanceValue" class="control-label"></label>
-                            <input asp-for="ResistanceValue" class="form-control" />
-                            <span asp-validation-for="ResistanceValue" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="resistance" style="display:none">
+                            <label for="input-resistancevalue" class="contro-label has-normal-font-size">ResistanceValue</label>
+                            <br />
+                            <input id="input-resistancevalue" name="resistanceValue" class="form-control" min="1" max="100" />
                         </div>
-                        <div class="form-group" style="display:none">
-                            <label asp-for="SellPrice" class="control-label"></label>
-                            <input asp-for="SellPrice" class="form-control" />
-                            <span asp-validation-for="SellPrice" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" style="display:none" id="sell">
+                            <label for="input-sellprice" class="contro-label has-normal-font-size">SellPrice</label>
+                            <br />
+                            <input id="input-sellprice" name="sellPrice" class="form-control" min="1" max="1000" />
                         </div>
-                        <div class="form-group" style="display:none">
-                            <label asp-for="BuyPrice" class="control-label"></label>
-                            <input asp-for="BuyPrice" class="form-control" />
-                            <span asp-validation-for="BuyPrice" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" style="display:none" id="buy">
+                            <label for="input-buyprice" class="contro-label has-normal-font-size">BuyPrice</label>
+                            <br />
+                            <input id="input-buyprice" name="buyPrice" class="form-control" min="1" max="1000" />
                         </div>
-                        <div class="form-group" id="rarity" style="display:none">
-                            <label asp-for="Rarity" class="control-label"></label>
-                            <input asp-for="Rarity" class="form-control" />
-                            <span asp-validation-for="Rarity" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="rarity" style="display:none">
+                            <label for="input-rarity" class="contro-label has-normal-font-size">Rarity</label>
+                            <br />
+                            <input id="input-rarity" name="rarity" class="form-control" />
                         </div>
-                        <div class="form-group" id="reward" style="display:none">
-                            <label asp-for="Reward" class="control-label"></label>
-                            <input asp-for="Reward" class="form-control" />
-                            <span asp-validation-for="Reward" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" id="reward" style="display:none">
+                            <label for="input-reward" class="contro-label has-normal-font-size">Reward</label>
+                            <br />
+                            <input id="input-reward" name="reward" class="form-control" min="1" max="1000" />
                         </div>
-                        <div class="form-group" style="display:none">
-                            <label asp-for="ImagePath" class="control-label"></label>
-                            <input asp-for="ImagePath" class="form-control" />
-                            <span asp-validation-for="ImagePath" class="text-danger"></span>
+                        <div class="form-group fade-in item-padding" style="display:none" id="material-type">
+                            <label for="material-type-select" class="contro-label has-normal-font-size">Type</label>
+                            <br />
+                            <select id="material-type-select">
+                                <option value="Salvage">Salvage</option>
+                                <option value="Plant">Plant</option>
+                                <option value="Food">Food</option>
+                                <option value="Remains">Remains</option>
+                                <option value="Junk">Junk</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-default" />
+                        <div class="form-group fade-in item-padding" style="display:none" id="fuel">
+                            <label for="input-fuelcount" class="contro-label has-normal-font-size">FuelCount</label>
+                            <br />
+                            <input id="input-fuelcount" name="fuelCount" class="form-control" type="number" min="1" max="10" value="1" />
+                        </div>
+                        <div class="form-group fade-in item-padding" style="display:none" id="none">
+                            <label for="input-none" class="contro-label has-normal-font-size">None</label>
+                            <br />
+                            <input id="input-none" class="form-control" type="radio" value="none" name="radio" />
+                        </div>
+                        <div class="form-group fade-in item-padding" style="display:none" id="craftable">
+                            <label for="input-craftable" class="contro-label has-normal-font-size">Is Craftable</label>
+                            <br />
+                            <input id="input-craftable" class="form-control" type="radio" value="craftable" name="materialDiversity" />
+                        </div>
+                        <div class="form-group fade-in item-padding" style="display:none" id="refineable">
+                            <label for="input-refineable" class="contro-label has-normal-font-size">Is Refineable</label>
+                            <br />
+                            <input id="input-refineable" class="form-control" type="radio" value="refineable" name="materialDiversity" />
+                        </div>
+                        <div class="form-group fade-in item-padding" style="display:none" id="disolveable">
+                            <label for="input-disolveable" class="contro-label has-normal-font-size">Is Disolveable</label>
+                            <br />
+                            <input id="input-disolveable" class="form-control" type="radio" value="disolveable" name="materialDiversity" />
+                        </div>
+                        <div class="form-group fade-in item-padding" style="display:none" id="durability">
+                            <label for="input-durability" class="contro-label has-normal-font-size">Durability</label>
+                            <br />
+                            <input id="input-durability" name="durability" class="form-control" type="number" min="10" max="100" value="10" />
+                        </div>
+                        <div class="form-group fade-in item-padding" style="display:none" id="tools">
+                            <label for="select-tool" class="contro-label has-normal-font-size">Required Tool</label>
+                            <br />
+                            <select name="toolId" id="select-tool">
+                                @foreach (var tool in Model.Tools)
+                                {
+                                    <option value="@tool.Id">@tool.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group fade-in item-padding" style="display:none" id="materials">
+                            <label for="input-relatedmaterials" class="contro-label has-normal-font-size">Related Materials</label>
+                            <br />
+                            <input id="input-relatedmaterials" name="relatedMaterials" class="form-control" type="text" />
+                        </div>
+                        <div class="form-group item-padding">
+                            <input type="submit" value="Create" class="main-button" />
+                        </div>
+                        <div class="item-padding">
+                            <hr />
                         </div>
                     </form>
                 </div>

@@ -20,27 +20,31 @@
         {
             if (request.Slot == "Weapon")
             {
-                this.WeaponCreate(request);
+                await this.CreateWeapon(request);
             }
             else if (request.Slot == "Trinket")
             {
-                this.TrinketCreate(request);
+                await this.CreateTrinket(request);
             }
             else if (request.Slot == "Material")
             {
-                this.CreateMaterial(request);
+                await this.CreateMaterial(request);
             }
             else if (request.Slot == "Treasure")
             {
-                this.CreateTreasure(request);
+                await this.CreateTreasure(request);
             }
             else if (request.Slot == "Treasure Key")
             {
-                this.CreateTreasureKey(request);
+                await this.CreateTreasureKey(request);
+            }
+            else if (request.Slot == "Tool")
+            {
+                await this.CreateTool(request);
             }
             else
             {
-                this.ArmorCreate(request);
+                await this.CreateArmor(request);
             }
 
             await this.context.SaveChangesAsync(cancellationToken);
@@ -48,9 +52,9 @@
             return string.Format(GConst.CreateItemRedirect, request.Slot);
         }
 
-        private void WeaponCreate(CreateItemCommand request)
+        private async Task CreateWeapon(CreateItemCommand request)
         {
-            this.context.Weapons.Add(new Weapon
+            await this.context.Weapons.AddAsync(new Weapon
             {
                 Name = request.Name,
                 Level = request.Level,
@@ -61,15 +65,15 @@
                 Intellect = request.Intellect,
                 Spirit = request.Spirit,
                 AttackPower = request.AttackPower,
-                Slot = request.Slot,
+                Slot = "Weapon",
                 SellPrice = request.SellPrice,
-                ImagePath = request.ImagePath,
+                ImagePath = this.AppendImagePath(request.Slot, request.Name),
             });
         }
 
-        private void ArmorCreate(CreateItemCommand request)
+        private async Task CreateArmor(CreateItemCommand request)
         {
-            this.context.Armors.Add(new Armor
+            await this.context.Armors.AddAsync(new Armor
             {
                 Name = request.Name,
                 Level = request.Level,
@@ -84,13 +88,13 @@
                 Slot = request.Slot,
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
-                ImagePath = request.ImagePath,
+                ImagePath = this.AppendImagePath(request.Slot, request.Name),
             });
         }
 
-        private void TrinketCreate(CreateItemCommand request)
+        private async Task CreateTrinket(CreateItemCommand request)
         {
-            this.context.Trinkets.Add(new Trinket
+            await this.context.Trinkets.AddAsync(new Trinket
             {
                 Name = request.Name,
                 Level = request.Level,
@@ -100,43 +104,88 @@
                 Agility = request.Agility,
                 Intellect = request.Intellect,
                 Spirit = request.Spirit,
-                Slot = request.Slot,
+                Slot = "Trinket",
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
-                ImagePath = request.ImagePath,
+                ImagePath = this.AppendImagePath(request.Slot, request.Name),
             });
         }
 
-        private void CreateMaterial(CreateItemCommand request)
+        private async Task CreateMaterial(CreateItemCommand request)
         {
-            this.context.Materials.Add(new Material
+            var material = new Material
             {
                 Name = request.Name,
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
-                ImagePath = request.ImagePath,
-            });
+                FuelCount = request.FuelCount,
+                RelatedMaterials = request.RelatedMaterials,
+                Type = request.MaterialType,
+                ImagePath = this.AppendImagePath(request.Slot, request.Name),
+            };
+
+            if (request.MaterialDiversity == "craftable")
+            {
+                material.IsCraftable = true;
+                material.ToolId = request.ToolId;
+            }
+            else if (request.MaterialDiversity == "disolveable")
+            {
+                material.IsDisolveable = true;
+                material.ToolId = request.ToolId;
+            }
+            else if (request.MaterialDiversity == "refineable")
+            {
+                material.IsRefineable = true;
+                material.ToolId = request.ToolId;
+            }
+
+            await this.context.Materials.AddAsync(material);
         }
 
-        private void CreateTreasure(CreateItemCommand request)
+        private async Task CreateTreasure(CreateItemCommand request)
         {
-            this.context.Treasures.Add(new Treasure
+            await this.context.Treasures.AddAsync(new Treasure
             {
                 Name = request.Name,
                 Rarity = request.Rarity,
                 Reward = request.Reward,
-                ImagePath = request.ImagePath,
+                ImagePath = this.AppendImagePath(request.Slot, request.Name),
             });
         }
 
-        private void CreateTreasureKey(CreateItemCommand request)
+        private async Task CreateTreasureKey(CreateItemCommand request)
         {
-            this.context.TreasureKeys.Add(new TreasureKey
+            await this.context.TreasureKeys.AddAsync(new TreasureKey
             {
                 Name = request.Name,
                 Rarity = request.Rarity,
-                ImagePath = request.ImagePath,
+                ImagePath = this.AppendImagePath(request.Slot, request.Name),
             });
+        }
+
+        private async Task CreateTool(CreateItemCommand request)
+        {
+            var tool = new Tool
+            {
+                Name = request.Name,
+                BuyPrice = request.BuyPrice,
+                Durability = request.Durability,
+                RelatedMaterials = request.RelatedMaterials,
+                ImagePath = this.AppendImagePath(request.Slot, request.Name),
+            };
+
+            if (request.MaterialDiversity == "craftable")
+            {
+                tool.IsCraftable = true;
+            }
+
+            await this.context.Tools.AddAsync(tool);
+        }
+
+        private string AppendImagePath(string itemSlot, string itemName)
+        {
+            return $"/images/Items/{itemSlot}s/{itemName}.png";
         }
     }
 }
