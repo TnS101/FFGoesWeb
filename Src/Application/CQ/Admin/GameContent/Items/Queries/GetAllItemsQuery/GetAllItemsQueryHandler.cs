@@ -1,5 +1,6 @@
 ﻿namespace Application.CQ.Admin.GameContent.Items.Queries.GetAllItemsQuery
 {
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
@@ -47,28 +48,52 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Treasures.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                    Items = await this.context.Treasures.Select(t => new ItemMinViewModel
+                    {
+                        Id = t.Id.ToString(),
+                        Name = t.Name,
+                        Slot = t.Slot,
+                        ImagePath = t.ImagePath,
+                    }).ToListAsync(),
                 };
             }
             else if (request.Slot == "Treasure Key")
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.TreasureKeys.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                    Items = await this.context.TreasureKeys.Select(tk => new ItemMinViewModel
+                    {
+                        Id = tk.Id.ToString(),
+                        Name = tk.Name,
+                        Slot = tk.Slot,
+                        ImagePath = tk.ImagePath,
+                    }).ToListAsync(),
                 };
             }
             else if (request.Slot == "Material")
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Materials.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                    Items = await this.context.Materials.Select(m => new ItemMinViewModel
+                    {
+                        Id = m.Id.ToString(),
+                        Name = m.Name,
+                        Slot = m.Slot,
+                        ImagePath = m.ImagePath,
+                    }).ToListAsync(),
                 };
             }
             else if (request.Slot == "Tool")
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Tools.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                    Items = await this.context.Tools.Select(t => new ItemMinViewModel
+                    {
+                        Id = t.Id.ToString(),
+                        Name = t.Name,
+                        Slot = t.Slot,
+                        ImagePath = t.ImagePath,
+                    }).ToListAsync(),
                 };
             }
             else

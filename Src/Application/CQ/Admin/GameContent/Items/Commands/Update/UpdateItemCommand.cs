@@ -4,7 +4,7 @@
 
     public class UpdateItemCommand : IRequest<string>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string NewName { get; set; }
 
@@ -34,8 +34,16 @@
 
         public int NewSellPrice { get; set; }
 
-        public string Rarity { get; set; }
+        public string NewRarity { get; set; }
 
-        public int Reward { get; set; }
+        public int NewReward { get; set; }
+
+        public int NewDurability { get; set; }
+
+        public bool IsCraftable { get; set; }
+
+        public bool IsRefineable { get; set; }
+
+        public bool IsDisolveable { get; set; }
     }
 }

@@ -18,6 +18,9 @@
                 .HasMaxLength(20)
                 .IsRequired();
 
+            builder.Property(t => t.Slot)
+                .HasDefaultValue("Treasure");
+
             builder.Property(t => t.ImagePath)
                 .HasMaxLength(50)
                 .IsRequired();

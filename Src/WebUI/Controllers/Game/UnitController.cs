@@ -10,6 +10,7 @@
     using Application.GameCQ.Heroes.Commands.Update.SelectHeroCommand;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
+    using Application.GameCQ.Items.Commands.Delete;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
@@ -78,12 +79,16 @@
             return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
         }
 
+        [HttpGet("/Unit/DiscardItem/id")]
+        public async Task<ActionResult> DiscardItem([FromQuery]string id, [FromForm]int count, [FromForm]string slot)
+        {
+            return this.View(await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, User = this.User }));
+        }
+
         [HttpGet]
         public async Task<ActionResult> LevelUp()
         {
-            await this.Mediator.Send(new HeroLevelUpCommand());
-
-            return this.View();
+            return this.View(await this.Mediator.Send(new HeroLevelUpCommand()));
         }
 
         [HttpPost]

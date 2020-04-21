@@ -2,7 +2,7 @@
 {
     public class WeaponEquipment
     {
-        public int WeaponId { get; set; }
+        public string WeaponId { get; set; }
 
         public Weapon Weapon { get; set; }
 

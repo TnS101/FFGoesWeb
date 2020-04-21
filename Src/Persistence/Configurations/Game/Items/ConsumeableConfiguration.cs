@@ -18,6 +18,9 @@
                 .HasMaxLength(15)
                 .IsRequired();
 
+            builder.Property(c => c.Slot)
+                .HasDefaultValue("Consumeable");
+
             builder.Property(c => c.ImagePath)
                 .HasMaxLength(50)
                 .IsRequired();

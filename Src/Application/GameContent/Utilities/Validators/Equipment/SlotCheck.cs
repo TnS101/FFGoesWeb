@@ -39,19 +39,19 @@
             this.vegetables = new string[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
-        public async Task Check(int fightingClassNumber, int slotNumber, List<int> stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, Monster monster, string zoneName)
+        public async Task Check(int fightingClassNumber, int slotNumber, List<int> stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, Monster monster, string zoneName, CancellationToken cancellationToken)
         {
             if (slotNumber == 0)
             {
-                await this.WeaponGenerate(fightingClassNumber, stats, fightingClassStatNumber, context, hero);
+                await this.WeaponGenerate(fightingClassNumber, stats, fightingClassStatNumber, context, hero, cancellationToken);
             }
             else if (slotNumber == 1)
             {
-                await this.TrinketGenerate(stats, fightingClassStatNumber, fightingClassNumber, context, hero);
+                await this.TrinketGenerate(stats, fightingClassStatNumber, fightingClassNumber, context, hero, cancellationToken);
             }
             else if (slotNumber == 2 || slotNumber == 3)
             {
-                await this.ArmorGenerate(stats, fightingClassStatNumber, fightingClassNumber, context, hero);
+                await this.ArmorGenerate(stats, fightingClassStatNumber, fightingClassNumber, context, hero, cancellationToken);
             }
             else if (slotNumber == 4 || slotNumber == 5)
             {
@@ -63,7 +63,7 @@
             }
         }
 
-        private async Task WeaponGenerate(int fightingClassNumber, List<int> stats, int fightingClassStatNumber, IFFDbContext context, Hero hero)
+        private async Task WeaponGenerate(int fightingClassNumber, List<int> stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
         {
             Weapon templateWeapon = new Weapon
             {
@@ -79,16 +79,20 @@
 
             this.fightingClassStatCheck.Check(templateWeapon, fightingClassStatNumber, fightingClassNumber, this.rng);
 
-            int weaponId;
+            string weaponId = string.Empty;
             if (!context.Weapons.Contains(templateWeapon))
             {
                 await context.Weapons.AddAsync(templateWeapon);
+                await context.SaveChangesAsync(cancellationToken);
                 weaponId = templateWeapon.Id;
             }
             else
             {
-                var weapon = await context.Weapons.FirstOrDefaultAsync(w => w.Equals(templateWeapon));
-                weaponId = weapon.Id;
+                var weapon = await context.Weapons.FirstOrDefaultAsync(w => w.Name == templateWeapon.Name
+                && w.ClassType == templateWeapon.ClassType && w.AttackPower == templateWeapon.AttackPower
+                && w.Agility == templateWeapon.Agility && w.Stamina == templateWeapon.Stamina && w.Strength == templateWeapon.Strength
+                && w.Level == templateWeapon.Level && w.Intellect == templateWeapon.Intellect && w.Spirit == templateWeapon.Spirit
+                && w.ImagePath == templateWeapon.ImagePath);
             }
 
             await context.WeaponsInventories.AddAsync(new WeaponInventory
@@ -98,7 +102,7 @@
             });
         }
 
-        private async Task TrinketGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero)
+        private async Task TrinketGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
         {
             Trinket templateTrinket = new Trinket
             {
@@ -113,15 +117,21 @@
             };
             this.fightingClassStatCheck.Check(templateTrinket, fightingClassStatNumber, fightingClassNumber, this.rng);
 
-            int trinketId = 0;
+            string trinketId;
             if (!context.Trinkets.Contains(templateTrinket))
             {
                 await context.Trinkets.AddAsync(templateTrinket);
+                await context.SaveChangesAsync(cancellationToken);
                 trinketId = templateTrinket.Id;
             }
             else
             {
-                var trinket = await context.Trinkets.FirstOrDefaultAsync(t => t.Equals(templateTrinket));
+                var trinket = await context.Trinkets.FirstOrDefaultAsync(t => t.Name == templateTrinket.Name
+                && t.Agility == templateTrinket.Agility && t.Stamina == templateTrinket.Stamina
+                && t.Strength == templateTrinket.Strength
+                && t.Level == templateTrinket.Level && t.Intellect == templateTrinket.Intellect && t.Spirit == templateTrinket.Spirit
+                && t.ImagePath == templateTrinket.ImagePath);
+
                 trinketId = trinket.Id;
             }
 
@@ -132,7 +142,7 @@
             });
         }
 
-        private async Task ArmorGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero)
+        private async Task ArmorGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
         {
             Armor templateArmor = new Armor
             {
@@ -149,33 +159,28 @@
 
             this.fightingClassStatCheck.Check(templateArmor, fightingClassStatNumber, fightingClassNumber, this.rng);
 
+            string armorId = string.Empty;
             if (!context.Armors.Contains(templateArmor))
             {
-                await context.Armors.AddAsync(new Armor
-                {
-                    Name = templateArmor.Name,
-                    ClassType = templateArmor.ClassType,
-                    ArmorValue = templateArmor.ArmorValue,
-                    ResistanceValue = templateArmor.ResistanceValue,
-                    Level = templateArmor.Level,
-                    Spirit = templateArmor.Spirit,
-                    Strength = templateArmor.Strength,
-                    Stamina = templateArmor.Stamina,
-                    Agility = templateArmor.Agility,
-                    Intellect = templateArmor.Intellect,
-                    Type = "Armor",
-                    Slot = templateArmor.Slot,
-                });
+                await context.Armors.AddAsync(templateArmor);
 
-                await context.SaveChangesAsync(CancellationToken.None);
+                await context.SaveChangesAsync(cancellationToken);
+
+                armorId = templateArmor.Id;
             }
-
-            var armor = await context.Armors.FirstOrDefaultAsync(a => a.Equals(templateArmor));
+            else
+            {
+                var armor = await context.Armors.FirstOrDefaultAsync(a => a.Name == templateArmor.Name
+                && a.ClassType == templateArmor.ClassType && a.ArmorValue == templateArmor.ArmorValue && a.ResistanceValue == templateArmor.ResistanceValue
+                && a.Agility == templateArmor.Agility && a.Stamina == templateArmor.Stamina && a.Strength == templateArmor.Strength
+                && a.Level == templateArmor.Level && a.Intellect == templateArmor.Intellect && a.Spirit == templateArmor.Spirit
+                && a.ImagePath == templateArmor.ImagePath);
+            }
 
             await context.ArmorsInventories.AddAsync(new ArmorInventory
             {
-                ArmorId = armor.Id,
                 InventoryId = hero.InventoryId,
+                ArmorId = armorId,
             });
         }
 
@@ -221,7 +226,7 @@
         {
             var materialName = this.AllMaterialsVariety(monster);
 
-            var material = await context.Materials.SingleOrDefaultAsync(m => m.Name == materialName);
+            var material = await context.Materials.FirstOrDefaultAsync(m => m.Name == materialName);
 
             await context.MaterialsInventories.AddAsync(new MaterialInventory
             {

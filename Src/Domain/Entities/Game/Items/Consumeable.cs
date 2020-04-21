@@ -26,6 +26,8 @@
 
         public string ImagePath { get; set; }
 
+        public string Slot { get; set; }
+
         public ICollection<ConsumeableInventory> ConsumeableInventories { get; set; }
     }
 }

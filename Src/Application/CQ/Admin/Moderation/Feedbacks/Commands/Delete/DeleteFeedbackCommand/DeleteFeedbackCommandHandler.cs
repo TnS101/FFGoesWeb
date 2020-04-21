@@ -21,7 +21,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return GConst.FeedbackCommandRedirect;
+            return GConst.AdminFeedbackCommandRedirect;
         }
     }
 }

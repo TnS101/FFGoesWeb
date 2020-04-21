@@ -1,6 +1,7 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
     using System;
+    using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Generators;
@@ -15,7 +16,7 @@
             this.itemGenerator = new ItemGenerator();
         }
 
-        public async Task End(Hero hero, Monster monster, string zoneName, IFFDbContext context)
+        public async Task End(Hero hero, Monster monster, string zoneName, IFFDbContext context, CancellationToken cancellationToken)
         {
             if (zoneName == "World")
             {
@@ -36,7 +37,7 @@
             hero.CurrentManaRegen = hero.ManaRegen;
             hero.CurrentCritChance = hero.CritChance;
 
-            await this.itemGenerator.Generate(hero, context, monster, zoneName);
+            await this.itemGenerator.Generate(hero, context, monster, zoneName, cancellationToken);
         }
 
         private double EnemyCombinedStats(Monster monster)

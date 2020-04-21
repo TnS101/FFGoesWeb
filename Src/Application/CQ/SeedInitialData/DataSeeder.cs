@@ -45,7 +45,7 @@
             {
                 Name = "Oak Log",
                 Type = "Wood",
-                ImagePath = "/images/Items/Oak-Log.png",
+                ImagePath = "/images/Items/Materials/Oak-Log.png",
                 IsRefineable = true,
                 FuelCount = 1,
             });
@@ -54,7 +54,7 @@
             {
                 Name = "Walnut Log",
                 Type = "Wood",
-                ImagePath = "/images/Items/Walnut-Log.png",
+                ImagePath = "/images/Items/Materials/Walnut-Log.png",
                 IsRefineable = true,
                 FuelCount = 2,
             });
@@ -63,7 +63,7 @@
             {
                 Name = "Birch Log",
                 Type = "Wood",
-                ImagePath = "/images/Items/Birch-Log.png",
+                ImagePath = "/images/Items/Materials/Birch-Log.png",
                 IsRefineable = true,
                 FuelCount = 1,
             });
@@ -72,7 +72,7 @@
             {
                 Name = "Mahogany Log",
                 Type = "Wood",
-                ImagePath = "/images/Items/Mahogany-Log.png",
+                ImagePath = "/images/Items/Materials/Mahogany-Log.png",
                 IsRefineable = true,
                 FuelCount = 1,
             });
@@ -81,7 +81,7 @@
             {
                 Name = "Coal Ore",
                 Type = "Ore",
-                ImagePath = "/images/Items/Coal-Ore.png",
+                ImagePath = "/images/Items/Materials/Coal-Ore.png",
                 FuelCount = 3,
             });
 
@@ -89,7 +89,7 @@
             {
                 Name = "Copper Ore",
                 Type = "Ore",
-                ImagePath = "/images/Items/Copper-Ore.png",
+                ImagePath = "/images/Items/Materials/Copper-Ore.png",
                 IsRefineable = true,
             });
 
@@ -97,7 +97,7 @@
             {
                 Name = "Iron Ore",
                 Type = "Ore",
-                ImagePath = "/images/Items/Iron-Ore.png",
+                ImagePath = "/images/Items/Materials/Iron-Ore.png",
                 IsRefineable = true,
             });
 
@@ -105,7 +105,7 @@
             {
                 Name = "Gold Ore",
                 Type = "Ore",
-                ImagePath = "/images/Items/Gold-Ore.png",
+                ImagePath = "/images/Items/Materials/Gold-Ore.png",
                 IsRefineable = true,
             });
 
@@ -113,7 +113,7 @@
             {
                 Name = "Leather Scraps",
                 Type = "Leather",
-                ImagePath = "/images/Items/Leather-Scraps.png",
+                ImagePath = "/images/Items/Materials/Leather-Scraps.png",
                 IsRefineable = true,
             });
 
@@ -121,7 +121,7 @@
             {
                 Name = "Animal Fur",
                 Type = "Leather",
-                ImagePath = "/images/Items/Animal-Fur.png",
+                ImagePath = "/images/Items/Materials/Animal-Fur.png",
                 IsRefineable = true,
             });
 
@@ -129,7 +129,7 @@
             {
                 Name = "Light Leather",
                 Type = "Leather",
-                ImagePath = "/images/Items/Light-Leather.png",
+                ImagePath = "/images/Items/Materials/Light-Leather.png",
                 IsRefineable = true,
             });
 
@@ -137,7 +137,7 @@
             {
                 Name = "Fine Leather",
                 Type = "Leather",
-                ImagePath = "/images/Items/Fine-Leather.png",
+                ImagePath = "/images/Items/Materials/Fine-Leather.png",
                 IsRefineable = true,
             });
 
@@ -145,7 +145,7 @@
             {
                 Name = "Cotton",
                 Type = "Cloth",
-                ImagePath = "/images/Items/Cotton.png",
+                ImagePath = "/images/Items/Materials/Cotton.png",
                 IsRefineable = true,
             });
 
@@ -153,7 +153,7 @@
             {
                 Name = "Linen Cloth",
                 Type = "Cloth",
-                ImagePath = "/images/Items/Linen-Cloth.png",
+                ImagePath = "/images/Items/Materials/Linen-Cloth.png",
                 IsRefineable = true,
             });
 
@@ -161,7 +161,7 @@
             {
                 Name = "Silk",
                 Type = "Cloth",
-                ImagePath = "/images/Items/Silk.png",
+                ImagePath = "/images/Items/Materials/Silk.png",
                 IsRefineable = true,
             });
 
@@ -169,28 +169,28 @@
             {
                 Name = "Mint",
                 Type = "Herb",
-                ImagePath = "/images/Items/Mint.png",
+                ImagePath = "/images/Items/Materials/Mint.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Coriander",
                 Type = "Herb",
-                ImagePath = "/images/Items/Coriander.png",
+                ImagePath = "/images/Items/Materials/Coriander.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Lavender",
                 Type = "Herb",
-                ImagePath = "/images/Items/Lavender.png",
+                ImagePath = "/images/Items/Materials/Lavender.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Buttercup",
                 Type = "Herb",
-                ImagePath = "/images/Items/Herb-Essence.png",
+                ImagePath = "/images/Items/Materials/Herb-Essence.png",
                 IsRefineable = true,
             });
 
@@ -198,7 +198,7 @@
             {
                 Name = "Water Essence",
                 Type = "Essence",
-                ImagePath = "/images/Items/Water-Essence.png",
+                ImagePath = "/images/Items/Materials/Water-Essence.png",
                 IsRefineable = true,
             });
 
@@ -657,8 +657,8 @@
             {
                 Name = "Cracked Water Orb",
                 Type = "Junk",
-                RelatedMaterials = "/images/Items/Materials/Cracked-Water-Orb.png",
-                ImagePath = "https://ibb.co/K0GgNk2",
+                RelatedMaterials = "Water Vial 1,Glass 1",
+                ImagePath = "/images/Items/Materials/Cracked-Water-Orb.png",
                 IsDisolveable = true,
             });
 

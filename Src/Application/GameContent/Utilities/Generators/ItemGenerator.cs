@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Validators.Equipment;
@@ -16,7 +17,7 @@
             this.rng = new Random();
         }
 
-        public async Task Generate(Hero hero, IFFDbContext context, Monster monster, string zoneName)
+        public async Task Generate(Hero hero, IFFDbContext context, Monster monster, string zoneName, CancellationToken cancellationToken)
         {
             var stats = new List<int>();
             int fightingClassStatNumber = this.rng.Next(hero.Level, hero.Level + 5);
@@ -45,7 +46,7 @@
 
             slotNumber = 2;
 
-            await slotCheck.Check(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero, monster, zoneName);
+            await slotCheck.Check(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero, monster, zoneName, cancellationToken);
         }
     }
 }

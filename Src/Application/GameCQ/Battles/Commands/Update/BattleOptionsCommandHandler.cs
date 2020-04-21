@@ -32,7 +32,7 @@
 
                 request.Enemy.CurrentHP = 0;
 
-                await endOption.End(hero, request.Enemy, request.ZoneName, this.context);
+                await endOption.End(hero, request.Enemy, request.ZoneName, this.context, cancellationToken);
 
                 if (hero.XP >= hero.XPCap)
                 {

@@ -13,6 +13,9 @@
             builder.Property(t => t.Name)
                 .HasMaxLength(50)
                 .IsRequired();
+
+            builder.Property(t => t.Slot)
+                .HasDefaultValue("Tool");
         }
     }
 }

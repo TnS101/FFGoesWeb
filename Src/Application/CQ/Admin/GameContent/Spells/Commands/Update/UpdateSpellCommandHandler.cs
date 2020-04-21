@@ -26,7 +26,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return GConst.SpellCommandRedirect;
+            return GConst.AdminSpellCommandRedirect;
         }
 
         private void NullCheck(UpdateSpellCommand request, Spell spellToUpdate)

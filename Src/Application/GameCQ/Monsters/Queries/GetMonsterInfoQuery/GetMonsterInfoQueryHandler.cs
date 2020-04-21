@@ -1,14 +1,11 @@
-﻿using Application.Common.Interfaces;
-using AutoMapper;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Application.GameCQ.Monsters.Queries.GetMonsterInfoQuery
+﻿namespace Application.GameCQ.Monsters.Queries.GetMonsterInfoQuery
 {
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Application.Common.Interfaces;
+    using AutoMapper;
+    using MediatR;
+
     public class GetMonsterInfoQueryHandler : IRequestHandler<GetMonsterInfoQuery, MonsterFullViewModel>
     {
         private readonly IFFDbContext context;

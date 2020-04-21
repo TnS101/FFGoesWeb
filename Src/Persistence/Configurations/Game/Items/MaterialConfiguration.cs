@@ -14,6 +14,9 @@
                 .HasMaxLength(30)
                 .IsRequired();
 
+            builder.Property(m => m.Slot)
+                .HasDefaultValue("Material");
+
             builder.Property(m => m.ImagePath)
                 .HasMaxLength(80)
                 .IsRequired();

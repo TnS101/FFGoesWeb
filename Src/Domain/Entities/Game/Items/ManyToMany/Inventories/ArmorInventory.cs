@@ -7,7 +7,7 @@
             this.Count = 1;
         }
 
-        public int ArmorId { get; set; }
+        public string ArmorId { get; set; }
 
         public Armor Armor { get; set; }
 

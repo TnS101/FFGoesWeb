@@ -1,7 +1,8 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
     using System;
-    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Base;
+    using Domain.Contracts.Items;
 
     public class FightingClassStatCheck
     {
@@ -9,7 +10,7 @@
         {
         }
 
-        public void Check(IBaseItem item, int fightingClassStatNumber, int fightingClassNumber, Random rng)
+        public void Check(IEquipableItem item, int fightingClassStatNumber, int fightingClassNumber, Random rng)
         {
             if (item.Slot == "Weapon")
             {
@@ -37,7 +38,7 @@
             }
         }
 
-        private void ArmorCheck(IBaseItem item, Random rng)
+        private void ArmorCheck(IEquipableItem item, Random rng)
         {
             int slotNumber = rng.Next(0, 7);
 
@@ -122,7 +123,7 @@
             item.Name = $"{item.ClassType.Split(',')[0]}'s {item.Slot}";
         }
 
-        private void WeaponCheck(IBaseItem item, int fightingClassNumber, Random rng)
+        private void WeaponCheck(IEquipableItem item, int fightingClassNumber, Random rng)
         {
             int classOrder;
 
@@ -258,7 +259,7 @@
             }
         }
 
-        private void MultipleClassCheck(IBaseItem item, int fightingClassStatNumber)
+        private void MultipleClassCheck(IEquipableItem item, int fightingClassStatNumber)
         {
             string primaryUsable = item.ClassType.Split(',')[0];
 
@@ -300,7 +301,7 @@
             }
         }
 
-        private void SingleClassCheck(IBaseItem item, int fightingClassStatNumber)
+        private void SingleClassCheck(IEquipableItem item, int fightingClassStatNumber)
         {
             if (item.ClassType == "Hunter")
             {

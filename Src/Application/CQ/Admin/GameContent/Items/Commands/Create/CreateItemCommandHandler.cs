@@ -21,7 +21,7 @@
 
         public async Task<string> Handle(CreateItemCommand request, CancellationToken cancellationToken)
         {
-            int id;
+            string id;
 
             if (request.Slot == "Weapon")
             {
@@ -33,29 +33,37 @@
             }
             else if (request.Slot == "Material")
             {
-               id = await this.CreateMaterial(request, cancellationToken);
+               var result = await this.CreateMaterial(request, cancellationToken);
+
+               id = result.ToString();
             }
             else if (request.Slot == "Treasure")
             {
-                id = await this.CreateTreasure(request, cancellationToken);
+                var result = await this.CreateTreasure(request, cancellationToken);
+
+                id = result.ToString();
             }
             else if (request.Slot == "Treasure Key")
             {
-                id = await this.CreateTreasureKey(request, cancellationToken);
+                var result = await this.CreateTreasureKey(request, cancellationToken);
+
+                id = result.ToString();
             }
             else if (request.Slot == "Tool")
             {
-                id = await this.CreateTool(request, cancellationToken);
+                var result = await this.CreateTool(request, cancellationToken);
+
+                id = result.ToString();
             }
             else
             {
                 id = await this.CreateArmor(request, cancellationToken);
             }
 
-            return string.Format(GConst.CreateItemRedirect, request.Slot, id);
+            return string.Format(GConst.AdminItemCommandRedirectId, request.Slot, id);
         }
 
-        private async Task<int> CreateWeapon(CreateItemCommand request, CancellationToken cancellationToken)
+        private async Task<string> CreateWeapon(CreateItemCommand request, CancellationToken cancellationToken)
         {
             var weapon = new Weapon
             {
@@ -68,7 +76,6 @@
                 Intellect = request.Intellect,
                 Spirit = request.Spirit,
                 AttackPower = request.AttackPower,
-                Slot = "Weapon",
                 SellPrice = request.SellPrice,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
@@ -80,7 +87,7 @@
             return weapon.Id;
         }
 
-        private async Task<int> CreateArmor(CreateItemCommand request, CancellationToken cancellationToken)
+        private async Task<string> CreateArmor(CreateItemCommand request, CancellationToken cancellationToken)
         {
             var armor = new Armor
             {
@@ -107,7 +114,7 @@
             return armor.Id;
         }
 
-        private async Task<int> CreateTrinket(CreateItemCommand request, CancellationToken cancellationToken)
+        private async Task<string> CreateTrinket(CreateItemCommand request, CancellationToken cancellationToken)
         {
             var trinket = new Trinket
             {
@@ -119,7 +126,6 @@
                 Agility = request.Agility,
                 Intellect = request.Intellect,
                 Spirit = request.Spirit,
-                Slot = "Trinket",
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),

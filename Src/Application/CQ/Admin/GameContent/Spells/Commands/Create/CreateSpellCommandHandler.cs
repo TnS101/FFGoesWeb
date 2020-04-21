@@ -34,7 +34,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return GConst.SpellCommandRedirect;
+            return GConst.AdminSpellCommandRedirect;
         }
     }
 }

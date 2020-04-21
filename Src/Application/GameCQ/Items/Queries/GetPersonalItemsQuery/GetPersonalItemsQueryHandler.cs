@@ -166,7 +166,7 @@
             {
                 Items = treasures.Select(i => new ItemMinViewModel
                 {
-                    Id = i.Id,
+                    Id = i.Id.ToString(),
                     Name = i.Name,
                     ImagePath = i.ImagePath,
                     Slot = "Treasure",
@@ -195,7 +195,7 @@
             {
                 Items = treasureKeys.Select(i => new ItemMinViewModel
                 {
-                    Id = i.Id,
+                    Id = i.Id.ToString(),
                     Name = i.Name,
                     ImagePath = i.ImagePath,
                     Slot = "Treasure Key",
@@ -229,7 +229,7 @@
                 {
                     Items = materials.Select(i => new ItemMinViewModel
                     {
-                        Id = i.Id,
+                        Id = i.Id.ToString(),
                         Name = i.Name,
                         ImagePath = i.ImagePath,
                         Slot = "Material",

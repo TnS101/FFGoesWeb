@@ -1,10 +1,9 @@
 ﻿namespace Domain.Entities.Game.Items
 {
-    using Domain.Contracts.Items.AdditionalTypes;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using System.Collections.Generic;
 
-    public class TreasureKey : ITreasure
+    public class TreasureKey
     {
         public TreasureKey()
         {
@@ -15,6 +14,8 @@
         public string Name { get; set; }
 
         public string Rarity { get; set; }
+
+        public string Slot { get; set; }
 
         public string ImagePath { get; set; }
 

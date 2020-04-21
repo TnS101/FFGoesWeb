@@ -9,6 +9,8 @@
     using Application.CQ.Admin.GameContent.Spells.Commands.Delete;
     using Application.CQ.Admin.GameContent.Spells.Commands.Update;
     using Application.CQ.Admin.GameContent.Spells.Queries;
+    using Application.CQ.Admin.GameContent.Units.Commands.Create;
+    using Application.CQ.Admin.GameContent.Units.Commands.Delete;
     using Application.CQ.Admin.Moderation.Feedback.Commands.Delete.FeedbackTaskDoneCommand;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
@@ -98,6 +100,8 @@
             services.AddScoped<IRequestHandler<CreateSpellCommand, string>, CreateSpellCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateSpellCommand, string>, UpdateSpellCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteSpellCommand, string>, DeleteSpellCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateUnitCommand, string>, CreateUnitCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteUnitCommand, string>, DeleteUnitCommandHandler>();
         }
 
         private void AdminQueries(IServiceCollection services)

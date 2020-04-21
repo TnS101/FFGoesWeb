@@ -1,10 +1,10 @@
 ﻿namespace Application.CQ.Moderator.Commands.Delete
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class DeleteTicketCommandHandler : IRequestHandler<DeleteTicketCommand, string>
     {

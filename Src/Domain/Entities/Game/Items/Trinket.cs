@@ -1,19 +1,21 @@
 ﻿namespace Domain.Entities.Game.Items
 {
-    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Contracts.Items;
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
+    using System;
     using System.Collections.Generic;
 
-    public class Trinket : IBaseItem
+    public class Trinket : IEquipableItem
     {
         public Trinket()
         {
             this.TrinketEquipments = new HashSet<TrinketEquipment>();
             this.TrinketInventories = new HashSet<TrinketInventory>();
+            this.Id = Guid.NewGuid().ToString();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 

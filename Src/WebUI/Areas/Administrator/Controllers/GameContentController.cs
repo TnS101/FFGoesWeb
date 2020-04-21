@@ -102,9 +102,9 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> DeleteItem([FromForm]int id)
+        public async Task<ActionResult> DeleteItem([FromForm]string id, [FromForm]string slot)
         {
-            return this.Redirect(await this.Mediator.Send(new DeleteItemCommand { ItemId = id }));
+            return this.Redirect(await this.Mediator.Send(new DeleteItemCommand { ItemId = id, Slot = slot }));
         }
 
         [HttpGet]

@@ -1,20 +1,21 @@
 ﻿namespace Domain.Entities.Game.Items
 {
-    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Contracts.Items;
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using System;
     using System.Collections.Generic;
 
-    public class Armor : IBaseItem
+    public class Armor : IEquipableItem
     {
         public Armor()
         {
             this.ArmorInventories = new HashSet<ArmorInventory>();
             this.ArmorEquipments = new HashSet<ArmorEquipment>();
+            this.Id = Guid.NewGuid().ToString();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public double ArmorValue { get; set; }
 

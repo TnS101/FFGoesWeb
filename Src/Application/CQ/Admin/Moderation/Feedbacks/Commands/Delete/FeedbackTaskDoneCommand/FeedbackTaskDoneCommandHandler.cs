@@ -23,7 +23,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return GConst.ToDoListRedirect;
+            return GConst.AdminToDoListRedirect;
         }
     }
 }

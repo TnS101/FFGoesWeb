@@ -4,13 +4,13 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
-    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Contracts.Items;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
 
     public class UnEquipOption
     {
-        public async Task<string> UnEquip(Hero hero, IBaseItem item, StatSum statSum, IFFDbContext context)
+        public async Task<string> UnEquip(Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
         {
             if (item.Slot != "Weapon" && item.Slot != "Trinket")
             {

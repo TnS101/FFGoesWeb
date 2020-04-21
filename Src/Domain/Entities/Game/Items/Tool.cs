@@ -19,9 +19,13 @@
 
         public int BuyPrice { get; set; }
 
+        public int SellPrice { get; set; }
+
         public int Durability { get; set; }
 
         public bool IsCraftable { get; set; }
+
+        public string Slot { get; set; }
 
         public ICollection<ToolInventory> ToolInventories { get; set; }
 

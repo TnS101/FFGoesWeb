@@ -6,7 +6,7 @@
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.EquipmentOptions;
     using Application.GameContent.Utilities.FightingClassUtilites;
-    using Domain.Contracts.Items.AdditionalTypes;
+    using Domain.Contracts.Items;
     using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
@@ -36,13 +36,13 @@
             {
                 var equipOption = new EquipOption();
 
-                result = await equipOption.Equip(hero, await this.BaseItem(request), this.statSum, this.context);
+                result = await equipOption.Equip(hero, await this.EquipableItem(request), this.statSum, this.context);
             }
             else
             {
                 var unEquipOption = new UnEquipOption();
 
-                result = await unEquipOption.UnEquip(hero, await this.BaseItem(request), this.statSum, this.context);
+                result = await unEquipOption.UnEquip(hero, await this.EquipableItem(request), this.statSum, this.context);
             }
 
             this.context.Equipments.Update(hero.Equipment);
@@ -52,7 +52,7 @@
             return string.Format("/Equipment", result);
         }
 
-        private async Task<IBaseItem> BaseItem(UpdateEquipmentCommand request)
+        private async Task<IEquipableItem> EquipableItem(UpdateEquipmentCommand request)
         {
             if (request.Slot == "Weapon")
             {

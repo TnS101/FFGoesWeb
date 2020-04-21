@@ -1,5 +1,4 @@
-﻿
-namespace Application.CQ.Admin.GameContent.Spells.Commands.Create
+﻿namespace Application.CQ.Admin.GameContent.Spells.Commands.Create
 {
     using MediatR;
 

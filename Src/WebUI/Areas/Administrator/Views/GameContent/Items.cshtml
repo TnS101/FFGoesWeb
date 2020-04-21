@@ -37,6 +37,11 @@
                 <div class="item-padding has-text-align-center" id="@item.Id">
                     <img src="@item.ImagePath" alt="@item.Name's Image">
                     <h3 class="main-font-color">@item.Name</h3>
+                    <form asp-controller="GameContent" asp-action="DeleteItem" method="post">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <input type="hidden" name="slot" value="@item.Slot" />
+                        <input type="submit" name="button" value="Delete" class="main-button" />
+                    </form>
                     <br />
                     <hr />
                 </div>

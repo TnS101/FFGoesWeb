@@ -5,8 +5,7 @@
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.FightingClassUtilites;
     using Domain.Base;
-    using Domain.Contracts.Items.AdditionalTypes;
-    using Domain.Entities.Game.Items;
+    using Domain.Contracts.Items;
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
@@ -17,7 +16,7 @@
         {
         }
 
-        public async Task<string> Equip(Hero hero, IBaseItem item, StatSum statSum, IFFDbContext context)
+        public async Task<string> Equip(Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
         {
             if (hero.ClassType != item.ClassType)
             {

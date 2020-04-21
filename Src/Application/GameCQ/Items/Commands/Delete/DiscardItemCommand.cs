@@ -10,5 +10,7 @@
         public string ItemId { get; set; }
 
         public string Slot { get; set; }
+
+        public int Count { get; set; }
     }
 }

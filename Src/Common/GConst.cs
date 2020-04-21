@@ -24,7 +24,7 @@
 
         public const string RegistrationSuccessful = "Almost there, {0}! Hopping to the login page.";
 
-        // Redirects
+        // User Redirects
         public const string CommentCommandRedirect = "/Forum/CurrentTopic/id?id={0}";
         public const string FriendCommandRedirect = "/Friends/All/";
         public const string TopicCommandRedirect = @"\Forum\Home";
@@ -32,30 +32,32 @@
         public const string CreateMessageCommandRedirect = "/Profile/Friends";
         public const string MessageCommandRedirect = "/Profile/Chats";
         public const string HomeRedirect = "/";
-        public const string FeedbackCommandRedirect = "/Administrator/Feedback/Feedbacks";
         public const string SendFeedbackRedirect = "Profile/Feedbacks";
         public const string OpenCommentTicketRedirect = "/Social/TicketSent";
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
         public const string TicketCommandRedirect = "/Moderator/Tickets";
-        public const string ToDoListRedirect = "/Admin/ToDoList";
         public const string HeroCommandRedirect = "/Unit/All";
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";
-        public const string AdminItemCommandRedirect = "/Items/id?id={0}";
         public const string NotEnoughEnergyRedirect = "/EnergyError";
         public const string TreasureEncounterRedirect = "/TreasureEncounter";
         public const string EnemyEncounterRedirect = "EnemyEncounter";
         public const string UnitCreationErrorRedirect = "/Unit/Create";
         public const string SuccesfulFeedbackRedirect = @"\FeedbackSuccess";
         public const string ErrorRedirect = @"\Error\DefaultError";
-        public const string SpellCommandRedirect = @"\GameContent\Spells";
+
+        // Admin Redirects
+        public const string AdminToDoListRedirect = "/Admin/ToDoList";
+        public const string AdminFeedbackCommandRedirect = "/Administrator/Feedback/Feedbacks";
+        public const string AdminSpellCommandRedirect = @"\GameContent\Spells";
         public const string InModerationRedirect = @"\Topic\InModeration";
         public const string FeedbackErrorRedirect = "/Profile/Panel#feedback-button";
-        public const string CreateItemRedirect = "/GameContent/Items/slot?slot={0}#{1}";
-        public const string UnitCommandRedirect = "/GameContent/Units";
-        public const string MonsterCommandRedirect = "/GameContent/Monsters";
-        public const string UnitCommandRedirectId = "/GameContent/Units#{0}";
+        public const string AdminItemCommandRedirectId = "/GameContent/Items/slot?slot={0}#{1}";
+        public const string AdminUnitCommandRedirect = "/GameContent/Units";
+        public const string AdminMonsterCommandRedirect = "/GameContent/Monsters";
+        public const string AdminUnitCommandRedirectId = "/GameContent/Units#{0}";
         public const string MonsterCommandRedirectId = "/GameContent/Monsters#{0}";
+        public const string AdminItemCommandRedirect = "/GameContent/Items/slot?slot={0}";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";

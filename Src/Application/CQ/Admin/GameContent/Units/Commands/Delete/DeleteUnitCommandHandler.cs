@@ -30,7 +30,7 @@
                 this.context.Spells.RemoveRange(spells);
                 this.context.Monsters.Remove(monster);
 
-                returnString = GConst.MonsterCommandRedirect;
+                returnString = GConst.AdminMonsterCommandRedirect;
             }
             else
             {
@@ -46,7 +46,7 @@
 
                 this.context.FightingClasses.Remove(fightingClass);
 
-                returnString = GConst.UnitCommandRedirect;
+                returnString = GConst.AdminUnitCommandRedirect;
             }
 
             await this.context.SaveChangesAsync(cancellationToken);

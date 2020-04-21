@@ -71,7 +71,7 @@
 
                 await this.context.SaveChangesAsync(cancellationToken);
 
-                returnString = string.Format(GConst.UnitCommandRedirectId, fightingClass.Id);
+                returnString = string.Format(GConst.AdminUnitCommandRedirectId, fightingClass.Id);
             }
 
             return returnString;
