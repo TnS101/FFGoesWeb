@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Application.Common.RegexFilters;
+    using Application.Common.StringProcessing.RegexFilters;
     using Domain.Entities.Common;
     using Domain.Entities.Social;
     using global::Common;

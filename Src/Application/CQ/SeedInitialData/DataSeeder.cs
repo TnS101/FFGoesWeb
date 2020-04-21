@@ -206,7 +206,7 @@
             {
                 Name = "Earth Essence",
                 Type = "Essence",
-                ImagePath = "/images/Items/Earth-Essence.png",
+                ImagePath = "/images/Items/Materials/Earth-Essence.png",
                 IsRefineable = true,
             });
 
@@ -214,7 +214,7 @@
             {
                 Name = "Air Essence",
                 Type = "Essence",
-                ImagePath = "/images/Items/Air-Essence.png",
+                ImagePath = "/images/Items/Materials/Air-Essence.png",
                 IsRefineable = true,
             });
 
@@ -222,7 +222,7 @@
             {
                 Name = "Fire Essence",
                 Type = "Essence",
-                ImagePath = "/images/Items/Fire-Essence.png",
+                ImagePath = "/images/Items/Materials/Fire-Essence.png",
                 IsRefineable = true,
             });
 
@@ -230,7 +230,7 @@
             {
                 Name = "Shiny Scale",
                 Type = "Scale",
-                ImagePath = "/images/Items/Shiny-Scale.png",
+                ImagePath = "/images/Items/Materials/Shiny-Scale.png",
                 IsRefineable = true,
             });
 
@@ -238,7 +238,7 @@
             {
                 Name = "Transparent Scale",
                 Type = "Scale",
-                ImagePath = "/images/Items/Transparent-Scale.png",
+                ImagePath = "/images/Items/Materials/Transparent-Scale.png",
                 IsRefineable = true,
             });
 
@@ -246,8 +246,8 @@
             {
                 Name = "Golden Necklace",
                 Type = "Metal",
-                RelatedMaterials = "Gold Scraps 2, Iron Scraps 2",
-                ImagePath = "/images/Items/Golden-Necklace.png",
+                RelatedMaterials = "Gold Scraps 2,Iron Scraps 2",
+                ImagePath = "/images/Items/Materials/Golden-Necklace.png",
                 IsDisolveable = true,
             });
 
@@ -255,7 +255,7 @@
             {
                 Name = "Hard Scale",
                 Type = "Scale",
-                ImagePath = "/images/Items/Hard-Scale.png",
+                ImagePath = "/images/Items/Materials/Hard-Scale.png",
                 IsRefineable = true,
             });
 
@@ -263,7 +263,7 @@
             {
                 Name = "Tomato",
                 Type = "Vegetables",
-                ImagePath = "/images/Items/Tomato.png",
+                ImagePath = "/images/Items/Materials/Tomato.png",
                 IsRefineable = true,
             });
 
@@ -271,7 +271,7 @@
             {
                 Name = "Lettuce",
                 Type = "Vegetables",
-                ImagePath = "/images/Items/Lettuce.png",
+                ImagePath = "/images/Items/Materials/Lettuce.png",
                 IsRefineable = true,
             });
 
@@ -279,7 +279,7 @@
             {
                 Name = "Turnip",
                 Type = "Vegetables",
-                ImagePath = "/images/Items/Turnip.png",
+                ImagePath = "/images/Items/Materials/Turnip.png",
                 IsRefineable = true,
             });
 
@@ -287,7 +287,7 @@
             {
                 Name = "Pumpkin",
                 Type = "Vegetables",
-                ImagePath = "/images/Items/Pumpkin.png",
+                ImagePath = "/images/Items/Materials/Pumpkin.png",
                 IsRefineable = true,
             });
 
@@ -296,21 +296,21 @@
             {
                 Name = "Dry Branch",
                 Type = "Wood",
-                ImagePath = "/images/Items/Dry-Branch.png",
+                ImagePath = "/images/Items/Materials/Dry-Branch.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Green Leaves",
                 Type = "Wood",
-                ImagePath = "/images/Items/Green-Leaves.png",
+                ImagePath = "/images/Items/Materials/Green-Leaves.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Tree Stump",
                 Type = "Wood",
-                ImagePath = "/images/Items/Tree-Stump.png",
+                ImagePath = "/images/Items/Materials/Tree-Stump.png",
                 IsRefineable = true,
                 FuelCount = 1,
             });
@@ -319,7 +319,7 @@
             {
                 Name = "Acorn",
                 Type = "Wood",
-                ImagePath = "/images/Items/Acorn.png",
+                ImagePath = "/images/Items/Materials/Acorn.png",
                 IsRefineable = true,
             });
 
@@ -327,7 +327,7 @@
             {
                 Name = "Granite",
                 Type = "Rock",
-                ImagePath = "/images/Items/Granite.png",
+                ImagePath = "/images/Items/Materials/Granite.png",
                 IsRefineable = true,
             });
 
@@ -335,7 +335,7 @@
             {
                 Name = "Marble",
                 Type = "Rock",
-                ImagePath = "/images/Items/Marble.png",
+                ImagePath = "/images/Items/Materials/Marble.png",
                 IsRefineable = true,
             });
 
@@ -343,7 +343,7 @@
             {
                 Name = "Quartzite",
                 Type = "Rock",
-                ImagePath = "/images/Items/Quartzite.png",
+                ImagePath = "/images/Items/Materials/Quartzite.png",
                 IsRefineable = true,
             });
 
@@ -351,7 +351,7 @@
             {
                 Name = "Obsidian",
                 Type = "Rock",
-                ImagePath = "/images/Items/Obsidian.png",
+                ImagePath = "/images/Items/Materials/Obsidian.png",
                 IsRefineable = true,
             });
 
@@ -359,7 +359,7 @@
             {
                 Name = "Animal Stomach",
                 Type = "Meat",
-                ImagePath = "/images/Items/Animal-Stomach.png",
+                ImagePath = "/images/Items/Materials/Animal-Stomach.png",
                 IsRefineable = true,
             });
 
@@ -367,8 +367,8 @@
             {
                 Name = "Animal Skull",
                 Type = "Bones",
-                RelatedMaterials = "Bone Dust 1, Bone Shards 2",
-                ImagePath = "/images/Items/Animal-Skull.png",
+                RelatedMaterials = "Bone Dust 1,Bone Shards 2",
+                ImagePath = "/images/Items/Materials/Animal-Skull.png",
                 IsDisolveable = true,
             });
 
@@ -376,8 +376,8 @@
             {
                 Name = "Animal Bones",
                 Type = "Bones",
-                RelatedMaterials = "Bone Dust 2, Bone Shards 1",
-                ImagePath = "/images/Items/Animal-Bones.png",
+                RelatedMaterials = "Bone Dust 2,Bone Shards 1",
+                ImagePath = "/images/Items/Materials/Animal-Bones.png",
                 IsDisolveable = true,
             });
 
@@ -385,15 +385,15 @@
             {
                 Name = "Fangs",
                 Type = "Bones",
-                ImagePath = "/images/Items/Fangs.png",
+                ImagePath = "/images/Items/Materials/Fangs.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "T-Shirt",
                 Type = "Cloth",
-                RelatedMaterials = "Cloth 1, String 2",
-                ImagePath = "/images/Items/T-Shirt.png",
+                RelatedMaterials = "Cloth 1,String 2",
+                ImagePath = "/images/Items/Materials/T-Shirt.png",
                 IsDisolveable = true,
             });
 
@@ -402,7 +402,7 @@
                 Name = "Shoes",
                 Type = "Leather",
                 RelatedMaterials = "Leather 1,String 2",
-                ImagePath = "/images/Items/Shoes.png",
+                ImagePath = "/images/Items/Materials/Shoes.png",
                 IsDisolveable = true,
             });
 
@@ -411,7 +411,7 @@
                 Name = "Pants",
                 Type = "Leather",
                 RelatedMaterials = "Leather 1,Cloth 1,String 1",
-                ImagePath = "/images/Items/Pants.png",
+                ImagePath = "/images/Items/Materials/Pants.png",
                 IsDisolveable = true,
             });
 
@@ -419,21 +419,21 @@
             {
                 Name = "Human Soul",
                 Type = "Essence",
-                ImagePath = "/images/Items/Human-Soul.png",
+                ImagePath = "/images/Items/Materials/Human-Soul.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Rose",
                 Type = "Plant",
-                ImagePath = "/images/Items/Rose.png",
+                ImagePath = "/images/Items/Materials/Rose.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Daisy",
                 Type = "Plant",
-                ImagePath = "/images/Items/Daisy.png",
+                ImagePath = "/images/Items/Materials/Daisy.png",
             });
 
             this.context.Materials.Add(new Material
@@ -441,7 +441,7 @@
                 Name = "Clay Pot",
                 Type = "Furniture",
                 RelatedMaterials = "Clay Dust 1,Clay Block 2",
-                ImagePath = "/images/Items/Clay-Pot.png",
+                ImagePath = "/images/Items/Materials/Clay-Pot.png",
                 IsDisolveable = true,
             });
 
@@ -449,7 +449,7 @@
             {
                 Name = "Plastic Vase",
                 Type = "Furniture",
-                ImagePath = "/images/Items/Plastic-Vase.png",
+                ImagePath = "/images/Items/Materials/Plastic-Vase.png",
                 IsRefineable = true,
             });
 
@@ -457,7 +457,7 @@
             {
                 Name = "Life Essence",
                 Type = "Essence",
-                ImagePath = "/images/Items/Life-Essence.png",
+                ImagePath = "/images/Items/Materials/Life-Essence.png",
                 IsRefineable = true,
             });
 
@@ -465,7 +465,7 @@
             {
                 Name = "Light Essence",
                 Type = "Essence",
-                ImagePath = "/images/Items/Light-Essence.png",
+                ImagePath = "/images/Items/Materials/Light-Essence.png",
                 IsRefineable = true,
             });
 
@@ -473,7 +473,7 @@
             {
                 Name = "Shadow Essence",
                 Type = "Essence",
-                ImagePath = "/images/Items/Shadow-Essence.png",
+                ImagePath = "/images/Items/Materials/Shadow-Essence.png",
                 IsRefineable = true,
             });
 
@@ -481,7 +481,7 @@
             {
                 Name = "Death Essence",
                 Type = "Essence",
-                ImagePath = "/images/Items/Death-Essence.png",
+                ImagePath = "/images/Items/Materials/Death-Essence.png",
                 IsRefineable = true,
             });
 
@@ -489,7 +489,7 @@
             {
                 Name = "String",
                 Type = "Cloth",
-                ImagePath = "/images/Items/String.png",
+                ImagePath = "/images/Items/Materials/String.png",
                 IsRefineable = true,
             });
 
@@ -498,7 +498,7 @@
                 Name = "Puffer Fish",
                 Type = "Fish",
                 RelatedMaterials = "Poison Vial 1,Fish Meat 1",
-                ImagePath = "/images/Items/Puffer-Fish.png",
+                ImagePath = "/images/Items/Materials/Puffer-Fish.png",
                 IsDisolveable = true,
             });
 
@@ -506,7 +506,7 @@
             {
                 Name = "Turtle Eggs",
                 Type = "Egg",
-                ImagePath = "/images/Items/Turtle-Eggs.png",
+                ImagePath = "/images/Items/Materials/Turtle-Eggs.png",
                 IsRefineable = true,
             });
 
@@ -515,7 +515,7 @@
                 Name = "Bottled Message",
                 Type = "Junk",
                 RelatedMaterials = "Glass 1,Paper 1",
-                ImagePath = "/images/Items/Bottled-Message.png",
+                ImagePath = "/images/Items/Materials/Bottled-Message.png",
                 IsDisolveable = true,
             });
 
@@ -523,7 +523,7 @@
             {
                 Name = "Potato",
                 Type = "Vegetable",
-                ImagePath = "/images/Items/Potato.png",
+                ImagePath = "/images/Items/Materials/Potato.png",
                 IsRefineable = true,
             });
 
@@ -531,7 +531,7 @@
             {
                 Name = "Corn",
                 Type = "Vegetable",
-                ImagePath = "/images/Items/Can.png",
+                ImagePath = "/images/Items/Materials/Can.png",
                 IsRefineable = true,
             });
 
@@ -539,8 +539,8 @@
             {
                 Name = "Garden Shovel",
                 Type = "Junk",
-                RelatedMaterials = "Stick 1, Copper Chunks 1, Dirt 1",
-                ImagePath = "/images/Items/Garden-Shovel.png",
+                RelatedMaterials = "Stick 1,Copper Chunks 1,Dirt 1",
+                ImagePath = "/images/Items/Materials/Garden-Shovel.png",
                 IsDisolveable = true,
             });
 
@@ -548,8 +548,8 @@
             {
                 Name = "Watering Can",
                 Type = "Junk",
-                RelatedMaterials = "Water Flask 1, Iron Chunks 1",
-                ImagePath = "/images/Items/Watering-Can.png",
+                RelatedMaterials = "Water Flask 1,Iron Chunks 1",
+                ImagePath = "/images/Items/Materials/Watering-Can.png",
                 IsDisolveable = true,
             });
 
@@ -557,7 +557,7 @@
             {
                 Name = "Broken Glass Cup",
                 Type = "Junk",
-                ImagePath = "/images/Items/Broken-Glass-Cup.png",
+                ImagePath = "/images/Items/Materials/Broken-Glass-Cup.png",
                 IsRefineable = true,
             });
 
@@ -565,7 +565,7 @@
             {
                 Name = "Stale Hotdog",
                 Type = "Junk",
-                ImagePath = "/images/Items/Stale-Hotdog.png",
+                ImagePath = "/images/Items/Materials/Stale-Hotdog.png",
                 IsRefineable = true,
             });
 
@@ -573,7 +573,7 @@
             {
                 Name = "Crushed Can",
                 Type = "Junk",
-                ImagePath = "/images/Items/Crushed-Can.png",
+                ImagePath = "/images/Items/Materials/Crushed-Can.png",
                 IsRefineable = true,
             });
 
@@ -582,7 +582,7 @@
             {
                 Name = "Rubber Band",
                 Type = "Junk",
-                ImagePath = "/images/Items/Rubber-Band.png",
+                ImagePath = "/images/Items/Materials/Rubber-Band.png",
                 IsRefineable = true,
             });
 
@@ -590,21 +590,21 @@
             {
                 Name = "Animal Blood",
                 Type = "Junk",
-                ImagePath = "/images/Items/Animal-Blood.png",
+                ImagePath = "/images/Items/Materials/Animal-Blood.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Dead Critters",
                 Type = "Junk",
-                ImagePath = "/images/Items/Dead-Critters.png",
+                ImagePath = "/images/Items/Materials/Dead-Critters.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Broken Skull",
                 Type = "Junk",
-                ImagePath = "/images/Items/Broken-Skull.png",
+                ImagePath = "/images/Items/Materials/Broken-Skull.png",
                 IsRefineable = true,
             });
 
@@ -612,8 +612,8 @@
             {
                 Name = "Broken Watch",
                 Type = "Junk",
-                RelatedMaterials = "Gold Scraps 1, Iron Scraps 1, Copper Scraps 1",
-                ImagePath = "/images/Items/Broken-Watch.png",
+                RelatedMaterials = "Gold Scraps 1,Iron Scraps 1,Copper Scraps 1",
+                ImagePath = "/images/Items/Materials/Broken-Watch.png",
                 IsDisolveable = true,
             });
 
@@ -621,8 +621,8 @@
             {
                 Name = "Empty Plastic Bottle",
                 Type = "Junk",
-                RelatedMaterials = "Gold Scraps 1, Iron Scraps 1, Copper Scraps 1",
-                ImagePath = "/images/Items/Empty-Plastic-Bottle.png",
+                RelatedMaterials = "Gold Scraps 1,Iron Scraps 1,Copper Scraps 1",
+                ImagePath = "/images/Items/Materials/Empty-Plastic-Bottle.png",
                 IsDisolveable = true,
             });
 
@@ -630,8 +630,8 @@
             {
                 Name = "Broken Cogs",
                 Type = "Junk",
-                RelatedMaterials = "Copper Scraps 1, Iron Scraps 1",
-                ImagePath = "/images/Items/Broken-Cogs.png",
+                RelatedMaterials = "Copper Scraps 1,Iron Scraps 1",
+                ImagePath = "/images/Items/Materials/Broken-Cogs.png",
                 IsDisolveable = true,
             });
 
@@ -640,7 +640,7 @@
                 Name = "Rusty Pipes",
                 Type = "Junk",
                 RelatedMaterials = "Copper Scraps 2",
-                ImagePath = "/images/Items/Rusty-Pipes.png",
+                ImagePath = "/images/Items/Materials/Rusty-Pipes.png",
                 IsDisolveable = true,
             });
 
@@ -648,8 +648,8 @@
             {
                 Name = "Dead Battery",
                 Type = "Junk",
-                RelatedMaterials = "Iron Scraps 1, Golden Scraps 1",
-                ImagePath = "/images/Items/Dead-Battery.png",
+                RelatedMaterials = "Iron Scraps 1,Golden Scraps 1",
+                ImagePath = "/images/Items/Materials/Dead-Battery.png",
                 IsDisolveable = true,
             });
 
@@ -657,7 +657,7 @@
             {
                 Name = "Cracked Water Orb",
                 Type = "Junk",
-                RelatedMaterials = "/images/Items/Cracked-Water-Orb.png",
+                RelatedMaterials = "/images/Items/Materials/Cracked-Water-Orb.png",
                 ImagePath = "https://ibb.co/K0GgNk2",
                 IsDisolveable = true,
             });
@@ -666,7 +666,7 @@
             {
                 Name = "Coal Piece",
                 Type = "Junk",
-                ImagePath = "/images/Items/Coal-Piece.png",
+                ImagePath = "/images/Items/Materials/Coal-Piece.png",
                 IsRefineable = true,
             });
 
@@ -674,14 +674,14 @@
             {
                 Name = "Water Flask",
                 Type = "Junk",
-                ImagePath = "/images/Items/Water-Flask.png",
+                ImagePath = "/images/Items/Materials/Water-Flask.png",
             });
 
             this.context.Materials.Add(new Material
             {
                 Name = "Worm",
                 Type = "Junk",
-                ImagePath = "/images/Items/Worm.png",
+                ImagePath = "/images/Items/Materials/Worm.png",
             });
 
             this.context.Materials.Add(new Material
@@ -689,7 +689,7 @@
                 Name = "Withered Roots",
                 Type = "Junk",
                 RelatedMaterials = "Stick 1,Dirt 1",
-                ImagePath = "/images/Items/Withered-Roots.png",
+                ImagePath = "/images/Items/Materials/Withered-Roots.png",
                 IsDisolveable = true,
             });
 
@@ -698,7 +698,7 @@
                 Name = "Mud",
                 Type = "Junk",
                 RelatedMaterials = "Water Flask 1,Dirt 1",
-                ImagePath = "/images/Items/Mud.png",
+                ImagePath = "/images/Items/Materials/Mud.png",
                 IsDisolveable = true,
             });
 
@@ -706,7 +706,7 @@
             {
                 Name = "Broken Branches",
                 Type = "Junk",
-                ImagePath = "/images/Items/Broken-Branches.png",
+                ImagePath = "/images/Items/Materials/Broken-Branches.png",
                 IsRefineable = true,
             });
 
@@ -719,7 +719,7 @@
             {
                 Name = "Saw",
                 Durability = 10,
-                ImagePath = "/images/Items/Saw.png",
+                ImagePath = "/images/Items/Tools/Saw.png",
                 BuyPrice = 20,
             });
 
@@ -727,7 +727,7 @@
             {
                 Name = "Hammer",
                 Durability = 10,
-                ImagePath = "/images/Items/Hammer.png",
+                ImagePath = "/images/Items/Tools/Hammer.png",
                 BuyPrice = 20,
             });
 
@@ -735,7 +735,7 @@
             {
                 Name = "Sandpaper",
                 Durability = 10,
-                ImagePath = "/images/Items/Sandpaper.png",
+                ImagePath = "/images/Items/Tools/Sandpaper.png",
                 BuyPrice = 10,
             });
 
@@ -743,7 +743,7 @@
             {
                 Name = "Anvil",
                 Durability = 30,
-                ImagePath = "/images/Items/Anvil.png",
+                ImagePath = "/images/Items/Tools/Anvil.png",
                 BuyPrice = 60,
             });
 
@@ -751,7 +751,7 @@
             {
                 Name = "Knife",
                 Durability = 10,
-                ImagePath = "/images/Items/Knife.png",
+                ImagePath = "/images/Items/Tools/Knife.png",
                 BuyPrice = 20,
             });
 
@@ -759,7 +759,7 @@
             {
                 Name = "Needle",
                 Durability = 20,
-                ImagePath = "/images/Items/Needle.png",
+                ImagePath = "/images/Items/Tools/Needle.png",
                 BuyPrice = 10,
             });
 
@@ -767,7 +767,7 @@
             {
                 Name = "Ruler",
                 Durability = 50,
-                ImagePath = "/images/Items/Ruler.png",
+                ImagePath = "/images/Items/Tools/Ruler.png",
                 BuyPrice = 30,
             });
 
@@ -775,7 +775,7 @@
             {
                 Name = "Scissors",
                 Durability = 20,
-                ImagePath = "/images/Items/Scissors.png",
+                ImagePath = "/images/Items/Tools/Scissors.png",
                 BuyPrice = 40,
             });
 
@@ -783,7 +783,7 @@
             {
                 Name = "Knitting Kit",
                 Durability = 20,
-                ImagePath = "/images/Items/Knitting-Kit.png",
+                ImagePath = "/images/Items/Tools/Knitting-Kit.png",
                 BuyPrice = 10,
             });
 
@@ -791,7 +791,7 @@
             {
                 Name = "Mortar and Pestle",
                 Durability = 30,
-                ImagePath = "/images/Items/Mortar-and-Pestle.png",
+                ImagePath = "/images/Items/Tools/Mortar-and-Pestle.png",
                 BuyPrice = 60,
             });
 
@@ -799,7 +799,7 @@
             {
                 Name = "Protective Mask",
                 Durability = 10,
-                ImagePath = "/images/Items/Protective-Mask.png",
+                ImagePath = "/images/Items/Tools/Protective-Mask.png",
                 BuyPrice = 20,
             });
 
@@ -807,7 +807,7 @@
             {
                 Name = "Cooling Rod",
                 Durability = 20,
-                ImagePath = "/images/Items/Cooling-Rod.png",
+                ImagePath = "/images/Items/Tools/Cooling-Rod.png",
                 BuyPrice = 40,
             });
 
@@ -815,7 +815,7 @@
             {
                 Name = "Heavy Sandpaper",
                 Durability = 20,
-                ImagePath = "/images/Items/Heavy-Sandpaper.png",
+                ImagePath = "/images/Items/Tools/Heavy-Sandpaper.png",
                 BuyPrice = 30,
             });
 
@@ -823,7 +823,7 @@
             {
                 Name = "Mixing Bowl",
                 Durability = 30,
-                ImagePath = "/images/Items/Mixing-Bowl.png",
+                ImagePath = "/images/Items/Tools/Mixing-Bowl.png",
                 BuyPrice = 50,
             });
 
@@ -831,7 +831,7 @@
             {
                 Name = "Cutting Board",
                 Durability = 30,
-                ImagePath = "/images/Items/Cutting-Board.png",
+                ImagePath = "/images/Items/Tools/Cutting-Board.png",
                 BuyPrice = 30,
             });
 
@@ -844,7 +844,7 @@
             {
                 MonsterName = "Bear",
                 Rarity = "Rare",
-                ImagePath = "/images/Sprites/Bear-Rare.png",
+                ImagePath = "/images/Monsters/Bear-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -852,7 +852,7 @@
             {
                 MonsterName = "Bear",
                 Rarity = "Heroic",
-                ImagePath = "/images/Sprites/Bear-Heroic.png",
+                ImagePath = "/images/Monsters/Bear-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -860,7 +860,7 @@
             {
                 MonsterName = "Demon",
                 Rarity = "Rare",
-                ImagePath = "/images/Sprites/Demon-Rare.png",
+                ImagePath = "/images/Monsters/Demon-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -868,7 +868,7 @@
             {
                 MonsterName = "Demon",
                 Rarity = "Heroic",
-                ImagePath = "/images/Sprites/Demon-Heroic.png",
+                ImagePath = "/images/Monsters/Demon-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -876,7 +876,7 @@
             {
                 MonsterName = "Giant",
                 Rarity = "Rare",
-                ImagePath = "/images/Sprites/Giant-Rare.png",
+                ImagePath = "/images/Monsters/Giant-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -884,7 +884,7 @@
             {
                 MonsterName = "Giant",
                 Rarity = "Heroic",
-                ImagePath = "/images/Sprites/Giant-Heroic.png",
+                ImagePath = "/images/Monsters/Giant-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -892,7 +892,7 @@
             {
                 MonsterName = "Gryphon",
                 Rarity = "Rare",
-                ImagePath = "/images/Sprites/Gryphon-Rare.png",
+                ImagePath = "/images/Monsters/Gryphon-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -900,7 +900,7 @@
             {
                 MonsterName = "Gryphon",
                 Rarity = "Heroic",
-                ImagePath = "/images/Sprites/Gryphon-Heroic.png",
+                ImagePath = "/images/Monsters/Gryphon-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -908,7 +908,7 @@
             {
                 MonsterName = "Reptile",
                 Rarity = "Rare",
-                ImagePath = "/images/Sprites/Reptile-Rare.png",
+                ImagePath = "/images/Monsters/Reptile-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -916,7 +916,7 @@
             {
                 MonsterName = "Reptile",
                 Rarity = "Heroic",
-                ImagePath = "/images/Sprites/Reptile-Heroic.png",
+                ImagePath = "/images/Monsters/Reptile-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -924,7 +924,7 @@
             {
                 MonsterName = "Saint",
                 Rarity = "Rare",
-                ImagePath = "/images/Sprites/Saint-Rare.png",
+                ImagePath = "/images/Monsters/Saint-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -932,7 +932,7 @@
             {
                 MonsterName = "Saint",
                 Rarity = "Heroic",
-                ImagePath = "/images/Sprites/Saint-Heroic.png",
+                ImagePath = "/images/Monsters/Saint-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -940,7 +940,7 @@
             {
                 MonsterName = "Skeleton",
                 Rarity = "Rare",
-                ImagePath = "/images/Sprites/Skeleton-Rare.png",
+                ImagePath = "/images/Monsters/Skeleton-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -948,7 +948,7 @@
             {
                 MonsterName = "Skeleton",
                 Rarity = "Heroic",
-                ImagePath = "/images/Sprites/Skeleton-Heroic.png",
+                ImagePath = "/images/Monsters/Skeleton-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -956,7 +956,7 @@
             {
                 MonsterName = "Wyrm",
                 Rarity = "Rare",
-                ImagePath = "/images/Sprites/Wyrm-Rare.png",
+                ImagePath = "/images/Monsters/Wyrm-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -964,7 +964,7 @@
             {
                 MonsterName = "Wyrm",
                 Rarity = "Heroic",
-                ImagePath = "/images/Sprites/Wyrm-Heroic.png",
+                ImagePath = "/images/Monsters/Wyrm-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -972,7 +972,7 @@
             {
                 MonsterName = "Zombie",
                 Rarity = "Rare",
-                ImagePath = "/images/Sprites/Zombie-Rare.png",
+                ImagePath = "/images/Monsters/Zombie-Rare.png",
                 StatAmplifier = 0.1,
             });
 
@@ -980,7 +980,7 @@
             {
                 MonsterName = "Zombie",
                 Rarity = "Heroic",
-                ImagePath = "/images/Sprites/Zombie-Heroic.png",
+                ImagePath = "/images/Monsters/Zombie-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -1001,7 +1001,7 @@
                 ArmorValue = 5,
                 ResistanceValue = 1,
                 CritChance = 2,
-                ImagePath = "/images/Sprites/Bear.png",
+                ImagePath = "/images/Monsters/Bear.png",
                 Description = "A bloodthirsty animal,which also likes to party for some reason...",
             });
 
@@ -1017,7 +1017,7 @@
                 ArmorValue = 3,
                 ResistanceValue = 3,
                 CritChance = 5,
-                ImagePath = "/images/Sprites/Reptile.png",
+                ImagePath = "/images/Monsters/Reptile.png",
                 Description = "Actually kind of a dinosaur/lizard thingy... not very sure.",
             });
 
@@ -1033,7 +1033,7 @@
                 ArmorValue = 2.6,
                 ResistanceValue = 2,
                 CritChance = 2,
-                ImagePath = "/images/Sprites/Zombie.png",
+                ImagePath = "/images/Monsters/Zombie.png",
                 Description = "Sapiosexual. Not very smart.",
             });
 
@@ -1049,7 +1049,7 @@
                 ArmorValue = 1.5,
                 ResistanceValue = 2,
                 CritChance = 9,
-                ImagePath = "/images/Sprites/Skeleton.png",
+                ImagePath = "/images/Monsters/Skeleton.png",
                 Description = "{Insert a /Spooky/ joke here.}",
             });
 
@@ -1065,7 +1065,7 @@
                 ArmorValue = 4.6,
                 ResistanceValue = 3,
                 CritChance = 3,
-                ImagePath = "/images/Sprites/Wyrm.png",
+                ImagePath = "/images/Monsters/Wyrm.png",
                 Description = "Picture this guy beneath the toilet seat next time you take a dump. I dare you!",
             });
 
@@ -1081,7 +1081,7 @@
                 ArmorValue = 5,
                 ResistanceValue = 5,
                 CritChance = 2,
-                ImagePath = "/images/Sprites/Giant.png",
+                ImagePath = "/images/Monsters/Giant.png",
                 Description = "Not to be confused with the Iron Giant.",
             });
 
@@ -1097,7 +1097,7 @@
                 ArmorValue = 4,
                 ResistanceValue = 4,
                 CritChance = 7,
-                ImagePath = "/images/Sprites/Gryphon.png",
+                ImagePath = "/images/Monsters/Gryphon.png",
                 Description = "These halfbreeds don't just exist in World of Warcraft!",
             });
 
@@ -1113,7 +1113,7 @@
                 ArmorValue = 2,
                 ResistanceValue = 6,
                 CritChance = 3,
-                ImagePath = "/images/Sprites/Saint.png",
+                ImagePath = "/images/Monsters/Saint.png",
                 Description = "You'll pay for not going to church on sundays!",
             });
 
@@ -1129,7 +1129,7 @@
                 ArmorValue = 7.3,
                 ResistanceValue = 3.2,
                 CritChance = 5.6,
-                ImagePath = "/images/Sprites/Demon.png",
+                ImagePath = "/images/Monsters/Demon.png",
                 Description = "Fearsome and cunning! Something is wrong with his head (I mean the PNG file).",
             });
 
@@ -1150,7 +1150,7 @@
                 ArmorValue = 5.8,
                 ResistanceValue = 4,
                 CritChance = 3.8,
-                ImagePath = "/images/Sprites/Warrior.png",
+                ImagePath = "/images/Classes/Warrior.png",
                 Description = "If you want to spam one button and lose brain cells simultaneously, you should probably play CS: GO." +
                 "Main Stat: Strength.",
                 IconPath = "/images/Icons/Warrior-Icon.png",
@@ -1168,7 +1168,7 @@
                 ArmorValue = 4.5,
                 ResistanceValue = 3.5,
                 CritChance = 6,
-                ImagePath = "/images/Sprites/Hunter.png",
+                ImagePath = "/images/Classes/Hunter.png",
                 Description = "He could have a shotgun but that would be way too much OP." +
                "Main Stat: Agility.",
                 IconPath = "/images/Icons/Hunter-Icon.png",
@@ -1186,7 +1186,7 @@
                 ArmorValue = 3,
                 ResistanceValue = 8.8,
                 CritChance = 2.8,
-                ImagePath = "/images/Sprites/Mage.png",
+                ImagePath = "/images/Classes/Mage.png",
                 Description = "Like cards? Go to Vegas. Like bunnies? Open a rabbit farm. Want to 1-shot someone? [CLICK ME]!" +
                 "Main Stat: Intellect.",
                 IconPath = "/images/Icons/Mage-Icon.png",
@@ -1204,7 +1204,7 @@
                 ArmorValue = 4.8,
                 ResistanceValue = 3.2,
                 CritChance = 4,
-                ImagePath = "/images/Sprites/Druid.png",
+                ImagePath = "/images/Classes/Druid.png",
                 Description = "Don't worry. I've already donated 5 bucks to that *Beast* guy." +
                 "Main Stat: Spirit.",
                 IconPath = "/images/Icons/Druid-Icon.png",
@@ -1222,7 +1222,7 @@
                 ArmorValue = 3.6,
                 ResistanceValue = 4,
                 CritChance = 3,
-                ImagePath = "/images/Sprites/Necroid.png",
+                ImagePath = "/images/Classes/Necroid.png",
                 Description = "Actually, you don't wanna know about this guy. I've warned you." +
                 "Main Stat: Intellect.",
                 IconPath = "/images/Icons/Necroid-Icon.png",
@@ -1240,7 +1240,7 @@
                 ArmorValue = 6,
                 ResistanceValue = 7.3,
                 CritChance = 4,
-                ImagePath = "/images/Sprites/Paladin.png",
+                ImagePath = "/images/Classes/Paladin.png",
                 Description = "Damage? Got it. Health? Got it. Girlfriend? ... :(" +
                "Main Stat: Strength.",
                 IconPath = "/images/Icons/Paladin-Icon.png",
@@ -1258,7 +1258,7 @@
                 ArmorValue = 3,
                 ResistanceValue = 5.6,
                 CritChance = 3,
-                ImagePath = "/images/Sprites/Priest.png",
+                ImagePath = "/images/Classes/Priest.png",
                 Description = "Don't worry. He won't molest you." +
                "Main Stat: Spirit.",
                 IconPath = "/images/Icons/Priest-Icon.png",
@@ -1276,7 +1276,7 @@
                 ArmorValue = 3.8,
                 ResistanceValue = 2.5,
                 CritChance = 6.3,
-                ImagePath = "/images/Sprites/Rogue.png",
+                ImagePath = "/images/Classes/Rogue.png",
                 Description = "He steals money. Enough said, you greedy bastard." +
                "Main Stat: Agility.",
                 IconPath = "/images/Icons/Rogue-Icon.png",
@@ -1294,7 +1294,7 @@
                 ArmorValue = 4,
                 ResistanceValue = 6,
                 CritChance = 4,
-                ImagePath = "/images/Sprites/Shaman.png",
+                ImagePath = "/images/Classes/Shaman.png",
                 Description = "Freezing, zapping and stoning people to death was never such fun." +
                "Main Stat: Stamina.",
                 IconPath = "/images/Icons/Shaman-Icon.png",

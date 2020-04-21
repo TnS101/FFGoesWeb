@@ -38,7 +38,7 @@
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
         public const string TicketCommandRedirect = "/Moderator/Tickets";
         public const string ToDoListRedirect = "/Admin/ToDoList";
-        public const string UnitCommandRedirect = "/Unit/All";
+        public const string HeroCommandRedirect = "/Unit/All";
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";
         public const string AdminItemCommandRedirect = "/Items/id?id={0}";
@@ -51,7 +51,11 @@
         public const string SpellCommandRedirect = @"\GameContent\Spells";
         public const string InModerationRedirect = @"\Topic\InModeration";
         public const string FeedbackErrorRedirect = "/Profile/Panel#feedback-button";
-        public const string CreateItemRedirect = "/Items/slot?slot={0}";
+        public const string CreateItemRedirect = "/GameContent/Items/slot?slot={0}#{1}";
+        public const string UnitCommandRedirect = "/GameContent/Units";
+        public const string MonsterCommandRedirect = "/GameContent/Monsters";
+        public const string UnitCommandRedirectId = "/GameContent/Units#{0}";
+        public const string MonsterCommandRedirectId = "/GameContent/Monsters#{0}";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";

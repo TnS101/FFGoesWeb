@@ -23,8 +23,6 @@
 
         public bool IsCraftable { get; set; }
 
-        public string RelatedMaterials { get; set; }
-
         public ICollection<ToolInventory> ToolInventories { get; set; }
 
         public ICollection<Material> Materials { get; set; }

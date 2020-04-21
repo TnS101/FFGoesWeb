@@ -36,7 +36,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.Redirect(GConst.UnitCommandRedirect);
+                return this.Redirect(GConst.HeroCommandRedirect);
             }
 
             return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = hero.ClassType, Race = hero.Race, Name = hero.Name, User = this.User }));

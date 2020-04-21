@@ -66,7 +66,7 @@
 
             await this.context.SaveChangesAsync(cancellationToken);
 
-            return GConst.UnitCommandRedirect;
+            return GConst.HeroCommandRedirect;
         }
     }
 }

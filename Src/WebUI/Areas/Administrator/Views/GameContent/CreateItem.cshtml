@@ -191,7 +191,31 @@
                         })
                     }
                     else if (slotOption === 'Tool') {
-                        $('#spells').attr('hidden', true);
+                        $('#reward').hide();
+                        $('#attack').hide();
+                        $('#armor').hide();
+                        $('#resistance').hide();
+                        $('#rarity').hide();
+                        $('#reward').hide();
+                        $('#refineable').hide();
+                        $('#disolveable').hide();
+                        $('#materials').hide();
+
+                        $('#craftable').hide();
+                        $('#level').hide();
+                        $('#stamina').hide();
+                        $('#strength').hide();
+                        $('#agility').hide();
+                        $('#intellect').hide();
+                        $('#spirit').hide();
+                        $('#sell').hide();
+                        $('#class-type').hide();
+
+                        $('#name').show();
+                        $('#craftable').show();
+                        $('#buy').show();
+                        $('#durability').show();
+
                     }
                 })
             })
@@ -207,8 +231,9 @@
                     <form asp-action="CreateItem" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group item-padding">
-                            <label for="slot" class="contro-label has-normal-font-size has-normal-font-size">Slot : </label>
-                            <select class="slot" id="slot">
+                            <label for="slot" class="contro-label has-normal-font-size has-normal-font-size">Slot</label>
+                            <br />
+                            <select class="slot" id="slot" name="slot">
                                 <option selected value="None">Nothing Selected</option>
                                 <option value="Weapon">Weapon</option>
                                 <option value="Armor">Armor</option>
@@ -222,7 +247,7 @@
                         <div class="form-group fade-in item-padding has-normal-font-size" id="name" style="display:none">
                             <label for="input-name" class="contro-label has-normal-font-size">Name</label>
                             <br />
-                            <input id="input-name" name="name" class="form-control" />
+                            <input type="text" id="input-name" name="name" class="form-control" />
                         </div>
                         <div class="form-group fade-in item-padding" id="level" style="display:none">
                             <label for="input-level" class="contro-label has-normal-font-size">Level</label>
@@ -232,7 +257,7 @@
                         <div class="form-group fade-in item-padding" id="class-type" style="display:none">
                             <label for="input-classtype" class="contro-label has-normal-font-size">ClassType</label>
                             <br />
-                            <input id="input-classtype" name="classType" class="form-control" />
+                            <input type="text" id="input-classtype" name="classType" class="form-control" />
                         </div>
                         <div class="form-group fade-in item-padding" id="stamina" style="display:none">
                             <label for="input-stamina" class="contro-label has-normal-font-size">Stamina</label>
@@ -285,9 +310,13 @@
                             <input id="input-buyprice" name="buyPrice" class="form-control" min="1" max="1000" />
                         </div>
                         <div class="form-group fade-in item-padding" id="rarity" style="display:none">
-                            <label for="input-rarity" class="contro-label has-normal-font-size">Rarity</label>
+                            <label for="rarity-select" class="contro-label has-normal-font-size">Rarity</label>
                             <br />
-                            <input id="input-rarity" name="rarity" class="form-control" />
+                            <select id="rarity-select" name="rarity">
+                                <option value="Bronze">Bronze</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Gold">Gold</option>
+                            </select>
                         </div>
                         <div class="form-group fade-in item-padding" id="reward" style="display:none">
                             <label for="input-reward" class="contro-label has-normal-font-size">Reward</label>
@@ -297,7 +326,7 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="material-type">
                             <label for="material-type-select" class="contro-label has-normal-font-size">Type</label>
                             <br />
-                            <select id="material-type-select">
+                            <select id="material-type-select" name="materialType">
                                 <option value="Salvage">Salvage</option>
                                 <option value="Plant">Plant</option>
                                 <option value="Food">Food</option>
@@ -313,7 +342,7 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="none">
                             <label for="input-none" class="contro-label has-normal-font-size">None</label>
                             <br />
-                            <input id="input-none" class="form-control" type="radio" value="none" name="radio" />
+                            <input id="input-none" class="form-control" type="radio" value="none" name="materialDiversity" />
                         </div>
                         <div class="form-group fade-in item-padding" style="display:none" id="craftable">
                             <label for="input-craftable" class="contro-label has-normal-font-size">Is Craftable</label>
@@ -348,7 +377,7 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="materials">
                             <label for="input-relatedmaterials" class="contro-label has-normal-font-size">Related Materials</label>
                             <br />
-                            <input id="input-relatedmaterials" name="relatedMaterials" class="form-control" type="text" />
+                            <input type="text" id="input-relatedmaterials" name="relatedMaterials" class="form-control"/>
                         </div>
                         <div class="form-group item-padding">
                             <input type="submit" value="Create" class="main-button" />

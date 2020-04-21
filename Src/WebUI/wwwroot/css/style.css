@@ -3,6 +3,10 @@ html {
     touch-action: manipulation;
 }
 
+.has-massive-font-size
+{
+    font-size:75px;
+}
 
 .healthBar {
     background-color: green;
@@ -658,6 +662,7 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     border-radius: 2px;
+    width:10%;
 }
 
     select::-ms-expand {
@@ -3007,7 +3012,7 @@ rotate-vert-center {
     cursor: pointer;
 }
 
-#scroll-top {
+.bottom-right-icon {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
     bottom: 20px; /* Place the button at the bottom of the page */
@@ -3017,7 +3022,7 @@ rotate-vert-center {
     padding: 15px; /* Some padding */
 }
 
-    #scroll-top:hover {
+    .bottom-right-icon:hover {
         animation: 0.8s;
         animation-name: scrollTopHover;
         color: #c39873;

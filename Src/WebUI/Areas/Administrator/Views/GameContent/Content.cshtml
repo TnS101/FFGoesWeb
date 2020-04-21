@@ -8,11 +8,15 @@
 </head>
 <body>
     <div class="item-padding has-text-align-center fade-in">
-        <h2 class="has-text-align-center has-larger-font-size main-font-color">Game Content</h2>
+        <a asp-controller="GameContent" asp-action="CreateUnit"><i class="fas fa-khanda main-font-color has-massive-font-size bottom-right-icon"></i></a>
+        <a asp-controller="GameContent" asp-action="CreateSpell"><i class="fas fa-hat-wizard main-font-color has-massive-font-size bottom-right-icon" style="bottom:120px"></i></a>
+        <a asp-controller="GameContent" asp-action="CreateItem"><i class="fas fa-toolbox main-font-color has-massive-font-size bottom-right-icon" style="bottom:220px"></i></a>
+
+        <h2 class=has-larger-font-size main-font-color">Game Content</h2>
         <div class="item-padding">
             <hr />
             <div class="item-padding">
-                <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Weapon"><i class="icofont-angry-monster main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Weapons</span></a>
+                <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Weapon"><i class="icofont-angry-monster main-font-color icofont-4x"></i> <span class="has-large-font-size main-font-color">Weapons</span></a>
                 <div class="item-padding">
                     <hr />
                 </div>
@@ -47,13 +51,13 @@
                     <hr />
                 </div>
                 <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Tool"><i class="fas fa-hammer has-large-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Tools</span></a>
+                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Tool"><i class="fas fa-hammer has-larger-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Tools</span></a>
                 </div>
                 <div class="item-padding">
                     <hr />
                 </div>
                 <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-magic has-large-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Spells</span></a>
+                    <a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-magic has-larger-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Spells</span></a>
                 </div>
                 <div class="item-padding">
                     <hr />

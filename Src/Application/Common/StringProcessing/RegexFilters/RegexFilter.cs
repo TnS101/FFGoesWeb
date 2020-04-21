@@ -1,4 +1,4 @@
-﻿namespace Application.Common.RegexFilters
+﻿namespace Application.Common.StringProcessing.RegexFilters
 {
     using System.ComponentModel.DataAnnotations;
 

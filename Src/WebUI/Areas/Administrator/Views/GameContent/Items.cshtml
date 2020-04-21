@@ -5,15 +5,36 @@
 }
 <head>
     <partial name="_AdminNavBar">
+        <script>
+            $(document).ready(function () {
+                var scrollTop = $('#scroll-top');
+
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 1200) {
+                        scrollTop.removeClass('fade-out');
+                        scrollTop.show();
+                    } else {
+                        scrollTop.addClass('fade-out');
+                    }
+                })
+
+                scrollTop.click(function () {
+                    $('html, body').animate({
+                        scrollTop: $("#top").offset().top
+                    }, 1200);
+                })
+            })
+        </script>
 </head>
 <body>
-    <div class="item-padding fade-in has-text-align-center">
+    <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
+    <div class="item-padding fade-in has-text-align-center" id="top">
         <h2 class="main-font-color has-large-font-size">Items</h2>
         <div class="item-padding">
             <hr />
             @foreach (var item in Model.Items)
             {
-                <div class="item-padding has-text-align-center">
+                <div class="item-padding has-text-align-center" id="@item.Id">
                     <img src="@item.ImagePath" alt="@item.Name's Image">
                     <h3 class="main-font-color">@item.Name</h3>
                     <br />
@@ -22,5 +43,5 @@
             }
         </div>
     </div>
-    
+
 </body>
