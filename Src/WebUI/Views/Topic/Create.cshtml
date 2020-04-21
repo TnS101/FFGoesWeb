@@ -14,6 +14,7 @@
         <form asp-controller="Topic" asp-action="Create" method="post">
             <div class="item-padding">
                 <input type="text" name="title" value="" placeholder="Title..." />
+                <br />
                 <span asp-validation-for="Title" class="text-danger fade-in main-font-color has-medium-font-size"></span>
             </div>
             <div class="item-padding has-text-align-center">
@@ -23,6 +24,7 @@
                     <option value="Complain">Complain</option>
                     <option value="Ideas">Ideas</option>
                 </select>
+                <br />
                 <span asp-validation-for="Category" class="text-danger fade-in main-font-color has-medium-font-size"></span>
             </div>
 

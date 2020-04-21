@@ -68,7 +68,7 @@
                 .IsRequired();
 
             builder.Property(h => h.IsSelected)
-                .HasDefaultValue(true)
+                .HasDefaultValue(false)
                 .IsRequired();
         }
     }

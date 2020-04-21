@@ -9,5 +9,7 @@
         public string ImagePath { get; set; }
 
         public string Slot { get; set; }
+
+        public string ClassType { get; set; }
     }
 }

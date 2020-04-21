@@ -8,13 +8,8 @@
 
     public class CreateHeroCommand : RegexFilter, IRequest<string>
     {
+
         public ClaimsPrincipal User { get; set; }
-
-        [Required]
-        public string ClassType { get; set; }
-
-        [Required]
-        public string Race { get; set; }
 
         [Required(ErrorMessage = GConst.RequiredMessage)]
         [SpamFilter(GConst.SpamFilter, ErrorMessage = GConst.SpamMessage)]
@@ -22,5 +17,11 @@
         [RegularExpression(GConst.UsernameFilter, ErrorMessage = GConst.UsernameError)]
         [StringLength(20, ErrorMessage = GConst.LengthMessage, MinimumLength = 5)]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = GConst.RequiredMessage)]
+        public string Race { get; set; }
+
+        [Required(ErrorMessage = GConst.RequiredMessage)]
+        public string ClassType { get; set; }
     }
 }

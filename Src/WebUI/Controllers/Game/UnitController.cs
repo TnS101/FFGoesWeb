@@ -33,11 +33,11 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([Bind("FightingClass,Race,Name")] CreateHeroCommand hero)
+        public async Task<ActionResult> Create([Bind("Name,Race,ClassType")] CreateHeroCommand hero)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.Redirect(GConst.HeroCommandRedirect);
+                return this.Redirect(GConst.HeroCreationErrorRedirect);
             }
 
             return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = hero.ClassType, Race = hero.Race, Name = hero.Name, User = this.User }));
@@ -74,12 +74,12 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Inventory([FromQuery]string id, [FromForm]string slot)
+        public async Task<ActionResult> Inventory([FromQuery]string slot)
         {
-            return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
+            return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { User = this.User, Slot = slot }));
         }
 
-        [HttpGet("/Unit/DiscardItem/id")]
+        [HttpGet]
         public async Task<ActionResult> DiscardItem([FromQuery]string id, [FromForm]int count, [FromForm]string slot)
         {
             return this.View(await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, User = this.User }));

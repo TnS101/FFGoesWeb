@@ -105,14 +105,29 @@
                         if (energyChange.Type == "Walk")
                         {
                             hero.Energy += recoveryTimes;
+
+                            if (hero.Energy > 30)
+                            {
+                                hero.Energy = 30;
+                            }
                         }
                         else if (energyChange.Type == "Profession")
                         {
                             hero.ProfessionEnergy += recoveryTimes;
+
+                            if (hero.ProfessionEnergy > 10)
+                            {
+                                hero.ProfessionEnergy = 10;
+                            }
                         }
                         else if (energyChange.Type == "PvP")
                         {
                             hero.PvPEnergy += recoveryTimes;
+
+                            if (hero.PvPEnergy > 15)
+                            {
+                                hero.PvPEnergy = 15;
+                            }
                         }
                         else if (energyChange.Type == "Health")
                         {
@@ -147,13 +162,6 @@
 
                             break;
                         }
-                    }
-
-                    if (energy == energyCap)
-                    {
-                        var personalEnergyChanges = this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id && ec.Type == energyChange.Type);
-
-                        this.context.EnergyChanges.RemoveRange(personalEnergyChanges);
                     }
                 }
 

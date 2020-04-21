@@ -15,19 +15,19 @@
                 .IsRequired();
 
             builder.Property(a => a.Slot)
-                .HasMaxLength(20)
+                .HasMaxLength(30)
                 .IsRequired();
 
             builder.Property(a => a.ClassType)
-                .HasMaxLength(20)
+                .HasMaxLength(30)
                 .IsRequired();
 
             builder.Property(a => a.ImagePath)
-                .HasMaxLength(50)
+                .HasMaxLength(200)
                 .IsRequired();
 
             builder.Property(a => a.Type)
-                .HasMaxLength(10)
+                .HasMaxLength(20)
                 .IsRequired();
         }
     }

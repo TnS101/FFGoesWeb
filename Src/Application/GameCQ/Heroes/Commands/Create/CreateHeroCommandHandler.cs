@@ -11,6 +11,7 @@
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class CreateHeroCommandHandler : IRequestHandler<CreateHeroCommand, string>
     {
@@ -31,14 +32,20 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            if (this.context.Heroes.Where(h => h.UserId == user.Id).Count() == user.AllowedHeroes)
-            {
-                return GConst.UnitCreationErrorRedirect;
-            }
+            var heroes = await this.context.Heroes.Where(h => h.UserId == user.Id).ToListAsync();
 
-            if (string.IsNullOrWhiteSpace(request.Name) || request.Name.Length < 5 || request.Name.Length > 20)
+            if (heroes.Count() == user.AllowedHeroes)
             {
-                return GConst.UnitCreationErrorRedirect;
+                return GConst.HeroCreationErrorRedirect;
+            }
+            else if (heroes.Count > 0)
+            {
+                foreach (var unit in heroes)
+                {
+                    unit.IsSelected = false;
+                }
+
+                this.context.Heroes.UpdateRange(heroes);
             }
 
             var hero = new Hero
@@ -48,6 +55,7 @@
                 Race = request.Race,
                 UserId = user.Id,
                 ImagePath = string.Empty,
+                IsSelected = true,
             };
 
             hero.Inventory = new Inventory(hero.Id);

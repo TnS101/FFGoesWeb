@@ -1,6 +1,4 @@
 ﻿@model Application.GameCQ.Items.Queries.GetPersonalItemsQuery.ItemListViewModel
-@{
-}
 
 <!DOCTYPE html>
 
@@ -11,21 +9,41 @@
     <partial name="_NavBar">
 </head>
 <body>
-    <div class="has-text-align-center fade-in">
+    <div class="has-text-align-center fade-in item-padding">
         <h1 class="secondary-font-color">Your Inventory</h1>
-        <br />
         <div class="item-padding">
+            <hr />
+            <div class="has-narrow-width aligncenter">
+                <a asp-controller="Unit" asp-action="Inventory" asp-route-slot="Armor"><span class="has-normal-font-size light-font-color">Armor</span></a>
+                <a asp-controller="Unit" asp-action="Inventory" asp-route-slot="Weapon"><span class="has-normal-font-size light-font-color">Weapons</span></a>
+                <a asp-controller="Unit" asp-action="Inventory" asp-route-slot="Trinket"><span class="has-normal-font-size light-font-color">Trinkets</span></a>
+                <a asp-controller="Unit" asp-action="Inventory" asp-route-slot="Treasure Key"><span class="has-normal-font-size light-font-color">Treasure Keys</span></a>
+                <a asp-controller="Unit" asp-action="Inventory" asp-route-slot="Material"><span class="has-normal-font-size light-font-color">Materials</span></a>
+                <a asp-controller="Unit" asp-action="Inventory" asp-route-slot="Tool"><span class="has-normal-font-size light-font-color">Tools</span></a>
+
+            </div>
             @if (Model != null)
             {
-                <p class="main-font-color has-large-font-size">Currently review your @Model.Items.FirstOrDefault().Slot.Append('s').ToString()</p>
                 foreach (var item in Model.Items)
                 {
                     <div class="item-padding">
-                        <img src="@item." alt="Item Image" />
+                        <img src="@item.ImagePath" alt="Item Image" />
                         <p class="main-font-color has-normal-font-size">@item.Name</p>
+                        @if (item.ClassType == Model.Hero.ClassType)
+                        {
+                            <p>Evala, typ si</p>
+                        }
                         <hr />
                     </div>
                 }
+            }
+            else
+            {
+                <div class="item-padding">
+                    <p class="main-font-color has-normal-font-size">
+                        No items to display in this section.
+                    </p>
+                </div>
             }
         </div>
     </div>

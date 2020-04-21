@@ -28,13 +28,14 @@
                                     <option value="Goblin">Goblin</option>
                                 </select>
                                 <div class="item-padding">
-                                    <input type="text" name="name" value="" placeholder="Insert your character Name" />
+                                    <input type="text" name="name" placeholder="Insert your character Name" />
                                     <div class="item-padding">
+                                        Names should only contain lower case letters and/or digits and should be between 5 and 20 characters.
                                         <span asp-validation-for="@Model.Hero.Name" class="has-medium-font-size main-font-color fade-in"></span>
                                     </div>
                                 </div>
                                 <div class="item-padding">
-                                    <input type="hidden" name="fightingClass" value="@fightingClass.ClassType" />
+                                    <input type="hidden" name="classType" value="@fightingClass.ClassType" />
                                     <input type="submit" name="" class="main-button" value="Create Character"  style="width:300px"/>
                                 </div>
                             </form>

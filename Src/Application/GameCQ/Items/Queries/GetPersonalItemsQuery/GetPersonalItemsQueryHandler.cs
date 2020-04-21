@@ -5,12 +5,14 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
+    using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
     using AutoMapper;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
 
     public class GetPersonalItemsQueryHandler : IRequestHandler<GetPersonalItemsQuery, ItemListViewModel>
     {
@@ -27,187 +29,229 @@
 
         public async Task<ItemListViewModel> Handle(GetPersonalItemsQuery request, CancellationToken cancellationToken)
         {
-            var hero = await this.context.Heroes.FindAsync(request.HeroId);
+            var user = await this.userManager.GetUserAsync(request.User);
+
+            var hero = await this.context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
 
             if (request.Slot == "Weapon")
             {
-                return this.GetWeapons(hero);
+                return await this.GetWeapons(hero);
             }
             else if (request.Slot == "Armor")
             {
-                return this.GetArmors(hero);
+                return await this.GetArmors(hero);
             }
             else if (request.Slot == "Trinket")
             {
-                return this.GetTrinkets(hero);
+                return await this.GetTrinkets(hero);
             }
             else if (request.Slot == "Treasure")
             {
-                return this.GetTreasures(hero);
+                return await this.GetTreasures(hero);
             }
             else if (request.Slot == "Treasure Key")
             {
-                return this.GetTreasureKeys(hero);
+                return await this.GetTreasureKeys(hero);
             }
             else
             {
-                return this.GetMaterials(hero);
+                return await this.GetMaterials(hero);
             }
         }
 
-        private ItemListViewModel GetWeapons(Hero hero)
+        private async Task<ItemListViewModel> GetWeapons(Hero hero)
         {
-            var inventory = this.context.WeaponsInventories.Where(wi => wi.InventoryId == hero.InventoryId);
-
-            var weapons = new List<Weapon>();
-
-            if (inventory.Count() > 0)
+            if (this.context.WeaponsInventories.Any(wi => wi.InventoryId == hero.InventoryId))
             {
-                foreach (var baseWeapon in this.context.Weapons.ToList())
+                var inventory = await this.context.WeaponsInventories.Where(wi => wi.InventoryId == hero.InventoryId).ToListAsync();
+
+                var weapons = new List<Weapon>();
+
+                if (inventory.Count() > 0)
                 {
-                    foreach (var item in inventory)
+                    foreach (var baseWeapon in this.context.Weapons.ToList())
                     {
-                        if (item.WeaponId == baseWeapon.Id)
+                        foreach (var item in inventory)
                         {
-                            weapons.Add(baseWeapon);
+                            if (item.WeaponId == baseWeapon.Id)
+                            {
+                                weapons.Add(baseWeapon);
+                            }
                         }
                     }
                 }
-            }
 
-            return new ItemListViewModel
-            {
-                Items = weapons.Select(i => new ItemMinViewModel
+                return new ItemListViewModel
                 {
-                    Id = i.Id,
-                    Name = i.Name,
-                    ImagePath = i.ImagePath,
-                    Slot = i.Slot,
-                }),
-            };
+                    Items = weapons.Select(i => new ItemMinViewModel
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        ImagePath = i.ImagePath,
+                        Slot = i.Slot,
+                    }),
+                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        private ItemListViewModel GetArmors(Hero hero)
+        private async Task<ItemListViewModel> GetArmors(Hero hero)
         {
-            var inventory = this.context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId);
-
-            var armors = new List<Armor>();
-
-            foreach (var baseArmor in this.context.Armors)
+            if (await this.context.ArmorsInventories.AnyAsync(ai => ai.InventoryId == hero.InventoryId))
             {
-                foreach (var item in inventory)
+                var inventory = await this.context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId).ToListAsync();
+
+                var armors = new List<Armor>();
+
+                foreach (var baseArmor in this.context.Armors)
                 {
-                    if (item.ArmorId == baseArmor.Id)
+                    foreach (var item in inventory)
                     {
-                        armors.Add(baseArmor);
+                        if (item.ArmorId == baseArmor.Id)
+                        {
+                            armors.Add(baseArmor);
+                        }
                     }
                 }
-            }
 
-            return new ItemListViewModel
-            {
-                Items = armors.Select(i => new ItemMinViewModel
+                return new ItemListViewModel
                 {
-                    Id = i.Id,
-                    Name = i.Name,
-                    ImagePath = i.ImagePath,
-                    Slot = i.Slot,
-                }),
-            };
+                    Items = armors.Select(i => new ItemMinViewModel
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        ImagePath = i.ImagePath,
+                        Slot = i.Slot,
+                    }),
+                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        private ItemListViewModel GetTrinkets(Hero hero)
+        private async Task<ItemListViewModel> GetTrinkets(Hero hero)
         {
-            var inventory = this.context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId);
-
-            var trinkets = new List<Trinket>();
-
-            foreach (var baseTrinket in this.context.Trinkets)
+            if (await this.context.TrinketsInventories.AnyAsync(ti => ti.InventoryId == hero.Id))
             {
-                foreach (var item in inventory)
+                var inventory = await this.context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
+
+                var trinkets = new List<Trinket>();
+
+                foreach (var baseTrinket in this.context.Trinkets)
                 {
-                    if (item.TrinketId == baseTrinket.Id)
+                    foreach (var item in inventory)
                     {
-                        trinkets.Add(baseTrinket);
+                        if (item.TrinketId == baseTrinket.Id)
+                        {
+                            trinkets.Add(baseTrinket);
+                        }
                     }
                 }
-            }
 
-            return new ItemListViewModel
-            {
-                Items = trinkets.Select(i => new ItemMinViewModel
+                return new ItemListViewModel
                 {
-                    Id = i.Id,
-                    Name = i.Name,
-                    ImagePath = i.ImagePath,
-                    Slot = i.Slot,
-                }),
-            };
+                    Items = trinkets.Select(i => new ItemMinViewModel
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        ImagePath = i.ImagePath,
+                        Slot = i.Slot,
+                    }),
+                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        private ItemListViewModel GetTreasures(Hero hero)
+        private async Task<ItemListViewModel> GetTreasures(Hero hero)
         {
-            var inventory = this.context.TreasuresInventories.Where(ti => ti.InventoryId == hero.InventoryId);
-
-            var treasures = new List<Treasure>();
-
-            foreach (var baseTreasure in this.context.Treasures)
+            if (await this.context.TreasuresInventories.AnyAsync(ti => ti.InventoryId == hero.InventoryId))
             {
-                foreach (var item in inventory)
+                var inventory = await this.context.TreasuresInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
+
+                var treasures = new List<Treasure>();
+
+                foreach (var baseTreasure in this.context.Treasures)
                 {
-                    if (item.TreasureId == baseTreasure.Id)
+                    foreach (var item in inventory)
                     {
-                        treasures.Add(baseTreasure);
+                        if (item.TreasureId == baseTreasure.Id)
+                        {
+                            treasures.Add(baseTreasure);
+                        }
                     }
                 }
-            }
 
-            return new ItemListViewModel
-            {
-                Items = treasures.Select(i => new ItemMinViewModel
+                return new ItemListViewModel
                 {
-                    Id = i.Id.ToString(),
-                    Name = i.Name,
-                    ImagePath = i.ImagePath,
-                    Slot = "Treasure",
-                }),
-            };
+                    Items = treasures.Select(i => new ItemMinViewModel
+                    {
+                        Id = i.Id.ToString(),
+                        Name = i.Name,
+                        ImagePath = i.ImagePath,
+                        Slot = "Treasure",
+                    }),
+                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        private ItemListViewModel GetTreasureKeys(Hero hero)
+        private async Task<ItemListViewModel> GetTreasureKeys(Hero hero)
         {
-            var inventory = this.context.TreasureKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId);
-
-            var treasureKeys = new List<TreasureKey>();
-
-            foreach (var baseTreasureKey in this.context.TreasureKeys)
+            if (this.context.TreasureKeysInventories.Any(ti => ti.InventoryId == hero.InventoryId))
             {
-                foreach (var item in inventory)
+                var inventory = await this.context.TreasureKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
+
+                var treasureKeys = new List<TreasureKey>();
+
+                foreach (var baseTreasureKey in this.context.TreasureKeys)
                 {
-                    if (item.TreasureKeyId == baseTreasureKey.Id)
+                    foreach (var item in inventory)
                     {
-                        treasureKeys.Add(baseTreasureKey);
+                        if (item.TreasureKeyId == baseTreasureKey.Id)
+                        {
+                            treasureKeys.Add(baseTreasureKey);
+                        }
                     }
                 }
-            }
 
-            return new ItemListViewModel
-            {
-                Items = treasureKeys.Select(i => new ItemMinViewModel
+                return new ItemListViewModel
                 {
-                    Id = i.Id.ToString(),
-                    Name = i.Name,
-                    ImagePath = i.ImagePath,
-                    Slot = "Treasure Key",
-                }),
-            };
+                    Items = treasureKeys.Select(i => new ItemMinViewModel
+                    {
+                        Id = i.Id.ToString(),
+                        Name = i.Name,
+                        ImagePath = i.ImagePath,
+                        Slot = "Treasure Key",
+                    }),
+                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        private ItemListViewModel GetMaterials(Hero hero)
+        private async Task<ItemListViewModel> GetMaterials(Hero hero)
         {
             if (this.context.MaterialsInventories.ToList().Any(mi => mi.InventoryId == hero.InventoryId))
             {
-                var inventory = this.context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).ToList();
+                var inventory = await this.context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).ToListAsync();
 
                 var materials = new List<Material>();
 
@@ -234,6 +278,7 @@
                         ImagePath = i.ImagePath,
                         Slot = "Material",
                     }),
+                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
                 };
             }
             else

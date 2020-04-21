@@ -42,7 +42,7 @@
         public const string NotEnoughEnergyRedirect = "/EnergyError";
         public const string TreasureEncounterRedirect = "/TreasureEncounter";
         public const string EnemyEncounterRedirect = "EnemyEncounter";
-        public const string UnitCreationErrorRedirect = "/Unit/Create";
+        public const string HeroCreationErrorRedirect = "/Unit/Create";
         public const string SuccesfulFeedbackRedirect = @"\FeedbackSuccess";
         public const string ErrorRedirect = @"\Error\DefaultError";
 
@@ -114,8 +114,8 @@
         public const string UnitKilled = @"\Unit/Killed";
 
         // Filters (Regex)
-        public const string UsernameFilter = @"(\d*[a-z]+\d*)";
-        public const string ContentFilter = @"([A-Z]*[a-z]*[0-9]*\s*)";
+        public const string UsernameFilter = @"[0-9]*[a-z]+[0-9]*";
+        public const string ContentFilter = @"[A-Z]*[a-z]*[0-9]*\s*";
         public const string SpamFilter = @"^((?!a{3,}|b{3,}|c{3,}|d{3,}|e{3,}|f{3,}g{3,}|h{3,}|i{3,}|j{3,}|k{3,}|l{3,}|m{3,}|n{3,}|o{3,}|p{3,}|q{3,}|
                                                     r{3,}|s{3,}|t{3,}|u{3,}|v{3,}|w{3,}|x{3,}|y{3,}|z{3,}|A{3,}|B{3,}|C{3,}|D{3,}|E{3,}|F{3,}G{3,}
                                                     |H{3,}|I{3,}|J{3,}|K{3,}|L{3,}|M{3,}|N{3,}|O{3,}|P{3,}|Q{3,}|R{3,}|S{3,}|T{3,}|U
@@ -124,6 +124,6 @@
         public const string SwearFilter = @"^((?!arse|asshole|orgy|squirt|threesome|fingering|fisting|hentai|masturbate|masturbation|gangbang|doublepenetration|creampie
                                             |cuckold|tits|bukkake|bitch|horseshit|bondage|bisexual|twat|crap|shitass|wank|cum|boobjob|dickhead|slut|whore|prostitute|suicide|shit|fuck|suicidal|anal|oral|sex|cunt|clitoris|
                                             deepthroat|cock|nigger|niger|nigor|nigra|nigre|nigar|niggur|nigga|niggah|niggar|nigguh|niggress|nigette|kys|hardon|testicle|scrote|schlong|prick|nutsack|fuckstick|asshat|idiot|
-                                            dickhole|cockfucker|cockface|cockburger|cockbite|clitface|assshit|asssucker|assmunch|assmonkey|bigass|bigdick|asscock|asshead).)*$";
+                                            dickhole|cockfucker|cockface|cockburger|cockbite|clitface|assshit|asssucker|assmunch|assmonkey|bigass|bigdick|asscock|asshead|pussy|dick).)*$";
     }
 }
