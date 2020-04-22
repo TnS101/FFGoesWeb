@@ -37,13 +37,13 @@
         [HttpGet("/Topic/Delete/id")]
         public async Task<ActionResult> Delete([FromQuery]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = id }));
+            return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = id, User = this.User }));
         }
 
         [HttpGet("/Topic/Edit/id")]
         public async Task<ActionResult> Edit([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id }));
+            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id, User = this.User }));
         }
 
         [HttpPost]

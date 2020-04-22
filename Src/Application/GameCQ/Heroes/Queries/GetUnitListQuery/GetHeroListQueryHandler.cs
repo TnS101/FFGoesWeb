@@ -33,7 +33,7 @@
 
             var heroes = this.context.Heroes.Where(h => h.UserId == user.Id);
 
-            await this.EnergyManagement(heroes.ToList());
+            this.EnergyManagement(heroes.ToList());
 
             foreach (var hero in heroes)
             {
@@ -55,11 +55,11 @@
             };
         }
 
-        private async Task EnergyManagement(List<Hero> heroes)
+        private void EnergyManagement(List<Hero> heroes)
         {
             foreach (var hero in heroes)
             {
-                await this.MainStatsRegen(hero);
+                this.MainStatsRegen(hero);
 
                 foreach (var energyChange in this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id).OrderBy(l => l.LastChangedOn).ToList())
                 {
@@ -157,7 +157,7 @@
                                 continue;
                             }
 
-                            await this.context.EnergyChanges.AddAsync(regeneration);
+                            this.context.EnergyChanges.Add(regeneration);
                             this.context.EnergyChanges.Remove(energyChange);
 
                             break;
@@ -169,7 +169,7 @@
             }
         }
 
-        private async Task MainStatsRegen(Hero hero)
+        private void MainStatsRegen(Hero hero)
         {
             if (hero.CurrentHP <= 0)
             {
@@ -189,7 +189,7 @@
             {
                 if (hero.CurrentHP < hero.MaxHP)
                 {
-                    await this.context.EnergyChanges.AddAsync(new EnergyChange
+                    this.context.EnergyChanges.Add(new EnergyChange
                     {
                         HeroId = hero.Id,
                         Type = "Health",
@@ -207,7 +207,7 @@
             {
                 if (hero.CurrentMana < hero.MaxMana)
                 {
-                    await this.context.EnergyChanges.AddAsync(new EnergyChange
+                    this.context.EnergyChanges.Add(new EnergyChange
                     {
                         HeroId = hero.Id,
                         Type = "Mana",

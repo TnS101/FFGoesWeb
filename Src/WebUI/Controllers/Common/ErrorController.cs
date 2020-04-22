@@ -19,7 +19,7 @@
                 502 => this.View("Default"),
                 503 => this.View("Unavailable"),
                 504 => this.View("Default"),
-                _ => this.View("Deafult"),
+                _ => this.View("Default"),
             };
         }
     }

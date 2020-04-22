@@ -28,7 +28,7 @@
 
             var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            await this.context.TreasureKeysInventories.AddAsync(new TreasureKeyInventory
+            this.context.TreasureKeysInventories.Add(new TreasureKeyInventory
             {
                 InventoryId = hero.InventoryId,
                 TreasureKeyId = await this.FindKeyId(),

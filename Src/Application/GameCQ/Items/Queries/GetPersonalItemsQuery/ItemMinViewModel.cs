@@ -11,5 +11,7 @@
         public string Slot { get; set; }
 
         public string ClassType { get; set; }
+
+        public int Level { get; set; }
     }
 }

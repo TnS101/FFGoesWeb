@@ -80,7 +80,7 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            await this.context.Weapons.AddAsync(weapon);
+            this.context.Weapons.Add(weapon);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
@@ -107,7 +107,7 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            await this.context.Armors.AddAsync(armor);
+            this.context.Armors.Add(armor);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
@@ -131,7 +131,7 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            await this.context.Trinkets.AddAsync(trinket);
+            this.context.Trinkets.Add(trinket);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
@@ -167,7 +167,7 @@
                 material.ToolId = request.ToolId;
             }
 
-            await this.context.Materials.AddAsync(material);
+            this.context.Materials.Add(material);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
@@ -184,7 +184,7 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            await this.context.Treasures.AddAsync(treasure);
+            this.context.Treasures.Add(treasure);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
@@ -200,7 +200,7 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            await this.context.TreasureKeys.AddAsync(treasureKey);
+            this.context.TreasureKeys.Add(treasureKey);
 
             await this.context.SaveChangesAsync(cancellationToken);
 
@@ -222,7 +222,7 @@
                 tool.IsCraftable = true;
             }
 
-            await this.context.Tools.AddAsync(tool);
+            this.context.Tools.Add(tool);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

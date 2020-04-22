@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Home";
-    var user = await this.UserManager.GetUserAsync(this.User);
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -65,7 +64,7 @@
             <div class="has-text-align-center item-padding">
                 <p class="main-font-color has-normal-font-size">
                     [@topic.Category]<a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id"><span class="main-font-color">@topic.Title</span></a>
-                    by @if (user.Id == topic.UserId)
+                    by @if (Model.ViewerId == topic.UserId)
                     {
                         <a asp-controller="Profile" asp-action="Panel"><em class="text-color">@topic.UserName (You)</em></a>
                         <i class="fas fa-thumbs-up has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Likes.Count</b>
@@ -73,7 +72,7 @@
                     else
                     {
                         <a asp-controller="Profile" asp-action="CurrentUser" asp-route-id="@topic.UserId"><em class="text-color">@topic.UserName</em></a>
-                        if (topic.Likes.Any(l => l.UserId == user.Id))
+                        if (topic.Likes.Any(l => l.UserId == Model.ViewerId))
                         {
                             <a asp-controller="Topic" asp-action="Dislike" asp-route-id="@topic.Id"><i class="fas fa-thumbs-up has-large-font-size light-font-color"></i> <b class="has-medium-font-size main-font-color">@topic.Likes.Count</b></a>
                         }
@@ -86,7 +85,7 @@
                  <a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id">
                     <i class="fas fa-comments has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Comments</b>
                 </a>
-                @if (topic.UserId == user.Id)
+                @if (topic.UserId == Model.ViewerId)
                 {
                     <a asp-controller="Topic" asp-action="Delete" asp-route-id="@topic.Id"><i class="icofont-trash icofont-2x"></i></a>
                     <a asp-controller="Topic" asp-action="Edit" asp-route-id="@topic.Id"><i class="fas fa-edit has-large-font-size"></i></a>

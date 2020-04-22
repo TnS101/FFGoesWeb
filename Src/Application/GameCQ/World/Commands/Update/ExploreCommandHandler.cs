@@ -39,7 +39,7 @@
 
             hero.Energy--;
 
-            await this.context.EnergyChanges.AddAsync(new EnergyChange
+            this.context.EnergyChanges.Add(new EnergyChange
             {
                 HeroId = hero.Id,
                 Type = "Walk",

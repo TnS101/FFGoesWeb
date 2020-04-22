@@ -13,10 +13,8 @@
         <h2 class="secondary-font-color has-large-font-size">Unit Info</h2>
         <div class="item-padding"><hr /></div>
         <div>
-            <h2><a asp-controller="Unit" asp-action="Inventory" asp-route-id="@Model.Id"><span class="light-font-color">Inventory</span></a></h2>
-            <hr />
-            <h2><a asp-controller="Unit" asp-action="Equipment" asp-route-id="@Model.Id"><span class="light-font-color">Equipment</span></a></h2>
-            <hr />
+            <a asp-controller="Unit" asp-action="Inventory"><i class="fas fa-boxes has-massive-font-size main-font-color bottom-right-icon"></i></a>
+            <a asp-controller="Unit" asp-action="Equipment"><i class="fas fa-child has-massive-font-size main-font-color bottom-left-icon"></i></a>
         </div>
     </div>
     

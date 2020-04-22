@@ -43,7 +43,7 @@
 
                 context.ArmorsEquipments.Where(a => a.EquipmentId == hero.EquipmentId).ToList().Remove(armor);
 
-                await context.ArmorsInventories.AddAsync(new ArmorInventory
+                context.ArmorsInventories.Add(new ArmorInventory
                 {
                     InventoryId = hero.InventoryId,
                     ArmorId = item.Id,
@@ -61,7 +61,7 @@
 
                 context.WeaponsEquipments.Where(w => w.EquipmentId == hero.EquipmentId).ToList().Remove(weapon);
 
-                await context.WeaponsInventories.AddAsync(new WeaponInventory
+                context.WeaponsInventories.Add(new WeaponInventory
                 {
                     InventoryId = hero.InventoryId,
                     WeaponId = weapon.WeaponId,
@@ -78,7 +78,7 @@
 
                 context.TrinketEquipments.Where(t => t.EquipmentId == hero.EquipmentId).ToList().Remove(trinket);
 
-                await context.TrinketsInventories.AddAsync(new TrinketInventory
+                context.TrinketsInventories.Add(new TrinketInventory
                 {
                     InventoryId = hero.InventoryId,
                     TrinketId = trinket.TrinketId,

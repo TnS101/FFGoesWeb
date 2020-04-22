@@ -18,7 +18,7 @@
 
         public async Task<string> Handle(CreateSpellCommand request, CancellationToken cancellationToken)
         {
-            await this.context.Spells.AddAsync(new Spell
+            this.context.Spells.Add(new Spell
             {
                 Name = request.Name,
                 ManaRequirement = 0.2,

@@ -42,7 +42,7 @@
                     ImagePath = this.imagePath.Process(new string[] { request.UnitType, request.Name }),
                 };
 
-                await this.context.Monsters.AddAsync(monster);
+                this.context.Monsters.Add(monster);
 
                 await this.context.SaveChangesAsync(cancellationToken);
 
@@ -67,7 +67,7 @@
                     ImagePath = this.imagePath.Process(new string[] { request.UnitType, request.Name }),
                 };
 
-                await this.context.FightingClasses.AddAsync(fightingClass);
+                this.context.FightingClasses.Add(fightingClass);
 
                 await this.context.SaveChangesAsync(cancellationToken);
 

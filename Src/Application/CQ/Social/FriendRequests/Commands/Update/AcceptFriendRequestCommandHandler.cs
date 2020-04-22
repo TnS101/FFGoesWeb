@@ -32,9 +32,9 @@
 
             var friend = await this.context.AppUsers.FirstOrDefaultAsync(f => f.UserName == senderName);
 
-            await this.AddFriends(user, friend);
+            this.AddFriends(user, friend);
 
-            await this.SendNotification(user, friend);
+            this.SendNotification(user, friend);
 
             this.context.FriendRequests.Remove(friendRequest);
 
@@ -43,24 +43,24 @@
             return GConst.FriendCommandRedirect;
         }
 
-        private async Task AddFriends(AppUser user, AppUser friend)
+        private void AddFriends(AppUser user, AppUser friend)
         {
-            await this.context.Friends.AddAsync(new Friend
+            this.context.Friends.Add(new Friend
             {
                 Id = user.Id,
                 UserId = friend.Id,
             });
 
-            await this.context.Friends.AddAsync(new Friend
+            this.context.Friends.Add(new Friend
             {
                 Id = friend.Id,
                 UserId = user.Id,
             });
         }
 
-        private async Task SendNotification(AppUser user, AppUser friend)
+        private void SendNotification(AppUser user, AppUser friend)
         {
-            await this.context.Notifications.AddAsync(new Notification
+            this.context.Notifications.Add(new Notification
             {
                 UserId = friend.Id,
                 ApplicationSection = "Social",

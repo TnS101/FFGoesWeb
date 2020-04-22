@@ -70,7 +70,7 @@
 
             this.raceCheck.Check(hero, request.Race);
 
-            await this.context.Heroes.AddAsync(hero);
+            this.context.Heroes.Add(hero);
 
             await this.context.SaveChangesAsync(cancellationToken);
 

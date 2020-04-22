@@ -5,21 +5,27 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
+    using Domain.Entities.Common;
     using MediatR;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
     public class GetCurrentTopicQueryHandler : IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>
     {
         private readonly IFFDbContext context;
+        private readonly UserManager<AppUser> userManager;
 
-        public GetCurrentTopicQueryHandler(IFFDbContext context)
+        public GetCurrentTopicQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
+            this.userManager = userManager;
         }
 
         public async Task<TopicFullViewModel> Handle(GetCurrentTopicQuery request, CancellationToken cancellationToken)
         {
             var topic = await this.context.Topics.FindAsync(request.TopicId);
+
+            var viewer = await this.userManager.GetUserAsync(request.User);
 
             topic.Comments = await this.context.Comments.Where(c => c.TopicId == topic.Id).ToListAsync();
 
@@ -54,6 +60,7 @@
                 Id = topic.Id,
                 TopicTicketsIds = topicTicketsIds,
                 CommentTicketsIds = commentTicketsIds,
+                ViewerId = viewer.Id,
             };
         }
     }

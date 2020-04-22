@@ -31,6 +31,8 @@
         [SwearFilter(GConst.SwearFilter, ErrorMessage = GConst.SwearMessage)]
         public string Content { get; set; }
 
+        public string ViewerId { get; set; }
+
         public DateTime CreateOn { get; set; }
 
         public ICollection<Comment> Comments { get; set; }

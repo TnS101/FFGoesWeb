@@ -6,5 +6,7 @@
     public class DeleteTopicCommand : IRequest<string>
     {
         public string TopicId { get; set; }
+
+        public ClaimsPrincipal User { get; set; }
     }
 }

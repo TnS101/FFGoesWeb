@@ -44,7 +44,7 @@
         public const string EnemyEncounterRedirect = "EnemyEncounter";
         public const string HeroCreationErrorRedirect = "/Unit/Create";
         public const string SuccesfulFeedbackRedirect = @"\FeedbackSuccess";
-        public const string ErrorRedirect = @"\Error\DefaultError";
+        public const string ErrorRedirect = @"\Error\Default";
 
         // Admin Redirects
         public const string AdminToDoListRedirect = "/Admin/ToDoList";

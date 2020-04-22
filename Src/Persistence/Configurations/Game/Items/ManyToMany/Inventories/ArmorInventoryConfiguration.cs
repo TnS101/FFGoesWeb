@@ -17,6 +17,9 @@
             builder.HasOne(i => i.Inventory)
                 .WithMany(ai => ai.ArmorInventories)
                 .HasForeignKey(i => i.InventoryId);
+
+            builder.Property(i => i.Count)
+                .HasDefaultValue(1);
         }
     }
 }

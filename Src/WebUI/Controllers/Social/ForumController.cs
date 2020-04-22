@@ -1,7 +1,6 @@
 ﻿namespace WebUI.Controllers.Social
 {
     using System.Threading.Tasks;
-    using Application.CQ.Social.Likes.Command.Create;
     using Application.CQ.Social.Topics.Queries.GetAllTopicsQuery;
     using Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery;
     using global::Common;
@@ -15,13 +14,13 @@
         [HttpGet]
         public async Task<ActionResult> Home([FromQuery]string[] check)
         {
-            return this.View(await this.Mediator.Send(new GetAllTopicsQuery { Filter = check }));
+            return this.View(await this.Mediator.Send(new GetAllTopicsQuery { Filter = check, User = this.User }));
         }
 
         [HttpGet("Forum/CurrentTopic/id")]
         public async Task<ActionResult> CurrentTopic([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id }));
+            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id, User = this.User }));
         }
     }
 }

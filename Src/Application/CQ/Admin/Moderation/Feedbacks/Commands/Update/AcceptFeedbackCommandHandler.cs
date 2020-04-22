@@ -33,7 +33,7 @@
             feedBack.IsAccepted = true;
             feedBack.Stars = request.Stars;
 
-            await this.context.Notifications.AddAsync(new Notification
+            this.context.Notifications.Add(new Notification
             {
                 ApplicationSection = "Game",
                 Type = "Reward",

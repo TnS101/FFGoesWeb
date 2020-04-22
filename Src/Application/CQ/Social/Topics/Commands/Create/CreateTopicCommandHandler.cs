@@ -25,7 +25,7 @@
         {
             var user = await this.userManager.GetUserAsync(request.User);
 
-            await this.context.Topics.AddAsync(new Topic
+            this.context.Topics.Add(new Topic
             {
                 Title = request.Title,
                 Category = request.Category,

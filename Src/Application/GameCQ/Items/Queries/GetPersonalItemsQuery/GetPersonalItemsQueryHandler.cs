@@ -5,8 +5,6 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
-    using AutoMapper;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
@@ -17,13 +15,11 @@
     public class GetPersonalItemsQueryHandler : IRequestHandler<GetPersonalItemsQuery, ItemListViewModel>
     {
         private readonly IFFDbContext context;
-        private readonly IMapper mapper;
         private readonly UserManager<AppUser> userManager;
 
-        public GetPersonalItemsQueryHandler(IFFDbContext context, IMapper mapper, UserManager<AppUser> userManager)
+        public GetPersonalItemsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
         {
             this.context = context;
-            this.mapper = mapper;
             this.userManager = userManager;
         }
 
@@ -89,8 +85,10 @@
                         Name = i.Name,
                         ImagePath = i.ImagePath,
                         Slot = i.Slot,
+                        Level = i.Level,
                     }),
-                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
+                    HeroClass = hero.ClassType,
+                    HeroLevel = hero.Level,
                 };
             }
             else
@@ -126,8 +124,10 @@
                         Name = i.Name,
                         ImagePath = i.ImagePath,
                         Slot = i.Slot,
+                        Level = i.Level,
                     }),
-                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
+                    HeroClass = hero.ClassType,
+                    HeroLevel = hero.Level,
                 };
             }
             else
@@ -163,8 +163,10 @@
                         Name = i.Name,
                         ImagePath = i.ImagePath,
                         Slot = i.Slot,
+                        Level = i.Level,
                     }),
-                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
+                    HeroClass = hero.ClassType,
+                    HeroLevel = hero.Level,
                 };
             }
             else
@@ -201,7 +203,6 @@
                         ImagePath = i.ImagePath,
                         Slot = "Treasure",
                     }),
-                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
                 };
             }
             else
@@ -237,8 +238,8 @@
                         Name = i.Name,
                         ImagePath = i.ImagePath,
                         Slot = "Treasure Key",
+                        Level = 1,
                     }),
-                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
                 };
             }
             else
@@ -278,7 +279,6 @@
                         ImagePath = i.ImagePath,
                         Slot = "Material",
                     }),
-                    Hero = this.mapper.Map<UnitPartialViewModel>(hero),
                 };
             }
             else

@@ -22,7 +22,7 @@
 
         public async Task<TopicListViewModel> Handle(GetAllTopicsQuery request, CancellationToken cancellationToken)
         {
-            if (request.User is null)
+            if (request.Filter != null)
             {
                 return await this.PublicTopics(request);
             }
@@ -56,6 +56,8 @@
 
         private async Task<TopicListViewModel> PublicTopics(GetAllTopicsQuery request)
         {
+            var viewer = await this.userManager.GetUserAsync(request.User);
+
             var topics = await this.context.Topics.Select(t => new TopicPartialViewModel
             {
                 Id = t.Id,
@@ -75,6 +77,7 @@
                 return new TopicListViewModel
                 {
                     Topics = topics,
+                    ViewerId = viewer.Id,
                 };
             }
             else if (request.Filter.Count() == 1)
@@ -84,6 +87,7 @@
                 return new TopicListViewModel
                 {
                     Topics = topics.Where(t => t.Category == singleFilter),
+                    ViewerId = viewer.Id,
                 };
             }
             else
@@ -93,6 +97,7 @@
                     return new TopicListViewModel
                     {
                         Topics = topics.Where(t => t.Category == request.Filter[0] || t.Category == request.Filter[1]),
+                        ViewerId = viewer.Id,
                     };
                 }
                 else
@@ -100,6 +105,7 @@
                     return new TopicListViewModel
                     {
                         Topics = topics.Where(t => t.Category == request.Filter[0] || t.Category == request.Filter[1] || t.Category == request.Filter[2]),
+                        ViewerId = viewer.Id,
                     };
                 }
             }

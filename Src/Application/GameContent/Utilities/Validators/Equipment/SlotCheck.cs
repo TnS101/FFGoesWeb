@@ -82,7 +82,7 @@
             string weaponId = string.Empty;
             if (!context.Weapons.Contains(templateWeapon))
             {
-                await context.Weapons.AddAsync(templateWeapon);
+                context.Weapons.Add(templateWeapon);
                 await context.SaveChangesAsync(cancellationToken);
                 weaponId = templateWeapon.Id;
             }
@@ -95,7 +95,7 @@
                 && w.ImagePath == templateWeapon.ImagePath);
             }
 
-            await context.WeaponsInventories.AddAsync(new WeaponInventory
+            context.WeaponsInventories.Add(new WeaponInventory
             {
                 InventoryId = hero.InventoryId,
                 WeaponId = weaponId,
@@ -120,7 +120,7 @@
             string trinketId;
             if (!context.Trinkets.Contains(templateTrinket))
             {
-                await context.Trinkets.AddAsync(templateTrinket);
+                context.Trinkets.Add(templateTrinket);
                 await context.SaveChangesAsync(cancellationToken);
                 trinketId = templateTrinket.Id;
             }
@@ -135,7 +135,7 @@
                 trinketId = trinket.Id;
             }
 
-            await context.TrinketsInventories.AddAsync(new TrinketInventory
+            context.TrinketsInventories.Add(new TrinketInventory
             {
                 InventoryId = hero.InventoryId,
                 TrinketId = trinketId,
@@ -162,7 +162,7 @@
             string armorId = string.Empty;
             if (!context.Armors.Contains(templateArmor))
             {
-                await context.Armors.AddAsync(templateArmor);
+                context.Armors.Add(templateArmor);
 
                 await context.SaveChangesAsync(cancellationToken);
 
@@ -177,7 +177,7 @@
                 && a.ImagePath == templateArmor.ImagePath);
             }
 
-            await context.ArmorsInventories.AddAsync(new ArmorInventory
+            context.ArmorsInventories.Add(new ArmorInventory
             {
                 InventoryId = hero.InventoryId,
                 ArmorId = armorId,
@@ -203,7 +203,7 @@
                 treasureKeyId = 3; // Bronze
             }
 
-            await context.TreasureKeysInventories.AddAsync(new TreasureKeyInventory
+            context.TreasureKeysInventories.Add(new TreasureKeyInventory
             {
                 InventoryId = inventoryId,
                 TreasureKeyId = treasureKeyId,
@@ -228,7 +228,7 @@
 
             var material = await context.Materials.FirstOrDefaultAsync(m => m.Name == materialName);
 
-            await context.MaterialsInventories.AddAsync(new MaterialInventory
+            context.MaterialsInventories.Add(new MaterialInventory
             {
                 InventoryId = inventoryId,
                 MaterialId = material.Id,
@@ -300,7 +300,7 @@
 
             var secondaryMaterial = context.Materials.SingleOrDefault(m => m.Name == secondaryMaterialName);
 
-            await context.MaterialsInventories.AddAsync(new MaterialInventory
+            context.MaterialsInventories.Add(new MaterialInventory
             {
                 InventoryId = invetoryId,
                 MaterialId = mainMaterial.Id,

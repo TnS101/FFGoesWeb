@@ -17,6 +17,9 @@
             builder.HasOne(i => i.Inventory)
                 .WithMany(ti => ti.TrinketInventories)
                 .HasForeignKey(i => i.InventoryId);
+
+            builder.Property(i => i.Count)
+               .HasDefaultValue(1);
         }
     }
 }

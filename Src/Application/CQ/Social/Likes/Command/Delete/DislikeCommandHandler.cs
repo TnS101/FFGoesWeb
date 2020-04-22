@@ -1,14 +1,14 @@
 ﻿namespace Application.CQ.Social.Likes.Command.Delete
 {
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class DislikeCommandHandler : IRequestHandler<DislikeCommand, string>
     {
@@ -27,15 +27,31 @@
 
             if (request.CommentId != null)
             {
-                var likeToRemove = await this.context.Likes.FirstOrDefaultAsync(l => l.CommentId == request.CommentId && l.UserId == user.Id);
+                if (this.context.Comments.Any(c => c.Id == request.CommentId && c.UserId == user.Id)
+                    && await this.context.Likes.AnyAsync(l => l.CommentId == request.CommentId && l.UserId == user.Id))
+                {
+                    var likeToRemove = await this.context.Likes.FirstOrDefaultAsync(l => l.CommentId == request.CommentId && l.UserId == user.Id);
 
-                this.context.Likes.Remove(likeToRemove);
+                    this.context.Likes.Remove(likeToRemove);
+                }
+                else
+                {
+                    return GConst.ErrorRedirect;
+                }
             }
             else
             {
-                var likeToRemove = await this.context.Likes.FirstOrDefaultAsync(l => l.TopicId == request.TopicId && l.UserId == user.Id);
+                if (this.context.Topics.Any(t => t.Id == request.TopicId && t.UserId == user.Id)
+                    && await this.context.Likes.AnyAsync(l => l.TopicId == request.TopicId && l.UserId == user.Id))
+                {
+                    var likeToRemove = await this.context.Likes.FirstOrDefaultAsync(l => l.TopicId == request.TopicId && l.UserId == user.Id);
 
-                this.context.Likes.Remove(likeToRemove);
+                    this.context.Likes.Remove(likeToRemove);
+                }
+                else
+                {
+                    return GConst.ErrorRedirect;
+                }
             }
 
             await this.context.SaveChangesAsync(cancellationToken);
