@@ -7,7 +7,7 @@ namespace Domain.Entities.Game.Units
     {
         public Spell()
         {
-            this.HeroSpells = new HashSet<HeroSpells>();
+            this.HeroSpells = new HashSet<HeroSpell>();
         }
 
         public int Id { get; set; }
@@ -32,6 +32,6 @@ namespace Domain.Entities.Game.Units
 
         public double SecondaryPower { get; set; }
 
-        public ICollection<HeroSpells> HeroSpells { get; set; }
+        public ICollection<HeroSpell> HeroSpells { get; set; }
     }
 }

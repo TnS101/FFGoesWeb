@@ -101,7 +101,7 @@
 
         public DbSet<EnergyChange> EnergyChanges { get; set; }
 
-        public DbSet<HeroSpells> HeroesSpells { get; set; }
+        public DbSet<HeroSpell> HeroesSpells { get; set; }
 
         public DbSet<Like> Likes { get; set; }
 

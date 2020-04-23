@@ -23,7 +23,7 @@
         {
             var fightingClass = new FightingClass
             {
-                ClassType = request.ClassType,
+                Type = request.ClassType,
                 MaxHP = request.MaxHP,
                 MaxMana = request.MaxMana,
                 HealthRegen = request.HealthRegen,

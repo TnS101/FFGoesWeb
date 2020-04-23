@@ -1,0 +1,42 @@
+controllers : 25 / required 6
+views : 74 ; 63 without partial views / required 15
+entities : 41 ; 28 without relations / required 6
+
+=>General Requirments<= (12/14)
+
+Use VS 2019 : Check
+Use Razor template engine : Check
+Use MS SQL Server : Check
+Use EF Core : Check
+Style Design : Check
+Use Identity : Check
+Use Ajax : Not Yet
+Write Unit Tests : Not Yet
+Error Handling + Data Validation : Check
+Handle Correctly special HTML characters : Check
+Use Dependency Injection : Check
+AutoMapping : Check
+Prevent Security Vulnerabilities : Check
+Project Identity : Check
+
+----------------------------
+
+=>Additional Requirements<= (4/5)
+
+OOP + CQRS + MediatR : Check
+Friendly UI : Check
+Support all Web browsers : Check
+Scalable Window : Everything without NavBars (will fix)
+Use Caching where appropriate : Check 
+
+-----------------------------
+
+=>Source Control<= (3/3)
+Link Submitted : Check
+Distinct Commit Days = 52 : Check
+Commits : 110+ (excluding documentation) : Check
+
+-----------------------------
+
+=>Bonuses<=
+None yet from the examples

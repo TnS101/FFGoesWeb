@@ -1,0 +1,58 @@
+<Identity>
+AppUser one-to-many Heroes
+AppUser one-to-many FriendRequests
+AppUser one-to-many Messages
+AppUser one-to-many Topics
+AppUser one-to-many Comments
+AppUser one-to-many Notifications
+AppUser one-to-many Feedbacks
+AppUser one-to-many Likes
+AppUser one-to-many Friends
+AppUser one-to-many Tickets
+AppUser one-to-many Friends
+</Identity>
+
+<Game>
+<Items>
+Equipment one-to-one Hero
+Equipments many-to-many Weapons
+Equipments many-to-many Armors
+Equipments many-to-many Trinkets
+
+Inventory one-to-one Hero
+Inventories many-to-many Weapons
+Inventories many-to-many Armors
+Inventories many-to-many Trinkets
+Inventories many-to-many Consumeables
+Inventories many-to-many Materials
+Inventories many-to-many Tools
+Inventories many-to-many Treasures
+Inventories many-to-many TreasureKeys
+
+Tool one-to-many Materials
+</Items>
+
+<Units>
+Monster one-to-one MonsterRarity
+
+Heroes many-to-many Spells
+Hero one-to-many EnergyChanges
+Heroes many-to-one Profession
+Heroes many-to-one FightingClass
+
+</Units>
+</Game>
+
+<Social>
+Comment one-to-many Likes
+Comment one-to-many Tickets
+Comments many-to-one Topic
+Comment one-to-many Replies
+Comments many-to-one AppUser
+
+Message one-to-many Tickets
+
+Status one-to-many AppUsers
+
+Topic one-to-many Likes
+</Social>

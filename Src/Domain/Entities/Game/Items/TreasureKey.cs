@@ -15,9 +15,9 @@
 
         public string Rarity { get; set; }
 
-        public string Slot { get; set; }
-
         public string ImagePath { get; set; }
+
+        public string Slot { get; set; }
 
         public ICollection<TreasureKeyInventory> TreasureKeyInventories { get; set; }
     }

@@ -10,7 +10,7 @@
         {
             builder.HasKey(f => f.Id);
 
-            builder.Property(f => f.ClassType)
+            builder.Property(f => f.Type)
                 .HasMaxLength(20)
                 .IsRequired();
 

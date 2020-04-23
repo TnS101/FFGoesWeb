@@ -17,9 +17,9 @@
 
         public int Reward { get; set; }
 
-        public string Slot { get; set; }
-
         public string ImagePath { get; set; }
+
+        public string Slot { get; set; }
 
         public ICollection<TreasureInventory> TreasureInventories { get; set; }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities.Game.Units.ManyToMany
 {
-    public class HeroSpells
+    public class HeroSpell
     {
         public int SpellId { get; set; }
 

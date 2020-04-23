@@ -8,7 +8,7 @@
     {
         int Id { get; }
 
-        string ClassType { get; }
+        string Type { get; }
 
         double MaxHP { get; }
 

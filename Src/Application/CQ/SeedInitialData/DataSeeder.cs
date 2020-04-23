@@ -1140,7 +1140,7 @@
         {
             this.context.FightingClasses.Add(new FightingClass
             {
-                ClassType = "Warrior",
+                Type = "Warrior",
                 MaxHP = 260,
                 HealthRegen = 6.1,
                 MaxMana = 110,
@@ -1158,7 +1158,7 @@
 
             this.context.FightingClasses.Add(new FightingClass
             {
-                ClassType = "Hunter",
+                Type = "Hunter",
                 MaxHP = 215,
                 HealthRegen = 4,
                 MaxMana = 110,
@@ -1176,7 +1176,7 @@
 
             this.context.FightingClasses.Add(new FightingClass
             {
-                ClassType = "Mage",
+                Type = "Mage",
                 MaxHP = 210,
                 HealthRegen = 3.8,
                 MaxMana = 140,
@@ -1194,7 +1194,7 @@
 
             this.context.FightingClasses.Add(new FightingClass
             {
-                ClassType = "Naturalist",
+                Type = "Naturalist",
                 MaxHP = 225,
                 HealthRegen = 5,
                 MaxMana = 130,
@@ -1212,7 +1212,7 @@
 
             this.context.FightingClasses.Add(new FightingClass
             {
-                ClassType = "Necroid",
+                Type = "Necroid",
                 MaxHP = 200,
                 HealthRegen = 4,
                 MaxMana = 150,
@@ -1230,7 +1230,7 @@
 
             this.context.FightingClasses.Add(new FightingClass
             {
-                ClassType = "Paladin",
+                Type = "Paladin",
                 MaxHP = 225,
                 HealthRegen = 6,
                 MaxMana = 120,
@@ -1248,7 +1248,7 @@
 
             this.context.FightingClasses.Add(new FightingClass
             {
-                ClassType = "Priest",
+                Type = "Priest",
                 MaxHP = 190,
                 HealthRegen = 5,
                 MaxMana = 180,
@@ -1266,7 +1266,7 @@
 
             this.context.FightingClasses.Add(new FightingClass
             {
-                ClassType = "Rogue",
+                Type = "Rogue",
                 MaxHP = 195,
                 HealthRegen = 3,
                 MaxMana = 110,
@@ -1284,7 +1284,7 @@
 
             this.context.FightingClasses.Add(new FightingClass
             {
-                ClassType = "Shaman",
+                Type = "Shaman",
                 MaxHP = 210,
                 HealthRegen = 5,
                 MaxMana = 130,

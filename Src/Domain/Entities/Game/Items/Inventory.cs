@@ -39,9 +39,9 @@
 
         public ICollection<MaterialInventory> MaterialInventories { get; set; }
 
-        public ICollection<TreasureKeyInventory> TreasureKeyInventories { get; set; }
-
         public ICollection<TreasureInventory> TreasureInventories { get; set; }
+
+        public ICollection<TreasureKeyInventory> TreasureKeyInventories { get; set; }
 
         public ICollection<ToolInventory> ToolInventories { get; set; }
     }

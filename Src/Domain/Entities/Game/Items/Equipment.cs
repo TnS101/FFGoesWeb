@@ -42,10 +42,10 @@
 
         public bool WeaponSlot { get; set; }
 
-        public ICollection<WeaponEquipment> WeaponEquipments { get; set; }
-
         public ICollection<ArmorEquipment> ArmorEquipments { get; set; }
 
         public ICollection<TrinketEquipment> TrinketEquipments { get; set; }
+
+        public ICollection<WeaponEquipment> WeaponEquipments { get; set; }
     }
 }

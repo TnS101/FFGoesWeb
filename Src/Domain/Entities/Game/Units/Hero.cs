@@ -13,7 +13,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.EnergyChanges = new HashSet<EnergyChange>();
-            this.HeroSpells = new HashSet<HeroSpells>();
+            this.HeroSpells = new HashSet<HeroSpell>();
         }
 
         public string Id { get; set; }
@@ -98,6 +98,8 @@
 
         public int Mastery { get; set; }
 
+        public string IconPath { get; set; }
+
         public override string ImagePath { get; set; }
 
         public bool IsSelected { get; set; }
@@ -108,11 +110,9 @@
 
         public int PvPPoints { get; set; }
 
-        public string IconPath { get; set; }
-
         public int EquipmentScore { get; set; }
 
-        public ICollection<HeroSpells> HeroSpells { get; set; }
+        public ICollection<HeroSpell> HeroSpells { get; set; }
 
         public ICollection<EnergyChange> EnergyChanges { get; set; }
     }

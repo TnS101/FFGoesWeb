@@ -24,19 +24,19 @@
 
         public string RelatedMaterials { get; set; }
 
-        public string ImagePath { get; set; }
-
         public bool IsRefineable { get; set; }
 
         public bool IsDisolveable { get; set; }
 
         public bool IsCraftable { get; set; }
 
-        public int SellPrice { get; set; }
-
         public int BuyPrice { get; set; }
 
+        public int SellPrice { get; set; }
+
         public string Slot { get; set; }
+
+        public string ImagePath { get; set; }
 
         public ICollection<MaterialInventory> MaterialInventories { get; set; }
     }

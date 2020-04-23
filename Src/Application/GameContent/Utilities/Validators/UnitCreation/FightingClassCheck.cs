@@ -72,7 +72,7 @@
 
             foreach (var spell in spells)
             {
-                context.HeroesSpells.Add(new HeroSpells
+                context.HeroesSpells.Add(new HeroSpell
                 {
                     HeroId = hero.Id,
                     SpellId = spell.Id,

@@ -4,9 +4,9 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class HeroSpellsConfiguration : IEntityTypeConfiguration<HeroSpells>
+    public class HeroSpellsConfiguration : IEntityTypeConfiguration<HeroSpell>
     {
-        public void Configure(EntityTypeBuilder<HeroSpells> builder)
+        public void Configure(EntityTypeBuilder<HeroSpell> builder)
         {
             builder.HasKey(k => new { k.SpellId, k.HeroId });
 

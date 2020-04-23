@@ -31,7 +31,7 @@
         {
             if (!string.IsNullOrWhiteSpace(request.NewClassStype))
             {
-                fightingClass.ClassType = request.NewClassStype;
+                fightingClass.Type = request.NewClassStype;
             }
 
             if (request.NewMaxHP > 0)

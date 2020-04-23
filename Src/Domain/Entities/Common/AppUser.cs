@@ -7,7 +7,6 @@
     using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class AppUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -23,6 +22,7 @@
             this.Notifications = new HashSet<Notification>();
             this.Feedbacks = new HashSet<Feedback>();
             this.Likes = new HashSet<Like>();
+            this.Tickets = new HashSet<Ticket>();
 
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
@@ -76,6 +76,8 @@
         public ICollection<Like> Likes { get; set; }
 
         public ICollection<Friend> Friends { get; set; }
+
+        public ICollection<Ticket> Tickets { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

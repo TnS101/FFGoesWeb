@@ -12,13 +12,13 @@
 
         public int Id { get; set; }
 
-        public string ClassType { get; set; }
+        public string Type { get; set; }
 
         public double MaxHP { get; set; }
 
-        public double HealthRegen { get; set; }
-
         public double MaxMana { get; set; }
+
+        public double HealthRegen { get; set; }
 
         public double ManaRegen { get; set; }
 

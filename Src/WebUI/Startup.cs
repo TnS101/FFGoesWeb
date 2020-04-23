@@ -1,5 +1,6 @@
 ﻿namespace WebUI
 {
+    using System;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.Common.Mappings;
@@ -13,9 +14,9 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Authorization;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.Net.Http.Headers;
     using Persistence;
 
     public class Startup
@@ -63,10 +64,12 @@
 
             // Other services
             services.AddSignalR();
+            services.AddMemoryCache();
             services.AddControllersWithViews(options =>
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
+            services.AddResponseCompression();
             services.AddMvc();
 
             // Cookies
@@ -74,12 +77,8 @@
                options =>
                {
                    options.CheckConsentNeeded = context => true;
-                   options.MinimumSameSitePolicy = SameSiteMode.None;
+                   options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
                });
-
-            services.ConfigureApplicationCookie(options =>
-            {
-            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -93,8 +92,21 @@
                 app.UseStatusCodePagesWithRedirects("/Error/{0}");
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = (context) =>
+                {
+                    var headers = context.Context.Response.GetTypedHeaders();
+                    headers.CacheControl = new CacheControlHeaderValue
+                    {
+                        Public = true,
+                        MaxAge = TimeSpan.FromDays(365),
+                    };
+                },
+            });
+
             app.UseCookiePolicy();
+            app.UseResponseCompression();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();

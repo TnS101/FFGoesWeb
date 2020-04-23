@@ -19,8 +19,6 @@
 
         public string Name { get; set; }
 
-        public string Slot { get; set; }
-
         public int Level { get; set; }
 
         public string ClassType { get; set; }
@@ -44,6 +42,8 @@
         public bool IsCraftable { get; set; }
 
         public string Type { get; set; }
+
+        public string Slot { get; set; }
 
         public ICollection<TrinketInventory> TrinketInventories { get; set; }
 
