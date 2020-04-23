@@ -1,0 +1,13 @@
+[1]Name
+[2]Level
+[3]ClassType
+[4]Stamina
+[5]Strength
+[6]Agility
+[7]Intellect
+[8]Spirit
+[9]ArmorValue
+[10]ResistanceValue
+[11]BuyPrice
+[12]SellPrice
+[13]Slot

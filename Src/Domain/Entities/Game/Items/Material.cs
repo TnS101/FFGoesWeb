@@ -16,10 +16,6 @@
 
         public Tool Tool { get; set; }
 
-        public int SellPrice { get; set; }
-
-        public int BuyPrice { get; set; }
-
         public int FuelCount { get; set; }
 
         public string Name { get; set; }
@@ -35,6 +31,10 @@
         public bool IsDisolveable { get; set; }
 
         public bool IsCraftable { get; set; }
+
+        public int SellPrice { get; set; }
+
+        public int BuyPrice { get; set; }
 
         public string Slot { get; set; }
 

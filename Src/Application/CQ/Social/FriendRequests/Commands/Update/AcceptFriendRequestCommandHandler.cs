@@ -3,6 +3,7 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Social;
@@ -11,47 +12,43 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class AcceptFriendRequestCommandHandler : IRequestHandler<AcceptFriendRequestCommand, string>
+    public class AcceptFriendRequestCommandHandler : UserHandler, IRequestHandler<AcceptFriendRequestCommand, string>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public AcceptFriendRequestCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<string> Handle(AcceptFriendRequestCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.Reciever);
+            var user = await this.UserManager.GetUserAsync(request.Reciever);
 
-            var friendRequest = await this.context.FriendRequests.FindAsync(request.RequestId);
+            var friendRequest = await this.Context.FriendRequests.FindAsync(request.RequestId);
 
             var senderName = friendRequest.SenderName;
 
-            var friend = await this.context.AppUsers.FirstOrDefaultAsync(f => f.UserName == senderName);
+            var friend = await this.Context.AppUsers.FirstOrDefaultAsync(f => f.UserName == senderName);
 
             this.AddFriends(user, friend);
 
             this.SendNotification(user, friend);
 
-            this.context.FriendRequests.Remove(friendRequest);
+            this.Context.FriendRequests.Remove(friendRequest);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.FriendCommandRedirect;
         }
 
         private void AddFriends(AppUser user, AppUser friend)
         {
-            this.context.Friends.Add(new Friend
+            this.Context.Friends.Add(new Friend
             {
                 Id = user.Id,
                 UserId = friend.Id,
             });
 
-            this.context.Friends.Add(new Friend
+            this.Context.Friends.Add(new Friend
             {
                 Id = friend.Id,
                 UserId = user.Id,
@@ -60,7 +57,7 @@
 
         private void SendNotification(AppUser user, AppUser friend)
         {
-            this.context.Notifications.Add(new Notification
+            this.Context.Notifications.Add(new Notification
             {
                 UserId = friend.Id,
                 ApplicationSection = "Social",

@@ -2,21 +2,20 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using MediatR;
 
-    public class HeroLevelUpCommandHandler : IRequestHandler<HeroLevelUpCommand>
+    public class HeroLevelUpCommandHandler : BaseHandler, IRequestHandler<HeroLevelUpCommand>
     {
-        private readonly IFFDbContext context;
-
         public HeroLevelUpCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<Unit> Handle(HeroLevelUpCommand request, CancellationToken cancellationToken)
         {
-            var hero = await this.context.Heroes.FindAsync(request.HeroId);
+            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
             if (request.StatPick == "Attack")
             {
@@ -39,9 +38,9 @@
                 hero.CurrentMagicPower = hero.MagicPower;
             }
 
-            this.context.Heroes.Update(hero);
+            this.Context.Heroes.Update(hero);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }

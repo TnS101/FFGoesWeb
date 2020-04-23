@@ -2,28 +2,25 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetAllToolsQueryHandler : IRequestHandler<GetAllToolsQuery, ToolsListViewModel>
+    public class GetAllToolsQueryHandler : MapperHandler, IRequestHandler<GetAllToolsQuery, ToolsListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly IMapper mapper;
-
         public GetAllToolsQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
-            this.context = context;
-            this.mapper = mapper;
         }
 
         public async Task<ToolsListViewModel> Handle(GetAllToolsQuery request, CancellationToken cancellationToken)
         {
             return new ToolsListViewModel
             {
-                Tools = await this.context.Tools.ProjectTo<ToolMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                Tools = await this.Context.Tools.ProjectTo<ToolMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

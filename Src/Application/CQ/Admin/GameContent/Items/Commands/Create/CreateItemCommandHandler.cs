@@ -2,20 +2,20 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.Common.StringProcessing.ImagePaths;
     using Domain.Entities.Game.Items;
     using global::Common;
     using MediatR;
 
-    public class CreateItemCommandHandler : IRequestHandler<CreateItemCommand, string>
+    public class CreateItemCommandHandler : BaseHandler, IRequestHandler<CreateItemCommand, string>
     {
-        private readonly IFFDbContext context;
         private readonly ImagePath imagePath;
 
         public CreateItemCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
             this.imagePath = new ImagePath();
         }
 
@@ -80,9 +80,9 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            this.context.Weapons.Add(weapon);
+            this.Context.Weapons.Add(weapon);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return weapon.Id;
         }
@@ -107,9 +107,9 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            this.context.Armors.Add(armor);
+            this.Context.Armors.Add(armor);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return armor.Id;
         }
@@ -131,9 +131,9 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            this.context.Trinkets.Add(trinket);
+            this.Context.Trinkets.Add(trinket);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return trinket.Id;
         }
@@ -167,9 +167,9 @@
                 material.ToolId = request.ToolId;
             }
 
-            this.context.Materials.Add(material);
+            this.Context.Materials.Add(material);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return material.Id;
         }
@@ -184,9 +184,9 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            this.context.Treasures.Add(treasure);
+            this.Context.Treasures.Add(treasure);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return treasure.Id;
         }
@@ -200,9 +200,9 @@
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
-            this.context.TreasureKeys.Add(treasureKey);
+            this.Context.TreasureKeys.Add(treasureKey);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return treasureKey.Id;
         }
@@ -222,9 +222,9 @@
                 tool.IsCraftable = true;
             }
 
-            this.context.Tools.Add(tool);
+            this.Context.Tools.Add(tool);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return tool.Id;
         }

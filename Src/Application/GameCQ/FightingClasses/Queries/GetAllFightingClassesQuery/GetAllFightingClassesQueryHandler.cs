@@ -2,28 +2,25 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetAllFightingClassesQueryHandler : IRequestHandler<GetAllFightingClassesQuery, FightingClassListViewModel>
+    public class GetAllFightingClassesQueryHandler : MapperHandler, IRequestHandler<GetAllFightingClassesQuery, FightingClassListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly IMapper mapper;
-
         public GetAllFightingClassesQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
-            this.context = context;
-            this.mapper = mapper;
         }
 
         public async Task<FightingClassListViewModel> Handle(GetAllFightingClassesQuery request, CancellationToken cancellationToken)
         {
             return new FightingClassListViewModel
             {
-                FightingClasses = await this.context.FightingClasses.ProjectTo<FightingClassMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                FightingClasses = await this.Context.FightingClasses.ProjectTo<FightingClassMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

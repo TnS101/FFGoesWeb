@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
@@ -14,24 +15,18 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetHeroListQueryHandler : IRequestHandler<GetHeroListQuery, HeroListViewModel>
+    public class GetHeroListQueryHandler : FullHandler, IRequestHandler<GetHeroListQuery, HeroListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-        private readonly IMapper mapper;
-
         public GetHeroListQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
+            : base(context, userManager, mapper)
         {
-            this.context = context;
-            this.userManager = userManager;
-            this.mapper = mapper;
         }
 
         public async Task<HeroListViewModel> Handle(GetHeroListQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var heroes = this.context.Heroes.Where(h => h.UserId == user.Id);
+            var heroes = this.Context.Heroes.Where(h => h.UserId == user.Id);
 
             this.EnergyManagement(heroes.ToList());
 
@@ -47,11 +42,11 @@
                 hero.CurrentCritChance = hero.CritChance;
             }
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return new HeroListViewModel
             {
-                Heroes = await heroes.ProjectTo<HeroMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                Heroes = await heroes.ProjectTo<HeroMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
             };
         }
 
@@ -61,7 +56,7 @@
             {
                 this.MainStatsRegen(hero);
 
-                foreach (var energyChange in this.context.EnergyChanges.Where(ec => ec.HeroId == hero.Id).OrderBy(l => l.LastChangedOn).ToList())
+                foreach (var energyChange in this.Context.EnergyChanges.Where(ec => ec.HeroId == hero.Id).OrderBy(l => l.LastChangedOn).ToList())
                 {
                     double energyCap = 0;
                     int rechargeTime = 4;
@@ -152,20 +147,20 @@
                                 Type = energyChange.Type,
                             };
 
-                            if (this.context.EnergyChanges.Any(ec => ec.Id == regeneration.Id))
+                            if (this.Context.EnergyChanges.Any(ec => ec.Id == regeneration.Id))
                             {
                                 continue;
                             }
 
-                            this.context.EnergyChanges.Add(regeneration);
-                            this.context.EnergyChanges.Remove(energyChange);
+                            this.Context.EnergyChanges.Add(regeneration);
+                            this.Context.EnergyChanges.Remove(energyChange);
 
                             break;
                         }
                     }
                 }
 
-                this.context.Heroes.Update(hero);
+                this.Context.Heroes.Update(hero);
             }
         }
 
@@ -185,11 +180,11 @@
                 hero.CurrentMana = hero.MaxMana;
             }
 
-            if (this.context.EnergyChanges.Where(ec => ec.Type == "Health" && ec.HeroId == hero.Id).Count() == 0)
+            if (this.Context.EnergyChanges.Where(ec => ec.Type == "Health" && ec.HeroId == hero.Id).Count() == 0)
             {
                 if (hero.CurrentHP < hero.MaxHP)
                 {
-                    this.context.EnergyChanges.Add(new EnergyChange
+                    this.Context.EnergyChanges.Add(new EnergyChange
                     {
                         HeroId = hero.Id,
                         Type = "Health",
@@ -203,11 +198,11 @@
                 }
             }
 
-            if (this.context.EnergyChanges.Where(ec => ec.Type == "Mana" && ec.HeroId == hero.Id).Count() == 0)
+            if (this.Context.EnergyChanges.Where(ec => ec.Type == "Mana" && ec.HeroId == hero.Id).Count() == 0)
             {
                 if (hero.CurrentMana < hero.MaxMana)
                 {
-                    this.context.EnergyChanges.Add(new EnergyChange
+                    this.Context.EnergyChanges.Add(new EnergyChange
                     {
                         HeroId = hero.Id,
                         Type = "Mana",

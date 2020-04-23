@@ -6,21 +6,18 @@
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetOnlineUsersQueryHandler : IRequestHandler<GetOnlineUsersQuery, UserListViewModel>
+    public class GetOnlineUsersQueryHandler : MapperHandler, IRequestHandler<GetOnlineUsersQuery, UserListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly IMapper mapper;
-
         public GetOnlineUsersQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
-            this.context = context;
-            this.mapper = mapper;
         }
 
         public async Task<UserListViewModel> Handle(GetOnlineUsersQuery request, CancellationToken cancellationToken)
@@ -28,7 +25,7 @@
             var cookies = new CookieCollection();
 
             var loginCookie = cookies["userLogin"];
-            var users = await this.context.AppUsers.Where(au => au.IsOnline).ProjectTo<UserPartialViewModel>(this.mapper.ConfigurationProvider).ToListAsync();
+            var users = await this.Context.AppUsers.Where(au => au.IsOnline).ProjectTo<UserPartialViewModel>(this.Mapper.ConfigurationProvider).ToListAsync();
 
             if (users.Count() > 0)
             {

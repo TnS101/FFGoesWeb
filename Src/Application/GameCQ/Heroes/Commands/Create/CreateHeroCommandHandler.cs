@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Validators.UnitCreation;
     using Domain.Entities.Common;
@@ -13,26 +14,23 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class CreateHeroCommandHandler : IRequestHandler<CreateHeroCommand, string>
+    public class CreateHeroCommandHandler : UserHandler, IRequestHandler<CreateHeroCommand, string>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
         private readonly FightingClassCheck fightingClassCheck;
         private readonly RaceCheck raceCheck;
 
         public CreateHeroCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
             this.fightingClassCheck = new FightingClassCheck();
             this.raceCheck = new RaceCheck();
         }
 
         public async Task<string> Handle(CreateHeroCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var heroes = await this.context.Heroes.Where(h => h.UserId == user.Id).ToListAsync();
+            var heroes = await this.Context.Heroes.Where(h => h.UserId == user.Id).ToListAsync();
 
             if (heroes.Count() == user.AllowedHeroes)
             {
@@ -45,7 +43,7 @@
                     unit.IsSelected = false;
                 }
 
-                this.context.Heroes.UpdateRange(heroes);
+                this.Context.Heroes.UpdateRange(heroes);
             }
 
             var hero = new Hero
@@ -66,13 +64,13 @@
 
             hero.InventoryId = hero.Inventory.Id;
 
-            await this.fightingClassCheck.Check(hero, request.ClassType, this.context);
+            await this.fightingClassCheck.Check(hero, request.ClassType, this.Context);
 
             this.raceCheck.Check(hero, request.Race);
 
-            this.context.Heroes.Add(hero);
+            this.Context.Heroes.Add(hero);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.HeroCommandRedirect;
         }

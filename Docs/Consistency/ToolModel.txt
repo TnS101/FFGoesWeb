@@ -1,0 +1,6 @@
+[1]Name
+[2]Durability
+[3]IsCraftable
+[4]BuyPrice
+[5]SellPrice
+[6]Slot

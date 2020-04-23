@@ -1,0 +1,126 @@
+﻿@model Application.CQ.Admin.GameContent.Spells.Queries.GetCurrentSpellQuery.SpellFullViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CurrentSpell</title>
+    <partial name="_AdminNavBar">
+</head>
+<body>
+    <a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-arrow-left has-massive-font-size top-left-icon main-font-color"></i></a>
+    <div class="item-padding fade-in has-text-align-center">
+        <h2 class="main-font-color has-large-font-size">Reviewing @Model.Name used by @Model.ClassType</h2>
+        <div class="item-padding">
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    @if (Model.Type.Split(',').Count() > 2)
+                    {
+                        <div class="form-group fade-in item-padding">
+                            <label class="contro-label has-normal-font-size">Types and Stats Providers</label>
+                            <br />
+                            <h2 class="main-font-color has-normal-font-size">@Model.Type</h2>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group fade-in item-padding">
+                            <label class="contro-label has-normal-font-size">Type and Stats Provider</label>
+                            <br />
+                            <h2 class="main-font-color has-normal-font-size">@Model.Type</h2>
+                        </div>
+                    }
+
+                    <div class="form-group fade-in item-padding">
+                        <label class="contro-label has-normal-font-size">Spell Power</label>
+                        <br />
+                        <h2 class="main-font-color has-normal-font-size">@Model.Power</h2>
+                    </div>
+                    @if (Model.Type.Split(',').Count() > 2)
+                    {
+                        <div class="form-group fade-in item-padding">
+                            <label class="contro-label has-normal-font-size">Secondary Spell Power</label>
+                            <br />
+                            <h2 class="main-font-color has-normal-font-size">@Model.SecondaryPower</h2>
+                        </div>
+                    }
+
+                    <div class="form-group fade-in item-padding">
+                        <label class="contro-label has-normal-font-size">Mana Requirment</label>
+                        <br />
+                        <h2 class="main-font-color has-normal-font-size">@Model.ManaRequirement</h2>
+                    </div>
+
+                    @if (Model.AdditionalEffect != null)
+                    {
+                        @if (Model.AdditionalEffect.Split(',').Count() > 2)
+                        {
+                            <div class="form-group fade-in item-padding">
+                                <label class="contro-label has-normal-font-size">Additional Effects</label>
+                                <br />
+                                <h2 class="main-font-color has-normal-font-size">@Model.AdditionalEffect</h2>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group fade-in item-padding">
+                                <label class="contro-label has-normal-font-size">Additional Effect</label>
+                                <br />
+                                <h2 class="main-font-color has-normal-font-size">@Model.AdditionalEffect</h2>
+                            </div>
+                        }
+
+                        <div class="form-group fade-in item-padding">
+                            <label class="contro-label has-normal-font-size">Effect Power</label>
+                            <br />
+                            <h2 class="main-font-color has-normal-font-size">@Model.AdditionalEffect</h2>
+                        </div>
+
+                        @if (Model.AdditionalEffect.Split(',').Count() > 2)
+                        {
+                            <div class="form-group fade-in item-padding">
+                                <label class="contro-label has-normal-font-size">Secondary Effect Power</label>
+                                <br />
+                                <h2 class="main-font-color has-normal-font-size">@{var secondaryEffectPower = Model.SecondaryPower * 100;}%</h2>
+                            </div>
+                        }
+                    }
+
+                    @if (Model.BuffOrEffectTarget != null)
+                    {
+
+                        if (Model.BuffOrEffectTarget.Split("/").Count() > 1)
+                        {
+                            <div class="form-group fade-in item-padding">
+                                <label class="contro-label has-normal-font-size">Buff or Effect Targets</label>
+                                <br />
+                                <h2 class="main-font-color has-normal-font-size">@Model.BuffOrEffectTarget</h2>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group fade-in item-padding">
+                                <label class="contro-label has-normal-font-size">Buff or Effect Target</label>
+                                <br />
+                                <h2 class="main-font-color has-normal-font-size">@Model.BuffOrEffectTarget</h2>
+                            </div>
+                        }
+                    }
+                    <div class="item-padding has-text-align-center" id="@Model.Id">
+                        <a asp-controller="Spell" asp-action="Update" asp-route-id="@Model.Id"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                        <form asp-controller="Spell" asp-action="Delete" method="post" class="item-padding">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <input type="submit" name="button" value="Delete" class="main-button" />
+                        </form>
+                    </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

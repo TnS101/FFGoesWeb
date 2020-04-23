@@ -10,7 +10,6 @@
     using Domain.Entities.Social;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Moderation;
-    using global::Domain.Entities.Social;
     using global::Domain.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;

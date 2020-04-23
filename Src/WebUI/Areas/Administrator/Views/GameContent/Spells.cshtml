@@ -1,0 +1,74 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery.SpellListViewModel
+@{
+    ViewData["Title"] = "Spells";
+}
+<head>
+    <partial name="_AdminNavBar">
+        <script>
+            $(document).ready(function () {
+                var scrollTop = $('#scroll-top');
+
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 1200) {
+                        scrollTop.removeClass('fade-out');
+                        scrollTop.show();
+                    } else {
+                        scrollTop.addClass('fade-out');
+                    }
+                })
+
+                scrollTop.click(function () {
+                    $('html, body').animate({
+                        scrollTop: $("#top").offset().top
+                    }, 1200);
+                })
+            })
+        </script>
+</head>
+<body>
+    <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
+    <div class="item-padding fade-in has-text-align-center" id="top">
+        <h2 class="main-font-color has-large-font-size">Spells</h2>
+        <div class="item-padding">
+            <hr />
+            <form asp-controller="GameContent" asp-action="Spells" method="get">
+                <p class="has-normal-font-size">
+                    <label for="shaman">Shaman </label>
+                    <input type="checkbox" name="classType" id="shaman" value="Shaman" />
+                    <label for="rogue">Rogue</label>
+                    <input type="checkbox" name="classType" id="rogue" value="Rogue" />
+                    <label for="priest">Priest</label>
+                    <input type="checkbox" name="classType" id="priest" value="Priest" />
+                    <label for="paladin">Paladin</label>
+                    <input type="checkbox" name="classType" id="paladin" value="Paladin" />
+                    <label for="necroid">Necroid</label>
+                    <input type="checkbox" name="classType" id="necroid" value="Necroid" />
+                    <label for="naturalist">Naturalist</label>
+                    <input type="checkbox" name="classType" id="naturalist" value="Naturalist" />
+                    <label for="mage">Mage</label>
+                    <input type="checkbox" name="classType" id="mage" value="Mage" />
+                    <label for="hunter">Hunter</label>
+                    <input type="checkbox" name="classType" id="hunter" value="Hunter" />
+                    <label for="warrior">Warrior</label>
+                    <input type="checkbox" name="classType" id="warrior" value="Warrior" />
+                    <input type="submit" name="button" value="Filter" />
+                </p>
+            </form>
+
+            @foreach (var spell in Model.Spells)
+            {
+                <div class="item-padding has-text-align-center" id="@spell.Id">
+                    <a asp-controller="Spell" asp-action="Current" asp-route-id="@spell.Id"><h3 class="main-font-color">@spell.Name</h3></a>
+                    <a asp-controller="Spell" asp-action="Update" asp-route-id="@spell.Id"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                    <form asp-controller="Spell" asp-action="Delete" method="post" class="item-padding">
+                        <input type="hidden" name="id" value="@spell.Id" />
+                        <input type="submit" name="button" value="Delete" class="main-button" />
+                    </form>
+                    <hr />
+                </div>
+            }
+        </div>
+    </div>
+
+</body>

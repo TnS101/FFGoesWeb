@@ -2,23 +2,22 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Game.Units;
     using global::Common;
     using MediatR;
 
-    public class CreateSpellCommandHandler : IRequestHandler<CreateSpellCommand, string>
+    public class CreateSpellCommandHandler : BaseHandler, IRequestHandler<CreateSpellCommand, string>
     {
-        private readonly IFFDbContext context;
-
         public CreateSpellCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<string> Handle(CreateSpellCommand request, CancellationToken cancellationToken)
         {
-            this.context.Spells.Add(new Spell
+            this.Context.Spells.Add(new Spell
             {
                 Name = request.Name,
                 ManaRequirement = 0.2,
@@ -32,7 +31,7 @@
                 ResistanceAffect = request.ResistanceAffect,
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.AdminSpellCommandRedirect;
         }

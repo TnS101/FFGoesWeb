@@ -13,6 +13,7 @@
                 401 => this.View("Unauthorized"),
                 403 => this.View("Forbidden"),
                 404 => this.View("NotFound"),
+                405 => this.View("Default"),
                 414 => this.View("URITooLong"),
                 429 => this.View("TooManyRequests"),
                 500 => this.View("Internal"),

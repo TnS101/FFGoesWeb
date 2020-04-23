@@ -54,7 +54,7 @@
                 return this.View(topic);
             }
 
-            return this.Redirect(await this.Mediator.Send(new EditTopicCommand { Id = id, Title = topic.Title, Category = topic.Category, Content = topic.Content }));
+            return this.Redirect(await this.Mediator.Send(new EditTopicCommand { Id = id, NewTitle = topic.Title, NewCategory = topic.Category, NewContent = topic.Content }));
         }
 
         [HttpGet("/Topic/Like/id")]

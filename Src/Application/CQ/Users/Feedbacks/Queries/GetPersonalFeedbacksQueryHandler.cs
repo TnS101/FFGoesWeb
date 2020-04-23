@@ -3,34 +3,29 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
+    using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Domain.Entities.Common;
-    using Application.Common.Interfaces;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetPersonalFeedbacksQueryHandler : IRequestHandler<GetPersonalFeedbacksQuery, FeedbackListViewModel>
+    public class GetPersonalFeedbacksQueryHandler : FullHandler, IRequestHandler<GetPersonalFeedbacksQuery, FeedbackListViewModel>
     {
-        private readonly UserManager<AppUser> userManager;
-        private readonly IMapper mapper;
-        private readonly IFFDbContext context;
-
-        public GetPersonalFeedbacksQueryHandler(UserManager<AppUser> userManager, IFFDbContext context, IMapper mapper)
+        public GetPersonalFeedbacksQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
+            : base(context, userManager, mapper)
         {
-            this.userManager = userManager;
-            this.context = context;
-            this.mapper = mapper;
         }
 
         public async Task<FeedbackListViewModel> Handle(GetPersonalFeedbacksQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
             return new FeedbackListViewModel
             {
-                Feedbacks = await this.context.Feedbacks.Where(f => f.UserId == user.Id).ProjectTo<FeedbackFulllViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                Feedbacks = await this.Context.Feedbacks.Where(f => f.UserId == user.Id).ProjectTo<FeedbackFulllViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

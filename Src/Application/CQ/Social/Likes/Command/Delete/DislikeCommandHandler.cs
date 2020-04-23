@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using global::Common;
@@ -10,29 +11,25 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class DislikeCommandHandler : IRequestHandler<DislikeCommand, string>
+    public class DislikeCommandHandler : UserHandler, IRequestHandler<DislikeCommand, string>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public DislikeCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<string> Handle(DislikeCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
             if (request.CommentId != null)
             {
-                if (this.context.Comments.Any(c => c.Id == request.CommentId && c.UserId == user.Id)
-                    && await this.context.Likes.AnyAsync(l => l.CommentId == request.CommentId && l.UserId == user.Id))
+                if (this.Context.Comments.Any(c => c.Id == request.CommentId && c.UserId == user.Id)
+                    && await this.Context.Likes.AnyAsync(l => l.CommentId == request.CommentId && l.UserId == user.Id))
                 {
-                    var likeToRemove = await this.context.Likes.FirstOrDefaultAsync(l => l.CommentId == request.CommentId && l.UserId == user.Id);
+                    var likeToRemove = await this.Context.Likes.FirstOrDefaultAsync(l => l.CommentId == request.CommentId && l.UserId == user.Id);
 
-                    this.context.Likes.Remove(likeToRemove);
+                    this.Context.Likes.Remove(likeToRemove);
                 }
                 else
                 {
@@ -41,12 +38,12 @@
             }
             else
             {
-                if (this.context.Topics.Any(t => t.Id == request.TopicId && t.UserId == user.Id)
-                    && await this.context.Likes.AnyAsync(l => l.TopicId == request.TopicId && l.UserId == user.Id))
+                if (this.Context.Topics.Any(t => t.Id == request.TopicId && t.UserId == user.Id)
+                    && await this.Context.Likes.AnyAsync(l => l.TopicId == request.TopicId && l.UserId == user.Id))
                 {
-                    var likeToRemove = await this.context.Likes.FirstOrDefaultAsync(l => l.TopicId == request.TopicId && l.UserId == user.Id);
+                    var likeToRemove = await this.Context.Likes.FirstOrDefaultAsync(l => l.TopicId == request.TopicId && l.UserId == user.Id);
 
-                    this.context.Likes.Remove(likeToRemove);
+                    this.Context.Likes.Remove(likeToRemove);
                 }
                 else
                 {
@@ -54,7 +51,7 @@
                 }
             }
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.TopicCommandRedirect;
         }

@@ -3,57 +3,48 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using global::Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class EditTopicCommandHandler : IRequestHandler<EditTopicCommand, string>
+    public class EditTopicCommandHandler : UserHandler, IRequestHandler<EditTopicCommand, string>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public EditTopicCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<string> Handle(EditTopicCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var topic = await this.context.Topics.FindAsync(request.Id);
+            var topic = await this.Context.Topics.FindAsync(request.Id);
 
             if (user.Id == topic.UserId)
             {
-                if (string.IsNullOrWhiteSpace(request.Title))
+                if (!string.IsNullOrWhiteSpace(request.NewTitle))
                 {
-                    request.Title = topic.Title;
+                    topic.Title = request.NewTitle;
                 }
 
-                if (string.IsNullOrWhiteSpace(request.Category))
+                if (!string.IsNullOrWhiteSpace(request.NewCategory))
                 {
-                    request.Category = topic.Category;
+                    topic.Category = request.NewCategory;
                 }
 
-                if (string.IsNullOrWhiteSpace(request.Content))
+                if (!string.IsNullOrWhiteSpace(request.NewContent))
                 {
-                    request.Content = topic.Content;
+                    topic.Content = topic.Content;
                 }
-
-                topic.Title = request.Title;
-
-                topic.Category = request.Category;
-
-                topic.Content = request.Content;
 
                 topic.EditedOn = DateTime.UtcNow;
 
-                this.context.Topics.Update(topic);
+                this.Context.Topics.Update(topic);
 
-                await this.context.SaveChangesAsync(cancellationToken);
+                await this.Context.SaveChangesAsync(cancellationToken);
 
                 return GConst.TopicCommandRedirect;
             }

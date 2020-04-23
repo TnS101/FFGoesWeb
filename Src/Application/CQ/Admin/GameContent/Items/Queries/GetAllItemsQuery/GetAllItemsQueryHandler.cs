@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using AutoMapper;
@@ -10,15 +11,11 @@
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetAllItemsQueryHandler : IRequestHandler<GetAllItemsQuery, ItemListViewModel>
+    public class GetAllItemsQueryHandler : MapperHandler, IRequestHandler<GetAllItemsQuery, ItemListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly IMapper mapper;
-
         public GetAllItemsQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
-            this.context = context;
-            this.mapper = mapper;
         }
 
         public async Task<ItemListViewModel> Handle(GetAllItemsQuery request, CancellationToken cancellationToken)
@@ -27,28 +24,28 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Weapons.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                    Items = await this.Context.Weapons.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
             else if (request.Slot == "Armor")
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Armors.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                    Items = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
             else if (request.Slot == "Trinket")
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Trinkets.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                    Items = await this.Context.Trinkets.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
             else if (request.Slot == "Treasure")
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Treasures.Select(t => new ItemMinViewModel
+                    Items = await this.Context.Treasures.Select(t => new ItemMinViewModel
                     {
                         Id = t.Id.ToString(),
                         Name = t.Name,
@@ -61,7 +58,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.TreasureKeys.Select(tk => new ItemMinViewModel
+                    Items = await this.Context.TreasureKeys.Select(tk => new ItemMinViewModel
                     {
                         Id = tk.Id.ToString(),
                         Name = tk.Name,
@@ -74,7 +71,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Materials.Select(m => new ItemMinViewModel
+                    Items = await this.Context.Materials.Select(m => new ItemMinViewModel
                     {
                         Id = m.Id.ToString(),
                         Name = m.Name,
@@ -87,7 +84,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Tools.Select(t => new ItemMinViewModel
+                    Items = await this.Context.Tools.Select(t => new ItemMinViewModel
                     {
                         Id = t.Id.ToString(),
                         Name = t.Name,
@@ -100,7 +97,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.context.Armors.ProjectTo<ItemMinViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                    Items = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
         }

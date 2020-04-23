@@ -2,26 +2,25 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 
-    public class DeleteFriendRequestCommandHandler : IRequestHandler<DeleteFriendRequestCommand, string>
+    public class DeleteFriendRequestCommandHandler : BaseHandler, IRequestHandler<DeleteFriendRequestCommand, string>
     {
-        private readonly IFFDbContext context;
-
         public DeleteFriendRequestCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<string> Handle(DeleteFriendRequestCommand request, CancellationToken cancellationToken)
         {
-            var requestToDelete = await this.context.FriendRequests.FindAsync(request.RequestId);
+            var requestToDelete = await this.Context.FriendRequests.FindAsync(request.RequestId);
 
-            this.context.FriendRequests.Remove(requestToDelete);
+            this.Context.FriendRequests.Remove(requestToDelete);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.FriendCommandRedirect;
         }

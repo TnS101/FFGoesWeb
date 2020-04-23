@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
     using Domain.Entities.Common;
@@ -10,29 +11,23 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetFullUnitQueryHandler : IRequestHandler<GetFullUnitQuery, UnitFullViewModel>
+    public class GetFullUnitQueryHandler : FullHandler, IRequestHandler<GetFullUnitQuery, UnitFullViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly IMapper mapper;
-        private readonly UserManager<AppUser> userManager;
-
-        public GetFullUnitQueryHandler(IFFDbContext context, IMapper mapper, UserManager<AppUser> userManager)
+        public GetFullUnitQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
+            : base(context, userManager, mapper)
         {
-            this.context = context;
-            this.mapper = mapper;
-            this.userManager = userManager;
         }
 
         public async Task<UnitFullViewModel> Handle(GetFullUnitQuery request, CancellationToken cancellationToken)
         {
             if (request.User != null)
             {
-                var user = await this.userManager.GetUserAsync(request.User);
-                var hero = await this.context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
+                var user = await this.UserManager.GetUserAsync(request.User);
+                var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
 
-                var mappedHero = this.mapper.Map<UnitFullViewModel>(hero);
+                var mappedHero = this.Mapper.Map<UnitFullViewModel>(hero);
 
-                var spells = await this.context.Spells.Where(s => s.ClassType == hero.ClassType).ToListAsync();
+                var spells = await this.Context.Spells.Where(s => s.ClassType == hero.ClassType).ToListAsync();
 
                 mappedHero.Spells = spells;
 
@@ -40,9 +35,9 @@
             }
             else
             {
-                var hero = await this.context.Heroes.FindAsync(request.HeroId);
+                var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-                return this.mapper.Map<UnitFullViewModel>(hero);
+                return this.Mapper.Map<UnitFullViewModel>(hero);
             }
         }
     }

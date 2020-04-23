@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
@@ -12,22 +13,18 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetPersonalItemsQueryHandler : IRequestHandler<GetPersonalItemsQuery, ItemListViewModel>
+    public class GetPersonalItemsQueryHandler : UserHandler, IRequestHandler<GetPersonalItemsQuery, ItemListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public GetPersonalItemsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<ItemListViewModel> Handle(GetPersonalItemsQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var hero = await this.context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
+            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
 
             if (request.Slot == "Weapon")
             {
@@ -57,15 +54,15 @@
 
         private async Task<ItemListViewModel> GetWeapons(Hero hero)
         {
-            if (this.context.WeaponsInventories.Any(wi => wi.InventoryId == hero.InventoryId))
+            if (this.Context.WeaponsInventories.Any(wi => wi.InventoryId == hero.InventoryId))
             {
-                var inventory = await this.context.WeaponsInventories.Where(wi => wi.InventoryId == hero.InventoryId).ToListAsync();
+                var inventory = await this.Context.WeaponsInventories.Where(wi => wi.InventoryId == hero.InventoryId).ToListAsync();
 
                 var weapons = new List<Weapon>();
 
                 if (inventory.Count() > 0)
                 {
-                    foreach (var baseWeapon in this.context.Weapons.ToList())
+                    foreach (var baseWeapon in this.Context.Weapons.ToList())
                     {
                         foreach (var item in inventory)
                         {
@@ -99,13 +96,13 @@
 
         private async Task<ItemListViewModel> GetArmors(Hero hero)
         {
-            if (await this.context.ArmorsInventories.AnyAsync(ai => ai.InventoryId == hero.InventoryId))
+            if (await this.Context.ArmorsInventories.AnyAsync(ai => ai.InventoryId == hero.InventoryId))
             {
-                var inventory = await this.context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId).ToListAsync();
+                var inventory = await this.Context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId).ToListAsync();
 
                 var armors = new List<Armor>();
 
-                foreach (var baseArmor in this.context.Armors)
+                foreach (var baseArmor in this.Context.Armors)
                 {
                     foreach (var item in inventory)
                     {
@@ -138,13 +135,13 @@
 
         private async Task<ItemListViewModel> GetTrinkets(Hero hero)
         {
-            if (await this.context.TrinketsInventories.AnyAsync(ti => ti.InventoryId == hero.Id))
+            if (await this.Context.TrinketsInventories.AnyAsync(ti => ti.InventoryId == hero.Id))
             {
-                var inventory = await this.context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
+                var inventory = await this.Context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
                 var trinkets = new List<Trinket>();
 
-                foreach (var baseTrinket in this.context.Trinkets)
+                foreach (var baseTrinket in this.Context.Trinkets)
                 {
                     foreach (var item in inventory)
                     {
@@ -177,13 +174,13 @@
 
         private async Task<ItemListViewModel> GetTreasures(Hero hero)
         {
-            if (await this.context.TreasuresInventories.AnyAsync(ti => ti.InventoryId == hero.InventoryId))
+            if (await this.Context.TreasuresInventories.AnyAsync(ti => ti.InventoryId == hero.InventoryId))
             {
-                var inventory = await this.context.TreasuresInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
+                var inventory = await this.Context.TreasuresInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
                 var treasures = new List<Treasure>();
 
-                foreach (var baseTreasure in this.context.Treasures)
+                foreach (var baseTreasure in this.Context.Treasures)
                 {
                     foreach (var item in inventory)
                     {
@@ -213,13 +210,13 @@
 
         private async Task<ItemListViewModel> GetTreasureKeys(Hero hero)
         {
-            if (this.context.TreasureKeysInventories.Any(ti => ti.InventoryId == hero.InventoryId))
+            if (this.Context.TreasureKeysInventories.Any(ti => ti.InventoryId == hero.InventoryId))
             {
-                var inventory = await this.context.TreasureKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
+                var inventory = await this.Context.TreasureKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
                 var treasureKeys = new List<TreasureKey>();
 
-                foreach (var baseTreasureKey in this.context.TreasureKeys)
+                foreach (var baseTreasureKey in this.Context.TreasureKeys)
                 {
                     foreach (var item in inventory)
                     {
@@ -250,15 +247,15 @@
 
         private async Task<ItemListViewModel> GetMaterials(Hero hero)
         {
-            if (this.context.MaterialsInventories.ToList().Any(mi => mi.InventoryId == hero.InventoryId))
+            if (this.Context.MaterialsInventories.ToList().Any(mi => mi.InventoryId == hero.InventoryId))
             {
-                var inventory = await this.context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).ToListAsync();
+                var inventory = await this.Context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).ToListAsync();
 
                 var materials = new List<Material>();
 
                 if (inventory.Count > 0)
                 {
-                    foreach (var baseMaterial in this.context.Materials)
+                    foreach (var baseMaterial in this.Context.Materials)
                     {
                         foreach (var item in inventory)
                         {

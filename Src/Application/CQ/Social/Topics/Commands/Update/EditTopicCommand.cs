@@ -1,17 +1,17 @@
 ﻿namespace Application.CQ.Social.Topics.Commands.Update
 {
-    using MediatR;
     using System.Security.Claims;
+    using MediatR;
 
     public class EditTopicCommand : IRequest<string>
     {
         public string Id { get; set; }
 
-        public string Title { get; set; }
+        public string NewTitle { get; set; }
 
-        public string Category { get; set; }
+        public string NewCategory { get; set; }
 
-        public string Content { get; set; }
+        public string NewContent { get; set; }
 
         public ClaimsPrincipal User { get; set; }
     }

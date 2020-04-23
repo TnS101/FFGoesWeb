@@ -3,21 +3,18 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetAllLikesQueryHandler : IRequestHandler<GetAllLikesQuery, LikesListViewModel>
+    public class GetAllLikesQueryHandler : MapperHandler, IRequestHandler<GetAllLikesQuery, LikesListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly IMapper mapper;
-
         public GetAllLikesQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
-            this.context = context;
-            this.mapper = mapper;
         }
 
         public async Task<LikesListViewModel> Handle(GetAllLikesQuery request, CancellationToken cancellationToken)
@@ -26,13 +23,13 @@
             {
                 return new LikesListViewModel
                 {
-                    Likes = await this.context.Likes.Where(l => l.CommentId == request.CommentId).ProjectTo<LikeFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                    Likes = await this.Context.Likes.Where(l => l.CommentId == request.CommentId).ProjectTo<LikeFullViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
 
             return new LikesListViewModel
             {
-                Likes = await this.context.Likes.Where(l => l.TopicId == request.TopicId).ProjectTo<LikeFullViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                Likes = await this.Context.Likes.Where(l => l.TopicId == request.TopicId).ProjectTo<LikeFullViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

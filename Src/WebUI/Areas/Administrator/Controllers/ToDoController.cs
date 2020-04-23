@@ -18,8 +18,8 @@
             return this.View(await this.Mediator.Send(new ToDoList { }));
         }
 
-        [HttpDelete]
-        public async Task<ActionResult> FinishTask([FromQuery]int id)
+        [HttpPost]
+        public async Task<ActionResult> FinishTask([FromForm]int id)
         {
             return this.Redirect(await this.Mediator.Send(new FeedbackTaskDoneCommand { FeedbackId = id }));
         }

@@ -2,25 +2,25 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Generators;
     using Domain.Entities.Game.Units;
     using MediatR;
 
-    public class GenerateMonsterCommandHandler : IRequestHandler<GenerateMonsterCommand, Monster>
+    public class GenerateMonsterCommandHandler : BaseHandler, IRequestHandler<GenerateMonsterCommand, Monster>
     {
         private readonly EnemyGenerator enemyGenerator;
-        private readonly IFFDbContext context;
 
         public GenerateMonsterCommandHandler(IFFDbContext context)
+            : base(context)
         {
             this.enemyGenerator = new EnemyGenerator();
-            this.context = context;
         }
 
         public async Task<Monster> Handle(GenerateMonsterCommand request, CancellationToken cancellationToken)
         {
-            var enemy = await this.enemyGenerator.Generate(request.PlayerLevel, this.context, request.ZoneName);
+            var enemy = await this.enemyGenerator.Generate(request.PlayerLevel, this.Context, request.ZoneName);
 
             return enemy;
         }

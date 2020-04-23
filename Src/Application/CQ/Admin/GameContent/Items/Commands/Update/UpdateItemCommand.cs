@@ -36,14 +36,18 @@
 
         public string NewRarity { get; set; }
 
+        public string NewRelatedMaterials { get; set; }
+
+        public string NewMaterialDiversity { get; set; }
+
+        public string NewMaterialType { get; set; }
+
         public int NewReward { get; set; }
 
         public int NewDurability { get; set; }
 
-        public bool IsCraftable { get; set; }
+        public int NewFuelCount { get; set; }
 
-        public bool IsRefineable { get; set; }
-
-        public bool IsDisolveable { get; set; }
+        public int NewToolId { get; set; }
     }
 }

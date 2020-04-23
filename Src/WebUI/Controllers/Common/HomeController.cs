@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
-    using Application.GameCQ.Monsters.Queries.GetMonsterInfoQuery;
+    using Application.GameCQ.Monsters.Queries.GetCurrentMonsterQuery;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -33,7 +33,7 @@
         [HttpGet("/Home/MonsterInfo/id")]
         public async Task<ActionResult> MonsterInfo([FromQuery]int id)
         {
-            return this.View(await this.Mediator.Send(new GetMonsterInfoQuery { MonsterId = id }));
+            return this.View(await this.Mediator.Send(new GetCurrentMonsterQuery { MonsterId = id }));
         }
 
         [Authorize(Roles = GConst.UserRole)]

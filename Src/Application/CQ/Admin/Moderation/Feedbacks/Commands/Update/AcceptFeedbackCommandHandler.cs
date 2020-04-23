@@ -3,25 +3,24 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Social;
     using global::Common;
     using MediatR;
 
-    public class AcceptFeedbackCommandHandler : IRequestHandler<AcceptFeedbackCommand, string>
+    public class AcceptFeedbackCommandHandler : BaseHandler, IRequestHandler<AcceptFeedbackCommand, string>
     {
-        private readonly IFFDbContext context;
-
         public AcceptFeedbackCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<string> Handle(AcceptFeedbackCommand request, CancellationToken cancellationToken)
         {
-            var feedBack = await this.context.Feedbacks.FindAsync(request.FeedbackId);
+            var feedBack = await this.Context.Feedbacks.FindAsync(request.FeedbackId);
 
-            var user = await this.context.AppUsers.FindAsync(feedBack.UserId);
+            var user = await this.Context.AppUsers.FindAsync(feedBack.UserId);
 
             if (request.Stars == 0)
             {
@@ -33,7 +32,7 @@
             feedBack.IsAccepted = true;
             feedBack.Stars = request.Stars;
 
-            this.context.Notifications.Add(new Notification
+            this.Context.Notifications.Add(new Notification
             {
                 ApplicationSection = "Game",
                 Type = "Reward",
@@ -42,11 +41,11 @@
                 RecievedOn = DateTime.UtcNow,
             });
 
-            this.context.Feedbacks.Update(feedBack);
+            this.Context.Feedbacks.Update(feedBack);
 
-            this.context.AppUsers.Update(user);
+            this.Context.AppUsers.Update(user);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.AdminFeedbackCommandRedirect;
         }

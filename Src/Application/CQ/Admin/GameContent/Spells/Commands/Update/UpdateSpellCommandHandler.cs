@@ -2,29 +2,28 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Game.Units;
     using global::Common;
     using MediatR;
 
-    public class UpdateSpellCommandHandler : IRequestHandler<UpdateSpellCommand, string>
+    public class UpdateSpellCommandHandler : BaseHandler, IRequestHandler<UpdateSpellCommand, string>
     {
-        private readonly IFFDbContext context;
-
         public UpdateSpellCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<string> Handle(UpdateSpellCommand request, CancellationToken cancellationToken)
         {
-            var spellToUpdate = await this.context.Spells.FindAsync(request.SpellId);
+            var spellToUpdate = await this.Context.Spells.FindAsync(request.SpellId);
 
             this.NullCheck(request, spellToUpdate);
 
-            this.context.Spells.Update(spellToUpdate);
+            this.Context.Spells.Update(spellToUpdate);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.AdminSpellCommandRedirect;
         }

@@ -3,33 +3,29 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Moderation;
     using Domain.Entities.Social;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class CloseTicketCommandHandler : IRequestHandler<CloseTicketCommand, string>
+    public class CloseTicketCommandHandler : BaseHandler, IRequestHandler<CloseTicketCommand, string>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
-        public CloseTicketCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+        public CloseTicketCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<string> Handle(CloseTicketCommand request, CancellationToken cancellationToken)
         {
-            var ticket = await this.context.Tickets.FindAsync(request.TicketId);
+            var ticket = await this.Context.Tickets.FindAsync(request.TicketId);
 
-            var sender = this.context.AppUsers.FirstOrDefault(s => s.UserName == ticket.ReportedUserId);
+            var sender = this.Context.AppUsers.FirstOrDefault(s => s.UserName == ticket.ReportedUserId);
 
-            var reportedUser = await this.userManager.FindByNameAsync(ticket.ReportedUserId);
+            var reportedUser = await this.Context.AppUsers.FindAsync(ticket.ReportedUserId);
 
             await this.DeleteAction(ticket);
 
@@ -37,7 +33,7 @@
 
             this.SenderReward(sender, request);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.TicketCommandRedirect;
         }
@@ -55,17 +51,17 @@
         {
             if (ticket.Type == GConst.CommentType)
             {
-                var comment = await this.context.Comments.FindAsync(ticket.CommentId);
+                var comment = await this.Context.Comments.FindAsync(ticket.CommentId);
 
-                var likesToRemove = await this.context.Likes.Where(l => l.CommentId == comment.Id).ToListAsync();
+                var likesToRemove = await this.Context.Likes.Where(l => l.CommentId == comment.Id).ToListAsync();
 
-                this.context.Likes.RemoveRange(likesToRemove);
+                this.Context.Likes.RemoveRange(likesToRemove);
 
                 comment.IsRemoved = true;
 
                 comment.Content = string.Format(GConst.RemovedContentMessage, "comment", ticket.Category);
 
-                this.context.Comments.Update(comment);
+                this.Context.Comments.Update(comment);
             }
         }
 
@@ -73,21 +69,21 @@
         {
             if (ticket.Type == GConst.CommentType)
             {
-                var topic = await this.context.Topics.FindAsync(ticket.TopicId);
+                var topic = await this.Context.Topics.FindAsync(ticket.TopicId);
 
-                var comments = this.context.Comments.FirstOrDefault(c => c.TopicId == topic.Id);
+                var comments = this.Context.Comments.FirstOrDefault(c => c.TopicId == topic.Id);
 
-                var likesToRemove = await this.context.Likes.Where(l => l.CommentId == topic.Id).ToListAsync();
+                var likesToRemove = await this.Context.Likes.Where(l => l.CommentId == topic.Id).ToListAsync();
 
-                this.context.Likes.RemoveRange(likesToRemove);
+                this.Context.Likes.RemoveRange(likesToRemove);
 
                 topic.IsRemoved = true;
 
                 topic.Content = string.Format(GConst.RemovedContentMessage, "topic", ticket.Category);
 
-                this.context.Comments.RemoveRange(comments);
+                this.Context.Comments.RemoveRange(comments);
 
-                this.context.Topics.Update(topic);
+                this.Context.Topics.Update(topic);
             }
         }
 
@@ -95,13 +91,13 @@
         {
             if (ticket.MessageId == GConst.CommentType)
             {
-                var message = await this.context.Messages.FindAsync(ticket.MessageId);
+                var message = await this.Context.Messages.FindAsync(ticket.MessageId);
 
                 message.IsRemoved = true;
 
                 message.Content = string.Format(GConst.RemovedContentMessage, "message", ticket.Category);
 
-                this.context.Messages.Update(message);
+                this.Context.Messages.Update(message);
             }
         }
 
@@ -140,7 +136,7 @@
 
         private void SenderReward(AppUser sender, CloseTicketCommand request)
         {
-            this.context.Notifications.Add(new Notification
+            this.Context.Notifications.Add(new Notification
             {
                 ApplicationSection = GConst.Forum,
                 Type = GConst.RewardType,
@@ -150,7 +146,7 @@
 
             sender.Stars += request.Stars;
 
-            this.context.AppUsers.Update(sender);
+            this.Context.AppUsers.Update(sender);
         }
     }
 }

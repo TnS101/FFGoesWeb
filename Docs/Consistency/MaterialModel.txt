@@ -1,0 +1,9 @@
+[1]Name
+[2]Type
+[3]RelatedMaterials
+[4]IsRefineable
+[5]IsDisolveable
+[6]IsCraftable
+[7]BuyPrice
+[8]SellPrice
+[9]Slot

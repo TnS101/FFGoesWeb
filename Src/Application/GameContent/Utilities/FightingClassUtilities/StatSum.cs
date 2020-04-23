@@ -1,8 +1,11 @@
 ﻿namespace Application.GameContent.Utilities.FightingClassUtilites
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
+    using Domain.Contracts.Items;
+    using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +19,20 @@
         {
             if (hero.Equipment.ArmorEquipments.Count > 0)
             {
-                foreach (var item in await context.Armors.Where(a => a.ArmorEquipments.Any(ae => ae.EquipmentId == hero.EquipmentId)).ToListAsync())
+                var items = new Queue<Armor>();
+
+                foreach (var armor in context.Armors)
+                {
+                    foreach (var armorEquipment in await context.ArmorsEquipments.Where(ai => ai.EquipmentId == hero.EquipmentId).ToListAsync())
+                    {
+                        if (armor.Id == armorEquipment.ArmorId)
+                        {
+                            items.Enqueue(armor);
+                        }
+                    }
+                }
+
+                foreach (var item in items)
                 {
                     hero.AttackPower += item.Agility;
                     hero.MagicPower += item.Intellect;
@@ -30,7 +46,9 @@
 
             if (!hero.Equipment.WeaponSlot)
             {
-                var weapon = await context.Weapons.FirstOrDefaultAsync(w => w.WeaponEquipments.FirstOrDefault().EquipmentId == hero.EquipmentId);
+                var weaponEquipment = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.EquipmentId == hero.EquipmentId);
+
+                var weapon = await context.Weapons.FindAsync(weaponEquipment.WeaponId);
 
                 hero.AttackPower += weapon.AttackPower;
                 hero.AttackPower += weapon.Agility;
@@ -42,7 +60,9 @@
 
             if (!hero.Equipment.TrinketSlot)
             {
-                var trinket = await context.Trinkets.FirstOrDefaultAsync(t => t.TrinketEquipments.FirstOrDefault().EquipmentId == hero.EquipmentId);
+                var trinketEquipment = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.EquipmentId == hero.EquipmentId);
+
+                var trinket = await context.Trinkets.FindAsync(trinketEquipment.TrinketId);
 
                 hero.AttackPower += trinket.Agility;
                 hero.MagicPower += trinket.Intellect;

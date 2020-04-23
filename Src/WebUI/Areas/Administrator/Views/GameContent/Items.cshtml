@@ -36,13 +36,13 @@
             {
                 <div class="item-padding has-text-align-center" id="@item.Id">
                     <img src="@item.ImagePath" alt="@item.Name's Image">
-                    <h3 class="main-font-color">@item.Name</h3>
-                    <form asp-controller="GameContent" asp-action="DeleteItem" method="post">
+                    <a asp-controller="Item" asp-action="Current" asp-route-id="@item.Id" asp-route-slot="@item.Slot"><h3 class="main-font-color">@item.Name</h3></a>
+                    <a asp-controller="Item" asp-action="Update" asp-route-id="@item.Id" asp-route-slot="@item.Slot"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                    <form asp-controller="Item" asp-action="Delete" method="post" class="item-padding">
                         <input type="hidden" name="id" value="@item.Id" />
                         <input type="hidden" name="slot" value="@item.Slot" />
                         <input type="submit" name="button" value="Delete" class="main-button" />
                     </form>
-                    <br />
                     <hr />
                 </div>
             }

@@ -2,28 +2,25 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetUnitIdQueryHandler : IRequestHandler<GetUnitIdQuery, UnitIdViewModel>
+    public class GetUnitIdQueryHandler : UserHandler, IRequestHandler<GetUnitIdQuery, UnitIdViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public GetUnitIdQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<UnitIdViewModel> Handle(GetUnitIdQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var hero = await this.context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
+            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
 
             return new UnitIdViewModel
             {

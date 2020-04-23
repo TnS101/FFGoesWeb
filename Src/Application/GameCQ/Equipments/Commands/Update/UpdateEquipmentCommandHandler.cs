@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.EquipmentOptions;
     using Application.GameContent.Utilities.FightingClassUtilites;
@@ -11,24 +12,21 @@
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class UpdateEquipmentCommandHandler : IRequestHandler<UpdateEquipmentCommand, string>
+    public class UpdateEquipmentCommandHandler : UserHandler, IRequestHandler<UpdateEquipmentCommand, string>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
         private readonly StatSum statSum;
 
         public UpdateEquipmentCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context,userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
             this.statSum = new StatSum();
         }
 
         public async Task<string> Handle(UpdateEquipmentCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
             string result = string.Empty;
 
@@ -36,18 +34,18 @@
             {
                 var equipOption = new EquipOption();
 
-                result = await equipOption.Equip(hero, await this.EquipableItem(request), this.statSum, this.context);
+                result = await equipOption.Equip(hero, await this.EquipableItem(request), this.statSum, this.Context);
             }
             else
             {
                 var unEquipOption = new UnEquipOption();
 
-                result = await unEquipOption.UnEquip(hero, await this.EquipableItem(request), this.statSum, this.context);
+                result = await unEquipOption.UnEquip(hero, await this.EquipableItem(request), this.statSum, this.Context);
             }
 
-            this.context.Equipments.Update(hero.Equipment);
+            this.Context.Equipments.Update(hero.Equipment);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return string.Format("/Equipment", result);
         }
@@ -56,15 +54,15 @@
         {
             if (request.Slot == "Weapon")
             {
-                return await this.context.Weapons.FindAsync(request.ItemId);
+                return await this.Context.Weapons.FindAsync(request.ItemId);
             }
             else if (request.Slot == "Trinket")
             {
-                return await this.context.Trinkets.FindAsync(request.ItemId);
+                return await this.Context.Trinkets.FindAsync(request.ItemId);
             }
             else
             {
-                return await this.context.Armors.FindAsync(request.ItemId);
+                return await this.Context.Armors.FindAsync(request.ItemId);
             }
         }
     }

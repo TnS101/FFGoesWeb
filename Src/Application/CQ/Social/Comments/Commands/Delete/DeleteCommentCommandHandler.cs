@@ -3,32 +3,31 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 
-    public class DeleteCommentCommandHandler : IRequestHandler<DeleteCommentCommand, string>
+    public class DeleteCommentCommandHandler : BaseHandler, IRequestHandler<DeleteCommentCommand, string>
     {
-        private readonly IFFDbContext context;
-
         public DeleteCommentCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<string> Handle(DeleteCommentCommand request, CancellationToken cancellationToken)
         {
-            var commentToRemove = await this.context.Comments.FindAsync(request.CommentId);
+            var commentToRemove = await this.Context.Comments.FindAsync(request.CommentId);
 
-            var replies = this.context.Comments.Where(c => c.Replies.Select(r => r.Id == commentToRemove.Id).Count() > 0);
+            var replies = this.Context.Comments.Where(c => c.Replies.Select(r => r.Id == commentToRemove.Id).Count() > 0);
 
-            this.context.Comments.RemoveRange(replies);
+            this.Context.Comments.RemoveRange(replies);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
-            this.context.Comments.Remove(commentToRemove);
+            this.Context.Comments.Remove(commentToRemove);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return string.Format(GConst.CommentCommandRedirect, commentToRemove.TopicId);
         }

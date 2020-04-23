@@ -36,28 +36,29 @@
         public const string OpenCommentTicketRedirect = "/Social/TicketSent";
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
         public const string TicketCommandRedirect = "/Moderator/Tickets";
-        public const string HeroCommandRedirect = "/Unit/All";
+        public const string HeroCommandRedirect = "/Hero/All";
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";
         public const string NotEnoughEnergyRedirect = "/EnergyError";
         public const string TreasureEncounterRedirect = "/TreasureEncounter";
         public const string EnemyEncounterRedirect = "EnemyEncounter";
-        public const string HeroCreationErrorRedirect = "/Unit/Create";
+        public const string HeroCreationErrorRedirect = "/Hero/Create";
         public const string SuccesfulFeedbackRedirect = @"\FeedbackSuccess";
         public const string ErrorRedirect = @"\Error\Default";
+        public const string EquipmentCommandRedirect = "/";
 
         // Admin Redirects
-        public const string AdminToDoListRedirect = "/Admin/ToDoList";
+        public const string AdminToDoListRedirect = "/Administrator/ToDo/List";
         public const string AdminFeedbackCommandRedirect = "/Administrator/Feedback/Feedbacks";
-        public const string AdminSpellCommandRedirect = @"\GameContent\Spells";
+        public const string AdminSpellCommandRedirect = "/Administrator/GameContent/Spells";
         public const string InModerationRedirect = @"\Topic\InModeration";
         public const string FeedbackErrorRedirect = "/Profile/Panel#feedback-button";
-        public const string AdminItemCommandRedirectId = "/GameContent/Items/slot?slot={0}#{1}";
-        public const string AdminUnitCommandRedirect = "/GameContent/Units";
-        public const string AdminMonsterCommandRedirect = "/GameContent/Monsters";
-        public const string AdminUnitCommandRedirectId = "/GameContent/Units#{0}";
-        public const string MonsterCommandRedirectId = "/GameContent/Monsters#{0}";
-        public const string AdminItemCommandRedirect = "/GameContent/Items/slot?slot={0}";
+        public const string AdminItemCommandRedirectId = "/Administrator/Item/Current/id%26slot?id={0}&slot={1}";
+        public const string AdminUnitCommandRedirect = "/Administrator/GameContent/Units";
+        public const string AdminMonsterCommandRedirect = "/Administrator/GameContent/Monsters";
+        public const string AdminUnitCommandRedirectId = "/Administrator/GameContent/Units#{0}";
+        public const string MonsterCommandRedirectId = "/Administrator/GameContent/Monsters#{0}";
+        public const string AdminItemCommandRedirect = "/Administrator/GameContent/Items/slot?slot={0}";
 
         // Errors
         public const string NullCommentError = "User {0} left a blank comment.";

@@ -4,32 +4,29 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetCurrentTopicQueryHandler : IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>
+    public class GetCurrentTopicQueryHandler : UserHandler, IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public GetCurrentTopicQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<TopicFullViewModel> Handle(GetCurrentTopicQuery request, CancellationToken cancellationToken)
         {
-            var topic = await this.context.Topics.FindAsync(request.TopicId);
+            var topic = await this.Context.Topics.FindAsync(request.TopicId);
 
-            var viewer = await this.userManager.GetUserAsync(request.User);
+            var viewer = await this.UserManager.GetUserAsync(request.User);
 
-            topic.Comments = await this.context.Comments.Where(c => c.TopicId == topic.Id).ToListAsync();
+            topic.Comments = await this.Context.Comments.Where(c => c.TopicId == topic.Id).ToListAsync();
 
-            var topicTickets = await this.context.Tickets.Where(t => t.TopicId == topic.Id).ToListAsync();
+            var topicTickets = await this.Context.Tickets.Where(t => t.TopicId == topic.Id).ToListAsync();
 
             var topicTicketsIds = topicTickets.Select(t => t.UserId).ToList();
 
@@ -46,7 +43,7 @@
                 }
             }
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return new TopicFullViewModel
             {

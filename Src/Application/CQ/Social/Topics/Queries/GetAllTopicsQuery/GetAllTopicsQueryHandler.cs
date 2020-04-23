@@ -3,21 +3,18 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetAllTopicsQueryHandler : IRequestHandler<GetAllTopicsQuery, TopicListViewModel>
+    public class GetAllTopicsQueryHandler : UserHandler, IRequestHandler<GetAllTopicsQuery, TopicListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public GetAllTopicsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<TopicListViewModel> Handle(GetAllTopicsQuery request, CancellationToken cancellationToken)
@@ -34,11 +31,11 @@
 
         private async Task<TopicListViewModel> PersonalTopics(GetAllTopicsQuery request)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
             return new TopicListViewModel
             {
-                Topics = await this.context.Topics.Where(t => t.UserId == user.Id).Select(t => new TopicPartialViewModel
+                Topics = await this.Context.Topics.Where(t => t.UserId == user.Id).Select(t => new TopicPartialViewModel
                 {
                     Id = t.Id,
                     Title = t.Title,
@@ -56,9 +53,9 @@
 
         private async Task<TopicListViewModel> PublicTopics(GetAllTopicsQuery request)
         {
-            var viewer = await this.userManager.GetUserAsync(request.User);
+            var viewer = await this.UserManager.GetUserAsync(request.User);
 
-            var topics = await this.context.Topics.Select(t => new TopicPartialViewModel
+            var topics = await this.Context.Topics.Select(t => new TopicPartialViewModel
             {
                 Id = t.Id,
                 Title = t.Title,

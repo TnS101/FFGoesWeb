@@ -2,6 +2,7 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.BattleOptions;
     using Application.GameContent.Utilities.LevelUtility;
@@ -9,20 +10,19 @@
     using global::Common;
     using MediatR;
 
-    public class BattleOptionsCommandHandler : IRequestHandler<BattleOptionsCommand, string>
+    public class BattleOptionsCommandHandler : BaseHandler, IRequestHandler<BattleOptionsCommand, string>
     {
-        private readonly IFFDbContext context;
         private readonly TurnCheck turnCheck;
 
         public BattleOptionsCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
             this.turnCheck = new TurnCheck();
         }
 
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
-            var hero = await this.context.Heroes.FindAsync(request.Player.Id);
+            var hero = await this.Context.Heroes.FindAsync(request.Player.Id);
 
             int initialGold = hero.GoldAmount;
 
@@ -32,22 +32,22 @@
 
                 request.Enemy.CurrentHP = 0;
 
-                await endOption.End(hero, request.Enemy, request.ZoneName, this.context, cancellationToken);
+                await endOption.End(hero, request.Enemy, request.ZoneName, this.Context, cancellationToken);
 
                 if (hero.XP >= hero.XPCap)
                 {
                     var level = new Level();
 
-                    await level.Up(hero, this.context);
+                    await level.Up(hero, this.Context);
 
-                    this.context.Heroes.Update(hero);
-                    await this.context.SaveChangesAsync(cancellationToken);
+                    this.Context.Heroes.Update(hero);
+                    await this.Context.SaveChangesAsync(cancellationToken);
 
                     return GConst.LevelUp;
                 }
 
-                this.context.Heroes.Update(hero);
-                await this.context.SaveChangesAsync(cancellationToken);
+                this.Context.Heroes.Update(hero);
+                await this.Context.SaveChangesAsync(cancellationToken);
 
                 return GConst.End;
             }
@@ -56,9 +56,9 @@
             {
                 hero.CurrentHP = 0;
 
-                this.context.Heroes.Update(hero);
+                this.Context.Heroes.Update(hero);
 
-                await this.context.SaveChangesAsync(cancellationToken);
+                await this.Context.SaveChangesAsync(cancellationToken);
 
                 hero.GoldAmount = initialGold;
 
@@ -84,7 +84,7 @@
                 {
                     var spellCastOption = new SpellCastOption();
 
-                    await spellCastOption.SpellCast(hero, request.Enemy, request.SpellName, this.context);
+                    await spellCastOption.SpellCast(hero, request.Enemy, request.SpellName, this.Context);
                 }
 
                 if (request.Command == "Escape")
@@ -92,21 +92,21 @@
                     var escapeOption = new EscapeOption();
 
                     escapeOption.Escape(request.Player);
-                    await this.context.SaveChangesAsync(cancellationToken);
+                    await this.Context.SaveChangesAsync(cancellationToken);
 
                     hero.GoldAmount = initialGold;
 
                     return GConst.EscapeCommand;
                 }
 
-                request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.context);
+                request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);
 
                 if (!request.YourTurn)
                 {
-                    request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.context);
+                    request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);
                 }
 
-                await this.context.SaveChangesAsync(cancellationToken);
+                await this.Context.SaveChangesAsync(cancellationToken);
 
                 return GConst.BattleCommand;
             }

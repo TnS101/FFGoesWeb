@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
     using Domain.Entities.Common;
@@ -11,26 +12,22 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetAllFriendsQueryHandler : IRequestHandler<GetAllFriendsQuery, UserListViewModel>
+    public class GetAllFriendsQueryHandler : UserHandler, IRequestHandler<GetAllFriendsQuery, UserListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public GetAllFriendsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<UserListViewModel> Handle(GetAllFriendsQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var friends = await this.context.Friends.Where(f => f.UserId == user.Id).ToListAsync();
+            var friends = await this.Context.Friends.Where(f => f.UserId == user.Id).ToListAsync();
 
             var users = new Queue<AppUser>();
 
-            foreach (var appUser in this.context.AppUsers)
+            foreach (var appUser in this.Context.AppUsers)
             {
                 foreach (var friend in friends)
                 {

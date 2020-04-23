@@ -4,6 +4,6 @@
 
     public class SpellListViewModel
     {
-        public IEnumerable<SpellFullViewModel> Spells { get; set; }
+        public IEnumerable<SpellMinViewModel> Spells { get; set; }
     }
 }

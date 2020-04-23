@@ -79,11 +79,11 @@
             <h2 class="main-font-color has-large-font-size">Game</h2>
             @if (Model.Units == 1)
             {
-                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Unit" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Hero</a></h3>
+                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Hero" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Hero</a></h3>
             }
             else
             {
-                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Unit" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Heroes</a></h3>
+                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Hero" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Heroes</a></h3>
             }
             @if (Model.MasteryPoints == 1)
             {

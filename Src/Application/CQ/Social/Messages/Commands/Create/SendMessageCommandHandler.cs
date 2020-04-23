@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Social;
@@ -11,22 +12,18 @@
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, string>
+    public class SendMessageCommandHandler : UserHandler, IRequestHandler<SendMessageCommand, string>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public SendMessageCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<string> Handle(SendMessageCommand request, CancellationToken cancellationToken)
         {
-            var sender = await this.userManager.GetUserAsync(request.Sender);
+            var sender = await this.UserManager.GetUserAsync(request.Sender);
 
-            var reciever = this.context.AppUsers.FirstOrDefault(r => r.UserName == request.RecieverName);
+            var reciever = this.Context.AppUsers.FirstOrDefault(r => r.UserName == request.RecieverName);
 
             if (string.IsNullOrWhiteSpace(request.Content))
             {
@@ -40,7 +37,7 @@
                 SentOn = DateTime.UtcNow,
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return string.Format(GConst.CreateMessageCommandRedirect, reciever.UserName);
         }

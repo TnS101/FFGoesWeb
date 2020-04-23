@@ -1,16 +1,20 @@
 ﻿namespace Application.Common.Handlers
 {
+    using Application.CQ.Admin.GameContent.FightingClasses.Commands.Create;
+    using Application.CQ.Admin.GameContent.FightingClasses.Commands.Delete;
     using Application.CQ.Admin.GameContent.Items.Commands.Create;
     using Application.CQ.Admin.GameContent.Items.Commands.Delete;
     using Application.CQ.Admin.GameContent.Items.Commands.Update;
     using Application.CQ.Admin.GameContent.Items.Queries.GetAllItemsQuery;
     using Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery;
+    using Application.CQ.Admin.GameContent.Items.Queries.GetCurrentItemQuery;
+    using Application.CQ.Admin.GameContent.Monsters.Commands.Create;
+    using Application.CQ.Admin.GameContent.Monsters.Commands.Delete;
     using Application.CQ.Admin.GameContent.Spells.Commands.Create;
     using Application.CQ.Admin.GameContent.Spells.Commands.Delete;
     using Application.CQ.Admin.GameContent.Spells.Commands.Update;
-    using Application.CQ.Admin.GameContent.Spells.Queries;
-    using Application.CQ.Admin.GameContent.Units.Commands.Create;
-    using Application.CQ.Admin.GameContent.Units.Commands.Delete;
+    using Application.CQ.Admin.GameContent.Spells.Queries.GetAllSpellsQuery;
+    using Application.CQ.Admin.GameContent.Spells.Queries.GetCurrentSpellQuery;
     using Application.CQ.Admin.Moderation.Feedback.Commands.Delete.FeedbackTaskDoneCommand;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
@@ -50,6 +54,7 @@
     using Application.GameCQ.Equipments.Commands.Update;
     using Application.GameCQ.Equipments.Queries;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
+    using Application.GameCQ.FightingClasses.Queries.GetCurrentFightingClassQuery;
     using Application.GameCQ.Heroes.Commands.Create;
     using Application.GameCQ.Heroes.Commands.Delete;
     using Application.GameCQ.Heroes.Commands.Update.HeroLevelUpCommand;
@@ -62,7 +67,7 @@
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using Application.GameCQ.Monsters.Commands.Create;
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
-    using Application.GameCQ.Monsters.Queries.GetMonsterInfoQuery;
+    using Application.GameCQ.Monsters.Queries.GetCurrentMonsterQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using Application.GameCQ.Treasures.Commands.Delete;
     using Application.GameCQ.Treasures.Commands.Update;
@@ -100,8 +105,10 @@
             services.AddScoped<IRequestHandler<CreateSpellCommand, string>, CreateSpellCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateSpellCommand, string>, UpdateSpellCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteSpellCommand, string>, DeleteSpellCommandHandler>();
-            services.AddScoped<IRequestHandler<CreateUnitCommand, string>, CreateUnitCommandHandler>();
-            services.AddScoped<IRequestHandler<DeleteUnitCommand, string>, DeleteUnitCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateFightingClassCommand, string>, CreateFightingClassCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteFightingClassCommand, string>, DeleteFightingClassCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateMonsterCommand, string>, CreateMonsterCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteMonsterCommand, string>, DeleteMonsterCommandHandler>();
         }
 
         private void AdminQueries(IServiceCollection services)
@@ -113,6 +120,8 @@
             services.AddScoped<IRequestHandler<GetAllFeedbacksQuery, FeedbacksListViewModel>, GetAllFeedbacksQueryHandler>();
             services.AddScoped<IRequestHandler<ToDoList, FeedbackTaskListViewModel>, ToDoListHandler>();
             services.AddScoped<IRequestHandler<GetAllToolsQuery, ToolsListViewModel>, GetAllToolsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetCurrentItemQuery, ItemFullViewModel>, GetCurrentItemQueryHandler>();
+            services.AddScoped<IRequestHandler<GetCurrentSpellQuery, SpellFullViewModel>, GetCurrentSpellQueryHandler>();
         }
 
         private void UserCommands(IServiceCollection services)
@@ -166,12 +175,13 @@
             services.AddScoped<IRequestHandler<GetAllFightingClassesQuery, FightingClassListViewModel>, GetAllFightingClassesQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllMonstersQuery, MonsterListViewModel>, GetAllMonstersQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllFriendsQuery, UserListViewModel>, GetAllFriendsQueryHandler>();
-            services.AddScoped<IRequestHandler<GetMonsterInfoQuery, MonsterFullViewModel>, GetMonsterInfoQueryHandler>();
+            services.AddScoped<IRequestHandler<GetCurrentMonsterQuery, MonsterFullViewModel>, GetCurrentMonsterQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalFeedbacksQuery, FeedbackListViewModel>, GetPersonalFeedbacksQueryHandler>();
             services.AddScoped<IRequestHandler<GetPersonalNotificationsQuery, NotificationListViewModel>, GetPersonalNotificationsQueryHandler>();
             services.AddScoped<IRequestHandler<GetUnitIdQuery, UnitIdViewModel>, GetUnitIdQueryHandler>();
             services.AddScoped<IRequestHandler<GetCurrentUserQuery, UserPartialViewModel>, GetCurrentUserQueryHandler>();
             services.AddScoped<IRequestHandler<GetBattleUnitsQuery, BattleUnitsViewModel>, GetBattleUnitsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetCurrentFightingClassQuery, FightingClassFullViewModel>, GetCurrentFightingClassQueryHandler>();
         }
 
         private void ModeratorCommands(IServiceCollection services)

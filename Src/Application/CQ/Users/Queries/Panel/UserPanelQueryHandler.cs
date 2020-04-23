@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Social;
@@ -11,36 +12,32 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class UserPanelQueryHandler : IRequestHandler<UserPanelQuery, UserPanelViewModel>
+    public class UserPanelQueryHandler : UserHandler, IRequestHandler<UserPanelQuery, UserPanelViewModel>
     {
-        private readonly UserManager<AppUser> userManager;
-        private readonly IFFDbContext context;
-
-        public UserPanelQueryHandler(UserManager<AppUser> userManager, IFFDbContext context)
+        public UserPanelQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.userManager = userManager;
-            this.context = context;
         }
 
         public async Task<UserPanelViewModel> Handle(UserPanelQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var units = this.context.Heroes.Where(u => u.UserId == user.Id);
+            var units = this.Context.Heroes.Where(u => u.UserId == user.Id);
 
-            var topics = this.context.Topics.Where(t => t.UserId == user.Id);
+            var topics = this.Context.Topics.Where(t => t.UserId == user.Id);
 
-            var feedbacks = this.context.Feedbacks.Where(f => f.UserId == user.Id);
+            var feedbacks = this.Context.Feedbacks.Where(f => f.UserId == user.Id);
 
-            var friends = this.context.Friends.Where(f => f.UserId == user.Id);
+            var friends = this.Context.Friends.Where(f => f.UserId == user.Id);
 
-            var statuses = await this.context.Statuses.ToListAsync();
+            var statuses = await this.Context.Statuses.ToListAsync();
 
             Status status = null;
 
-            if (!this.context.UserStatuses.Any(u => u.UserId == user.Id))
+            if (!this.Context.UserStatuses.Any(u => u.UserId == user.Id))
             {
-                status = this.context.Statuses.FirstOrDefault(s => s.DisplayName == "UnSet");
+                status = this.Context.Statuses.FirstOrDefault(s => s.DisplayName == "UnSet");
 
                 var userStatus = new UserStatus
                 {
@@ -48,21 +45,21 @@
                     UserId = user.Id,
                 };
 
-                this.context.UserStatuses.Add(userStatus);
+                this.Context.UserStatuses.Add(userStatus);
 
-                await this.context.SaveChangesAsync(cancellationToken);
+                await this.Context.SaveChangesAsync(cancellationToken);
             }
-            else if (this.context.UserStatuses.Any(u => u.UserId == user.Id))
+            else if (this.Context.UserStatuses.Any(u => u.UserId == user.Id))
             {
-                var userStatus = this.context.UserStatuses.FirstOrDefault(u => u.UserId == user.Id);
+                var userStatus = this.Context.UserStatuses.FirstOrDefault(u => u.UserId == user.Id);
 
-                status = this.context.Statuses.FirstOrDefault(s => s.Id == userStatus.StatusId);
+                status = this.Context.Statuses.FirstOrDefault(s => s.Id == userStatus.StatusId);
             }
 
             if (user.ForumPoints != this.SumForumPoints(user))
             {
                 user.ForumPoints = this.SumForumPoints(user);
-                await this.context.SaveChangesAsync(cancellationToken);
+                await this.Context.SaveChangesAsync(cancellationToken);
             }
 
             if (units.Count() == 0)
@@ -92,15 +89,15 @@
 
         private int SumForumPoints(AppUser user)
         {
-            var topics = this.context.Topics.Where(t => t.UserId == user.Id && !t.IsRemoved);
+            var topics = this.Context.Topics.Where(t => t.UserId == user.Id && !t.IsRemoved);
 
-            var comments = this.context.Comments.Where(c => c.UserId == user.Id && !c.IsRemoved);
+            var comments = this.Context.Comments.Where(c => c.UserId == user.Id && !c.IsRemoved);
 
             var topicLikes = new Queue<Like>();
 
             var commentLikes = new Queue<Like>();
 
-            foreach (var like in this.context.Likes)
+            foreach (var like in this.Context.Likes)
             {
                 foreach (var topic in topics)
                 {
@@ -111,7 +108,7 @@
                 }
             }
 
-            foreach (var like in this.context.Likes)
+            foreach (var like in this.Context.Likes)
             {
                 foreach (var comment in comments)
                 {

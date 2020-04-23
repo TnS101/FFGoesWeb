@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
@@ -11,26 +12,22 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class OpenTreasureCommandHandler : IRequestHandler<OpenTreasureCommand, string>
+    public class OpenTreasureCommandHandler : UserHandler, IRequestHandler<OpenTreasureCommand, string>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public OpenTreasureCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<string> Handle(OpenTreasureCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            var treasure = await this.context.Treasures.FindAsync(request.Id);
+            var treasure = await this.Context.Treasures.FindAsync(request.Id);
 
-            var treasureKey = await this.context.TreasureKeys.FirstOrDefaultAsync(t => t.Rarity == treasure.Rarity);
+            var treasureKey = await this.Context.TreasureKeys.FirstOrDefaultAsync(t => t.Rarity == treasure.Rarity);
 
             return await this.OpenChest(hero, treasureKey, treasure, cancellationToken);
         }
@@ -39,18 +36,18 @@
         {
             if (hero.Inventory.TreasureKeyInventories.Any(t => t.TreasureKeyId == treasureKey.Id))
             {
-                var treasureKeyToRemove = await this.context.TreasureKeysInventories.FirstOrDefaultAsync(t => t.TreasureKeyId == treasureKey.Id);
+                var treasureKeyToRemove = await this.Context.TreasureKeysInventories.FirstOrDefaultAsync(t => t.TreasureKeyId == treasureKey.Id);
 
-                var treasureToRemove = await this.context.TreasuresInventories.FirstOrDefaultAsync(t => t.TreasureId == treasureKey.Id);
+                var treasureToRemove = await this.Context.TreasuresInventories.FirstOrDefaultAsync(t => t.TreasureId == treasureKey.Id);
 
                 hero.GoldAmount += treasure.Reward;
 
-                this.context.TreasureKeysInventories.Where(t => t.InventoryId == hero.InventoryId).ToList().Remove(treasureKeyToRemove);
+                this.Context.TreasureKeysInventories.Where(t => t.InventoryId == hero.InventoryId).ToList().Remove(treasureKeyToRemove);
 
-                this.context.TreasuresInventories.Where(t => t.InventoryId == hero.InventoryId).ToList().Remove(treasureToRemove);
+                this.Context.TreasuresInventories.Where(t => t.InventoryId == hero.InventoryId).ToList().Remove(treasureToRemove);
             }
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return "/Inventory";
         }

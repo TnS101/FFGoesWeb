@@ -3,6 +3,7 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Social;
@@ -10,22 +11,18 @@
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class SendFriendRequestCommandHandler : IRequestHandler<SendFriendRequestCommand, string>
+    public class SendFriendRequestCommandHandler : UserHandler, IRequestHandler<SendFriendRequestCommand, string>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public SendFriendRequestCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<string> Handle(SendFriendRequestCommand request, CancellationToken cancellationToken)
         {
-            var sender = await this.userManager.GetUserAsync(request.Sender);
+            var sender = await this.UserManager.GetUserAsync(request.Sender);
 
-            var reciever = await this.context.AppUsers.FindAsync(request.RecieverId);
+            var reciever = await this.Context.AppUsers.FindAsync(request.RecieverId);
 
             reciever.FriendRequests.Add(new FriendRequest
             {
@@ -33,7 +30,7 @@
                 SentOn = DateTime.UtcNow,
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.FriendCommandRedirect;
         }

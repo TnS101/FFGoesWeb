@@ -1,6 +1,7 @@
 ﻿namespace Application.Common.Mappings
 {
     using Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery;
+    using Application.CQ.Admin.GameContent.Spells.Queries.GetCurrentSpellQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
     using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
@@ -19,7 +20,7 @@
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
-    using Application.GameCQ.Monsters.Queries.GetMonsterInfoQuery;
+    using Application.GameCQ.Monsters.Queries.GetCurrentMonsterQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using Domain.Entities.Common;
@@ -36,7 +37,7 @@
             this.CreateMap<Weapon, ItemMinViewModel>();
             this.CreateMap<Trinket, ItemMinViewModel>();
             this.CreateMap<Material, ItemMinViewModel>();
-            this.CreateMap<Spell, SpellFullViewModel>();
+            this.CreateMap<Spell, SpellMinViewModel>();
             this.CreateMap<AppUser, UserPartialViewModel>().ForMember(u => u.Friends, opt => opt.Ignore());
             this.CreateMap<Topic, TopicFullViewModel>();
             this.CreateMap<Message, MessageFullViewModel>();
@@ -61,6 +62,7 @@
             this.CreateMap<Treasure, ItemMinViewModel>();
             this.CreateMap<FriendRequest, FriendRequestFullViewModel>();
             this.CreateMap<Tool, ToolMinViewModel>();
+            this.CreateMap<Spell, SpellFullViewModel>();
         }
     }
 }

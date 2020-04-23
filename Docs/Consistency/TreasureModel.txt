@@ -1,0 +1,4 @@
+[1]Name
+[2]Rarity
+[3]Reward
+[4]Slot

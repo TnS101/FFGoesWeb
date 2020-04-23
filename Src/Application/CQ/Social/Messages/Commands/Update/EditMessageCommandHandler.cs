@@ -3,22 +3,21 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 
-    public class EditMessageCommandHandler : IRequestHandler<EditMessageCommand, string>
+    public class EditMessageCommandHandler : BaseHandler, IRequestHandler<EditMessageCommand, string>
     {
-        private readonly IFFDbContext context;
-
         public EditMessageCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<string> Handle(EditMessageCommand request, CancellationToken cancellationToken)
         {
-            var message = await this.context.Messages.FindAsync(request.MessageId);
+            var message = await this.Context.Messages.FindAsync(request.MessageId);
 
             if (string.IsNullOrWhiteSpace(request.Content))
             {
@@ -29,9 +28,9 @@
 
             message.EditedOn = DateTime.UtcNow;
 
-            this.context.Messages.Update(message);
+            this.Context.Messages.Update(message);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.MessageCommandRedirect;
         }

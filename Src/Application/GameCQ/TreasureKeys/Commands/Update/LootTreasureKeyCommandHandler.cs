@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
@@ -11,30 +12,26 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class LootTreasureKeyCommandHandler : IRequestHandler<LootTreasureKeyCommand>
+    public class LootTreasureKeyCommandHandler : UserHandler, IRequestHandler<LootTreasureKeyCommand>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public LootTreasureKeyCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<Unit> Handle(LootTreasureKeyCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            var hero = this.context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            this.context.TreasureKeysInventories.Add(new TreasureKeyInventory
+            this.Context.TreasureKeysInventories.Add(new TreasureKeyInventory
             {
                 InventoryId = hero.InventoryId,
                 TreasureKeyId = await this.FindKeyId(),
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }
@@ -59,7 +56,7 @@
                 rarity = "Gold";
             }
 
-            var treasureKey = await this.context.TreasureKeys.FirstOrDefaultAsync(tk => tk.Rarity == rarity);
+            var treasureKey = await this.Context.TreasureKeys.FirstOrDefaultAsync(tk => tk.Rarity == rarity);
 
             return treasureKey.Id;
         }

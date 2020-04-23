@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using Domain.Entities.Game.Items;
@@ -11,18 +12,16 @@
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetEquipmentQueryHandler : IRequestHandler<GetEquipmentQuery, EquipmentViewModel>
+    public class GetEquipmentQueryHandler : BaseHandler, IRequestHandler<GetEquipmentQuery, EquipmentViewModel>
     {
-        private readonly IFFDbContext context;
-
         public GetEquipmentQueryHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<EquipmentViewModel> Handle(GetEquipmentQuery request, CancellationToken cancellationToken)
         {
-            var hero = await this.context.Heroes.FindAsync(request.HeroId);
+            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
             if (request.Slot == "Weapon")
             {
@@ -40,7 +39,7 @@
 
         private async Task<EquipmentViewModel> GetTrinket(Hero hero)
         {
-            if (!this.context.TrinketEquipments.ToList().Any(te => te.EquipmentId == hero.EquipmentId))
+            if (!this.Context.TrinketEquipments.ToList().Any(te => te.EquipmentId == hero.EquipmentId))
             {
                 return new EquipmentViewModel
                 {
@@ -48,9 +47,9 @@
                 };
             }
 
-            var equipment = await this.context.TrinketEquipments.FirstOrDefaultAsync(te => te.EquipmentId == hero.EquipmentId);
+            var equipment = await this.Context.TrinketEquipments.FirstOrDefaultAsync(te => te.EquipmentId == hero.EquipmentId);
 
-            var trinket = await this.context.Trinkets.FindAsync(equipment.TrinketId);
+            var trinket = await this.Context.Trinkets.FindAsync(equipment.TrinketId);
 
             var trinkets = new List<Trinket>();
 
@@ -67,7 +66,7 @@
 
         private EquipmentViewModel ArmorList(Hero hero)
         {
-            if (!this.context.ArmorsEquipments.ToList().Any(te => te.EquipmentId == hero.EquipmentId))
+            if (!this.Context.ArmorsEquipments.ToList().Any(te => te.EquipmentId == hero.EquipmentId))
             {
                 return new EquipmentViewModel
                 {
@@ -75,11 +74,11 @@
                 };
             }
 
-            var equipments = this.context.ArmorsEquipments.Where(we => we.EquipmentId == hero.EquipmentId);
+            var equipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.EquipmentId);
 
             var armors = new List<Armor>();
 
-            foreach (var armor in this.context.Armors)
+            foreach (var armor in this.Context.Armors)
             {
                 foreach (var equip in equipments)
                 {
@@ -102,7 +101,7 @@
 
         private async Task<EquipmentViewModel> GetWeapon(Hero hero)
         {
-            if (!this.context.WeaponsEquipments.ToList().Any(te => te.EquipmentId == hero.EquipmentId))
+            if (!this.Context.WeaponsEquipments.ToList().Any(te => te.EquipmentId == hero.EquipmentId))
             {
                 return new EquipmentViewModel
                 {
@@ -110,9 +109,9 @@
                 };
             }
 
-            var equipment = await this.context.WeaponsEquipments.FirstOrDefaultAsync(we => we.EquipmentId == hero.EquipmentId);
+            var equipment = await this.Context.WeaponsEquipments.FirstOrDefaultAsync(we => we.EquipmentId == hero.EquipmentId);
 
-            var weapon = await this.context.Weapons.FindAsync(equipment.WeaponId);
+            var weapon = await this.Context.Weapons.FindAsync(equipment.WeaponId);
 
             var weapons = new List<Weapon>
             {

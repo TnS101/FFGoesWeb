@@ -3,28 +3,25 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class ToDoListHandler : IRequestHandler<ToDoList, FeedbackTaskListViewModel>
+    public class ToDoListHandler : MapperHandler, IRequestHandler<ToDoList, FeedbackTaskListViewModel>
     {
-        private readonly IFFDbContext context;
-        private readonly IMapper mapper;
-
         public ToDoListHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
-            this.context = context;
-            this.mapper = mapper;
         }
 
         public async Task<FeedbackTaskListViewModel> Handle(ToDoList request, CancellationToken cancellationToken)
         {
             return new FeedbackTaskListViewModel
             {
-                Tasks = await this.context.Feedbacks.Where(f => f.IsAccepted).ProjectTo<FeedbackTaskViewModel>(this.mapper.ConfigurationProvider).ToListAsync(),
+                Tasks = await this.Context.Feedbacks.Where(f => f.IsAccepted).ProjectTo<FeedbackTaskViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

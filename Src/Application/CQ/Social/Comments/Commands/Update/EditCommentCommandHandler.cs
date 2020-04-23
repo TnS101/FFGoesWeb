@@ -3,22 +3,21 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 
-    public class EditCommentCommandHandler : IRequestHandler<EditCommentCommand, string>
+    public class EditCommentCommandHandler : BaseHandler, IRequestHandler<EditCommentCommand, string>
     {
-        private readonly IFFDbContext context;
-
         public EditCommentCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<string> Handle(EditCommentCommand request, CancellationToken cancellationToken)
         {
-            var comment = await this.context.Comments.FindAsync(request.CommentId);
+            var comment = await this.Context.Comments.FindAsync(request.CommentId);
 
             if (string.IsNullOrWhiteSpace(request.Content))
             {
@@ -29,9 +28,9 @@
 
             comment.EditedOn = DateTime.UtcNow;
 
-            this.context.Comments.Update(comment);
+            this.Context.Comments.Update(comment);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return string.Format(GConst.CommentCommandRedirect, comment.TopicId);
         }

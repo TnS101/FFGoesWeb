@@ -3044,6 +3044,22 @@ rotate-vert-center {
         color: #c39873;
     }
 
+
+.top-left-icon {
+    position: fixed;
+    top: 100px;
+    left: 50px;
+    z-index: 99;
+    outline: none;
+    padding: 15px;
+}
+
+.top-left-icon:hover {
+    animation: 0.8s;
+    animation-name: scrollTopHover;
+    color: #c39873;
+}
+
 .popup {
     position: fixed;
     left: 50%;

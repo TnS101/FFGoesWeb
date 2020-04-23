@@ -2,28 +2,27 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
 
-    public class DeleteMessageCommandHandler : IRequestHandler<DeleteMessageCommand, string>
+    public class DeleteMessageCommandHandler : BaseHandler, IRequestHandler<DeleteMessageCommand, string>
     {
-        private readonly IFFDbContext context;
-
         public DeleteMessageCommandHandler(IFFDbContext context)
+            : base(context)
         {
-            this.context = context;
         }
 
         public async Task<string> Handle(DeleteMessageCommand request, CancellationToken cancellationToken)
         {
-            var messageToRemove = await this.context.Messages.FindAsync(request.MessageId);
+            var messageToRemove = await this.Context.Messages.FindAsync(request.MessageId);
 
             messageToRemove.Content = "[Message Deleted]";
 
-            this.context.Messages.Update(messageToRemove);
+            this.Context.Messages.Update(messageToRemove);
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.MessageCommandRedirect;
         }

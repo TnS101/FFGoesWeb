@@ -4,28 +4,25 @@
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Common;
     using Domain.Entities.Social;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class CreateTopicCommandHandler : IRequestHandler<CreateTopicCommand>
+    public class CreateTopicCommandHandler : UserHandler, IRequestHandler<CreateTopicCommand>
     {
-        private readonly IFFDbContext context;
-        private readonly UserManager<AppUser> userManager;
-
         public CreateTopicCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
+            : base(context, userManager)
         {
-            this.context = context;
-            this.userManager = userManager;
         }
 
         public async Task<Unit> Handle(CreateTopicCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.userManager.GetUserAsync(request.User);
+            var user = await this.UserManager.GetUserAsync(request.User);
 
-            this.context.Topics.Add(new Topic
+            this.Context.Topics.Add(new Topic
             {
                 Title = request.Title,
                 Category = request.Category,
@@ -36,7 +33,7 @@
                 CreateOn = DateTime.UtcNow,
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await this.Context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }
