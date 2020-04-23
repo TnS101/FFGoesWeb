@@ -1,1 +1,1 @@
-All the actual game logic.
+The actual game logic.
