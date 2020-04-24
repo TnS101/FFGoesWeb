@@ -69,8 +69,18 @@
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
-            services.AddResponseCompression();
-            services.AddMvc();
+            services.AddResponseCaching();
+            services.AddMvc(options =>
+            {
+                options.CacheProfiles.Add("Hourly", new CacheProfile()
+                {
+                    Duration = 60 * 60,
+                });
+                options.CacheProfiles.Add("Weekly", new CacheProfile()
+                {
+                    Duration = 60 * 60 * 24 * 7,
+                });
+            });
 
             // Cookies
             services.Configure<CookiePolicyOptions>(
@@ -105,10 +115,10 @@
                 },
             });
 
-            app.UseCookiePolicy();
-            app.UseResponseCompression();
+            app.UseResponseCaching();
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseCookiePolicy();
+
             app.UseRouting();
 
             app.UseAuthentication();

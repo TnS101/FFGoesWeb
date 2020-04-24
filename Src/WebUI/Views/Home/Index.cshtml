@@ -1,72 +1,60 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model System.Security.Claims.ClaimsPrincipal
+﻿@model System.Security.Claims.ClaimsPrincipal
 @using Common
 @{
     ViewData["Title"] = "Index";
-    Layout = "_Layout";
 }
-<html xmlns="http://www.w3.org/1999/xhtml" class="main-gradient fade-in">
-<head class="main-gradient">
-    @if (Model.IsInRole(GConst.AdminRole))
-    {
-        await Html.RenderPartialAsync("_AdminNavBar");
-    }
-    else if (Model.IsInRole(GConst.UserRole))
-    {
-        await Html.RenderPartialAsync("_NavBar");
-    }
-    else
-    {
-        await Html.RenderPartialAsync("_GuestNavBar");
-    }
-    <script>
-        var app = angular.module('app', ['ngAnimate']);
-    </script>
-</head>
-<body>
-    <div id="page" class="fade-in item-padding">
-        <header>
-            <div class="item-padding">
-                <h1 class="site-title"><a asp-controller="Home" asp-action="Index"><span class="secondary-font-color">Final Fantasy Tryout</span></a></h1>
-                @if (!Model.Identity.IsAuthenticated)
-                {
-                    <div class="container">
-                        <h1 class="main-font-color has-text-align-center">Join other players in order to take what’s yours!</h1>
-                    </div>
-                }
-                else
-                {
-                    <div class="container">
-                        <h1 class="main-font-color has-text-align-center">Final Fantasy Tryout is an individual project by Hristo Todorov.</h1>
-                        <h2 class="main-font-color has-text-align-center">The Game rules are very simple : Attack, Endure, Win!</h2>
-                    </div>
-                }
 
+@if (Model.IsInRole(GConst.AdminRole))
+{
+    await Html.RenderPartialAsync("_AdminNavBar");
+}
+else if (Model.IsInRole(GConst.UserRole))
+{
+    await Html.RenderPartialAsync("_NavBar");
+}
+else
+{
+    await Html.RenderPartialAsync("_GuestNavBar");
+}
+<div class="fade-in item-padding">
+    <div class="item-padding">
+        <h1 class="site-title"><a asp-controller="Home" asp-action="Index"><span class="secondary-font-color">Final Fantasy Tryout</span></a></h1>
+        @if (!Model.Identity.IsAuthenticated)
+        {
+            <div class="container">
+                <h1 class="main-font-color has-text-align-center">Join other players in order to take what’s yours!</h1>
             </div>
-        </header>
-        <div id="content" class="site-content clearfix">
-            <div class="container clearfix">
+        }
+        else
+        {
+            <div class="container">
+                <h1 class="main-font-color has-text-align-center">Final Fantasy Tryout is an individual project by Hristo Todorov.</h1>
+                <h2 class="main-font-color has-text-align-center">The Game rules are very simple : Attack, Endure, Win!</h2>
+            </div>
+        }
 
-                <div id="primary" class="content-area full-width">
-                    <main id="main" class="site-main" role="main">
-                        @if (!Model.Identity.IsAuthenticated)
-                        {
-                            <article id="post-6" class="post-6 page type-page status-publish hentry">
+    </div>
+    <div id="content" class="site-content clearfix">
+        <div class="container clearfix">
 
-                                <div class="entry-content single-entry-content item-padding">
-                                    <div class="has-text-align-center"><a href="https://localhost:44312/Identity/Account/Register" class="main-font-color has-large-font-size"><strong>Join Now</strong></a></div>
-                                </div>
+            <div id="primary" class="content-area full-width">
+                <main id="main" class="site-main" role="main">
+                    @if (!Model.Identity.IsAuthenticated)
+                    {
+                        <article id="post-6" class="post-6 page type-page status-publish hentry">
 
-                            </article>
-                        }
-                    </main>
-                </div>
+                            <div class="entry-content single-entry-content item-padding">
+                                <div class="has-text-align-center"><a href="https://localhost:44312/Identity/Account/Register" class="main-font-color has-large-font-size"><strong>Join Now</strong></a></div>
+                            </div>
+
+                        </article>
+                    }
+                </main>
             </div>
         </div>
-        <partial name="_CookieConsentPartial" />
-        <br />
-               
+    </div>
+    <partial name="_CookieConsentPartial" />
+    <div class="item-padding">
         <partial name="_Footer">
     </div>
-</body>
-</html>
+</div>

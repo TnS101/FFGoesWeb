@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Admin.GameContent.Monsters.Commands.Create;
+    using Application.CQ.Admin.GameContent.Monsters.Commands.Delete;
     using Application.CQ.Admin.GameContent.Monsters.Commands.Update;
     using Application.GameCQ.Monsters.Queries.GetCurrentMonsterQuery;
     using Common;
@@ -72,6 +73,12 @@
                 NewCritChance = critChance,
                 NewDescription = description,
             }));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete([FromForm]int id)
+        {
+            return this.Redirect(await this.Mediator.Send(new DeleteMonsterCommand { MonsterId = id }));
         }
     }
 }

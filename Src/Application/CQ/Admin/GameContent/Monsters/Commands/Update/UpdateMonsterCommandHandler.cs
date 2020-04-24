@@ -4,14 +4,18 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
+    using Application.Common.StringProcessing.ImagePaths;
     using Domain.Entities.Game.Units;
     using MediatR;
 
     public class UpdateMonsterCommandHandler : BaseHandler, IRequestHandler<UpdateMonsterCommand, string>
     {
+        private readonly ImagePath imagePath;
+
         public UpdateMonsterCommandHandler(IFFDbContext context)
             : base(context)
         {
+            this.imagePath = new ImagePath();
         }
 
         public async Task<string> Handle(UpdateMonsterCommand request, CancellationToken cancellationToken)
@@ -19,6 +23,8 @@
             var monster = await this.Context.Monsters.FindAsync(request.MonsterId);
 
             this.StatsNullCheck(request, monster);
+
+            monster.ImagePath = this.imagePath.Process(new string[] { "Monster", monster.Name });
 
             this.Context.Monsters.Update(monster);
 

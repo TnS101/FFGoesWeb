@@ -13,7 +13,6 @@
     <partial name="_AdminNavBar">
         <script>
             $(document).ready(function () {
-
                 $('input:radio[name="materialDiversity"]').change(function () {
                     if ($(this).is(':checked') && $(this).val() == 'craftable' || $(this).val() == 'refineable' || $(this).val() == 'disolveable') {
                         $('#materials').show();
@@ -24,22 +23,23 @@
                     }
                 })
             })
-
         </script>
 </head>
 <body>
     <div class="item-padding fade-in has-text-align-center">
-        <h2 class="main-font-color has-large-font-size">Edit an Item</h2>
+        <h1 class="main-font-color has-large-font-size">Edit an Item</h1>
         <div class="item-padding">
             <hr />
             <div class="row">
                 <div class="col-md-4">
                     <form asp-controller="Item" asp-action="Update" method="post">
+                        <cache vary-by-query="id">
                         <div class="form-group item-padding">
                             <input type="hidden" name="slot" value="@slot" />
                             <input type="hidden" name="id" value="@id" />
                             <h2 class="main-font-color has-normal-font-size">@slot</h2>
                         </div>
+                            </cache>
                         <div class="form-group fade-in item-padding has-normal-font-size" id="name">
                             <label for="input-name" class="contro-label has-normal-font-size">New Name</label>
                             <br />
@@ -148,12 +148,14 @@
                                 <div class="form-group fade-in item-padding" id="tools">
                                     <label for="select-tool" class="contro-label has-normal-font-size">New Required Tool</label>
                                     <br />
-                                    <select name="toolId" id="select-tool">
-                                        @foreach (var tool in Model.Tools)
-                                        {
-                                            <option value="@tool.Id">@tool.Name</option>
-                                        }
-                                    </select>
+                                    <cache vary-by="@Model.Tools">
+                                        <select name="toolId" id="select-tool">
+                                            @foreach (var tool in Model.Tools)
+                                            {
+                                                <option value="@tool.Id">@tool.Name</option>
+                                            }
+                                        </select>
+                                    </cache>
                                 </div>
                             }
                             else

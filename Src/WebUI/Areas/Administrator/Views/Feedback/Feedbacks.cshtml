@@ -36,7 +36,7 @@
 </head>
 <body>
     <div class="item-padding has-text-align-center" id="top">
-        <h2 class="main-font-color blurd has-larger-font-size">Feedbacks</h2>
+        <h1 class="main-font-color blurd has-larger-font-size">Feedbacks</h1>
         <div class="item-padding blurd">
             <hr />
             <br />
@@ -49,33 +49,35 @@
         {
             foreach (var feedback in Model.Feedbacks)
             {
-                <div class="has-text-align-center item-padding blurd">
-                    <h4 class="main-font-color blurd">A feedback was sent on @feedback.SentOn.ToString("MM/dd/yyyy H:mm")</h4>
-                    <i onclick="" class="feedback-button icofont-look is-clickable icofont-4x"></i>
-                </div>
-                <div class="item-padding blurd">
-                    <br />
-                </div>
-                <section class="feedback fade-in popup has-text-align-center" hidden style="" id="@count">
-                    <input type="text" name="name" value="@count" hidden class="count" />
-                    <p class="main-font-color item-padding has-normal-font-size">A user wrote : @feedback.Content</p>
-                    <i class="icofont-star main-font-color icofont-2x"></i><span class="has-normal-font-size">@feedback.Rate</span>
-                    <div class="item-padding">
-                        <hr />
+                <cache vary-by="@Model.Feedbacks">
+                    <div class="has-text-align-center item-padding blurd">
+                        <h4 class="main-font-color blurd">A feedback was sent on @feedback.SentOn.ToString("MM/dd/yyyy H:mm")</h4>
+                        <i onclick="" class="feedback-button icofont-look is-clickable icofont-4x"></i>
                     </div>
-                    <form asp-controller="Feedback" asp-action="Accept" method="post" class="item-padding">
-                        <input type="hidden" name="id" value="@feedback.Id" />
-                        <input type="number" name="stars" value="" class="has-narrow-width" placeholder="Enter stars reward" min="1" max="5" />
-                        <input type="submit" name="" value="Accept" />
-                    </form>
-                    <form asp-controller="Feedback" asp-action="Delete" method="post">
-                        <input type="hidden" name="id" value="@feedback.Id" />
-                        <input type="submit" name="" value="Delete" />
-                    </form>
+                    <div class="item-padding blurd">
+                        <br />
+                    </div>
+                    <section class="feedback fade-in popup has-text-align-center" hidden style="" id="@count">
+                        <input type="text" name="name" value="@count" hidden class="count" />
+                        <p class="main-font-color item-padding has-normal-font-size">A user wrote : @feedback.Content</p>
+                        <i class="icofont-star main-font-color icofont-2x"></i><span class="has-normal-font-size">@feedback.Rate</span>
+                        <div class="item-padding">
+                            <hr />
+                        </div>
+                        <form asp-controller="Feedback" asp-action="Accept" method="post" class="item-padding">
+                            <input type="hidden" name="id" value="@feedback.Id" />
+                            <input type="number" name="stars" value="" class="has-narrow-width" placeholder="Enter stars reward" min="1" max="5" />
+                            <input type="submit" name="" value="Accept" />
+                        </form>
+                        <form asp-controller="Feedback" asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@feedback.Id" />
+                            <input type="submit" name="" value="Delete" />
+                        </form>
 
-                    <button onclick="true" class="close-button">Cancel</button>
-                </section>
-                count++;
+                        <button onclick="true" class="close-button">Cancel</button>
+                    </section>
+                    @count++;
+                </cache>
             }
         }
     </div>

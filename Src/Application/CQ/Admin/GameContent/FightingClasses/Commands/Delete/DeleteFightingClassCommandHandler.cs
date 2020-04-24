@@ -18,7 +18,7 @@
 
         public async Task<string> Handle(DeleteFightingClassCommand request, CancellationToken cancellationToken)
         {
-            var fightingClass = await this.Context.FightingClasses.FindAsync(request.UnitId);
+            var fightingClass = await this.Context.FightingClasses.FindAsync(request.FightingClassId);
 
             var spells = await this.Context.Spells.Where(s => s.ClassType == fightingClass.Type).ToListAsync();
 

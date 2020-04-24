@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
 
-        public string ClassType { get; set; }
+        public string Type { get; set; }
 
         public double MaxHP { get; set; }
 

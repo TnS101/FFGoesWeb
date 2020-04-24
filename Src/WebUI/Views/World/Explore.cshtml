@@ -3,12 +3,17 @@
     ViewData["Title"] = "Explore";
     Layout = "_Layout";
 }
-<partial name="_NavBar">
-    <div class="fade-in">
-        <h2>Explore</h2>
-
-        <p>No items found</p>
-        <a asp-controller="World" asp-action="Explore">Walk</a>
-        <partial name="_Footer">
-    </div>
-        
+<head>
+    <partial name="_NavBar">
+</head>
+    <body>
+        <div class="fade-in item-padding has-text-align-center">
+            <h1>Explore</h1>
+            <hr />
+            <div class="item-padding">
+                <p>No items found</p>
+                <a asp-controller="World" asp-action="Explore">Walk</a>
+            </div>
+            <partial name="_Footer">
+        </div>
+    </body>

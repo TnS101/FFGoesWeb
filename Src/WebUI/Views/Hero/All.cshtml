@@ -1,20 +1,20 @@
 ﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
 @{
-    ViewData["Title"] = "Units";
+    ViewData["Title"] = "Heroes";
 }
 <head>
     <partial name="_NavBar">
 </head>
 <body>
     <div class="has-text-align-center item-padding main-gradient fade-in">
-        <h2 class="main-font-color has-large-font-size">Your Heroes</h2>
+        <h1 class="main-font-color has-large-font-size">Your Heroes</h1>
         <div class="item-padding"><hr /></div>
         @foreach (var hero in Model.Heroes.OrderByDescending(h => h.IsSelected))
         {
             <div class="item-padding">
                 @if (!hero.IsSelected)
                 {
-                    <form asp-controller="Unit" class="has-text-align-center" asp-action="Select" method="post">
+                    <form asp-controller="Hero" class="has-text-align-center" asp-action="Select" method="post">
                         <input type="hidden" name="id" value="@hero.Id" />
                         <input type="submit" class="main-button" name="name" value="Select" />
                     </form>

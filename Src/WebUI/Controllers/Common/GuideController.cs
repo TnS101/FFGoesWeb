@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    [Authorize(GConst.UserRole)]
+    [Authorize(Roles = GConst.UserRole)]
     public class GuideController : BaseController
     {
         [HttpGet]

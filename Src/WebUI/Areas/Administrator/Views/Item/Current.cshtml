@@ -2,7 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     string slot = Model.Slot;
- }
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,188 +13,190 @@
 <body>
     <a asp-controller="GameContent" asp-action="Items" asp-route-slot="@slot"><i class="fas fa-arrow-left has-massive-font-size top-left-icon main-font-color"></i></a>
     <div class="item-padding fade-in has-text-align-center">
-        <h2 class="main-font-color has-large-font-size">Reviewing @Model.Name</h2>
-        <div class="item-padding">
-            <hr />
-            <div class="row">
-                <div class="col-md-4">
-                    @if (slot != "Material" && slot != "Tool" && slot != "Treasure" && slot != "Treasure Key")
-                    {
-                        <div class="form-group fade-in item-padding" id="level">
-                            <label class="contro-label has-normal-font-size">Level</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.Level</h2>
-                        </div>
-                        <div class="form-group fade-in item-padding" id="class-type">
-                            <label class="contro-label has-normal-font-size">ClassType</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.ClassType</h2>
-                        </div>
-                        <div class="form-group fade-in item-padding" id="stamina">
-                            <label class="contro-label has-normal-font-size">Stamina</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.Stamina</h2>
-                        </div>
-                        <div class="form-group fade-in item-padding" id="strength">
-                            <label class="contro-label has-normal-font-size">Strength</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.Strength</h2>
-                        </div>
-                        <div class="form-group fade-in item-padding" id="agility">
-                            <label class="contro-label has-normal-font-size">Agility</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.Agility</h2>
-                        </div>
-                        <div class="form-group fade-in item-padding" id="intellect">
-                            <label class="contro-label has-normal-font-size">Intellect</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.Intellect</h2>
-                        </div>
-                        <div class="form-group fade-in item-padding" id="spirit">
-                            <label class="contro-label has-normal-font-size">Spirit</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.Spirit</h2>
-                        </div>
-                        @if (slot == "Weapon")
+        <cache vary-by-query="id">
+            <h1 class="main-font-color has-large-font-size">Reviewing @Model.Name</h1>
+            <div class="item-padding">
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        @if (slot != "Material" && slot != "Tool" && slot != "Treasure" && slot != "Treasure Key")
                         {
-                            <div class="form-group fade-in item-padding" id="attack">
-                                <label class="contro-label has-normal-font-size">AttackPower</label>
+                            <div class="form-group fade-in item-padding" id="level">
+                                <label class="contro-label has-normal-font-size">Level</label>
                                 <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.AttackPower</h2>
+                                <h2 class="main-font-color has-normal-font-size">@Model.Level</h2>
                             </div>
-                        }
-                        else if (slot != "Trinket")
-                        {
-                            <div class="form-group fade-in item-padding" id="armor">
-                                <label class="contro-label has-normal-font-size">ArmorValue</label>
+                            <div class="form-group fade-in item-padding" id="class-type">
+                                <label class="contro-label has-normal-font-size">ClassType</label>
                                 <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.ArmorValue</h2>
+                                <h2 class="main-font-color has-normal-font-size">@Model.ClassType</h2>
                             </div>
-                            <div class="form-group fade-in item-padding" id="resistance">
-                                <label class="contro-label has-normal-font-size">ResistanceValue</label>
+                            <div class="form-group fade-in item-padding" id="stamina">
+                                <label class="contro-label has-normal-font-size">Stamina</label>
                                 <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.ResistanceValue</h2>
+                                <h2 class="main-font-color has-normal-font-size">@Model.Stamina</h2>
                             </div>
-                        }
-
-                        <div class="form-group fade-in item-padding" id="sell">
-                            <label class="contro-label has-normal-font-size">Sell Price</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.SellPrice</h2>
-                        </div>
-                        <div class="form-group fade-in item-padding" id="buy">
-                            <label class="contro-label has-normal-font-size">Buy Price</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.BuyPrice</h2>
-                        </div>
-                    }
-                    else if (slot == "Material" || slot == "Tool")
-                    {
-                        if (slot == "Material")
-                        {
-                            <div class="form-group fade-in item-padding" id="material-type">
-                                <label class="contro-label has-normal-font-size">Material Type</label>
+                            <div class="form-group fade-in item-padding" id="strength">
+                                <label class="contro-label has-normal-font-size">Strength</label>
                                 <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.MaterialType</h2>
+                                <h2 class="main-font-color has-normal-font-size">@Model.Strength</h2>
                             </div>
-                            <div class="form-group fade-in item-padding" id="fuel">
-                                <label class="contro-label has-normal-font-size">FuelCount</label>
+                            <div class="form-group fade-in item-padding" id="agility">
+                                <label class="contro-label has-normal-font-size">Agility</label>
                                 <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.FuelCount</h2>
+                                <h2 class="main-font-color has-normal-font-size">@Model.Agility</h2>
                             </div>
-                            @if (Model.IsCraftable)
+                            <div class="form-group fade-in item-padding" id="intellect">
+                                <label class="contro-label has-normal-font-size">Intellect</label>
+                                <br />
+                                <h2 class="main-font-color has-normal-font-size">@Model.Intellect</h2>
+                            </div>
+                            <div class="form-group fade-in item-padding" id="spirit">
+                                <label class="contro-label has-normal-font-size">Spirit</label>
+                                <br />
+                                <h2 class="main-font-color has-normal-font-size">@Model.Spirit</h2>
+                            </div>
+                            @if (slot == "Weapon")
                             {
-                                <div class="form-group fade-in item-padding" id="craftable">
-                                    <label class="contro-label has-normal-font-size">Is Craftable</label>
+                                <div class="form-group fade-in item-padding" id="attack">
+                                    <label class="contro-label has-normal-font-size">AttackPower</label>
                                     <br />
-                                    <h2 class="main-font-color has-normal-font-size">This Material is Craftable</h2>
+                                    <h2 class="main-font-color has-normal-font-size">@Model.AttackPower</h2>
                                 </div>
                             }
-                            else if (Model.IsRefineable)
+                            else if (slot != "Trinket")
                             {
-                                <div class="form-group fade-in item-padding" id="refineable">
-                                    <label class="contro-label has-normal-font-size">Is Refineable</label>
+                                <div class="form-group fade-in item-padding" id="armor">
+                                    <label class="contro-label has-normal-font-size">ArmorValue</label>
                                     <br />
-                                    <h2 class="main-font-color has-normal-font-size">This Material is Refineable</h2>
+                                    <h2 class="main-font-color has-normal-font-size">@Model.ArmorValue</h2>
                                 </div>
-                            }
-                            else if (Model.IsDisolveable)
-                            {
-                                <div class="form-group fade-in item-padding" id="disolveable">
-                                    <label class="contro-label has-normal-font-size">Is Disolveable</label>
+                                <div class="form-group fade-in item-padding" id="resistance">
+                                    <label class="contro-label has-normal-font-size">ResistanceValue</label>
                                     <br />
-                                    <h2 class="main-font-color has-normal-font-size">This Material is Disolveable</h2>
+                                    <h2 class="main-font-color has-normal-font-size">@Model.ResistanceValue</h2>
                                 </div>
                             }
 
-                            <div class="form-group fade-in item-padding" id="tools">
-                                <label class="contro-label has-normal-font-size">Required Tool</label>
+                            <div class="form-group fade-in item-padding" id="sell">
+                                <label class="contro-label has-normal-font-size">Sell Price</label>
                                 <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.ToolName</h2>
+                                <h2 class="main-font-color has-normal-font-size">@Model.SellPrice</h2>
                             </div>
-                            <div class="form-group fade-in item-padding" id="materials">
-                                <label class="contro-label has-normal-font-size">Related Materials</label>
+                            <div class="form-group fade-in item-padding" id="buy">
+                                <label class="contro-label has-normal-font-size">Buy Price</label>
                                 <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.RelatedMaterials</h2>
+                                <h2 class="main-font-color has-normal-font-size">@Model.BuyPrice</h2>
+                            </div>
+                        }
+                        else if (slot == "Material" || slot == "Tool")
+                        {
+                            if (slot == "Material")
+                            {
+                                <div class="form-group fade-in item-padding" id="material-type">
+                                    <label class="contro-label has-normal-font-size">Material Type</label>
+                                    <br />
+                                    <h2 class="main-font-color has-normal-font-size">@Model.MaterialType</h2>
+                                </div>
+                                <div class="form-group fade-in item-padding" id="fuel">
+                                    <label class="contro-label has-normal-font-size">FuelCount</label>
+                                    <br />
+                                    <h2 class="main-font-color has-normal-font-size">@Model.FuelCount</h2>
+                                </div>
+                                @if (Model.IsCraftable)
+                                {
+                                    <div class="form-group fade-in item-padding" id="craftable">
+                                        <label class="contro-label has-normal-font-size">Is Craftable</label>
+                                        <br />
+                                        <h2 class="main-font-color has-normal-font-size">This Material is Craftable</h2>
+                                    </div>
+                                }
+                                else if (Model.IsRefineable)
+                                {
+                                    <div class="form-group fade-in item-padding" id="refineable">
+                                        <label class="contro-label has-normal-font-size">Is Refineable</label>
+                                        <br />
+                                        <h2 class="main-font-color has-normal-font-size">This Material is Refineable</h2>
+                                    </div>
+                                }
+                                else if (Model.IsDisolveable)
+                                {
+                                    <div class="form-group fade-in item-padding" id="disolveable">
+                                        <label class="contro-label has-normal-font-size">Is Disolveable</label>
+                                        <br />
+                                        <h2 class="main-font-color has-normal-font-size">This Material is Disolveable</h2>
+                                    </div>
+                                }
+
+                                <div class="form-group fade-in item-padding" id="tools">
+                                    <label class="contro-label has-normal-font-size">Required Tool</label>
+                                    <br />
+                                    <h2 class="main-font-color has-normal-font-size">@Model.ToolName</h2>
+                                </div>
+                                <div class="form-group fade-in item-padding" id="materials">
+                                    <label class="contro-label has-normal-font-size">Related Materials</label>
+                                    <br />
+                                    <h2 class="main-font-color has-normal-font-size">@Model.RelatedMaterials</h2>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group fade-in item-padding" id="durability">
+                                    <label class="contro-label has-normal-font-size">Durability</label>
+                                    <br />
+                                    <h2 class="main-font-color has-normal-font-size">@Model.Durability</h2>
+                                </div>
+                                @if (Model.IsCraftable)
+                                {
+                                    <div class="form-group fade-in item-padding" id="craftable">
+                                        <label class="contro-label has-normal-font-size">Is Craftable</label>
+                                        <br />
+                                        <h2 class="main-font-color has-normal-font-size">This Tool is Craftable</h2>
+                                    </div>
+                                }
+                            }
+                            <div class="form-group fade-in item-padding" id="sell">
+                                <label class="contro-label has-normal-font-size">SellPrice</label>
+                                <br />
+                                <h2 class="main-font-color has-normal-font-size">@Model.SellPrice</h2>
+                            </div>
+                            <div class="form-group fade-in item-padding" id="buy">
+                                <label class="contro-label has-normal-font-size">BuyPrice</label>
+                                <br />
+                                <h2 class="main-font-color has-normal-font-size">@Model.BuyPrice</h2>
                             </div>
                         }
                         else
                         {
-                            <div class="form-group fade-in item-padding" id="durability">
-                                <label class="contro-label has-normal-font-size">Durability</label>
+                            <div class="form-group fade-in item-padding" id="rarity">
+                                <label class="contro-label has-normal-font-size">Rarity</label>
                                 <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.Durability</h2>
+                                <h2 class="main-font-color has-normal-font-size">@Model.Rarity</h2>
                             </div>
-                            @if (Model.IsCraftable)
+                            @if (slot == "Treasure")
                             {
-                                <div class="form-group fade-in item-padding" id="craftable">
-                                    <label class="contro-label has-normal-font-size">Is Craftable</label>
+                                <div class="form-group fade-in item-padding" id="reward">
+                                    <label class="contro-label has-normal-font-size">Reward</label>
                                     <br />
-                                    <h2 class="main-font-color has-normal-font-size">This Tool is Craftable</h2>
+                                    <h2 class="main-font-color has-normal-font-size">@Model.Reward</h2>
                                 </div>
                             }
                         }
-                        <div class="form-group fade-in item-padding" id="sell">
-                            <label class="contro-label has-normal-font-size">SellPrice</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.SellPrice</h2>
+                        <div class="item-padding has-text-align-center" id="@Model.Id">
+                            <a asp-controller="Item" asp-action="Update" asp-route-id="@Model.Id" asp-route-slot="@Model.Slot"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                            <form asp-controller="Item" asp-action="Delete" method="post" class="item-padding">
+                                <input type="hidden" name="id" value="@Model.Id" />
+                                <input type="submit" name="button" value="Delete" class="main-button" />
+                            </form>
                         </div>
-                        <div class="form-group fade-in item-padding" id="buy">
-                            <label class="contro-label has-normal-font-size">BuyPrice</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.BuyPrice</h2>
+                        <div class="item-padding">
+                            <hr />
                         </div>
-                    }
-                    else
-                    {
-                        <div class="form-group fade-in item-padding" id="rarity">
-                            <label class="contro-label has-normal-font-size">Rarity</label>
-                            <br />
-                            <h2 class="main-font-color has-normal-font-size">@Model.Rarity</h2>
-                        </div>
-                        @if (slot == "Treasure")
-                        {
-                            <div class="form-group fade-in item-padding" id="reward">
-                                <label class="contro-label has-normal-font-size">Reward</label>
-                                <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.Reward</h2>
-                            </div>
-                        }
-                    }
-                    <div class="item-padding has-text-align-center" id="@Model.Id">
-                        <a asp-controller="Item" asp-action="Update" asp-route-id="@Model.Id" asp-route-slot="@Model.Slot"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
-                        <form asp-controller="Item" asp-action="Delete" method="post" class="item-padding">
-                            <input type="hidden" name="id" value="@Model.Id" />
-                            <input type="submit" name="button" value="Delete" class="main-button" />
-                        </form>
-                    </div>
-                    <div class="item-padding">
-                        <hr />
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
+        </cache>
     </div>
 </body>
 </html>

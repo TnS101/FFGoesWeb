@@ -7,10 +7,12 @@
     <meta http-equiv="refresh" content="1.3;url=https://localhost:44312/Battle/Command">
     <partial name="_NavBar">
 </head>
-<body>
-    <div class="container has-text-align-center fade-in item-padding">
-        <h2 class="site-title main-font-color">Battle started!</h2>
-        <p class="site-title main-font-color">You are fighting against : @Model</p>
-    </div>
-</body>
-<partial name="_Footer">
+<cache vary-by="@Model">
+    <body>
+        <div class="container has-text-align-center fade-in item-padding">
+            <h1 class="site-title main-font-color">Battle started!</h1>
+            <p class="site-title main-font-color">You are fighting against : @Model</p>
+        </div>
+    </body>
+    <partial name="_Footer">
+</cache>

@@ -13,7 +13,7 @@ Use Identity : Check
 Use Ajax : Not Yet
 Write Unit Tests : Not Yet
 Error Handling + Data Validation : Check
-Handle Correctly special HTML characters : Check
+Handle Correctly special HTML characters: Check
 Use Dependency Injection : Check
 AutoMapping : Check
 Prevent Security Vulnerabilities : Check

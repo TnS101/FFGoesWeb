@@ -1,7 +1,4 @@
 ﻿@model Application.GameCQ.Battles.Queries.GetBattleUnitsQuery.BattleUnitsViewModel
-@{
-    
-}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Command</title>
@@ -44,7 +41,7 @@
 </head>
 <body>
     <div class="fade-in aligncenter has-text-align-center">
-        <h2 style="text-align:center">@Model.Hero.Name  vs  @Model.Enemy.Name</h2>
+        <h1 style="text-align:center">@Model.Hero.Name  vs  @Model.Enemy.Name</h1>
         <div>
             <img src="@Model.Hero.ImagePath" alt="Player" width="80" height="80" id="hero" />
             <img src="@Model.Enemy.ImagePath" alt="Enemy" style="padding-left:250px;" id="enemy" />
@@ -88,6 +85,10 @@
         </div>
     </div>
     <partial name="_Footer">
+        @section scripts
+        {
+            <script src="~/js/battle.js"></script>
+        }
 </body>
 </html>
 

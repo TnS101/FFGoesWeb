@@ -4,6 +4,6 @@
 
     public class DeleteFightingClassCommand : IRequest<string>
     {
-        public int UnitId { get; set; }
+        public int FightingClassId { get; set; }
     }
 }

@@ -1,18 +1,18 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model Application.GameCQ.Monsters.Queries.GetCurrentMonsterQuery.MonsterFullViewModel
+@model Application.GameCQ.FightingClasses.Queries.GetCurrentFightingClassQuery.FightingClassFullViewModel
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Current Monster</title>
+    <title>Current Fighting Class</title>
     <partial name="_AdminNavBar">
 </head>
 <body>
     <div class="has-text-align-center item-padding fade-in aligncenter">
         <cache vary-by-query="id">
-            <h1 class="secondary-font-color has-larger-font-size">@Model.Name</h1>
+            <h1 class="secondary-font-color has-larger-font-size">@Model.Type</h1>
             <div class="item-padding">
                 <hr />
                 <div class="wp-block-image">

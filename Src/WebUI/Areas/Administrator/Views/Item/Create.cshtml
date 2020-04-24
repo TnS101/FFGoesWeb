@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>CreateItem</title>
+    <title>Create Item</title>
     <partial name="_AdminNavBar">
         <script>
             $(document).ready(function () {
@@ -223,7 +223,7 @@
 </head>
 <body>
     <div class="item-padding fade-in has-text-align-center">
-        <h2 class="main-font-color has-large-font-size">Create an Item</h2>
+        <h1 class="main-font-color has-large-font-size">Create an Item</h1>
         <div class="item-padding">
             <hr />
             <div class="row">
@@ -272,7 +272,7 @@
                         <div class="form-group fade-in item-padding" id="agility" style="display:none">
                             <label for="input-agility" class="contro-label has-normal-font-size">Agility</label>
                             <br />
-                            <input id=""input-agility"" name="agility" class="form-control" min="1" max="100" />
+                            <input id="" input-agility"" name="agility" class="form-control" min="1" max="100" />
                         </div>
                         <div class="form-group fade-in item-padding" id="intellect" style="display:none">
                             <label for="input-intellect" class="contro-label has-normal-font-size">Intellect</label>
@@ -321,7 +321,7 @@
                         <div class="form-group fade-in item-padding" id="reward" style="display:none">
                             <label for="input-reward" class="contro-label has-normal-font-size">Reward</label>
                             <br />
-                            <input id="input-reward" name="reward" class="form-control" min="1" max="1000" />
+                            <input id="input-reward" type="number" name="reward" class="form-control" min="1" max="1000" />
                         </div>
                         <div class="form-group fade-in item-padding" style="display:none" id="material-type">
                             <label for="material-type-select" class="contro-label has-normal-font-size">Type</label>
@@ -367,17 +367,19 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="tools">
                             <label for="select-tool" class="contro-label has-normal-font-size">Required Tool</label>
                             <br />
-                            <select name="toolId" id="select-tool">
-                                @foreach (var tool in Model.Tools)
-                                {
-                                    <option value="@tool.Id">@tool.Name</option>
-                                }
-                            </select>
+                            <cache vary-by="@Model.Tools">
+                                <select name="toolId" id="select-tool">
+                                    @foreach (var tool in Model.Tools)
+                                    {
+                                        <option value="@tool.Id">@tool.Name</option>
+                                    }
+                                </select>
+                            </cache>
                         </div>
                         <div class="form-group fade-in item-padding" style="display:none" id="materials">
                             <label for="input-relatedmaterials" class="contro-label has-normal-font-size">Related Materials</label>
                             <br />
-                            <input type="text" id="input-relatedmaterials" name="relatedMaterials" class="form-control"/>
+                            <input type="text" id="input-relatedmaterials" name="relatedMaterials" class="form-control" />
                         </div>
                         <div class="form-group item-padding">
                             <input type="submit" value="Create" class="main-button" />

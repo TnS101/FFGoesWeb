@@ -1,0 +1,95 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+@{
+    string id = Context.Request.Query["id"];
+    string slot = Context.Request.Query["slot"];
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update Monster</title>
+    <partial name="_AdminNavBar">
+</head>
+<body>
+    <div class="item-padding fade-in has-text-align-center">
+        <h1 class="main-font-color has-large-font-size">Edit a Monster</h1>
+        <div class="item-padding">
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-controller="Monster" asp-action="Update" method="post">
+                        <cache vary-by-query="id">
+                            <div class="form-group item-padding">
+                                <input type="hidden" name="id" value="@id" />
+                            </div>
+                        </cache>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-name" class="contro-label has-normal-font-size">New Name</label>
+                            <br />
+                            <input type="text" id="input-name" name="name" class="form-control" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-hp" class="contro-label has-normal-font-size">New Max HP</label>
+                            <br />
+                            <input type="number" id="input-hp" name="maxHP" class="form-control" min="80" max="999999999" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-mana" class="contro-label has-normal-font-size">New Max Mana</label>
+                            <br />
+                            <input type="number" id="input-mana" name="maxMana" class="form-control" min="80" max="999999999" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-healthRegen" class="contro-label has-normal-font-size">New Health Regen</label>
+                            <br />
+                            <input type="number" id="input-healthRegen" name="healthRegen" class="form-control" min="1" max="10000" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-manaRegen" class="contro-label has-normal-font-size">New Mana Regen</label>
+                            <br />
+                            <input type="number" id="input-manaRegen" name="manaRegen" class="form-control" min="1" max="10000" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-attackPower" class="contro-label has-normal-font-size">New Attack Power</label>
+                            <br />
+                            <input type="number" id="input-attackPower" name="attackPower" class="form-control" min="10" max="10000000" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-magicPower" class="contro-label has-normal-font-size">New Magic Power</label>
+                            <br />
+                            <input type="number" id="input-magicPower" name="magicPower" class="form-control" min="10" max="10000000" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-armorValue" class="contro-label has-normal-font-size">New Armor Value</label>
+                            <br />
+                            <input type="number" id="input-armorValue" name="armorValue" class="form-control" min="1" max="100000" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-resistanceValue" class="contro-label has-normal-font-size">New Resistance Value</label>
+                            <br />
+                            <input type="number" id="input-resistanceValue" name="resistanceValue" class="form-control" min="1" max="100000" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-criticalChance" class="contro-label has-normal-font-size">New Critical Chance</label>
+                            <br />
+                            <input type="number" id="input-criticalChance" name="criticalChance" class="form-control" min="1" max="50" />
+                        </div>
+                        <div class="form-group fade-in item-padding has-normal-font-size">
+                            <label for="input-description" class="contro-label has-normal-font-size">New Description</label>
+                            <br />
+                            <input type="text" id="input-description" name="description" class="form-control" />
+                        </div>
+                        <div class="form-group item-padding">
+                            <input type="submit" value="Update" class="main-button" />
+                        </div>
+                        <div class="item-padding">
+                            <hr />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

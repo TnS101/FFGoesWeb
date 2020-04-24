@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Admin.GameContent.FightingClasses.Commands.Create;
+    using Application.CQ.Admin.GameContent.FightingClasses.Commands.Delete;
     using Application.CQ.Admin.GameContent.FightingClasses.Commands.Update;
     using Application.GameCQ.FightingClasses.Queries.GetCurrentFightingClassQuery;
     using Common;
@@ -20,6 +21,7 @@
         }
 
         [HttpGet]
+        [ResponseCache(CacheProfileName = "Weekly")]
         public ActionResult Create()
         {
             return this.View();
@@ -47,6 +49,7 @@
         }
 
         [HttpGet("/Administrator/FightingClass/Update/id")]
+        [ResponseCache(CacheProfileName = "Weekly")]
         public ActionResult Update()
         {
             return this.View();
@@ -72,6 +75,12 @@
                 NewCritChance = critChance,
                 NewDescription = description,
             }));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete([FromForm]int id)
+        {
+            return this.Redirect(await this.Mediator.Send(new DeleteFightingClassCommand { FightingClassId = id }));
         }
     }
 }

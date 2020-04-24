@@ -5,6 +5,7 @@
     public class ErrorController : BaseController
     {
         [Route("Error/{statusCode}")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public ActionResult HttpStatusCodeHandler(int statusCode)
         {
             return statusCode switch

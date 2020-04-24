@@ -13,22 +13,24 @@
         <div class="item-padding">
         </div>
         <hr />
-        @foreach (var monster in Model.Monsters)
-        {
-            <div class="main-gradient secondary-background-color" style="padding-top:100px">
-                <div style="flex-basis: 33.33%">
-                    <div class="wp-block-image"><figure class="aligncenter size-large is-resized" style="padding-left:650px"><img src="@monster.ImagePath" alt="" width="100" height="100"></figure></div>
+        <cache vary-by="@Model">
+            @foreach (var monster in Model.Monsters)
+            {
+                <div class="main-gradient secondary-background-color" style="padding-top:100px">
+                    <div style="flex-basis: 33.33%">
+                        <div class="wp-block-image"><figure class="aligncenter size-large is-resized" style="padding-left:650px"><img src="@monster.ImagePath" alt="" width="100" height="100"></figure></div>
+                    </div>
+
+                    <div class="wp-block-column" style="flex-basis:66.66%">
+                        <h1 class="site-title" style="text-align:center"><a asp-controller="Home" asp-action="MonsterInfo" asp-route-id="@monster.Id">@monster.Name</a></h1>
+                        <h1 class="has-luminous-vivid-amber-color has-text-color has-text-align-center image-description">@monster.Description</h1>
+                    </div>
                 </div>
 
-                <div class="wp-block-column" style="flex-basis:66.66%">
-                    <h1 class="site-title" style="text-align:center"><a asp-controller="Home" asp-action="MonsterInfo" asp-route-id="@monster.Id">@monster.Name</a></h1>
-                    <h1 class="has-luminous-vivid-amber-color has-text-color has-text-align-center image-description">@monster.Description</h1>
-                </div>
-            </div>
-
-            <hr class="secondary-font-color" />
-            <br />
-        }
+                <hr class="secondary-font-color" />
+                <br />
+            }
+        </cache>
     </div>
     <partial name="_Footer">
 </body>

@@ -14,8 +14,8 @@
 
                         <div class="entry-header with-image full site-background main-gradient">
                             <div class="wp-block-image is-style-circle-mask"><figure class="aligncenter size-large is-resized"style="padding-left:560px"><img src="@fightingClass.ImagePath" alt="" width="300" height="300"/></figure></div>
-                            <h1 class="section-title image-name main-font-color">@fightingClass.ClassType</h1>
-                            <h1 class="has-text-color has-text-align-center image-description main-font-color">@fightingClass.Description</h1>
+                            <h1 class="section-title image-name main-font-color">@fightingClass.Type</h1>
+                            <h2 class="has-text-color has-text-align-center image-description main-font-color">@fightingClass.Description</h2>
                         </div>
                         <div class="has-text-align-center race-pick">
                             <form asp-controller="Hero" asp-action="Create" method="post">
@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                                 <div class="item-padding">
-                                    <input type="hidden" name="classType" value="@fightingClass.ClassType" />
+                                    <input type="hidden" name="classType" value="@fightingClass.Type" />
                                     <input type="submit" name="" class="main-button" value="Create Character"  style="width:300px"/>
                                 </div>
                             </form>

@@ -46,9 +46,10 @@ html {
     -ms-text-size-adjust: 100%;
 }
 
-body {
-    margin: 0;
-    padding-top: 100px
+.main-header {
+    position: fixed;
+    z-index:1000;
+    text-align:center;
 }
 
 article,
@@ -448,6 +449,8 @@ html {
 
 body {
     background: #fff;
+    margin:0;
+    padding:0;
 }
 
 blockquote:before,
@@ -796,9 +799,9 @@ a {
 }
 
 .container {
-    width: 96%;
-    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
+    background-color:inherit;
 }
 
 #masthead {
@@ -836,8 +839,7 @@ a {
     }
 
     #masthead > .container {
-        display: grid;
-        grid-template-columns: minmax(auto,300px) auto auto;
+        display: block;
         align-items: center;
         padding: 20px 0;
         transition: padding .5s;
@@ -856,11 +858,6 @@ a {
     grid-column: 3/4;
     justify-self: end;
     display: none;
-}
-
-#site-navigation {
-    grid-column: 2/3;
-    justify-self: end;
 }
 
 #site-top-right {
@@ -1008,7 +1005,6 @@ a {
     font-family: 'Rajdhani', Helvetica, Arial, Verdana, sans-serif;
     font-weight: bold;
     font-size: 56px;
-    text-transform: uppercase;
     letter-spacing: 2px;
     -ms-word-wrap: break-word;
     word-wrap: break-word;
@@ -1040,7 +1036,6 @@ a {
 #primary-menu {
     margin: 0;
     color: #fff;
-    height: 50px;
 }
 
     #primary-menu li {
@@ -1054,10 +1049,6 @@ a {
             text-decoration: none;
             padding: 10px 15px;
             transition: color .3s ease;
-        }
-
-        #primary-menu li.highlight > a {
-            background: #ff7800;
         }
 
         #primary-menu li.menu-item-has-children a {
@@ -1164,7 +1155,7 @@ a {
         }
 
 html, body {
-    height: 104%;
+    height: 100%;
     background-color: rgb(255, 255, 255);
 }
 
@@ -1270,20 +1261,6 @@ p.has-background {
         grid-row: 1/2;
         justify-self: center;
     }
-
-    #site-navigation {
-        display: none;
-        width: 100%;
-    }
-
-        #site-navigation.menu-open {
-            display: block;
-            max-height: 50vh;
-            padding-right: 10px;
-            overflow: hidden auto;
-            grid-column: 1/4;
-            justify-self: end;
-        }
 
     #primary-menu li {
         position: relative;
@@ -1531,16 +1508,6 @@ p.has-background {
     }
 }
 
-@media screen and ( max-width: 782px ) {
-    html {
-        margin-top: 46px !important;
-    }
-
-    * html body {
-        margin-top: 46px !important;
-    }
-}
-
 @supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none) {
     .is-style-circle-mask img {
         -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');
@@ -1731,13 +1698,6 @@ p.has-text-color a {
 .has-text-align-right {
     text-align: right
 }
-
-@media only screen and (max-width: 1024px) {
-    #site-navigation {
-        background: #7e5050;
-    }
-}
-
 
 @keyframes bounce {
     20%,53%,80%,from,to {
@@ -2540,11 +2500,6 @@ hr {
     margin-top: -50px
 }
 
-.site-home {
-    margin-top: -54px;
-    background-color: rgba(59, 92, 252, 0.69)
-}
-
 .creation-button {
     border-radius: 43px;
 }
@@ -2600,11 +2555,8 @@ i {
 
 .main-nav-bar {
     background-color: #c39873;
-    width: 1985px;
+    width: 100%;
     height: 60px;
-    margin-left: -25px;
-    padding-top: 18px;
-    position: relative;
 }
 
 
@@ -2614,18 +2566,15 @@ i {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .07em;
-    background-color: #c39873;
-    width: 1986px;
-    height: 100px;
-    margin-left: -150px;
-    padding-top: 20px;
+    width: 100%;
+    height: 80px;
 }
 
 
 
 .main-gradient {
     background: rgb(195,151,114);
-    background: repeating-linear-gradient(180deg, rgba(195,151,114,1) 8%, rgba(255,248,241,1) 100%);
+    background: repeating-linear-gradient(180deg, rgba(195,151,114,1) 0%, rgba(255,248,241,1) 130%);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

@@ -3,15 +3,16 @@
     ViewData["Title"] = "EnemyEncounter";
     Layout = "_Layout";
 }
+    <head>
+        <partial name="_NavBar">
+    </head>
 <body>
-    <partial name="_NavBar" > 
     <div class="has-text-align-center fade-in item-padding">
-        <h2 class="site-header secondary-font-color has-large-font-size">Enemy Encounter!</h2>
+        <h1 class="site-header secondary-font-color has-large-font-size">Enemy Encounter!</h1>
         <div class="item-padding"></div>
         <hr />
         <div class="item-padding">
             <a asp-controller="Battle" class="site-title" style="color:#1e5669" asp-action="Battle" asp-route-zone="World">Fight</a>
         </div>
     </div>
-
 </body>

@@ -9,65 +9,67 @@
     <partial name="_NavBar">
 </head>
 <body>
-    <div class="has-text-align-center item-padding fade-in aligncenter">
-        <h1 class="secondary-font-color has-larger-font-size">@Model.Name</h1>
-        <div class="item-padding">
-            <hr />
-            <div class="wp-block-image">
-                <img src="~/images/Icons/Heart.png" alt="Health" width="48" height="48">
-                <div class="item-padding">
-                    <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.MaxHP" max="220"></progress>
+    <cache vary-by-query="id">
+        <div class="has-text-align-center item-padding fade-in aligncenter">
+            <h1 class="secondary-font-color has-larger-font-size">@Model.Name</h1>
+            <div class="item-padding">
+                <hr />
+                <div class="wp-block-image">
+                    <img src="~/images/Icons/Heart.png" alt="Health" width="48" height="48">
+                    <div class="item-padding">
+                        <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.MaxHP" max="220"></progress>
+                    </div>
                 </div>
-            </div>
-            <div class="wp-block-image">
-                <img src="~/images/Icons/mana.png" alt="Mana" width="48" height="48">
-                <div class="item-padding">
-                    <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.MaxMana" max="150"></progress>
+                <div class="wp-block-image">
+                    <img src="~/images/Icons/mana.png" alt="Mana" width="48" height="48">
+                    <div class="item-padding">
+                        <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.MaxMana" max="150"></progress>
+                    </div>
                 </div>
-            </div>
-            <div class="wp-block-image">
-                <img src="~/images/Icons/attack.png" alt="Attack" width="60" height="55">
-                <div class="item-padding">
-                    <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.AttackPower" max="30"></progress>
+                <div class="wp-block-image">
+                    <img src="~/images/Icons/attack.png" alt="Attack" width="60" height="55">
+                    <div class="item-padding">
+                        <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.AttackPower" max="30"></progress>
+                    </div>
                 </div>
-            </div>
-            <div class="wp-block-image">
-                <img src="~/images/Icons/Wand.png" alt="Magic Power" width="56" height="48">
-                <div class="item-padding">
-                    <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.MagicPower" max="35"></progress>
+                <div class="wp-block-image">
+                    <img src="~/images/Icons/Wand.png" alt="Magic Power" width="56" height="48">
+                    <div class="item-padding">
+                        <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.MagicPower" max="35"></progress>
+                    </div>
                 </div>
-            </div>
-            <div class="wp-block-image">
-                <img src="~/images/Icons/HpRegen.png" alt="Health Regen" width="60" height="55">
-                <div class="item-padding">
-                    <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.HealthRegen" max="10"></progress>
+                <div class="wp-block-image">
+                    <img src="~/images/Icons/HpRegen.png" alt="Health Regen" width="60" height="55">
+                    <div class="item-padding">
+                        <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.HealthRegen" max="10"></progress>
+                    </div>
                 </div>
-            </div>
-            <div class="wp-block-image">
-                <img src="~/images/Icons/ManaRegen.png" alt="Mana Regen" width="58" height="55">
-                <div class="item-padding">
-                    <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.ManaRegen" max="10"></progress>
+                <div class="wp-block-image">
+                    <img src="~/images/Icons/ManaRegen.png" alt="Mana Regen" width="58" height="55">
+                    <div class="item-padding">
+                        <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.ManaRegen" max="10"></progress>
+                    </div>
                 </div>
-            </div>
-            <div class="wp-block-image">
-                <img src="~/images/Icons/Helm.png" alt="Armor" width="55" height="55">
-                <div class="item-padding">
-                    <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.ArmorValue" max="10"></progress>
+                <div class="wp-block-image">
+                    <img src="~/images/Icons/Helm.png" alt="Armor" width="55" height="55">
+                    <div class="item-padding">
+                        <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.ArmorValue" max="10"></progress>
+                    </div>
                 </div>
-            </div>
-            <div class="wp-block-image">
-                <img src="~/images/Icons/Cap.png" alt="Resistance" width="55" height="55">
-                <div class="item-padding">
-                    <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.ResistanceValue" max="10"></progress>
+                <div class="wp-block-image">
+                    <img src="~/images/Icons/Cap.png" alt="Resistance" width="55" height="55">
+                    <div class="item-padding">
+                        <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.ResistanceValue" max="10"></progress>
+                    </div>
                 </div>
-            </div>
-            <div class="wp-block-image">
-                <img src="~/images/Icons/Scythe.png" alt="Crit" width="55" height="55">
-                <div class="item-padding">
-                    <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.CritChance" max="10"></progress>
+                <div class="wp-block-image">
+                    <img src="~/images/Icons/Scythe.png" alt="Crit" width="55" height="55">
+                    <div class="item-padding">
+                        <progress class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="height:32px ;width:300px" value="@Model.CritChance" max="10"></progress>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </cache>
 </body>
 </html>

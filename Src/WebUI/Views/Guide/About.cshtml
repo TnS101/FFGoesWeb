@@ -94,10 +94,10 @@
         </script>
 </head>
 <body>
+    <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
-
     <div class="has-text-align-center fade-in item-padding" id="top">
-        <h2 class="secondary-font-color has-large-font-size">Welcome to the Main Guide</h2>
+        <h1 class="secondary-font-color has-large-font-size">Welcome to the Guide</h1>
         <div class="item-padding">
             <hr />
             <p class="has-large-font-size main-font-color">
@@ -148,7 +148,7 @@
                         <p class="has-normal-font-size main-font-color">
                             Great! We are finally getting to the fun part! The game logic is made to be as simple as a rock : you hit and you get hit (don't hit rocks).
                             These actions happen every Turn since the game is Turn-Based. In order to experience this marvelous joy (without animations and awesome graphics tho...),
-                            you must <a asp-controller="Unit" asp-action="Create"><em class="light-font-color">Create</em></a> a Hero.
+                            you must <a asp-controller="Hero" asp-action="Create"><em class="light-font-color">Create</em></a> a Hero.
                             Explained in details, a Hero has <i class="far fa-heart secondary-font-color">Health</i>,
                             <i class="fas fa-diagnoses secondary-font-color">Mana</i>, <i class="fas fa-khanda secondary-font-color">Attack Power</i>,
                             <i class="fas fa-magic secondary-font-color">Magic Power</i>, <i class="fas fa-shield-alt secondary-font-color">Armor</i>,
@@ -1085,5 +1085,6 @@
         </div>
         <partial name="_Footer">
     </div>
+        </cache>
 </body>
 </html>
