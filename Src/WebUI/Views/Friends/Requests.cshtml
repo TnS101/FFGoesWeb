@@ -1,18 +1,10 @@
 ﻿@model Application.CQ.Social.FriendRequests.Queries.FriendRequestListViewModel
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Requests</title>
-    <partial name="_SocialNavBar">
-</head>
-<body>
+<title>Requests</title>
+<partial name="_SocialNavBar">
     <div class="has-text-align-center item-padding fade-in">
         @if (Model.FriendRequests.Count() > 0)
         {
-            <h1 class="secondary-font-color">Your Current Friend Requests</h1>
+            <h1 class="secondary-font-color item-padding">Your Current Friend Requests</h1>
             <div class="item-padding has-text-align-center">
                 <hr />
                 <cache vary-by="@Model.FriendRequests">
@@ -73,10 +65,7 @@
         }
         else
         {
-            <h1 class="secondary-font-color">You currently don't have any Friend Requests</h1>
-            <div class="item-padding"><hr /></div>
+            <h1 class="secondary-font-color item-padding">You currently don't have any Friend Requests</h1>
+            <div class="item-padding"><hr/></div>
         }
     </div>
-
-</body>
-</html>

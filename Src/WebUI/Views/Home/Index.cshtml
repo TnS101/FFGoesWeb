@@ -1,8 +1,5 @@
 ﻿@model System.Security.Claims.ClaimsPrincipal
 @using Common
-@{
-    ViewData["Title"] = "Index";
-}
 
 @if (Model.IsInRole(GConst.AdminRole))
 {
@@ -16,45 +13,48 @@ else
 {
     await Html.RenderPartialAsync("_GuestNavBar");
 }
-<div class="fade-in item-padding">
-    <div class="item-padding">
-        <h1 class="site-title"><a asp-controller="Home" asp-action="Index"><span class="secondary-font-color">Final Fantasy Tryout</span></a></h1>
-        @if (!Model.Identity.IsAuthenticated)
-        {
-            <div class="container">
-                <h1 class="main-font-color has-text-align-center">Join other players in order to take what’s yours!</h1>
-            </div>
-        }
-        else
-        {
-            <div class="container">
-                <h1 class="main-font-color has-text-align-center">Final Fantasy Tryout is an individual project by Hristo Todorov.</h1>
-                <h2 class="main-font-color has-text-align-center">The Game rules are very simple : Attack, Endure, Win!</h2>
-            </div>
-        }
+<title>Home</title>
+<cache vary-by-user="true">
+    <div class="fade-in item-padding">
+        <h1 class="site-title item-padding"><a asp-controller="Home" asp-action="Index"><span class="secondary-font-color">Final Fantasy Tryout</span></a></h1>
+        <div class="item-padding">
+            @if (!Model.Identity.IsAuthenticated)
+            {
+                <div class="container">
+                    <h1 class="main-font-color has-text-align-center">Join other players in order to take what’s yours!</h1>
+                </div>
+            }
+            else
+            {
+                <div class="container">
+                    <h1 class="main-font-color has-text-align-center">Final Fantasy Tryout is an individual project by Hristo Todorov.</h1>
+                    <h2 class="main-font-color has-text-align-center">The Game rules are very simple : Attack, Endure, Win!</h2>
+                </div>
+            }
 
-    </div>
-    <div id="content" class="site-content clearfix">
-        <div class="container clearfix">
+        </div>
+        <div id="content" class="site-content clearfix">
+            <div class="container clearfix">
 
-            <div id="primary" class="content-area full-width">
-                <main id="main" class="site-main" role="main">
-                    @if (!Model.Identity.IsAuthenticated)
-                    {
-                        <article id="post-6" class="post-6 page type-page status-publish hentry">
+                <div id="primary" class="content-area full-width">
+                    <main id="main" class="site-main" role="main">
+                        @if (!Model.Identity.IsAuthenticated)
+                        {
+                            <article id="post-6" class="post-6 page type-page status-publish hentry">
 
-                            <div class="entry-content single-entry-content item-padding">
-                                <div class="has-text-align-center"><a href="https://localhost:44312/Identity/Account/Register" class="main-font-color has-large-font-size"><strong>Join Now</strong></a></div>
-                            </div>
+                                <div class="entry-content single-entry-content item-padding">
+                                    <div class="has-text-align-center"><a href="https://localhost:44312/Identity/Account/Register" class="main-font-color has-large-font-size"><strong>Join Now</strong></a></div>
+                                </div>
 
-                        </article>
-                    }
-                </main>
+                            </article>
+                        }
+                    </main>
+                </div>
             </div>
         </div>
+        <partial name="_CookieConsentPartial" />
+        <div class="item-padding">
+            <partial name="_Footer">
+        </div>
     </div>
-    <partial name="_CookieConsentPartial" />
-    <div class="item-padding">
-        <partial name="_Footer">
-    </div>
-</div>
+</cache>

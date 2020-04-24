@@ -1,21 +1,13 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    Layout = "_Layout";
-}
-    <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
-        <header id="masthead" class="site-header full" style="top: -42px;margin-left:-140px;position:fixed">
-            <div class="container">
-                <div id="site-navigation" role="navigation">
-                    <div class="site-main-menu">
-                        <ul id="primary-menu" class="main-nav-bar nav-font-size">
-                            <li style="padding-left:460px" class="page_item page-item-9"><a asp-area="Administrator" asp-controller="Admin" asp-action="Index"><i class="fas fa-chart-bar"></i>Dashboard</a></li>
-                            <li class="page_item page-item-2"><a asp-area="Administrator" asp-controller="GameContent" asp-action="Content"><i class="fas fa-gamepad"></i>Game Content</a></li>
-                            <li class="page_item page-item-2"><a asp-area="Administrator" asp-controller="Feedback" asp-action="Feedbacks"><i class="fas fa-mail-bulk"></i>Feedbacks</a></li>
-                            <li class="page_item page-item-2"><a asp-area="Administrator" asp-controller="ToDo" asp-action="List"><i class="fas fa-list-ol"></i>To Do List</a></li>
-                            <li><a asp-area="Administrator" asp-controller="Admin" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
+﻿<cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
+    <header class="main-header has-text-align-center">
+        <div id="site-navigation">
+            <ul id="primary-menu" class="main-nav-bar nav-font-size">
+                <li><a asp-area="Administrator" asp-controller="Admin" asp-action="Index"><i class="fas fa-chart-bar"></i>Dashboard</a></li>
+                <li><a asp-area="Administrator" asp-controller="GameContent" asp-action="Content"><i class="fas fa-gamepad"></i>Game Content</a></li>
+                <li><a asp-area="Administrator" asp-controller="Feedback" asp-action="Feedbacks"><i class="fas fa-mail-bulk"></i>Feedbacks</a></li>
+                <li><a asp-area="Administrator" asp-controller="ToDo" asp-action="List"><i class="fas fa-list-ol"></i>To Do List</a></li>
+                <li><a asp-area="Administrator" asp-controller="Admin" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            </ul>
+        </div>
+    </header>
 </cache>

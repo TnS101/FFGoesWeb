@@ -1,30 +1,17 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    Layout = "_Layout";
-}
 <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
-    <body>
-        <header id="masthead" class="site-header full" style="top: -42px;margin-left:-140px;position:fixed">
-            <div class="container">
-                <div id="site-branding">
-                </div>
-                <div id="site-navigation" role="navigation">
-                    <div class="main-nav-bar">
-                        <ul id="primary-menu" class="nav-font-size">
-                            <li style="padding-left:420px" class="page_item page-item-9"><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Home</a></li>
-                            <li class="page_item page-item-9"><a asp-controller="Profile" asp-action="Panel"><i class="fas fa-user-circle"></i>Profile</a></li>
-                            <li class="page_item page-item-2"><a asp-controller="World" asp-action="Home"><i class="fas fa-globe-americas"></i>World</a></li>
-                            <li class="page_item page-item-2"><a asp-controller="Guide" asp-action="About"><i class="fas fa-scroll"></i>Guide</a></li>
-                            <li class="page_item page-item-2"><a asp-controller="PvP" asp-action="Home"><i class="fas fa-khanda"></i>PvP</a></li>
-                            <li class="page_item page-item-2"><a asp-controller="Craft" asp-action="Home"><i class="fas fa-hammer"></i>Craft</a></li>
-                            <li class="page_item page-item-2"><a asp-controller="Shop" asp-action="Home"><i class="fas fa-store-alt"></i>Shop</a></li>
-                            <li class="page_item page-item-2"><a asp-controller="Auction" asp-action="Home"><i class="fas fa-gavel"></i>Auction</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="site-top-right">
-                </div>
-            </div>
-        </header>
-    </body>
+    <header class="main-header has-text-align-center">
+        <div id="site-navigation">
+            <ul id="primary-menu" class="nav-font-size">
+                <li><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Home</a></li>
+                <li><a asp-controller="Profile" asp-action="Panel"><i class="fas fa-user-circle"></i>Profile</a></li>
+                <li><a asp-controller="World" asp-action="Home"><i class="fas fa-globe-americas"></i>World</a></li>
+                <li><a asp-controller="Guide" asp-action="About"><i class="fas fa-scroll"></i>Guide</a></li>
+                <li><a asp-controller="PvP" asp-action="Home"><i class="fas fa-khanda"></i>PvP</a></li>
+                <li><a asp-controller="Craft" asp-action="Home"><i class="fas fa-hammer"></i>Craft</a></li>
+                <li><a asp-controller="Shop" asp-action="Home"><i class="fas fa-store-alt"></i>Shop</a></li>
+                <li><a asp-controller="Auction" asp-action="Home"><i class="fas fa-gavel"></i>Auction</a></li>
+            </ul>
+        </div>
+    </header>
 </cache>

@@ -1,18 +1,11 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model string
-@{
-    ViewData["Title"] = "Battle";
-}
-<head>
-    <meta http-equiv="refresh" content="1.3;url=https://localhost:44312/Battle/Command">
-    <partial name="_NavBar">
-</head>
+﻿@model string
+<title>Battle</title>
+<meta http-equiv="refresh" content="1.3;url=https://localhost:44312/Battle/Command">
 <cache vary-by="@Model">
-    <body>
+    <partial name="_NavBar">
         <div class="container has-text-align-center fade-in item-padding">
-            <h1 class="site-title main-font-color">Battle started!</h1>
+            <h1 class="site-title main-font-color item-padding">Battle started!</h1>
             <p class="site-title main-font-color">You are fighting against : @Model</p>
         </div>
-    </body>
-    <partial name="_Footer">
+        <partial name="_Footer">
 </cache>

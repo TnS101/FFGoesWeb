@@ -1,54 +1,51 @@
 ﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
-@{
-    ViewData["Title"] = "Heroes";
-}
-<head>
-    <partial name="_NavBar">
-</head>
-<body>
+<title>Heroes</title>
+<partial name="_NavBar">
     <div class="has-text-align-center item-padding main-gradient fade-in">
-        <h1 class="main-font-color has-large-font-size">Your Heroes</h1>
+        <h1 class="main-font-color has-large-font-size item-padding">Your Heroes</h1>
         <div class="item-padding"><hr /></div>
-        @foreach (var hero in Model.Heroes.OrderByDescending(h => h.IsSelected))
-        {
-            <div class="item-padding">
-                @if (!hero.IsSelected)
-                {
-                    <form asp-controller="Hero" class="has-text-align-center" asp-action="Select" method="post">
-                        <input type="hidden" name="id" value="@hero.Id" />
-                        <input type="submit" class="main-button" name="name" value="Select" />
-                    </form>
-                }
-                else
-                {
-                    <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-larger-font-size main-font-color"></i></a>
-                }
-            <div class="item-padding" id="">
-                <a asp-controller="Hero" asp-action="Info" asp-route-id="@hero.Id" class="has-text-align-center"><p class="has-large-font-size light-font-color">@hero.Name</p></a>
-                <hr class="has-narrow-width" />
-                <h3><img src="@hero.IconURL" alt="" />@hero.ClassType</h3>
-                <hr class="has-narrow-width" />
-                <h3><i class="fas fa-certificate main-font-color"></i> @hero.Level</h3>
-                <hr class="has-narrow-width" />
-                <h3><i class="fas fa-heartbeat main-font-color"></i> @hero.CurrentHP.ToString("f2") / @hero.MaxHP.ToString("f2")</h3>
-                <hr class="has-narrow-width" />
-                <h3><i class="fas fa-bolt main-font-color"></i> @hero.Energy / 30</h3>
-                <hr class="has-narrow-width" />
-                <h3><i class="fas fa-hammer main-font-color"></i> @hero.ProfessionEnergy / 10</h3>
-                <hr class="has-narrow-width" />
-                <h3><i class="fas fa-fist-raised main-font-color"></i> @hero.PvPEnergy / 15</h3>
-                <hr class="has-narrow-width" />
+        <cache vary-by="@Model.Heroes">
+            @foreach (var hero in Model.Heroes.OrderByDescending(h => h.IsSelected))
+            {
+                <div class="item-padding">
+                    @if (!hero.IsSelected)
+                    {
+                        <form asp-controller="Hero" class="has-text-align-center" asp-action="Select" method="post">
+                            <input type="hidden" name="id" value="@hero.Id" />
+                            <input type="submit" class="main-button" name="name" value="Select" />
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-larger-font-size main-font-color"></i></a>
+                    }
+                    <div class="item-padding" id="">
+                        <a asp-controller="Hero" asp-action="Info" asp-route-id="@hero.Id" class="has-text-align-center"><p class="has-large-font-size light-font-color">@hero.Name</p></a>
+                        <hr class="has-narrow-width" />
+                        <h3><img src="@hero.IconURL" alt="" />@hero.ClassType</h3>
+                        <hr class="has-narrow-width" />
+                        <h3><i class="fas fa-certificate main-font-color"></i> @hero.Level</h3>
+                        <hr class="has-narrow-width" />
+                        <h3><i class="fas fa-heartbeat main-font-color"></i> @hero.CurrentHP.ToString("f2") / @hero.MaxHP.ToString("f2")</h3>
+                        <hr class="has-narrow-width" />
+                        <h3><i class="fas fa-bolt main-font-color"></i> @hero.Energy / 30</h3>
+                        <hr class="has-narrow-width" />
+                        <h3><i class="fas fa-hammer main-font-color"></i> @hero.ProfessionEnergy / 10</h3>
+                        <hr class="has-narrow-width" />
+                        <h3><i class="fas fa-fist-raised main-font-color"></i> @hero.PvPEnergy / 15</h3>
+                        <hr class="has-narrow-width" />
 
-                <form asp-controller="Hero" asp-action="Delete" method="post" class="item-padding">
-                    <input type="hidden" name="id" value="@hero.Id" />
-                    <input type="submit" name="name" class="main-button" value="Delete" />
-                </form>
-                <br />
-                <br />
-                <hr />
-            </div>
-            </div>
-        }
+                        <form asp-controller="Hero" asp-action="Delete" method="post" class="item-padding">
+                            <input type="hidden" name="id" value="@hero.Id" />
+                            <input type="submit" name="name" class="main-button" value="Delete" />
+                        </form>
+                        <br />
+                        <br />
+                        <hr />
+                    </div>
+                </div>
+            }
+        </cache>
     </div>
     <br />
     <div class="item-padding">
@@ -56,5 +53,3 @@
     </div>
     <br />
     <div class="item-padding"><hr /></div>
-</body>
-

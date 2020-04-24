@@ -1,35 +1,29 @@
 ﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>MasteryPoints</title>
-    <partial name="_NavBar">
-</head>
-<body>
+<title>MasteryPoints</title>
+<partial name="_NavBar">
     <div class="fade-in item-padding">
         @if (Model.Heroes.Any(h => h.Mastery > 0))
         {
-            <h1 class="has-text-align-center secondary-font-color has-large-font-size">Your Heroes and their Mastery Points</h1>
+            <h1 class="has-text-align-center secondary-font-color has-large-font-size item-padding">Your Heroes and their Mastery Points</h1>
             <div class="item-padding">
                 <hr />
             </div>
-            foreach (var hero in Model.Heroes.OrderByDescending(h => h.Mastery))
-            {
-                <div class="has-text-align-center has-narrow-width">
-                    <p class="main-font-color has-large-font-size">@hero.Name</p>
-                    <img src="@hero.IconURL" alt="Hero Icon" />
-                    <i class="fas fa-certificate"></i><p class="main-font-color has-medium-font-size">@hero.Level</p>
-                    <i class="fas fa-meteor"></i><p class="main-font-color has-medium-font-size">@hero.Mastery</p>
-                    <hr />
-                </div>
-            }
+            <cache vary-by="@Model.Heroes">
+                @foreach (var hero in Model.Heroes.OrderByDescending(h => h.Mastery))
+                {
+                    <div class="has-text-align-center has-narrow-width">
+                        <p class="main-font-color has-large-font-size">@hero.Name</p>
+                        <img src="@hero.IconURL" alt="Hero Icon" />
+                        <i class="fas fa-certificate"></i><p class="main-font-color has-medium-font-size">@hero.Level</p>
+                        <i class="fas fa-meteor"></i><p class="main-font-color has-medium-font-size">@hero.Mastery</p>
+                        <hr />
+                    </div>
+                }
+            </cache>
         }
         else
         {
-            <h2 class="has-text-align-center secondary-font-color has-large-font-size">You currently do not have Mastery Points.</h2>
+            <h1 class="has-text-align-center secondary-font-color has-large-font-size item-padding">You currently do not have Mastery Points.</h1>
             <div class="item-padding">
                 <hr />
             </div>
@@ -47,5 +41,3 @@
             <h2 class="main-font-color"><b style="color:red">Important!</b> Deleting a character will <b style="color:red">NOT</b> affect your current Mastery Points.</h2>
         </div>
     </div>
-</body>
-</html>

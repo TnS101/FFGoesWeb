@@ -1,41 +1,34 @@
 ﻿@model Application.CQ.Users.Feedbacks.Queries.FeedbackListViewModel
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Feedbacks</title>
-    <partial name="_NavBar">
-</head>
-<body>
+<title>Feedbacks</title>
+<partial name="_NavBar">
     <div class="fade-in item-padding">
-        <h1 class="has-text-align-center secondary-font-color">Your Feedback's progress</h1>
+        <h1 class="has-text-align-center secondary-font-color item-padding">Your Feedback's progress</h1>
         <div class="item-padding has-text-align-center">
             <hr />
-            @foreach (var feedback in Model.Feedbacks.OrderByDescending(f => f.SentOn).ThenByDescending(f => f.IsAccepted))
-            {
-                <div class="item-padding">
-                    <p class="main-font-color has-normal-font-size">@feedback.Content</p>
-                    <p class="main-font-color has-normal-font-size">Your Rate : @feedback.Rate</p>
-                    @if (feedback.IsAccepted)
-                    {
-                        <img src="~/images/FeedbackAccepted.png" alt="Feedback Is Accepted" />
-                        <br />
-                        <br/>
-                        <p class="main-font-color has-normal-font-size">Reward : <i class="far fa-star"></i> @feedback.Stars</p>
-                        <div class="item-padding">
-                        </div>
-                    }
-                    else
-                    {
-                        <img src="~/images/FeedbackNotAccepted.png" alt="Feedback Still Not Accepted" />
-                        <div class="item-padding">
-                        </div>
-                    }
-                    <hr />
-                </div>
-            }
+            <cache vary-by="@Model.Feedbacks">
+                @foreach (var feedback in Model.Feedbacks.OrderByDescending(f => f.SentOn).ThenByDescending(f => f.IsAccepted))
+                {
+                    <div class="item-padding">
+                        <p class="main-font-color has-normal-font-size">@feedback.Content</p>
+                        <p class="main-font-color has-normal-font-size">Your Rate : @feedback.Rate</p>
+                        @if (feedback.IsAccepted)
+                        {
+                            <img src="~/images/FeedbackAccepted.png" alt="Feedback Is Accepted" />
+                            <br />
+                            <br />
+                            <p class="main-font-color has-normal-font-size">Reward : <i class="far fa-star"></i> @feedback.Stars</p>
+                            <div class="item-padding">
+                            </div>
+                        }
+                        else
+                        {
+                            <img src="~/images/FeedbackNotAccepted.png" alt="Feedback Still Not Accepted" />
+                            <div class="item-padding">
+                            </div>
+                        }
+                        <hr />
+                    </div>
+                }
+            </cache>
         </div>
     </div>
-</body>
-</html>

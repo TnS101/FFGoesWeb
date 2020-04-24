@@ -1,47 +1,42 @@
 ﻿@model Application.GameCQ.Battles.Queries.GetBattleUnitsQuery.BattleUnitsViewModel
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Command</title>
-    <partial name="_WorldNavBar">
+<title>Command</title>
+<partial name="_WorldNavBar">
+    <script>
+        $(document).ready(function () {
 
-        <script>
-            $(document).ready(function () {
+            var battleAction = $('#action');
 
-                var battleAction = $('#action');
+            var hero = $('#hero');
+            var enemy = $('#enemy');
 
-                var hero = $('#hero');
-                var enemy = $('#enemy');
+            $("select.command").change(function () {
+                var battleOption = $(this).children('option:selected').val();
 
-                $("select.command").change(function () {
-                    var battleOption = $(this).children('option:selected').val();
+                if (battleOption === 'Spell') {
+                    $('#spells').removeAttr('hidden');
 
-                    if (battleOption === 'Spell') {
-                        $('#spells').removeAttr('hidden');
+                } else {
+                    $('#spells').attr('hidden', true);
+                }
 
-                    } else {
-                        $('#spells').attr('hidden', true);
+                battleAction.click(function () {
+
+                    if (battleOption === 'Attack') {
+                        hero.toggleClass('roll-in-bottom');
+                        enemy.toggleClass('jello enemy-hit');
+
+                    } if (battleOption === 'Defend') {
+                        hero.toggleClass('jello enemy-hit');
+                        enemy.toggleClass('roll-in-bottom');
+
+                    } if (battleOption === 'SpellCast') {
                     }
-
-                    battleAction.click(function () {
-
-                        if (battleOption === 'Attack') {
-                            hero.toggleClass('roll-in-bottom');
-                            enemy.toggleClass('jello enemy-hit');
-
-                        } if (battleOption === 'Defend') {
-                            hero.toggleClass('jello enemy-hit');
-                            enemy.toggleClass('roll-in-bottom');
-
-                        } if (battleOption === 'SpellCast') {
-                        }
-                    });
-                })
+                });
             })
-        </script>
-</head>
-<body>
-    <div class="fade-in aligncenter has-text-align-center">
-        <h1 style="text-align:center">@Model.Hero.Name  vs  @Model.Enemy.Name</h1>
+        })
+    </script>
+    <div class="fade-in aligncenter has-text-align-center item-padding">
+        <h1 style="text-align:center" class="item-padding">@Model.Hero.Name  vs  @Model.Enemy.Name</h1>
         <div>
             <img src="@Model.Hero.ImagePath" alt="Player" width="80" height="80" id="hero" />
             <img src="@Model.Enemy.ImagePath" alt="Enemy" style="padding-left:250px;" id="enemy" />
@@ -80,7 +75,7 @@
                     </div>
                 </form>
                 <div class="item-padding">
-                </div>    
+                </div>
             </div>
         </div>
     </div>
@@ -89,6 +84,3 @@
         {
             <script src="~/js/battle.js"></script>
         }
-</body>
-</html>
-

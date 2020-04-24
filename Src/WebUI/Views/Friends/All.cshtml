@@ -1,17 +1,10 @@
 ﻿@model Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery.UserListViewModel
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Friends</title>
-    <partial name="_SocialNavBar">
-</head>
-<body>
+<title>Friends</title>
+<partial name="_SocialNavBar">
     <div class="has-text-align-center fade-in item-padding">
         @if (Model.Users.Count() > 0)
         {
-            <h1 class="has-text-align-center secondary-font-color has-large-font-size">Your Friends</h1>
+            <h1 class="secondary-font-color has-large-font-size item-padding">Your Friends</h1>
             <div class="item-padding">
                 <hr />
             </div>
@@ -38,11 +31,9 @@
         }
         else
         {
-            <h1 class="has-text-align-center secondary-font-color has-large-font-size">You currently don't have any Friends</h1>
+            <h1 class="has-text-align-center secondary-font-color has-large-font-size item-padding">You currently don't have any Friends</h1>
             <div class="item-padding">
                 <hr />
             </div>
         }
     </div>
-</body>
-</html>

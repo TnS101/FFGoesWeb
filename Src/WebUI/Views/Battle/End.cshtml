@@ -2,12 +2,10 @@
     ViewData["Title"] = "End";
     Layout = "_Layout";
 }
-<head>
-    <partial name="_NavBar">
-</head>
-<body>
-    <div class="has-text-align-center fade-in">
-        <h1 class="secondary-font-color">You have killed your enemy!</h1>
+<title>End of Battle</title>
+<partial name="_NavBar">
+    <div class="has-text-align-center fade-in item-padding">
+        <h1 class="secondary-font-color item-padding">You have killed your enemy!</h1>
         <div class="item-padding">
             <p class="has-large-font-size main-font-color">Back <a asp-controller="Hero" asp-action="All"><em>Home</em></a>?</p>
         </div>
@@ -18,5 +16,3 @@
     <div class="item-padding">
         <partial name="_Footer">
     </div>
-</body>
-

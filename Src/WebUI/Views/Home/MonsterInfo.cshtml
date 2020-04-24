@@ -1,17 +1,9 @@
 ﻿@model Application.GameCQ.Monsters.Queries.GetCurrentMonsterQuery.MonsterFullViewModel
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>MonsterInfo</title>
+    <title>Monster Info</title>
     <partial name="_NavBar">
-</head>
-<body>
     <cache vary-by-query="id">
         <div class="has-text-align-center item-padding fade-in aligncenter">
-            <h1 class="secondary-font-color has-larger-font-size">@Model.Name</h1>
+            <h1 class="secondary-font-color has-larger-font-size item-padding">@Model.Name</h1>
             <div class="item-padding">
                 <hr />
                 <div class="wp-block-image">
@@ -71,5 +63,3 @@
             </div>
         </div>
     </cache>
-</body>
-</html>

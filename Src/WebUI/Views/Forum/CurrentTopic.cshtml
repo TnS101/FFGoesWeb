@@ -1,50 +1,44 @@
 ﻿@model Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery.TopicFullViewModel
 
-@{
-    ViewData["Title"] = "CurrentTopic";
-}
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <partial name="_ForumNavBar">
-        <script>
-            $(document).ready(function () {
+<title>Current Topic</title>
+<partial name="_ForumNavBar">
+    <script>
+        $(document).ready(function () {
 
-                var reportButton = $('#report-button');
-                var reportPanel = $('#report-panel');
-                var firstCommentButton = $('#first-comment-button');
-                var commentButton = $('#comment-button');
-                var commentPanel = $('#comment-panel');
-                var editButton = $('.edit-button');
-                var commentReportButton = $('#comment-report-button');
+            var reportButton = $('#report-button');
+            var reportPanel = $('#report-panel');
+            var firstCommentButton = $('#first-comment-button');
+            var commentButton = $('#comment-button');
+            var commentPanel = $('#comment-panel');
+            var editButton = $('.edit-button');
+            var commentReportButton = $('#comment-report-button');
 
-                editButton.click(function () {
-                    $('.edit-panel').show();
-                })
-
-                commentReportButton.click(function () {
-                    $('#comment-report-panel').show();
-                })
-
-                reportButton.click(function () {
-                    reportPanel.show();
-                    return false;
-                })
-
-                firstCommentButton.click(function () {
-                    commentPanel.show();
-                    $('html, body').animate({ scrollTop: firstCommentButton.offset().top - 10 }, 'slow');
-                })
-
-                commentButton.click(function () {
-                    commentPanel.show();
-                    $('html, body').animate({ scrollTop: commentButton.offset().top - 10 }, 'slow');
-                })
+            editButton.click(function () {
+                $('.edit-panel').show();
             })
-        </script>
-</head>
-<body>
+
+            commentReportButton.click(function () {
+                $('#comment-report-panel').show();
+            })
+
+            reportButton.click(function () {
+                reportPanel.show();
+                return false;
+            })
+
+            firstCommentButton.click(function () {
+                commentPanel.show();
+                $('html, body').animate({ scrollTop: firstCommentButton.offset().top - 10 }, 'slow');
+            })
+
+            commentButton.click(function () {
+                commentPanel.show();
+                $('html, body').animate({ scrollTop: commentButton.offset().top - 10 }, 'slow');
+            })
+        })
+    </script>
     <div class="has-text-align-center fade-in item-padding">
-        <h1 class="has-large-font-size">@Model.Title</h1>
+        <h1 class="has-large-font-size item-padding">@Model.Title</h1>
         <div class="item-padding">
             <hr />
             <br />
@@ -158,7 +152,6 @@
                                     </form>
                                 </div>
                             }
-
                             <div class="item-padding"></div>
                             <hr />
                         </div>
@@ -166,8 +159,6 @@
                     <div class="item-padding">
                         <p class="has-large-font-size main-font-color" onclick="true" style="cursor: pointer" id="comment-button">Leave another Coment?</p>
                     </div>
-
-
                 }
                 <div class="fade-in" id="comment-panel" hidden>
                     <form asp-controller="Comment" asp-action="Create" method="post" class="item-padding">
@@ -181,7 +172,4 @@
                 </div>
             </div>
         </div>
-
     </div>
-</body>
-</html>

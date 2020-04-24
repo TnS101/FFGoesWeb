@@ -1,17 +1,10 @@
 ﻿@model AppUser
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <partial name="_SocialNavBar">
-    <title>Home</title>
-</head>
-<body>
+<title>Home</title>
+<partial name="_SocialNavBar">
     <div class="fade-in item-padding">
-        <h1 class="has-text-align-center secondary-font-color has-large-font-size">Welcome to your Social Panel!</h1>
+        <h1 class="has-text-align-center secondary-font-color has-large-font-size item-padding">Welcome to your Social Panel!</h1>
         <div class="has-text-align-center item-padding">
             <hr />
-            <br />
             <p class="main-font-color has-large-font-size">
                 Here you can see your Social Activities, such as <a asp-controller="Friends" asp-action="Requests"><em class="main-font-color">Friend Requests</em></a>,
                 <a asp-controller="Notification" asp-action="All"><em class="main-font-color">Notifications</em></a>
@@ -30,5 +23,3 @@
             </div>
         </div>
     </div>
-</body>
-</html>

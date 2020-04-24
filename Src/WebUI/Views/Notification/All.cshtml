@@ -1,96 +1,90 @@
 ﻿@model Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery.NotificationListViewModel
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>All</title>
-    <partial name="_SocialNavBar">
-</head>
-<body>
+<title>Notifications</title>
+<partial name="_SocialNavBar">
     <div class="fade-in item-padding">
         @if (Model.Notifications.Count() > 0)
         {
-            <h1 class="has-text-align-center secondary-font-color has-large-font-size">Your Current Notifications</h1>
+            <h1 class="has-text-align-center secondary-font-color has-large-font-size item-padding">Your Current Notifications</h1>
             <div class="item-padding">
                 <hr />
-                @foreach (var notification in Model.Notifications)
-                {
-                    <div class="has-text-align-center item-padding">
-                        @if (notification.ApplicationSection == "Game")
-                        {
-                            <i class="fas fa-gamepad has-large-font-size"></i>
-                        }
-                        else
-                        {
-                            <i class="fas fa-people-arrows has-large-font-size"></i>
-                        }
+                <cache vary-by="@Model.Notifications">
+                    @foreach (var notification in Model.Notifications)
+                    {
+                        <div class="has-text-align-center item-padding">
+                            @if (notification.ApplicationSection == "Game")
+                            {
+                                <i class="fas fa-gamepad has-large-font-size"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-people-arrows has-large-font-size"></i>
+                            }
 
-                        <p class="has-normal-font-size">@notification.Type</p>
-                        <br />
-                        <p class="has-medium-font-size"><em>@notification.Content</em></p>
-                        <br />
+                            <p class="has-normal-font-size">@notification.Type</p>
+                            <br />
+                            <p class="has-medium-font-size"><em>@notification.Content</em></p>
+                            <br />
 
-                        @{
-                            var timeSpan = DateTime.UtcNow - notification.RecievedOn;
-                        }
+                            @{
+                                var timeSpan = DateTime.UtcNow - notification.RecievedOn;
+                            }
 
-                        @if (timeSpan.Minutes < 1)
-                        {
-                            <p class="main-font-color has-large-font-size">Just Now</p>
-                        }
-                        else if (timeSpan.Hours < 1)
-                        {
-                            int difference = timeSpan.Minutes;
+                            @if (timeSpan.Minutes < 1)
+                            {
+                                <p class="main-font-color has-large-font-size">Just Now</p>
+                            }
+                            else if (timeSpan.Hours < 1)
+                            {
+                                int difference = timeSpan.Minutes;
 
-                            <p class="main-font-color has-large-font-size">
-                                @difference Minutes Ago
-                            </p>
-                        }
-                        else if (timeSpan.Hours == 1)
-                        {
-                            <p class="main-font-color has-large-font-size">
-                                An Hour Ago
-                            </p>
-                        }
-                        else if (timeSpan.Days < 1)
-                        {
-                            int difference = timeSpan.Hours;
-                            <p class="main-font-color has-large-font-size">
-                                @difference Hours Ago
-                            </p>
-                        }
-                        else if (timeSpan.Days == 1)
-                        {
-                            <p class="main-font-color has-large-font-size">
-                                Yesterday
-                            </p>
-                        }
-                        else if (timeSpan.Days > 1)
-                        {
-                            int difference = timeSpan.Days;
-                            <p class="main-font-color has-large-font-size">
-                                @difference Days Ago
-                            </p>
-                        }
-                        else if (timeSpan.Days > 30)
-                        {
-                            <p class="main-font-color has-large-font-size">
-                                Last Month
-                            </p>
-                        }
-                        else
-                        {
-                            <p class="main-font-color has-large-font-size">
-                                Long time ago
-                            </p>
-                        }
-                    </div>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                }
+                                <p class="main-font-color has-large-font-size">
+                                    @difference Minutes Ago
+                                </p>
+                            }
+                            else if (timeSpan.Hours == 1)
+                            {
+                                <p class="main-font-color has-large-font-size">
+                                    An Hour Ago
+                                </p>
+                            }
+                            else if (timeSpan.Days < 1)
+                            {
+                                int difference = timeSpan.Hours;
+                                <p class="main-font-color has-large-font-size">
+                                    @difference Hours Ago
+                                </p>
+                            }
+                            else if (timeSpan.Days == 1)
+                            {
+                                <p class="main-font-color has-large-font-size">
+                                    Yesterday
+                                </p>
+                            }
+                            else if (timeSpan.Days > 1)
+                            {
+                                int difference = timeSpan.Days;
+                                <p class="main-font-color has-large-font-size">
+                                    @difference Days Ago
+                                </p>
+                            }
+                            else if (timeSpan.Days > 30)
+                            {
+                                <p class="main-font-color has-large-font-size">
+                                    Last Month
+                                </p>
+                            }
+                            else
+                            {
+                                <p class="main-font-color has-large-font-size">
+                                    Long time ago
+                                </p>
+                            }
+                        </div>
+                        <div class="item-padding">
+                            <hr />
+                        </div>
+                    }
+                </cache>
             </div>
         }
         else
@@ -99,5 +93,3 @@
             <div class="item-padding"><hr /></div>
         }
     </div>
-</body>
-</html>

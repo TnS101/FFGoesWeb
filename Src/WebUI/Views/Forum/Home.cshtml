@@ -1,20 +1,11 @@
 ﻿@model Application.CQ.Social.Topics.Queries.GetAllTopicsQuery.TopicListViewModel
+<title>Home</title>
+<partial name="_ForumNavBar">
 
-@{
-    ViewData["Title"] = "Home";
-}
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Home</title>
-    <partial name="_ForumNavBar">
-
-</head>
-<body class="primary-background-color">
     @if (Model.Topics.Count() == 0)
     {
         <div class="item-padding has-text-align-center fade-in">
-            <h1 class="secondary-font-color has-large-font-size">No content to display</h1>
+            <h1 class="secondary-font-color has-large-font-size item-padding">No content to display</h1>
             <div class="item-padding">
             </div>
             <form asp-controller="Forum" asp-action="Home" method="get" class="aligncenter">
@@ -39,7 +30,7 @@
     else
     {
         <div class="has-text-align-center item-padding fade-in">
-            <h1 class="secondary-font-color has-large-font-size">All Topics</h1>
+            <h1 class="secondary-font-color has-large-font-size item-padding">All Topics</h1>
             <div class="item-padding has-text-align-center aligncenter">
                 <form asp-controller="Forum" asp-action="Home" method="get" class="aligncenter">
                     <hr />
@@ -82,7 +73,7 @@
                         }
                     }
                 </p>
-                 <a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id">
+                <a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id">
                     <i class="fas fa-comments has-large-font-size"></i><b class="has-medium-font-size main-font-color">@topic.Comments</b>
                 </a>
                 @if (topic.UserId == Model.ViewerId)
@@ -96,6 +87,3 @@
             </div>
         }
     }
-</body>
-</html>
-

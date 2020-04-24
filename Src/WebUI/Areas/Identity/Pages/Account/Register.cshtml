@@ -3,40 +3,40 @@
 @{
     ViewData["Title"] = "Register";
 }
-<h2 class="secondary-font-color has-text-align-center">@ViewData["Title"]</h2>
 
-<div class="row has-text-align-center fade-in">
+<div class="row fade-in item-padding">
+    <h2 class="secondary-font-color has-text-align-center">@ViewData["Title"]</h2>
     <div class="col-md-4 has-text-align-center">
+        <hr />
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <hr />
             <div asp-validation-summary="All" class="text-danger main-font-color"></div>
             <div class="form-group item-padding">
                 <label asp-for="Input.UserName" class="main-font-color has-medium-font-size"></label>
                 <br />
                 <input asp-for="Input.UserName" class="form-control" />
                 <br />
-                <span asp-validation-for="Input.UserName" class="text-danger main-font-color fade-in"></span>
+                <span asp-validation-for="Input.UserName" class="main-font-color fade-in"></span>
             </div>
             <div class="form-group item-padding">
                 <label asp-for="Input.Email" class="main-font-color has-medium-font-size"></label>
                 <br />
                 <input asp-for="Input.Email" class="form-control" />
                 <br />
-                <span asp-validation-for="Input.Email" class="text-danger main-font-color fade-in"></span>
+                <span asp-validation-for="Input.Email" class="main-font-color fade-in"></span>
             </div>
             <div class="form-group item-padding">
                 <label asp-for="Input.Password" class="main-font-color has-medium-font-size"></label>
                 <br />
                 <input asp-for="Input.Password" class="form-control" />
                 <br />
-                <span asp-validation-for="Input.Password" class="text-danger main-font-color fade-in"></span>
+                <span asp-validation-for="Input.Password" class="main-font-color fade-in"></span>
             </div>
             <div class="form-group item-padding">
                 <label asp-for="Input.ConfirmPassword" class="main-font-color has-medium-font-size"></label>
                 <br />
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <br />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger main-font-color fade-in"></span>
+                <span asp-validation-for="Input.ConfirmPassword" class="main-font-color fade-in"></span>
             </div>
             <div class="item-padding">
                 <button type="submit" class="btn btn-default main-font-color main-button">Register</button>

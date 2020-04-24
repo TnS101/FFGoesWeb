@@ -1,20 +1,12 @@
 ﻿@model Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery.UserListViewModel
-@{
-    ViewData["Title"] = "Friends";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <partial name="_NavBar">
-        <title>Friends</title>
-    </head>
-    <body>
-        <div class="container fade-in">
-            <h1 class="has-text-align-center secondary-font-color">Friends</h1>
+<title>Friends</title>
+<partial name="_NavBar">
+    <div class="container fade-in item-padding">
+        <h1 class="has-text-align-center secondary-font-color item-padding">Friends</h1>
+        <cache vary-by="@Model.Users">
             @foreach (var friend in Model.Users)
             {
-                <div class="wp-block-cover">
+                <div class="wp-block-cover item-padding">
                     <h2>@friend.UserName</h2>
                     <a asp-controller="Message" asp-action="All" asp-route-id="@friend.Id"><i class="far fa-comment-alt"></i></a>
                     <form asp-controller="Friends" asp-action="Remove" method="delete">
@@ -23,7 +15,5 @@
                     </form>
                 </div>
             }
-        </div>
-    </body>
-    </html>
-
+        </cache>
+    </div>

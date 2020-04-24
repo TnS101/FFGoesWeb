@@ -1,19 +1,12 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    ViewData["Title"] = "Explore";
-    Layout = "_Layout";
-}
-<head>
-    <partial name="_NavBar">
-</head>
-    <body>
-        <div class="fade-in item-padding has-text-align-center">
-            <h1>Explore</h1>
-            <hr />
-            <div class="item-padding">
-                <p>No items found</p>
-                <a asp-controller="World" asp-action="Explore">Walk</a>
-            </div>
-            <partial name="_Footer">
+<title>Explore</title>
+<partial name="_NavBar">
+    <div class="fade-in item-padding has-text-align-center">
+        <h1 class="main-font-color item-padding has-large-font-size">Explore</h1>
+        <hr />
+        <div class="item-padding">
+            <p class="has-normal-font-size main-font-color">No items found</p>
+            <a asp-controller="World" asp-action="Explore">Walk</a>
         </div>
-    </body>
+        <partial name="_Footer">
+    </div>

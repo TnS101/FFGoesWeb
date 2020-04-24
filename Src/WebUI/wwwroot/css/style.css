@@ -49,7 +49,6 @@ html {
 .main-header {
     position: fixed;
     z-index:1000;
-    text-align:center;
 }
 
 article,
@@ -530,12 +529,6 @@ ul {
 
 ol {
     list-style: decimal;
-}
-
-li > ul,
-li > ol {
-    margin-bottom: 0;
-    margin-left: 15px;
 }
 
 dt {
@@ -1040,6 +1033,7 @@ a {
 
     #primary-menu li {
         float: left;
+        text-align:center;
         list-style: none;
     }
 
@@ -1049,10 +1043,6 @@ a {
             text-decoration: none;
             padding: 10px 15px;
             transition: color .3s ease;
-        }
-
-        #primary-menu li.menu-item-has-children a {
-            padding-right: 25px;
         }
 
     #primary-menu:hover li a {
@@ -1075,18 +1065,6 @@ a {
 
     #primary-menu li.highlight.current-menu-item > a {
         color: #fff;
-    }
-
-    #primary-menu ul {
-        position: sticky;
-        opacity: 0;
-        background-color: #2d364c;
-        border-top: 2px solid #ff7800;
-        box-shadow: 0 0 2px rgba(255,255,255,.3);
-        margin: 0;
-        border-radius: 0 0 3px 3px;
-        z-index: 1;
-        transition: all 0.3s ease;
     }
 
     #primary-menu li.menu-item-has-children.locked > ul,
@@ -1121,8 +1099,6 @@ a {
     }
 
     #primary-menu li.menu-item-has-children .sub-menu a {
-        padding-top: 20px;
-        padding-bottom: 20px;
         margin: 0;
         transition: all 0.3s ease;
     }
@@ -1263,7 +1239,7 @@ p.has-background {
     }
 
     #primary-menu li {
-        position: relative;
+        position: center;
         width: 100%;
         border-top: 0;
         margin-top: 0;
@@ -1280,7 +1256,7 @@ p.has-background {
 
     #primary-menu li.menu-item-has-children a,
     #primary-menu li.menu-item-has-children a:hover {
-        padding: 8px 40px 8px 10px;
+        
     }
 
     .menu-item-has-children:after {
@@ -1289,12 +1265,6 @@ p.has-background {
 
     .menu-item-has-children .menu-item-has-children:after {
         display: none;
-    }
-
-    #primary-menu > li.current-menu-item,
-    #primary-menu > li:hover,
-    #primary-menu > li.current-menu-item:hover {
-        background-image: none;
     }
 
     .menu-item-has-children .sub-trigger {
@@ -1319,34 +1289,6 @@ p.has-background {
 
         .menu-item-has-children .sub-trigger.is-open:after {
             content: "\f106";
-        }
-
-    #primary-menu .sub-menu,
-    #primary-menu li:hover > .sub-menu,
-    #primary-menu ul.children,
-    #primary-menu li:hover > ul.children,
-    #primary-menu ul li.menu-item-has-children ul,
-    #primary-menu ul li.menu-item-has-children ul,
-    #primary-menu ul li.menu-item-has-children.locked ul,
-    #primary-menu ul li.menu-item-has-children:hover ul,
-    #primary-menu ul li.menu-item-has-children a:focus ~ ul {
-        left: 0;
-        border: none;
-        box-shadow: none;
-        display: none;
-        opacity: 1;
-        visibility: visible;
-        position: relative;
-        top: 0 !important;
-        transition: none;
-    }
-
-        #primary-menu .sub-menu li,
-        #primary-menu ul.children li {
-            background: rgba(255,255,255,.03);
-            padding: 0;
-            text-transform: none;
-            border: 0;
         }
 
     #primary-menu li.menu-item-has-children .sub-menu a {
@@ -1402,45 +1344,6 @@ p.has-background {
         #top-bar li:first-child {
             margin-left: 0;
         }
-
-    #grid-loop.layout-2,
-    #grid-loop.layout-3,
-    #grid-loop.layout-4,
-    #main.infinite-grid.layout-2 .infinite-wrap,
-    #main.infinite-grid.layout-3 .infinite-wrap,
-    #main.infinite-grid.layout-4 .infinite-wrap,
-    .woocommerce ul.products.columns-2,
-    .woocommerce-page ul.products.columns-2,
-    .woocommerce ul.products.columns-3,
-    .woocommerce-page ul.products.columns-3,
-    .woocommerce ul.products.columns-4,
-    .woocommerce-page ul.products.columns-4,
-    .woocommerce ul.products.columns-5,
-    .woocommerce-page ul.products.columns-5,
-    .woocommerce ul.products.columns-6,
-    .woocommerce-page ul.products.columns-6,
-    .woocommerce ul.products.columns-7,
-    .woocommerce-page ul.products.columns-7,
-    .woocommerce ul.products.columns-8,
-    .woocommerce-page ul.products.columns-8,
-    .edd_download_columns_0,
-    .edd_download_columns_1,
-    .edd_download_columns_2,
-    .edd_download_columns_3,
-    .edd_download_columns_4,
-    .edd_download_columns_5,
-    .edd_download_columns_6,
-    .edd_download_columns_7,
-    .edd_download_columns_8 {
-        grid-template-columns: 50% 50%;
-    }
-
-    .featured-post-wrap {
-        grid-template-columns: 100%;
-        grid-column-gap: 0;
-        grid-row-gap: 65px;
-    }
-
     .footer {
         width: 47%;
     }

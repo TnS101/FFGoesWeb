@@ -1,42 +1,35 @@
 ﻿@model Application.CQ.Users.Queries.Panel.UserPanelViewModel
-@{
-    ViewData["Title"] = "Panel";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<html xmlns="http://www.w3.org/1999/xhtml" class="main-gradient">
-<head>
-    <partial name="_NavBar">
-        <script>
-            $(document).ready(function showStatuses() {
+<title>Profile Panel</title>
+<partial name="_NavBar">
+    <script>
+        $(document).ready(function showStatuses() {
 
-                var show = $('#show');
-                var statuses = $('#statuses');
-                var friends = $('#friends');
-                var statusMenu = $('#menu');
-                var feedbackButton = $('.feedback-button');
-                var feedbackPanel = $('#feedback-panel');
+            var show = $('#show');
+            var statuses = $('#statuses');
+            var friends = $('#friends');
+            var statusMenu = $('#menu');
+            var feedbackButton = $('.feedback-button');
+            var feedbackPanel = $('#feedback-panel');
 
-                feedbackButton.click(function () {
-                    feedbackPanel.show();
-                    $('html, body').animate({ scrollTop: feedbackButton.offset().top - 10 }, 'slow');
-                })
-
-                show.on("mouseenter", function () {
-                    statuses.show();
-                    friends.hide();
-                });
-
-                statusMenu.on("mouseleave", function () {
-                    statuses.hide();
-                    friends.show();
-                })
+            feedbackButton.click(function () {
+                feedbackPanel.show();
+                $('html, body').animate({ scrollTop: feedbackButton.offset().top - 10 }, 'slow');
             })
 
-        </script>
-</head>
-<body class="main-gradient">
+            show.on("mouseenter", function () {
+                statuses.show();
+                friends.hide();
+            });
+
+            statusMenu.on("mouseleave", function () {
+                statuses.hide();
+                friends.show();
+            })
+        })
+
+    </script>
     <div class="item-padding has-text-align-center fade-in">
-        <h1 class="secondary-font-color has-huge-font-size">@Model.UserName</h1>
+        <h1 class="secondary-font-color has-huge-font-size item-padding">@Model.UserName</h1>
         <div class="item-padding">
         </div>
         <hr />
@@ -45,17 +38,18 @@
             <div>
                 <h3 class="item-padding">Your status is <i id="show" onclick="true" class="@Model.StatusIClass has-huge-font-size main-font-color" style="cursor: pointer;"></i></h3>
             </div>
-            <div id="statuses" hidden class="fade-in" style="margin-bottom:46px">
-                <div id="menu">
-                    <ul id="primary-menu" style="list-style:none; padding-left:340px">
-                        @foreach (var status in Model.Statuses)
-                        {
-                            <li><a asp-controller="Profile" asp-action="UpdateStatus" asp-route-id="@status.Id"><i class="@status.IClass has-huge-font-size main-font-color"></i></a></li>
-                        }
-                    </ul>
+            <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
+                <div id="statuses" hidden class="fade-in" style="margin-bottom:46px">
+                    <div id="menu">
+                        <ul id="primary-menu" style="list-style:none; padding-left:340px">
+                            @foreach (var status in Model.Statuses)
+                            {
+                                <li><a asp-controller="Profile" asp-action="UpdateStatus" asp-route-id="@status.Id"><i class="@status.IClass has-huge-font-size main-font-color"></i></a></li>
+                            }
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
+            </cache>
             @if (Model.Friends == 1)
             {
                 <h3 id="friends" class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All" class="main-font-color"><i class="fas fa-user-friends has-huge-font-size main-font-color"></i> <span class="main-font-color"> Friend</span></a></h3>
@@ -184,7 +178,3 @@
     <div class="item-padding">
         <partial name="_Footer">
     </div>
-</body>
-</html>
-
-
