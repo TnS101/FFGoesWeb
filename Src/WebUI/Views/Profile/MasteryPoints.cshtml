@@ -1,7 +1,7 @@
 ﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
 <title>MasteryPoints</title>
 <partial name="_NavBar">
-    <div class="fade-in item-padding">
+    <div class="fade-in starting-div">
         @if (Model.Heroes.Any(h => h.Mastery > 0))
         {
             <h1 class="has-text-align-center secondary-font-color has-large-font-size item-padding">Your Heroes and their Mastery Points</h1>

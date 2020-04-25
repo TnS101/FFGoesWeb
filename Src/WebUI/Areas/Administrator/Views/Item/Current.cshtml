@@ -1,18 +1,11 @@
 ﻿@model Application.CQ.Admin.GameContent.Items.Queries.GetCurrentItemQuery.ItemFullViewModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     string slot = Model.Slot;
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CurrentItem</title>
-    <partial name="_AdminNavBar">
-</head>
-<body>
+<title>CurrentItem</title>
+<partial name="_AdminNavBar">
     <a asp-controller="GameContent" asp-action="Items" asp-route-slot="@slot"><i class="fas fa-arrow-left has-massive-font-size top-left-icon main-font-color"></i></a>
-    <div class="item-padding fade-in has-text-align-center">
+    <div class="starting-div fade-in has-text-align-center">
         <cache vary-by-query="id">
             <h1 class="main-font-color has-large-font-size">Reviewing @Model.Name</h1>
             <div class="item-padding">
@@ -198,5 +191,3 @@
             </div>
         </cache>
     </div>
-</body>
-</html>

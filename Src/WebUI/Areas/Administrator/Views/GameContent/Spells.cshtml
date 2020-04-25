@@ -1,35 +1,29 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery.SpellListViewModel
-@{
-    ViewData["Title"] = "Spells";
-}
-<head>
-    <partial name="_AdminNavBar">
-        <script>
-            $(document).ready(function () {
-                var scrollTop = $('#scroll-top');
+﻿@model Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery.SpellListViewModel
+<title>All Spells</title>
+<partial name="_AdminNavBar">
+    <script>
+        $(document).ready(function () {
+            var scrollTop = $('#scroll-top');
 
-                $(window).scroll(function () {
-                    if ($(window).scrollTop() > 1200) {
-                        scrollTop.removeClass('fade-out');
-                        scrollTop.show();
-                    } else {
-                        scrollTop.addClass('fade-out');
-                    }
-                })
-
-                scrollTop.click(function () {
-                    $('html, body').animate({
-                        scrollTop: $("#top").offset().top
-                    }, 1200);
-                })
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 1200) {
+                    scrollTop.removeClass('fade-out');
+                    scrollTop.show();
+                } else {
+                    scrollTop.addClass('fade-out');
+                }
             })
-        </script>
-</head>
-<body>
+
+            scrollTop.click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#top").offset().top
+                }, 1200);
+            })
+        })
+    </script>
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
-    <div class="item-padding fade-in has-text-align-center" id="top">
-        <h1 class="main-font-color has-large-font-size">Spells</h1>
+    <div class="starting-div fade-in has-text-align-center" id="top">
+        <h1 class="main-font-color has-large-font-size item-padding">Spells</h1>
         <div class="item-padding">
             <hr />
             <form asp-controller="GameContent" asp-action="Spells" method="get">
@@ -71,5 +65,3 @@
             </cache>
         </div>
     </div>
-
-</body>

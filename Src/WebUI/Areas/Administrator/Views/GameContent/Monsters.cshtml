@@ -1,34 +1,27 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model Application.GameCQ.Monsters.Queries.GetAllMonstersQuery.MonsterListViewModel
-@{
-    Layout = "_Layout";
-}
-<html xmlns="http://www.w3.org/1999/xhtml" class="secondary-background-color">
-<head>
-    <partial name="_AdminNavBar">
-        <script>
-            $(document).ready(function () {
-                var scrollTop = $('#scroll-top');
+﻿@model Application.GameCQ.Monsters.Queries.GetAllMonstersQuery.MonsterListViewModel
+<title>All Monsters</title>
+<partial name="_AdminNavBar">
+    <script>
+        $(document).ready(function () {
+            var scrollTop = $('#scroll-top');
 
-                $(window).scroll(function () {
-                    if ($(window).scrollTop() > 1200) {
-                        scrollTop.removeClass('fade-out');
-                        scrollTop.show();
-                    } else {
-                        scrollTop.addClass('fade-out');
-                    }
-                })
-
-                scrollTop.click(function () {
-                    $('html, body').animate({
-                        scrollTop: $("#top").offset().top
-                    }, 1200);
-                })
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 1200) {
+                    scrollTop.removeClass('fade-out');
+                    scrollTop.show();
+                } else {
+                    scrollTop.addClass('fade-out');
+                }
             })
-        </script>
-</head>
-<body class="secondary-background-color">
-    <div class="container has-text-align-center fade-in" id="top">
+
+            scrollTop.click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#top").offset().top
+                }, 1200);
+            })
+        })
+    </script>
+    <div class="has-text-align-center fade-in starting-div" id="top">
         <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
         <h1 class="secondary-font-color item-padding has-larger-font-size">Monsters</h1>
         <div class="item-padding">
@@ -57,7 +50,3 @@
         </cache>
     </div>
     <partial name="_Footer">
-</body>
-</html>
-
-

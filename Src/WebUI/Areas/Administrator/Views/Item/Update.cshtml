@@ -1,45 +1,37 @@
 ﻿@model Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery.ToolsListViewModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
-<!DOCTYPE html>
 @{
     string id = Context.Request.Query["id"];
     string slot = Context.Request.Query["slot"];
 }
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>UpdateItem</title>
-    <partial name="_AdminNavBar">
-        <script>
-            $(document).ready(function () {
-                $('input:radio[name="materialDiversity"]').change(function () {
-                    if ($(this).is(':checked') && $(this).val() == 'craftable' || $(this).val() == 'refineable' || $(this).val() == 'disolveable') {
-                        $('#materials').show();
-                        $('#tools').show();
-                    } else {
-                        $('#materials').hide();
-                        $('#tools').hide();
-                    }
-                })
+<title>Edit Item</title>
+<partial name="_AdminNavBar">
+    <script>
+        $(document).ready(function () {
+            $('input:radio[name="materialDiversity"]').change(function () {
+                if ($(this).is(':checked') && $(this).val() == 'craftable' || $(this).val() == 'refineable' || $(this).val() == 'disolveable') {
+                    $('#materials').show();
+                    $('#tools').show();
+                } else {
+                    $('#materials').hide();
+                    $('#tools').hide();
+                }
             })
-        </script>
-</head>
-<body>
-    <div class="item-padding fade-in has-text-align-center">
-        <h1 class="main-font-color has-large-font-size">Edit an Item</h1>
+        })
+    </script>
+    <div class="starting-div fade-in has-text-align-center">
+        <h1 class="main-font-color has-large-font-size item-padding">Edit an Item</h1>
         <div class="item-padding">
             <hr />
             <div class="row">
                 <div class="col-md-4">
                     <form asp-controller="Item" asp-action="Update" method="post">
                         <cache vary-by-query="id">
-                        <div class="form-group item-padding">
-                            <input type="hidden" name="slot" value="@slot" />
-                            <input type="hidden" name="id" value="@id" />
-                            <h2 class="main-font-color has-normal-font-size">@slot</h2>
-                        </div>
-                            </cache>
+                            <div class="form-group item-padding">
+                                <input type="hidden" name="slot" value="@slot" />
+                                <input type="hidden" name="id" value="@id" />
+                                <h2 class="main-font-color has-normal-font-size">@slot</h2>
+                            </div>
+                        </cache>
                         <div class="form-group fade-in item-padding has-normal-font-size" id="name">
                             <label for="input-name" class="contro-label has-normal-font-size">New Name</label>
                             <br />
@@ -224,5 +216,3 @@
 
         </div>
     </div>
-</body>
-</html>

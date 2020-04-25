@@ -1,16 +1,7 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create Monster</title>
-    <partial name="_AdminNavBar">
-</head>
-<body>
-    <div class="row has-text-align-center fade-in item-padding">
-        <h1 class="main-font-color has-large-font-size">Create a Monster</h1>
+﻿<title>Create Monster</title>
+<partial name="_AdminNavBar">
+    <div class="row has-text-align-center fade-in starting-div">
+        <h1 class="main-font-color has-large-font-size item-padding">Create a Monster</h1>
         <div class="col-md-4 item-padding">
             <hr />
             <form asp-controller="Monster" asp-action="Create" method="post">
@@ -78,5 +69,3 @@
             </form>
         </div>
     </div>
-</body>
-</html>

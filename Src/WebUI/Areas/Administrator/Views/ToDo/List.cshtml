@@ -1,15 +1,8 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList.FeedbackTaskListViewModel
-@{
-    ViewData["Title"] = "List";
-    Layout = "_Layout";
-}
-<head>
-    <partial name="_AdminNavBar">
-</head>
-<body>
-    <div class="item-padding fade-in has-text-align-center">
-        <h1 class="has-text-align-center secondary-font-color has-larger-font-size">ToDo List</h1>
+﻿@model Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList.FeedbackTaskListViewModel
+<title>ToDo List</title>
+<partial name="_AdminNavBar">
+    <div class="starting-div fade-in has-text-align-center">
+        <h1 class="has-text-align-center secondary-font-color has-larger-font-size item-padding">ToDo List</h1>
     </div>
     <div class="item-padding">
         <hr />
@@ -26,14 +19,11 @@
                 <cache vary-by="@Model.Tasks">
                     @foreach (var task in Model.Tasks)
                     {
-                    <div class="has-text-align-center item-padding">
-                        <h4 class="main-font-color">@task.Content</h4><a asp-controller="ToDo" asp-action="FinishTask" asp-route-id="task.Id"><i class="fas fa-check"></i></a>
-                    </div>
+                        <div class="has-text-align-center item-padding">
+                            <h4 class="main-font-color">@task.Content</h4><a asp-controller="ToDo" asp-action="FinishTask" asp-route-id="task.Id"><i class="fas fa-check"></i></a>
+                        </div>
                     }
                 </cache>
             }
         }
     </div>
-
-</body>
-

@@ -1,19 +1,12 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    ViewData["Title"] = "GameContent";
-    Layout = "_Layout";
-}
-<head>
-    <partial name="_AdminNavBar">
-</head>
-<body>
-    <div class="item-padding has-text-align-center fade-in">
+﻿<title>Game Content</title>
+<partial name="_AdminNavBar">
+    <div class="starting-div has-text-align-center fade-in">
         <a asp-controller="FightingClass" asp-action="Create"><i class="fas fa-khanda main-font-color has-massive-font-size bottom-right-icon"></i></a>
         <a asp-controller="Spell" asp-action="Create"><i class="fas fa-hat-wizard main-font-color has-massive-font-size bottom-right-icon" style="bottom:120px"></i></a>
         <a asp-controller="Item" asp-action="Create"><i class="fas fa-toolbox main-font-color has-massive-font-size bottom-right-icon" style="bottom:220px"></i></a>
         <a asp-controller="Monster" asp-action="Create"><i class="fas fa-khanda main-font-color has-massive-font-size bottom-right-icon" style="bottom:320px"></i></a>
 
-        <h1 class=has-larger-font-size main-font-color">Game Content</h1>
+        <h1 class="has-larger-font-size main-font-color item-padding">Game Content</h1>
         <div class="item-padding">
             <hr />
             <div class="item-padding">
@@ -78,7 +71,3 @@
             </div>
         </div>
     </div>
-
-
-</body>
-

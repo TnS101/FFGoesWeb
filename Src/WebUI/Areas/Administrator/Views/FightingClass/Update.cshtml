@@ -1,19 +1,11 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
-<!DOCTYPE html>
-@{
+﻿@{
     string id = Context.Request.Query["id"];
     string slot = Context.Request.Query["slot"];
 }
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Update Fighting Class</title>
-    <partial name="_AdminNavBar">
-</head>
-<body>
-    <div class="item-padding fade-in has-text-align-center">
-        <h1 class="main-font-color has-large-font-size">Edit a Fighting Class</h1>
+<title>Update Fighting Class</title>
+<partial name="_AdminNavBar">
+    <div class="starting-div fade-in has-text-align-center">
+        <h1 class="main-font-color has-large-font-size item-padding">Edit a Fighting Class</h1>
         <div class="item-padding">
             <hr />
             <div class="row">
@@ -93,5 +85,3 @@
 
         </div>
     </div>
-</body>
-</html>

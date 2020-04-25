@@ -1,7 +1,7 @@
 ﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
 <title>The Wide World</title>
 <partial name="_WorldNavBar">
-    <div class="fade-in">
+    <div class="fade-in starting-div">
         @if (Model.Heroes.Count() == 0)
         {
             <cache vary-by="@Model.Heroes">

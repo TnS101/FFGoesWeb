@@ -1,7 +1,7 @@
 ﻿@model Application.CQ.Social.Topics.Queries.GetAllTopicsQuery.TopicListViewModel
 <title>Topics</title>
 <partial name="_NavBar">
-    <div class="item-padding has-text-align-center fade-in">
+    <div class="starting-div has-text-align-center fade-in">
         @if (Model.Topics.Count() == 0)
         {
             <h1 class="main-font-color has-large-font-size item-padding">You currently don't have any Topics.</h1>
@@ -12,7 +12,7 @@
         }
         else
         {
-            <h1 class="secondary-font-color has-text-align-center has-large-font-size item-padding">Your personal Topics</h1>
+            <h1 class="secondary-font-color has-large-font-size item-padding">Your personal Topics</h1>
             <div class="item-padding">
                 <hr />
             </div>

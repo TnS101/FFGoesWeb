@@ -1,229 +1,221 @@
 ﻿@model Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery.ToolsListViewModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<meta name="viewport" content="width=device-width" />
+<title>Create Item</title>
+<partial name="_AdminNavBar">
+    <script>
+        $(document).ready(function () {
+            $('select.slot').change(function () {
 
-<!DOCTYPE html>
+                var slotOption = $(this).children('option:selected').val();
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create Item</title>
-    <partial name="_AdminNavBar">
-        <script>
-            $(document).ready(function () {
-                $('select.slot').change(function () {
+                if (slotOption === 'Weapon') {
+                    $('#armor').hide();
+                    $('#resistance').hide();
+                    $('#rarity').hide();
+                    $('#reward').hide();
+                    $('#rarity').hide();
+                    $('#fuel').hide();
+                    $('#materials').hide();
+                    $('#refineable').hide();
+                    $('#disolveable').hide();
+                    $('#durability').hide();
+                    $('#craftable').hide();
+                    $('#material-type').hide();
+                    $('#none').hide();
 
-                    var slotOption = $(this).children('option:selected').val();
+                    $('#name').show();
+                    $('#level').show();
+                    $('#class-type').show();
+                    $('#stamina').show();
+                    $('#strength').show();
+                    $('#agility').show();
+                    $('#intellect').show();
+                    $('#spirit').show();
+                    $('#attack').show();
+                    $('#buy').show();
+                    $('#sell').show();
+                }
+                else if (slotOption === 'Armor') {
+                    $('#attack').hide();
+                    $('#rarity').hide();
+                    $('#reward').hide();
+                    $('#rarity').hide();
+                    $('#fuel').hide();
+                    $('#materials').hide();
+                    $('#refineable').hide();
+                    $('#disolveable').hide();
+                    $('#durability').hide();
+                    $('#craftable').hide();
+                    $('#material-type').hide();
+                    $('#none').hide();
 
-                    if (slotOption === 'Weapon') {
-                        $('#armor').hide();
-                        $('#resistance').hide();
-                        $('#rarity').hide();
-                        $('#reward').hide();
-                        $('#rarity').hide();
-                        $('#fuel').hide();
-                        $('#materials').hide();
-                        $('#refineable').hide();
-                        $('#disolveable').hide();
-                        $('#durability').hide();
-                        $('#craftable').hide();
-                        $('#material-type').hide();
-                        $('#none').hide();
+                    $('#name').show();
+                    $('#level').show();
+                    $('#class-type').show();
+                    $('#stamina').show();
+                    $('#strength').show();
+                    $('#agility').show();
+                    $('#intellect').show();
+                    $('#spirit').show();
+                    $('#armor').show();
+                    $('#resistance').show();
+                    $('#buy').show();
+                    $('#sell').show();
+                }
+                else if (slotOption === 'Trinket') {
+                    $('#attack').hide();
+                    $('#armor').hide();
+                    $('#resistance').hide();
+                    $('#rarity').hide();
+                    $('#reward').hide();
+                    $('#rarity').hide();
+                    $('#fuel').hide();
+                    $('#materials').hide();
+                    $('#refineable').hide();
+                    $('#disolveable').hide();
+                    $('#durability').hide();
+                    $('#craftable').hide();
+                    $('#material-type').hide();
+                    $('#none').hide();
 
-                        $('#name').show();
-                        $('#level').show();
-                        $('#class-type').show();
-                        $('#stamina').show();
-                        $('#strength').show();
-                        $('#agility').show();
-                        $('#intellect').show();
-                        $('#spirit').show();
-                        $('#attack').show();
-                        $('#buy').show();
-                        $('#sell').show();
-                    }
-                    else if (slotOption === 'Armor') {
-                        $('#attack').hide();
-                        $('#rarity').hide();
-                        $('#reward').hide();
-                        $('#rarity').hide();
-                        $('#fuel').hide();
-                        $('#materials').hide();
-                        $('#refineable').hide();
-                        $('#disolveable').hide();
-                        $('#durability').hide();
-                        $('#craftable').hide();
-                        $('#material-type').hide();
-                        $('#none').hide();
+                    $('#name').show();
+                    $('#level').show();
+                    $('#stamina').show();
+                    $('#strength').show();
+                    $('#agility').show();
+                    $('#intellect').show();
+                    $('#spirit').show();
+                    $('#buy').show();
+                    $('#sell').show();
+                }
+                else if (slotOption === 'Treasure') {
+                    $('#attack').hide();
+                    $('#armor').hide();
+                    $('#resistance').hide();
+                    $('#rarity').hide();
+                    $('#reward').hide();
+                    $('#fuel').hide();
+                    $('#materials').hide();
+                    $('#refineable').hide();
+                    $('#disolveable').hide();
+                    $('#durability').hide();
+                    $('#craftable').hide();
+                    $('#level').hide();
+                    $('#stamina').hide();
+                    $('#strength').hide();
+                    $('#agility').hide();
+                    $('#intellect').hide();
+                    $('#spirit').hide();
+                    $('#buy').hide();
+                    $('#sell').hide();
+                    $('#class-type').hide();
+                    $('#material-type').hide();
+                    $('#none').hide();
 
-                        $('#name').show();
-                        $('#level').show();
-                        $('#class-type').show();
-                        $('#stamina').show();
-                        $('#strength').show();
-                        $('#agility').show();
-                        $('#intellect').show();
-                        $('#spirit').show();
-                        $('#armor').show();
-                        $('#resistance').show();
-                        $('#buy').show();
-                        $('#sell').show();
-                    }
-                    else if (slotOption === 'Trinket') {
-                        $('#attack').hide();
-                        $('#armor').hide();
-                        $('#resistance').hide();
-                        $('#rarity').hide();
-                        $('#reward').hide();
-                        $('#rarity').hide();
-                        $('#fuel').hide();
-                        $('#materials').hide();
-                        $('#refineable').hide();
-                        $('#disolveable').hide();
-                        $('#durability').hide();
-                        $('#craftable').hide();
-                        $('#material-type').hide();
-                        $('#none').hide();
+                    $('#name').show();
+                    $('#rarity').show();
+                    $('#reward').show();
+                }
+                else if (slotOption === 'Treasure Key') {
+                    $('#reward').hide();
+                    $('#attack').hide();
+                    $('#armor').hide();
+                    $('#resistance').hide();
+                    $('#rarity').hide();
+                    $('#reward').hide();
+                    $('#fuel').hide();
+                    $('#materials').hide();
+                    $('#refineable').hide();
+                    $('#disolveable').hide();
+                    $('#durability').hide();
+                    $('#craftable').hide();
+                    $('#level').hide();
+                    $('#stamina').hide();
+                    $('#strength').hide();
+                    $('#agility').hide();
+                    $('#intellect').hide();
+                    $('#spirit').hide();
+                    $('#buy').hide();
+                    $('#sell').hide();
+                    $('#class-type').hide();
+                    $('#material-type').hide();
+                    $('#none').hide();
 
-                        $('#name').show();
-                        $('#level').show();
-                        $('#stamina').show();
-                        $('#strength').show();
-                        $('#agility').show();
-                        $('#intellect').show();
-                        $('#spirit').show();
-                        $('#buy').show();
-                        $('#sell').show();
-                    }
-                    else if (slotOption === 'Treasure') {
-                        $('#attack').hide();
-                        $('#armor').hide();
-                        $('#resistance').hide();
-                        $('#rarity').hide();
-                        $('#reward').hide();
-                        $('#fuel').hide();
-                        $('#materials').hide();
-                        $('#refineable').hide();
-                        $('#disolveable').hide();
-                        $('#durability').hide();
-                        $('#craftable').hide();
-                        $('#level').hide();
-                        $('#stamina').hide();
-                        $('#strength').hide();
-                        $('#agility').hide();
-                        $('#intellect').hide();
-                        $('#spirit').hide();
-                        $('#buy').hide();
-                        $('#sell').hide();
-                        $('#class-type').hide();
-                        $('#material-type').hide();
-                        $('#none').hide();
+                    $('#name').show();
+                    $('#rarity').show();
+                }
+                else if (slotOption === 'Material') {
+                    $('#reward').hide();
+                    $('#attack').hide();
+                    $('#armor').hide();
+                    $('#resistance').hide();
+                    $('#rarity').hide();
+                    $('#reward').hide();
+                    $('#materials').hide();
+                    $('#refineable').hide();
+                    $('#disolveable').hide();
+                    $('#durability').hide();
+                    $('#craftable').hide();
+                    $('#level').hide();
+                    $('#stamina').hide();
+                    $('#strength').hide();
+                    $('#agility').hide();
+                    $('#intellect').hide();
+                    $('#spirit').hide();
+                    $('#buy').hide();
+                    $('#sell').hide();
+                    $('#class-type').hide();
 
-                        $('#name').show();
-                        $('#rarity').show();
-                        $('#reward').show();
-                    }
-                    else if (slotOption === 'Treasure Key') {
-                        $('#reward').hide();
-                        $('#attack').hide();
-                        $('#armor').hide();
-                        $('#resistance').hide();
-                        $('#rarity').hide();
-                        $('#reward').hide();
-                        $('#fuel').hide();
-                        $('#materials').hide();
-                        $('#refineable').hide();
-                        $('#disolveable').hide();
-                        $('#durability').hide();
-                        $('#craftable').hide();
-                        $('#level').hide();
-                        $('#stamina').hide();
-                        $('#strength').hide();
-                        $('#agility').hide();
-                        $('#intellect').hide();
-                        $('#spirit').hide();
-                        $('#buy').hide();
-                        $('#sell').hide();
-                        $('#class-type').hide();
-                        $('#material-type').hide();
-                        $('#none').hide();
+                    $('#name').show();
+                    $('#material-type').show();
+                    $('#fuel').show();
+                    $('#none').show();
+                    $('#refineable').show();
+                    $('#disolveable').show();
+                    $('#craftable').show();
 
-                        $('#name').show();
-                        $('#rarity').show();
-                    }
-                    else if (slotOption === 'Material') {
-                        $('#reward').hide();
-                        $('#attack').hide();
-                        $('#armor').hide();
-                        $('#resistance').hide();
-                        $('#rarity').hide();
-                        $('#reward').hide();
-                        $('#materials').hide();
-                        $('#refineable').hide();
-                        $('#disolveable').hide();
-                        $('#durability').hide();
-                        $('#craftable').hide();
-                        $('#level').hide();
-                        $('#stamina').hide();
-                        $('#strength').hide();
-                        $('#agility').hide();
-                        $('#intellect').hide();
-                        $('#spirit').hide();
-                        $('#buy').hide();
-                        $('#sell').hide();
-                        $('#class-type').hide();
+                    $('input:radio[name="materialDiversity"]').change(function () {
+                        if ($(this).is(':checked') && $(this).val() == 'craftable' || $(this).val() == 'refineable' || $(this).val() == 'disolveable') {
+                            $('#materials').show();
+                            $('#tools').show();
+                        } else {
+                            $('#materials').hide();
+                            $('#tools').hide();
+                        }
+                    })
+                }
+                else if (slotOption === 'Tool') {
+                    $('#reward').hide();
+                    $('#attack').hide();
+                    $('#armor').hide();
+                    $('#resistance').hide();
+                    $('#rarity').hide();
+                    $('#reward').hide();
+                    $('#refineable').hide();
+                    $('#disolveable').hide();
+                    $('#materials').hide();
 
-                        $('#name').show();
-                        $('#material-type').show();
-                        $('#fuel').show();
-                        $('#none').show();
-                        $('#refineable').show();
-                        $('#disolveable').show();
-                        $('#craftable').show();
+                    $('#craftable').hide();
+                    $('#level').hide();
+                    $('#stamina').hide();
+                    $('#strength').hide();
+                    $('#agility').hide();
+                    $('#intellect').hide();
+                    $('#spirit').hide();
+                    $('#sell').hide();
+                    $('#class-type').hide();
 
-                        $('input:radio[name="materialDiversity"]').change(function () {
-                            if ($(this).is(':checked') && $(this).val() == 'craftable' || $(this).val() == 'refineable' || $(this).val() == 'disolveable') {
-                                $('#materials').show();
-                                $('#tools').show();
-                            } else {
-                                $('#materials').hide();
-                                $('#tools').hide();
-                            }
-                        })
-                    }
-                    else if (slotOption === 'Tool') {
-                        $('#reward').hide();
-                        $('#attack').hide();
-                        $('#armor').hide();
-                        $('#resistance').hide();
-                        $('#rarity').hide();
-                        $('#reward').hide();
-                        $('#refineable').hide();
-                        $('#disolveable').hide();
-                        $('#materials').hide();
+                    $('#name').show();
+                    $('#craftable').show();
+                    $('#buy').show();
+                    $('#durability').show();
 
-                        $('#craftable').hide();
-                        $('#level').hide();
-                        $('#stamina').hide();
-                        $('#strength').hide();
-                        $('#agility').hide();
-                        $('#intellect').hide();
-                        $('#spirit').hide();
-                        $('#sell').hide();
-                        $('#class-type').hide();
-
-                        $('#name').show();
-                        $('#craftable').show();
-                        $('#buy').show();
-                        $('#durability').show();
-
-                    }
-                })
+                }
             })
-        </script>
-</head>
-<body>
-    <div class="item-padding fade-in has-text-align-center">
-        <h1 class="main-font-color has-large-font-size">Create an Item</h1>
+        })
+    </script>
+    <div class="starting-div fade-in has-text-align-center">
+        <h1 class="main-font-color has-large-font-size item-padding">Create an Item</h1>
         <div class="item-padding">
             <hr />
             <div class="row">
@@ -393,5 +385,3 @@
 
         </div>
     </div>
-</body>
-</html>

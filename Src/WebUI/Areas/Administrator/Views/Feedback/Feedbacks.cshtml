@@ -1,11 +1,8 @@
 ﻿@model Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.FeedbacksListViewModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    ViewData["Title"] = "Feedbacks";
-    Layout = "_Layout";
     int count = 0;
 }
-<head>
+    <title>All feedbacks</title>
     <partial name="_AdminNavBar">
         <script>
 
@@ -33,10 +30,8 @@
             })
 
         </script>
-</head>
-<body>
-    <div class="item-padding has-text-align-center" id="top">
-        <h1 class="main-font-color blurd has-larger-font-size">Feedbacks</h1>
+    <div class="starting-div has-text-align-center" id="top">
+        <h1 class="main-font-color blurd has-larger-font-size item-padding">Feedbacks</h1>
         <div class="item-padding blurd">
             <hr />
             <br />
@@ -83,7 +78,3 @@
     </div>
     <div id="end">
     </div>
-</body>
-
-
-

@@ -49,6 +49,7 @@ html {
 .main-header {
     position: fixed;
     z-index:1000;
+    padding-top:-100px;
 }
 
 article,
@@ -1236,6 +1237,11 @@ p.has-background {
         grid-column: 2/3;
         grid-row: 1/2;
         justify-self: center;
+    }
+
+    #primary-menu
+    {
+     padding-top:100px;
     }
 
     #primary-menu li {
@@ -2465,12 +2471,14 @@ i {
 
 #site-navigation {
     font-family: 'Rajdhani', Helvetica, Arial, Verdana, sans-serif;
+    text-align:center;
     font-size: 17px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .07em;
     width: 100%;
-    height: 80px;
+    height: 60px;
+    background-color:#c49b79;
 }
 
 
@@ -2982,4 +2990,9 @@ rotate-vert-center {
         -ms-filter: blur(0px);
         filter: blur(0px);
     }
+}
+
+.starting-div
+{
+  padding-top:60px;
 }

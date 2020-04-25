@@ -1,7 +1,7 @@
 ﻿@model Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery.FightingClassListViewModel
 <title>Create a Hero</title>
 <partial name="_NavBar">
-    <div class="container fade-in has-text-align-center item-padding">
+    <div class="container fade-in has-text-align-center starting-div">
         <cache vary-by="@Model.FightingClasses">
             @foreach (var fightingClass in Model.FightingClasses)
             {
