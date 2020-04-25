@@ -22,14 +22,14 @@
         })
     </script>
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
-    <div class="starting-div fade-in has-text-align-center" id="top">
+    <div class="starting-div fade-in " id="top">
         <h1 class="main-font-color has-large-font-size">Items</h1>
         <div class="item-padding">
             <hr />
             <cache vary-by="@Model.Items">
                 @foreach (var item in Model.Items)
                 {
-                    <div class="item-padding has-text-align-center" id="@item.Id">
+                    <div class="item-padding " id="@item.Id">
                         <img src="@item.ImagePath" alt="@item.Name's Image">
                         <a asp-controller="Item" asp-action="Current" asp-route-id="@item.Id" asp-route-slot="@item.Slot"><h3 class="main-font-color">@item.Name</h3></a>
                         <a asp-controller="Item" asp-action="Update" asp-route-id="@item.Id" asp-route-slot="@item.Slot"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>

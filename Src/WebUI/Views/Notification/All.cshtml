@@ -4,13 +4,13 @@
     <div class="fade-in starting-div">
         @if (Model.Notifications.Count() > 0)
         {
-            <h1 class="has-text-align-center secondary-font-color has-large-font-size item-padding">Your Current Notifications</h1>
+            <h1 class=" secondary-font-color has-large-font-size item-padding">Your Current Notifications</h1>
             <div class="item-padding">
                 <hr />
                 <cache vary-by="@Model.Notifications">
                     @foreach (var notification in Model.Notifications)
                     {
-                        <div class="has-text-align-center item-padding">
+                        <div class=" item-padding">
                             @if (notification.ApplicationSection == "Game")
                             {
                                 <i class="fas fa-gamepad has-large-font-size"></i>
@@ -89,7 +89,7 @@
         }
         else
         {
-            <h1 class="has-text-align-center secondary-font-color has-large-font-size">No Notifications to display</h1>
+            <h1 class=" secondary-font-color has-large-font-size">No Notifications to display</h1>
             <div class="item-padding"><hr /></div>
         }
     </div>

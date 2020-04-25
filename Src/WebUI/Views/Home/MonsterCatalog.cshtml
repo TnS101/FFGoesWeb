@@ -1,7 +1,7 @@
 ﻿@model Application.GameCQ.Monsters.Queries.GetAllMonstersQuery.MonsterListViewModel
 <title>Monsters</title>
 <partial name="_NavBar">
-    <div class="starting-div has-text-align-center fade-in">
+    <div class="starting-div  fade-in">
         <h1 class="secondary-font-color item-padding has-larger-font-size">Monsters</h1>
         <div class="item-padding">
         </div>
@@ -16,7 +16,7 @@
 
                     <div class="wp-block-column" style="flex-basis:66.66%">
                         <h1 class="site-title" style="text-align:center"><a asp-controller="Home" asp-action="MonsterInfo" asp-route-id="@monster.Id">@monster.Name</a></h1>
-                        <h1 class="has-luminous-vivid-amber-color has-text-color has-text-align-center image-description">@monster.Description</h1>
+                        <h1 class="has-luminous-vivid-amber-color has-text-color  image-description">@monster.Description</h1>
                     </div>
                 </div>
                 <hr class="secondary-font-color" />

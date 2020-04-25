@@ -5,24 +5,24 @@
         @if (Model.ForumPoints > 0)
         {
             <cache vary-by="@Model">
-                <h1 class="has-text-align-center secondary-font-color item-padding">You currently have @Model.ForumPoints Forum Points.</h1>
+                <h1 class=" secondary-font-color item-padding">You currently have @Model.ForumPoints Forum Points.</h1>
                 <div class="item-padding"><hr /></div>
-                <div class="has-text-align-center item-padding">
+                <div class=" item-padding">
                     <a asp-controller="Profile" asp-action="Comments"><p class="main-font-color has-large-font-size">Comments</p></a>
                 </div>
-                <div class="has-text-align-center item-padding">
+                <div class=" item-padding">
                     <a asp-controller="Profile" asp-action="Topics"><p class="main-font-color has-large-font-size">Topics</p></a>
                 </div>
             </cache>
         }
         else
         {
-            <h1 class="has-text-align-center secondary-font-color item-padding">You currently do not have Forum Points.</h1>
+            <h1 class=" secondary-font-color item-padding">You currently do not have Forum Points.</h1>
             <div class="item-padding"><hr /></div>
-            <div class="item-padding has-text-align-center">
+            <div class="item-padding ">
                 <h2 class="main-font-color">Forum Points are the sum of all of the likes of your <a asp-controller="Profile" asp-action="Topics" asp-route-id="@Model.Id"><em class="main-font-color">Topics</em></a> and Comments.</h2>
             </div>
-            <div class="item-padding has-text-align-center">
+            <div class="item-padding ">
                 <h2 class="main-font-color">Every step of your progress will be displayed here.</h2>
                 <div class="item-padding">
                     <h2 class="main-font-color"> Happy <a asp-controller="Forum" asp-action="Home"><em class="main-font-color">Blogging!</em></a></h2>

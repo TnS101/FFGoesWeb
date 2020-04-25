@@ -4,14 +4,14 @@
     <div class="fade-in starting-div">
         @if (Model.Heroes.Any(h => h.Mastery > 0))
         {
-            <h1 class="has-text-align-center secondary-font-color has-large-font-size item-padding">Your Heroes and their Mastery Points</h1>
+            <h1 class=" secondary-font-color has-large-font-size item-padding">Your Heroes and their Mastery Points</h1>
             <div class="item-padding">
                 <hr />
             </div>
             <cache vary-by="@Model.Heroes">
                 @foreach (var hero in Model.Heroes.OrderByDescending(h => h.Mastery))
                 {
-                    <div class="has-text-align-center has-narrow-width">
+                    <div class=" has-narrow-width">
                         <p class="main-font-color has-large-font-size">@hero.Name</p>
                         <img src="@hero.IconURL" alt="Hero Icon" />
                         <i class="fas fa-certificate"></i><p class="main-font-color has-medium-font-size">@hero.Level</p>
@@ -23,21 +23,21 @@
         }
         else
         {
-            <h1 class="has-text-align-center secondary-font-color has-large-font-size item-padding">You currently do not have Mastery Points.</h1>
+            <h1 class=" secondary-font-color has-large-font-size item-padding">You currently do not have Mastery Points.</h1>
             <div class="item-padding">
                 <hr />
             </div>
-            <div class="item-padding has-text-align-center">
+            <div class="item-padding ">
                 <h2 class="main-font-color">Mastery Points are achieved by leveling up your <a asp-controller="Hero" asp-action="All"><em class="main-font-color">Heroes.</em></a></h2>
             </div>
-            <div class="item-padding has-text-align-center">
+            <div class="item-padding ">
                 <h2 class="main-font-color">Leveling up a Hero to level 10 grants you 100 Mastery Points. Each level after grants you 15 points.</h2>
             </div>
-            <div class="item-padding has-text-align-center">
+            <div class="item-padding ">
                 <h2 class="main-font-color">Every step of your progress will be displayed here. Happy <a asp-controller="World" asp-action="Home"><em class="main-font-color">Farming!</em></a></h2>
             </div>
         }
-        <div class="item-padding has-text-align-center">
+        <div class="item-padding ">
             <h2 class="main-font-color"><b style="color:red">Important!</b> Deleting a character will <b style="color:red">NOT</b> affect your current Mastery Points.</h2>
         </div>
     </div>

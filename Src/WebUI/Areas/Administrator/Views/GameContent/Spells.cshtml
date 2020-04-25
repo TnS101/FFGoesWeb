@@ -22,7 +22,7 @@
         })
     </script>
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
-    <div class="starting-div fade-in has-text-align-center" id="top">
+    <div class="starting-div fade-in " id="top">
         <h1 class="main-font-color has-large-font-size item-padding">Spells</h1>
         <div class="item-padding">
             <hr />
@@ -52,7 +52,7 @@
             <cache vary-by="@Model.Spells">
                 @foreach (var spell in Model.Spells)
                 {
-                    <div class="item-padding has-text-align-center" id="@spell.Id">
+                    <div class="item-padding " id="@spell.Id">
                         <a asp-controller="Spell" asp-action="Current" asp-route-id="@spell.Id"><h3 class="main-font-color">@spell.Name</h3></a>
                         <a asp-controller="Spell" asp-action="Update" asp-route-id="@spell.Id"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
                         <form asp-controller="Spell" asp-action="Delete" method="post" class="item-padding">

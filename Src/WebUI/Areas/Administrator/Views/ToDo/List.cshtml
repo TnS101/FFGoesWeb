@@ -1,8 +1,8 @@
 ﻿@model Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList.FeedbackTaskListViewModel
 <title>ToDo List</title>
 <partial name="_AdminNavBar">
-    <div class="starting-div fade-in has-text-align-center">
-        <h1 class="has-text-align-center secondary-font-color has-larger-font-size item-padding">ToDo List</h1>
+    <div class="starting-div fade-in ">
+        <h1 class=" secondary-font-color has-larger-font-size item-padding">ToDo List</h1>
     </div>
     <div class="item-padding">
         <hr />
@@ -10,7 +10,7 @@
             if (Model.Tasks.Count() == 0)
             {
                 <div class="item-padding">
-                    <h1 class="has-text-align-center secondary-font-color has-large-font-size">No available tasks</h1>
+                    <h1 class=" secondary-font-color has-large-font-size">No available tasks</h1>
                 </div>
 
             }
@@ -19,7 +19,7 @@
                 <cache vary-by="@Model.Tasks">
                     @foreach (var task in Model.Tasks)
                     {
-                        <div class="has-text-align-center item-padding">
+                        <div class=" item-padding">
                             <h4 class="main-font-color">@task.Content</h4><a asp-controller="ToDo" asp-action="FinishTask" asp-route-id="task.Id"><i class="fas fa-check"></i></a>
                         </div>
                     }

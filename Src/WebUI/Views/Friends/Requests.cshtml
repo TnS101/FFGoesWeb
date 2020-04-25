@@ -1,11 +1,11 @@
 ﻿@model Application.CQ.Social.FriendRequests.Queries.FriendRequestListViewModel
 <title>Requests</title>
 <partial name="_SocialNavBar">
-    <div class="has-text-align-center starting-div fade-in">
+    <div class=" starting-div fade-in">
         @if (Model.FriendRequests.Count() > 0)
         {
             <h1 class="secondary-font-color item-padding">Your Current Friend Requests</h1>
-            <div class="item-padding has-text-align-center">
+            <div class="item-padding ">
                 <hr />
                 <cache vary-by="@Model.FriendRequests">
                     <div class="item-padding">

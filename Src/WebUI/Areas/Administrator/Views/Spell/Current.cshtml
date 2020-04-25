@@ -2,7 +2,7 @@
 <title>CurrentSpell</title>
 <partial name="_AdminNavBar">
     <a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-arrow-left has-massive-font-size top-left-icon main-font-color"></i></a>
-    <div class="starting-div fade-in has-text-align-center">
+    <div class="starting-div fade-in ">
         <cache vary-by-query="id">
             <h1 class="main-font-color has-large-font-size item-padding">Reviewing @Model.Name used by @Model.ClassType</h1>
             <div class="item-padding">
@@ -101,7 +101,7 @@
                                 </div>
                             }
                         }
-                        <div class="item-padding has-text-align-center" id="@Model.Id">
+                        <div class="item-padding " id="@Model.Id">
                             <a asp-controller="Spell" asp-action="Update" asp-route-id="@Model.Id"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
                             <form asp-controller="Spell" asp-action="Delete" method="post" class="item-padding">
                                 <input type="hidden" name="id" value="@Model.Id" />

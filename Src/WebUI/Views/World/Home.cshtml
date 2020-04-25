@@ -5,48 +5,39 @@
         @if (Model.Heroes.Count() == 0)
         {
             <cache vary-by="@Model.Heroes">
-                <div class="has-text-align-center item-padding">
-                    <h1 class="secondary-font-color has-large-font-size item-padding">Please, <a asp-controller="Hero" asp-action="Create"><span class="light-font-color">Create</span></a> a unit first before starting your adventure!</h1>
-                    <div class="item-padding"></div>
-                    <hr />
-                </div>
+                <h1 class="secondary-font-color has-large-font-size item-padding">Please, <a asp-controller="Hero" asp-action="Create"><span class="light-font-color">Create</span></a> a unit first before starting your adventure!</h1>
+                <div class="item-padding"></div>
+                <hr />
             </cache>
 
         }
         else if (!Model.Heroes.Any(h => h.IsSelected))
         {
             <cache vary-by="@Model.Heroes">
-                <div class="has-text-align-center item-padding">
-                    <h1 class="secondary-font-color has-large-font-size item-padding">Please, <a asp-controller="Hero" asp-action="All"><span class="light-font-color">Select</span></a> a unit first before starting your adventure!</h1>
-                    <div class="item-padding"></div>
-                    <hr />
-                </div>
+                <h1 class="secondary-font-color has-large-font-size item-padding">Please, <a asp-controller="Hero" asp-action="All"><span class="light-font-color">Select</span></a> a unit first before starting your adventure!</h1>
+                <div class="item-padding"></div>
+                <hr />
             </cache>
         }
         else
         {
             if (Model.Heroes.FirstOrDefault(h => h.IsSelected).CurrentHP == 0)
             {
-                <div class="has-text-align-center item-padding">
-                    <h1 class="secondary-font-color has-large-font-size item-padding">
-                        Your Hero is heavily injured! Please, visit the <a asp-controller="Shop" asp-action="Home"><span class="light-font-color">Shop</span></a>
-                        or the <a asp-controller="Auction" asp-action="Home"><span class="light-font-color">Auction</span></a> to buy Healing Items, or Select a different
-                        <a asp-controller="Hero" asp-action="All"><span class="light-font-color">Hero</span></a>.
-                    </h1>
-                    <div class="item-padding"></div>
-                    <hr />
-
-                </div>
+                <h1 class="secondary-font-color has-large-font-size item-padding">
+                    Your Hero is heavily injured! Please, visit the <a asp-controller="Shop" asp-action="Home"><span class="light-font-color">Shop</span></a>
+                    or the <a asp-controller="Auction" asp-action="Home"><span class="light-font-color">Auction</span></a> to buy Healing Items, or Select a different
+                    <a asp-controller="Hero" asp-action="All"><span class="light-font-color">Hero</span></a>.
+                </h1>
+                <div class="item-padding"></div>
+                <hr />
             }
             else
             {
-                <div class="has-text-align-center item-padding">
-                    <h1 class="secondary-font-color has-large-font-size item-padding">Welcome to the World of FF! Lets start walking around!</h1>
-                    <div class="item-padding"></div>
-                    <hr />
-                    <div class="item-margin">
-                        <a asp-controller="World" asp-action="Explore"><i style="font-size:80px" class="fas fa-shoe-prints has-huge-font-size"></i></a>
-                    </div>
+                <h1 class="secondary-font-color has-large-font-size item-padding">Welcome to the World of FF! Lets start walking around!</h1>
+                <div class="item-padding"></div>
+                <hr />
+                <div class="item-margin">
+                    <a asp-controller="World" asp-action="Explore"><i style="font-size:80px" class="fas fa-shoe-prints has-huge-font-size"></i></a>
                 </div>
             }
         }

@@ -2,8 +2,8 @@
 <title>Feedbacks</title>
 <partial name="_NavBar">
     <div class="fade-in starting-div">
-        <h1 class="has-text-align-center secondary-font-color item-padding">Your Feedback's progress</h1>
-        <div class="item-padding has-text-align-center">
+        <h1 class=" secondary-font-color item-padding">Your Feedback's progress</h1>
+        <div class="item-padding ">
             <hr />
             <cache vary-by="@Model.Feedbacks">
                 @foreach (var feedback in Model.Feedbacks.OrderByDescending(f => f.SentOn).ThenByDescending(f => f.IsAccepted))

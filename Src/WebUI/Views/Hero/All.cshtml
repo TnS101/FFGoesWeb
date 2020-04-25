@@ -1,7 +1,7 @@
 ﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
 <title>Heroes</title>
 <partial name="_NavBar">
-    <div class="has-text-align-center starting-div main-gradient fade-in">
+    <div class=" starting-div main-gradient fade-in">
         <h1 class="main-font-color has-large-font-size item-padding">Your Heroes</h1>
         <div class="item-padding"><hr /></div>
         <cache vary-by="@Model.Heroes">
@@ -10,7 +10,7 @@
                 <div class="item-padding">
                     @if (!hero.IsSelected)
                     {
-                        <form asp-controller="Hero" class="has-text-align-center" asp-action="Select" method="post">
+                        <form asp-controller="Hero" class="" asp-action="Select" method="post">
                             <input type="hidden" name="id" value="@hero.Id" />
                             <input type="submit" class="main-button" name="name" value="Select" />
                         </form>
@@ -20,7 +20,7 @@
                         <a asp-controller="World" asp-action="Home"><i class="fas fa-star-of-life flip-vertical-fwd has-larger-font-size main-font-color"></i></a>
                     }
                     <div class="item-padding" id="">
-                        <a asp-controller="Hero" asp-action="Info" asp-route-id="@hero.Id" class="has-text-align-center"><p class="has-large-font-size light-font-color">@hero.Name</p></a>
+                        <a asp-controller="Hero" asp-action="Info" asp-route-id="@hero.Id" class=""><p class="has-large-font-size light-font-color">@hero.Name</p></a>
                         <hr class="has-narrow-width" />
                         <h3><img src="@hero.IconURL" alt="" />@hero.ClassType</h3>
                         <hr class="has-narrow-width" />
@@ -49,7 +49,7 @@
     </div>
     <br />
     <div class="item-padding">
-        <p class="has-large-font-size main-font-color has-text-align-center"><a asp-controller="Hero" asp-action="Create"><span class="main-font-color">Create</span></a> a new one!</p>
+        <p class="has-large-font-size main-font-color "><a asp-controller="Hero" asp-action="Create"><span class="main-font-color">Create</span></a> a new one!</p>
     </div>
     <br />
     <div class="item-padding"><hr /></div>

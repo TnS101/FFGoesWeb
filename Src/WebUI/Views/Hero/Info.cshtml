@@ -1,7 +1,7 @@
 ﻿@model Application.GameCQ.Heroes.Queries.GetFullUnitQuery.UnitFullViewModel
 <title>Hero Info</title>
 <partial name="_NavBar">
-    <div class="has-text-align-center starting-div fade-in">
+    <div class=" starting-div fade-in">
         <h1 class="secondary-font-color has-large-font-size item-padding">Hero Info</h1>
         <div class="item-padding"><hr /></div>
         <div>
@@ -10,7 +10,7 @@
         </div>
     </div>
     <cache vary-by-query="id">
-        <div class="container has-text-align-center item-padding">
+        <div class="container  item-padding">
             <div class="container item-padding hero-border">
                 <img src="@Model.ImagePath" class="item-padding aligncenter" alt="Hero's Image" />
                 <div class="item-padding">
@@ -21,7 +21,7 @@
                     <br />
                     <h3 class="main-font-color">Race : @Model.Race</h3>
                     <hr style="width:1330px" />
-                    <div class="has-text-align-center item-padding">
+                    <div class=" item-padding">
                         <h3 class="main-font-color"><img src="~/images/Icons/Heart.png" alt="Health" />  Health</h3>
                         <progress class="item-padding aligncenter has-large-font-size" value="@Model.CurrentHP" max="@Model.MaxHP"></progress>
                         <br />
@@ -71,7 +71,7 @@
                     </div>
                     <div class="item-padding">
                         <i class="icofont-coins icofont-3x main-font-color"></i>
-                        <h3 class="has-text-align-center main-font-color item-padding">Gold : @Model.GoldAmount</h3>
+                        <h3 class=" main-font-color item-padding">Gold : @Model.GoldAmount</h3>
                     </div>
                 </div>
             </div>

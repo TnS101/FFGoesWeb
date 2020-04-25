@@ -1,4 +1,9 @@
 ﻿
+.has-text-align-center
+{
+ text-align:center;
+}
+
 html {
     touch-action: manipulation;
 }
@@ -1596,7 +1601,7 @@ p.has-text-color a {
     font-size: 42px
 }
 
-.has-text-align-center {
+. {
     text-align: center
 }
 

@@ -1,7 +1,7 @@
 ﻿@model Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery.FightingClassListViewModel
 <title>Create a Hero</title>
 <partial name="_NavBar">
-    <div class="container fade-in has-text-align-center starting-div">
+    <div class="container fade-in  starting-div">
         <cache vary-by="@Model.FightingClasses">
             @foreach (var fightingClass in Model.FightingClasses)
             {
@@ -9,9 +9,9 @@
                     <div class="entry-header with-image full site-background main-gradient">
                         <div class="wp-block-image is-style-circle-mask"><figure class="aligncenter size-large is-resized" style="padding-left:560px"><img src="@fightingClass.ImagePath" alt="" width="300" height="300" /></figure></div>
                         <h1 class="section-title image-name main-font-color">@fightingClass.Type</h1>
-                        <h2 class="has-text-color has-text-align-center image-description main-font-color">@fightingClass.Description</h2>
+                        <h2 class="has-text-color  image-description main-font-color">@fightingClass.Description</h2>
                     </div>
-                    <div class="has-text-align-center race-pick">
+                    <div class=" race-pick">
                         <form asp-controller="Hero" asp-action="Create" method="post">
                             <select name="race" class="has-narrow-width">
                                 <option value="Human">Human</option>

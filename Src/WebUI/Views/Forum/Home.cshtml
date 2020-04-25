@@ -4,7 +4,7 @@
 
     @if (Model.Topics.Count() == 0)
     {
-        <div class="item-padding has-text-align-center fade-in">
+        <div class="item-padding  fade-in">
             <h1 class="secondary-font-color has-large-font-size item-padding">No content to display</h1>
             <div class="item-padding">
             </div>
@@ -29,9 +29,9 @@
     }
     else
     {
-        <div class="has-text-align-center starting-div fade-in">
+        <div class=" starting-div fade-in">
             <h1 class="secondary-font-color has-large-font-size item-padding">All Topics</h1>
-            <div class="item-padding has-text-align-center aligncenter">
+            <div class="item-padding  aligncenter">
                 <form asp-controller="Forum" asp-action="Home" method="get" class="aligncenter">
                     <hr />
                     <p class="has-normal-font-size">
@@ -52,7 +52,7 @@
 
         foreach (var topic in Model.Topics)
         {
-            <div class="has-text-align-center item-padding">
+            <div class=" item-padding">
                 <p class="main-font-color has-normal-font-size">
                     [@topic.Category]<a asp-controller="Forum" asp-action="CurrentTopic" asp-route-id="@topic.Id"><span class="main-font-color">@topic.Title</span></a>
                     by @if (Model.ViewerId == topic.UserId)
