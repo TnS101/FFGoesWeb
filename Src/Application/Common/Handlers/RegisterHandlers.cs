@@ -2,6 +2,7 @@
 {
     using Application.CQ.Admin.GameContent.FightingClasses.Commands.Create;
     using Application.CQ.Admin.GameContent.FightingClasses.Commands.Delete;
+    using Application.CQ.Admin.GameContent.FightingClasses.Commands.Update;
     using Application.CQ.Admin.GameContent.Items.Commands.Create;
     using Application.CQ.Admin.GameContent.Items.Commands.Delete;
     using Application.CQ.Admin.GameContent.Items.Commands.Update;
@@ -10,6 +11,7 @@
     using Application.CQ.Admin.GameContent.Items.Queries.GetCurrentItemQuery;
     using Application.CQ.Admin.GameContent.Monsters.Commands.Create;
     using Application.CQ.Admin.GameContent.Monsters.Commands.Delete;
+    using Application.CQ.Admin.GameContent.Monsters.Commands.Update;
     using Application.CQ.Admin.GameContent.Spells.Commands.Create;
     using Application.CQ.Admin.GameContent.Spells.Commands.Delete;
     using Application.CQ.Admin.GameContent.Spells.Commands.Update;
@@ -107,8 +109,10 @@
             services.AddScoped<IRequestHandler<DeleteSpellCommand, string>, DeleteSpellCommandHandler>();
             services.AddScoped<IRequestHandler<CreateFightingClassCommand, string>, CreateFightingClassCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteFightingClassCommand, string>, DeleteFightingClassCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateFightingClassCommand, string>, UpdateFightingClassCommandHandler>();
             services.AddScoped<IRequestHandler<CreateMonsterCommand, string>, CreateMonsterCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteMonsterCommand, string>, DeleteMonsterCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateMonsterCommand, string>, UpdateMonsterCommandHandler>();
         }
 
         private void AdminQueries(IServiceCollection services)

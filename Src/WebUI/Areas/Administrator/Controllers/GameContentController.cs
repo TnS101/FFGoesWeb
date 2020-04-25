@@ -39,7 +39,7 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Classes()
+        public async Task<ActionResult> FightingClasses()
         {
             return this.View(await this.Mediator.Send(new GetAllFightingClassesQuery { }));
         }

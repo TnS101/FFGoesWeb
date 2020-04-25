@@ -93,69 +93,71 @@
                 }
                 else
                 {
-                    @foreach (var comment in Model.Comments.OrderByDescending(c => c.CreatedOn))
-                    {
-                        <div class="item-padding">
-                            <p class="main-font-color has-medium-font-size"><a asp-controller="User" asp-action="Profile" asp-route-id="@comment.UserId"></a></p>
-                            <p class="main-font-color has-normal-font-size">@comment.Content</p>
+                    <cache vary-by="@Model.Comments">
+                        @foreach (var comment in Model.Comments.OrderByDescending(c => c.CreatedOn))
+                        {
+                            <div class="item-padding">
+                                <p class="main-font-color has-medium-font-size"><a asp-controller="User" asp-action="Profile" asp-route-id="@comment.UserId"></a></p>
+                                <p class="main-font-color has-normal-font-size">@comment.Content</p>
 
-                            @if (Model.ViewerId == comment.UserId)
-                            {
-                                <i class="fas fa-thumbs-up has-large-font-size main-font-color"></i> @comment.Likes.Count
-                                <a class="edit-button is-clickable" onclick="true"><i class="fas fa-edit main-font-color has-large-font-size"></i></a>
-                                <div class="edit-panel fade-in" hidden>
-                                    <form asp-controller="Comment" asp-action="Edit" class="item-padding">
-                                        <input type="hidden" name="id" value="@comment.Id" />
-                                        <input type="text" name="content" value="" />
-                                        <div class="item-padding">
-                                            <input type="submit" class="main-button" name="button" value="Edit" />
-                                        </div>
-                                    </form>
-                                </div>
-                            }
-                            else
-                            {
-                                if (comment.Likes.Any(l => l.UserId == Model.ViewerId))
+                                @if (Model.ViewerId == comment.UserId)
                                 {
-                                    <a asp-controller="Comment" asp-action="Dislike" asp-route-id="@comment.Id"><i class="fas fa-thumbs-up has-large-font-size light-font-color"></i> <b class="has-medium-font-size main-font-color">@comment.Likes.Count</b></a>
+                                    <i class="fas fa-thumbs-up has-large-font-size main-font-color"></i> @comment.Likes.Count
+                                    <a class="edit-button is-clickable" onclick="true"><i class="fas fa-edit main-font-color has-large-font-size"></i></a>
+                                    <div class="edit-panel fade-in" hidden>
+                                        <form asp-controller="Comment" asp-action="Edit" class="item-padding">
+                                            <input type="hidden" name="id" value="@comment.Id" />
+                                            <input type="text" name="content" value="" />
+                                            <div class="item-padding">
+                                                <input type="submit" class="main-button" name="button" value="Edit" />
+                                            </div>
+                                        </form>
+                                    </div>
                                 }
                                 else
                                 {
-                                    <a asp-controller="Comment" asp-action="Like" asp-route-id="@comment.Id"><i class="fas fa-thumbs-up has-large-font-size main-font-color"></i> <b class="has-medium-font-size main-font-color">@comment.Likes.Count</b></a>
+                                    if (comment.Likes.Any(l => l.UserId == Model.ViewerId))
+                                    {
+                                        <a asp-controller="Comment" asp-action="Dislike" asp-route-id="@comment.Id"><i class="fas fa-thumbs-up has-large-font-size light-font-color"></i> <b class="has-medium-font-size main-font-color">@comment.Likes.Count</b></a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-controller="Comment" asp-action="Like" asp-route-id="@comment.Id"><i class="fas fa-thumbs-up has-large-font-size main-font-color"></i> <b class="has-medium-font-size main-font-color">@comment.Likes.Count</b></a>
+                                    }
                                 }
-                            }
 
-                            <a asp-controller="Comment" asp-action="Replies">
-                                <i class="fas fa-comments has-large-font-size main-font-color"></i>
-                            </a><b>@comment.Replies.Count</b>
+                                <a asp-controller="Comment" asp-action="Replies">
+                                    <i class="fas fa-comments has-large-font-size main-font-color"></i>
+                                </a><b>@comment.Replies.Count</b>
 
-                            @if (!Model.CommentTicketsIds.Contains(Model.ViewerId))
-                            {
-                                <i id="comment-report-button" onclick="true" style="cursor: pointer" class="icofont-exclamation-circle main-font-color icofont-3x"></i>
-                                <div hidden id="comment-report-panel" class="fade-in item-padding">
-                                    <form asp-controller="Social" asp-action="ReportContent" method="post">
-                                        <input type="hidden" name="id" value="@comment.Id" />
-                                        <input type="hidden" name="contentType" value="Comment" />
-                                        <select class="aligncenter " name="category">
-                                            <option value="Racism">Racism</option>
-                                            <option selected value="Hate Speech">Hate Speech</option>
-                                            <option value="Homophobia">Homophobia</option>
-                                            <option value="Cursing">Cursing</option>
-                                            <option value="Spam">Spam</option>
-                                        </select>
-                                        <div class="item-padding">
-                                            <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." />
-                                        </div>
-                                        <div class="item-padding">
-                                            <input type="submit" name="button" class="main-button" value="Send" />
-                                        </div>
-                                    </form>
-                                </div>
-                            }
-                            <div class="item-padding"></div>
-                            <hr />
-                        </div>
-                    }
+                                @if (!Model.CommentTicketsIds.Contains(Model.ViewerId))
+                                {
+                                    <i id="comment-report-button" onclick="true" style="cursor: pointer" class="icofont-exclamation-circle main-font-color icofont-3x"></i>
+                                    <div hidden id="comment-report-panel" class="fade-in item-padding">
+                                        <form asp-controller="Social" asp-action="ReportContent" method="post">
+                                            <input type="hidden" name="id" value="@comment.Id" />
+                                            <input type="hidden" name="contentType" value="Comment" />
+                                            <select class="aligncenter " name="category">
+                                                <option value="Racism">Racism</option>
+                                                <option selected value="Hate Speech">Hate Speech</option>
+                                                <option value="Homophobia">Homophobia</option>
+                                                <option value="Cursing">Cursing</option>
+                                                <option value="Spam">Spam</option>
+                                            </select>
+                                            <div class="item-padding">
+                                                <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." />
+                                            </div>
+                                            <div class="item-padding">
+                                                <input type="submit" name="button" class="main-button" value="Send" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                }
+                                <div class="item-padding"></div>
+                                <hr />
+                            </div>
+                        }
+                    </cache>
                     <div class="item-padding">
                         <p class="has-large-font-size main-font-color" onclick="true" style="cursor: pointer" id="comment-button">Leave another Coment?</p>
                     </div>

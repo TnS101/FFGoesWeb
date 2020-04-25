@@ -15,6 +15,7 @@
     using Application.CQ.Users.Feedbacks.Queries;
     using Application.CQ.Users.Statuses.Queries;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
+    using Application.GameCQ.FightingClasses.Queries.GetCurrentFightingClassQuery;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
@@ -63,6 +64,7 @@
             this.CreateMap<FriendRequest, FriendRequestFullViewModel>();
             this.CreateMap<Tool, ToolMinViewModel>();
             this.CreateMap<Spell, SpellFullViewModel>();
+            this.CreateMap<FightingClass, FightingClassFullViewModel>();
         }
     }
 }

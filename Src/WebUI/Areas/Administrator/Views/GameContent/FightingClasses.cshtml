@@ -1,0 +1,22 @@
+﻿@model Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery.FightingClassListViewModel
+<title>Fighting Classes</title>
+<partial name="_AdminNavBar">
+    <div class="container fade-in starting-div">
+        <cache vary-by="@Model.FightingClasses">
+            @foreach (var fightingClass in Model.FightingClasses)
+            {
+                <div class="entry-content single-entry-content item-padding" id="@fightingClass.Id">
+                    <div class="entry-header with-image full site-background main-gradient">
+                        <div class="wp-block-image is-style-circle-mask"><figure class="size-large is-resized"><img src="@fightingClass.ImagePath" alt="" width="300" height="300" /></figure></div>
+                        <a asp-controller="FightingClass" asp-action="Current" asp-route-id="@fightingClass.Id"><h1 class="main-font-color has-large-font-size">@fightingClass.Type</h1></a>
+                    </div>
+                    <a asp-controller="FightingClass" asp-action="Update" asp-route-id="@fightingClass.Id"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                    <form asp-controller="FightingClass" asp-action="Delete" method="post" class="item-padding">
+                        <input type="hidden" name="id" value="@fightingClass.Id" />
+                        <input type="submit" name="button" value="Delete" class="main-button" />
+                    </form>
+                </div>
+                <hr />
+            }
+        </cache>
+    </div>

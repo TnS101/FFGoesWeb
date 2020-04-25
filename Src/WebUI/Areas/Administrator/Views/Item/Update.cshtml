@@ -25,194 +25,194 @@
             <div class="row">
                 <div class="col-md-4">
                     <form asp-controller="Item" asp-action="Update" method="post">
-                        <cache vary-by-query="id">
+                        <cache vary-by-query="slot">
                             <div class="form-group item-padding">
                                 <input type="hidden" name="slot" value="@slot" />
                                 <input type="hidden" name="id" value="@id" />
                                 <h2 class="main-font-color has-normal-font-size">@slot</h2>
                             </div>
-                        </cache>
-                        <div class="form-group fade-in item-padding has-normal-font-size" id="name">
-                            <label for="input-name" class="contro-label has-normal-font-size">New Name</label>
-                            <br />
-                            <input type="text" id="input-name" name="name" class="form-control" />
-                        </div>
-                        @if (slot != "Material" && slot != "Tool" && slot != "Treasure" && slot != "Treasure Key")
-                        {
-                            <div class="form-group fade-in item-padding" id="level">
-                                <label for="input-level" class="contro-label has-normal-font-size">New Level</label>
-                                <br />
-                                <input id="input-level" name="level" type="number" min="1" max="10" width="50" height="50" />
-                            </div>
-                            <div class="form-group fade-in item-padding" id="class-type">
-                                <label for="input-classtype" class="contro-label has-normal-font-size">New ClassType</label>
-                                <br />
-                                <input type="text" id="input-classtype" name="classType" class="form-control" />
-                            </div>
-                            <div class="form-group fade-in item-padding" id="stamina">
-                                <label for="input-stamina" class="contro-label has-normal-font-size">New Stamina</label>
-                                <br />
-                                <input id="input-stamina" name="stamina" class="form-control" min="1" max="100" />
-                            </div>
-                            <div class="form-group fade-in item-padding" id="strength">
-                                <label for="input-strength" class="contro-label has-normal-font-size">New Strength</label>
-                                <br />
-                                <input id="input-strength" name="strength" class="form-control" min="1" max="100" />
-                            </div>
-                            <div class="form-group fade-in item-padding" id="agility">
-                                <label for="input-agility" class="contro-label has-normal-font-size">New Agility</label>
-                                <br />
-                                <input id="" input-agility"" name="agility" class="form-control" min="1" max="100" />
-                            </div>
-                            <div class="form-group fade-in item-padding" id="intellect">
-                                <label for="input-intellect" class="contro-label has-normal-font-size">New Intellect</label>
-                                <br />
-                                <input id="input-intellect" name="intellect" class="form-control" min="1" max="100" />
-                            </div>
-                            <div class="form-group fade-in item-padding" id="spirit">
-                                <label for="input-spirit" class="contro-label has-normal-font-size">New Spirit</label>
-                                <br />
-                                <input id="input-spirit" name="spirit" class="form-control" min="1" max="100" />
-                            </div>
-                            @if (slot == "Weapon")
-                            {
-                                <div class="form-group fade-in item-padding" id="attack">
-                                    <label for="input-attackpower" class="contro-label has-normal-font-size">New AttackPower</label>
-                                    <br />
-                                    <input id="input-attackpower" name="attackPower" class="form-control" min="1" max="100" />
-                                </div>
-                            }
-                            else if (slot != "Trinket")
-                            {
-                                <div class="form-group fade-in item-padding" id="armor">
-                                    <label for="input-armorvalue" class="contro-label has-normal-font-size">New ArmorValue</label>
-                                    <br />
-                                    <input id="input-armorvalue" name="armorValue" class="form-control" min="1" max="100" />
-                                </div>
-                                <div class="form-group fade-in item-padding" id="resistance">
-                                    <label for="input-resistancevalue" class="contro-label has-normal-font-size">New ResistanceValue</label>
-                                    <br />
-                                    <input id="input-resistancevalue" name="resistanceValue" class="form-control" min="1" max="100" />
-                                </div>
-                            }
 
-                            <div class="form-group fade-in item-padding" id="sell">
-                                <label for="input-sellprice" class="contro-label has-normal-font-size">New Sell Price</label>
+                            <div class="form-group fade-in item-padding has-normal-font-size" id="name">
+                                <label for="input-name" class="contro-label has-normal-font-size">New Name</label>
                                 <br />
-                                <input id="input-sellprice" name="sellPrice" class="form-control" min="1" max="1000" />
+                                <input type="text" id="input-name" name="name" class="form-control" />
                             </div>
-                            <div class="form-group fade-in item-padding" id="buy">
-                                <label for="input-buyprice" class="contro-label has-normal-font-size">New Buy Price</label>
-                                <br />
-                                <input id="input-buyprice" name="buyPrice" class="form-control" min="1" max="1000" />
-                            </div>
-                        }
-                        else if (slot == "Material" || slot == "Tool")
-                        {
-                            if (slot == "Material")
+                            @if (slot != "Material" && slot != "Tool" && slot != "Treasure" && slot != "Treasure Key")
                             {
-                                <div class="form-group fade-in item-padding" id="material-type">
-                                    <label for="material-type-select" class="contro-label has-normal-font-size">New Material Type</label>
+                                <div class="form-group fade-in item-padding" id="level">
+                                    <label for="input-level" class="contro-label has-normal-font-size">New Level</label>
                                     <br />
-                                    <select id="material-type-select" name="materialType">
-                                        <option value="Salvage">Salvage</option>
-                                        <option value="Plant">Plant</option>
-                                        <option value="Food">Food</option>
-                                        <option value="Remains">Remains</option>
-                                        <option value="Junk">Junk</option>
-                                    </select>
+                                    <input id="input-level" name="level" type="number" min="1" max="10" width="50" height="50" />
                                 </div>
-                                <div class="form-group fade-in item-padding" id="fuel">
-                                    <label for="input-fuelcount" class="contro-label has-normal-font-size">New FuelCount</label>
+                                <div class="form-group fade-in item-padding" id="class-type">
+                                    <label for="input-classtype" class="contro-label has-normal-font-size">New ClassType</label>
                                     <br />
-                                    <input id="input-fuelcount" name="fuelCount" class="form-control" type="number" min="1" max="10" value="1" />
+                                    <input type="text" id="input-classtype" name="classType" class="form-control" />
                                 </div>
-                                <div class="form-group fade-in item-padding" id="refineable">
-                                    <label for="input-refineable" class="contro-label has-normal-font-size">Is Refineable</label>
+                                <div class="form-group fade-in item-padding" id="stamina">
+                                    <label for="input-stamina" class="contro-label has-normal-font-size">New Stamina</label>
                                     <br />
-                                    <input id="input-refineable" class="form-control" type="radio" value="refineable" name="materialDiversity" />
+                                    <input id="input-stamina" name="stamina" class="form-control" min="1" max="100" />
                                 </div>
-                                <div class="form-group fade-in item-padding" id="disolveable">
-                                    <label for="input-disolveable" class="contro-label has-normal-font-size">Is Disolveable</label>
+                                <div class="form-group fade-in item-padding" id="strength">
+                                    <label for="input-strength" class="contro-label has-normal-font-size">New Strength</label>
                                     <br />
-                                    <input id="input-disolveable" class="form-control" type="radio" value="disolveable" name="materialDiversity" />
+                                    <input id="input-strength" name="strength" class="form-control" min="1" max="100" />
                                 </div>
-                                <div class="form-group fade-in item-padding" id="tools">
-                                    <label for="select-tool" class="contro-label has-normal-font-size">New Required Tool</label>
+                                <div class="form-group fade-in item-padding" id="agility">
+                                    <label for="input-agility" class="contro-label has-normal-font-size">New Agility</label>
                                     <br />
-                                    <cache vary-by="@Model.Tools">
-                                        <select name="toolId" id="select-tool">
-                                            @foreach (var tool in Model.Tools)
-                                            {
-                                                <option value="@tool.Id">@tool.Name</option>
-                                            }
+                                    <input id="" input-agility"" name="agility" class="form-control" min="1" max="100" />
+                                </div>
+                                <div class="form-group fade-in item-padding" id="intellect">
+                                    <label for="input-intellect" class="contro-label has-normal-font-size">New Intellect</label>
+                                    <br />
+                                    <input id="input-intellect" name="intellect" class="form-control" min="1" max="100" />
+                                </div>
+                                <div class="form-group fade-in item-padding" id="spirit">
+                                    <label for="input-spirit" class="contro-label has-normal-font-size">New Spirit</label>
+                                    <br />
+                                    <input id="input-spirit" name="spirit" class="form-control" min="1" max="100" />
+                                </div>
+                                @if (slot == "Weapon")
+                                {
+                                    <div class="form-group fade-in item-padding" id="attack">
+                                        <label for="input-attackpower" class="contro-label has-normal-font-size">New AttackPower</label>
+                                        <br />
+                                        <input id="input-attackpower" name="attackPower" class="form-control" min="1" max="100" />
+                                    </div>
+                                }
+                                else if (slot != "Trinket")
+                                {
+                                    <div class="form-group fade-in item-padding" id="armor">
+                                        <label for="input-armorvalue" class="contro-label has-normal-font-size">New ArmorValue</label>
+                                        <br />
+                                        <input id="input-armorvalue" name="armorValue" class="form-control" min="1" max="100" />
+                                    </div>
+                                    <div class="form-group fade-in item-padding" id="resistance">
+                                        <label for="input-resistancevalue" class="contro-label has-normal-font-size">New ResistanceValue</label>
+                                        <br />
+                                        <input id="input-resistancevalue" name="resistanceValue" class="form-control" min="1" max="100" />
+                                    </div>
+                                }
+
+                                <div class="form-group fade-in item-padding" id="sell">
+                                    <label for="input-sellprice" class="contro-label has-normal-font-size">New Sell Price</label>
+                                    <br />
+                                    <input id="input-sellprice" name="sellPrice" class="form-control" min="1" max="1000" />
+                                </div>
+                                <div class="form-group fade-in item-padding" id="buy">
+                                    <label for="input-buyprice" class="contro-label has-normal-font-size">New Buy Price</label>
+                                    <br />
+                                    <input id="input-buyprice" name="buyPrice" class="form-control" min="1" max="1000" />
+                                </div>
+                            }
+                            else if (slot == "Material" || slot == "Tool")
+                            {
+                                if (slot == "Material")
+                                {
+                                    <div class="form-group fade-in item-padding" id="material-type">
+                                        <label for="material-type-select" class="contro-label has-normal-font-size">New Material Type</label>
+                                        <br />
+                                        <select id="material-type-select" name="materialType">
+                                            <option value="Salvage">Salvage</option>
+                                            <option value="Plant">Plant</option>
+                                            <option value="Food">Food</option>
+                                            <option value="Remains">Remains</option>
+                                            <option value="Junk">Junk</option>
                                         </select>
-                                    </cache>
+                                    </div>
+                                    <div class="form-group fade-in item-padding" id="fuel">
+                                        <label for="input-fuelcount" class="contro-label has-normal-font-size">New FuelCount</label>
+                                        <br />
+                                        <input id="input-fuelcount" name="fuelCount" class="form-control" type="number" min="1" max="10" value="1" />
+                                    </div>
+                                    <div class="form-group fade-in item-padding" id="refineable">
+                                        <label for="input-refineable" class="contro-label has-normal-font-size">Is Refineable</label>
+                                        <br />
+                                        <input id="input-refineable" class="form-control" type="radio" value="refineable" name="materialDiversity" />
+                                    </div>
+                                    <div class="form-group fade-in item-padding" id="disolveable">
+                                        <label for="input-disolveable" class="contro-label has-normal-font-size">Is Disolveable</label>
+                                        <br />
+                                        <input id="input-disolveable" class="form-control" type="radio" value="disolveable" name="materialDiversity" />
+                                    </div>
+                                    <div class="form-group fade-in item-padding" id="tools">
+                                        <label for="select-tool" class="contro-label has-normal-font-size">New Required Tool</label>
+                                        <br />
+                                        <cache vary-by="@Model.Tools">
+                                            <select name="toolId" id="select-tool">
+                                                @foreach (var tool in Model.Tools)
+                                                {
+                                                    <option value="@tool.Id">@tool.Name</option>
+                                                }
+                                            </select>
+                                        </cache>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group fade-in item-padding" id="durability">
+                                        <label for="input-durability" class="contro-label has-normal-font-size">New Durability</label>
+                                        <br />
+                                        <input id="input-durability" name="durability" class="form-control" type="number" min="10" max="100" value="10" />
+                                    </div>
+                                }
+                                <div class="form-group fade-in item-padding" id="none">
+                                    <label for="input-none" class="contro-label has-normal-font-size">None</label>
+                                    <br />
+                                    <input id="input-none" class="form-control" type="radio" value="none" name="materialDiversity" />
+                                </div>
+                                <div class="form-group fade-in item-padding" id="craftable">
+                                    <label for="input-craftable" class="contro-label has-normal-font-size">Is Craftable</label>
+                                    <br />
+                                    <input id="input-craftable" class="form-control" type="radio" value="craftable" name="materialDiversity" />
+                                </div>
+                                <div class="form-group fade-in item-padding" id="materials">
+                                    <label for="input-relatedmaterials" class="contro-label has-normal-font-size">New Related Materials</label>
+                                    <br />
+                                    <input type="text" id="input-relatedmaterials" name="relatedMaterials" class="form-control" />
+                                </div>
+                                <div class="form-group fade-in item-padding" id="sell">
+                                    <label for="input-sellprice" class="contro-label has-normal-font-size">New SellPrice</label>
+                                    <br />
+                                    <input id="input-sellprice" name="sellPrice" class="form-control" min="1" max="1000" />
+                                </div>
+                                <div class="form-group fade-in item-padding" id="buy">
+                                    <label for="input-buyprice" class="contro-label has-normal-font-size">New BuyPrice</label>
+                                    <br />
+                                    <input id="input-buyprice" name="buyPrice" class="form-control" min="1" max="1000" />
                                 </div>
                             }
                             else
                             {
-                                <div class="form-group fade-in item-padding" id="durability">
-                                    <label for="input-durability" class="contro-label has-normal-font-size">New Durability</label>
+                                <div class="form-group fade-in item-padding" id="rarity">
+                                    <label for="rarity-select" class="contro-label has-normal-font-size">New Rarity</label>
                                     <br />
-                                    <input id="input-durability" name="durability" class="form-control" type="number" min="10" max="100" value="10" />
+                                    <select id="rarity-select" name="rarity">
+                                        <option value="Bronze">Bronze</option>
+                                        <option value="Silver">Silver</option>
+                                        <option value="Gold">Gold</option>
+                                    </select>
                                 </div>
+                                @if (slot == "Treasure")
+                                {
+                                    <div class="form-group fade-in item-padding" id="reward">
+                                        <label for="input-reward" class="contro-label has-normal-font-size">New Reward</label>
+                                        <br />
+                                        <input id="input-reward" name="reward" class="form-control" min="1" max="1000" />
+                                    </div>
+                                }
                             }
-                            <div class="form-group fade-in item-padding" id="none">
-                                <label for="input-none" class="contro-label has-normal-font-size">None</label>
-                                <br />
-                                <input id="input-none" class="form-control" type="radio" value="none" name="materialDiversity" />
+                            <div class="form-group item-padding">
+                                <input type="submit" value="Update" class="main-button" />
                             </div>
-                            <div class="form-group fade-in item-padding" id="craftable">
-                                <label for="input-craftable" class="contro-label has-normal-font-size">Is Craftable</label>
-                                <br />
-                                <input id="input-craftable" class="form-control" type="radio" value="craftable" name="materialDiversity" />
+                            <div class="item-padding">
+                                <hr />
                             </div>
-                            <div class="form-group fade-in item-padding" id="materials">
-                                <label for="input-relatedmaterials" class="contro-label has-normal-font-size">New Related Materials</label>
-                                <br />
-                                <input type="text" id="input-relatedmaterials" name="relatedMaterials" class="form-control" />
-                            </div>
-                            <div class="form-group fade-in item-padding" id="sell">
-                                <label for="input-sellprice" class="contro-label has-normal-font-size">New SellPrice</label>
-                                <br />
-                                <input id="input-sellprice" name="sellPrice" class="form-control" min="1" max="1000" />
-                            </div>
-                            <div class="form-group fade-in item-padding" id="buy">
-                                <label for="input-buyprice" class="contro-label has-normal-font-size">New BuyPrice</label>
-                                <br />
-                                <input id="input-buyprice" name="buyPrice" class="form-control" min="1" max="1000" />
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="form-group fade-in item-padding" id="rarity">
-                                <label for="rarity-select" class="contro-label has-normal-font-size">New Rarity</label>
-                                <br />
-                                <select id="rarity-select" name="rarity">
-                                    <option value="Bronze">Bronze</option>
-                                    <option value="Silver">Silver</option>
-                                    <option value="Gold">Gold</option>
-                                </select>
-                            </div>
-                            @if (slot == "Treasure")
-                            {
-                                <div class="form-group fade-in item-padding" id="reward">
-                                    <label for="input-reward" class="contro-label has-normal-font-size">New Reward</label>
-                                    <br />
-                                    <input id="input-reward" name="reward" class="form-control" min="1" max="1000" />
-                                </div>
-                            }
-                        }
-                        <div class="form-group item-padding">
-                            <input type="submit" value="Update" class="main-button" />
-                        </div>
-                        <div class="item-padding">
-                            <hr />
-                        </div>
+                        </cache>
                     </form>
                 </div>
             </div>
-
         </div>
     </div>

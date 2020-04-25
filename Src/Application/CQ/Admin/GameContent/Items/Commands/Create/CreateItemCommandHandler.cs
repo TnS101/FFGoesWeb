@@ -5,16 +5,20 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.Common.StringProcessing.ImagePaths;
+    using Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using Domain.Entities.Game.Items;
     using global::Common;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
-    public class CreateItemCommandHandler : BaseHandler, IRequestHandler<CreateItemCommand, string>
+    public class CreateItemCommandHandler : MapperHandler, IRequestHandler<CreateItemCommand, string>
     {
         private readonly ImagePath imagePath;
 
-        public CreateItemCommandHandler(IFFDbContext context)
-            : base(context)
+        public CreateItemCommandHandler(IFFDbContext context ,IMapper mapper)
+            : base(context, mapper)
         {
             this.imagePath = new ImagePath();
         }
@@ -60,7 +64,7 @@
                 id = await this.CreateArmor(request, cancellationToken);
             }
 
-            return string.Format(GConst.AdminItemCommandRedirectId, request.Slot, id);
+            return string.Format(GConst.AdminItemCommandRedirectId, id, request.Slot);
         }
 
         private async Task<string> CreateWeapon(CreateItemCommand request, CancellationToken cancellationToken)

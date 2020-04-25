@@ -7,7 +7,7 @@
             <div class="item-padding">
                 <hr />
             </div>
-
+            <div asp-validation-summary="ModelOnly" class="text-danger main-font-color"></div>
             <form asp-controller="Topic" asp-action="Create" method="post">
                 <div class="item-padding">
                     <input type="text" name="title" value="" placeholder="Title..." />

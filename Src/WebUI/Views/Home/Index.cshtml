@@ -14,7 +14,7 @@ else
     await Html.RenderPartialAsync("_GuestNavBar");
 }
 <title>Home</title>
-<cache vary-by-user="true">
+<cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
     <div class="fade-in starting-div">
         <h1 class="site-title item-padding"><a asp-controller="Home" asp-action="Index"><span class="secondary-font-color">Final Fantasy Tryout</span></a></h1>
         <div class="item-padding">

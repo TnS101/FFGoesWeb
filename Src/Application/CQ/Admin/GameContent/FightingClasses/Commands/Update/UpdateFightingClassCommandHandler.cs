@@ -5,6 +5,7 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Game.Units;
+    using global::Common;
     using MediatR;
 
     public class UpdateFightingClassCommandHandler : BaseHandler, IRequestHandler<UpdateFightingClassCommand, string>
@@ -24,7 +25,7 @@
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return null;
+            return string.Format(GConst.AdminFightingClassCommandRedirectId, fightingClass.Id);
         }
 
         private void StatsNullCheck(UpdateFightingClassCommand request, FightingClass fightingClass)

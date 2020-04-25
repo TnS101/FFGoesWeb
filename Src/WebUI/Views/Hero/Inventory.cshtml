@@ -13,32 +13,30 @@
             <a asp-controller="Hero" asp-action="Inventory" asp-route-slot="Tool"><i class="fas fa-hammer main-font-color has-massive-font-size bottom-left-icon" style="left:130px"></i></a>
             @if (Model != null)
             {
-                <cache vary-by="@Model.Items">
-                    @foreach (var item in Model.Items)
-                    {
-                        <div class="item-padding">
-                            <img src="@item.ImagePath" alt="Item Image" />
-                            <p class="main-font-color has-normal-font-size">@item.Name</p>
-                            @if (item.ClassType != null || item.Level > 0)
+                @foreach (var item in Model.Items)
+                {
+                    <div class="item-padding">
+                        <img src="@item.ImagePath" alt="Item Image" />
+                        <p class="main-font-color has-normal-font-size">@item.Name</p>
+                        @if (item.ClassType != null || item.Level > 0)
+                        {
+                            @if (item.ClassType == Model.HeroClass && item.Level == Model.HeroLevel)
                             {
-                                @if (item.ClassType == Model.HeroClass && item.Level == Model.HeroLevel)
-                                {
-                                    <p>Equip</p>
-                                }
-                                else
-                                {
-                                    <p>Can't equip</p>
-                                }
+                                <p>Equip</p>
                             }
                             else
                             {
-                                <p>Materials</p>
+                                <p>Can't equip</p>
                             }
+                        }
+                        else
+                        {
+                            <p>Materials</p>
+                        }
 
-                            <hr />
-                        </div>
-                    }
-                </cache>
+                        <hr />
+                    </div>
+                }
             }
             else
             {

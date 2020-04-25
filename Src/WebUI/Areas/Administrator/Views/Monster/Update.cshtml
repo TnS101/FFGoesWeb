@@ -1,6 +1,5 @@
 ﻿@{
     string id = Context.Request.Query["id"];
-    string slot = Context.Request.Query["slot"];
 }
 <title>Update Monster</title>
 <partial name="_AdminNavBar">
@@ -16,6 +15,7 @@
                                 <input type="hidden" name="id" value="@id" />
                             </div>
                         </cache>
+                        <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
                         <div class="form-group fade-in item-padding has-normal-font-size">
                             <label for="input-name" class="contro-label has-normal-font-size">New Name</label>
                             <br />
@@ -77,6 +77,7 @@
                         <div class="item-padding">
                             <hr />
                         </div>
+                            </cache>
                     </form>
                 </div>
             </div>

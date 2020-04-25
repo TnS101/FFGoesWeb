@@ -54,10 +54,10 @@
         public const string InModerationRedirect = @"\Topic\InModeration";
         public const string FeedbackErrorRedirect = "/Profile/Panel#feedback-button";
         public const string AdminItemCommandRedirectId = "/Administrator/Item/Current/id%26slot?id={0}&slot={1}";
-        public const string AdminUnitCommandRedirect = "/Administrator/GameContent/Units";
+        public const string AdminFightingClassCommandRedirect = "/Administrator/GameContent/FightingClasses";
+        public const string AdminFightingClassCommandRedirectId = "/Administrator/GameContent/FightingClasses#{0}";
         public const string AdminMonsterCommandRedirect = "/Administrator/GameContent/Monsters";
-        public const string AdminUnitCommandRedirectId = "/Administrator/GameContent/Units#{0}";
-        public const string MonsterCommandRedirectId = "/Administrator/GameContent/Monsters#{0}";
+        public const string AdminMonsterCommandRedirectId = "/Administrator/GameContent/Monsters#{0}";
         public const string AdminItemCommandRedirect = "/Administrator/GameContent/Items/slot?slot={0}";
 
         // Errors

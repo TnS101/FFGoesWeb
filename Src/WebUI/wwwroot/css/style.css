@@ -1,5 +1,4 @@
-﻿
-.has-text-align-center
+﻿.has-text-align-center
 {
  text-align:center;
 }
@@ -1599,10 +1598,6 @@ p.has-text-color a {
 
 .has-huge-font-size, .has-larger-font-size {
     font-size: 42px
-}
-
-. {
-    text-align: center
 }
 
 .has-text-align-left {

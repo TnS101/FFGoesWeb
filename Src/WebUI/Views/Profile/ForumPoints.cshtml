@@ -4,7 +4,7 @@
     <div class="fade-in starting-div">
         @if (Model.ForumPoints > 0)
         {
-            <cache vary-by="@Model">
+            <cache vary-by="@Model.ForumPoints">
                 <h1 class=" secondary-font-color item-padding">You currently have @Model.ForumPoints Forum Points.</h1>
                 <div class="item-padding"><hr /></div>
                 <div class=" item-padding">

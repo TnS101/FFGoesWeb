@@ -32,7 +32,7 @@
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return GConst.AdminUnitCommandRedirect;
+            return GConst.AdminFightingClassCommandRedirect;
         }
     }
 }

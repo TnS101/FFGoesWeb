@@ -38,8 +38,8 @@
             <div>
                 <h3 class="item-padding">Your status is <i id="show" onclick="true" class="@Model.StatusIClass has-huge-font-size main-font-color" style="cursor: pointer;"></i></h3>
             </div>
-            <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
-                <div id="statuses" hidden class="fade-in" style="margin-bottom:46px">
+            <cache vary-by="@Model.Statuses">
+                <div id="statuses" class="fade-in" style="margin-bottom:55px; display:none">
                     <div id="menu">
                         <ul id="primary-menu" style="list-style:none; padding-left:340px">
                             @foreach (var status in Model.Statuses)
@@ -50,57 +50,62 @@
                     </div>
                 </div>
             </cache>
-            @if (Model.Friends == 1)
-            {
-                <h3 id="friends" class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All" class="main-font-color"><i class="fas fa-user-friends has-huge-font-size main-font-color"></i> <span class="main-font-color"> Friend</span></a></h3>
-            }
-            else
-            {
-                <h3 id="friends" class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All"><i class="fas fa-user-friends has-huge-font-size main-font-color"></i><span class="main-font-color"> Friends</span></a></h3>
-            }
-            @if (Model.Topics == 1)
-            {
-                <h3 class="item-padding">You have created @Model.Topics <a asp-controller="Profile" asp-action="Topics" class="main-font-color"><i class="fas fa-stream has-huge-font-size main-font-color"></i> Topic</a></h3>
-            }
-            else
-            {
-                <h3 class="item-padding">You have created @Model.Topics <a asp-controller="Profile" asp-action="Topics" class="main-font-color"><i class="fas fa-stream has-huge-font-size main-font-color"></i> Topics</a></h3>
-            }
+            <cache vary-by="@Model.Friends">
+                @if (Model.Friends == 1)
+                {
+                    <h3 id="friends" class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All" class="main-font-color"><i class="fas fa-user-friends has-huge-font-size main-font-color"></i> <span class="main-font-color"> Friend</span></a></h3>
+                }
+                else
+                {
+                    <h3 id="friends" class="item-padding">You have made @Model.Friends <a asp-controller="Friends" asp-action="All"><i class="fas fa-user-friends has-huge-font-size main-font-color"></i><span class="main-font-color"> Friends</span></a></h3>
+                }
+                @if (Model.Topics == 1)
+                {
+                    <h3 class="item-padding">You have created @Model.Topics <a asp-controller="Profile" asp-action="Topics" class="main-font-color"><i class="fas fa-stream has-huge-font-size main-font-color"></i> Topic</a></h3>
+                }
+                else
+                {
+                    <h3 class="item-padding">You have created @Model.Topics <a asp-controller="Profile" asp-action="Topics" class="main-font-color"><i class="fas fa-stream has-huge-font-size main-font-color"></i> Topics</a></h3>
+                }
+            </cache>
             <br />
             <hr />
         </div>
         <div class="item-padding">
             <h2 class="main-font-color has-large-font-size">Game</h2>
-            @if (Model.Units == 1)
-            {
-                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Hero" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Hero</a></h3>
-            }
-            else
-            {
-                <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Hero" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Heroes</a></h3>
-            }
-            @if (Model.MasteryPoints == 1)
-            {
-                <h3 class="item-padding">You have achieved @Model.MasteryPoints <a asp-controller="Profile" asp-action="MasteryPoints" class="main-font-color"><i class="fas fa-meteor icon-color main-font-color has-huge-font-size"></i>Mastery Point</a></h3>
-            }
-            else
-            {
-                <h3 class="item-padding">You have achieved @Model.MasteryPoints <a asp-controller="Profile" asp-action="MasteryPoints" class="main-font-color"><i class="fas fa-meteor icon-color main-font-color has-huge-font-size"></i>Mastery Points</a></h3>
-            }
+            <cache vary-by="@Model.Units">
+                @if (Model.Units == 1)
+                {
+                    <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Hero" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Hero</a></h3>
+                }
+                else
+                {
+                    <h3 class="item-padding">You have trained @Model.Units <a asp-controller="Hero" asp-action="All" class="main-font-color"><i class="fas fa-fist-raised main-font-color has-huge-font-size"></i>Heroes</a></h3>
+                }
+                @if (Model.MasteryPoints == 1)
+                {
+                    <h3 class="item-padding">You have achieved @Model.MasteryPoints <a asp-controller="Profile" asp-action="MasteryPoints" class="main-font-color"><i class="fas fa-meteor icon-color main-font-color has-huge-font-size"></i>Mastery Point</a></h3>
+                }
+                else
+                {
+                    <h3 class="item-padding">You have achieved @Model.MasteryPoints <a asp-controller="Profile" asp-action="MasteryPoints" class="main-font-color"><i class="fas fa-meteor icon-color main-font-color has-huge-font-size"></i>Mastery Points</a></h3>
+                }
+            </cache>
             <br />
             <hr />
         </div>
         <div class="item-padding">
             <h2 class="main-font-color has-large-font-size">Other</h2>
-            @if (Model.ForumPoints == 1)
-            {
-                <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up main-font-color has-huge-font-size"></i>Forum Point</a></h3>
-            }
-            else
-            {
-                <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up main-font-color has-huge-font-size"></i>Forum Points</a></h3>
-            }
-
+            <cache vary-by="@Model.ForumPoints">
+                @if (Model.ForumPoints == 1)
+                {
+                    <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up main-font-color has-huge-font-size"></i>Forum Point</a></h3>
+                }
+                else
+                {
+                    <h3 class="item-padding">You have earned @Model.ForumPoints <a asp-controller="Profile" asp-action="ForumPoints" class="secondary-font-color"><i class="far fa-thumbs-up main-font-color has-huge-font-size"></i>Forum Points</a></h3>
+                }
+            </cache>
 
             @{
                 int days = 0;
@@ -117,48 +122,48 @@
                 }
 
             }
-            @if (Model.Feedbacks == 0)
-            {
+            <cache vary-by="@Model.Feedbacks">
+                @if (Model.Feedbacks == 0)
+                {
+                    <div class="item-padding">
+                        <p onclick="" class="feedback-button is-clickable main-font-color has-normal-font-size" id="feedback-button">Leave your first Feedback?</p>
+                    </div>
+                }
                 <div class="item-padding">
-                    <p onclick="" class="feedback-button is-clickable main-font-color has-normal-font-size" id="feedback-button">Leave your first Feedback?</p>
+                    <span asp-validation-for="@Model.Feedback.Content" class="has-medium-font-size main-font-color fade-in"></span>
                 </div>
-            }
-            <div class="item-padding">
-                <span asp-validation-for="@Model.Feedback.Content" class="has-medium-font-size main-font-color fade-in"></span>
-            </div>
-            <div class="item-padding fade-in" id="feedback-panel" hidden>
-                <form asp-controller="Profile" asp-action="SendFeedback" method="post">
-                    <label for="feedback">
-                        <input id="feedback" class="item-padding" type="text" name="content" value="" />
+                <div class="item-padding fade-in" id="feedback-panel" hidden>
+                    <form asp-controller="Profile" asp-action="SendFeedback" method="post">
+                        <label for="feedback">
+                            <input id="feedback" class="item-padding" type="text" name="content" value="" />
 
-                    </label>
-                    <label for="rate">
-                        <span class="has-medium-font-size main-font-color item-padding">Rate us?</span>
-                        <select name="rate" id="rate" class="has-narrow-width">
-                            <option selected value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        <input type="submit" name="name" value="Send" />
-                    </label>
-                </form>
-            </div>
-
-            @if (Model.Feedbacks > 0)
-            {
-                <h3 class="item-padding">Your <a asp-controller="Profile" asp-action="Feedbacks" class="main-font-color">Feedback</a> has made the game better and you have recieved @Model.Stars Supporter <i class="far fa-star main-font-color"></i> for your great ideas!</h3>
-            }
-            else
-            {
-                <h3 class="item-padding">
-                    Note: Every accepted Feedback grants you Supporter <i class="far fa-star main-font-color"></i> which can be used to buy Exclusive Items!
-                    In order to motivate people to be more communicative we will give you a <em class="main-font-color">Reward</em> for your first Feedback, regardless if it is accepted or not.
-                </h3>
-                <h3 class="item-padding"><b style="color:red">Important!</b> You can only leave 1 Feedback a day. Make it count.</h3>
-            }
-
+                        </label>
+                        <label for="rate">
+                            <span class="has-medium-font-size main-font-color item-padding">Rate us?</span>
+                            <select name="rate" id="rate" class="has-narrow-width">
+                                <option selected value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <input type="submit" name="name" value="Send" />
+                        </label>
+                    </form>
+                </div>
+                @if (Model.Feedbacks > 0)
+                {
+                    <h3 class="item-padding">Your <a asp-controller="Profile" asp-action="Feedbacks" class="main-font-color">Feedback</a> has made the game better and you have recieved @Model.Stars Supporter <i class="far fa-star main-font-color"></i> for your great ideas!</h3>
+                }
+                else
+                {
+                    <h3 class="item-padding">
+                        Note: Every accepted Feedback grants you Supporter <i class="far fa-star main-font-color"></i> which can be used to buy Exclusive Items!
+                        In order to motivate people to be more communicative we will give you a <em class="main-font-color">Reward</em> for your first Feedback, regardless if it is accepted or not.
+                    </h3>
+                    <h3 class="item-padding"><b style="color:red">Important!</b> You can only leave 1 Feedback a day. Make it count.</h3>
+                }
+            </cache>
 
             @if (Model.Warnings == 0)
             {

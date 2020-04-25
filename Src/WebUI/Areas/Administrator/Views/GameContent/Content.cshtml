@@ -1,73 +1,75 @@
 ﻿<title>Game Content</title>
 <partial name="_AdminNavBar">
-    <div class="starting-div  fade-in">
-        <a asp-controller="FightingClass" asp-action="Create"><i class="fas fa-khanda main-font-color has-massive-font-size bottom-right-icon"></i></a>
-        <a asp-controller="Spell" asp-action="Create"><i class="fas fa-hat-wizard main-font-color has-massive-font-size bottom-right-icon" style="bottom:120px"></i></a>
-        <a asp-controller="Item" asp-action="Create"><i class="fas fa-toolbox main-font-color has-massive-font-size bottom-right-icon" style="bottom:220px"></i></a>
-        <a asp-controller="Monster" asp-action="Create"><i class="fas fa-khanda main-font-color has-massive-font-size bottom-right-icon" style="bottom:320px"></i></a>
+    <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
+        <div class="starting-div  fade-in">
+            <a asp-controller="FightingClass" asp-action="Create"><i class="fas fa-khanda main-font-color has-massive-font-size bottom-right-icon"></i></a>
+            <a asp-controller="Spell" asp-action="Create"><i class="fas fa-hat-wizard main-font-color has-massive-font-size bottom-right-icon" style="bottom:120px"></i></a>
+            <a asp-controller="Item" asp-action="Create"><i class="fas fa-toolbox main-font-color has-massive-font-size bottom-right-icon" style="bottom:220px"></i></a>
+            <a asp-controller="Monster" asp-action="Create"><i class="fas fa-dragon main-font-color has-massive-font-size bottom-right-icon" style="bottom:320px"></i></a>
 
-        <h1 class="has-larger-font-size main-font-color item-padding">Game Content</h1>
-        <div class="item-padding">
-            <hr />
-            <div class="item-padding">
-                <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Weapon"><i class="icofont-angry-monster main-font-color icofont-4x"></i> <span class="has-large-font-size main-font-color">Weapons</span></a>
-                <div class="item-padding">
-                    <hr />
-                </div>
-                <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Armor"><i class="icofont-shield-alt main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Armor</span></a>
-                </div>
-                <div class="item-padding">
-                    <hr />
-                </div>
-                <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Trinket"><i class="icofont-woman-bird main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Trinkets</span></a>
-                </div>
-                <div class="item-padding">
-                    <hr />
-                </div>
-                <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Treasure"><i class="fas fa-gem has-large-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Treasures</span></a>
-                </div>
-                <div class="item-padding">
-                    <hr />
-                </div>
-                <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Treasure Key"><i class="icofont-key main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Treasure Keys</span></a>
-                </div>
-                <div class="item-padding">
-                    <hr />
-                </div>
-                <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Material"><i class="icofont-leaf main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Materials</span></a>
-                </div>
-                <div class="item-padding">
-                    <hr />
-                </div>
-                <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Tool"><i class="fas fa-hammer has-larger-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Tools</span></a>
-                </div>
-                <div class="item-padding">
-                    <hr />
-                </div>
-                <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-magic has-larger-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Spells</span></a>
-                </div>
-                <div class="item-padding">
-                    <hr />
-                </div>
-                <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Monsters"><i class="icofont-tiger-face main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Monsters</span></a>
-                </div>
-                <div class="item-padding">
-                    <hr />
-                </div>
-                <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Classes"><i class="icofont-magician-hat icofont-3x main-font-color"></i> <span class="has-large-font-size main-font-color">Classes</span></a>
-                </div>
-            </div>
+            <h1 class="has-larger-font-size main-font-color item-padding">Game Content</h1>
             <div class="item-padding">
                 <hr />
+                <div class="item-padding">
+                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Weapon"><i class="icofont-angry-monster main-font-color icofont-4x"></i> <span class="has-large-font-size main-font-color">Weapons</span></a>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                    <div class="item-padding">
+                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Armor"><i class="icofont-shield-alt main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Armor</span></a>
+                    </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                    <div class="item-padding">
+                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Trinket"><i class="icofont-woman-bird main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Trinkets</span></a>
+                    </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                    <div class="item-padding">
+                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Treasure"><i class="fas fa-gem has-large-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Treasures</span></a>
+                    </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                    <div class="item-padding">
+                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Treasure Key"><i class="icofont-key main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Treasure Keys</span></a>
+                    </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                    <div class="item-padding">
+                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Material"><i class="icofont-leaf main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Materials</span></a>
+                    </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                    <div class="item-padding">
+                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Tool"><i class="fas fa-hammer has-larger-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Tools</span></a>
+                    </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                    <div class="item-padding">
+                        <a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-magic has-larger-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Spells</span></a>
+                    </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                    <div class="item-padding">
+                        <a asp-controller="GameContent" asp-action="Monsters"><i class="icofont-tiger-face main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Monsters</span></a>
+                    </div>
+                    <div class="item-padding">
+                        <hr />
+                    </div>
+                    <div class="item-padding">
+                        <a asp-controller="GameContent" asp-action="FightingClasses"><i class="icofont-magician-hat icofont-3x main-font-color"></i> <span class="has-large-font-size main-font-color">Classes</span></a>
+                    </div>
+                </div>
+                <div class="item-padding">
+                    <hr />
+                </div>
             </div>
         </div>
-    </div>
+    </cache>

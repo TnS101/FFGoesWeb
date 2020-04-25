@@ -22,11 +22,11 @@
         })
     </script>
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
-    <div class="starting-div fade-in " id="top">
-        <h1 class="main-font-color has-large-font-size">Items</h1>
+    <div class="starting-div fade-in" id="top">
+        <h1 class="main-font-color has-large-font-size item-padding">Items</h1>
         <div class="item-padding">
             <hr />
-            <cache vary-by="@Model.Items">
+            <cache vary-by-query="slot">
                 @foreach (var item in Model.Items)
                 {
                     <div class="item-padding " id="@item.Id">

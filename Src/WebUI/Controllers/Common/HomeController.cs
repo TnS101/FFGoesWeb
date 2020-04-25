@@ -16,34 +16,23 @@
             return this.View(this.User);
         }
 
-        [HttpGet]
-        public IActionResult About()
-        {
-            return this.View();
-        }
-
         [Authorize(Roles = GConst.UserRole)]
-        [HttpGet]
+        [HttpGet("/MonsterCatalog")]
         public async Task<ActionResult> MonsterCatalog()
         {
             return this.View(await this.Mediator.Send(new GetAllMonstersQuery { }));
         }
 
         [Authorize(Roles = GConst.UserRole)]
-        [HttpGet("/Home/MonsterInfo/id")]
+        [HttpGet("/MonsterInfo/id")]
         public async Task<ActionResult> MonsterInfo([FromQuery]int id)
         {
             return this.View(await this.Mediator.Send(new GetCurrentMonsterQuery { MonsterId = id }));
         }
 
         [Authorize(Roles = GConst.UserRole)]
+        [HttpGet("/PrivacyPolicy")]
         public ActionResult PrivacyPolicy()
-        {
-            return this.View();
-        }
-
-        [HttpGet]
-        public ActionResult Error()
         {
             return this.View();
         }

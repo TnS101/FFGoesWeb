@@ -37,6 +37,7 @@
             }
             else
             {
+                sender.Stars++;
                 return await this.SendFeedback(sender, request, cancellationToken);
             }
         }

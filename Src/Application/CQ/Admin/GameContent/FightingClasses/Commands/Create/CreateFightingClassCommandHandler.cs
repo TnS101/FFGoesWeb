@@ -42,7 +42,7 @@
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return string.Format(GConst.AdminUnitCommandRedirectId, fightingClass.Id);
+            return string.Format(GConst.AdminFightingClassCommandRedirectId, fightingClass.Id);
         }
     }
 }

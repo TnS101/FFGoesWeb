@@ -25,5 +25,6 @@
         [SpamFilter(GConst.SpamFilter, ErrorMessage = GConst.SpamMessage)]
         [SwearFilter(GConst.SwearFilter, ErrorMessage = GConst.SwearMessage)]
         public string Content { get; set; }
+
     }
 }

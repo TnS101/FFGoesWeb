@@ -1,11 +1,9 @@
 ﻿@model string
 <title>Battle</title>
 <meta http-equiv="refresh" content="1.3;url=https://localhost:44312/Battle/Command">
-<cache vary-by="@Model">
-    <partial name="_NavBar">
-        <div class="container  fade-in starting-div">
-            <h1 class="site-title main-font-color item-padding">Battle started!</h1>
-            <p class="site-title main-font-color">You are fighting against : @Model</p>
-        </div>
-        <partial name="_Footer">
-</cache>
+<partial name="_NavBar">
+    <div class="container  fade-in starting-div">
+        <h1 class="site-title main-font-color item-padding">Battle started!</h1>
+        <p class="site-title main-font-color">You are fighting against : @Model</p>
+    </div>
+    <partial name="_Footer">

@@ -6,6 +6,7 @@
     using Application.Common.Interfaces;
     using Application.Common.StringProcessing.ImagePaths;
     using Domain.Entities.Game.Units;
+    using global::Common;
     using MediatR;
 
     public class UpdateMonsterCommandHandler : BaseHandler, IRequestHandler<UpdateMonsterCommand, string>
@@ -30,7 +31,7 @@
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return null;
+            return string.Format(GConst.AdminMonsterCommandRedirectId, monster.Id);
         }
 
         private void StatsNullCheck(UpdateMonsterCommand request, Monster monster)

@@ -41,7 +41,7 @@
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return string.Format(GConst.MonsterCommandRedirectId, monster.Id);
+            return string.Format(GConst.AdminMonsterCommandRedirectId, monster.Id);
         }
     }
 }
