@@ -24,8 +24,7 @@
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-            string result = string.Empty;
-
+            string result;
             if (request.Command == "Equip")
             {
                 var equipOption = new EquipOption();
@@ -39,11 +38,11 @@
                 result = await unEquipOption.UnEquip(hero, await this.EquipableItem(request), this.statSum, this.Context);
             }
 
-            this.Context.Equipments.Update(hero.Equipment);
+            this.Context.Heroes.Update(hero);
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return string.Format("/Equipment", result);
+            return result;
         }
 
         private async Task<IEquipableItem> EquipableItem(UpdateEquipmentCommand request)

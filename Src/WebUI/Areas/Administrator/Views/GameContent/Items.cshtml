@@ -26,7 +26,6 @@
         <h1 class="main-font-color has-large-font-size item-padding">Items</h1>
         <div class="item-padding">
             <hr />
-            <cache vary-by-query="slot">
                 @foreach (var item in Model.Items)
                 {
                     <div class="item-padding " id="@item.Id">
@@ -41,6 +40,5 @@
                         <hr />
                     </div>
                 }
-            </cache>
         </div>
     </div>

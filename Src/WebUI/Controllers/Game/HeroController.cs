@@ -73,10 +73,10 @@
             return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> DiscardItem([FromQuery]string id, [FromForm]int count, [FromForm]string slot)
+        [HttpPost]
+        public async Task<ActionResult> DiscardItem([FromForm]string id, [FromForm]int count, [FromForm]string slot, [FromForm]string heroId)
         {
-            return this.View(await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId }));
         }
 
         [HttpGet]

@@ -236,7 +236,7 @@
             {
                 Name = "Buttercup",
                 Type = "Herb",
-                ImagePath = "/images/Items/Materials/Herb-Essence.png",
+                ImagePath = "/images/Items/Materials/Butter-Cup.png",
                 IsRefineable = true,
             });
 
@@ -577,7 +577,7 @@
             {
                 Name = "Corn",
                 Type = "Vegetable",
-                ImagePath = "/images/Items/Materials/Can.png",
+                ImagePath = "/images/Items/Materials/Corn.png",
                 IsRefineable = true,
             });
 
@@ -667,7 +667,7 @@
             {
                 Name = "Empty Plastic Bottle",
                 Type = "Junk",
-                RelatedMaterials = "Gold Scraps 1,Iron Scraps 1,Copper Scraps 1",
+                RelatedMaterials = "Plastic 1",
                 ImagePath = "/images/Items/Materials/Empty-Plastic-Bottle.png",
                 IsDisolveable = true,
             });

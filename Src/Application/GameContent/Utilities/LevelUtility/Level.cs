@@ -2,12 +2,16 @@
 {
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
+    using Application.GameContent.Utilities.Stats;
     using Domain.Entities.Game.Units;
 
     public class Level
     {
+        private readonly StatsReset statsReset;
+
         public Level()
         {
+            this.statsReset = new StatsReset();
         }
 
         public async Task Up(Hero hero, IFFDbContext context)
@@ -40,15 +44,7 @@
             hero.Level++;
 
             // Stat Re-Set
-            hero.CurrentHP = hero.MaxHP;
-            hero.CurrentMana = hero.CurrentMana;
-            hero.CurrentHealthRegen = hero.HealthRegen;
-            hero.CurrentManaRegen = hero.ManaRegen;
-            hero.CurrentMagicPower = hero.MagicPower;
-            hero.CurrentAttackPower = hero.AttackPower;
-            hero.CurrentArmorValue = hero.ArmorValue;
-            hero.CurrentCritChance = hero.CritChance;
-            hero.CurrentResistanceValue = hero.ResistanceValue;
+            this.statsReset.Reset(hero);
 
             hero.XP -= hero.XPCap;
             hero.XPCap += hero.XPCap * 0.20;

@@ -187,7 +187,7 @@
                     hero.CurrentHP = hero.MaxHP;
                 }
 
-                if (hero.CurrentHP < hero.MaxHP)
+                if (hero.CurrentHP <= hero.MaxHP)
                 {
                     this.Context.EnergyChanges.Add(new EnergyChange
                     {
@@ -200,7 +200,6 @@
 
             if (this.Context.EnergyChanges.Where(ec => ec.Type == "Mana" && ec.HeroId == hero.Id).Count() == 0)
             {
-
                 if (hero.CurrentMana > hero.MaxMana)
                 {
                     hero.CurrentMana = hero.MaxMana;

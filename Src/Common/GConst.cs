@@ -45,7 +45,8 @@
         public const string HeroCreationErrorRedirect = "/Hero/Create";
         public const string SuccesfulFeedbackRedirect = @"\FeedbackSuccess";
         public const string ErrorRedirect = @"\Error\Default";
-        public const string EquipmentCommandRedirect = "/";
+        public const string EquipmentCommandRedirect = "/Hero/Equipment/id%26slot?id={0}&slot={1}";
+        public const string InventoryCommandRedirect = "/Hero/Inventory/id%26slot?id={0}&slot={1}";
 
         // Admin Redirects
         public const string AdminToDoListRedirect = "/Administrator/ToDo/List";

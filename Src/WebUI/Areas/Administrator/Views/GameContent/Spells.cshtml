@@ -26,7 +26,6 @@
         <h1 class="main-font-color has-large-font-size item-padding">Spells</h1>
         <div class="item-padding">
             <hr />
-            <cache vary-by-query="classType">
             <form asp-controller="GameContent" asp-action="Spells" method="get">
                 <p class="has-normal-font-size">
                     <label for="shaman">Shaman </label>
@@ -62,6 +61,5 @@
                         <hr />
                     </div>
                 }
-            </cache>
         </div>
     </div>

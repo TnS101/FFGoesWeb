@@ -444,7 +444,7 @@
                 }
                 else if (materialNumber > 7 && materialNumber < 11)
                 {
-                    this.JunkVariety(monster);
+                    materialName = this.JunkVariety(monster);
                     break;
                 }
 
@@ -458,48 +458,48 @@
         {
             int junkNumber = this.rng.Next(0, 3);
 
-            string[] junks = new string[] { string.Empty, string.Empty, string.Empty };
+            var junks = new List<string>();
 
             if (monster.Type == "Beast")
             {
-                junks[0] = "Animal Blood";
-                junks[1] = "Dead Critters";
-                junks[2] = "Broken Skull";
+                junks.Add("Animal Blood");
+                junks.Add("Dead Critters");
+                junks.Add("Broken Skull");
             }
 
             if (monster.Type == "Humanoid")
             {
-                junks[0] = "Broken Watch";
-                junks[1] = "Empty Plastic Bottle";
-                junks[2] = "Broken Skull";
+                junks.Add("Broken Watch");
+                junks.Add("Empty Plastic Bottle");
+                junks.Add("Broken Skull");
             }
 
             if (monster.Type == "Mechanical")
             {
-                junks[0] = "Broken Cogs";
-                junks[1] = "Rusty Pipes";
-                junks[2] = "Dead Battery";
+                junks.Add("Broken Cogs");
+                junks.Add("Rusty Pipes");
+                junks.Add("Dead Battery");
             }
 
             if (monster.Type == "Elemental")
             {
-                junks[0] = "Cracked Water Orb";
-                junks[1] = "Coal Piece";
-                junks[2] = "Water Flask";
+                junks.Add("Cracked Water Orb");
+                junks.Add("Coal Piece");
+                junks.Add("Water Flask");
             }
 
-            if (monster.Type == "Reptile" || monster.Type == "Pisces")
+            if (monster.Type == "Reptile")
             {
-                junks[0] = "Worm";
-                junks[1] = "Dead Critters";
-                junks[2] = "Water Flask";
+                junks.Add("Worm");
+                junks.Add("Dead Critters");
+                junks.Add("Water Flask");
             }
 
             if (monster.Type == "Plant")
             {
-                junks[0] = "Withered Roots";
-                junks[1] = "Mud";
-                junks[2] = "Broken Branches";
+                junks.Add("Withered Roots");
+                junks.Add("Mud");
+                junks.Add("Broken Branches");
             }
 
             if (junkNumber == 0)

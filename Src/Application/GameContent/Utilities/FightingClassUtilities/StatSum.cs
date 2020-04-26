@@ -4,7 +4,6 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Domain.Contracts.Items;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using Microsoft.EntityFrameworkCore;
@@ -34,11 +33,11 @@
 
                 foreach (var item in items)
                 {
-                    hero.AttackPower += item.Agility;
-                    hero.MagicPower += item.Intellect;
-                    hero.ManaRegen += item.Spirit;
+                    hero.AttackPower += item.Agility * 1.3;
+                    hero.MagicPower += item.Intellect * 1.8;
+                    hero.ManaRegen += item.Spirit * 1.2;
                     hero.MaxHP += item.Stamina * 5;
-                    hero.AttackPower += item.Strength;
+                    hero.AttackPower += item.Strength * 1.5;
                     hero.ArmorValue += item.ArmorValue;
                     hero.ResistanceValue += item.ResistanceValue;
                 }
@@ -51,11 +50,11 @@
                 var weapon = await context.Weapons.FindAsync(weaponEquipment.WeaponId);
 
                 hero.AttackPower += weapon.AttackPower;
-                hero.AttackPower += weapon.Agility;
-                hero.MagicPower += weapon.Intellect;
-                hero.ManaRegen += weapon.Spirit;
+                hero.AttackPower += weapon.Agility * 1.3;
+                hero.MagicPower += weapon.Intellect * 1.8;
+                hero.ManaRegen += weapon.Spirit * 1.2;
                 hero.MaxHP += weapon.Stamina * 5;
-                hero.AttackPower += weapon.Strength;
+                hero.AttackPower += weapon.Strength * 1.5;
             }
 
             if (!heroEquipment.TrinketSlot)
@@ -64,11 +63,48 @@
 
                 var trinket = await context.Trinkets.FindAsync(trinketEquipment.TrinketId);
 
-                hero.AttackPower += trinket.Agility;
-                hero.MagicPower += trinket.Intellect;
-                hero.ManaRegen += trinket.Spirit;
+                hero.AttackPower += trinket.Agility * 1.3;
+                hero.MagicPower += trinket.Intellect * 1.8;
+                hero.ManaRegen += trinket.Spirit * 1.2;
                 hero.MaxHP += trinket.Stamina * 5;
-                hero.AttackPower += trinket.Strength;
+                hero.AttackPower += trinket.Strength * 1.5;
+            }
+        }
+
+        public async Task ReverseSum(Hero hero, IFFDbContext context, string itemId, string itemSlot)
+        {
+            if (itemSlot == "Weapon")
+            {
+                var weapon = await context.Weapons.FindAsync(itemId);
+
+                hero.AttackPower -= weapon.AttackPower;
+                hero.AttackPower -= weapon.Agility * 1.3;
+                hero.MagicPower -= weapon.Intellect * 1.8;
+                hero.ManaRegen -= weapon.Spirit * 1.2;
+                hero.MaxHP -= weapon.Stamina * 5;
+                hero.AttackPower -= weapon.Strength * 1.5;
+            }
+            else if (itemSlot == "Trinket")
+            {
+                var trinket = await context.Trinkets.FindAsync(itemId);
+
+                hero.AttackPower -= trinket.Agility * 1.3;
+                hero.MagicPower -= trinket.Intellect * 1.8;
+                hero.ManaRegen -= trinket.Spirit * 1.2;
+                hero.MaxHP -= trinket.Stamina * 5;
+                hero.AttackPower -= trinket.Strength * 1.5;
+            }
+            else
+            {
+                var armor = await context.Armors.FindAsync(itemId);
+
+                hero.AttackPower -= armor.Agility * 1.3;
+                hero.MagicPower -= armor.Intellect * 1.8;
+                hero.ManaRegen -= armor.Spirit * 1.2;
+                hero.MaxHP -= armor.Stamina * 5;
+                hero.AttackPower -= armor.Strength * 1.5;
+                hero.ArmorValue -= armor.ArmorValue;
+                hero.ResistanceValue -= armor.ResistanceValue;
             }
         }
     }
