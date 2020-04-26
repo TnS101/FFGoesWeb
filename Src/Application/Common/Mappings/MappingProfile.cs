@@ -4,11 +4,11 @@
     using Application.CQ.Admin.GameContent.Spells.Queries.GetCurrentSpellQuery;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetCurrentFeedbackQuery;
-    using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
     using Application.CQ.Moderator.Queries.GetCurrentTicketQuery;
     using Application.CQ.Social.Comments.Queries.GetCurrentCommentQuery;
     using Application.CQ.Social.FriendRequests.Queries;
+    using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
     using Application.CQ.Social.Messages.Queries;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery;

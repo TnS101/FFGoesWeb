@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery
+﻿namespace Application.CQ.Social.Friends.Queries.GetAllFriendsQuery
 {
     using System.Collections.Generic;
 

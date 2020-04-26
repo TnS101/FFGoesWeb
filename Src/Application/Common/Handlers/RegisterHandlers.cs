@@ -22,7 +22,6 @@
     using Application.CQ.Admin.Moderation.Feedback.Queries.GetAllFeedbacksQuery.ToDoList;
     using Application.CQ.Admin.Moderation.Feedbacks.Commands.Delete.DeleteFeedbackCommand;
     using Application.CQ.Admin.Moderation.Feedbacks.Commands.Update;
-    using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
     using Application.CQ.Moderator.Commands.Delete;
     using Application.CQ.Moderator.Commands.Update;
     using Application.CQ.Moderator.Queries.GetAllTicketsQuery;
@@ -74,7 +73,6 @@
     using Application.GameCQ.Treasures.Commands.Delete;
     using Application.GameCQ.Treasures.Commands.Update;
     using Application.GameCQ.World.Commands.Update;
-    using Application.SeedInitialData;
     using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
@@ -117,8 +115,6 @@
 
         private void AdminQueries(IServiceCollection services)
         {
-            services.AddScoped<IRequestHandler<DataSeederCommand, Unit>, DataSeederCommandHandler>();
-            services.AddScoped<IRequestHandler<GetOnlineUsersQuery, UserListViewModel>, GetOnlineUsersQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllSpellsQuery, SpellListViewModel>, GetAllSpellsQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllItemsQuery, ItemListViewModel>, GetAllItemsQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllFeedbacksQuery, FeedbacksListViewModel>, GetAllFeedbacksQueryHandler>();

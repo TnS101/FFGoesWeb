@@ -8,25 +8,21 @@
     using Application.GameContent.Utilities.EquipmentOptions;
     using Application.GameContent.Utilities.FightingClassUtilites;
     using Domain.Contracts.Items;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
 
-    public class UpdateEquipmentCommandHandler : UserHandler, IRequestHandler<UpdateEquipmentCommand, string>
+    public class UpdateEquipmentCommandHandler : BaseHandler, IRequestHandler<UpdateEquipmentCommand, string>
     {
         private readonly StatSum statSum;
 
-        public UpdateEquipmentCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context,userManager)
+        public UpdateEquipmentCommandHandler(IFFDbContext context)
+            : base(context)
         {
             this.statSum = new StatSum();
         }
 
         public async Task<string> Handle(UpdateEquipmentCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
-
-            var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
             string result = string.Empty;
 

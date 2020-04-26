@@ -1,7 +1,7 @@
 ﻿namespace Application.CQ.Users.Queries.GetCurrentUser
 {
     using System.Security.Claims;
-    using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
+    using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
     using MediatR;
 
     public class GetCurrentUserQuery : IRequest<UserPartialViewModel>

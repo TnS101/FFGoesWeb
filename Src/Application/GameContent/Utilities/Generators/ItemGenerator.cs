@@ -11,10 +11,12 @@
     public class ItemGenerator
     {
         private readonly Random rng;
+        private readonly SlotCheck slotCheck;
 
         public ItemGenerator()
         {
             this.rng = new Random();
+            this.slotCheck = new SlotCheck();
         }
 
         public async Task Generate(Hero hero, IFFDbContext context, Monster monster, string zoneName, CancellationToken cancellationToken)
@@ -42,11 +44,7 @@
                 }
             }
 
-            var slotCheck = new SlotCheck();
-
-            slotNumber = 2;
-
-            await slotCheck.Check(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero, monster, zoneName, cancellationToken);
+            await this.slotCheck.Check(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero, monster, zoneName, cancellationToken);
         }
     }
 }

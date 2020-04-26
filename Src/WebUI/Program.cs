@@ -1,16 +1,17 @@
 ﻿namespace WebUI
 {
+    using System;
+    using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
-    using Application.SeedInitialData;
     using Common;
     using Domain.Entities.Common;
     using Domain.Models;
-    using MediatR;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Persistence;
+    using Persistence.Context;
 
     public class Program
     {
@@ -24,41 +25,9 @@
 
                 var context = services.GetRequiredService<FFDbContext>();
 
-                //context.Database.EnsureCreated();
+                await SeedUsersAndRoles(services, context);
 
-                //var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
-
-                //var usermanager = services.GetRequiredService<UserManager<AppUser>>();
-
-                //await roleManager.CreateAsync(new ApplicationRole(GConst.AdminRole));
-
-                //await roleManager.CreateAsync(new ApplicationRole(GConst.ModeratorRole));
-
-                //await roleManager.CreateAsync(new ApplicationRole(GConst.UserRole));
-                //var admin = new AppUser
-                //{
-                //    UserName = "admin",
-                //    Email = "admin@admin.com",
-                //};
-
-                //var mod = new AppUser
-                //{
-                //    UserName = "moderator",
-                //    Email = "moderator@moderator.com",
-                //};
-
-                //await usermanager.CreateAsync(admin, "Admin@123456");
-
-                //await usermanager.CreateAsync(mod, "Mod@123456");
-
-                //await usermanager.AddToRoleAsync(admin, GConst.AdminRole);
-
-                //await usermanager.AddToRoleAsync(mod, GConst.ModeratorRole);
-
-                //context.SaveChanges();
-
-                //var mediator = services.GetRequiredService<IMediator>();
-                //await mediator.Send(new DataSeederCommand());
+                await DataSeeder.Seed(context);
             }
 
             host.Run();
@@ -71,5 +40,47 @@
                     webBuilder.UseStartup<Startup>();
                     webBuilder.UseUrls("http://192.168.0.101:5000/", "https://192.168.0.101:5001");
                 });
+
+        private static async Task SeedUsersAndRoles(IServiceProvider services, FFDbContext context)
+        {
+            var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+
+            var userManager = services.GetRequiredService<UserManager<AppUser>>();
+
+            context.Database.EnsureCreated();
+
+            if (context.AppUsers.Any())
+            {
+                return;
+            }
+
+            var admin = new AppUser
+            {
+                UserName = "admin",
+                Email = "admin@admin.com",
+            };
+
+            var mod = new AppUser
+            {
+                UserName = "moderator",
+                Email = "moderator@moderator.com",
+            };
+
+            await userManager.CreateAsync(admin, "Admin@123456");
+
+            await userManager.CreateAsync(mod, "Mod@123456");
+
+            await roleManager.CreateAsync(new ApplicationRole(GConst.AdminRole));
+
+            await roleManager.CreateAsync(new ApplicationRole(GConst.ModeratorRole));
+
+            await roleManager.CreateAsync(new ApplicationRole(GConst.UserRole));
+
+            await userManager.AddToRoleAsync(admin, GConst.AdminRole);
+
+            await userManager.AddToRoleAsync(mod, GConst.ModeratorRole);
+
+            await context.SaveChangesAsync(CancellationToken.None);
+        }
     }
 }

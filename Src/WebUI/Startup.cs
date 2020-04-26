@@ -14,16 +14,20 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Net.Http.Headers;
-    using Persistence;
+    using Persistence.Context;
 
     public class Startup
     {
-        public Startup()
+        public Startup(IConfiguration configuration)
         {
+            this.Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {

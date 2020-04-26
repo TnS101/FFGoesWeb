@@ -58,5 +58,11 @@
         {
             return this.View(await this.Mediator.Send(new GetUnitIdQuery { User = this.User }));
         }
+
+        [HttpGet]
+        public ActionResult Killed()
+        {
+            return this.View();
+        }
     }
 }

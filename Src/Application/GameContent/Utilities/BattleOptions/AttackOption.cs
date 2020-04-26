@@ -21,13 +21,13 @@
                 if (target.CurrentArmorValue >= damage)
                 {
                     double armorPenalty;
-                    if (target.ClassType != null)
+                    if (target.Type == "Player")
                     {
-                        armorPenalty = 0.70;
+                        armorPenalty = 0.30;
                     }
                     else
                     {
-                        armorPenalty = 0.30;
+                        armorPenalty = 0.70;
                     }
 
                     target.CurrentArmorValue -= armorPenalty * target.CurrentArmorValue;

@@ -56,27 +56,21 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Equip([FromForm]string id, [FromForm]string command)
+        public async Task<ActionResult> Equip([FromForm]string id, [FromForm]string command, [FromForm]string heroId, [FromForm]string slot)
         {
-            return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, HeroId = heroId, Slot = slot }));
         }
 
-        [HttpPost]
-        public async Task<ActionResult> UnEquip([FromForm] string id, [FromForm]string command)
+        [HttpGet("/Hero/Equipment/id&slot")]
+        public async Task<ActionResult> Equipment([FromQuery]string id, [FromQuery]string slot)
         {
-            return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, User = this.User }));
+            return this.View(await this.Mediator.Send(new GetEquipmentQuery { HeroId = id, Slot = slot }));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Equipment([FromQuery]string id)
+        [HttpGet("/Hero/Inventory/id&slot")]
+        public async Task<ActionResult> Inventory([FromQuery]string id, [FromQuery]string slot)
         {
-            return this.View(await this.Mediator.Send(new GetEquipmentQuery { HeroId = id }));
-        }
-
-        [HttpGet]
-        public async Task<ActionResult> Inventory([FromQuery]string slot)
-        {
-            return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { User = this.User, Slot = slot }));
+            return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
         }
 
         [HttpGet]

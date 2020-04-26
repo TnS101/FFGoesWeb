@@ -48,7 +48,7 @@
             monster.ArmorValue = baseMonster.ArmorValue + (step * 1);
             monster.ResistanceValue = baseMonster.ResistanceValue + (step * 1.2);
             monster.CritChance = baseMonster.CritChance + (monster.Level * 0.04);
-
+            monster.Type = baseMonster.Type;
             monster.ImagePath = baseMonster.ImagePath.ToString();
 
             // Stat Set

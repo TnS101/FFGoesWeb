@@ -11,7 +11,7 @@
         public void Defend(Unit caster)
         {
             double armorBonus = 0;
-            if (caster.ClassType == null)
+            if (caster.Type == "Player")
             {
                 armorBonus += 0.2;
             }

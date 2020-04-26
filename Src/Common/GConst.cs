@@ -112,7 +112,7 @@
         public const string BattleCommand = @"\Command";
         public const string LevelUp = @"Unit\LevelUp";
         public const string End = @"\End";
-        public const string UnitKilled = @"\Unit/Killed";
+        public const string UnitKilled = @"\Killed";
 
         // Filters (Regex)
         public const string UsernameFilter = @"[0-9]*[a-z]+[0-9]*";

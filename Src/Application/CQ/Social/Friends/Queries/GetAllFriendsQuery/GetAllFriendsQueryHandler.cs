@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Application.CQ.Admin.Users.Queries.GetOnlineUsersQuery;
     using Domain.Entities.Common;
     using MediatR;
     using Microsoft.AspNetCore.Identity;

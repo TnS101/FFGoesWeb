@@ -12,8 +12,6 @@
 
         public virtual string Type { get; set; }
 
-        public virtual string ClassType { get; set; }
-
         public virtual int Level { get; set; }
 
         public virtual double MaxHP { get; set; }

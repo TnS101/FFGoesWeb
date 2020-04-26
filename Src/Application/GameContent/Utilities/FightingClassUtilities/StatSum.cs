@@ -15,15 +15,15 @@
         {
         }
 
-        public async Task Sum(Hero hero, IFFDbContext context)
+        public async Task Sum(Hero hero, IFFDbContext context, Equipment heroEquipment)
         {
-            if (hero.Equipment.ArmorEquipments.Count > 0)
+            if (heroEquipment.ArmorEquipments.Count > 0)
             {
                 var items = new Queue<Armor>();
 
                 foreach (var armor in context.Armors)
                 {
-                    foreach (var armorEquipment in await context.ArmorsEquipments.Where(ai => ai.EquipmentId == hero.EquipmentId).ToListAsync())
+                    foreach (var armorEquipment in await context.ArmorsEquipments.Where(ai => ai.EquipmentId == heroEquipment.Id).ToListAsync())
                     {
                         if (armor.Id == armorEquipment.ArmorId)
                         {
@@ -44,9 +44,9 @@
                 }
             }
 
-            if (!hero.Equipment.WeaponSlot)
+            if (!heroEquipment.WeaponSlot)
             {
-                var weaponEquipment = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.EquipmentId == hero.EquipmentId);
+                var weaponEquipment = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.EquipmentId == heroEquipment.Id);
 
                 var weapon = await context.Weapons.FindAsync(weaponEquipment.WeaponId);
 
@@ -58,9 +58,9 @@
                 hero.AttackPower += weapon.Strength;
             }
 
-            if (!hero.Equipment.TrinketSlot)
+            if (!heroEquipment.TrinketSlot)
             {
-                var trinketEquipment = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.EquipmentId == hero.EquipmentId);
+                var trinketEquipment = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.EquipmentId == heroEquipment.Id);
 
                 var trinket = await context.Trinkets.FindAsync(trinketEquipment.TrinketId);
 

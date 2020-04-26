@@ -1,4 +1,4 @@
-﻿namespace Persistence
+﻿namespace Persistence.Context
 {
     using Application.Common.Interfaces;
     using Domain.Entities.Game.Items;

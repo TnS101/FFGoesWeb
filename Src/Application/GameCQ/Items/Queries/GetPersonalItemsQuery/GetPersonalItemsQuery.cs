@@ -7,6 +7,6 @@
     {
         public string Slot { get; set; }
 
-        public ClaimsPrincipal User { get; set; }
+        public string HeroId { get; set; }
     }
 }

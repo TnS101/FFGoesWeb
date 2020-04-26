@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Entities\README.md" />
     <None Remove="README.md" />
   </ItemGroup>
 

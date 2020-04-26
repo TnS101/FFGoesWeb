@@ -12,6 +12,8 @@
     {
         public async Task<string> UnEquip(Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
         {
+            var heroEquipment = await context.Equipments.FindAsync(hero.EquipmentId);
+
             if (item.Slot != "Weapon" && item.Slot != "Trinket")
             {
                 var armor = await context.ArmorsEquipments.FindAsync(item.Id);
@@ -49,7 +51,7 @@
                     ArmorId = item.Id,
                 });
 
-                await statSum.Sum(hero, context);
+                await statSum.Sum(hero, context, heroEquipment);
 
                 return "/Equipment";
             }
@@ -67,7 +69,7 @@
                     WeaponId = weapon.WeaponId,
                 });
 
-                await statSum.Sum(hero, context);
+                await statSum.Sum(hero, context, heroEquipment);
                 return "/Equipment";
             }
             else
@@ -84,7 +86,7 @@
                     TrinketId = trinket.TrinketId,
                 });
 
-                await statSum.Sum(hero, context);
+                await statSum.Sum(hero, context, heroEquipment);
                 return "/Equipment";
             }
         }

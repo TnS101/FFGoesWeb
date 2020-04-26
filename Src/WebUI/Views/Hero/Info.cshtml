@@ -5,11 +5,10 @@
         <h1 class="secondary-font-color has-large-font-size item-padding">Hero Info</h1>
         <div class="item-padding"><hr /></div>
         <div>
-            <a asp-controller="Hero" asp-action="Inventory"><i class="fas fa-boxes has-massive-font-size main-font-color bottom-right-icon"></i></a>
-            <a asp-controller="Hero" asp-action="Equipment"><i class="fas fa-child has-massive-font-size main-font-color bottom-left-icon"></i></a>
+            <a asp-controller="Hero" asp-action="Inventory" asp-route-id="@Model.Id"><i class="fas fa-boxes has-massive-font-size main-font-color bottom-right-icon"></i></a>
+            <a asp-controller="Hero" asp-action="Equipment" asp-route-id="@Model.Id"><i class="fas fa-child has-massive-font-size main-font-color bottom-left-icon"></i></a>
         </div>
     </div>
-    <cache vary-by-query="id">
         <div class="container  item-padding">
             <div class="container item-padding hero-border">
                 <img src="@Model.ImagePath" class="item-padding aligncenter" alt="Hero's Image" />
@@ -79,4 +78,3 @@
 
             </div>
         </div>
-    </cache>

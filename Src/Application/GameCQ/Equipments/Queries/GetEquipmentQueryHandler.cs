@@ -7,6 +7,7 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
+    using AutoMapper.QueryableExtensions;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using MediatR;
@@ -27,7 +28,7 @@
             {
                 return await this.GetWeapon(hero);
             }
-            else if (request.Slot == "Trinket")
+            else if (request.Slot != "Trinket")
             {
                 return this.ArmorList(hero);
             }
@@ -39,7 +40,7 @@
 
         private async Task<EquipmentViewModel> GetTrinket(Hero hero)
         {
-            if (!this.Context.TrinketEquipments.ToList().Any(te => te.EquipmentId == hero.EquipmentId))
+            if (!this.Context.TrinketEquipments.Any(te => te.EquipmentId == hero.EquipmentId))
             {
                 return new EquipmentViewModel
                 {
@@ -47,20 +48,25 @@
                 };
             }
 
-            var equipment = await this.Context.TrinketEquipments.FirstOrDefaultAsync(te => te.EquipmentId == hero.EquipmentId);
+            var equipment = await this.Context.TrinketEquipments.FindAsync(hero.EquipmentId);
 
             var trinket = await this.Context.Trinkets.FindAsync(equipment.TrinketId);
 
-            var trinkets = new List<Trinket>();
+            var trinkets = new List<Trinket>
+            {
+                trinket,
+            };
 
             return new EquipmentViewModel
             {
-                Items = (List<ItemMinViewModel>)trinkets.Select(w => new ItemMinViewModel
+                Items = trinkets.Select(w => new ItemMinViewModel
                 {
                     Id = w.Id,
                     ImagePath = w.ImagePath,
                     Name = w.Name,
-                }),
+                    Slot = w.Slot,
+                    Level = w.Level,
+                }).ToList(),
             };
         }
 

@@ -8,7 +8,7 @@
     public class GuideController : BaseController
     {
         [HttpGet]
-        public ActionResult About()
+        public IActionResult About()
         {
             return this.View();
         }

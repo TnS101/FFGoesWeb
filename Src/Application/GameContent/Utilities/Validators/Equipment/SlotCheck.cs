@@ -95,17 +95,27 @@
                 && w.ImagePath == templateWeapon.ImagePath);
             }
 
-            context.WeaponsInventories.Add(new WeaponInventory
+            if (context.WeaponsInventories.Any(i => i.InventoryId == hero.InventoryId && i.WeaponId == weaponId))
             {
-                InventoryId = hero.InventoryId,
-                WeaponId = weaponId,
-            });
+                var weapon = await context.WeaponsInventories.FirstOrDefaultAsync(w => w.InventoryId == hero.InventoryId && w.WeaponId == weaponId);
+
+                weapon.Count++;
+            }
+            else
+            {
+                context.WeaponsInventories.Add(new WeaponInventory
+                {
+                    InventoryId = hero.InventoryId,
+                    WeaponId = weaponId,
+                });
+            }
         }
 
         private async Task TrinketGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
         {
             Trinket templateTrinket = new Trinket
             {
+                Name = "Trinket",
                 Strength = stats[0],
                 Stamina = stats[1],
                 Intellect = stats[2],
@@ -135,11 +145,20 @@
                 trinketId = trinket.Id;
             }
 
-            context.TrinketsInventories.Add(new TrinketInventory
+            if (context.TrinketsInventories.Any(i => i.InventoryId == hero.InventoryId && i.TrinketId == trinketId))
             {
-                InventoryId = hero.InventoryId,
-                TrinketId = trinketId,
-            });
+                var trinket = await context.TrinketsInventories.FirstOrDefaultAsync(t => t.InventoryId == hero.InventoryId && t.TrinketId == trinketId);
+
+                trinket.Count++;
+            }
+            else
+            {
+                context.TrinketsInventories.Add(new TrinketInventory
+                {
+                    InventoryId = hero.InventoryId,
+                    TrinketId = trinketId,
+                });
+            }
         }
 
         private async Task ArmorGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
@@ -177,11 +196,20 @@
                 && a.ImagePath == templateArmor.ImagePath);
             }
 
-            context.ArmorsInventories.Add(new ArmorInventory
+            if (context.ArmorsInventories.Any(i => i.InventoryId == hero.InventoryId && i.ArmorId == armorId))
             {
-                InventoryId = hero.InventoryId,
-                ArmorId = armorId,
-            });
+                var armor = await context.ArmorsInventories.FirstOrDefaultAsync(t => t.InventoryId == hero.InventoryId && t.ArmorId == armorId);
+
+                armor.Count++;
+            }
+            else
+            {
+                context.ArmorsInventories.Add(new ArmorInventory
+                {
+                    InventoryId = hero.InventoryId,
+                    ArmorId = armorId,
+                });
+            }
         }
 
         private async Task TreasureKeyGenerate(IFFDbContext context, string inventoryId)
@@ -203,23 +231,33 @@
                 treasureKeyId = 3; // Bronze
             }
 
-            context.TreasureKeysInventories.Add(new TreasureKeyInventory
+            if (context.TreasureKeysInventories.Any(i => i.InventoryId == inventoryId && i.TreasureKeyId == treasureKeyId))
             {
-                InventoryId = inventoryId,
-                TreasureKeyId = treasureKeyId,
-            });
+                var treasureKey = await context.TreasureKeysInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.TreasureKeyId == treasureKeyId);
+
+                treasureKey.Count++;
+            }
+            else
+            {
+                context.TreasureKeysInventories.Add(new TreasureKeyInventory
+                {
+                    InventoryId = inventoryId,
+                    TreasureKeyId = treasureKeyId,
+                });
+            }
         }
 
         private async Task ZoneVariety(string zoneName, IFFDbContext context, string inventoryId, Monster monster)
         {
-            if (zoneName == "World")
-            {
-                await this.MainMaterialsGenerate(context, inventoryId, monster);
-            }
-            else
-            {
-                await this.ProffesionMaterialsGenerate(context, inventoryId, monster, zoneName);
-            }
+            await this.MainMaterialsGenerate(context, inventoryId, monster);
+
+            //if (zoneName == "World")
+            //{
+            //}
+            //else
+            //{
+            //    await this.ProffesionMaterialsGenerate(context, inventoryId, monster, zoneName);
+            //}
         }
 
         private async Task MainMaterialsGenerate(IFFDbContext context, string inventoryId, Monster monster)
@@ -228,11 +266,20 @@
 
             var material = await context.Materials.FirstOrDefaultAsync(m => m.Name == materialName);
 
-            context.MaterialsInventories.Add(new MaterialInventory
+            if (context.MaterialsInventories.Any(i => i.InventoryId == inventoryId && i.MaterialId == material.Id))
             {
-                InventoryId = inventoryId,
-                MaterialId = material.Id,
-            });
+                var materialFromInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.MaterialId == material.Id);
+
+                materialFromInventory.Count++;
+            }
+            else
+            {
+                context.MaterialsInventories.Add(new MaterialInventory
+                {
+                    InventoryId = inventoryId,
+                    MaterialId = material.Id,
+                });
+            }
         }
 
         private async Task ProffesionMaterialsGenerate(IFFDbContext context, string invetoryId, Monster monster, string zoneName)
@@ -321,12 +368,7 @@
 
             while (true)
             {
-                if (materialNumber > 7 && materialNumber < 11)
-                {
-                    this.JunkVariety(monster);
-                    break;
-                }
-                else if (materialNumber == 0)
+                if (materialNumber == 0)
                 {
                     // wood
                     materialName = this.MainMaterialVariety(this.woods);
@@ -400,6 +442,11 @@
                         continue;
                     }
                 }
+                else if (materialNumber > 7 && materialNumber < 11)
+                {
+                    this.JunkVariety(monster);
+                    break;
+                }
 
                 break;
             }
@@ -411,7 +458,7 @@
         {
             int junkNumber = this.rng.Next(0, 3);
 
-            string[] junks = { };
+            string[] junks = new string[] { string.Empty, string.Empty, string.Empty };
 
             if (monster.Type == "Beast")
             {

@@ -25,7 +25,5 @@
         double ResistanceValue { get; set; }
 
         double CritChance { get; set; }
-
-        string ClassType { get; set; }
     }
 }

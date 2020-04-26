@@ -6,25 +6,21 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetPersonalItemsQueryHandler : UserHandler, IRequestHandler<GetPersonalItemsQuery, ItemListViewModel>
+    public class GetPersonalItemsQueryHandler : BaseHandler, IRequestHandler<GetPersonalItemsQuery, ItemListViewModel>
     {
-        public GetPersonalItemsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public GetPersonalItemsQueryHandler(IFFDbContext context)
+            : base(context)
         {
         }
 
         public async Task<ItemListViewModel> Handle(GetPersonalItemsQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
-
-            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
+            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
             if (request.Slot == "Weapon")
             {
@@ -83,6 +79,7 @@
                         ImagePath = i.ImagePath,
                         Slot = i.Slot,
                         Level = i.Level,
+                        ClassType = i.ClassType,
                     }),
                     HeroClass = hero.ClassType,
                     HeroLevel = hero.Level,
@@ -96,7 +93,7 @@
 
         private async Task<ItemListViewModel> GetArmors(Hero hero)
         {
-            if (await this.Context.ArmorsInventories.AnyAsync(ai => ai.InventoryId == hero.InventoryId))
+            if (this.Context.ArmorsInventories.Any(ai => ai.InventoryId == hero.InventoryId))
             {
                 var inventory = await this.Context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId).ToListAsync();
 
@@ -122,6 +119,7 @@
                         ImagePath = i.ImagePath,
                         Slot = i.Slot,
                         Level = i.Level,
+                        ClassType = i.ClassType,
                     }),
                     HeroClass = hero.ClassType,
                     HeroLevel = hero.Level,
@@ -135,7 +133,7 @@
 
         private async Task<ItemListViewModel> GetTrinkets(Hero hero)
         {
-            if (await this.Context.TrinketsInventories.AnyAsync(ti => ti.InventoryId == hero.Id))
+            if (this.Context.TrinketsInventories.Any(ti => ti.InventoryId == hero.InventoryId))
             {
                 var inventory = await this.Context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
@@ -161,6 +159,7 @@
                         ImagePath = i.ImagePath,
                         Slot = i.Slot,
                         Level = i.Level,
+                        ClassType = i.ClassType,
                     }),
                     HeroClass = hero.ClassType,
                     HeroLevel = hero.Level,
@@ -174,7 +173,7 @@
 
         private async Task<ItemListViewModel> GetTreasures(Hero hero)
         {
-            if (await this.Context.TreasuresInventories.AnyAsync(ti => ti.InventoryId == hero.InventoryId))
+            if (this.Context.TreasuresInventories.Any(ti => ti.InventoryId == hero.InventoryId))
             {
                 var inventory = await this.Context.TreasuresInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 

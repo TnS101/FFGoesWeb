@@ -40,7 +40,7 @@
 
         public override string Name { get; set; }
 
-        public override string ClassType { get; set; }
+        public string ClassType { get; set; }
 
         public string Race { get; set; }
 

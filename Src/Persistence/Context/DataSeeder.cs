@@ -1,47 +1,94 @@
-﻿namespace Application.SeedInitialData
+﻿namespace Persistence.Context
 {
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Application.Common.Interfaces;
+    using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using Domain.Entities.Game.Units.OneToOne;
     using Domain.Entities.Social;
-    using global::Domain.Entities.Common;
 
     public class DataSeeder
     {
-        private readonly IFFDbContext context;
-
-        public DataSeeder(IFFDbContext context)
+        public static async Task Seed(FFDbContext context)
         {
-            this.context = context;
+            var seeder = new DataSeeder();
+            await seeder.SeedAsync(context, CancellationToken.None);
         }
 
-        public async Task SeedAsync(CancellationToken cancellationToken)
+        public async Task SeedAsync(FFDbContext context, CancellationToken cancellationToken)
         {
-            await this.SeedPlayerSpellsAsync(cancellationToken);
+            context.Database.EnsureCreated();
 
-            await this.SeedFigthingClassesAsync(cancellationToken);
+            if (context.Spells.Any())
+            {
+                return;
+            }
 
-            await this.SeedEnemySpellsAsync(cancellationToken);
+            await this.SeedSampleUsers(context, cancellationToken);
 
-            await this.SeedMonstersAsync(cancellationToken);
+            await this.SeedPlayerSpellsAsync(context, cancellationToken);
 
-            await this.SeedMonsterRaritiesAsync(cancellationToken);
+            await this.SeedFigthingClassesAsync(context, cancellationToken);
 
-            await this.SeedStatusesAsync(cancellationToken);
+            await this.SeedEnemySpellsAsync(context, cancellationToken);
 
-            await this.SeedToolsAsync(cancellationToken);
+            await this.SeedMonstersAsync(context, cancellationToken);
 
-            await this.SeedMainMaterialsAsync(cancellationToken);
+            await this.SeedMonsterRaritiesAsync(context, cancellationToken);
+
+            await this.SeedStatusesAsync(context, cancellationToken);
+
+            await this.SeedToolsAsync(context, cancellationToken);
+
+            await this.SeedMainMaterialsAsync(context, cancellationToken);
+
+            await this.SeedTreasureKeysAsync(context, cancellationToken);
         }
 
-        private async Task SeedMainMaterialsAsync(CancellationToken cancellationToken)
+        private async Task SeedTreasureKeysAsync(FFDbContext context, CancellationToken cancellationToken)
+        {
+            context.TreasureKeys.Add(new TreasureKey
+            {
+                Name = "Basic Bronze Key",
+                Rarity = "Bronze",
+                Slot = "Treasure Key",
+                ImagePath = "/images/Items/Treasure Keys/Basic Bronze Key.png",
+            });
+            context.TreasureKeys.Add(new TreasureKey
+            {
+                Name = "Basic Silver Key",
+                Rarity = "Silver",
+                Slot = "Treasure Key",
+                ImagePath = "/images/Items/Treasure Keys/Basic Silver Key.png",
+            });
+            context.TreasureKeys.Add(new TreasureKey
+            {
+                Name = "Basic Gold Key",
+                Rarity = "Gold",
+                Slot = "Gold Key",
+                ImagePath = "/images/Items/Treasure Keys/Basic Gold Key.png",
+            });
+
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
+        private async Task SeedSampleUsers(FFDbContext context, CancellationToken cancellationToken)
+        {
+            context.AppUsers.Add(new AppUser
+            {
+                UserName = "random123",
+                Email = "random@mail.com",
+            });
+
+            await context.SaveChangesAsync(cancellationToken);
+        }
+
+        private async Task SeedMainMaterialsAsync(FFDbContext context, CancellationToken cancellationToken)
         {
             // Main
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Oak Log",
                 Type = "Wood",
@@ -50,7 +97,7 @@
                 FuelCount = 1,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Walnut Log",
                 Type = "Wood",
@@ -58,8 +105,7 @@
                 IsRefineable = true,
                 FuelCount = 2,
             });
-            this.
-                context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Birch Log",
                 Type = "Wood",
@@ -68,7 +114,7 @@
                 FuelCount = 1,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Mahogany Log",
                 Type = "Wood",
@@ -77,7 +123,7 @@
                 FuelCount = 1,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Coal Ore",
                 Type = "Ore",
@@ -85,7 +131,7 @@
                 FuelCount = 3,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Copper Ore",
                 Type = "Ore",
@@ -93,7 +139,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Iron Ore",
                 Type = "Ore",
@@ -101,7 +147,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Gold Ore",
                 Type = "Ore",
@@ -109,7 +155,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Leather Scraps",
                 Type = "Leather",
@@ -117,7 +163,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Animal Fur",
                 Type = "Leather",
@@ -125,7 +171,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Light Leather",
                 Type = "Leather",
@@ -133,7 +179,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Fine Leather",
                 Type = "Leather",
@@ -141,7 +187,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Cotton",
                 Type = "Cloth",
@@ -149,7 +195,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Linen Cloth",
                 Type = "Cloth",
@@ -157,7 +203,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Silk",
                 Type = "Cloth",
@@ -165,28 +211,28 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Mint",
                 Type = "Herb",
                 ImagePath = "/images/Items/Materials/Mint.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Coriander",
                 Type = "Herb",
                 ImagePath = "/images/Items/Materials/Coriander.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Lavender",
                 Type = "Herb",
                 ImagePath = "/images/Items/Materials/Lavender.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Buttercup",
                 Type = "Herb",
@@ -194,7 +240,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Water Essence",
                 Type = "Essence",
@@ -202,7 +248,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Earth Essence",
                 Type = "Essence",
@@ -210,7 +256,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Air Essence",
                 Type = "Essence",
@@ -218,7 +264,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Fire Essence",
                 Type = "Essence",
@@ -226,7 +272,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Shiny Scale",
                 Type = "Scale",
@@ -234,7 +280,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Transparent Scale",
                 Type = "Scale",
@@ -242,7 +288,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Golden Necklace",
                 Type = "Metal",
@@ -251,7 +297,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Hard Scale",
                 Type = "Scale",
@@ -259,7 +305,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Tomato",
                 Type = "Vegetables",
@@ -267,7 +313,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Lettuce",
                 Type = "Vegetables",
@@ -275,7 +321,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Turnip",
                 Type = "Vegetables",
@@ -283,7 +329,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Pumpkin",
                 Type = "Vegetables",
@@ -292,21 +338,21 @@
             });
 
             // Profession
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Dry Branch",
                 Type = "Wood",
                 ImagePath = "/images/Items/Materials/Dry-Branch.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Green Leaves",
                 Type = "Wood",
                 ImagePath = "/images/Items/Materials/Green-Leaves.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Tree Stump",
                 Type = "Wood",
@@ -315,7 +361,7 @@
                 FuelCount = 1,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Acorn",
                 Type = "Wood",
@@ -323,7 +369,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Granite",
                 Type = "Rock",
@@ -331,7 +377,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Marble",
                 Type = "Rock",
@@ -339,7 +385,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Quartzite",
                 Type = "Rock",
@@ -347,7 +393,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Obsidian",
                 Type = "Rock",
@@ -355,7 +401,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Animal Stomach",
                 Type = "Meat",
@@ -363,7 +409,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Animal Skull",
                 Type = "Bones",
@@ -372,7 +418,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Animal Bones",
                 Type = "Bones",
@@ -381,14 +427,14 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Fangs",
                 Type = "Bones",
                 ImagePath = "/images/Items/Materials/Fangs.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "T-Shirt",
                 Type = "Cloth",
@@ -397,7 +443,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Shoes",
                 Type = "Leather",
@@ -406,7 +452,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Pants",
                 Type = "Leather",
@@ -415,28 +461,28 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Human Soul",
                 Type = "Essence",
                 ImagePath = "/images/Items/Materials/Human-Soul.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Rose",
                 Type = "Plant",
                 ImagePath = "/images/Items/Materials/Rose.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Daisy",
                 Type = "Plant",
                 ImagePath = "/images/Items/Materials/Daisy.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Clay Pot",
                 Type = "Furniture",
@@ -445,7 +491,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Plastic Vase",
                 Type = "Furniture",
@@ -453,7 +499,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Life Essence",
                 Type = "Essence",
@@ -461,7 +507,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Light Essence",
                 Type = "Essence",
@@ -469,7 +515,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Shadow Essence",
                 Type = "Essence",
@@ -477,7 +523,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Death Essence",
                 Type = "Essence",
@@ -485,7 +531,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "String",
                 Type = "Cloth",
@@ -493,7 +539,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Puffer Fish",
                 Type = "Fish",
@@ -502,7 +548,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Turtle Eggs",
                 Type = "Egg",
@@ -510,7 +556,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Bottled Message",
                 Type = "Junk",
@@ -519,7 +565,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Potato",
                 Type = "Vegetable",
@@ -527,7 +573,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Corn",
                 Type = "Vegetable",
@@ -535,7 +581,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Garden Shovel",
                 Type = "Junk",
@@ -544,7 +590,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Watering Can",
                 Type = "Junk",
@@ -553,7 +599,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Broken Glass Cup",
                 Type = "Junk",
@@ -561,7 +607,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Stale Hotdog",
                 Type = "Junk",
@@ -569,7 +615,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Crushed Can",
                 Type = "Junk",
@@ -578,7 +624,7 @@
             });
 
             // Junk
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Rubber Band",
                 Type = "Junk",
@@ -586,21 +632,21 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Animal Blood",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Animal-Blood.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Dead Critters",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Dead-Critters.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Broken Skull",
                 Type = "Junk",
@@ -608,7 +654,7 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Broken Watch",
                 Type = "Junk",
@@ -617,7 +663,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Empty Plastic Bottle",
                 Type = "Junk",
@@ -626,7 +672,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Broken Cogs",
                 Type = "Junk",
@@ -635,7 +681,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Rusty Pipes",
                 Type = "Junk",
@@ -644,7 +690,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Dead Battery",
                 Type = "Junk",
@@ -653,7 +699,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Cracked Water Orb",
                 Type = "Junk",
@@ -662,7 +708,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Coal Piece",
                 Type = "Junk",
@@ -670,21 +716,21 @@
                 IsRefineable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Water Flask",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Water-Flask.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Worm",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Worm.png",
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Withered Roots",
                 Type = "Junk",
@@ -693,7 +739,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Mud",
                 Type = "Junk",
@@ -702,7 +748,7 @@
                 IsDisolveable = true,
             });
 
-            this.context.Materials.Add(new Material
+            context.Materials.Add(new Material
             {
                 Name = "Broken Branches",
                 Type = "Junk",
@@ -710,12 +756,12 @@
                 IsRefineable = true,
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedToolsAsync(CancellationToken cancellationToken)
+        private async Task SeedToolsAsync(FFDbContext context, CancellationToken cancellationToken)
         {
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Saw",
                 Durability = 10,
@@ -723,7 +769,7 @@
                 BuyPrice = 20,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Hammer",
                 Durability = 10,
@@ -731,7 +777,7 @@
                 BuyPrice = 20,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Sandpaper",
                 Durability = 10,
@@ -739,7 +785,7 @@
                 BuyPrice = 10,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Anvil",
                 Durability = 30,
@@ -747,7 +793,7 @@
                 BuyPrice = 60,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Knife",
                 Durability = 10,
@@ -755,7 +801,7 @@
                 BuyPrice = 20,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Needle",
                 Durability = 20,
@@ -763,7 +809,7 @@
                 BuyPrice = 10,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Ruler",
                 Durability = 50,
@@ -771,7 +817,7 @@
                 BuyPrice = 30,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Scissors",
                 Durability = 20,
@@ -779,7 +825,7 @@
                 BuyPrice = 40,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Knitting Kit",
                 Durability = 20,
@@ -787,7 +833,7 @@
                 BuyPrice = 10,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Mortar and Pestle",
                 Durability = 30,
@@ -795,7 +841,7 @@
                 BuyPrice = 60,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Protective Mask",
                 Durability = 10,
@@ -803,7 +849,7 @@
                 BuyPrice = 20,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Cooling Rod",
                 Durability = 20,
@@ -811,7 +857,7 @@
                 BuyPrice = 40,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Heavy Sandpaper",
                 Durability = 20,
@@ -819,7 +865,7 @@
                 BuyPrice = 30,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Mixing Bowl",
                 Durability = 30,
@@ -827,7 +873,7 @@
                 BuyPrice = 50,
             });
 
-            this.context.Tools.Add(new Tool
+            context.Tools.Add(new Tool
             {
                 Name = "Cutting Board",
                 Durability = 30,
@@ -835,12 +881,12 @@
                 BuyPrice = 30,
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedMonsterRaritiesAsync(CancellationToken cancellationToken)
+        private async Task SeedMonsterRaritiesAsync(FFDbContext context, CancellationToken cancellationToken)
         {
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Bear",
                 Rarity = "Rare",
@@ -848,7 +894,7 @@
                 StatAmplifier = 0.1,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Bear",
                 Rarity = "Heroic",
@@ -856,7 +902,7 @@
                 StatAmplifier = 0.2,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Demon",
                 Rarity = "Rare",
@@ -864,7 +910,7 @@
                 StatAmplifier = 0.1,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Demon",
                 Rarity = "Heroic",
@@ -872,7 +918,7 @@
                 StatAmplifier = 0.2,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Giant",
                 Rarity = "Rare",
@@ -880,7 +926,7 @@
                 StatAmplifier = 0.1,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Giant",
                 Rarity = "Heroic",
@@ -888,7 +934,7 @@
                 StatAmplifier = 0.2,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Gryphon",
                 Rarity = "Rare",
@@ -896,7 +942,7 @@
                 StatAmplifier = 0.1,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Gryphon",
                 Rarity = "Heroic",
@@ -904,7 +950,7 @@
                 StatAmplifier = 0.2,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Reptile",
                 Rarity = "Rare",
@@ -912,7 +958,7 @@
                 StatAmplifier = 0.1,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Reptile",
                 Rarity = "Heroic",
@@ -920,7 +966,7 @@
                 StatAmplifier = 0.2,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Saint",
                 Rarity = "Rare",
@@ -928,7 +974,7 @@
                 StatAmplifier = 0.1,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Saint",
                 Rarity = "Heroic",
@@ -936,7 +982,7 @@
                 StatAmplifier = 0.2,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Skeleton",
                 Rarity = "Rare",
@@ -944,7 +990,7 @@
                 StatAmplifier = 0.1,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Skeleton",
                 Rarity = "Heroic",
@@ -952,7 +998,7 @@
                 StatAmplifier = 0.2,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Wyrm",
                 Rarity = "Rare",
@@ -960,7 +1006,7 @@
                 StatAmplifier = 0.1,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Wyrm",
                 Rarity = "Heroic",
@@ -968,7 +1014,7 @@
                 StatAmplifier = 0.2,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Zombie",
                 Rarity = "Rare",
@@ -976,7 +1022,7 @@
                 StatAmplifier = 0.1,
             });
 
-            this.context.MonstersRarities.Add(new MonsterRarity
+            context.MonstersRarities.Add(new MonsterRarity
             {
                 MonsterName = "Zombie",
                 Rarity = "Heroic",
@@ -984,14 +1030,15 @@
                 StatAmplifier = 0.2,
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedMonstersAsync(CancellationToken cancellationToken)
+        private async Task SeedMonstersAsync(FFDbContext context, CancellationToken cancellationToken)
         {
-            this.context.Monsters.Add(new Monster
+            context.Monsters.Add(new Monster
             {
                 Name = "Bear",
+                Type = "Beast",
                 MaxHP = 80,
                 HealthRegen = 3,
                 MaxMana = 75,
@@ -1005,9 +1052,10 @@
                 Description = "A bloodthirsty animal,which also likes to party for some reason...",
             });
 
-            this.context.Monsters.Add(new Monster
+            context.Monsters.Add(new Monster
             {
                 Name = "Reptile",
+                Type = "Reptile",
                 MaxHP = 60,
                 HealthRegen = 2,
                 MaxMana = 60,
@@ -1021,9 +1069,10 @@
                 Description = "Actually kind of a dinosaur/lizard thingy... not very sure.",
             });
 
-            this.context.Monsters.Add(new Monster
+            context.Monsters.Add(new Monster
             {
                 Name = "Zombie",
+                Type = "Humanoid",
                 MaxHP = 72,
                 HealthRegen = 4,
                 MaxMana = 80,
@@ -1037,9 +1086,10 @@
                 Description = "Sapiosexual. Not very smart.",
             });
 
-            this.context.Monsters.Add(new Monster
+            context.Monsters.Add(new Monster
             {
                 Name = "Skeleton",
+                Type = "Humanoid",
                 MaxHP = 62,
                 HealthRegen = 8,
                 MaxMana = 70,
@@ -1053,9 +1103,10 @@
                 Description = "{Insert a /Spooky/ joke here.}",
             });
 
-            this.context.Monsters.Add(new Monster
+            context.Monsters.Add(new Monster
             {
                 Name = "Wyrm",
+                Type = "Reptile",
                 MaxHP = 100,
                 HealthRegen = 2,
                 MaxMana = 80,
@@ -1069,9 +1120,10 @@
                 Description = "Picture this guy beneath the toilet seat next time you take a dump. I dare you!",
             });
 
-            this.context.Monsters.Add(new Monster
+            context.Monsters.Add(new Monster
             {
                 Name = "Giant",
+                Type = "Mechanical",
                 MaxHP = 186,
                 HealthRegen = 3,
                 MaxMana = 90,
@@ -1085,9 +1137,10 @@
                 Description = "Not to be confused with the Iron Giant.",
             });
 
-            this.context.Monsters.Add(new Monster
+            context.Monsters.Add(new Monster
             {
                 Name = "Gryphon",
+                Type = "Beast",
                 MaxHP = 65,
                 HealthRegen = 2,
                 MaxMana = 110,
@@ -1101,9 +1154,10 @@
                 Description = "These halfbreeds don't just exist in World of Warcraft!",
             });
 
-            this.context.Monsters.Add(new Monster
+            context.Monsters.Add(new Monster
             {
                 Name = "Saint",
+                Type = "Elemental",
                 MaxHP = 120,
                 HealthRegen = 2,
                 MaxMana = 120,
@@ -1117,9 +1171,10 @@
                 Description = "You'll pay for not going to church on sundays!",
             });
 
-            this.context.Monsters.Add(new Monster
+            context.Monsters.Add(new Monster
             {
                 Name = "Demon",
+                Type = "Elemental",
                 MaxHP = 120,
                 HealthRegen = 3.6,
                 MaxMana = 100,
@@ -1133,12 +1188,12 @@
                 Description = "Fearsome and cunning! Something is wrong with his head (I mean the PNG file).",
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedFigthingClassesAsync(CancellationToken cancellationToken)
+        private async Task SeedFigthingClassesAsync(FFDbContext context, CancellationToken cancellationToken)
         {
-            this.context.FightingClasses.Add(new FightingClass
+            context.FightingClasses.Add(new FightingClass
             {
                 Type = "Warrior",
                 MaxHP = 260,
@@ -1156,7 +1211,7 @@
                 IconPath = "/images/Icons/Warrior-Icon.png",
             });
 
-            this.context.FightingClasses.Add(new FightingClass
+            context.FightingClasses.Add(new FightingClass
             {
                 Type = "Hunter",
                 MaxHP = 215,
@@ -1174,7 +1229,7 @@
                 IconPath = "/images/Icons/Hunter-Icon.png",
             });
 
-            this.context.FightingClasses.Add(new FightingClass
+            context.FightingClasses.Add(new FightingClass
             {
                 Type = "Mage",
                 MaxHP = 210,
@@ -1192,7 +1247,7 @@
                 IconPath = "/images/Icons/Mage-Icon.png",
             });
 
-            this.context.FightingClasses.Add(new FightingClass
+            context.FightingClasses.Add(new FightingClass
             {
                 Type = "Naturalist",
                 MaxHP = 225,
@@ -1210,7 +1265,7 @@
                 IconPath = "/images/Icons/Druid-Icon.png",
             });
 
-            this.context.FightingClasses.Add(new FightingClass
+            context.FightingClasses.Add(new FightingClass
             {
                 Type = "Necroid",
                 MaxHP = 200,
@@ -1228,7 +1283,7 @@
                 IconPath = "/images/Icons/Necroid-Icon.png",
             });
 
-            this.context.FightingClasses.Add(new FightingClass
+            context.FightingClasses.Add(new FightingClass
             {
                 Type = "Paladin",
                 MaxHP = 225,
@@ -1246,7 +1301,7 @@
                 IconPath = "/images/Icons/Paladin-Icon.png",
             });
 
-            this.context.FightingClasses.Add(new FightingClass
+            context.FightingClasses.Add(new FightingClass
             {
                 Type = "Priest",
                 MaxHP = 190,
@@ -1264,7 +1319,7 @@
                 IconPath = "/images/Icons/Priest-Icon.png",
             });
 
-            this.context.FightingClasses.Add(new FightingClass
+            context.FightingClasses.Add(new FightingClass
             {
                 Type = "Rogue",
                 MaxHP = 195,
@@ -1282,7 +1337,7 @@
                 IconPath = "/images/Icons/Rogue-Icon.png",
             });
 
-            this.context.FightingClasses.Add(new FightingClass
+            context.FightingClasses.Add(new FightingClass
             {
                 Type = "Shaman",
                 MaxHP = 210,
@@ -1300,13 +1355,13 @@
                 IconPath = "/images/Icons/Shaman-Icon.png",
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedEnemySpellsAsync(CancellationToken cancellationToken)
+        private async Task SeedEnemySpellsAsync(FFDbContext context, CancellationToken cancellationToken)
         {
             // Beast
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Furious Roar",
                 ManaRequirement = 0.2,
@@ -1316,7 +1371,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Bite",
                 ManaRequirement = 0.2,
@@ -1329,7 +1384,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Thick Hide",
                 ManaRequirement = 0.5,
@@ -1339,7 +1394,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Lick Wounds",
                 ManaRequirement = 0.4,
@@ -1350,7 +1405,7 @@
             });
 
             // Demon
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Corruption",
                 ManaRequirement = 0.3,
@@ -1360,7 +1415,7 @@
                 BuffOrEffectTarget = "Target",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Shadow Punch",
                 ManaRequirement = 0.25,
@@ -1370,7 +1425,7 @@
                 ResistanceAffect = 0.9,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Eye Of The Void",
                 ManaRequirement = 0.25,
@@ -1380,7 +1435,7 @@
                 BuffOrEffectTarget = "Target",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Ripping Hell-Fire",
                 ManaRequirement = 0.65,
@@ -1391,7 +1446,7 @@
             });
 
             // Giant
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Overgrowth",
                 ManaRequirement = 0.22,
@@ -1403,7 +1458,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Calming Mind",
                 ManaRequirement = 0.12,
@@ -1413,7 +1468,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Raging Mind",
                 ManaRequirement = 0.4,
@@ -1425,7 +1480,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Overpowering Fist",
                 ManaRequirement = 0.4,
@@ -1436,7 +1491,7 @@
             });
 
             // Gryphon
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Diving Claw",
                 ManaRequirement = 0.3,
@@ -1446,7 +1501,7 @@
                 ResistanceAffect = 0.5,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Petryfying Gaze",
                 ManaRequirement = 0.5,
@@ -1456,7 +1511,7 @@
                 BuffOrEffectTarget = "Target",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Gust",
                 ManaRequirement = 0.3,
@@ -1466,7 +1521,7 @@
                 BuffOrEffectTarget = "Target",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Peck",
                 ManaRequirement = 0.2,
@@ -1477,7 +1532,7 @@
             });
 
             // Reptile
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Poison Spit",
                 ManaRequirement = 0.3,
@@ -1487,7 +1542,7 @@
                 ResistanceAffect = 0.9,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Reflelcting Scales",
                 ManaRequirement = 0.3,
@@ -1500,7 +1555,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Skin Change",
                 ManaRequirement = 0.3,
@@ -1512,7 +1567,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Scratch",
                 ManaRequirement = 0.15,
@@ -1523,7 +1578,7 @@
             });
 
             // Saint
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Sacred Words",
                 ManaRequirement = 0.4,
@@ -1532,7 +1587,7 @@
                 Power = 1.8,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Illumination",
                 ManaRequirement = 0.35,
@@ -1544,7 +1599,7 @@
                 BuffOrEffectTarget = "Target",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Holy Smite",
                 ManaRequirement = 0.12,
@@ -1554,7 +1609,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Judgement Day",
                 ManaRequirement = 0.42,
@@ -1568,7 +1623,7 @@
             });
 
             // Skeleton
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Tombstone",
                 ManaRequirement = 0.15,
@@ -1580,7 +1635,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Wrath Of The Necropolis",
                 ManaRequirement = 0.4,
@@ -1591,7 +1646,7 @@
                 ResistanceAffect = 0.7,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Suffocation",
                 ManaRequirement = 0.3,
@@ -1605,7 +1660,7 @@
                 ResistanceAffect = 0,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Horrifying Scream",
                 ManaRequirement = 0.3,
@@ -1616,7 +1671,7 @@
             });
 
             // Wyrm
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Tidal Slash",
                 ManaRequirement = 0.18,
@@ -1629,7 +1684,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Dive",
                 ManaRequirement = 0.3,
@@ -1641,7 +1696,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Hyper Speed",
                 ManaRequirement = 0.3,
@@ -1651,7 +1706,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Thunder",
                 ManaRequirement = 0.5,
@@ -1665,7 +1720,7 @@
             });
 
             // Zombie
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Infecting Bite",
                 ManaRequirement = 0.4,
@@ -1678,7 +1733,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Feed",
                 ManaRequirement = 0.3,
@@ -1691,7 +1746,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Mutation",
                 ManaRequirement = 0.4,
@@ -1703,7 +1758,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Decay",
                 ManaRequirement = 0.15,
@@ -1715,13 +1770,13 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedPlayerSpellsAsync(CancellationToken cancellationToken)
+        private async Task SeedPlayerSpellsAsync(FFDbContext context, CancellationToken cancellationToken)
         {
             // Hunter
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Hasting Arrow",
                 ManaRequirement = 0.12,
@@ -1734,7 +1789,7 @@
                 EffectPower = 0.05,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Grass Hop",
                 ManaRequirement = 0.5,
@@ -1744,7 +1799,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Poison Shot",
                 ManaRequirement = 0.25,
@@ -1755,7 +1810,7 @@
                 ResistanceAffect = 0.5,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Sharp Eye",
                 ManaRequirement = 0.5,
@@ -1766,7 +1821,7 @@
             });
 
             // Mage
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Water Ball",
                 ManaRequirement = 0.2,
@@ -1779,7 +1834,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Fire Ball",
                 ManaRequirement = 0.25,
@@ -1793,7 +1848,7 @@
                 ResistanceAffect = 0.7,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Mana Conversion",
                 ManaRequirement = 0,
@@ -1805,7 +1860,7 @@
                 BuffOrEffectTarget = "Self/Target",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "All-Out Blast!",
                 ManaRequirement = 0.8,
@@ -1819,7 +1874,7 @@
             });
 
             // Naturalist
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Nature's Touch",
                 ManaRequirement = 0.4,
@@ -1831,7 +1886,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Thorn Blast",
                 ManaRequirement = 0.28,
@@ -1844,7 +1899,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Nature's Gift",
                 ManaRequirement = 0,
@@ -1857,7 +1912,7 @@
                 BuffOrEffectTarget = "Caster/Target",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Pouring Rain",
                 ManaRequirement = 0,
@@ -1870,7 +1925,7 @@
             });
 
             // Necroid
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Shadow Touch",
                 ManaRequirement = 0.28,
@@ -1884,7 +1939,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Life Syphon",
                 ManaRequirement = 0.4,
@@ -1898,7 +1953,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Arcane Bane",
                 ManaRequirement = 0.2,
@@ -1908,7 +1963,7 @@
                 BuffOrEffectTarget = "Target",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Mutual Darkness",
                 ManaRequirement = 0,
@@ -1922,7 +1977,7 @@
             });
 
             // Paladin
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Holy Strike",
                 ManaRequirement = 0.15,
@@ -1935,7 +1990,7 @@
                 ResistanceAffect = 0.7,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Burning Light",
                 ManaRequirement = 0.15,
@@ -1945,7 +2000,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Vicious Spell-Guard",
                 ManaRequirement = 0.35,
@@ -1955,7 +2010,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Divine Rune",
                 ManaRequirement = 0.2,
@@ -1966,7 +2021,7 @@
             });
 
             // Priest
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Holy Light",
                 ManaRequirement = 0.3,
@@ -1975,7 +2030,7 @@
                 Power = 1.1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Mana Drain",
                 ManaRequirement = 0.08,
@@ -1987,7 +2042,7 @@
                 BuffOrEffectTarget = "Target/Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Staff Smash",
                 ManaRequirement = 0.14,
@@ -2000,7 +2055,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Blessing",
                 ManaRequirement = 0.35,
@@ -2013,7 +2068,7 @@
             });
 
             // Rogue
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Stab",
                 ManaRequirement = 0.12,
@@ -2026,7 +2081,7 @@
                 ResistanceAffect = 1,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Poison Dagger",
                 ManaRequirement = 0.28,
@@ -2037,7 +2092,7 @@
                 ResistanceAffect = 0.6,
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Evasion",
                 ManaRequirement = 0.4,
@@ -2049,7 +2104,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Thievery",
                 ManaRequirement = 0.45,
@@ -2060,7 +2115,7 @@
             });
 
             // Shaman
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Thunder Strike",
                 ManaRequirement = 0.45,
@@ -2074,7 +2129,7 @@
                 BuffOrEffectTarget = "Target",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Earth Strike",
                 ManaRequirement = 0.45,
@@ -2088,7 +2143,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Flame Strike",
                 ManaRequirement = 0.25,
@@ -2101,7 +2156,7 @@
                 ResistanceAffect = 1,
                 BuffOrEffectTarget = "Self",
             });
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Water Strike",
                 ManaRequirement = 0.24,
@@ -2115,7 +2170,7 @@
             });
 
             // Warrior
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Head Smash",
                 ManaRequirement = 0.35,
@@ -2128,7 +2183,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Hyper Strength",
                 ManaRequirement = 0.35,
@@ -2138,7 +2193,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Raging Blow",
                 ManaRequirement = 0.13,
@@ -2151,7 +2206,7 @@
                 BuffOrEffectTarget = "Self",
             });
 
-            this.context.Spells.Add(new Spell
+            context.Spells.Add(new Spell
             {
                 Name = "Disarm",
                 ManaRequirement = 0.50,
@@ -2161,114 +2216,114 @@
                 BuffOrEffectTarget = "Target",
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedStatusesAsync(CancellationToken cancellationToken)
+        private async Task SeedStatusesAsync(FFDbContext context, CancellationToken cancellationToken)
         {
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "UnSet",
                 IClass = "far fa-meh-blank",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Meh",
                 IClass = "far fa-meh",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Happy",
                 IClass = "far fa-smile",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Star",
                 IClass = "far fa-grin-stars",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Tired",
                 IClass = "far fa-tired",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "In Love",
                 IClass = "far fa-grin-hearts",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Fresh",
                 IClass = "far fa-grin-tongue-wink",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Status",
                 IClass = "far fa-frown",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "WTF",
                 IClass = "fas fa-flushed",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "LUL",
                 IClass = "far fa-grin-squint-tears",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Angry",
                 IClass = "far fa-angry",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Focused",
                 IClass = "fas fa-podcast",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Chilling",
                 IClass = "far fa-hand-peace",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Home With My Cat",
                 IClass = "fas fa-cat",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Home With My Dog",
                 IClass = "fas fa-dog",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "Having A Snack",
                 IClass = "fas fa-drumstick-bite",
             });
 
-            this.context.Statuses.Add(new Status
+            context.Statuses.Add(new Status
             {
                 DisplayName = "9000+ IQ",
                 IClass = "fas fa-brain",
             });
 
-            await this.context.SaveChangesAsync(cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -1,10 +1,31 @@
 ﻿@model Application.GameCQ.Heroes.Queries.GetUnitListQuery.HeroListViewModel
 <title>Heroes</title>
 <partial name="_NavBar">
-    <div class=" starting-div main-gradient fade-in">
+    <script>
+        $(document).ready(function () {
+
+            var scrollTop = $('#scroll-top');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 1100) {
+                    scrollTop.removeClass('fade-out');
+                    scrollTop.show();
+                } else {
+                    scrollTop.addClass('fade-out');
+                }
+            })
+
+            scrollTop.click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#top").offset().top
+                }, 1200);
+            })
+        })
+    </script>
+    <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
+    <div class=" starting-div main-gradient fade-in" id="top">
         <h1 class="main-font-color has-large-font-size item-padding">Your Heroes</h1>
         <div class="item-padding"><hr /></div>
-        <cache vary-by="@Model.Heroes">
             @foreach (var hero in Model.Heroes.OrderByDescending(h => h.IsSelected))
             {
                 <div class="item-padding">
@@ -45,7 +66,6 @@
                     </div>
                 </div>
             }
-        </cache>
     </div>
     <br />
     <div class="item-padding">

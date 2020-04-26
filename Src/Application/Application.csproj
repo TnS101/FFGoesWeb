@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Common\README.md" />
     <None Remove="CQ\README.md" />
+    <None Remove="GameContent\Utilities\README.md" />
     <None Remove="GameCQ\README.md" />
     <None Remove="README.md" />
   </ItemGroup>

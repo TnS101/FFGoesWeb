@@ -4,5 +4,30 @@
 <partial name="_NavBar">
 
     <div class="starting-div fade-in">
+        @if (Model.Items == null)
+        {
+            <h1 class="main-font-color has-large-font-size item-padding">No items to display</h1>
+            <div class="item-padding">
+                <hr />
+            </div>
+        }
+        else
+        {
+            <h1 class="main-font-color has-large-font-size item-padding">Your Equipment</h1>
+            <div class="item-padding">
+                <hr />
+            </div>
+
+            @foreach (var item in Model.Items)
+            {
+                <div class="item-padding">
+                    <img src="@item.ImagePath" alt="Item Image" />
+                    <p class="main-font-color has-normal-font-size">@item.Name</p>
+                    <p class="main-font-color has-normal-font-size">@item.Slot</p>
+                    <p class="main-font-color has-normal-font-size">@item.Level</p>
+                </div>
+                <hr />
+            }
+        }
 
     </div>

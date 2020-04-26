@@ -3,6 +3,7 @@
     using Application.Common.Interfaces;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
+    using Persistence.Context;
 
     public class DependencyInjection
     {
