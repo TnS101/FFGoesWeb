@@ -44,7 +44,7 @@
             hero.Level++;
 
             // Stat Re-Set
-            this.statsReset.Reset(hero);
+            this.statsReset.HardReset(hero);
 
             hero.XP -= hero.XPCap;
             hero.XPCap += hero.XPCap * 0.20;

@@ -11,7 +11,7 @@
     public class AdminController : BaseController
     {
         [HttpGet("Administrator/Admin/")]
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return this.View();
         }
@@ -23,7 +23,7 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Logout()
+        public async Task<IActionResult> Logout()
         {
             await this.SignInManager.SignOutAsync();
 

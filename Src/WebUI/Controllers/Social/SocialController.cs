@@ -14,13 +14,13 @@
     public class SocialController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> Home()
+        public async Task<IActionResult> Home()
         {
             return this.View(await this.UserManager.GetUserAsync(this.User));
         }
 
         [HttpPost]
-        public async Task<ActionResult> ReportContent([FromForm]string id, [FromForm]string contentType, [FromForm]string category, [FromForm]string additionalInformation)
+        public async Task<IActionResult> ReportContent([FromForm]string id, [FromForm]string contentType, [FromForm]string category, [FromForm]string additionalInformation, [FromForm]string content)
         {
             return this.Redirect(await this.Mediator.Send(new OpenTicketCommand
             {
@@ -29,17 +29,18 @@
                 Category = category,
                 AdditionalInformation = additionalInformation,
                 Sender = this.User,
+                Content = content,
             }));
         }
 
         [HttpGet]
-        public ActionResult TicketSent()
+        public IActionResult TicketSent()
         {
             return this.View();
         }
 
         [HttpGet]
-        public async Task<ActionResult> Search([FromQuery] string userName)
+        public async Task<IActionResult> Search([FromQuery] string userName)
         {
             if (string.IsNullOrEmpty(userName))
             {

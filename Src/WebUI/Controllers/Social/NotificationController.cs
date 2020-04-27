@@ -11,7 +11,7 @@
     public class NotificationController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> All([FromForm]string check)
+        public async Task<IActionResult> All([FromForm]string check)
         {
             return this.View(await this.Mediator.Send(new GetPersonalNotificationsQuery { User = this.User, Filter = check }));
         }

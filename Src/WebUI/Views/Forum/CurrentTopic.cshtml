@@ -55,7 +55,7 @@
         })
     </script>
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
-    <div class=" fade-in starting-div" id="top">
+    <div class="fade-in starting-div" id="top">
         <h1 class="has-large-font-size item-padding">@Model.Title</h1>
         <div class="item-padding">
             <hr />
@@ -88,6 +88,7 @@
                 <form asp-controller="Social" asp-action="ReportContent" method="post">
                     <input type="hidden" name="id" value="@Model.Id" />
                     <input type="hidden" name="contentType" value="Topic" />
+                    <input type="hidden" name="content" value="@Model.Content" />
                     <select class="aligncenter " name="category">
                         <option value="Racism">Racism</option>
                         <option selected value="Hate Speech">Hate Speech</option>

@@ -2,7 +2,9 @@
 
 <title>Equipment</title>
 <partial name="_NavBar">
-
+    @{
+        string heroId = Context.Request.Query["id"];
+    }
     <div class="starting-div fade-in">
         @if (Model.Items == null)
         {
@@ -23,9 +25,15 @@
                 <div class="item-padding">
                     <img src="@item.ImagePath" alt="Item Image" />
                     <p class="main-font-color has-normal-font-size">@item.Name</p>
-                    <p class="main-font-color has-normal-font-size">@item.Slot</p>
-                    <p class="main-font-color has-normal-font-size">@item.Level</p>
+                    <p class="main-font-color has-normal-font-size">Level : @item.Level</p>
                 </div>
+                <form asp-controller="Hero" asp-action="Equip" method="post">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <input type="hidden" name="command" value="UnEquip" />
+                    <input type="hidden" name="slot" value="@item.Slot" />
+                    <input type="hidden" name="heroId" value="@heroId" />
+                    <input type="submit" name="action" value="UnEquip" class="main-button" />
+                </form>
                 <hr />
             }
         }

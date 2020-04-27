@@ -7,16 +7,17 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetEquipmentQueryHandler : BaseHandler, IRequestHandler<GetEquipmentQuery, EquipmentViewModel>
+    public class GetEquipmentQueryHandler : MapperHandler, IRequestHandler<GetEquipmentQuery, EquipmentViewModel>
     {
-        public GetEquipmentQueryHandler(IFFDbContext context)
-            : base(context)
+        public GetEquipmentQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
         }
 
@@ -24,90 +25,51 @@
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-            if (request.Slot == "Weapon")
-            {
-                return await this.GetWeapon(hero);
-            }
-            else if (request.Slot != "Trinket")
-            {
-                return this.ArmorList(hero);
-            }
-            else
-            {
-                return await this.GetTrinket(hero);
-            }
+            return await this.GetEquipement(hero);
         }
 
-        private async Task<EquipmentViewModel> GetTrinket(Hero hero)
+        private async Task<EquipmentViewModel> GetEquipement(Hero hero)
         {
-            if (!this.Context.TrinketEquipments.Any(te => te.EquipmentId == hero.EquipmentId))
+            var equipment = new List<ItemMinViewModel>();
+
+            // Get Trinket
+            var trinketEquipment = await this.Context.TrinketEquipments.FirstOrDefaultAsync(te => te.EquipmentId == hero.EquipmentId && te.TrinketId != null);
+
+            if (trinketEquipment != null)
             {
-                return new EquipmentViewModel
-                {
-                    Items = null,
-                };
+                var trinket = await this.Context.Trinkets.FindAsync(trinketEquipment.TrinketId);
+
+                equipment.Add(this.Mapper.Map<ItemMinViewModel>(trinket));
             }
 
-            var equipment = await this.Context.TrinketEquipments.FindAsync(hero.EquipmentId);
+            // Get Weapon
+            var weaponEquipment = await this.Context.WeaponsEquipments.FirstOrDefaultAsync(we => we.EquipmentId == hero.EquipmentId && we.WeaponId != null);
 
-            var trinket = await this.Context.Trinkets.FindAsync(equipment.TrinketId);
-
-            var trinkets = new List<Trinket>
+            if (weaponEquipment != null)
             {
-                trinket,
-            };
+                var weapon = await this.Context.Weapons.FindAsync(weaponEquipment.WeaponId);
 
-            return new EquipmentViewModel
-            {
-                Items = trinkets.Select(w => new ItemMinViewModel
-                {
-                    Id = w.Id,
-                    ImagePath = w.ImagePath,
-                    Name = w.Name,
-                    Slot = w.Slot,
-                    Level = w.Level,
-                }).ToList(),
-            };
-        }
-
-        private EquipmentViewModel ArmorList(Hero hero)
-        {
-            if (!this.Context.ArmorsEquipments.ToList().Any(te => te.EquipmentId == hero.EquipmentId))
-            {
-                return new EquipmentViewModel
-                {
-                    Items = null,
-                };
+                equipment.Add(this.Mapper.Map<ItemMinViewModel>(weapon));
             }
 
-            var equipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.EquipmentId);
+            // Get Armors
+            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.EquipmentId && we.ArmorId != null);
 
-            var armors = new List<Armor>();
-
-            foreach (var armor in this.Context.Armors)
+            if (armorEquipments.Count() > 0)
             {
-                foreach (var equip in equipments)
+                foreach (var armor in this.Context.Armors)
                 {
-                    if (equip.ArmorId == armor.Id)
+                    foreach (var equip in armorEquipments)
                     {
-                        armors.Add(armor);
+                        if (equip.ArmorId == armor.Id)
+                        {
+                            equipment.Add(this.Mapper.Map<ItemMinViewModel>(armor));
+                        }
                     }
                 }
             }
 
-            return new EquipmentViewModel
-            {
-                Items = (List<ItemMinViewModel>)armors.Select(w => new ItemMinViewModel
-                {
-                    ImagePath = w.ImagePath,
-                    Name = w.Name,
-                }),
-            };
-        }
-
-        private async Task<EquipmentViewModel> GetWeapon(Hero hero)
-        {
-            if (!this.Context.WeaponsEquipments.ToList().Any(te => te.EquipmentId == hero.EquipmentId))
+            if (equipment.Count == 0)
             {
                 return new EquipmentViewModel
                 {
@@ -115,23 +77,9 @@
                 };
             }
 
-            var equipment = await this.Context.WeaponsEquipments.FirstOrDefaultAsync(we => we.EquipmentId == hero.EquipmentId);
-
-            var weapon = await this.Context.Weapons.FindAsync(equipment.WeaponId);
-
-            var weapons = new List<Weapon>
-            {
-                weapon,
-            };
-
             return new EquipmentViewModel
             {
-                Items = (List<ItemMinViewModel>)weapons.Select(w => new ItemMinViewModel
-                {
-                    Id = w.Id,
-                    ImagePath = w.ImagePath,
-                    Name = w.Name,
-                }),
+                Items = equipment,
             };
         }
     }

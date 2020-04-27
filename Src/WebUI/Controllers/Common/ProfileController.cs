@@ -17,49 +17,43 @@
     public class ProfileController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> Panel()
+        public async Task<IActionResult> Panel()
         {
             return this.View(await this.Mediator.Send(new UserPanelQuery { User = this.User }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> Status()
+        public async Task<IActionResult> Status()
         {
             return this.PartialView("_Statuses", await this.Mediator.Send(new GetAllStatusesQuery { }));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Statuses()
-        {
-            return this.Json(await this.Mediator.Send(new GetAllStatusesQuery { }));
-        }
-
         [HttpGet("/UpdateStatus/id")]
-        public async Task<ActionResult> UpdateStatus([FromQuery]int id)
+        public async Task<IActionResult> UpdateStatus([FromQuery]int id)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateStatusCommand { StatusId = id, User = this.User }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> Topics()
+        public async Task<IActionResult> Topics()
         {
             return this.View(await this.Mediator.Send(new GetAllTopicsQuery { User = this.User }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> MasteryPoints()
+        public async Task<IActionResult> MasteryPoints()
         {
             return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> ForumPoints()
+        public async Task<IActionResult> ForumPoints()
         {
             return this.View(await this.Mediator.Send(new GetCurrentUserQuery { User = this.User }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> SendFeedback([Bind("Content,Rate")] SendFeedbackCommand feedback)
+        public async Task<IActionResult> SendFeedback([Bind("Content,Rate")] SendFeedbackCommand feedback)
         {
             if (!this.ModelState.IsValid)
             {
@@ -70,13 +64,13 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Feedbacks()
+        public async Task<IActionResult> Feedbacks()
         {
             return this.View(await this.Mediator.Send(new GetPersonalFeedbacksQuery { User = this.User }));
         }
 
         [HttpGet("/Profile/User/id")]
-        public async Task<ActionResult> CurrentUser([FromQuery] string id)
+        public async Task<IActionResult> CurrentUser([FromQuery] string id)
         {
             return this.View(await this.Mediator.Send(new GetCurrentUserQuery { UserId = id }));
         }

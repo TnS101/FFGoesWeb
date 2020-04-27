@@ -23,7 +23,7 @@
         {
             var ticket = await this.Context.Tickets.FindAsync(request.TicketId);
 
-            var sender = this.Context.AppUsers.FirstOrDefault(s => s.UserName == ticket.ReportedUserId);
+            var sender = await this.Context.AppUsers.FindAsync(ticket.UserId);
 
             var reportedUser = await this.Context.AppUsers.FindAsync(ticket.ReportedUserId);
 

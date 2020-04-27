@@ -12,25 +12,25 @@
     public class MessageController : BaseController
     {
         [HttpGet("Messages/All/id")]
-        public async Task<ActionResult> All([FromQuery]string id)
+        public async Task<IActionResult> All([FromQuery]string id)
         {
             return this.View(await this.Mediator.Send(new GetPersonalMessagesQuery { Reciever = this.User, SenderId = id }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Send([FromQuery]string recieverName, [FromBody]string content)
+        public async Task<IActionResult> Send([FromQuery]string recieverName, [FromBody]string content)
         {
             return this.Redirect(await this.Mediator.Send(new SendMessageCommand { Sender = this.User, RecieverName = recieverName, Content = content }));
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]string id)
+        public async Task<IActionResult> Delete([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteMessageCommand { MessageId = id }));
         }
 
         [HttpPut]
-        public async Task<ActionResult> Edit([FromQuery]string id, [FromBody]string content)
+        public async Task<IActionResult> Edit([FromQuery]string id, [FromBody]string content)
         {
             return this.Redirect(await this.Mediator.Send(new EditMessageCommand { MessageId = id, Content = content }));
         }

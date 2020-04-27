@@ -13,19 +13,19 @@
     public class WorldController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> Home()
+        public async Task<IActionResult> Home()
         {
             return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> Explore()
+        public async Task<IActionResult> Explore()
         {
             return this.Redirect(await this.Mediator.Send(new ExploreCommand { User = this.User }));
         }
 
         [HttpGet]
-        public ActionResult EnemyEncounter()
+        public IActionResult EnemyEncounter()
         {
             return this.View();
         }

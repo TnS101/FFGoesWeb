@@ -15,19 +15,19 @@
     public class MonsterController : BaseController
     {
         [HttpGet("/Administrator/Monster/Current/id")]
-        public async Task<ActionResult> Current([FromQuery]int id)
+        public async Task<IActionResult> Current([FromQuery]int id)
         {
             return this.View(await this.Mediator.Send(new GetCurrentMonsterQuery { MonsterId = id }));
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return this.View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromForm]string name, [FromForm]double maxHP, [FromForm]double maxMana,
+        public async Task<IActionResult> Create([FromForm]string name, [FromForm]double maxHP, [FromForm]double maxMana,
             [FromForm]double healthRegen, [FromForm]double manaRegen, [FromForm]double attackPower, [FromForm]double magicPower,
             [FromForm]double armorValue, [FromForm]double resistanceValue, [FromForm]double critChance, [FromForm]string description)
         {
@@ -48,13 +48,13 @@
         }
 
         [HttpGet("/Administrator/Monster/Update/id")]
-        public ActionResult Update()
+        public IActionResult Update()
         {
             return this.View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Update([FromForm]int id, [FromForm]string name, [FromForm]double maxHP, [FromForm]double maxMana,
+        public async Task<IActionResult> Update([FromForm]int id, [FromForm]string name, [FromForm]double maxHP, [FromForm]double maxMana,
             [FromForm]double healthRegen, [FromForm]double manaRegen, [FromForm]double attackPower, [FromForm]double magicPower,
             [FromForm]double armorValue, [FromForm]double resistanceValue, [FromForm]double critChance, [FromForm]string description)
         {
@@ -76,7 +76,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete([FromForm]int id)
+        public async Task<IActionResult> Delete([FromForm]int id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteMonsterCommand { MonsterId = id }));
         }

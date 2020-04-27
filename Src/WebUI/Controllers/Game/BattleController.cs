@@ -22,7 +22,7 @@
         private static string zoneName;
 
         [HttpGet("Battle/Battle/zone")]
-        public async Task<ActionResult> Battle([FromQuery]string zone)
+        public async Task<IActionResult> Battle([FromQuery]string zone)
         {
             zoneName = zone;
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
@@ -32,7 +32,7 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> Command()
+        public async Task<IActionResult> Command()
         {
             hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
 
@@ -42,7 +42,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Command([FromForm]string command, [FromForm]string spellName)
+        public async Task<IActionResult> Command([FromForm]string command, [FromForm]string spellName)
         {
             hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
 
@@ -54,13 +54,13 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> End()
+        public async Task<IActionResult> End()
         {
             return this.View(await this.Mediator.Send(new GetUnitIdQuery { User = this.User }));
         }
 
         [HttpGet]
-        public ActionResult Killed()
+        public IActionResult Killed()
         {
             return this.View();
         }

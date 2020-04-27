@@ -12,38 +12,38 @@
     [Authorize(Roles = GConst.UserRole)]
     public class CommentController : BaseController
     {
-        [HttpGet("Comment/Create/id")]
-        public ActionResult Create([FromQuery]string id)
+        [HttpGet("/Comment/Create/id")]
+        public IActionResult Create([FromQuery]string id)
         {
             return this.View(@"\Create", id);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromForm]string topicId, [FromForm]string content)
+        public async Task<IActionResult> Create([FromForm]string topicId, [FromForm]string content)
         {
             return this.Redirect(await this.Mediator.Send(new CreateCommentCommand { TopicId = topicId, Content = content, User = this.User }));
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromForm]string id)
+        public async Task<IActionResult> Delete([FromForm]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteCommentCommand { CommentId = id }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit([FromForm]string id, [FromForm]string content)
+        public async Task<IActionResult> Edit([FromForm]string id, [FromForm]string content)
         {
             return this.Redirect(await this.Mediator.Send(new EditCommentCommand { Content = content, CommentId = id }));
         }
 
         [HttpGet("/Comment/Like/id")]
-        public async Task<ActionResult> Like([FromQuery]string id)
+        public async Task<IActionResult> Like([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new LeaveLikeCommand { CommentId = id, User = this.User }));
         }
 
         [HttpGet("/Comment/Dislike/id")]
-        public async Task<ActionResult> Dislike([FromQuery]string id)
+        public async Task<IActionResult> Dislike([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DislikeCommand { CommentId = id, User = this.User }));
         }

@@ -15,31 +15,31 @@
     public class GameContentController : BaseController
     {
         [HttpGet]
-        public ActionResult Content()
+        public IActionResult Content()
         {
             return this.View();
         }
 
         [HttpGet("Administrator/GameContent/Items/slot")]
-        public async Task<ActionResult> Items([FromQuery]string slot)
+        public async Task<IActionResult> Items([FromQuery]string slot)
         {
             return this.View(await this.Mediator.Send(new GetAllItemsQuery { Slot = slot }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> Spells([FromQuery]string classType)
+        public async Task<IActionResult> Spells([FromQuery]string classType)
         {
             return this.View(await this.Mediator.Send(new GetAllSpellsQuery { ClassType = classType }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> Monsters()
+        public async Task<IActionResult> Monsters()
         {
             return this.View(await this.Mediator.Send(new GetAllMonstersQuery { }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> FightingClasses()
+        public async Task<IActionResult> FightingClasses()
         {
             return this.View(await this.Mediator.Send(new GetAllFightingClassesQuery { }));
         }

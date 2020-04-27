@@ -13,13 +13,13 @@
     public class ToDoController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> List()
+        public async Task<IActionResult> List()
         {
             return this.View(await this.Mediator.Send(new ToDoList { }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> FinishTask([FromForm]int id)
+        public async Task<IActionResult> FinishTask([FromForm]int id)
         {
             return this.Redirect(await this.Mediator.Send(new FeedbackTaskDoneCommand { FeedbackId = id }));
         }

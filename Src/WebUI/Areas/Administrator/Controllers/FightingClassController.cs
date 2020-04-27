@@ -15,20 +15,20 @@
     public class FightingClassController : BaseController
     {
         [HttpGet("/Administrator/FightingClass/Current/id")]
-        public async Task<ActionResult> Current([FromQuery]int id)
+        public async Task<IActionResult> Current([FromQuery]int id)
         {
             return this.View(await this.Mediator.Send(new GetCurrentFightingClassQuery { FightingClassId = id }));
         }
 
         [HttpGet]
         [ResponseCache(CacheProfileName = "Weekly")]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return this.View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromForm]string classType, [FromForm]double maxHP, [FromForm]double maxMana,
+        public async Task<IActionResult> Create([FromForm]string classType, [FromForm]double maxHP, [FromForm]double maxMana,
             [FromForm]double healthRegen, [FromForm]double manaRegen, [FromForm]double attackPower, [FromForm]double magicPower,
             [FromForm]double armorValue, [FromForm]double resistanceValue, [FromForm]double critChance, [FromForm]string description)
         {
@@ -50,13 +50,13 @@
 
         [HttpGet("/Administrator/FightingClass/Update/id")]
         [ResponseCache(CacheProfileName = "Weekly")]
-        public ActionResult Update()
+        public IActionResult Update()
         {
             return this.View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Update([FromForm]int id, [FromForm]string classType, [FromForm]double maxHP, [FromForm]double maxMana,
+        public async Task<IActionResult> Update([FromForm]int id, [FromForm]string classType, [FromForm]double maxHP, [FromForm]double maxMana,
             [FromForm]double healthRegen, [FromForm]double manaRegen, [FromForm]double attackPower, [FromForm]double magicPower,
             [FromForm]double armorValue, [FromForm]double resistanceValue, [FromForm]double critChance, [FromForm]string description)
         {
@@ -78,7 +78,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete([FromForm]int id)
+        public async Task<IActionResult> Delete([FromForm]int id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteFightingClassCommand { FightingClassId = id }));
         }

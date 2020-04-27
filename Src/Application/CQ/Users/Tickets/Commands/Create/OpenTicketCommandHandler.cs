@@ -28,6 +28,7 @@
                 AdditionalInformation = request.AdditionalInformation,
                 UserId = sender.Id,
                 SentOn = DateTime.UtcNow,
+                Content = request.Content,
             };
 
             if (request.ContentType == "Topic")

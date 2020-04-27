@@ -21,19 +21,19 @@
     public class HeroController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> All()
+        public async Task<IActionResult> All()
         {
             return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> Create()
+        public async Task<IActionResult> Create()
         {
             return this.View(await this.Mediator.Send(new GetAllFightingClassesQuery { }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([Bind("Name,Race,ClassType")] CreateHeroCommand hero)
+        public async Task<IActionResult> Create([Bind("Name,Race,ClassType")] CreateHeroCommand hero)
         {
             if (!this.ModelState.IsValid)
             {
@@ -44,49 +44,49 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete([FromForm]string id)
+        public async Task<IActionResult> Delete([FromForm]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteHeroCommand { HeroId = id }));
         }
 
         [HttpGet("/Hero/Info/id")]
-        public async Task<ActionResult> Info([FromQuery]string id)
+        public async Task<IActionResult> Info([FromQuery]string id)
         {
             return this.View(await this.Mediator.Send(new GetFullUnitQuery { HeroId = id }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Equip([FromForm]string id, [FromForm]string command, [FromForm]string heroId, [FromForm]string slot)
+        public async Task<IActionResult> Equip([FromForm]string id, [FromForm]string command, [FromForm]string heroId, [FromForm]string slot)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, HeroId = heroId, Slot = slot }));
         }
 
         [HttpGet("/Hero/Equipment/id&slot")]
-        public async Task<ActionResult> Equipment([FromQuery]string id, [FromQuery]string slot)
+        public async Task<IActionResult> Equipment([FromQuery]string id, [FromQuery]string slot)
         {
             return this.View(await this.Mediator.Send(new GetEquipmentQuery { HeroId = id, Slot = slot }));
         }
 
         [HttpGet("/Hero/Inventory/id&slot")]
-        public async Task<ActionResult> Inventory([FromQuery]string id, [FromQuery]string slot)
+        public async Task<IActionResult> Inventory([FromQuery]string id, [FromQuery]string slot)
         {
             return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> DiscardItem([FromForm]string id, [FromForm]int count, [FromForm]string slot, [FromForm]string heroId)
+        public async Task<IActionResult> DiscardItem([FromForm]string id, [FromForm]int count, [FromForm]string slot, [FromForm]string heroId)
         {
             return this.Redirect(await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> LevelUp()
+        public async Task<IActionResult> LevelUp()
         {
             return this.View(await this.Mediator.Send(new HeroLevelUpCommand()));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Select(string id)
+        public async Task<IActionResult> Select(string id)
         {
             return this.Redirect(await this.Mediator.Send(new SelectHeroCommand { UnitId = id, User = this.User }));
         }

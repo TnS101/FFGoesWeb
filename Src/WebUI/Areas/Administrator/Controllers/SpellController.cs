@@ -15,19 +15,19 @@
     public class SpellController : BaseController
     {
         [HttpGet("/Administrator/Spell/Current/id")]
-        public async Task<ActionResult> Current([FromQuery]int id)
+        public async Task<IActionResult> Current([FromQuery]int id)
         {
             return this.View(await this.Mediator.Send(new GetCurrentSpellQuery { SpellId = id }));
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return this.View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromForm]string name, [FromForm]string type, [FromForm]string classType,
+        public async Task<IActionResult> Create([FromForm]string name, [FromForm]string type, [FromForm]string classType,
             [FromForm]double power, [FromForm]double secondaryPower, [FromForm]double manaRequirment, [FromForm]string additionalEffect,
             [FromForm]double effectPower, [FromForm]string buffOrEffectTarget, [FromForm]double resistanceAffect)
         {
@@ -47,13 +47,13 @@
         }
 
         [HttpGet("/Administrator/Update/Current/id")]
-        public ActionResult Update()
+        public IActionResult Update()
         {
             return this.View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Update([FromForm]int id, [FromForm]string name, [FromForm]string type, [FromForm]string classType,
+        public async Task<IActionResult> Update([FromForm]int id, [FromForm]string name, [FromForm]string type, [FromForm]string classType,
             [FromForm]double power, [FromForm]double secondaryPower, [FromForm]double manaRequirment, [FromForm]string additionalEffect,
             [FromForm]double effectPower, [FromForm]string buffOrEffectTarget, [FromForm]double resistanceAffect)
         {
@@ -74,7 +74,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete([FromForm]int id)
+        public async Task<IActionResult> Delete([FromForm]int id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteSpellCommand { SpellId = id }));
         }

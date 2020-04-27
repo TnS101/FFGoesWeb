@@ -12,13 +12,13 @@
     public class ForumController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> Home([FromQuery]string[] check)
+        public async Task<IActionResult> Home([FromQuery]string[] check)
         {
             return this.View(await this.Mediator.Send(new GetAllTopicsQuery { Filter = check, User = this.User }));
         }
 
         [HttpGet("Forum/CurrentTopic/id")]
-        public async Task<ActionResult> CurrentTopic([FromQuery]string id)
+        public async Task<IActionResult> CurrentTopic([FromQuery]string id)
         {
             return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id, User = this.User }));
         }

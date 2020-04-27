@@ -23,5 +23,8 @@
 
         [Required]
         public string ContentType { get; set; }
+
+        [Required]
+        public string Content { get; set; }
     }
 }

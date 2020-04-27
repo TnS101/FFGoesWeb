@@ -35,7 +35,7 @@
         public const string SendFeedbackRedirect = "Profile/Feedbacks";
         public const string OpenCommentTicketRedirect = "/Social/TicketSent";
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
-        public const string TicketCommandRedirect = "/Moderator/Tickets";
+        public const string TicketCommandRedirect = "/Moderator/Mod";
         public const string HeroCommandRedirect = "/Hero/All";
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";

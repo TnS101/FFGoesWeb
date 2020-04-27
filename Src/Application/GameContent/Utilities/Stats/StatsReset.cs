@@ -8,10 +8,21 @@
         {
         }
 
-        public void Reset(Hero hero)
+        public void HardReset(Hero hero)
         {
             hero.CurrentHP = hero.MaxHP;
             hero.CurrentMana = hero.CurrentMana;
+            hero.CurrentHealthRegen = hero.HealthRegen;
+            hero.CurrentManaRegen = hero.ManaRegen;
+            hero.CurrentMagicPower = hero.MagicPower;
+            hero.CurrentAttackPower = hero.AttackPower;
+            hero.CurrentArmorValue = hero.ArmorValue;
+            hero.CurrentCritChance = hero.CritChance;
+            hero.CurrentResistanceValue = hero.ResistanceValue;
+        }
+
+        public void Reset(Hero hero)
+        {
             hero.CurrentHealthRegen = hero.HealthRegen;
             hero.CurrentManaRegen = hero.ManaRegen;
             hero.CurrentMagicPower = hero.MagicPower;

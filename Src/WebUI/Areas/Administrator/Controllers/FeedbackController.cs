@@ -14,19 +14,19 @@
     public class FeedbackController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> Feedbacks()
+        public async Task<IActionResult> Feedbacks()
         {
             return this.View(await this.Mediator.Send(new GetAllFeedbacksQuery { }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete([FromForm]int id)
+        public async Task<IActionResult> Delete([FromForm]int id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteFeedbackCommand { FeedbackId = id }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Accept([FromForm]int id, [FromForm]int stars)
+        public async Task<IActionResult> Accept([FromForm]int id, [FromForm]int stars)
         {
             return this.Redirect(await this.Mediator.Send(new AcceptFeedbackCommand { FeedbackId = id, Stars = stars }));
         }

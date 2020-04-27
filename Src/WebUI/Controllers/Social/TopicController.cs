@@ -16,13 +16,13 @@
     public class TopicController : BaseController
     {
         [HttpGet]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return this.View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([Bind("Title,Category,Content")] CreateTopicCommand topic)
+        public async Task<IActionResult> Create([Bind("Title,Category,Content")] CreateTopicCommand topic)
         {
             if (!this.ModelState.IsValid)
             {
@@ -35,19 +35,19 @@
         }
 
         [HttpGet("/Topic/Delete/id")]
-        public async Task<ActionResult> Delete([FromQuery]string id)
+        public async Task<IActionResult> Delete([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = id, User = this.User }));
         }
 
         [HttpGet("/Topic/Edit/id")]
-        public async Task<ActionResult> Edit([FromQuery]string id)
+        public async Task<IActionResult> Edit([FromQuery]string id)
         {
             return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id, User = this.User }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit([Bind("Title,Category,Content")] TopicFullViewModel topic, [FromForm]string id)
+        public async Task<IActionResult> Edit([Bind("Title,Category,Content")] TopicFullViewModel topic, [FromForm]string id)
         {
             if (!this.ModelState.IsValid)
             {
@@ -58,19 +58,19 @@
         }
 
         [HttpGet("/Topic/Like/id")]
-        public async Task<ActionResult> Like([FromQuery]string id)
+        public async Task<IActionResult> Like([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new LeaveLikeCommand { TopicId = id, User = this.User }));
         }
 
         [HttpGet("/Topic/Dislike/id")]
-        public async Task<ActionResult> Dislike([FromQuery]string id)
+        public async Task<IActionResult> Dislike([FromQuery]string id)
         {
             return this.Redirect(await this.Mediator.Send(new DislikeCommand { TopicId = id, User = this.User }));
         }
 
         [HttpGet]
-        public ActionResult InModeration()
+        public IActionResult InModeration()
         {
             return this.View();
         }

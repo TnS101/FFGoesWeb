@@ -6,7 +6,7 @@
     {
         [Route("Error/{statusCode}")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public ActionResult HttpStatusCodeHandler(int statusCode)
+        public IActionResult HttpStatusCodeHandler(int statusCode)
         {
             return statusCode switch
             {

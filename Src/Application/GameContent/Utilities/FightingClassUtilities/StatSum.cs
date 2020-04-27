@@ -22,7 +22,7 @@
 
                 foreach (var armor in context.Armors)
                 {
-                    foreach (var armorEquipment in await context.ArmorsEquipments.Where(ai => ai.EquipmentId == heroEquipment.Id).ToListAsync())
+                    foreach (var armorEquipment in await context.ArmorsEquipments.Where(ai => ai.EquipmentId == heroEquipment.Id && ai.ArmorId != null).ToListAsync())
                     {
                         if (armor.Id == armorEquipment.ArmorId)
                         {
@@ -43,7 +43,7 @@
                 }
             }
 
-            if (!heroEquipment.WeaponSlot)
+            if (heroEquipment.WeaponSlot)
             {
                 var weaponEquipment = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.EquipmentId == heroEquipment.Id);
 
@@ -57,7 +57,7 @@
                 hero.AttackPower += weapon.Strength * 1.5;
             }
 
-            if (!heroEquipment.TrinketSlot)
+            if (heroEquipment.TrinketSlot)
             {
                 var trinketEquipment = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.EquipmentId == heroEquipment.Id);
 

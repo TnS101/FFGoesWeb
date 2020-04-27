@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
+    using Application.GameContent.Utilities.Stats;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Domain.Entities.Common;
@@ -17,9 +18,12 @@
 
     public class GetHeroListQueryHandler : FullHandler, IRequestHandler<GetHeroListQuery, HeroListViewModel>
     {
+        private readonly StatsReset statsReset;
+
         public GetHeroListQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
             : base(context, userManager, mapper)
         {
+            this.statsReset = new StatsReset();
         }
 
         public async Task<HeroListViewModel> Handle(GetHeroListQuery request, CancellationToken cancellationToken)
@@ -33,13 +37,7 @@
             foreach (var hero in heroes)
             {
                 // Stat reset
-                hero.CurrentAttackPower = hero.AttackPower;
-                hero.CurrentMagicPower = hero.MagicPower;
-                hero.CurrentArmorValue = hero.ArmorValue;
-                hero.CurrentResistanceValue = hero.ResistanceValue;
-                hero.CurrentHealthRegen = hero.HealthRegen;
-                hero.CurrentManaRegen = hero.ManaRegen;
-                hero.CurrentCritChance = hero.CritChance;
+                this.statsReset.Reset(hero);
             }
 
             await this.Context.SaveChangesAsync(cancellationToken);
@@ -127,10 +125,20 @@
                         else if (energyChange.Type == "Health")
                         {
                             hero.CurrentHP += (0.1 * hero.MaxHP) * recoveryTimes;
+
+                            if (hero.CurrentHP > hero.MaxHP)
+                            {
+                                hero.CurrentHP = hero.MaxHP;
+                            }
                         }
                         else if (energyChange.Type == "Mana")
                         {
                             hero.CurrentMana += 0.1 * hero.MaxMana;
+
+                            if (hero.CurrentMana > hero.MaxMana)
+                            {
+                                hero.CurrentMana = hero.MaxMana;
+                            }
                         }
 
                         if (energy > energyCap)
@@ -187,7 +195,7 @@
                     hero.CurrentHP = hero.MaxHP;
                 }
 
-                if (hero.CurrentHP <= hero.MaxHP)
+                if (hero.CurrentHP < hero.MaxHP)
                 {
                     this.Context.EnergyChanges.Add(new EnergyChange
                     {
@@ -200,11 +208,6 @@
 
             if (this.Context.EnergyChanges.Where(ec => ec.Type == "Mana" && ec.HeroId == hero.Id).Count() == 0)
             {
-                if (hero.CurrentMana > hero.MaxMana)
-                {
-                    hero.CurrentMana = hero.MaxMana;
-                }
-
                 if (hero.CurrentMana < hero.MaxMana)
                 {
                     this.Context.EnergyChanges.Add(new EnergyChange

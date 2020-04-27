@@ -46,7 +46,7 @@
 
             // Database
             services.AddDbContext<FFDbContext>()
-                .AddTransient<IFFDbContext, FFDbContext>();
+            .AddScoped<IFFDbContext, FFDbContext>();
 
             // Identity
             services.AddDefaultIdentity<AppUser>(options =>

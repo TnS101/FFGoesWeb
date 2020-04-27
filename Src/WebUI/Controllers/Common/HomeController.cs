@@ -11,28 +11,28 @@
     public class HomeController : BaseController
     {
         [HttpGet("/")]
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return this.View(this.User);
         }
 
         [Authorize(Roles = GConst.UserRole)]
         [HttpGet("/MonsterCatalog")]
-        public async Task<ActionResult> MonsterCatalog()
+        public async Task<IActionResult> MonsterCatalog()
         {
             return this.View(await this.Mediator.Send(new GetAllMonstersQuery { }));
         }
 
         [Authorize(Roles = GConst.UserRole)]
         [HttpGet("/MonsterInfo/id")]
-        public async Task<ActionResult> MonsterInfo([FromQuery]int id)
+        public async Task<IActionResult> MonsterInfo([FromQuery]int id)
         {
             return this.View(await this.Mediator.Send(new GetCurrentMonsterQuery { MonsterId = id }));
         }
 
         [Authorize(Roles = GConst.UserRole)]
         [HttpGet("/PrivacyPolicy")]
-        public ActionResult PrivacyPolicy()
+        public IActionResult PrivacyPolicy()
         {
             return this.View();
         }

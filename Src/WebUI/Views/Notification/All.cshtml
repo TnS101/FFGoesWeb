@@ -7,7 +7,6 @@
             <h1 class=" secondary-font-color has-large-font-size item-padding">Your Current Notifications</h1>
             <div class="item-padding">
                 <hr />
-                <cache vary-by="@Model.Notifications">
                     @foreach (var notification in Model.Notifications)
                     {
                         <div class=" item-padding">
@@ -84,7 +83,6 @@
                             <hr />
                         </div>
                     }
-                </cache>
             </div>
         }
         else

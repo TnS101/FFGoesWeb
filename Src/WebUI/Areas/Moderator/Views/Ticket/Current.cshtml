@@ -1,0 +1,32 @@
+﻿@model Application.CQ.Moderator.Queries.GetCurrentTicketQuery.TicketFullViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+<title>AllTickets</title>
+<div class="starting-div fade-in">
+    <h1 class="has-larger-font-size main-font-color item-padding">Tickets</h1>
+    <div class="item-padding">
+        <hr />
+        <p>Category : @Model.Category</p>
+        <hr />
+        <p>Responsible : @Model.ReportedUserName</p>
+        <hr />
+        <p>Additional Information : @Model.AdditionalInformation</p>
+        <hr />
+        <p>Content : @Model.Content</p>
+        <hr />
+        <form asp-controller="Ticket" asp-action="Close" method="post">
+            <input type="hidden" name="ticketId" value="@Model.Id" />
+            <div class="item-padding">
+                Reward:
+                <input type="number" name="stars" value="" min="1" max="5" />
+            </div>
+            <input type="submit" name="action" value="Close" class="main-button" />
+        </form>
+        <form asp-controller="Ticket" asp-action="Delete" method="post" class="item-padding">
+            <input type="hidden" name="ticketId" value="@Model.Id" />
+            <input type="submit" name="action" value="Delete" class="main-button" />
+        </form>
+    </div>
+</div>

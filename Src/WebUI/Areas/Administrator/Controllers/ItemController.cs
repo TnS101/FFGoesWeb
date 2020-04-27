@@ -16,19 +16,19 @@
     public class ItemController : BaseController
     {
         [HttpGet("/Administrator/Item/Current/id&slot")]
-        public async Task<ActionResult> Current([FromQuery]string id, [FromQuery]string slot)
+        public async Task<IActionResult> Current([FromQuery]string id, [FromQuery]string slot)
         {
             return this.View(await this.Mediator.Send(new GetCurrentItemQuery { ItemId = id, Slot = slot }));
         }
 
         [HttpGet]
-        public async Task<ActionResult> Create()
+        public async Task<IActionResult> Create()
         {
             return this.View(await this.Mediator.Send(new GetAllToolsQuery { }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromForm]string name, [FromForm]int level,
+        public async Task<IActionResult> Create([FromForm]string name, [FromForm]int level,
             [FromForm]string classType, [FromForm]int stamina, [FromForm]int strength, [FromForm]int agility,
             [FromForm]int intellect, [FromForm]int spirit, [FromForm] double attackPower,
             [FromForm]double armorValue, [FromForm] double resistanceValue, [FromForm]int sellPrice,
@@ -64,13 +64,13 @@
         }
 
         [HttpGet("Administrator/Item/Update/id&slot")]
-        public async Task<ActionResult> Update()
+        public async Task<IActionResult> Update()
         {
             return this.View(await this.Mediator.Send(new GetAllToolsQuery { }));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Update([FromForm]string id, [FromForm]string name, [FromForm]int level,
+        public async Task<IActionResult> Update([FromForm]string id, [FromForm]string name, [FromForm]int level,
             [FromForm]string classType, [FromForm]int stamina, [FromForm]int strength, [FromForm]int agility,
             [FromForm]int intellect, [FromForm]int spirit, [FromForm] double attackPower,
             [FromForm]double armorValue, [FromForm] double resistanceValue, [FromForm]int sellPrice,
@@ -107,7 +107,7 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete([FromForm]string id, [FromForm]string slot)
+        public async Task<IActionResult> Delete([FromForm]string id, [FromForm]string slot)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteItemCommand { ItemId = id, Slot = slot }));
         }
