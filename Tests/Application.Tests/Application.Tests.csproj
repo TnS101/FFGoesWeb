@@ -1,0 +1,76 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="Moq" Version="4.14.0" />
+    <PackageReference Include="Shouldly" Version="3.0.2" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.0.1" />
+    <PackageReference Include="MyTested.AspNetCore.Mvc.Universe" Version="3.1.2" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="testsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CQ\Admin\GameContent\FightingClasses\Commands\" />
+    <Folder Include="CQ\Admin\GameContent\Items\Commands\" />
+    <Folder Include="CQ\Admin\GameContent\Monsters\Commands\" />
+    <Folder Include="CQ\Admin\GameContent\Spells\Commands\" />
+    <Folder Include="CQ\Admin\GameContent\Spells\Queries\" />
+    <Folder Include="CQ\Admin\Moderation\Feedbacks\Commands\" />
+    <Folder Include="CQ\Admin\Moderation\Feedbacks\Queries\" />
+    <Folder Include="CQ\Moderator\Commands\" />
+    <Folder Include="CQ\Moderator\Queries\" />
+    <Folder Include="CQ\Social\Comments\Commands\" />
+    <Folder Include="CQ\Social\Comments\Queries\" />
+    <Folder Include="CQ\Social\FriendRequests\Commands\" />
+    <Folder Include="CQ\Social\FriendRequests\Queries\" />
+    <Folder Include="CQ\Social\Friends\Commands\" />
+    <Folder Include="CQ\Social\Friends\Queries\" />
+    <Folder Include="CQ\Social\Likes\Commands\" />
+    <Folder Include="CQ\Social\Likes\Queries\" />
+    <Folder Include="CQ\Social\Messages\Commands\" />
+    <Folder Include="CQ\Social\Messages\Queries\" />
+    <Folder Include="CQ\Social\Notifications\Queries\" />
+    <Folder Include="CQ\Social\Topics\Commands\" />
+    <Folder Include="CQ\Social\Topics\Queries\" />
+    <Folder Include="CQ\Users\Commands\" />
+    <Folder Include="CQ\Users\Feedbacks\" />
+    <Folder Include="CQ\Users\Tickets\" />
+    <Folder Include="CQ\Users\Statuses\" />
+    <Folder Include="CQ\Users\Queries\" />
+    <Folder Include="GameCQ\Battles\Commands\" />
+    <Folder Include="GameCQ\Battles\Queries\" />
+    <Folder Include="GameCQ\Equipments\Commands\" />
+    <Folder Include="GameCQ\Equipments\Queries\" />
+    <Folder Include="GameCQ\FightingClasses\Queries\" />
+    <Folder Include="GameCQ\Heroes\Commands\" />
+    <Folder Include="GameCQ\Heroes\Queries\" />
+    <Folder Include="GameCQ\Items\Commands\" />
+    <Folder Include="GameCQ\Items\Queries\" />
+    <Folder Include="GameCQ\Monsters\Commands\" />
+    <Folder Include="GameCQ\Monsters\Queries\" />
+    <Folder Include="GameCQ\Spells\Queries\" />
+    <Folder Include="GameCQ\TreasureKeys\Commands\" />
+    <Folder Include="GameCQ\Treasures\Commands\" />
+    <Folder Include="GameCQ\World\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Src\Application\Application.csproj" />
+    <ProjectReference Include="..\..\Src\Persistence\Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

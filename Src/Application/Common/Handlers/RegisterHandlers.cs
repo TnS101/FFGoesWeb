@@ -33,8 +33,8 @@
     using Application.CQ.Social.FriendRequests.Queries;
     using Application.CQ.Social.Friends.Commands.Delete;
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
-    using Application.CQ.Social.Likes.Command.Create;
-    using Application.CQ.Social.Likes.Command.Delete;
+    using Application.CQ.Social.Likes.Commands.Create;
+    using Application.CQ.Social.Likes.Commands.Delete;
     using Application.CQ.Social.Messages.Commands.Create;
     using Application.CQ.Social.Messages.Queries;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;

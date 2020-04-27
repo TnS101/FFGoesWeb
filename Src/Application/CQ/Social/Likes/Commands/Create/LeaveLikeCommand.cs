@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Social.Likes.Command.Create
+﻿namespace Application.CQ.Social.Likes.Commands.Create
 {
     using System.Security.Claims;
     using MediatR;

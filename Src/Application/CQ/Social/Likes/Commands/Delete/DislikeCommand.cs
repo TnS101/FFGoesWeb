@@ -1,4 +1,4 @@
-﻿namespace Application.CQ.Social.Likes.Command.Delete
+﻿namespace Application.CQ.Social.Likes.Commands.Delete
 {
     using System.Security.Claims;
     using MediatR;

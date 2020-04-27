@@ -5,11 +5,11 @@
     using WebUI.Areas.Administrator.Controllers;
     using Xunit;
 
-    public class AdminControllerTests
+    public class FightingClassControllerTests
     {
         [Fact]
         public void ControllerShouldBeInAdminArea()
-            => MyController<AdminController>
+            => MyController<FightingClassController>
                 .Instance()
                 .ShouldHave()
                 .Attributes(attrs => attrs
@@ -17,26 +17,18 @@
                     .RestrictingForAuthorizedRequests(GConst.AdminRole));
 
         [Fact]
-        public void ReturnViewWhenCallingIndexAction()
+        public void ReturnViewWhenCallingCreateAction()
             => MyMvc
-                .Controller<AdminController>()
-                .Calling(c => c.Index())
+                .Controller<FightingClassController>()
+                .Calling(c => c.Create())
                 .ShouldReturn()
                 .View();
 
         [Fact]
-        public void ReturnViewWhenCallingAboutAction()
+        public void ReturnViewWhenCallingUpdateAction()
             => MyMvc
-                .Controller<AdminController>()
-                .Calling(c => c.About())
-                .ShouldReturn()
-                .View();
-
-        [Fact]
-        public void ReturnViewWhenCallingLogoutAction()
-            => MyMvc
-                .Controller<AdminController>()
-                .Calling(c => c.Logout())
+                .Controller<FightingClassController>()
+                .Calling(c => c.Update())
                 .ShouldReturn()
                 .View();
     }
