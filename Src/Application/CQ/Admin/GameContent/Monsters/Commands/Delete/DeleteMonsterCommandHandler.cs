@@ -26,6 +26,8 @@
 
             this.Context.Monsters.Remove(monster);
 
+            await this.Context.SaveChangesAsync(cancellationToken);
+
             return GConst.AdminMonsterCommandRedirect;
         }
     }

@@ -25,9 +25,9 @@
 
                 var context = services.GetRequiredService<FFDbContext>();
 
-                // await SeedUsersAndRoles(services, context);
-                   
-                // await DataSeeder.Seed(context);
+                await SeedUsersAndRoles(services, context);
+                
+                await DataSeeder.Seed(context);
             }
 
             host.Run();

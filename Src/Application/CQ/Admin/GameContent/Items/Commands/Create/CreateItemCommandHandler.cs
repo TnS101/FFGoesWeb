@@ -5,20 +5,16 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.Common.StringProcessing.ImagePaths;
-    using Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery;
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Domain.Entities.Game.Items;
     using global::Common;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
-    public class CreateItemCommandHandler : MapperHandler, IRequestHandler<CreateItemCommand, string>
+    public class CreateItemCommandHandler : BaseHandler, IRequestHandler<CreateItemCommand, string>
     {
         private readonly ImagePath imagePath;
 
-        public CreateItemCommandHandler(IFFDbContext context ,IMapper mapper)
-            : base(context, mapper)
+        public CreateItemCommandHandler(IFFDbContext context)
+            : base(context)
         {
             this.imagePath = new ImagePath();
         }

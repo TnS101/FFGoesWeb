@@ -2,8 +2,8 @@
 {
     using System.Threading.Tasks;
     using Application.CQ.Social.Comments.Commands.Create;
-    using Application.CQ.Social.Likes.Command.Create;
-    using Application.CQ.Social.Likes.Command.Delete;
+    using Application.CQ.Social.Likes.Commands.Create;
+    using Application.CQ.Social.Likes.Commands.Delete;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

@@ -11,11 +11,11 @@
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Name)
-                .HasMaxLength(40)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(c => c.Type)
-                .HasMaxLength(15)
+                .HasMaxLength(30)
                 .IsRequired();
 
             builder.Property(c => c.Slot)

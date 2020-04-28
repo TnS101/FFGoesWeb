@@ -11,14 +11,14 @@
             builder.HasKey(m => m.Id);
 
             builder.Property(m => m.Name)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(m => m.Slot)
                 .HasDefaultValue("Material");
 
             builder.Property(m => m.ImagePath)
-                .HasMaxLength(80)
+                .HasMaxLength(100)
                 .IsRequired();
         }
     }

@@ -24,15 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQ\Admin\GameContent\FightingClasses\Commands\" />
-    <Folder Include="CQ\Admin\GameContent\Items\Commands\" />
-    <Folder Include="CQ\Admin\GameContent\Monsters\Commands\" />
-    <Folder Include="CQ\Admin\GameContent\Spells\Commands\" />
-    <Folder Include="CQ\Admin\GameContent\Spells\Queries\" />
-    <Folder Include="CQ\Admin\Moderation\Feedbacks\Commands\" />
-    <Folder Include="CQ\Admin\Moderation\Feedbacks\Queries\" />
-    <Folder Include="CQ\Moderator\Commands\" />
-    <Folder Include="CQ\Moderator\Queries\" />
     <Folder Include="CQ\Social\Comments\Commands\" />
     <Folder Include="CQ\Social\Comments\Queries\" />
     <Folder Include="CQ\Social\FriendRequests\Commands\" />

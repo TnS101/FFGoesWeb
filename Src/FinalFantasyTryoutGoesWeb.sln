@@ -22,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI.Tests", "..\Tests\WebUI.Test\WebUI.Tests.csproj", "{685FA71C-A367-439C-B393-C52DBB320FA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "..\Tests\Application.Tests\Application.Tests.csproj", "{B8966064-519D-4059-933A-AABEEA037076}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests", "..\Tests\Application.Tests\Application.Tests.csproj", "{B8966064-519D-4059-933A-AABEEA037076}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,9 +65,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{C452B263-BAB4-47E1-9B37-CC7BB87A8EC8} = {F0EE9426-64B7-4925-B1A6-630AFDE84EBF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D7D45F2B-1802-4D6A-B0C0-7687B847B4B6}

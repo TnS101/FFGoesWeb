@@ -11,7 +11,7 @@
             builder.HasKey(t => t.Id);
 
             builder.Property(t => t.Name)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(t => t.Slot)
@@ -23,7 +23,7 @@
                 .IsRequired();
 
             builder.Property(t => t.Type)
-                .HasMaxLength(20)
+                .HasMaxLength(30)
                 .IsRequired();
         }
     }

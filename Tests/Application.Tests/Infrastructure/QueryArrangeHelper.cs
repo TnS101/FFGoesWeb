@@ -2,7 +2,11 @@
 {
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
+    using Domain.Entities.Game.Items.ManyToMany.Equipments;
+    using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
+    using Domain.Entities.Game.Units.ManyToMany;
+    using Domain.Entities.Game.Units.OneToOne;
     using Domain.Entities.Moderation;
     using Domain.Entities.Social;
     using Persistence.Context;
@@ -222,15 +226,16 @@
         // Moderation
         public static void AddTickets(FFDbContext context)
         {
+            var userId = CommandArrangeHelper.GetUserId(context);
             var messageId = CommandArrangeHelper.GetMessageId(context);
             var topicId = CommandArrangeHelper.GetTopicId(context);
             var commentId = CommandArrangeHelper.GetCommentId(context);
 
             var tickets = new List<Ticket>
             {
-                new Ticket { Id = 1, MessageId = messageId },
-                new Ticket { Id = 2, TopicId = topicId },
-                new Ticket { Id = 3, CommentId = commentId },
+                new Ticket { Id = 1, MessageId = messageId, UserId = userId },
+                new Ticket { Id = 2, TopicId = topicId, UserId = userId },
+                new Ticket { Id = 3, CommentId = commentId, UserId = userId },
             };
 
             context.Tickets.AddRange(tickets);
@@ -389,51 +394,150 @@
             context.SaveChanges();
         }
 
-        public static void Add(FFDbContext context)
+        public static void AddArmorEquipments(FFDbContext context)
         {
-            context.AddRange(users);
+            var equipmentId = CommandArrangeHelper.GetEquipementId(context);
+
+            var armorId = CommandArrangeHelper.GetArmorId(context);
+
+            var armorEquipments = new List<ArmorEquipment>
+            {
+                new ArmorEquipment { EquipmentId = equipmentId, ArmorId = armorId },
+                new ArmorEquipment { EquipmentId = equipmentId, ArmorId = armorId },
+                new ArmorEquipment { EquipmentId = equipmentId, ArmorId = armorId },
+            };
+
+            context.ArmorsEquipments.AddRange(armorEquipments);
             context.SaveChanges();
         }
 
-        public static void Add(FFDbContext context)
+        public static void AddTrinketEquipment(FFDbContext context)
         {
-            context.AddRange(users);
+            var equipmentId = CommandArrangeHelper.GetEquipementId(context);
+
+            var trinketId = CommandArrangeHelper.GetTrinketId(context);
+
+            var trinketEquipment = new TrinketEquipment { EquipmentId = equipmentId, TrinketId = trinketId };
+
+            context.TrinketEquipments.Add(trinketEquipment);
             context.SaveChanges();
         }
 
-        public static void Add(FFDbContext context)
+        public static void AddWeaponEquipment(FFDbContext context)
         {
-            context.AddRange(users);
+            var equipmentId = CommandArrangeHelper.GetEquipementId(context);
+
+            var weaponId = CommandArrangeHelper.GetWeaponId(context);
+
+            var weaponEquipment = new WeaponEquipment { EquipmentId = equipmentId, WeaponId = weaponId };
+
+            context.WeaponsEquipments.Add(weaponEquipment);
             context.SaveChanges();
         }
 
-        public static void Add(FFDbContext context)
+        public static void AddArmorInventory(FFDbContext context)
         {
-            context.AddRange(users);
+            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
+
+            var armorId = CommandArrangeHelper.GetArmorId(context);
+
+            var armorInventory = new ArmorInventory { InventoryId = inventoryId, ArmorId = armorId };
+
+            context.ArmorsInventories.Add(armorInventory);
             context.SaveChanges();
         }
 
-        public static void Add(FFDbContext context)
+        public static void AddMaterialInventory(FFDbContext context)
         {
-            context.AddRange(users);
+            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
+
+            var materialId = CommandArrangeHelper.GetMaterialId(context);
+
+            var materialInventory = new MaterialInventory { InventoryId = inventoryId, MaterialId = materialId };
+
+            context.MaterialsInventories.Add(materialInventory);
             context.SaveChanges();
         }
 
-        public static void Add(FFDbContext context)
+        public static void AddToolInventory(FFDbContext context)
         {
-            context.AddRange(users);
+            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
+
+            var toolId = CommandArrangeHelper.GetToolId(context);
+
+            var toolInventory = new ToolInventory { InventoryId = inventoryId, ToolId = toolId };
+
+            context.ToolsInventories.Add(toolInventory);
             context.SaveChanges();
         }
 
-        public static void Add(FFDbContext context)
+        public static void AddTreasureInventory(FFDbContext context)
         {
-            context.AddRange(users);
+            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
+
+            var treasureId = CommandArrangeHelper.GetTreasureId(context);
+
+            var treasureInventory = new TreasureInventory { InventoryId = inventoryId, TreasureId = treasureId };
+
+            context.TreasuresInventories.Add(treasureInventory);
             context.SaveChanges();
         }
 
-        public static void Add(FFDbContext context)
+        public static void AddTreasureKeyInventory(FFDbContext context)
         {
-            context.AddRange(users);
+            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
+
+            var treasureKeyId = CommandArrangeHelper.GetTreasureKeyId(context);
+
+            var treasureKeyInventory = new TreasureKeyInventory { InventoryId = inventoryId, TreasureKeyId = treasureKeyId };
+
+            context.TreasureKeysInventories.Add(treasureKeyInventory);
+            context.SaveChanges();
+        }
+
+        public static void AddTrinketInventory(FFDbContext context)
+        {
+            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
+
+            var trinketId = CommandArrangeHelper.GetTrinketId(context);
+
+            var trinketInventory = new TrinketInventory { InventoryId = inventoryId, TrinketId = trinketId };
+
+            context.TrinketsInventories.Add(trinketInventory);
+            context.SaveChanges();
+        }
+
+        public static void AddWeaponInventory(FFDbContext context)
+        {
+            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
+
+            var weaponId = CommandArrangeHelper.GetWeaponId(context);
+
+            var weaponInventory = new WeaponInventory { InventoryId = inventoryId, WeaponId = weaponId };
+
+            context.WeaponsInventories.Add(weaponInventory);
+            context.SaveChanges();
+        }
+
+        public static void AddHeroSpells(FFDbContext context)
+        {
+            var heroId = CommandArrangeHelper.GetHeroId(context);
+
+            var spellId = CommandArrangeHelper.GetSpellId(context);
+
+            var heroSpell = new HeroSpell { HeroId = heroId, SpellId = spellId };
+
+            context.HeroesSpells.Add(heroSpell);
+            context.SaveChanges();
+        }
+
+        public static void AddMonsterRarity(FFDbContext context)
+        {
+            var monsterId = CommandArrangeHelper.GetMonsterId(context);
+
+            var monsterRarirty = new MonsterRarity { Id = 1, MonsterId = monsterId };
+
+            context.MonstersRarities.Add(monsterRarirty);
             context.SaveChanges();
         }
     }

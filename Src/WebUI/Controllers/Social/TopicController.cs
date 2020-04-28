@@ -1,8 +1,8 @@
 ﻿namespace WebUI.Controllers.Social
 {
     using System.Threading.Tasks;
-    using Application.CQ.Social.Likes.Command.Create;
-    using Application.CQ.Social.Likes.Command.Delete;
+    using Application.CQ.Social.Likes.Commands.Create;
+    using Application.CQ.Social.Likes.Commands.Delete;
     using Application.CQ.Social.Topics.Commands.Create;
     using Application.CQ.Social.Topics.Commands.Delete;
     using Application.CQ.Social.Topics.Commands.Update;

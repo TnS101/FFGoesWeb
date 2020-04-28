@@ -127,5 +127,8 @@
                                             |cuckold|tits|bukkake|bitch|horseshit|bondage|bisexual|twat|crap|shitass|wank|cum|boobjob|dickhead|slut|whore|prostitute|suicide|shit|fuck|suicidal|anal|oral|sex|cunt|clitoris|
                                             deepthroat|cock|nigger|niger|nigor|nigra|nigre|nigar|niggur|nigga|niggah|niggar|nigguh|niggress|nigette|kys|hardon|testicle|scrote|schlong|prick|nutsack|fuckstick|asshat|idiot|
                                             dickhole|cockfucker|cockface|cockburger|cockbite|clitface|assshit|asssucker|assmunch|assmonkey|bigass|bigdick|asscock|asshead|pussy|dick).)*$";
+
+        // Tests
+        public const string SuccessStatus = "RanToCompletion";
     }
 }
