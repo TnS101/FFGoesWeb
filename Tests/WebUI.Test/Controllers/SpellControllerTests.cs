@@ -1,8 +1,11 @@
 ﻿namespace WebUI.Test.Controllers
 {
+    using Application.CQ.Admin.GameContent.Spells.Queries.GetCurrentSpellQuery;
     using global::Common;
     using MyTested.AspNetCore.Mvc;
+    using System.Threading.Tasks;
     using WebUI.Areas.Administrator.Controllers;
+    using WebUI.Controllers.Common;
     using Xunit;
 
     public class SpellControllerTests
@@ -31,5 +34,22 @@
                .Calling(c => c.Update())
                .ShouldReturn()
                .View();
+
+        [Fact]
+        public async Task ReturnViewWhenCallingCurrent()
+            => MyMvc
+            .Controller<SpellController>()
+            .Calling(c => c.Current(1))
+            .ShouldReturn()
+            .View();
+
+        [Fact]
+        public async Task ReturnRedirectWhenCreatingSpell()
+            => MyMvc
+            .Controller<SpellController>()
+            .Calling(c => c.Create("p", "p", "p", 1, 1, 1 , "p", 1 , "p", 1))
+            .ShouldReturn()
+            .Redirect();
+       
     }
 }

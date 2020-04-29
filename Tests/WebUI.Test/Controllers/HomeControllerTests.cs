@@ -17,5 +17,21 @@ namespace WebUI.Test.Controllers
             .Calling(c => c.PrivacyPolicy())
             .ShouldReturn()
             .View();
+
+        [Fact]
+        public void ReturnViewWhenCallingIndexAction()
+            => MyMvc
+            .Controller<HomeController>()
+            .Calling(c => c.Index())
+            .ShouldReturn()
+            .View();
+
+        [Fact]
+        public void ReturnViewWhenCallingMonsterCatalogAction()
+            => MyMvc
+            .Controller<HomeController>()
+            .Calling(c => c.MonsterCatalog())
+            .ShouldReturn()
+            .View();
     }
 }

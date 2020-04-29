@@ -23,5 +23,36 @@
                 .Calling(c => c.Content())
                 .ShouldReturn()
                 .View();
+
+        [Fact]
+        public void ReturnViewWhenCallingItemsAction()
+            => MyMvc
+                .Controller<GameContentController>()
+                .Calling(c => c.Items("Material"))
+                .ShouldReturn()
+                .View();
+
+        [Fact]
+        public void ReturnViewWhenCallingSpellsAction()
+            => MyMvc
+                .Controller<GameContentController>()
+                .Calling(c => c.Spells("Hunter"))
+                .ShouldReturn()
+                .View();
+
+        [Fact]
+        public void ReturnViewWhenCallingMonstersAction()
+            => MyMvc
+                .Controller<GameContentController>()
+                .Calling(c => c.Monsters())
+                .ShouldReturn()
+                .View();
+        [Fact]
+        public void ReturnViewWhenCallingFightingClassesAction()
+            => MyMvc
+                .Controller<GameContentController>()
+                .Calling(c => c.FightingClasses())
+                .ShouldReturn()
+                .View();
     }
 }

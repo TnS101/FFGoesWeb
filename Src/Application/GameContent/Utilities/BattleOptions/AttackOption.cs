@@ -1,7 +1,9 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
+    using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Validators.Battle;
     using Domain.Base;
+    using System.Threading;
 
     public class AttackOption
     {

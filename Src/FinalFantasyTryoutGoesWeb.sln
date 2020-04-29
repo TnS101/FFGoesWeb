@@ -24,6 +24,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI.Tests", "..\Tests\Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Tests", "..\Tests\Application.Tests\Application.Tests.csproj", "{B8966064-519D-4059-933A-AABEEA037076}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Tests", "..\Tests\Persistence.Tests\Persistence.Tests.csproj", "{12DF3FEA-15DD-403A-919D-C7656BC42138}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{B8966064-519D-4059-933A-AABEEA037076}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8966064-519D-4059-933A-AABEEA037076}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8966064-519D-4059-933A-AABEEA037076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12DF3FEA-15DD-403A-919D-C7656BC42138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12DF3FEA-15DD-403A-919D-C7656BC42138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12DF3FEA-15DD-403A-919D-C7656BC42138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12DF3FEA-15DD-403A-919D-C7656BC42138}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

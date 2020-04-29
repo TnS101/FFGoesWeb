@@ -25,7 +25,7 @@
             var status = await this.sut.Handle(new GetAllSpellsQuery { }, CancellationToken.None);
 
             status.ShouldBeOfType<SpellListViewModel>();
-            status.Spells.Count().ShouldBe(9);
+            status.Spells.Count().ShouldBe(4);
         }
     }
 }

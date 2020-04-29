@@ -1,5 +1,6 @@
 ﻿namespace WebUI.Test.Common
 {
+    using Application.Common.Handlers;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
    

@@ -31,5 +31,13 @@
                 .Calling(c => c.Update())
                 .ShouldReturn()
                 .View();
+
+        [Fact]
+        public void ReturnRedirectWhenCreatingAFightingClass()
+            => MyMvc
+                .Controller<FightingClassController>()
+                .Calling(c => c.Create("p", 1, 1, 1 ,1 ,1 ,1 ,1 ,1 ,1, "p"))
+                .ShouldReturn()
+                .Redirect();
     }
 }

@@ -25,6 +25,14 @@
                 .View();
 
         [Fact]
+        public void ReturnRedirectWhenCallingCreateAction()
+            => MyMvc
+                .Controller<MonsterController>()
+                .Calling(c => c.Create("1",1,1,1,1,1,1,1,1,1,"1"))
+                .ShouldReturn()
+                .Redirect();
+
+        [Fact]
         public void ReturnViewWhenCallingUpdateAction()
             => MyMvc
                 .Controller<MonsterController>()

@@ -1,6 +1,6 @@
 ﻿namespace WebUI.Tests.Controllers
 {
-    using Common;
+    using global::Common;
     using MyTested.AspNetCore.Mvc;
     using WebUI.Controllers.Game;
     using Xunit;
@@ -22,5 +22,6 @@
                 .Calling(c => c.Killed())
                 .ShouldReturn()
                 .View();
+
     }
 }
