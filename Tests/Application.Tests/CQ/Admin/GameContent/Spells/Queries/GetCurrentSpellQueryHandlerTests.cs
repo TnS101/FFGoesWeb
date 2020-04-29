@@ -1,5 +1,6 @@
 ﻿namespace Application.Tests.CQ.Admin.GameContent.Spells.Queries
 {
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.CQ.Admin.GameContent.Spells.Queries.GetCurrentSpellQuery;
@@ -21,9 +22,33 @@
         [Fact]
         public async Task ShouldGetCurrentSpell()
         {
-            var status = await this.sut.Handle(new GetCurrentSpellQuery { SpellId = this.spellId }, CancellationToken.None);
+            var result = await this.sut.Handle(new GetCurrentSpellQuery { SpellId = this.spellId }, CancellationToken.None);
 
-            status.ShouldBeOfType<SpellFullViewModel>();
+            result.Id.ShouldBe(1);
+
+            result.ClassType.ShouldBe("1");
+            result.ClassType.ShouldNotBeNull();
+            result.EffectPower.ShouldBe(1);
+            result.EffectPower.ShouldNotBeNull();
+            result.AdditionalEffect.ShouldBe("1");
+            result.AdditionalEffect.ShouldNotBeNull();
+            result.BuffOrEffectTarget.ShouldBe("1");
+            result.BuffOrEffectTarget.ShouldNotBeNull();
+            result.ManaRequirement.ShouldBe(10);
+            result.ManaRequirement.ShouldNotBeNull();
+            result.Name.ShouldBe("1");
+            result.Name.ShouldNotBeNull();
+            result.ResistanceAffect.ShouldBe(1);
+            result.ResistanceAffect.ShouldNotBeNull();
+            result.SecondaryPower.ShouldBe(10);
+            result.SecondaryPower.ShouldNotBeNull();
+            result.Power.ShouldBe(1);
+            result.Power.ShouldNotBeNull();
+            result.Type.ShouldBe("1");
+            result.Type.ShouldNotBeNull();
+
+            result.ShouldBeOfType<SpellFullViewModel>();
+            result.ShouldNotBeNull();
         }
     }
 }

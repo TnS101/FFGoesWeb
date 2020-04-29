@@ -27,6 +27,15 @@ namespace Application.Tests.CQ.Users.Statuses.Queries
             var result = await this.sut.Handle(new GetAllStatusesQuery { }, CancellationToken.None);
             result.ShouldBeOfType<StatusListViewModel>();
             result.Statuses.Count().ShouldBe(4);
+
+            int counter = 1;
+            foreach (var status in result.Statuses)
+            {
+                status.Id.ShouldBe(counter);
+                status.IClass.ShouldBe("1");
+                status.DisplayName.ShouldBe("1");
+                counter++;
+            }
         }
     }
 }

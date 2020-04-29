@@ -20,7 +20,7 @@
             this.Context.Spells.Add(new Spell
             {
                 Name = request.Name,
-                ManaRequirement = 0.2,
+                ManaRequirement = request.ManaRequirement,
                 ClassType = request.ClassType,
                 Type = request.Type,
                 Power = request.Power,

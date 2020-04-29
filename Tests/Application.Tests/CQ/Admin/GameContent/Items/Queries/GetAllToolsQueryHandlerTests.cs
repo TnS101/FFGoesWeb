@@ -24,6 +24,16 @@
             var status = await sut.Handle(new GetAllToolsQuery { }, CancellationToken.None);
 
             status.ShouldBeOfType<ToolsListViewModel>();
+
+            int counter = 1;
+
+            foreach (var tool in status.Tools)
+            {
+                tool.Id.ShouldBe(counter);
+                tool.Name.ShouldBe("1");
+                counter++;
+            }
+
             status.Tools.Count().ShouldBe(3);
         }
     }

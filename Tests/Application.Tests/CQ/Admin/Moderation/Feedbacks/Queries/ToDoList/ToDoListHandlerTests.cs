@@ -25,6 +25,14 @@
 
             status.ShouldBeOfType<FeedbackTaskListViewModel>();
             status.Tasks.Count().ShouldBe(0);
+
+            foreach (var task in status.Tasks)
+            {
+                task.Id.ShouldBe(1);
+                task.Id.ShouldNotBeNull();
+                task.Content.ShouldBe("sewew");
+                task.Content.ShouldNotBeNull();
+            }
         }
     }
 }

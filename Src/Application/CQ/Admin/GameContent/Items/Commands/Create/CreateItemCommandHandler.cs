@@ -76,8 +76,12 @@
                 Intellect = request.Intellect,
                 Spirit = request.Spirit,
                 AttackPower = request.AttackPower,
+                BuyPrice = request.BuyPrice,
                 SellPrice = request.SellPrice,
+                IsCraftable = false,
+                Slot = request.Slot,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
+                Type = request.MaterialType,
             };
 
             this.Context.Weapons.Add(weapon);
@@ -104,7 +108,9 @@
                 Slot = request.Slot,
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
+                IsCraftable = false,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
+                Type = request.MaterialType,
             };
 
             this.Context.Armors.Add(armor);
@@ -128,7 +134,10 @@
                 Spirit = request.Spirit,
                 SellPrice = request.SellPrice,
                 BuyPrice = request.BuyPrice,
+                Slot = request.Slot,
+                IsCraftable = false,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
+                Type = request.MaterialType,
             };
 
             this.Context.Trinkets.Add(trinket);
@@ -148,6 +157,7 @@
                 FuelCount = request.FuelCount,
                 RelatedMaterials = request.RelatedMaterials,
                 Type = request.MaterialType,
+                Slot = request.Slot,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
             };
 
@@ -182,6 +192,7 @@
                 Rarity = request.Rarity,
                 Reward = request.Reward,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
+                Slot = request.Slot,
             };
 
             this.Context.Treasures.Add(treasure);
@@ -198,6 +209,7 @@
                 Name = request.Name,
                 Rarity = request.Rarity,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
+                Slot = request.Slot,
             };
 
             this.Context.TreasureKeys.Add(treasureKey);
@@ -215,6 +227,8 @@
                 BuyPrice = request.BuyPrice,
                 Durability = request.Durability,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
+                Slot = request.Slot,
+                SellPrice = request.SellPrice,
             };
 
             if (request.MaterialDiversity == "craftable")

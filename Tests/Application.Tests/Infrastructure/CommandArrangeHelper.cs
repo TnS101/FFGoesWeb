@@ -18,10 +18,36 @@
     {
         public static string GetHeroId(FFDbContext context)
         {
-            var hero = new Hero { Id = "1", Name = "validname", FightingClassId = 1, GoldAmount = 100, InventoryId = "1"
-                , XPCap = 100, XP = 0, CurrentHP = 100, UserId = "1", EquipmentId = "1", CurrentAttackPower = 10, CurrentMagicPower = 10
-                , CurrentArmorValue = 10, CurrentResistanceValue = 10, CurrentCritChance = 5, CurrentHealthRegen = 1, CurrentMana = 100, CurrentManaRegen = 1, ClassType = "Warrior", AttackPower = 10,
-            MagicPower = 10, ArmorValue = 1, ResistanceValue = 1, MaxMana = 100, MaxHP = 100,};
+            var hero = new Hero
+            {
+                Id = "1",
+                Name = "validname",
+                FightingClassId = 1,
+                GoldAmount = 100,
+                InventoryId = "1"
+                ,
+                XPCap = 100,
+                XP = 0,
+                CurrentHP = 100,
+                UserId = "1",
+                EquipmentId = "1",
+                CurrentAttackPower = 10,
+                CurrentMagicPower = 10
+                ,
+                CurrentArmorValue = 10,
+                CurrentResistanceValue = 10,
+                CurrentCritChance = 5,
+                CurrentHealthRegen = 1,
+                CurrentMana = 100,
+                CurrentManaRegen = 1,
+                ClassType = "Warrior",
+                AttackPower = 10,
+                MagicPower = 10,
+                ArmorValue = 1,
+                ResistanceValue = 1,
+                MaxMana = 100,
+                MaxHP = 100,
+            };
 
             context.Heroes.Add(hero);
             context.SaveChanges();
@@ -44,7 +70,9 @@
 
         public static string GetTopicId(FFDbContext context)
         {
-            var topic = new Topic { Id = "1", Title = "validtitle" };
+            var topic = new Topic { Id = "1", Title = "validtitle", Category = "Somedwawd"
+            , Content = "cwscs", EditedOn = DateTime.UtcNow, CreateOn = DateTime.UtcNow, IsRemoved = false,
+             UserId = "1",};
 
             context.Topics.Add(topic);
             context.SaveChanges();
@@ -54,7 +82,13 @@
 
         public static string GetCommentId(FFDbContext context)
         {
-            var comment = new Comment { Id = "1", Content = "validcontent", TopicId = "1" };
+            var comment = new Comment { Id = "1", Content = "validcontent", TopicId = "1",
+                EditedOn = DateTime.UtcNow,
+                IsRemoved = false,
+                UserId = "1",
+                CreatedOn = DateTime.UtcNow,
+                ReplyId = "1",
+            };
 
             context.Comments.Add(comment);
             context.SaveChanges();
@@ -64,7 +98,13 @@
 
         public static string GetMessageId(FFDbContext context)
         {
-            var message = new Message { Id = "1", Content = "validcontent" };
+            var message = new Message { Id = "1", Content = "validcontent",
+                EditedOn = DateTime.UtcNow,
+                IsRemoved = false,
+                UserId = "1",
+                SenderName = "Smese",
+                SentOn = DateTime.UtcNow,
+            };
 
             context.Messages.Add(message);
             context.SaveChanges();
@@ -74,7 +114,7 @@
 
         public static int GetStatusId(FFDbContext context)
         {
-            var status = new Status { Id = 1 };
+            var status = new Status { Id = 1, DisplayName = "SKdasda", IClass = "asdasd" };
 
             context.Statuses.Add(status);
             context.SaveChanges();
@@ -84,7 +124,19 @@
 
         public static string GetEquipementId(FFDbContext context)
         {
-            var equipment = new Equipment("1") { Id = "1" };
+            var equipment = new Equipment("1") { Id = "1",
+                BootsSlot = true,
+                BracerSlot = true,
+                ChestplateSlot = true,
+                GlovesSlot = true,
+                Capacity = 9,
+                HelmetSlot = true,
+                LeggingsSlot = true,
+                ShoulderSlot = true,
+                TrinketSlot = true,
+                WeaponSlot = true,
+                HeroId = "1",
+            };
 
             context.Equipments.Add(equipment);
             context.SaveChanges();
@@ -94,7 +146,7 @@
 
         public static string GetInventoryId(FFDbContext context)
         {
-            var inventory = new Inventory("1") { Id = "1" };
+            var inventory = new Inventory("1") { Id = "1", Capacity = 50, HeroId = "1", };
 
             context.Inventories.Add(inventory);
             context.SaveChanges();
@@ -104,7 +156,24 @@
 
         public static string GetArmorId(FFDbContext context)
         {
-            var armor = new Armor { Id = Guid.NewGuid().ToString() };
+            var armor = new Armor { Id = "1",
+                Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Armor",
+                IsCraftable = true,
+                ImagePath = "1",
+                Agility = 1,
+                ClassType = "1",
+                Intellect = 1,
+                Level = 1,
+                Spirit = 1,
+                Stamina = 1,
+                Strength = 1,
+                Type = "1",
+                ArmorValue = 1,
+                ResistanceValue = 1,
+            };
 
             context.Armors.Add(armor);
             context.SaveChanges();
@@ -114,7 +183,25 @@
 
         public static string GetWeaponId(FFDbContext context)
         {
-            var weapon = new Weapon { Id = "1" };
+            var weapon = new Weapon
+            {
+                Id = "1",
+                Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Weapon",
+                IsCraftable = true,
+                ImagePath = "1",
+                Agility = 1,
+                ClassType = "1",
+                Intellect = 1,
+                Level = 1,
+                Spirit = 1,
+                Stamina = 1,
+                Strength = 1,
+                Type = "1",
+                AttackPower = 10,
+            };
 
             context.Weapons.Add(weapon);
             context.SaveChanges();
@@ -124,7 +211,24 @@
 
         public static string GetTrinketId(FFDbContext context)
         {
-            var trinket = new Trinket { Id = "1" };
+            var trinket = new Trinket
+            {
+                Id = "1",
+                Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Trinket",
+                IsCraftable = true,
+                ImagePath = "1",
+                Agility = 1,
+                ClassType = "1",
+                Intellect = 1,
+                Level = 1,
+                Spirit = 1,
+                Stamina = 1,
+                Strength = 1,
+                Type = "1",
+            };
 
             context.Trinkets.Add(trinket);
             context.SaveChanges();
@@ -134,7 +238,22 @@
 
         public static int GetMaterialId(FFDbContext context)
         {
-            var material = new Material { Id = 1 };
+            var material = new Material
+            {
+                Id = 1,
+                Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Material",
+                IsCraftable = true,
+                FuelCount = 1,
+                RelatedMaterials = "1",
+                ImagePath = "1",
+                ToolId = 1,
+                IsDisolveable = false,
+                IsRefineable = false,
+                Type = "1",
+            };
 
             context.Materials.Add(material);
             context.SaveChanges();
@@ -144,7 +263,14 @@
 
         public static int GetToolId(FFDbContext context)
         {
-            var tool = new Tool { Id = 1 };
+            var tool = new Tool { Id = 1, Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Tool",
+                IsCraftable = true,
+                ImagePath = "1",
+                Durability = 1,
+            };
 
             context.Tools.Add(tool);
             context.SaveChanges();
@@ -154,7 +280,8 @@
 
         public static int GetTreasureId(FFDbContext context)
         {
-            var treasure = new Treasure { Id = 1 };
+            var treasure = new Treasure { Id = 1, Name = "1",
+             ImagePath = "1", Rarity = "1", Reward = 10, Slot = "Treasure"};
 
             context.Treasures.Add(treasure);
             context.SaveChanges();
@@ -164,7 +291,7 @@
 
         public static int GetTreasureKeyId(FFDbContext context)
         {
-            var treasureKey = new TreasureKey { Id = 1 };
+            var treasureKey = new TreasureKey { Id = 1, Slot = "Treasure Key", Rarity = "1", ImagePath = "1", Name = "1" };
 
             context.TreasureKeys.Add(treasureKey);
             context.SaveChanges();
@@ -174,7 +301,18 @@
 
         public static int GetSpellId(FFDbContext context)
         {
-            var spell = new Spell { Id = 1 };
+            var spell = new Spell { Id = 1,
+                ClassType = "1",
+                EffectPower = 1,
+                AdditionalEffect = "1",
+                BuffOrEffectTarget = "1",
+                ManaRequirement = 10,
+                Name = "1",
+                ResistanceAffect = 1,
+                SecondaryPower = 10,
+                Power = 1,
+                Type = "1",
+            };
 
             context.Spells.Add(spell);
             context.SaveChanges();
@@ -202,23 +340,19 @@
             return context.Friends.Find(friend.Id).Id;
         }
 
-        public static async Task<string[]> GetUserStatusIds(FFDbContext context)
+        public static string[] GetUserStatusIds(FFDbContext context)
         {
-            var userId = await GetUserId(context);
-
-            var statusId = GetStatusId(context);
-
-            var userStatus = new UserStatus { UserId = userId, StatusId = statusId };
+            var userStatus = new UserStatus { UserId = "1", StatusId = 1 };
 
             context.UserStatuses.Add(userStatus);
             context.SaveChanges();
 
-            return new string[] { userId, statusId.ToString() };
+            return new string[] { "1", "1" };
         }
 
         public static int GetFriendRequestId(FFDbContext context)
         {
-            var friendRequest = new FriendRequest { Id = 1 };
+            var friendRequest = new FriendRequest { Id = 1, SenderName = "asdas", SentOn = DateTime.UtcNow, UserId = "1" };
 
             context.FriendRequests.Add(friendRequest);
             context.SaveChanges();
@@ -228,7 +362,7 @@
 
         public static string GetLikeId(FFDbContext context)
         {
-            var like = new Like { Id = Guid.NewGuid().ToString() };
+            var like = new Like { Id = "1" };
 
             context.Likes.Add(like);
             context.SaveChanges();
@@ -368,7 +502,21 @@
 
         public static int GetFightingClassId(FFDbContext context)
         {
-            var fightingClass = new FightingClass { Id = 1, Type = "Warrior" };
+            var fightingClass = new FightingClass { Id = 1,
+                ArmorValue = 1,
+                ResistanceValue = 1,
+                AttackPower = 1,
+                CritChance = 1,
+                HealthRegen = 1,
+                IconPath = "1",
+                MagicPower = 1,
+                MaxHP = 1000,
+                ManaRegen = 1,
+                MaxMana = 10,
+                Type = "Warrior",
+                ImagePath = "asdasad",
+                Description = "description",
+            };
 
             context.FightingClasses.Add(fightingClass);
             context.SaveChanges();
@@ -398,7 +546,20 @@
 
         public static int GetTicketId(FFDbContext context)
         {
-            var ticket = new Ticket { Id = 1 };
+            var ticket = new Ticket
+            {
+                Id = 1,
+                ReportedUserId = "2",
+                Category = "Hate",
+                Content = "Somethingaosmdwaomdomwadom"
+                ,
+                TopicId = "1",
+                Type = "Topic"
+                ,
+                AdditionalInformation = "He doesnt",
+                SentOn = DateTime.UtcNow,
+                UserId = "1"
+            };
 
             context.Tickets.Add(ticket);
             context.SaveChanges();

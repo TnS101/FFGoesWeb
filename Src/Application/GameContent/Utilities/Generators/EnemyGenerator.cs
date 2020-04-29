@@ -29,42 +29,34 @@
             {
                 monsterId = this.WorldMonsterId();
             }
-            else if (zoneName == "Tainted Forest")
-            {
-                
-            }
-            else if (zoneName == "Endless Mine")
-            {
-                
-            }
-            else if (zoneName == "The Wilderness")
-            {
-                
-            }
-            else if (zoneName == "Vile City")
-            {
-                
-            }
-            else if (zoneName == "Magical Flower Shop")
-            {
-                
-            }
-            else if (zoneName == "The Core")
-            {
-                
-            }
-            else if (zoneName == "Rocky Basin")
-            {
-                
-            }
-            else if (zoneName == "Happy Garden")
-            {
-                
-            }
-            else if (zoneName == "Scrap Terminal")
-            {
-                
-            }
+
+            // else if (zoneName == "Tainted Forest")
+            // {
+            // }
+            // else if (zoneName == "Endless Mine")
+            // {
+            // }
+            // else if (zoneName == "The Wilderness")
+            // {
+            // }
+            // else if (zoneName == "Vile City")
+            // {
+            // }
+            // else if (zoneName == "Magical Flower Shop")
+            // {
+            // }
+            // else if (zoneName == "The Core")
+            // {
+            // }
+            // else if (zoneName == "Rocky Basin")
+            // {
+            // }
+            // else if (zoneName == "Happy Garden")
+            // {
+            // }
+            // else if (zoneName == "Scrap Terminal")
+            // {
+            // }
 
             statIncrement.MonsterIncrement(await context.Monsters.FindAsync(monsterId), monster);
 
@@ -110,48 +102,38 @@
             {
                 return 9;
             }
-
-            if (enemyNumber >= 6 && enemyNumber <= 10) // Reptile
+            else if (enemyNumber >= 6 && enemyNumber <= 10) // Reptile
             {
                 return 8;
             }
-
-            if (enemyNumber >= 11 && enemyNumber <= 14) // Zombie
+            else if (enemyNumber >= 11 && enemyNumber <= 14) // Zombie
             {
                 return 7;
             }
-
-            if (enemyNumber >= 15 && enemyNumber <= 18) // Skeleton
+            else if (enemyNumber >= 15 && enemyNumber <= 18) // Skeleton
             {
                 return 6;
             }
-
-            if (enemyNumber == 19 || enemyNumber == 20) // Wyrm
+            else if (enemyNumber == 19 || enemyNumber == 20) // Wyrm
             {
                 return 5;
             }
-
-            if (enemyNumber == 21 || enemyNumber == 22) // Giant
+            else if (enemyNumber == 21 || enemyNumber == 22) // Giant
             {
                 return 4;
             }
-
-            if (enemyNumber == 23 || enemyNumber == 24) // Gryphon
+            else if (enemyNumber == 23 || enemyNumber == 24) // Gryphon
             {
                 return 3;
             }
-
-            if (enemyNumber == 25) // Saint
+            else if (enemyNumber == 25) // Saint
             {
                 return 2;
             }
-
-            if (enemyNumber == 26) // Demon
+            else // Demon
             {
                 return 1;
             }
-
-            return 9;
         }
     }
 }

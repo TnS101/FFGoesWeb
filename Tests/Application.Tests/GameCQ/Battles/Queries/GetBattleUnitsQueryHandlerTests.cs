@@ -33,8 +33,10 @@ namespace Application.Tests.GameCQ.Battles.Queries
 
             result.ShouldNotBeNull();
             result.Hero.ShouldBeOfType<UnitFullViewModel>();
-
             result.Enemy.ShouldBeOfType<Monster>();
+            result.Hero.ShouldNotBeNull();
+            result.Hero.Id.ShouldBe("1");
+            result.Enemy.Id.ShouldBe(9);
         }
     }
 }

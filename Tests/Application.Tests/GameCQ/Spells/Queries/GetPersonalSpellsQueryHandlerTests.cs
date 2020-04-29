@@ -32,6 +32,18 @@ namespace Application.Tests.GameCQ.Spells.Queries
             result.ShouldNotBeNull();
             result.ShouldBeOfType<SpellListViewModel>();
             result.Spells.Count().ShouldBe(4);
+
+            int counter = 1;
+
+            foreach (var spell in result.Spells)
+            {
+                spell.Id.ShouldBe(counter);
+                spell.ManaRequirment.ShouldBe(0);
+                spell.Name.ShouldBe("somepsld");
+                spell.ClassType.ShouldBe("Warrior");
+
+                counter++;
+            }
         }
     }
 }

@@ -16,15 +16,17 @@
 
         public async Task Sum(Hero hero, IFFDbContext context, Equipment heroEquipment)
         {
-            if (heroEquipment.ArmorEquipments.Count > 0)
+            var armorEquipment = await context.ArmorsEquipments.Where(ae => ae.EquipmentId == hero.EquipmentId && ae.ArmorId != null).ToListAsync();
+
+            if (armorEquipment.Count() > 0)
             {
                 var items = new Queue<Armor>();
 
                 foreach (var armor in context.Armors)
                 {
-                    foreach (var armorEquipment in await context.ArmorsEquipments.Where(ai => ai.EquipmentId == heroEquipment.Id && ai.ArmorId != null).ToListAsync())
+                    foreach (var equipment in armorEquipment)
                     {
-                        if (armor.Id == armorEquipment.ArmorId)
+                        if (armor.Id == equipment.ArmorId)
                         {
                             items.Enqueue(armor);
                         }

@@ -37,13 +37,13 @@
         {
             var armors = new List<Armor>
             {
-                new Armor { Id = "1", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
-                new Armor { Id = "2", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
-                new Armor { Id = "3", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
-                new Armor { Id = "4", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
-                new Armor { Id = "5", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
-                new Armor { Id = "6", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
-                new Armor { Id = "7", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
+                new Armor { Id = "1", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "2", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "3", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "4", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "5", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "6", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "7", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
             };
 
             context.Armors.AddRange(armors);
@@ -84,9 +84,33 @@
         {
             var materials = new List<Material>
             {
-                new Material { Id = 1, Slot = "Material", Name = "Wood" },
-                new Material { Id = 2, Slot = "Material", Name = "Stone" },
-                new Material { Id = 3, Slot = "Material", Name = "Leather" },
+                new Material { Id = 1, Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Material",
+                IsCraftable = true,
+                FuelCount = 1,
+                RelatedMaterials = "Something,some",
+                ImagePath = "smee",
+                ToolId = 1, },
+                new Material { Id = 2,Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Material",
+                IsCraftable = true,
+                FuelCount = 1,
+                RelatedMaterials = "Something,some",
+                ImagePath = "smee",
+                ToolId = 1, },
+                new Material { Id = 3, Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Material",
+                IsCraftable = true,
+                FuelCount = 1,
+                RelatedMaterials = "Something,some",
+                ImagePath = "smee",
+                ToolId = 1, },
             };
 
             context.Materials.AddRange(materials);
@@ -97,9 +121,27 @@
         {
             var tools = new List<Tool>
             {
-                new Tool { Id = 1, Slot = "Tool", Name = "Hammer" },
-                new Tool { Id = 2, Slot = "Tool", Name = "Axe" },
-                new Tool { Id = 3, Slot = "Tool", Name = "Knife" },
+                new Tool { Id = 1, Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Tool",
+                IsCraftable = true,
+                ImagePath = "smee",
+                Durability = 1, },
+                new Tool { Id = 2, Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Tool",
+                IsCraftable = true,
+                ImagePath = "smee",
+                Durability = 1, },
+                new Tool { Id = 3, Name = "1",
+                BuyPrice = 10,
+                SellPrice = 10,
+                Slot = "Tool",
+                IsCraftable = true,
+                ImagePath = "smee",
+                Durability = 1, },
             };
 
             context.Tools.AddRange(tools);
@@ -110,9 +152,12 @@
         {
             var treasures = new List<Treasure>
             {
-                new Treasure { Id = 1, Slot = "Treasure", Rarity = "Bronze" },
-                new Treasure { Id = 2, Slot = "Treasure", Rarity = "Silver" },
-                new Treasure { Id = 3, Slot = "Treasure", Rarity = "Gold" },
+                new Treasure { Id = 1, Name = "1",
+             ImagePath = "1", Rarity = "1", Reward = 10, Slot = "Treasure" },
+                new Treasure { Id = 2, Name = "1",
+             ImagePath = "1", Rarity = "1", Reward = 10, Slot = "Treasure" },
+                new Treasure { Id = 3, Name = "1",
+             ImagePath = "1", Rarity = "1", Reward = 10, Slot = "Treasure" },
             };
 
             context.Treasures.AddRange(treasures);
@@ -123,9 +168,9 @@
         {
             var treasureKeys = new List<TreasureKey>
             {
-                new TreasureKey { Id = 1, Slot = "Treasure Key", Rarity = "Bronze" },
-                new TreasureKey { Id = 2, Slot = "Treasure Key", Rarity = "Silver" },
-                new TreasureKey { Id = 3, Slot = "Treasure Key", Rarity = "Gold" },
+                new TreasureKey { Id = 1, Slot = "Treasure Key", Rarity = "1", ImagePath = "1", Name = "1" },
+                new TreasureKey { Id = 2, Slot = "Treasure Key", Rarity = "1", ImagePath = "1", Name = "1" },
+                new TreasureKey { Id = 3, Slot = "Treasure Key", Rarity = "1", ImagePath = "1", Name = "1" },
             };
 
             context.TreasureKeys.AddRange(treasureKeys);
@@ -163,7 +208,7 @@
         // Game -> Units
         public static void AddEnergyChanges(FFDbContext context)
         {
-            var energyChange = new EnergyChange { HeroId = "1", LastChangedOn = DateTime.UtcNow };
+            var energyChange = new EnergyChange { HeroId = "1", LastChangedOn = DateTime.UtcNow, Id = "1", Type = "asdads" };
 
             context.EnergyChanges.Add(energyChange);
             context.SaveChanges();
@@ -173,30 +218,71 @@
         {
             var fightingClasses = new List<FightingClass>
             {
-                new FightingClass { Id = 1, Type = "Warrior" },
-                new FightingClass { Id = 2, Type = "Mage" },
-                new FightingClass { Id = 3, Type = "Hunter" },
-                new FightingClass { Id = 4, Type = "Rogue" },
-                new FightingClass { Id = 5, Type = "Shaman" },
-                new FightingClass { Id = 6, Type = "Paladin" },
-                new FightingClass { Id = 7, Type = "Necroid" },
-                new FightingClass { Id = 8, Type = "Naturalist" },
-                new FightingClass { Id = 9, Type = "Priest" },
+                new FightingClass { Id = 1, Type = "Warrior", Description = "sdawd", ImagePath = "adawda",
+                ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10},
+
+                new FightingClass { Id = 2, Type = "Mage",Description = "sdawd", ImagePath = "adawda",
+                ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
+
+                new FightingClass { Id = 3, Type = "Hunter",Description = "sdawd", ImagePath = "adawda",
+                ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
+
+                new FightingClass { Id = 4, Type = "Rogue",Description = "sdawd", ImagePath = "adawda",
+                ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
+
+                new FightingClass { Id = 5, Type = "Shaman",Description = "sdawd", ImagePath = "adawda",
+                ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
+
+                new FightingClass { Id = 6, Type = "Paladin",Description = "sdawd", ImagePath = "adawda",
+                ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
+
+                new FightingClass { Id = 7, Type = "Necroid",Description = "sdawd", ImagePath = "adawda",
+                ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
+
+                new FightingClass { Id = 8, Type = "Naturalist",Description = "sdawd", ImagePath = "adawda",
+                ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
+
+                new FightingClass { Id = 9, Type = "Priest",Description = "sdawd", ImagePath = "adawda",
+                ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
             };
 
             context.FightingClasses.AddRange(fightingClasses);
             context.SaveChanges();
         }
 
-        public static async Task AddHeroes(FFDbContext context)
+        public static void AddHeroes(FFDbContext context)
         {
-            var userId = await CommandArrangeHelper.GetUserId(context);
-
             var heroes = new List<Hero>
             {
-                new Hero { Id = "1", Name = "validname", FightingClassId = 1, UserId = userId, GoldAmount = 100, InventoryId= "1", XPCap = 100, XP = 0, CurrentHP = 100 },
-                new Hero { Id = "2", Name = "namevalid", FightingClassId = 2, UserId = userId, GoldAmount = 100, InventoryId= "2", XPCap = 100, XP = 0, CurrentHP = 100 },
-                new Hero { Id = "3", Name = "veryvalid", FightingClassId = 3, UserId = userId, GoldAmount = 100, InventoryId= "3", XPCap = 100, XP = 0, CurrentHP = 100 },
+                new Hero { Id = "1", Name = "validname", FightingClassId = 1, UserId = "1", GoldAmount = 100, InventoryId = "1", XPCap = 100, XP = 0, CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                ClassType = "Warrior", Type = "Player", ImagePath = "asdasad", CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1, Energy = 30, EquipmentId = "1", EquipmentScore = 0, IsSelected = true, Level = 1, Mastery = 0 ,
+                ProfessionEnergy = 10, ProfessionId = 1, ProfessionLevel = 1, ProffesionXP = 0, ProffesionXPCap = 100, PvPEnergy = 15,
+                PvPPoints = 0 ,Race = "random", },
+
+                new Hero { Id = "2", Name = "validname", FightingClassId = 1, UserId = "1", GoldAmount = 100, InventoryId = "2", XPCap = 100, XP = 0, CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                ClassType = "Warrior", Type = "Player", ImagePath = "asdasad", CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1, Energy = 30, EquipmentId = "1", EquipmentScore = 0, IsSelected = false, Level = 1, Mastery = 0 ,
+                ProfessionEnergy = 10, ProfessionId = 1, ProfessionLevel = 1, ProffesionXP = 0, ProffesionXPCap = 100, PvPEnergy = 15,
+                PvPPoints = 0 ,Race = "random", },
+
+                new Hero { Id = "3", FightingClassId = 1, UserId = "1", GoldAmount = 100, InventoryId = "2", XPCap = 100, XP = 0, CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                IconPath = "awdawdwad", MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                ClassType = "Warrior", Type = "Player", ImagePath = "asdasad", CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1, Energy = 30, EquipmentId = "1", EquipmentScore = 0, IsSelected = false, Level = 1, Mastery = 0 ,
+                ProfessionEnergy = 10, ProfessionId = 1, ProfessionLevel = 1, ProffesionXP = 0, ProffesionXPCap = 100, PvPEnergy = 15,
+                PvPPoints = 0 ,Race = "random", },
             };
 
             context.Heroes.AddRange(heroes);
@@ -207,15 +293,50 @@
         {
             var monsters = new List<Monster>
             {
-                new Monster { Id = 1, Type = "Elemental", Name = "Saint", ImagePath = "somethingimagemaidmaw" },
-                new Monster { Id = 2, Type = "Beast", Name = "Bear", ImagePath = "somethingimagemaidmaw"  },
-                new Monster { Id = 3, Type = "Elemental", Name = "Demon" , ImagePath = "somethingimagemaidmaw"  },
-                new Monster { Id = 4, Type = "Mechanical", Name = "Giant", ImagePath = "somethingimagemaidmaw"   },
-                new Monster { Id = 5, Type = "Reptile", Name = "Reptile" , ImagePath = "somethingimagemaidmaw"  },
-                new Monster { Id = 6, Type = "Humanoid", Name = "Skeleton" , ImagePath = "somethingimagemaidmaw"  },
-                new Monster { Id = 7, Type = "Humanoid", Name = "Zombie" , ImagePath = "somethingimagemaidmaw"  },
-                new Monster { Id = 8, Type = "Beast", Name = "Gryphon", ImagePath = "somethingimagemaidmaw"   },
-                new Monster { Id = 9, Type = "Reptile", Name = "Wyrm" , ImagePath = "somethingimagemaidmaw"  },
+                new Monster { Id = 9, Type = "Beast", Name = "Bear", ImagePath = "somethingimagemaidmaw",CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                 CurrentHealthRegen = 9, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1,  },
+
+                   new Monster { Id = 8, Type = "Reptile", Name = "Reptile" , ImagePath = "somethingimagemaidmaw",CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                 CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1,  },
+
+                      new Monster { Id = 7, Type = "Humanoid", Name = "Zombie" , ImagePath = "somethingimagemaidmaw",CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                 CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1,  },
+
+                       new Monster { Id = 6, Type = "Humanoid", Name = "Skeleton" , ImagePath = "somethingimagemaidmaw",CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                 CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1,  },
+
+                        new Monster { Id = 5, Type = "Reptile", Name = "Wyrm" , ImagePath = "somethingimagemaidmaw",CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                 CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1,  },
+
+                          new Monster { Id = 4, Type = "Mechanical", Name = "Giant", ImagePath = "somethingimagemaidmaw",CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                 CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1,   },
+
+                 new Monster { Id = 3, Type = "Beast", Name = "Gryphon", ImagePath = "somethingimagemaidmaw", CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                 CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1,  },
+
+                new Monster { Id = 2, Type = "Elemental", Name = "Saint", ImagePath = "somethingimagemaidmaw", CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                 CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1, },
+
+                new Monster { Id = 1, Type = "Elemental", Name = "Demon" , ImagePath = "somethingimagemaidmaw",CurrentHP = 100, ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
+                MagicPower = 1, MaxHP = 1000, ManaRegen = 1, MaxMana = 10, CurrentArmorValue = 1, CurrentAttackPower = 10, CurrentCritChance = 5,
+                 CurrentHealthRegen = 1, CurrentMagicPower = 10, CurrentMana = 100,
+                CurrentManaRegen = 1, CurrentResistanceValue = 1,  },
             };
 
             context.Monsters.AddRange(monsters);
@@ -226,15 +347,21 @@
         {
             var spells = new List<Spell>
             {
-                new Spell { Id = 1, ClassType = "Warrior" },
-                new Spell { Id = 2, ClassType = "Warrior" },
-                new Spell { Id = 3, ClassType = "Warrior" },
-                new Spell { Id = 4, ClassType = "Warrior" },
-                new Spell { Id = 5, ClassType = "Shaman" },
-                new Spell { Id = 6, ClassType = "Paladin" },
-                new Spell { Id = 7, ClassType = "Necroid" },
-                new Spell { Id = 8, ClassType = "Naturalist" },
-                new Spell { Id = 9, ClassType = "Priest" },
+                new Spell { Id = 1, ClassType = "Warrior", EffectPower = 1, AdditionalEffect = "sda",
+                BuffOrEffectTarget = "asdas", ManaRequirement = 10, Name = "somepsld", ResistanceAffect = 1,
+                SecondaryPower = 10, Power = 1, Type = "123123"},
+
+                new Spell { Id = 2, ClassType = "Warrior", EffectPower = 1, AdditionalEffect = "sda",
+                BuffOrEffectTarget = "asdas", ManaRequirement = 10, Name = "somepsld", ResistanceAffect = 1,
+                SecondaryPower = 10, Power = 1, Type = "123123" },
+
+                new Spell { Id = 3, ClassType = "Warrior", EffectPower = 1, AdditionalEffect = "sda",
+                BuffOrEffectTarget = "asdas", ManaRequirement = 10, Name = "somepsld", ResistanceAffect = 1,
+                SecondaryPower = 10, Power = 1, Type = "123123" },
+
+                new Spell { Id = 4, ClassType = "Warrior", EffectPower = 1, AdditionalEffect = "sda",
+                BuffOrEffectTarget = "asdas", ManaRequirement = 10, Name = "somepsld", ResistanceAffect = 1,
+                SecondaryPower = 10, Power = 1, Type = "123123" },
             };
 
             context.Spells.AddRange(spells);
@@ -242,18 +369,21 @@
         }
 
         // Moderation
-        public static async Task AddTickets(FFDbContext context)
+        public static void AddTickets(FFDbContext context)
         {
-            var userId = await CommandArrangeHelper.GetUserId(context);
-            var messageId = CommandArrangeHelper.GetMessageId(context);
-            var topicId = CommandArrangeHelper.GetTopicId(context);
-            var commentId = CommandArrangeHelper.GetCommentId(context);
-
             var tickets = new List<Ticket>
             {
-                new Ticket { Id = 1, MessageId = messageId, UserId = userId },
-                new Ticket { Id = 2, TopicId = topicId, UserId = userId },
-                new Ticket { Id = 3, CommentId = commentId, UserId = userId },
+                new Ticket { Id = 1, MessageId = "1", UserId = "1", AdditionalInformation = "sinetu"
+                , Category = "Hate", Content = "somes", SentOn = DateTime.UtcNow, ReportedUserId = "2"
+                , Type = "Message", Stars = 1, },
+
+                 new Ticket { Id = 2, TopicId = "1", UserId = "1", AdditionalInformation = "sinetu"
+                , Category = "Hate", Content = "somes", SentOn = DateTime.UtcNow, ReportedUserId = "2"
+                , Type = "Topic", Stars = 1 },
+
+                  new Ticket { Id = 3, CommentId = "1", UserId = "1", AdditionalInformation = "sinetu"
+                , Category = "Hate", Content = "somes", SentOn = DateTime.UtcNow, ReportedUserId = "2"
+                , Type = "Comment", Stars = 1 },
             };
 
             context.Tickets.AddRange(tickets);
@@ -266,54 +396,58 @@
 
             var feedbacks = new List<Feedback>
             {
-                new Feedback { Id = 1, UserId = userId },
-                new Feedback { Id = 2, UserId = userId },
-                new Feedback { Id = 3, UserId = userId },
+                new Feedback { Id = 1, UserId = userId, Content = "sewew", IsAccepted = false, Rate = 0, SentOn = DateTime.UtcNow,
+                Stars = 0},
+
+                new Feedback { Id = 2, UserId = userId, Content = "sewew", IsAccepted = false, Rate = 0, SentOn = DateTime.UtcNow,
+                Stars = 0 },
+
+                new Feedback { Id = 3, UserId = userId, Content = "sewew", IsAccepted = false, Rate = 0, SentOn = DateTime.UtcNow,
+                Stars = 0 },
             };
 
             context.Feedbacks.AddRange(feedbacks);
             context.SaveChanges();
         }
 
-        public static async Task AddComments(FFDbContext context)
+        public static void AddComments(FFDbContext context)
         {
-            var userId = await CommandArrangeHelper.GetUserId(context);
-
-            var feedbacks = new List<Feedback>
+            var comments = new List<Comment>
             {
-                new Feedback { Id = 1, UserId = userId },
-                new Feedback { Id = 2, UserId = userId },
-                new Feedback { Id = 3, UserId = userId },
+                new Comment { Id = "1", UserId = "1", Content = "sewew", CreatedOn = DateTime.UtcNow, EditedOn = DateTime.UtcNow, IsRemoved = false,
+                 ReplyId = "1", TopicId = "1"},
+
+                new Comment { Id = "2", UserId = "1", Content = "sewew", CreatedOn = DateTime.UtcNow, EditedOn = DateTime.UtcNow, IsRemoved = false,
+                 ReplyId = "1", TopicId = "1" },
+
+                new Comment { Id = "3", UserId = "1", Content = "sewew", CreatedOn = DateTime.UtcNow, EditedOn = DateTime.UtcNow, IsRemoved = false,
+                 ReplyId = "1", TopicId = "1" },
             };
 
-            context.Feedbacks.AddRange(feedbacks);
+            context.Comments.AddRange(comments);
             context.SaveChanges();
         }
 
-        public static async Task AddFriends(FFDbContext context)
+        public static void AddFriends(FFDbContext context)
         {
-            var userId = await CommandArrangeHelper.GetUserId(context);
-
             var friends = new List<Friend>
             {
-                new Friend { Id = "1", UserId = userId },
-                new Friend { Id = "2", UserId = userId },
-                new Friend { Id = "3", UserId = userId },
+                new Friend { Id = "1", UserId = "1" },
+                new Friend { Id = "2", UserId = "1" },
+                new Friend { Id = "3", UserId = "1" },
             };
 
             context.Friends.AddRange(friends);
             context.SaveChanges();
         }
 
-        public static async Task AddFriendRequests(FFDbContext context)
+        public static void AddFriendRequests(FFDbContext context)
         {
-            var userId = await CommandArrangeHelper.GetUserId(context);
-
             var friends = new List<FriendRequest>
             {
-                new FriendRequest { Id = 1, UserId = userId },
-                new FriendRequest { Id = 2, UserId = userId },
-                new FriendRequest { Id = 3, UserId = userId },
+                new FriendRequest { Id = 1, UserId = "1", SenderName = "sdaasd", SentOn = DateTime.UtcNow },
+                new FriendRequest { Id = 2, UserId = "1", SenderName = "sdaasd", SentOn = DateTime.UtcNow },
+                new FriendRequest { Id = 3, UserId = "1", SenderName = "sdaasd", SentOn = DateTime.UtcNow },
             };
 
             context.FriendRequests.AddRange(friends);
@@ -322,31 +456,33 @@
 
         public static void AddLikes(FFDbContext context)
         {
-            var topicId = CommandArrangeHelper.GetTopicId(context);
-            var commentId = CommandArrangeHelper.GetCommentId(context);
-
             var likes = new List<Like>
             {
-                new Like { Id = "1", TopicId = topicId },
-                new Like { Id = "2", TopicId = topicId },
-                new Like { Id = "3", CommentId = commentId },
-                new Like { Id = "4", CommentId = commentId },
+                new Like { Id = "1", TopicId = "1", CommentId = "1", UserId = "1" },
+                new Like { Id = "2", TopicId = "1", CommentId = "1", UserId = "1" },
+                new Like { Id = "3", TopicId = "1", CommentId = "1", UserId = "1" },
+                new Like { Id = "4", TopicId = "1", CommentId = "1", UserId = "1" },
             };
 
             context.Likes.AddRange(likes);
             context.SaveChanges();
         }
 
-        public static async Task AddMessages(FFDbContext context)
+        public static void AddMessages(FFDbContext context)
         {
-            var userId = await CommandArrangeHelper.GetUserId(context);
-
             var messages = new List<Message>
             {
-                new Message { Id = "1", UserId = userId },
-                new Message { Id = "2", UserId = userId },
-                new Message { Id = "3", UserId = userId },
-                new Message { Id = "4", UserId = userId },
+                new Message { Id = "1", UserId = "1", Content = "sewew", SentOn = DateTime.UtcNow
+                , EditedOn = DateTime.UtcNow, IsRemoved = false, SenderName = "Somdwad"},
+
+                new Message { Id = "2", UserId = "1", Content = "sewew", SentOn = DateTime.UtcNow
+                , EditedOn = DateTime.UtcNow, IsRemoved = false, SenderName = "Somdwad" },
+
+                new Message { Id = "3", UserId = "1", Content = "sewew", SentOn = DateTime.UtcNow
+                , EditedOn = DateTime.UtcNow, IsRemoved = false, SenderName = "Somdwad" },
+
+                new Message { Id = "4", UserId = "1", Content = "sewew", SentOn = DateTime.UtcNow
+                , EditedOn = DateTime.UtcNow, IsRemoved = false, SenderName = "Somdwad" },
             };
 
             context.Messages.AddRange(messages);
@@ -373,26 +509,39 @@
         {
             var statuses = new List<Status>
             {
-                new Status { Id = 1, DisplayName = "UnSet" },
-                new Status { Id = 2, DisplayName = "Star" },
-                new Status { Id = 3, DisplayName = "Focus" },
-                new Status { Id = 4, DisplayName = "9000+IQ" },
+                new Status { Id = 1, DisplayName = "1", IClass = "1" },
+                new Status { Id = 2, DisplayName = "1", IClass = "1" },
+                new Status { Id = 3, DisplayName = "1", IClass = "1" },
+                new Status { Id = 4, DisplayName = "1", IClass = "1" },
             };
 
             context.Statuses.AddRange(statuses);
             context.SaveChanges();
         }
 
-        public static async Task AddTopics(FFDbContext context)
+        public static void AddTopics(FFDbContext context)
         {
-            var userId = await CommandArrangeHelper.GetUserId(context);
-
             var topics = new List<Topic>
             {
-                new Topic { Id = "1", UserId = userId },
-                new Topic { Id = "2", UserId = userId },
-                new Topic { Id = "3", UserId = userId },
-                new Topic { Id = "4", UserId = userId },
+                new Topic { Id = "1", UserId = "1", Content = "sewew", Category = "asd", IsRemoved = false,
+                 CreateOn = DateTime.UtcNow
+                , EditedOn = DateTime.UtcNow,
+                Title = "ssd"},
+
+                new Topic { Id = "2", UserId = "1", Content = "sewew",Category = "asd", IsRemoved = false,
+                 CreateOn = DateTime.UtcNow
+                , EditedOn = DateTime.UtcNow,
+                Title = "ssd" },
+
+                new Topic { Id = "3", UserId = "2", Content = "sewew",Category = "asd", IsRemoved = false,
+                 CreateOn = DateTime.UtcNow
+                , EditedOn = DateTime.UtcNow,
+                Title = "ssd" },
+
+                new Topic { Id = "4", UserId = "2", Content = "sewew",Category = "asd", IsRemoved = false,
+                 CreateOn = DateTime.UtcNow
+                , EditedOn = DateTime.UtcNow,
+                Title = "ssd" },
             };
 
             context.Topics.AddRange(topics);
@@ -458,12 +607,9 @@
 
         public static void AddMaterialInventory(FFDbContext context)
         {
-            var materialInventory = new List<MaterialInventory>
-            {
-               new MaterialInventory {InventoryId = "1", MaterialId = 1, Count = 2 },
-            };
+            var materialInventory = new MaterialInventory { InventoryId = "1", MaterialId = 1, Count = 2 };
 
-            context.MaterialsInventories.AddRange(materialInventory);
+            context.MaterialsInventories.Add(materialInventory);
             context.SaveChanges();
         }
 
@@ -515,11 +661,151 @@
             context.SaveChanges();
         }
 
-        public static void AddMonsterRarity(FFDbContext context)
+        public static void AddMonsterRarities(FFDbContext context)
         {
-            var monsterRarirty = new MonsterRarity { Id = 1, MonsterId = 1 };
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Bear",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Bear-Rare.png",
+                StatAmplifier = 0.1,
+            });
 
-            context.MonstersRarities.Add(monsterRarirty);
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Bear",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Bear-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Demon",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Demon-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Demon",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Demon-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Giant",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Giant-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Giant",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Giant-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Gryphon",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Gryphon-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Gryphon",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Gryphon-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Reptile",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Reptile-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Reptile",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Reptile-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Saint",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Saint-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Saint",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Saint-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Skeleton",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Skeleton-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Skeleton",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Skeleton-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Wyrm",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Wyrm-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Wyrm",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Wyrm-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Zombie",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Zombie-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Zombie",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Zombie-Heroic.png",
+                StatAmplifier = 0.2,
+            });
             context.SaveChanges();
         }
     }

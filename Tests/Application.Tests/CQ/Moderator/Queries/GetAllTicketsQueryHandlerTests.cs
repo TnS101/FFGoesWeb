@@ -24,6 +24,14 @@
             var status = await this.sut.Handle(new GetAllTicketsQuery { }, CancellationToken.None);
 
             status.ShouldBeOfType<TicketsListViewModel>();
+
+            foreach (var ticket in status.Tickets)
+            {
+                ticket.Id.ShouldNotBeNull();
+                ticket.Category.ShouldNotBeNull();
+                ticket.SentOn.ShouldNotBeNull();
+            }
+
             status.Tickets.Count().ShouldBe(3);
         }
     }
