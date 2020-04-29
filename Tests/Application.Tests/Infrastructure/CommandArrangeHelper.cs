@@ -8,15 +8,20 @@
     using Domain.Entities.Game.Units.OneToOne;
     using Domain.Entities.Moderation;
     using Domain.Entities.Social;
+    using Microsoft.AspNetCore.Identity;
+    using Moq;
     using Persistence.Context;
     using System;
-    using System.Linq;
+    using System.Threading.Tasks;
 
     public static class CommandArrangeHelper
     {
         public static string GetHeroId(FFDbContext context)
         {
-            var hero = new Hero { Id = Guid.NewGuid().ToString(), Name = "validname" };
+            var hero = new Hero { Id = "1", Name = "validname", FightingClassId = 1, GoldAmount = 100, InventoryId = "1"
+                , XPCap = 100, XP = 0, CurrentHP = 100, UserId = "1", EquipmentId = "1", CurrentAttackPower = 10, CurrentMagicPower = 10
+                , CurrentArmorValue = 10, CurrentResistanceValue = 10, CurrentCritChance = 5, CurrentHealthRegen = 1, CurrentMana = 100, CurrentManaRegen = 1, ClassType = "Warrior", AttackPower = 10,
+            MagicPower = 10, ArmorValue = 1, ResistanceValue = 1, MaxMana = 100, MaxHP = 100,};
 
             context.Heroes.Add(hero);
             context.SaveChanges();
@@ -24,10 +29,13 @@
             return context.Heroes.Find(hero.Id).Id;
         }
 
-        public static string GetUserId(FFDbContext context)
+        public static async Task<string> GetUserId(FFDbContext context)
         {
-            var user = new AppUser { Id = Guid.NewGuid().ToString(), UserName = "validname" };
+            var user = new AppUser { Id = "1", UserName = "validname", SecurityStamp = "2" };
 
+            var userManager = MockHelpers.TestUserManager<AppUser>();
+
+            await userManager.CreateAsync(user);
             context.AppUsers.Add(user);
             context.SaveChanges();
 
@@ -36,7 +44,7 @@
 
         public static string GetTopicId(FFDbContext context)
         {
-            var topic = new Topic { Id = Guid.NewGuid().ToString(), Title = "validtitle" };
+            var topic = new Topic { Id = "1", Title = "validtitle" };
 
             context.Topics.Add(topic);
             context.SaveChanges();
@@ -46,7 +54,7 @@
 
         public static string GetCommentId(FFDbContext context)
         {
-            var comment = new Comment { Id = Guid.NewGuid().ToString(), Content = "validcontent" };
+            var comment = new Comment { Id = "1", Content = "validcontent", TopicId = "1" };
 
             context.Comments.Add(comment);
             context.SaveChanges();
@@ -56,7 +64,7 @@
 
         public static string GetMessageId(FFDbContext context)
         {
-            var message = new Message { Id = Guid.NewGuid().ToString(), Content = "validcontent" };
+            var message = new Message { Id = "1", Content = "validcontent" };
 
             context.Messages.Add(message);
             context.SaveChanges();
@@ -76,9 +84,7 @@
 
         public static string GetEquipementId(FFDbContext context)
         {
-            var heroId = GetHeroId(context);
-
-            var equipment = new Equipment(heroId) { Id = Guid.NewGuid().ToString() };
+            var equipment = new Equipment("1") { Id = "1" };
 
             context.Equipments.Add(equipment);
             context.SaveChanges();
@@ -88,9 +94,7 @@
 
         public static string GetInventoryId(FFDbContext context)
         {
-            var heroId = GetHeroId(context);
-
-            var inventory = new Inventory(heroId) { Id = Guid.NewGuid().ToString() };
+            var inventory = new Inventory("1") { Id = "1" };
 
             context.Inventories.Add(inventory);
             context.SaveChanges();
@@ -110,7 +114,7 @@
 
         public static string GetWeaponId(FFDbContext context)
         {
-            var weapon = new Weapon { Id = Guid.NewGuid().ToString() };
+            var weapon = new Weapon { Id = "1" };
 
             context.Weapons.Add(weapon);
             context.SaveChanges();
@@ -120,7 +124,7 @@
 
         public static string GetTrinketId(FFDbContext context)
         {
-            var trinket = new Trinket { Id = Guid.NewGuid().ToString() };
+            var trinket = new Trinket { Id = "1" };
 
             context.Trinkets.Add(trinket);
             context.SaveChanges();
@@ -180,7 +184,7 @@
 
         public static int GetMonsterId(FFDbContext context)
         {
-            var monster = new Monster { Id = 1 };
+            var monster = new Monster { Id = 1, Type = "Elemental", Name = "Saint", ImagePath = "somethingimagemaidmaw" };
 
             context.Monsters.Add(monster);
             context.SaveChanges();
@@ -198,9 +202,9 @@
             return context.Friends.Find(friend.Id).Id;
         }
 
-        public static string[] GetUserStatusIds(FFDbContext context)
+        public static async Task<string[]> GetUserStatusIds(FFDbContext context)
         {
-            var userId = GetUserId(context);
+            var userId = await GetUserId(context);
 
             var statusId = GetStatusId(context);
 
@@ -254,142 +258,102 @@
 
         public static string[] GetArmorEquipmentIds(FFDbContext context)
         {
-            var equipmentId = GetEquipementId(context);
-
-            var armorId = GetArmorId(context);
-
-            var armorEquipment = new ArmorEquipment { EquipmentId = equipmentId, ArmorId = armorId };
+            var armorEquipment = new ArmorEquipment { EquipmentId = "1", ArmorId = "1" };
 
             context.ArmorsEquipments.Add(armorEquipment);
             context.SaveChanges();
 
-            return new string[] { equipmentId, armorId };
+            return new string[] { "1", "1" };
         }
 
         public static string[] GetTrinketEquipmentIds(FFDbContext context)
         {
-            var equipmentId = GetEquipementId(context);
-
-            var trinketId = GetTrinketId(context);
-
-            var trinketEquipment = new TrinketEquipment { EquipmentId = equipmentId, TrinketId = trinketId };
+            var trinketEquipment = new TrinketEquipment { EquipmentId = "1", TrinketId = "1" };
 
             context.TrinketEquipments.Add(trinketEquipment);
             context.SaveChanges();
 
-            return new string[] { equipmentId, trinketId };
+            return new string[] { "1", "1" };
         }
 
         public static string[] GetWeaponEquipmentIds(FFDbContext context)
         {
-            var equipmentId = GetEquipementId(context);
-
-            var weaponId = GetWeaponId(context);
-
-            var weaponEquipment = new WeaponEquipment { EquipmentId = equipmentId, WeaponId = weaponId };
+            var weaponEquipment = new WeaponEquipment { EquipmentId = "1", WeaponId = "1" };
 
             context.WeaponsEquipments.Add(weaponEquipment);
             context.SaveChanges();
 
-            return new string[] { equipmentId, weaponId };
+            return new string[] { "1", "1" };
         }
 
         public static string[] GetArmorInventoryIds(FFDbContext context)
         {
-            var inventoryId = GetInventoryId(context);
-
-            var armorId = GetArmorId(context);
-
-            var armorInventory = new ArmorInventory { InventoryId = inventoryId, ArmorId = armorId };
+            var armorInventory = new ArmorInventory { InventoryId = "1", ArmorId = "1" };
 
             context.ArmorsInventories.Add(armorInventory);
             context.SaveChanges();
 
-            return new string[] { inventoryId, armorId };
+            return new string[] { "1", "1" };
         }
 
         public static string[] GetMaterialInventoryIds(FFDbContext context)
         {
-            var inventoryId = GetInventoryId(context);
-
-            var armorId = GetArmorId(context);
-
-            var armorInventory = new ArmorInventory { InventoryId = inventoryId, ArmorId = armorId };
+            var armorInventory = new ArmorInventory { InventoryId = "1", ArmorId = "1" };
 
             context.ArmorsInventories.Add(armorInventory);
             context.SaveChanges();
 
-            return new string[] { inventoryId, armorId };
+            return new string[] { "1", "1" };
         }
 
         public static string[] GetToolInventoryIds(FFDbContext context)
         {
-            var inventoryId = GetInventoryId(context);
-
-            var toolId = GetToolId(context);
-
-            var toolInventory = new ToolInventory { InventoryId = inventoryId, ToolId = toolId };
+            var toolInventory = new ToolInventory { InventoryId = "1", ToolId = 1 };
 
             context.ToolsInventories.Add(toolInventory);
             context.SaveChanges();
 
-            return new string[] { inventoryId, toolId.ToString() };
+            return new string[] { "1", "1" };
         }
 
         public static string[] GetTreasureInventoryIds(FFDbContext context)
         {
-            var inventoryId = GetInventoryId(context);
-
-            var treasureId = GetTreasureId(context);
-
-            var treasureInventory = new TreasureInventory { InventoryId = inventoryId, TreasureId = treasureId };
+            var treasureInventory = new TreasureInventory { InventoryId = "1", TreasureId = 1 };
 
             context.TreasuresInventories.Add(treasureInventory);
             context.SaveChanges();
 
-            return new string[] { inventoryId, treasureId.ToString() };
+            return new string[] { "1", "1" };
         }
 
         public static string[] GetTreasureKeyInventoryIds(FFDbContext context)
         {
-            var inventoryId = GetInventoryId(context);
-
-            var treasureKeyId = GetTreasureKeyId(context);
-
-            var treasureKeyInventory = new TreasureKeyInventory { InventoryId = inventoryId, TreasureKeyId = treasureKeyId };
+            var treasureKeyInventory = new TreasureKeyInventory { InventoryId = "1", TreasureKeyId = 1 };
 
             context.TreasureKeysInventories.Add(treasureKeyInventory);
             context.SaveChanges();
 
-            return new string[] { inventoryId, treasureKeyId.ToString() };
+            return new string[] { "1", "1" };
         }
 
         public static string[] GetTrinketInventoryIds(FFDbContext context)
         {
-            var inventoryId = GetInventoryId(context);
-
-            var trinketId = GetTrinketId(context);
-
-            var trinketInventory = new TrinketInventory { InventoryId = inventoryId, TrinketId = trinketId };
+            var trinketInventory = new TrinketInventory { InventoryId = "1", TrinketId = "1" };
 
             context.TrinketsInventories.Add(trinketInventory);
             context.SaveChanges();
 
-            return new string[] { inventoryId, trinketId };
+            return new string[] { "1", "1" };
         }
 
         public static string[] GetWeaponInventoryIds(FFDbContext context)
         {
-            var inventoryId = GetInventoryId(context);
-
-            var weaponId = GetWeaponId(context);
-
-            var weaponInventory = new WeaponInventory { InventoryId = inventoryId, WeaponId = weaponId };
+            var weaponInventory = new WeaponInventory { InventoryId = "1", WeaponId = "1" };
 
             context.WeaponsInventories.Add(weaponInventory);
             context.SaveChanges();
 
-            return new string[] { inventoryId, weaponId };
+            return new string[] { "1", "1" };
         }
 
         public static string GetEnergyChangeId(FFDbContext context)
@@ -404,7 +368,7 @@
 
         public static int GetFightingClassId(FFDbContext context)
         {
-            var fightingClass = new FightingClass { Id = 1};
+            var fightingClass = new FightingClass { Id = 1, Type = "Warrior" };
 
             context.FightingClasses.Add(fightingClass);
             context.SaveChanges();

@@ -45,7 +45,7 @@
             return result;
         }
 
-        private async Task<IEquipableItem> EquipableItem(UpdateEquipmentCommand request)
+        public async Task<IEquipableItem> EquipableItem(UpdateEquipmentCommand request)
         {
             if (request.Slot == "Weapon")
             {

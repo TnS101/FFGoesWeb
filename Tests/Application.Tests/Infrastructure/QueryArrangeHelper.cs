@@ -9,9 +9,13 @@
     using Domain.Entities.Game.Units.OneToOne;
     using Domain.Entities.Moderation;
     using Domain.Entities.Social;
+    using Microsoft.AspNetCore.Identity;
+    using Moq;
     using Persistence.Context;
     using System;
     using System.Collections.Generic;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
 
     public class QueryArrangeHelper
     {
@@ -19,9 +23,9 @@
         {
             var users = new List<AppUser>
             {
-                new AppUser { Id = Guid.NewGuid().ToString(), Email = "someEmail@gmail.com" },
-                new AppUser { Id = Guid.NewGuid().ToString(), Email = "hello@abv.bg" },
-                new AppUser { Id = Guid.NewGuid().ToString(), Email = "ivan4o@yahoo.com "},
+                new AppUser { Id = "1", Email = "someEmail@gmail.com", UserName = "username" },
+                new AppUser { Id = "2", Email = "hello@abv.bg", UserName = "username1" },
+                new AppUser { Id = "3", Email = "ivan4o@yahoo.com", UserName = "username2"},
             };
 
             context.AppUsers.AddRange(users);
@@ -33,9 +37,13 @@
         {
             var armors = new List<Armor>
             {
-                new Armor { Id = Guid.NewGuid().ToString(), Slot = "Armor", Level = 1 },
-                new Armor { Id = Guid.NewGuid().ToString(), Slot = "Armor", Level = 1 },
-                new Armor { Id = Guid.NewGuid().ToString(), Slot = "Armor", Level = 1 },
+                new Armor { Id = "1", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
+                new Armor { Id = "2", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
+                new Armor { Id = "3", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
+                new Armor { Id = "4", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
+                new Armor { Id = "5", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
+                new Armor { Id = "6", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
+                new Armor { Id = "7", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1 },
             };
 
             context.Armors.AddRange(armors);
@@ -44,9 +52,21 @@
 
         public static void AddEquipments(FFDbContext context)
         {
-            var heroId = CommandArrangeHelper.GetHeroId(context);
-
-            var equipement = new Equipment(heroId) { Id = Guid.NewGuid().ToString(), };
+            var equipement = new Equipment("1")
+            {
+                Id = "1",
+                BootsSlot = false,
+                BracerSlot = false,
+                ChestplateSlot = false,
+                GlovesSlot = false,
+                Capacity = 9,
+                HelmetSlot = false,
+                LeggingsSlot = false,
+                ShoulderSlot = false,
+                TrinketSlot = false,
+                WeaponSlot = false,
+                HeroId = "1",
+            };
 
             context.Equipments.Add(equipement);
             context.SaveChanges();
@@ -54,9 +74,7 @@
 
         public static void AddInventory(FFDbContext context)
         {
-            var heroId = CommandArrangeHelper.GetHeroId(context);
-
-            var inventory = new Inventory(heroId) { Id = Guid.NewGuid().ToString() };
+            var inventory = new Inventory("1") { Id = "1", Capacity = 50, HeroId = "1", };
 
             context.Inventories.Add(inventory);
             context.SaveChanges();
@@ -118,9 +136,10 @@
         {
             var trinkets = new List<Trinket>
             {
-                new Trinket { Id = Guid.NewGuid().ToString(), Slot = "Trinket", Level = 1 },
-                new Trinket { Id = Guid.NewGuid().ToString(), Slot = "Trinket", Level = 1 },
-                new Trinket { Id = Guid.NewGuid().ToString(), Slot = "Trinket", Level = 1 },
+                new Trinket { Id = "1", Slot = "Trinket", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1 },
+                new Trinket { Id = "2", Slot = "Trinket", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1 },
+                new Trinket { Id = "3", Slot = "Trinket", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1 },
+                new Trinket { Id = "4", Slot = "Trinket", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1 },
             };
 
             context.Trinkets.AddRange(trinkets);
@@ -131,9 +150,10 @@
         {
             var weapons = new List<Weapon>
             {
-                new Weapon { Id = Guid.NewGuid().ToString(), Slot = "Weapon", Level = 1 },
-                new Weapon { Id = Guid.NewGuid().ToString(), Slot = "Weapon", Level = 1 },
-                new Weapon { Id = Guid.NewGuid().ToString(), Slot = "Weapon", Level = 1 },
+                new Weapon { Id = "1", Slot = "Weapon", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, AttackPower = 10 },
+                new Weapon { Id = "2", Slot = "Weapon", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, AttackPower = 10 },
+                new Weapon { Id = "3", Slot = "Weapon", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, AttackPower = 10 },
+                new Weapon { Id = "4", Slot = "Weapon", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, AttackPower = 10 },
             };
 
             context.Weapons.AddRange(weapons);
@@ -143,9 +163,7 @@
         // Game -> Units
         public static void AddEnergyChanges(FFDbContext context)
         {
-            var heroId = CommandArrangeHelper.GetHeroId(context);
-
-            var energyChange = new EnergyChange { HeroId = heroId, LastChangedOn = DateTime.UtcNow };
+            var energyChange = new EnergyChange { HeroId = "1", LastChangedOn = DateTime.UtcNow };
 
             context.EnergyChanges.Add(energyChange);
             context.SaveChanges();
@@ -170,15 +188,15 @@
             context.SaveChanges();
         }
 
-        public static void AddHeroes(FFDbContext context)
+        public static async Task AddHeroes(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
 
             var heroes = new List<Hero>
             {
-                new Hero { Id = Guid.NewGuid().ToString(), Name = "validname", FightingClassId = 1, UserId = userId },
-                new Hero { Id = Guid.NewGuid().ToString(), Name = "namevalid", FightingClassId = 2, UserId = userId },
-                new Hero { Id = Guid.NewGuid().ToString(), Name = "veryvalid", FightingClassId = 3, UserId = userId },
+                new Hero { Id = "1", Name = "validname", FightingClassId = 1, UserId = userId, GoldAmount = 100, InventoryId= "1", XPCap = 100, XP = 0, CurrentHP = 100 },
+                new Hero { Id = "2", Name = "namevalid", FightingClassId = 2, UserId = userId, GoldAmount = 100, InventoryId= "2", XPCap = 100, XP = 0, CurrentHP = 100 },
+                new Hero { Id = "3", Name = "veryvalid", FightingClassId = 3, UserId = userId, GoldAmount = 100, InventoryId= "3", XPCap = 100, XP = 0, CurrentHP = 100 },
             };
 
             context.Heroes.AddRange(heroes);
@@ -189,15 +207,15 @@
         {
             var monsters = new List<Monster>
             {
-                new Monster { Id = 1, Type = "Saint" },
-                new Monster { Id = 2, Type = "Bear" },
-                new Monster { Id = 3, Type = "Demon" },
-                new Monster { Id = 4, Type = "Giant" },
-                new Monster { Id = 5, Type = "Reptile" },
-                new Monster { Id = 6, Type = "Skeleton" },
-                new Monster { Id = 7, Type = "Zombie" },
-                new Monster { Id = 8, Type = "Gryphon" },
-                new Monster { Id = 9, Type = "Wyrm" },
+                new Monster { Id = 1, Type = "Elemental", Name = "Saint", ImagePath = "somethingimagemaidmaw" },
+                new Monster { Id = 2, Type = "Beast", Name = "Bear", ImagePath = "somethingimagemaidmaw"  },
+                new Monster { Id = 3, Type = "Elemental", Name = "Demon" , ImagePath = "somethingimagemaidmaw"  },
+                new Monster { Id = 4, Type = "Mechanical", Name = "Giant", ImagePath = "somethingimagemaidmaw"   },
+                new Monster { Id = 5, Type = "Reptile", Name = "Reptile" , ImagePath = "somethingimagemaidmaw"  },
+                new Monster { Id = 6, Type = "Humanoid", Name = "Skeleton" , ImagePath = "somethingimagemaidmaw"  },
+                new Monster { Id = 7, Type = "Humanoid", Name = "Zombie" , ImagePath = "somethingimagemaidmaw"  },
+                new Monster { Id = 8, Type = "Beast", Name = "Gryphon", ImagePath = "somethingimagemaidmaw"   },
+                new Monster { Id = 9, Type = "Reptile", Name = "Wyrm" , ImagePath = "somethingimagemaidmaw"  },
             };
 
             context.Monsters.AddRange(monsters);
@@ -209,9 +227,9 @@
             var spells = new List<Spell>
             {
                 new Spell { Id = 1, ClassType = "Warrior" },
-                new Spell { Id = 2, ClassType = "Mage" },
-                new Spell { Id = 3, ClassType = "Hunter" },
-                new Spell { Id = 4, ClassType = "Rogue" },
+                new Spell { Id = 2, ClassType = "Warrior" },
+                new Spell { Id = 3, ClassType = "Warrior" },
+                new Spell { Id = 4, ClassType = "Warrior" },
                 new Spell { Id = 5, ClassType = "Shaman" },
                 new Spell { Id = 6, ClassType = "Paladin" },
                 new Spell { Id = 7, ClassType = "Necroid" },
@@ -224,9 +242,9 @@
         }
 
         // Moderation
-        public static void AddTickets(FFDbContext context)
+        public static async Task AddTickets(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
             var messageId = CommandArrangeHelper.GetMessageId(context);
             var topicId = CommandArrangeHelper.GetTopicId(context);
             var commentId = CommandArrangeHelper.GetCommentId(context);
@@ -242,9 +260,9 @@
             context.SaveChanges();
         }
 
-        public static void AddFeedbacks(FFDbContext context)
+        public static async Task AddFeedbacks(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
 
             var feedbacks = new List<Feedback>
             {
@@ -257,9 +275,9 @@
             context.SaveChanges();
         }
 
-        public static void AddComments(FFDbContext context)
+        public static async Task AddComments(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
 
             var feedbacks = new List<Feedback>
             {
@@ -272,24 +290,24 @@
             context.SaveChanges();
         }
 
-        public static void AddFriends(FFDbContext context)
+        public static async Task AddFriends(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
 
             var friends = new List<Friend>
             {
-                new Friend { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Friend { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Friend { Id = Guid.NewGuid().ToString(), UserId = userId },
+                new Friend { Id = "1", UserId = userId },
+                new Friend { Id = "2", UserId = userId },
+                new Friend { Id = "3", UserId = userId },
             };
 
             context.Friends.AddRange(friends);
             context.SaveChanges();
         }
 
-        public static void AddFriendRequests(FFDbContext context)
+        public static async Task AddFriendRequests(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
 
             var friends = new List<FriendRequest>
             {
@@ -309,42 +327,42 @@
 
             var likes = new List<Like>
             {
-                new Like { Id = Guid.NewGuid().ToString(), TopicId = topicId },
-                new Like { Id = Guid.NewGuid().ToString(), TopicId = topicId },
-                new Like { Id = Guid.NewGuid().ToString(), CommentId = commentId },
-                new Like { Id = Guid.NewGuid().ToString(), CommentId = commentId },
+                new Like { Id = "1", TopicId = topicId },
+                new Like { Id = "2", TopicId = topicId },
+                new Like { Id = "3", CommentId = commentId },
+                new Like { Id = "4", CommentId = commentId },
             };
 
             context.Likes.AddRange(likes);
             context.SaveChanges();
         }
 
-        public static void AddMessages(FFDbContext context)
+        public static async Task AddMessages(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
 
             var messages = new List<Message>
             {
-                new Message { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Message { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Message { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Message { Id = Guid.NewGuid().ToString(), UserId = userId },
+                new Message { Id = "1", UserId = userId },
+                new Message { Id = "2", UserId = userId },
+                new Message { Id = "3", UserId = userId },
+                new Message { Id = "4", UserId = userId },
             };
 
             context.Messages.AddRange(messages);
             context.SaveChanges();
         }
 
-        public static void AddNotifications(FFDbContext context)
+        public static async Task AddNotifications(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
 
             var notifications = new List<Notification>
             {
-                new Notification { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Notification { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Notification { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Notification { Id = Guid.NewGuid().ToString(), UserId = userId },
+                new Notification { Id = "1", UserId = userId },
+                new Notification { Id = "2", UserId = userId },
+                new Notification { Id = "3", UserId = userId },
+                new Notification { Id = "4", UserId = userId },
             };
 
             context.Notifications.AddRange(notifications);
@@ -365,16 +383,16 @@
             context.SaveChanges();
         }
 
-        public static void AddTopics(FFDbContext context)
+        public static async Task AddTopics(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
 
             var topics = new List<Topic>
             {
-                new Topic { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Topic { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Topic { Id = Guid.NewGuid().ToString(), UserId = userId },
-                new Topic { Id = Guid.NewGuid().ToString(), UserId = userId },
+                new Topic { Id = "1", UserId = userId },
+                new Topic { Id = "2", UserId = userId },
+                new Topic { Id = "3", UserId = userId },
+                new Topic { Id = "4", UserId = userId },
             };
 
             context.Topics.AddRange(topics);
@@ -382,9 +400,9 @@
         }
 
         // Relations
-        public static void UserStatus(FFDbContext context)
+        public static async Task UserStatus(FFDbContext context)
         {
-            var userId = CommandArrangeHelper.GetUserId(context);
+            var userId = await CommandArrangeHelper.GetUserId(context);
 
             var statusId = CommandArrangeHelper.GetStatusId(context);
 
@@ -396,15 +414,15 @@
 
         public static void AddArmorEquipments(FFDbContext context)
         {
-            var equipmentId = CommandArrangeHelper.GetEquipementId(context);
-
-            var armorId = CommandArrangeHelper.GetArmorId(context);
-
             var armorEquipments = new List<ArmorEquipment>
             {
-                new ArmorEquipment { EquipmentId = equipmentId, ArmorId = armorId },
-                new ArmorEquipment { EquipmentId = equipmentId, ArmorId = armorId },
-                new ArmorEquipment { EquipmentId = equipmentId, ArmorId = armorId },
+                new ArmorEquipment { EquipmentId = "1", ArmorId = "3" },
+                new ArmorEquipment { EquipmentId = "1", ArmorId = "4" },
+                new ArmorEquipment { EquipmentId = "1", ArmorId = "5" },
+                new ArmorEquipment { EquipmentId = "1", ArmorId = "6" },
+                new ArmorEquipment { EquipmentId = "1", ArmorId = "7" },
+                new ArmorEquipment { EquipmentId = "1", ArmorId = "8" },
+                new ArmorEquipment { EquipmentId = "1", ArmorId = "9" },
             };
 
             context.ArmorsEquipments.AddRange(armorEquipments);
@@ -413,11 +431,7 @@
 
         public static void AddTrinketEquipment(FFDbContext context)
         {
-            var equipmentId = CommandArrangeHelper.GetEquipementId(context);
-
-            var trinketId = CommandArrangeHelper.GetTrinketId(context);
-
-            var trinketEquipment = new TrinketEquipment { EquipmentId = equipmentId, TrinketId = trinketId };
+            var trinketEquipment = new TrinketEquipment { EquipmentId = "1", TrinketId = "3" };
 
             context.TrinketEquipments.Add(trinketEquipment);
             context.SaveChanges();
@@ -425,11 +439,7 @@
 
         public static void AddWeaponEquipment(FFDbContext context)
         {
-            var equipmentId = CommandArrangeHelper.GetEquipementId(context);
-
-            var weaponId = CommandArrangeHelper.GetWeaponId(context);
-
-            var weaponEquipment = new WeaponEquipment { EquipmentId = equipmentId, WeaponId = weaponId };
+            var weaponEquipment = new WeaponEquipment { EquipmentId = "1", WeaponId = "3" };
 
             context.WeaponsEquipments.Add(weaponEquipment);
             context.SaveChanges();
@@ -437,35 +447,29 @@
 
         public static void AddArmorInventory(FFDbContext context)
         {
-            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
+            var armorInventory = new List<ArmorInventory>
+            {
+               new ArmorInventory { InventoryId = "1", ArmorId = "1", Count = 2 },
+            };
 
-            var armorId = CommandArrangeHelper.GetArmorId(context);
-
-            var armorInventory = new ArmorInventory { InventoryId = inventoryId, ArmorId = armorId };
-
-            context.ArmorsInventories.Add(armorInventory);
+            context.ArmorsInventories.AddRange(armorInventory);
             context.SaveChanges();
         }
 
         public static void AddMaterialInventory(FFDbContext context)
         {
-            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
+            var materialInventory = new List<MaterialInventory>
+            {
+               new MaterialInventory {InventoryId = "1", MaterialId = 1, Count = 2 },
+            };
 
-            var materialId = CommandArrangeHelper.GetMaterialId(context);
-
-            var materialInventory = new MaterialInventory { InventoryId = inventoryId, MaterialId = materialId };
-
-            context.MaterialsInventories.Add(materialInventory);
+            context.MaterialsInventories.AddRange(materialInventory);
             context.SaveChanges();
         }
 
         public static void AddToolInventory(FFDbContext context)
         {
-            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
-
-            var toolId = CommandArrangeHelper.GetToolId(context);
-
-            var toolInventory = new ToolInventory { InventoryId = inventoryId, ToolId = toolId };
+            var toolInventory = new ToolInventory { InventoryId = "1", ToolId = 1, Count = 2 };
 
             context.ToolsInventories.Add(toolInventory);
             context.SaveChanges();
@@ -473,11 +477,7 @@
 
         public static void AddTreasureInventory(FFDbContext context)
         {
-            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
-
-            var treasureId = CommandArrangeHelper.GetTreasureId(context);
-
-            var treasureInventory = new TreasureInventory { InventoryId = inventoryId, TreasureId = treasureId };
+            var treasureInventory = new TreasureInventory { InventoryId = "1", TreasureId = 1, Count = 2 };
 
             context.TreasuresInventories.Add(treasureInventory);
             context.SaveChanges();
@@ -485,11 +485,7 @@
 
         public static void AddTreasureKeyInventory(FFDbContext context)
         {
-            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
-
-            var treasureKeyId = CommandArrangeHelper.GetTreasureKeyId(context);
-
-            var treasureKeyInventory = new TreasureKeyInventory { InventoryId = inventoryId, TreasureKeyId = treasureKeyId };
+            var treasureKeyInventory = new TreasureKeyInventory { InventoryId = "1", TreasureKeyId = 1, Count = 2 };
 
             context.TreasureKeysInventories.Add(treasureKeyInventory);
             context.SaveChanges();
@@ -497,11 +493,7 @@
 
         public static void AddTrinketInventory(FFDbContext context)
         {
-            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
-
-            var trinketId = CommandArrangeHelper.GetTrinketId(context);
-
-            var trinketInventory = new TrinketInventory { InventoryId = inventoryId, TrinketId = trinketId };
+            var trinketInventory = new TrinketInventory { InventoryId = "1", TrinketId = "1", Count = 2 };
 
             context.TrinketsInventories.Add(trinketInventory);
             context.SaveChanges();
@@ -509,11 +501,7 @@
 
         public static void AddWeaponInventory(FFDbContext context)
         {
-            var inventoryId = CommandArrangeHelper.GetInventoryId(context);
-
-            var weaponId = CommandArrangeHelper.GetWeaponId(context);
-
-            var weaponInventory = new WeaponInventory { InventoryId = inventoryId, WeaponId = weaponId };
+            var weaponInventory = new WeaponInventory { InventoryId = "1", WeaponId = "1", Count = 2 };
 
             context.WeaponsInventories.Add(weaponInventory);
             context.SaveChanges();
@@ -521,11 +509,7 @@
 
         public static void AddHeroSpells(FFDbContext context)
         {
-            var heroId = CommandArrangeHelper.GetHeroId(context);
-
-            var spellId = CommandArrangeHelper.GetSpellId(context);
-
-            var heroSpell = new HeroSpell { HeroId = heroId, SpellId = spellId };
+            var heroSpell = new HeroSpell { HeroId = "1", SpellId = 1 };
 
             context.HeroesSpells.Add(heroSpell);
             context.SaveChanges();
@@ -533,9 +517,7 @@
 
         public static void AddMonsterRarity(FFDbContext context)
         {
-            var monsterId = CommandArrangeHelper.GetMonsterId(context);
-
-            var monsterRarirty = new MonsterRarity { Id = 1, MonsterId = monsterId };
+            var monsterRarirty = new MonsterRarity { Id = 1, MonsterId = 1 };
 
             context.MonstersRarities.Add(monsterRarirty);
             context.SaveChanges();

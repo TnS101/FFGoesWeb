@@ -64,44 +64,46 @@
 
                 return GConst.UnitKilled;
             }
-            else if (request.YourTurn && request.Enemy.CurrentHP > 0)
+            else if (request.Enemy.CurrentHP > 0)
             {
-                if (request.Command == "Attack")
+                if (request.YourTurn)
                 {
-                    var attackOption = new AttackOption();
+                    if (request.Command == "Attack")
+                    {
+                        var attackOption = new AttackOption();
 
-                    attackOption.Attack(hero, request.Enemy);
+                        attackOption.Attack(hero, request.Enemy);
+                    }
+
+                    if (request.Command == "Defend")
+                    {
+                        var defendOption = new DefendOption();
+
+                        defendOption.Defend(hero);
+                    }
+
+                    if (request.Command == "Spell")
+                    {
+                        var spellCastOption = new SpellCastOption();
+
+                        await spellCastOption.SpellCast(hero, request.Enemy, request.SpellName, this.Context);
+                    }
+
+                    if (request.Command == "Escape")
+                    {
+                        var escapeOption = new EscapeOption();
+
+                        escapeOption.Escape(request.Player);
+                        await this.Context.SaveChangesAsync(cancellationToken);
+
+                        hero.GoldAmount = initialGold;
+
+                        return GConst.EscapeCommand;
+                    }
+
+                    request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);
                 }
-
-                if (request.Command == "Defend")
-                {
-                    var defendOption = new DefendOption();
-
-                    defendOption.Defend(hero);
-                }
-
-                if (request.Command == "Spell")
-                {
-                    var spellCastOption = new SpellCastOption();
-
-                    await spellCastOption.SpellCast(hero, request.Enemy, request.SpellName, this.Context);
-                }
-
-                if (request.Command == "Escape")
-                {
-                    var escapeOption = new EscapeOption();
-
-                    escapeOption.Escape(request.Player);
-                    await this.Context.SaveChangesAsync(cancellationToken);
-
-                    hero.GoldAmount = initialGold;
-
-                    return GConst.EscapeCommand;
-                }
-
-                request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);
-
-                if (!request.YourTurn)
+                else
                 {
                     request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);
                 }

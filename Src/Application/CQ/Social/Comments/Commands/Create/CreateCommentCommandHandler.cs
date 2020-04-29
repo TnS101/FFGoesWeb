@@ -32,9 +32,9 @@
             {
                 Content = request.Content,
                 UserId = user.Id,
-                CreatedOn = DateTime.UtcNow,
-                Likes = new List<Like>(),
-                Replies = new List<Comment>(),
+                //CreatedOn = DateTime.UtcNow,
+                //Likes = new List<Like>(),
+                //Replies = new List<Comment>(),
                 TopicId = request.TopicId,
             });
 

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -24,15 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQ\Social\Comments\Commands\" />
-    <Folder Include="CQ\Social\Comments\Queries\" />
-    <Folder Include="CQ\Social\FriendRequests\Commands\" />
     <Folder Include="CQ\Social\FriendRequests\Queries\" />
     <Folder Include="CQ\Social\Friends\Commands\" />
     <Folder Include="CQ\Social\Friends\Queries\" />
     <Folder Include="CQ\Social\Likes\Commands\" />
     <Folder Include="CQ\Social\Likes\Queries\" />
-    <Folder Include="CQ\Social\Messages\Commands\" />
     <Folder Include="CQ\Social\Messages\Queries\" />
     <Folder Include="CQ\Social\Notifications\Queries\" />
     <Folder Include="CQ\Social\Topics\Commands\" />
@@ -40,20 +36,8 @@
     <Folder Include="CQ\Users\Commands\" />
     <Folder Include="CQ\Users\Feedbacks\" />
     <Folder Include="CQ\Users\Tickets\" />
-    <Folder Include="CQ\Users\Statuses\" />
     <Folder Include="CQ\Users\Queries\" />
-    <Folder Include="GameCQ\Battles\Commands\" />
-    <Folder Include="GameCQ\Battles\Queries\" />
-    <Folder Include="GameCQ\Equipments\Commands\" />
-    <Folder Include="GameCQ\Equipments\Queries\" />
-    <Folder Include="GameCQ\FightingClasses\Queries\" />
-    <Folder Include="GameCQ\Heroes\Commands\" />
     <Folder Include="GameCQ\Heroes\Queries\" />
-    <Folder Include="GameCQ\Items\Commands\" />
-    <Folder Include="GameCQ\Items\Queries\" />
-    <Folder Include="GameCQ\Monsters\Commands\" />
-    <Folder Include="GameCQ\Monsters\Queries\" />
-    <Folder Include="GameCQ\Spells\Queries\" />
     <Folder Include="GameCQ\TreasureKeys\Commands\" />
     <Folder Include="GameCQ\Treasures\Commands\" />
     <Folder Include="GameCQ\World\Commands\" />
@@ -62,6 +46,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Src\Application\Application.csproj" />
     <ProjectReference Include="..\..\Src\Persistence\Persistence.csproj" />
+    <ProjectReference Include="..\..\Src\WebUI\WebUI.csproj" />
   </ItemGroup>
 
 </Project>

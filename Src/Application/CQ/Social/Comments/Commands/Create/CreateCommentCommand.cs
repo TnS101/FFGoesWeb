@@ -4,7 +4,6 @@
     using System.Security.Claims;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Mvc;
 
     public class CreateCommentCommand : IRequest<string>
     {

@@ -23,10 +23,10 @@
         [Fact]
         public async Task ShouldReturnAllItems()
         {
-            var status = await this.sut.Handle(new GetAllItemsQuery { }, CancellationToken.None);
+            var result = await this.sut.Handle(new GetAllItemsQuery { }, CancellationToken.None);
 
-            status.Items.ShouldBeOfType<List<ItemMinViewModel>>();
-            status.Items.Count().ShouldBe(3);
+            result.Items.ShouldBeOfType<List<ItemMinViewModel>>();
+            result.Items.Count().ShouldBe(7);
         }
     }
 }

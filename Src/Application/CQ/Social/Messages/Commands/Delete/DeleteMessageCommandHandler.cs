@@ -18,9 +18,7 @@
         {
             var messageToRemove = await this.Context.Messages.FindAsync(request.MessageId);
 
-            messageToRemove.Content = "[Message Deleted]";
-
-            this.Context.Messages.Update(messageToRemove);
+            this.Context.Messages.Remove(messageToRemove);
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
