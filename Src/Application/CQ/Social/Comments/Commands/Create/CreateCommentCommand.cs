@@ -16,7 +16,7 @@
         [Required]
         public string TopicId { get; set; }
 
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
     }
 
     public class SwearFilter : RegularExpressionAttribute

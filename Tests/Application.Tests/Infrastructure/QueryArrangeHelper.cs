@@ -37,13 +37,13 @@
         {
             var armors = new List<Armor>
             {
-                new Armor { Id = "1", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
-                new Armor { Id = "2", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
-                new Armor { Id = "3", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
-                new Armor { Id = "4", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
-                new Armor { Id = "5", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
-                new Armor { Id = "6", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
-                new Armor { Id = "7", Slot = "Armor", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "1", Slot = "Chestplate", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "2", Slot = "Bracer", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "3", Slot = "Leggings", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "4", Slot = "Shoulder", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "5", Slot = "Boots", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "6", Slot = "Helmet", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
+                new Armor { Id = "7", Slot = "Gloves", ClassType = "Warrior", Level = 1, Agility = 1, Strength = 1, Intellect = 1, Stamina = 1, Spirit = 1, ArmorValue = 1, ResistanceValue = 1, Type = "Armor" },
             };
 
             context.Armors.AddRange(armors);
@@ -218,41 +218,42 @@
         {
             var fightingClasses = new List<FightingClass>
             {
-                new FightingClass { Id = 1, Type = "Warrior", Description = "sdawd", ImagePath = "adawda",
+                new FightingClass { Id = 9, Type = "Warrior", Description = "sdawd", ImagePath = "adawda",
                 ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
                 IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10},
 
-                new FightingClass { Id = 2, Type = "Mage",Description = "sdawd", ImagePath = "adawda",
+                new FightingClass { Id = 8, Type = "Hunter",Description = "sdawd", ImagePath = "adawda",
                 ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
                 IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
 
-                new FightingClass { Id = 3, Type = "Hunter",Description = "sdawd", ImagePath = "adawda",
+                new FightingClass { Id = 7, Type = "Mage",Description = "sdawd", ImagePath = "adawda",
                 ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
                 IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
 
-                new FightingClass { Id = 4, Type = "Rogue",Description = "sdawd", ImagePath = "adawda",
+                 new FightingClass { Id = 6, Type = "Naturalist",Description = "sdawd", ImagePath = "adawda",
                 ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
                 IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
 
-                new FightingClass { Id = 5, Type = "Shaman",Description = "sdawd", ImagePath = "adawda",
+                 new FightingClass { Id = 5, Type = "Necroid",Description = "sdawd", ImagePath = "adawda",
                 ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
                 IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
 
-                new FightingClass { Id = 6, Type = "Paladin",Description = "sdawd", ImagePath = "adawda",
+                  new FightingClass { Id = 4, Type = "Paladin",Description = "sdawd", ImagePath = "adawda",
                 ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
                 IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
 
-                new FightingClass { Id = 7, Type = "Necroid",Description = "sdawd", ImagePath = "adawda",
+                 new FightingClass { Id = 3, Type = "Priest",Description = "sdawd", ImagePath = "adawda",
                 ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
                 IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
 
-                new FightingClass { Id = 8, Type = "Naturalist",Description = "sdawd", ImagePath = "adawda",
+                new FightingClass { Id = 2, Type = "Rogue",Description = "sdawd", ImagePath = "adawda",
                 ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
                 IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
 
-                new FightingClass { Id = 9, Type = "Priest",Description = "sdawd", ImagePath = "adawda",
+                new FightingClass { Id = 1, Type = "Shaman",Description = "sdawd", ImagePath = "adawda",
                 ArmorValue = 1, ResistanceValue = 1, AttackPower = 1, CritChance = 1, HealthRegen = 1 ,
                 IconPath = "awdawdwad", MagicPower = 1, MaxHP=1000, ManaRegen = 1, MaxMana = 10 },
+               
             };
 
             context.FightingClasses.AddRange(fightingClasses);
@@ -361,6 +362,22 @@
 
                 new Spell { Id = 4, ClassType = "Warrior", EffectPower = 1, AdditionalEffect = "sda",
                 BuffOrEffectTarget = "asdas", ManaRequirement = 10, Name = "somepsld", ResistanceAffect = 1,
+                SecondaryPower = 10, Power = 1, Type = "123123" },
+
+                new Spell { Id = 5, ClassType = "Bear", EffectPower = 1, AdditionalEffect = "sda",
+                BuffOrEffectTarget = "asdas", ManaRequirement = 10, Name = "Slap", ResistanceAffect = 1,
+                SecondaryPower = 10, Power = 1, Type = "123123" },
+
+                new Spell { Id = 6, ClassType = "Bear", EffectPower = 1, AdditionalEffect = "sda",
+                BuffOrEffectTarget = "asdas", ManaRequirement = 10, Name = "Slap", ResistanceAffect = 1,
+                SecondaryPower = 10, Power = 1, Type = "123123" },
+
+                new Spell { Id = 7, ClassType = "Bear", EffectPower = 1, AdditionalEffect = "sda",
+                BuffOrEffectTarget = "asdas", ManaRequirement = 10, Name = "Slap", ResistanceAffect = 1,
+                SecondaryPower = 10, Power = 1, Type = "123123" },
+
+                new Spell { Id = 8, ClassType = "Bear", EffectPower = 1, AdditionalEffect = "sda",
+                BuffOrEffectTarget = "asdas", ManaRequirement = 10, Name = "Slap", ResistanceAffect = 1,
                 SecondaryPower = 10, Power = 1, Type = "123123" },
             };
 
@@ -565,6 +582,7 @@
         {
             var armorEquipments = new List<ArmorEquipment>
             {
+                new ArmorEquipment { EquipmentId = "1", ArmorId = "2" },
                 new ArmorEquipment { EquipmentId = "1", ArmorId = "3" },
                 new ArmorEquipment { EquipmentId = "1", ArmorId = "4" },
                 new ArmorEquipment { EquipmentId = "1", ArmorId = "5" },

@@ -21,7 +21,7 @@
 
         public async Task<UserPanelViewModel> Handle(UserPanelQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var units = this.Context.Heroes.Where(u => u.UserId == user.Id);
 

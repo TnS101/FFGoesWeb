@@ -40,7 +40,7 @@ namespace Application.Tests.GameCQ.Equipments.Queries
             result.ShouldNotBeNull();
             result.ShouldBeOfType<EquipmentViewModel>();
 
-            result.Items.Count.ShouldBe(7);
+            result.Items.Count.ShouldBe(8);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Application.Tests.GameCQ.FightingClasses.Queries
             result.MaxHP.ShouldBe(1000);
             result.ManaRegen.ShouldBe(1);
             result.MaxMana.ShouldBe(10);
-            result.Type.ShouldBe("Player");
+            result.Type.ShouldBe("Warrior");
 
             result.ShouldBeOfType<FightingClassFullViewModel>();
         }

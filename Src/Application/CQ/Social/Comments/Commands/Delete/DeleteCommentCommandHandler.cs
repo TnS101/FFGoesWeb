@@ -21,9 +21,10 @@
 
             var replies = this.Context.Comments.Where(c => c.Replies.Select(r => r.Id == commentToRemove.Id).Count() > 0);
 
-            this.Context.Comments.RemoveRange(replies);
-
-            await this.Context.SaveChangesAsync(cancellationToken);
+            if (replies.Count() > 0)
+            {
+                this.Context.Comments.RemoveRange(replies);
+            }
 
             this.Context.Comments.Remove(commentToRemove);
 

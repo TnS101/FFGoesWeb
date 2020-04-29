@@ -33,7 +33,7 @@
             await this.Result(treasurekeyId.ToString(), "Treasure Key");
             await this.Result(tresureId.ToString(), "Treasure");
             await this.Result(weaponId, "Weapon");
-            await this.Result(armorId, "Armor");
+            await this.Result(armorId, "Chestplate");
             await this.Result(trinketId, "Trinket");
         }
 
@@ -132,7 +132,7 @@
                 result.BuyPrice.ShouldBe(10);
                 result.SellPrice.ShouldBe(10);
                 result.Name.ShouldBe("1");
-                result.Slot.ShouldBe("Armor");
+                result.Slot.ShouldBe("Chestplate");
                 result.ArmorValue.ShouldBe(1);
                 result.ResistanceValue.ShouldBe(1);
                 result.ImagePath.ShouldNotBeNull();

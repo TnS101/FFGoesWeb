@@ -29,6 +29,9 @@
         {
             await CommandArrangeHelper.GetUserId(context);
 
+            var appUser = this.context.AppUsers.FirstOrDefault();
+
+
             var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[] {
                                         new Claim(ClaimTypes.NameIdentifier, "1"),
                                         new Claim(ClaimTypes.Name, "validname"),

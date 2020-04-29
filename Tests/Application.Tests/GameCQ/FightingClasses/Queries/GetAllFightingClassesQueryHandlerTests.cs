@@ -31,7 +31,7 @@ namespace Application.Tests.GameCQ.FightingClasses.Queries
             result.FightingClasses.ShouldBeOfType<List<FightingClassMinViewModel>>();
             result.FightingClasses.Count().ShouldBe(9);
 
-            int counter = 1;
+            int counter = 9;
 
             foreach (var fightingClass in result.FightingClasses)
             {
@@ -39,7 +39,7 @@ namespace Application.Tests.GameCQ.FightingClasses.Queries
                 fightingClass.Description.ShouldBe("sdawd");
                 fightingClass.ImagePath.ShouldBe("adawda");
                 fightingClass.IconPath.ShouldBe("awdawdwad");
-                counter++;
+                counter--;
             }
         }
     }

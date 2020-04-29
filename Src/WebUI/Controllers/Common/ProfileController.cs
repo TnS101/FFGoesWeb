@@ -19,7 +19,7 @@
         [HttpGet]
         public async Task<IActionResult> Panel()
         {
-            return this.View(await this.Mediator.Send(new UserPanelQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new UserPanelQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]

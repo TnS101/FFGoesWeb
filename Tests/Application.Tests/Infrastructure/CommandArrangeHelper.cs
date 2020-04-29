@@ -160,7 +160,7 @@
                 Name = "1",
                 BuyPrice = 10,
                 SellPrice = 10,
-                Slot = "Armor",
+                Slot = "Chestplate",
                 IsCraftable = true,
                 ImagePath = "1",
                 Agility = 1,
@@ -422,7 +422,7 @@
 
         public static string[] GetArmorInventoryIds(FFDbContext context)
         {
-            var armorInventory = new ArmorInventory { InventoryId = "1", ArmorId = "1" };
+            var armorInventory = new ArmorInventory { InventoryId = "1", ArmorId = "1", Count = 2 };
 
             context.ArmorsInventories.Add(armorInventory);
             context.SaveChanges();
@@ -432,7 +432,7 @@
 
         public static string[] GetMaterialInventoryIds(FFDbContext context)
         {
-            var armorInventory = new ArmorInventory { InventoryId = "1", ArmorId = "1" };
+            var armorInventory = new ArmorInventory { InventoryId = "1", ArmorId = "1", Count = 2 };
 
             context.ArmorsInventories.Add(armorInventory);
             context.SaveChanges();
@@ -442,7 +442,7 @@
 
         public static string[] GetToolInventoryIds(FFDbContext context)
         {
-            var toolInventory = new ToolInventory { InventoryId = "1", ToolId = 1 };
+            var toolInventory = new ToolInventory { InventoryId = "1", ToolId = 1, Count = 2 };
 
             context.ToolsInventories.Add(toolInventory);
             context.SaveChanges();
@@ -452,7 +452,7 @@
 
         public static string[] GetTreasureInventoryIds(FFDbContext context)
         {
-            var treasureInventory = new TreasureInventory { InventoryId = "1", TreasureId = 1 };
+            var treasureInventory = new TreasureInventory { InventoryId = "1", TreasureId = 1, Count = 2 };
 
             context.TreasuresInventories.Add(treasureInventory);
             context.SaveChanges();
@@ -462,7 +462,7 @@
 
         public static string[] GetTreasureKeyInventoryIds(FFDbContext context)
         {
-            var treasureKeyInventory = new TreasureKeyInventory { InventoryId = "1", TreasureKeyId = 1 };
+            var treasureKeyInventory = new TreasureKeyInventory { InventoryId = "1", TreasureKeyId = 1, Count = 2 };
 
             context.TreasureKeysInventories.Add(treasureKeyInventory);
             context.SaveChanges();
@@ -472,7 +472,7 @@
 
         public static string[] GetTrinketInventoryIds(FFDbContext context)
         {
-            var trinketInventory = new TrinketInventory { InventoryId = "1", TrinketId = "1" };
+            var trinketInventory = new TrinketInventory { InventoryId = "1", TrinketId = "1", Count = 2 };
 
             context.TrinketsInventories.Add(trinketInventory);
             context.SaveChanges();
@@ -482,7 +482,7 @@
 
         public static string[] GetWeaponInventoryIds(FFDbContext context)
         {
-            var weaponInventory = new WeaponInventory { InventoryId = "1", WeaponId = "1" };
+            var weaponInventory = new WeaponInventory { InventoryId = "1", WeaponId = "1", Count = 2 };
 
             context.WeaponsInventories.Add(weaponInventory);
             context.SaveChanges();
