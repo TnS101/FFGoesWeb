@@ -12,16 +12,16 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetPersonalMessagesQueryHandler : FullHandler, IRequestHandler<GetPersonalMessagesQuery, MessageListViewModel>
+    public class GetPersonalMessagesQueryHandler : MapperHandler, IRequestHandler<GetPersonalMessagesQuery, MessageListViewModel>
     {
-        public GetPersonalMessagesQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
-            : base(context, userManager, mapper)
+        public GetPersonalMessagesQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
         }
 
         public async Task<MessageListViewModel> Handle(GetPersonalMessagesQuery request, CancellationToken cancellationToken)
         {
-            var reciever = await this.UserManager.GetUserAsync(request.Reciever);
+            var reciever = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var sender = await this.Context.AppUsers.FindAsync(request.SenderId);
 

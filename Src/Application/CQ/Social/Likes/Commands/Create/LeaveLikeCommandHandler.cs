@@ -5,17 +5,15 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using Domain.Entities.Social;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class LeaveLikeCommandHandler : UserHandler, IRequestHandler<LeaveLikeCommand, string>
+    public class LeaveLikeCommandHandler : BaseHandler, IRequestHandler<LeaveLikeCommand, string>
     {
-        public LeaveLikeCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public LeaveLikeCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

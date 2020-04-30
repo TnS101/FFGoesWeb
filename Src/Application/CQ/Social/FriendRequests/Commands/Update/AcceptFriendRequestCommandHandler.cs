@@ -12,10 +12,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class AcceptFriendRequestCommandHandler : UserHandler, IRequestHandler<AcceptFriendRequestCommand, string>
+    public class AcceptFriendRequestCommandHandler : BaseHandler, IRequestHandler<AcceptFriendRequestCommand, string>
     {
-        public AcceptFriendRequestCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public AcceptFriendRequestCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

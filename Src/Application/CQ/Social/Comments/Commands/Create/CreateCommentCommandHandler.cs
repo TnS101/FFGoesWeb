@@ -6,16 +6,14 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using Domain.Entities.Social;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
 
-    public class CreateCommentCommandHandler : UserHandler, IRequestHandler<CreateCommentCommand, string>
+    public class CreateCommentCommandHandler : BaseHandler, IRequestHandler<CreateCommentCommand, string>
     {
-        public CreateCommentCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public CreateCommentCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

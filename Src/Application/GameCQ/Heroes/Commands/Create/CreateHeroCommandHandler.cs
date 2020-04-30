@@ -6,21 +6,19 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Validators.UnitCreation;
-    using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class CreateHeroCommandHandler : UserHandler, IRequestHandler<CreateHeroCommand, string>
+    public class CreateHeroCommandHandler : BaseHandler, IRequestHandler<CreateHeroCommand, string>
     {
         private readonly FightingClassCheck fightingClassCheck;
         private readonly RaceCheck raceCheck;
 
-        public CreateHeroCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public CreateHeroCommandHandler(IFFDbContext context)
+            : base(context)
         {
             this.fightingClassCheck = new FightingClassCheck();
             this.raceCheck = new RaceCheck();

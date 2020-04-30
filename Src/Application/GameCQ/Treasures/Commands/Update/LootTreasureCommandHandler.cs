@@ -14,10 +14,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class LootTreasureCommandHandler : UserHandler, IRequestHandler<LootTreasureCommand, string>
+    public class LootTreasureCommandHandler : BaseHandler, IRequestHandler<LootTreasureCommand, string>
     {
-        public LootTreasureCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public LootTreasureCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

@@ -10,10 +10,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class RemoveFriendCommandHandler : UserHandler, IRequestHandler<RemoveFriendCommand, string>
+    public class RemoveFriendCommandHandler : BaseHandler, IRequestHandler<RemoveFriendCommand, string>
     {
-        public RemoveFriendCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public RemoveFriendCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

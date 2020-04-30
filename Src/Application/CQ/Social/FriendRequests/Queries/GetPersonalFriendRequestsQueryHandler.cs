@@ -12,10 +12,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetPersonalFriendRequestsQueryHandler : FullHandler, IRequestHandler<GetPersonalFriendRequestsQuery, FriendRequestListViewModel>
+    public class GetPersonalFriendRequestsQueryHandler : MapperHandler, IRequestHandler<GetPersonalFriendRequestsQuery, FriendRequestListViewModel>
     {
-        public GetPersonalFriendRequestsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
-            : base(context, userManager, mapper)
+        public GetPersonalFriendRequestsQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
         }
 

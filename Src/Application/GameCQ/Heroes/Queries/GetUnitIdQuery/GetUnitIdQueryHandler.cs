@@ -4,15 +4,13 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetUnitIdQueryHandler : UserHandler, IRequestHandler<GetUnitIdQuery, UnitIdViewModel>
+    public class GetUnitIdQueryHandler : BaseHandler, IRequestHandler<GetUnitIdQuery, UnitIdViewModel>
     {
-        public GetUnitIdQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public GetUnitIdQueryHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

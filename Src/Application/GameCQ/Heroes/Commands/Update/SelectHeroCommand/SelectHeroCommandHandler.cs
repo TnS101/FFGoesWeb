@@ -10,10 +10,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class SelectHeroCommandHandler : UserHandler, IRequestHandler<SelectHeroCommand, string>
+    public class SelectHeroCommandHandler : BaseHandler, IRequestHandler<SelectHeroCommand, string>
     {
-        public SelectHeroCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public SelectHeroCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

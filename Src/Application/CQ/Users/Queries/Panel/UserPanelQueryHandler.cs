@@ -9,13 +9,12 @@
     using Domain.Entities.Common;
     using Domain.Entities.Social;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class UserPanelQueryHandler : UserHandler, IRequestHandler<UserPanelQuery, UserPanelViewModel>
+    public class UserPanelQueryHandler : BaseHandler, IRequestHandler<UserPanelQuery, UserPanelViewModel>
     {
-        public UserPanelQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public UserPanelQueryHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

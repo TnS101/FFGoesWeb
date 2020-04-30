@@ -4,17 +4,15 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using Domain.Entities.Social;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class UpdateStatusCommandHandler : UserHandler, IRequestHandler<UpdateStatusCommand, string>
+    public class UpdateStatusCommandHandler : BaseHandler, IRequestHandler<UpdateStatusCommand, string>
     {
-        public UpdateStatusCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public UpdateStatusCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

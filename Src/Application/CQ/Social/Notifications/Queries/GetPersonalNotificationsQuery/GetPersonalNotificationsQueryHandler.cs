@@ -7,15 +7,13 @@
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetPersonalNotificationsQueryHandler : FullHandler, IRequestHandler<GetPersonalNotificationsQuery, NotificationListViewModel>
+    public class GetPersonalNotificationsQueryHandler : MapperHandler, IRequestHandler<GetPersonalNotificationsQuery, NotificationListViewModel>
     {
-        public GetPersonalNotificationsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
-            : base(context, userManager, mapper)
+        public GetPersonalNotificationsQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
         }
 

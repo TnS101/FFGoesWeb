@@ -10,18 +10,16 @@
     using Application.GameContent.Utilities.Stats;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Domain.Entities.Common;
     using Domain.Entities.Game.Units;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetHeroListQueryHandler : FullHandler, IRequestHandler<GetHeroListQuery, HeroListViewModel>
+    public class GetHeroListQueryHandler : MapperHandler, IRequestHandler<GetHeroListQuery, HeroListViewModel>
     {
         private readonly StatsReset statsReset;
 
-        public GetHeroListQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
-            : base(context, userManager, mapper)
+        public GetHeroListQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
             this.statsReset = new StatsReset();
         }

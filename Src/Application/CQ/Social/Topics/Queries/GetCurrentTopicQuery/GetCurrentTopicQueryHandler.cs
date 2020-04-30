@@ -6,15 +6,13 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetCurrentTopicQueryHandler : UserHandler, IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>
+    public class GetCurrentTopicQueryHandler : BaseHandler, IRequestHandler<GetCurrentTopicQuery, TopicFullViewModel>
     {
-        public GetCurrentTopicQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public GetCurrentTopicQueryHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

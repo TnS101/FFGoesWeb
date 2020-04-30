@@ -11,10 +11,10 @@
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class SendFriendRequestCommandHandler : UserHandler, IRequestHandler<SendFriendRequestCommand, string>
+    public class SendFriendRequestCommandHandler : BaseHandler, IRequestHandler<SendFriendRequestCommand, string>
     {
-        public SendFriendRequestCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public SendFriendRequestCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

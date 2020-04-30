@@ -7,15 +7,13 @@
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetPersonalFeedbacksQueryHandler : FullHandler, IRequestHandler<GetPersonalFeedbacksQuery, FeedbackListViewModel>
+    public class GetPersonalFeedbacksQueryHandler : MapperHandler, IRequestHandler<GetPersonalFeedbacksQuery, FeedbackListViewModel>
     {
-        public GetPersonalFeedbacksQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
-            : base(context, userManager, mapper)
+        public GetPersonalFeedbacksQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
         }
 

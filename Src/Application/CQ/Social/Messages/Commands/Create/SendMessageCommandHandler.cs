@@ -6,16 +6,14 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using Domain.Entities.Social;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
 
-    public class SendMessageCommandHandler : UserHandler, IRequestHandler<SendMessageCommand, string>
+    public class SendMessageCommandHandler : BaseHandler, IRequestHandler<SendMessageCommand, string>
     {
-        public SendMessageCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public SendMessageCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

@@ -10,10 +10,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetAllTopicsQueryHandler : UserHandler, IRequestHandler<GetAllTopicsQuery, TopicListViewModel>
+    public class GetAllTopicsQueryHandler : BaseHandler, IRequestHandler<GetAllTopicsQuery, TopicListViewModel>
     {
-        public GetAllTopicsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public GetAllTopicsQueryHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

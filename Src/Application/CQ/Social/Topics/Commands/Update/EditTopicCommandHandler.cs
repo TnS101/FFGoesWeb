@@ -10,10 +10,10 @@
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class EditTopicCommandHandler : UserHandler, IRequestHandler<EditTopicCommand, string>
+    public class EditTopicCommandHandler : BaseHandler, IRequestHandler<EditTopicCommand, string>
     {
-        public EditTopicCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public EditTopicCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

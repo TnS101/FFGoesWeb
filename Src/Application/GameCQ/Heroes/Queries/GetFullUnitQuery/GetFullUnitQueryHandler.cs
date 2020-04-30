@@ -6,15 +6,13 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetFullUnitQueryHandler : FullHandler, IRequestHandler<GetFullUnitQuery, UnitFullViewModel>
+    public class GetFullUnitQueryHandler : MapperHandler, IRequestHandler<GetFullUnitQuery, UnitFullViewModel>
     {
-        public GetFullUnitQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
-            : base(context, userManager, mapper)
+        public GetFullUnitQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
         }
 

@@ -14,7 +14,7 @@
         [HttpGet("Messages/All/id")]
         public async Task<IActionResult> All([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetPersonalMessagesQuery { Reciever = this.User, SenderId = id }));
+            return this.View(await this.Mediator.Send(new GetPersonalMessagesQuery { UserId = this.UserManager.GetUserId(this.User), SenderId = id }));
         }
 
         [HttpPost]

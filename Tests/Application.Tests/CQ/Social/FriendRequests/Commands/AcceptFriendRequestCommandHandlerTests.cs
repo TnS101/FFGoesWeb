@@ -18,7 +18,7 @@ namespace Application.Tests.CQ.Social.FriendRequests.Commands
 
         public AcceptFriendRequestCommandHandlerTests()
         {
-            this.sut = new AcceptFriendRequestCommandHandler(context, userManager);
+            this.sut = new AcceptFriendRequestCommandHandler(context);
             QueryArrangeHelper.AddFriendRequests(context);
             QueryArrangeHelper.AddUsers(context);
             QueryArrangeHelper.AddFriends(context);

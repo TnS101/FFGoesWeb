@@ -11,10 +11,10 @@
     using MediatR;
     using Microsoft.AspNetCore.Identity;
 
-    public class CreateTopicCommandHandler : UserHandler, IRequestHandler<CreateTopicCommand>
+    public class CreateTopicCommandHandler : BaseHandler, IRequestHandler<CreateTopicCommand>
     {
-        public CreateTopicCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public CreateTopicCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

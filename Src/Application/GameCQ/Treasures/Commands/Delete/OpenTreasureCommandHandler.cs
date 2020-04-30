@@ -12,10 +12,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class OpenTreasureCommandHandler : UserHandler, IRequestHandler<OpenTreasureCommand, string>
+    public class OpenTreasureCommandHandler : BaseHandler, IRequestHandler<OpenTreasureCommand, string>
     {
-        public OpenTreasureCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public OpenTreasureCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

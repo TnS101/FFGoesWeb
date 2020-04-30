@@ -12,10 +12,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class ExploreCommandHandler : UserHandler, IRequestHandler<ExploreCommand, string>
+    public class ExploreCommandHandler : BaseHandler, IRequestHandler<ExploreCommand, string>
     {
-        public ExploreCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public ExploreCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

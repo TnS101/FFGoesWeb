@@ -11,10 +11,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class DeleteTopicCommandHandler : UserHandler, IRequestHandler<DeleteTopicCommand, string>
+    public class DeleteTopicCommandHandler : BaseHandler, IRequestHandler<DeleteTopicCommand, string>
     {
-        public DeleteTopicCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public DeleteTopicCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

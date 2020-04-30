@@ -5,16 +5,14 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using Domain.Entities.Moderation;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
 
-    public class OpenTicketCommandHandler : UserHandler, IRequestHandler<OpenTicketCommand, string>
+    public class OpenTicketCommandHandler : BaseHandler, IRequestHandler<OpenTicketCommand, string>
     {
-        public OpenTicketCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public OpenTicketCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

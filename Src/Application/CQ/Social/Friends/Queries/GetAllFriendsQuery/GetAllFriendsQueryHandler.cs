@@ -11,10 +11,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetAllFriendsQueryHandler : UserHandler, IRequestHandler<GetAllFriendsQuery, UserListViewModel>
+    public class GetAllFriendsQueryHandler : BaseHandler, IRequestHandler<GetAllFriendsQuery, UserListViewModel>
     {
-        public GetAllFriendsQueryHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public GetAllFriendsQueryHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

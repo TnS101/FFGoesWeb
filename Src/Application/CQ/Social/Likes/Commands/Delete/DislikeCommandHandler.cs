@@ -5,16 +5,14 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class DislikeCommandHandler : UserHandler, IRequestHandler<DislikeCommand, string>
+    public class DislikeCommandHandler : BaseHandler, IRequestHandler<DislikeCommand, string>
     {
-        public DislikeCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public DislikeCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

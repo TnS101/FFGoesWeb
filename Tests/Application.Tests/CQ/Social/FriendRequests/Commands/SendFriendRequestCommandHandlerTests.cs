@@ -19,7 +19,7 @@ namespace Application.Tests.CQ.Social.FriendRequests.Commands
         public SendFriendRequestCommandHandlerTests()
         {
             QueryArrangeHelper.AddUsers(context);
-            this.sut = new SendFriendRequestCommandHandler(context, userManager);
+            this.sut = new SendFriendRequestCommandHandler(context);
         }
 
         [Fact]

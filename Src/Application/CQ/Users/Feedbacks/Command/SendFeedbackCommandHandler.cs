@@ -9,12 +9,11 @@
     using Domain.Entities.Moderation;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
 
-    public class SendFeedbackCommandHandler : UserHandler, IRequestHandler<SendFeedbackCommand, string>
+    public class SendFeedbackCommandHandler : BaseHandler, IRequestHandler<SendFeedbackCommand, string>
     {
-        public SendFeedbackCommandHandler(IFFDbContext context, UserManager<AppUser> userManager)
-            : base(context, userManager)
+        public SendFeedbackCommandHandler(IFFDbContext context)
+            : base(context)
         {
         }
 

@@ -17,7 +17,7 @@ namespace Application.Tests.CQ.Social.FriendRequests.Queries
 
         public GetPersonalFriendRequestsQueryHandlerTests()
         {
-            this.sut = new GetPersonalFriendRequestsQueryHandler(context, userManager, mapper);
+            this.sut = new GetPersonalFriendRequestsQueryHandler(context, mapper);
             CommandArrangeHelper.GetUserId(context);
             QueryArrangeHelper.AddFriendRequests(context);
         }

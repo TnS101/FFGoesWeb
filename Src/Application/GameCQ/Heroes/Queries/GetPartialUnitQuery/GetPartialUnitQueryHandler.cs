@@ -6,14 +6,12 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
 
-    public class GetPartialUnitQueryHandler : FullHandler, IRequestHandler<GetPartialUnitQuery, UnitPartialViewModel>
+    public class GetPartialUnitQueryHandler : MapperHandler, IRequestHandler<GetPartialUnitQuery, UnitPartialViewModel>
     {
-        public GetPartialUnitQueryHandler(IFFDbContext context, UserManager<AppUser> userManager, IMapper mapper)
-            : base(context, userManager, mapper)
+        public GetPartialUnitQueryHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
         }
 

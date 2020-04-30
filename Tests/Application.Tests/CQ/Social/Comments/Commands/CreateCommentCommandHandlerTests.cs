@@ -20,7 +20,7 @@
 
         public CreateCommentCommandHandlerTests()
         {
-            this.sut = new CreateCommentCommandHandler(context, this.userManager);
+            this.sut = new CreateCommentCommandHandler(context);
             this.topicId = CommandArrangeHelper.GetTopicId(context);
         }
 
