@@ -28,7 +28,7 @@
                 ContentType = contentType,
                 Category = category,
                 AdditionalInformation = additionalInformation,
-                Sender = this.User,
+                UserId = this.UserManager.GetUserId(this.User),
                 Content = content,
             }));
         }

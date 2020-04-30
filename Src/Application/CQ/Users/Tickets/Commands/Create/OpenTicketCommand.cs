@@ -11,7 +11,7 @@
         [Required]
         public string ContentId { get; set; }
 
-        public ClaimsPrincipal Sender { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         public string Category { get; set; }

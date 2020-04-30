@@ -5,6 +5,6 @@
 
     public class GetHeroListQuery : IRequest<HeroListViewModel>
     {
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
     }
 }

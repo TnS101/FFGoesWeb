@@ -20,7 +20,7 @@
 
         public async Task<string> Handle(OpenTicketCommand request, CancellationToken cancellationToken)
         {
-            var sender = await this.UserManager.GetUserAsync(request.Sender);
+            var sender = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var ticket = new Ticket
             {

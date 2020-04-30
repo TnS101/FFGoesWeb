@@ -22,7 +22,7 @@
         {
             var topic = await this.Context.Topics.FindAsync(request.TopicId);
 
-            var viewer = await this.UserManager.GetUserAsync(request.User);
+            var viewer = await this.Context.AppUsers.FindAsync(request.UserId);
 
             topic.Comments = await this.Context.Comments.Where(c => c.TopicId == topic.Id).ToListAsync();
 

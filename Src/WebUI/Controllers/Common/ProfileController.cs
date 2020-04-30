@@ -31,25 +31,25 @@
         [HttpGet("/UpdateStatus/id")]
         public async Task<IActionResult> UpdateStatus([FromQuery]int id)
         {
-            return this.Redirect(await this.Mediator.Send(new UpdateStatusCommand { StatusId = id, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new UpdateStatusCommand { StatusId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]
         public async Task<IActionResult> Topics()
         {
-            return this.View(await this.Mediator.Send(new GetAllTopicsQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetAllTopicsQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]
         public async Task<IActionResult> MasteryPoints()
         {
-            return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetHeroListQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]
         public async Task<IActionResult> ForumPoints()
         {
-            return this.View(await this.Mediator.Send(new GetCurrentUserQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetCurrentUserQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpPost]
@@ -60,13 +60,13 @@
                 return this.Redirect(GConst.FeedbackErrorRedirect);
             }
 
-            return this.View(await this.Mediator.Send(new SendFeedbackCommand { Content = feedback.Content, Rate = feedback.Rate, Sender = this.User }));
+            return this.View(await this.Mediator.Send(new SendFeedbackCommand { Content = feedback.Content, Rate = feedback.Rate, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]
         public async Task<IActionResult> Feedbacks()
         {
-            return this.View(await this.Mediator.Send(new GetPersonalFeedbacksQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetPersonalFeedbacksQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet("/Profile/User/id")]

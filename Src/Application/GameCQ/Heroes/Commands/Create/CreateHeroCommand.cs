@@ -9,7 +9,7 @@
     public class CreateHeroCommand : RegexFilter, IRequest<string>
     {
 
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
 
         [Required(ErrorMessage = GConst.RequiredMessage)]
         [SpamFilter(GConst.SpamFilter, ErrorMessage = GConst.SpamMessage)]

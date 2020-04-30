@@ -20,7 +20,7 @@
         [HttpPost]
         public async Task<IActionResult> Send([FromQuery]string recieverName, [FromBody]string content)
         {
-            return this.Redirect(await this.Mediator.Send(new SendMessageCommand { Sender = this.User, RecieverName = recieverName, Content = content }));
+            return this.Redirect(await this.Mediator.Send(new SendMessageCommand { UserId = this.UserManager.GetUserId(this.User), RecieverName = recieverName, Content = content }));
         }
 
         [HttpDelete]

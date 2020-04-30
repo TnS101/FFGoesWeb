@@ -21,7 +21,7 @@
 
         public async Task<string> Handle(SendMessageCommand request, CancellationToken cancellationToken)
         {
-            var sender = await this.UserManager.GetUserAsync(request.Sender);
+            var sender = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var reciever = this.Context.AppUsers.FirstOrDefault(r => r.UserName == request.RecieverName);
 

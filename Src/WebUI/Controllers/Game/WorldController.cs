@@ -15,13 +15,13 @@
         [HttpGet]
         public async Task<IActionResult> Home()
         {
-            return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetHeroListQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]
         public async Task<IActionResult> Explore()
         {
-            return this.Redirect(await this.Mediator.Send(new ExploreCommand { User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new ExploreCommand { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]
@@ -33,7 +33,7 @@
         [HttpGet]
         public async Task<IActionResult> TreasureEncounter()
         {
-            return this.View(@"\TreasureEncounter", await this.Mediator.Send(new LootTreasureCommand { User = this.User }));
+            return this.View(@"\TreasureEncounter", await this.Mediator.Send(new LootTreasureCommand { UserId = this.UserManager.GetUserId(this.User) }));
         }
     }
 }

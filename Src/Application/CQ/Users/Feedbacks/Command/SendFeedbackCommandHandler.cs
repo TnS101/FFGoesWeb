@@ -20,7 +20,7 @@
 
         public async Task<string> Handle(SendFeedbackCommand request, CancellationToken cancellationToken)
         {
-            var sender = await this.UserManager.GetUserAsync(request.Sender);
+            var sender = await this.Context.AppUsers.FindAsync(request.UserId);
 
             if (sender.LastFeedbackSentOn != null)
             {

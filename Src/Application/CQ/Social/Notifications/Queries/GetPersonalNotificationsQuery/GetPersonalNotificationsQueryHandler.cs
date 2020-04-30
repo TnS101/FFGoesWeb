@@ -21,7 +21,7 @@
 
         public async Task<NotificationListViewModel> Handle(GetPersonalNotificationsQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             if (request.Filter is null)
             {

@@ -5,6 +5,6 @@
 
     public class GetUnitIdQuery : IRequest<UnitIdViewModel>
     {
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
     }
 }

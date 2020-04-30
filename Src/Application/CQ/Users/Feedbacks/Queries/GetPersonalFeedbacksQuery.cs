@@ -5,6 +5,6 @@
 
     public class GetPersonalFeedbacksQuery : IRequest<FeedbackListViewModel>
     {
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
     }
 }

@@ -20,7 +20,7 @@
 
         public async Task<string> Handle(UpdateStatusCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var userStatus = await this.Context.UserStatuses.SingleOrDefaultAsync(us => us.UserId == user.Id);
 

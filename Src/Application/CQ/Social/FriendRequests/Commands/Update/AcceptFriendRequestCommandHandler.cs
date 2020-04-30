@@ -21,7 +21,7 @@
 
         public async Task<string> Handle(AcceptFriendRequestCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.Reciever);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var friendRequest = await this.Context.FriendRequests.FindAsync(request.RequestId);
 

@@ -5,7 +5,7 @@
 
     public class GetPersonalNotificationsQuery : IRequest<NotificationListViewModel>
     {
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
 
         public string Filter { get; set; }
     }

@@ -18,13 +18,13 @@
         [HttpGet]
         public async Task<IActionResult> Requests()
         {
-            return this.View(await this.Mediator.Send(new GetPersonalFriendRequestsQuery { Reciever = this.User }));
+            return this.View(await this.Mediator.Send(new GetPersonalFriendRequestsQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet("Social/SendRequest/id")]
         public async Task<IActionResult> SendRequest([FromQuery]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new SendFriendRequestCommand { Sender = this.User, RecieverId = id }));
+            return this.Redirect(await this.Mediator.Send(new SendFriendRequestCommand { UserId = this.UserManager.GetUserId(this.User), RecieverId = id }));
         }
 
         [HttpPost]
@@ -36,19 +36,19 @@
         [HttpPost]
         public async Task<IActionResult> AcceptRequest([FromForm]int requestId)
         {
-            return this.Redirect(await this.Mediator.Send(new AcceptFriendRequestCommand { Reciever = this.User, RequestId = requestId }));
+            return this.Redirect(await this.Mediator.Send(new AcceptFriendRequestCommand { UserId = this.UserManager.GetUserId(this.User), RequestId = requestId }));
         }
 
         [HttpGet]
         public async Task<IActionResult> All()
         {
-            return this.View(await this.Mediator.Send(new GetAllFriendsQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetAllFriendsQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpPost]
         public async Task<IActionResult> Remove([FromForm]string friendId)
         {
-            return this.Redirect(await this.Mediator.Send(new RemoveFriendCommand { User = this.User, FriendId = friendId }));
+            return this.Redirect(await this.Mediator.Send(new RemoveFriendCommand { UserId = this.UserManager.GetUserId(this.User), FriendId = friendId }));
         }
     }
 }

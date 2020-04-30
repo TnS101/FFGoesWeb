@@ -31,7 +31,7 @@
 
         private async Task<TopicListViewModel> PersonalTopics(GetAllTopicsQuery request)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             return new TopicListViewModel
             {
@@ -53,7 +53,7 @@
 
         private async Task<TopicListViewModel> PublicTopics(GetAllTopicsQuery request)
         {
-            var viewer = await this.UserManager.GetUserAsync(request.User);
+            var viewer = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var topics = await this.Context.Topics.Select(t => new TopicPartialViewModel
             {

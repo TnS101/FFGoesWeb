@@ -8,7 +8,7 @@
 
     public class CreateTopicCommand : RegexFilter, IRequest
     {
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
 
         [Required(ErrorMessage = GConst.RequiredMessage)]
         [StringLength(20, ErrorMessage = GConst.LengthMessage, MinimumLength = 5)]

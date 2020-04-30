@@ -5,7 +5,7 @@
 
     public class UpdateStatusCommand : IRequest<string>
     {
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
 
         public int StatusId { get; set; }
     }

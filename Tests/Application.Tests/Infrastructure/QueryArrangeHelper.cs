@@ -449,9 +449,9 @@
         {
             var friends = new List<Friend>
             {
-                new Friend { Id = "1", UserId = "1" },
+                new Friend { Id = "1", UserId = "2" },
                 new Friend { Id = "2", UserId = "1" },
-                new Friend { Id = "3", UserId = "1" },
+                new Friend { Id = "3", UserId = "2" },
             };
 
             context.Friends.AddRange(friends);
@@ -462,9 +462,9 @@
         {
             var friends = new List<FriendRequest>
             {
-                new FriendRequest { Id = 1, UserId = "1", SenderName = "sdaasd", SentOn = DateTime.UtcNow },
-                new FriendRequest { Id = 2, UserId = "1", SenderName = "sdaasd", SentOn = DateTime.UtcNow },
-                new FriendRequest { Id = 3, UserId = "1", SenderName = "sdaasd", SentOn = DateTime.UtcNow },
+                new FriendRequest { Id = 1, UserId = "1", SenderName = "validusername", SentOn = DateTime.UtcNow },
+                new FriendRequest { Id = 2, UserId = "1", SenderName = "validusername", SentOn = DateTime.UtcNow },
+                new FriendRequest { Id = 3, UserId = "2", SenderName = "validusername", SentOn = DateTime.UtcNow },
             };
 
             context.FriendRequests.AddRange(friends);

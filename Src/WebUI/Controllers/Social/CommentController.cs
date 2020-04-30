@@ -21,7 +21,7 @@
         [HttpPost]
         public async Task<IActionResult> Create([FromForm]string topicId, [FromForm]string content)
         {
-            return this.Redirect(await this.Mediator.Send(new CreateCommentCommand { TopicId = topicId, Content = content, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new CreateCommentCommand { TopicId = topicId, Content = content, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpDelete]
@@ -39,13 +39,13 @@
         [HttpGet("/Comment/Like/id")]
         public async Task<IActionResult> Like([FromQuery]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new LeaveLikeCommand { CommentId = id, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new LeaveLikeCommand { CommentId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet("/Comment/Dislike/id")]
         public async Task<IActionResult> Dislike([FromQuery]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new DislikeCommand { CommentId = id, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new DislikeCommand { CommentId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
     }
 }

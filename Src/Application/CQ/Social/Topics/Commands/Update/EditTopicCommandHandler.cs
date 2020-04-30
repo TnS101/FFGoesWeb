@@ -19,7 +19,7 @@
 
         public async Task<string> Handle(EditTopicCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var topic = await this.Context.Topics.FindAsync(request.Id);
 

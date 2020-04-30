@@ -23,7 +23,7 @@
         {
             var rng = new Random();
 
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             int exploreNumber = rng.Next(0, 10);
 

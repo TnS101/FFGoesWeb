@@ -8,7 +8,7 @@
 
     public class SendFeedbackCommand : RegexFilter, IRequest<string>
     {
-        public ClaimsPrincipal Sender { get; set; }
+        public string UserId { get; set; }
 
         [Required(ErrorMessage = GConst.RequiredMessage)]
         [StringLength(100, ErrorMessage = GConst.LengthMessage, MinimumLength = 10)]

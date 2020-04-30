@@ -5,6 +5,6 @@
 
     public class GetAllFriendsQuery : IRequest<UserListViewModel>
     {
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
     }
 }

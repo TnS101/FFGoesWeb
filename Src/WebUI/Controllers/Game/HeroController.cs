@@ -23,7 +23,7 @@
         [HttpGet]
         public async Task<IActionResult> All()
         {
-            return this.View(await this.Mediator.Send(new GetHeroListQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetHeroListQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]
@@ -40,7 +40,7 @@
                 return this.Redirect(GConst.HeroCreationErrorRedirect);
             }
 
-            return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = hero.ClassType, Race = hero.Race, Name = hero.Name, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = hero.ClassType, Race = hero.Race, Name = hero.Name, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpPost]
@@ -88,7 +88,7 @@
         [HttpPost]
         public async Task<IActionResult> Select(string id)
         {
-            return this.Redirect(await this.Mediator.Send(new SelectHeroCommand { UnitId = id, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new SelectHeroCommand { UnitId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
     }
 }

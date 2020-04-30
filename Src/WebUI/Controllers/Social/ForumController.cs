@@ -14,13 +14,13 @@
         [HttpGet]
         public async Task<IActionResult> Home([FromQuery]string[] check)
         {
-            return this.View(await this.Mediator.Send(new GetAllTopicsQuery { Filter = check, User = this.User }));
+            return this.View(await this.Mediator.Send(new GetAllTopicsQuery { Filter = check, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet("Forum/CurrentTopic/id")]
         public async Task<IActionResult> CurrentTopic([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id, User = this.User }));
+            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
     }
 }

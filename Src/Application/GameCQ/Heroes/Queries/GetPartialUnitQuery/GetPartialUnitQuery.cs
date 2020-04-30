@@ -5,6 +5,6 @@
 
     public class GetPartialUnitQuery : IRequest<UnitPartialViewModel>
     {
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
     }
 }

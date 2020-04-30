@@ -30,17 +30,8 @@
             await CommandArrangeHelper.GetUserId(context);
 
             var appUser = this.context.AppUsers.FirstOrDefault();
-
-
-            var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[] {
-                                        new Claim(ClaimTypes.NameIdentifier, "1"),
-                                        new Claim(ClaimTypes.Name, "validname"),
-                                        new Claim(ClaimTypes.Role, "User"),
-                                        new Claim("AspNet.Identity.SecurityStamp", "2"),
-                                        new Claim("amr", "pwd")
-                                         }, "Identity.Application"));
-
-            var status = Task<string>.FromResult(await this.sut.Handle(new CreateCommentCommand { TopicId = this.topicId, Content = "something", User = user }, CancellationToken.None));
+            
+            var status = Task<string>.FromResult(await this.sut.Handle(new CreateCommentCommand { TopicId = this.topicId, Content = "something", UserId = appUser.Id }, CancellationToken.None));
 
             status.Status.ToString().ShouldBe(GConst.SuccessStatus);
             status.Result.ToString().ShouldBe(string.Format(GConst.CommentCommandRedirect, this.topicId));

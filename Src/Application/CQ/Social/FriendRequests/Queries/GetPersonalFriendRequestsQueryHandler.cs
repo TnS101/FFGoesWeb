@@ -21,7 +21,7 @@
 
         public async Task<FriendRequestListViewModel> Handle(GetPersonalFriendRequestsQuery request, CancellationToken cancellationToken)
         {
-            var reciever = await this.UserManager.GetUserAsync(request.Reciever);
+            var reciever = await this.Context.AppUsers.FindAsync(request.UserId);
 
             return new FriendRequestListViewModel
             {

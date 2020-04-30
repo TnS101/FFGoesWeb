@@ -24,8 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQ\Social\FriendRequests\Queries\" />
-    <Folder Include="CQ\Social\Friends\Commands\" />
     <Folder Include="CQ\Social\Friends\Queries\" />
     <Folder Include="CQ\Social\Likes\Commands\" />
     <Folder Include="CQ\Social\Likes\Queries\" />

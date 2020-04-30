@@ -5,6 +5,6 @@
 
     public class LootTreasureCommand : IRequest<string>
     {
-        public ClaimsPrincipal User { get; set; }
+        public string UserId { get; set; }
     }
 }

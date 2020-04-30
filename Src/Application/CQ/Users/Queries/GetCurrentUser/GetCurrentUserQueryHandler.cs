@@ -21,22 +21,11 @@
 
         public async Task<UserPartialViewModel> Handle(GetCurrentUserQuery request, CancellationToken cancellationToken)
         {
-            AppUser user;
-            if (request.User == null)
-            {
-                user = await this.Context.AppUsers.FindAsync(request.UserId);
-                var mappedUser = this.Mapper.Map<UserPartialViewModel>(user);
-                mappedUser.Friends = await this.Context.Friends.Where(f => f.UserId == user.Id).ToListAsync();
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
+            var mappedUser = this.Mapper.Map<UserPartialViewModel>(user);
+            mappedUser.Friends = await this.Context.Friends.Where(f => f.UserId == user.Id).ToListAsync();
 
-                return mappedUser;
-            }
-            else
-            {
-                user = await this.UserManager.GetUserAsync(request.User);
-                var mappedUser = this.Mapper.Map<UserPartialViewModel>(user);
-
-                return mappedUser;
-            }
+            return mappedUser;
         }
     }
 }

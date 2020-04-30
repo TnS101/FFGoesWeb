@@ -29,7 +29,7 @@
                 return this.View(topic);
             }
 
-            await this.Mediator.Send(new CreateTopicCommand { Title = topic.Title, Category = topic.Category, Content = topic.Content, User = this.User });
+            await this.Mediator.Send(new CreateTopicCommand { Title = topic.Title, Category = topic.Category, Content = topic.Content, UserId = this.UserManager.GetUserId(this.User) });
 
             return this.Redirect(GConst.TopicCommandRedirect);
         }
@@ -37,13 +37,13 @@
         [HttpGet("/Topic/Delete/id")]
         public async Task<IActionResult> Delete([FromQuery]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = id, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new DeleteTopicCommand { TopicId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet("/Topic/Edit/id")]
         public async Task<IActionResult> Edit([FromQuery]string id)
         {
-            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id, User = this.User }));
+            return this.View(await this.Mediator.Send(new GetCurrentTopicQuery { TopicId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpPost]
@@ -60,13 +60,13 @@
         [HttpGet("/Topic/Like/id")]
         public async Task<IActionResult> Like([FromQuery]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new LeaveLikeCommand { TopicId = id, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new LeaveLikeCommand { TopicId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet("/Topic/Dislike/id")]
         public async Task<IActionResult> Dislike([FromQuery]string id)
         {
-            return this.Redirect(await this.Mediator.Send(new DislikeCommand { TopicId = id, User = this.User }));
+            return this.Redirect(await this.Mediator.Send(new DislikeCommand { TopicId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]

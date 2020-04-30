@@ -352,7 +352,7 @@
 
         public static int GetFriendRequestId(FFDbContext context)
         {
-            var friendRequest = new FriendRequest { Id = 1, SenderName = "asdas", SentOn = DateTime.UtcNow, UserId = "1" };
+            var friendRequest = new FriendRequest { Id = 1, SenderName = "asdas", SentOn = DateTime.UtcNow, UserId = "2" };
 
             context.FriendRequests.Add(friendRequest);
             context.SaveChanges();

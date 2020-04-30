@@ -28,7 +28,7 @@
 
         public async Task<string> Handle(CreateHeroCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var heroes = await this.Context.Heroes.Where(h => h.UserId == user.Id).ToListAsync();
 

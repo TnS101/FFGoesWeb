@@ -21,7 +21,7 @@
 
         public async Task<string> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             if (string.IsNullOrWhiteSpace(request.Content))
             {
@@ -32,9 +32,9 @@
             {
                 Content = request.Content,
                 UserId = user.Id,
-                //CreatedOn = DateTime.UtcNow,
-                //Likes = new List<Like>(),
-                //Replies = new List<Comment>(),
+                CreatedOn = DateTime.UtcNow,
+                Likes = new List<Like>(),
+                Replies = new List<Comment>(),
                 TopicId = request.TopicId,
             });
 

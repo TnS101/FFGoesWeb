@@ -25,7 +25,7 @@
         public async Task<IActionResult> Battle([FromQuery]string zone)
         {
             zoneName = zone;
-            var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { User = this.User });
+            var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
             monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zoneName });
             yourTurn = true;
             return this.View(@"\Battle", monster.Name);
@@ -34,7 +34,7 @@
         [HttpGet]
         public async Task<IActionResult> Command()
         {
-            hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
+            hero = await this.Mediator.Send(new GetFullUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
 
             var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { Hero = hero, Enemy = monster });
 
@@ -44,7 +44,7 @@
         [HttpPost]
         public async Task<IActionResult> Command([FromForm]string command, [FromForm]string spellName)
         {
-            hero = await this.Mediator.Send(new GetFullUnitQuery { User = this.User });
+            hero = await this.Mediator.Send(new GetFullUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
 
             var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { Hero = hero, Enemy = monster });
 
@@ -56,7 +56,7 @@
         [HttpGet]
         public async Task<IActionResult> End()
         {
-            return this.View(await this.Mediator.Send(new GetUnitIdQuery { User = this.User }));
+            return this.View(await this.Mediator.Send(new GetUnitIdQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]

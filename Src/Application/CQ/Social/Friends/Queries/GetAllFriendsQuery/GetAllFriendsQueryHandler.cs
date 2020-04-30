@@ -20,7 +20,7 @@
 
         public async Task<UserListViewModel> Handle(GetAllFriendsQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var friends = await this.Context.Friends.Where(f => f.UserId == user.Id).ToListAsync();
 

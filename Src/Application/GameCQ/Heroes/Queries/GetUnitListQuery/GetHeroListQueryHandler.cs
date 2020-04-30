@@ -28,7 +28,7 @@
 
         public async Task<HeroListViewModel> Handle(GetHeroListQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.UserManager.GetUserAsync(request.User);
+            var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var heroes = this.Context.Heroes.Where(h => h.UserId == user.Id);
 
