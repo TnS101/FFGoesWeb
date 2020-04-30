@@ -37,7 +37,7 @@
 
                 if (!string.IsNullOrWhiteSpace(request.NewContent))
                 {
-                    topic.Content = topic.Content;
+                    topic.Content = request.NewContent;
                 }
 
                 topic.EditedOn = DateTime.UtcNow;

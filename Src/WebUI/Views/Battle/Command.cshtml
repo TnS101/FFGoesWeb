@@ -1,14 +1,9 @@
 ﻿@model Application.GameCQ.Battles.Queries.GetBattleUnitsQuery.BattleUnitsViewModel
 <title>Command</title>
 <partial name="_WorldNavBar">
+
     <script>
         $(document).ready(function () {
-
-            var battleAction = $('#action');
-
-            var hero = $('#hero');
-            var enemy = $('#enemy');
-
             $("select.command").change(function () {
                 var battleOption = $(this).children('option:selected').val();
 
@@ -24,15 +19,9 @@
                     if (battleOption === 'Attack') {
                         hero.toggleClass('roll-in-bottom');
                         enemy.toggleClass('jello enemy-hit');
-
-                    } if (battleOption === 'Defend') {
-                        hero.toggleClass('jello enemy-hit');
-                        enemy.toggleClass('roll-in-bottom');
-
-                    } if (battleOption === 'SpellCast') {
                     }
                 });
-            })
+            });
         })
     </script>
     <div class="fade-in aligncenter starting-div">
@@ -60,7 +49,6 @@
                         <option value="Attack">Attack</option>
                         <option value="Defend">Defend</option>
                         <option value="Spell">Spell</option>
-                        <option value="Escape">Escape</option>
                     </select>
                     <div class="item-padding fade-in" hidden id="spells">
                         <select name="spellName">
@@ -80,7 +68,3 @@
         </div>
     </div>
     <partial name="_Footer">
-        @section scripts
-        {
-            <script src="~/js/battle.js"></script>
-        }

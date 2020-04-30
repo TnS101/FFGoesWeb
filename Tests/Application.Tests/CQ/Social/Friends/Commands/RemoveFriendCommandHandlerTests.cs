@@ -20,6 +20,7 @@ namespace Application.Tests.CQ.Social.Friends.Commands
         {
             this.sut = new RemoveFriendCommandHandler(context);
             QueryArrangeHelper.AddFriends(context);
+            QueryArrangeHelper.AddUsers(context);
         }
 
         [Fact]
@@ -28,7 +29,7 @@ namespace Application.Tests.CQ.Social.Friends.Commands
             var result = await this.sut.Handle(new RemoveFriendCommand { FriendId = "1", UserId = "1" }, CancellationToken.None);
 
             result.ShouldBe(string.Format(GConst.FriendCommandRedirect));
-            this.context.Friends.Count().ShouldBe(0);
+            this.context.Friends.Count().ShouldBe(5);
         }
     }
 }

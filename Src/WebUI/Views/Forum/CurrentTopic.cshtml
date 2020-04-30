@@ -97,7 +97,7 @@
                         <option value="Spam">Spam</option>
                     </select>
                     <div class="item-padding">
-                        <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." />
+                        <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." required/>
                     </div>
                     <div class="item-padding">
                         <input type="submit" name="button" class="main-button" value="Send" />
@@ -125,7 +125,7 @@
                                 <div class="edit-panel fade-in" hidden>
                                     <form asp-controller="Comment" asp-action="Edit" class="item-padding">
                                         <input type="hidden" name="id" value="@comment.Id" />
-                                        <input type="text" name="content" value="" />
+                                        <input asp-for="@comment.Content" type="text" name="content" value="" />
                                         <div class="item-padding">
                                             <input type="submit" class="main-button" name="button" value="Edit" />
                                         </div>
@@ -144,7 +144,7 @@
                                 }
                             }
 
-                            <a asp-controller="Comment" asp-action="Replies">
+                            <a>
                                 <i class="fas fa-comments has-large-font-size main-font-color"></i>
                             </a><b>@comment.Replies.Count</b>
 
@@ -155,6 +155,7 @@
                                     <form asp-controller="Social" asp-action="ReportContent" method="post">
                                         <input type="hidden" name="id" value="@comment.Id" />
                                         <input type="hidden" name="contentType" value="Comment" />
+                                        <input type="hidden" name="content" value="@comment.Content" />
                                         <select class="aligncenter " name="category">
                                             <option value="Racism">Racism</option>
                                             <option selected value="Hate Speech">Hate Speech</option>
@@ -163,7 +164,7 @@
                                             <option value="Spam">Spam</option>
                                         </select>
                                         <div class="item-padding">
-                                            <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." />
+                                            <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." required/>
                                         </div>
                                         <div class="item-padding">
                                             <input type="submit" name="button" class="main-button" value="Send" />
@@ -182,7 +183,7 @@
                 <div class="fade-in" id="comment-panel" hidden>
                     <form asp-controller="Comment" asp-action="Create" method="post" class="item-padding">
                         <input type="hidden" name="topicId" value="@Model.Id" />
-                        <textarea rows="6" cols="100" name="content" placeholder="Write something..." class="comment-content-input"></textarea>
+                        <textarea rows="6" cols="100" name="content" placeholder="Write something..." class="comment-content-input" required></textarea>
                         <br />
                         <br />
                         <input type="submit" class="main-button item-padding" name="name" value="Comment" />

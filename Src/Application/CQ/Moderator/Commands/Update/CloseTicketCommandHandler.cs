@@ -40,10 +40,8 @@
 
         private async Task DeleteAction(Ticket ticket)
         {
-            await this.DeleteComment(ticket);
-
             await this.DeleteTopic(ticket);
-
+            await this.DeleteComment(ticket);
             await this.DeleteMessage(ticket);
         }
 
@@ -67,7 +65,7 @@
 
         private async Task DeleteTopic(Ticket ticket)
         {
-            if (ticket.Type == GConst.CommentType)
+            if (ticket.Type == GConst.TopicType)
             {
                 var topic = await this.Context.Topics.FindAsync(ticket.TopicId);
 
@@ -89,7 +87,7 @@
 
         private async Task DeleteMessage(Ticket ticket)
         {
-            if (ticket.MessageId == GConst.CommentType)
+            if (ticket.Type == GConst.MessageType)
             {
                 var message = await this.Context.Messages.FindAsync(ticket.MessageId);
 

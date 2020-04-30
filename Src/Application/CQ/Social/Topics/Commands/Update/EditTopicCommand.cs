@@ -1,6 +1,5 @@
 ﻿namespace Application.CQ.Social.Topics.Commands.Update
 {
-    using System.Security.Claims;
     using MediatR;
 
     public class EditTopicCommand : IRequest<string>

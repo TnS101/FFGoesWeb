@@ -1,26 +1,6 @@
 ﻿@model Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery.SpellListViewModel
 <title>All Spells</title>
 <partial name="_AdminNavBar">
-    <script>
-        $(document).ready(function () {
-            var scrollTop = $('#scroll-top');
-
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > 1200) {
-                    scrollTop.removeClass('fade-out');
-                    scrollTop.show();
-                } else {
-                    scrollTop.addClass('fade-out');
-                }
-            })
-
-            scrollTop.click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#top").offset().top
-                }, 1200);
-            })
-        })
-    </script>
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
     <div class="starting-div fade-in " id="top">
         <h1 class="main-font-color has-large-font-size item-padding">Spells</h1>
@@ -49,17 +29,21 @@
                     <input type="submit" name="button" value="Filter" />
                 </p>
             </form>
-                @foreach (var spell in Model.Spells)
-                {
-                    <div class="item-padding " id="@spell.Id">
-                        <a asp-controller="Spell" asp-action="Current" asp-route-id="@spell.Id"><h3 class="main-font-color">@spell.Name</h3></a>
-                        <a asp-controller="Spell" asp-action="Update" asp-route-id="@spell.Id"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
-                        <form asp-controller="Spell" asp-action="Delete" method="post" class="item-padding">
-                            <input type="hidden" name="id" value="@spell.Id" />
-                            <input type="submit" name="button" value="Delete" class="main-button" />
-                        </form>
-                        <hr />
-                    </div>
-                }
+            @foreach (var spell in Model.Spells)
+            {
+                <div class="item-padding " id="@spell.Id">
+                    <a asp-controller="Spell" asp-action="Current" asp-route-id="@spell.Id"><h3 class="main-font-color">@spell.Name</h3></a>
+                    <a asp-controller="Spell" asp-action="Update" asp-route-id="@spell.Id"><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                    <form asp-controller="Spell" asp-action="Delete" method="post" class="item-padding">
+                        <input type="hidden" name="id" value="@spell.Id" />
+                        <input type="submit" name="button" value="Delete" class="main-button" />
+                    </form>
+                    <hr />
+                </div>
+            }
         </div>
     </div>
+    @section scripts
+    {
+        <script src="~/js/scroll.js"></script>
+    }

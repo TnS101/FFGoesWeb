@@ -1,33 +1,12 @@
 ﻿@model Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery.FightingClassListViewModel
 <partial name="_NavBar">
     <title>Create a Hero</title>
-    <script>
-        $(document).ready(function () {
-
-            var scrollTop = $('#scroll-top');
-
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > 1000) {
-                    scrollTop.removeClass('fade-out');
-                    scrollTop.show();
-                } else {
-                    scrollTop.addClass('fade-out');
-                }
-            })
-
-            scrollTop.click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#top").offset().top
-                }, 1200);
-            })
-        })
-    </script>
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
     <div class="container fade-in  starting-div" id="top">
         <cache vary-by="@Model.FightingClasses">
             @foreach (var fightingClass in Model.FightingClasses)
             {
-                <div class="entry-content single-entry-content item-padding">
+                <div class="item-padding" asp-validation-summary="All">
                     <div class="entry-header with-image full site-background main-gradient">
                         <div class="wp-block-image is-style-circle-mask"><figure class="size-large is-resized"><img src="@fightingClass.ImagePath" alt="" width="300" height="300" /></figure></div>
                         <h1 class="section-title image-name main-font-color">@fightingClass.Type</h1>
@@ -44,7 +23,7 @@
                                 <option value="Goblin">Goblin</option>
                             </select>
                             <div class="item-padding">
-                                <input type="text" name="name" placeholder="Insert your character Name" />
+                                <input asp-for="Hero.Name" name="name" placeholder="Insert your character Name" required/>
                                 <div class="item-padding">
                                     Names should only contain lower case letters and/or digits and should be between 5 and 20 characters.
                                     <span asp-validation-for="@Model.Hero.Name" class="has-medium-font-size main-font-color fade-in"></span>
@@ -62,3 +41,6 @@
             }
         </cache>
     </div>
+    @section scripts{
+        <script src="~/js/scroll.js"></script>
+     }

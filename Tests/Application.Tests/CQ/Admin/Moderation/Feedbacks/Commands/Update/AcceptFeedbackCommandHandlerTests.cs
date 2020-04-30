@@ -16,6 +16,7 @@
         {
             this.sut = new AcceptFeedbackCommandHandler(context);
             QueryArrangeHelper.AddFeedbacks(context);
+            CommandArrangeHelper.GetUserId(context);
         }
 
         [Fact]
@@ -25,7 +26,7 @@
 
             var feedBack = this.context.Feedbacks.Find(1);
 
-            var user = await this.context.AppUsers.FindAsync(feedBack.UserId);
+            var user = await this.context.AppUsers.FindAsync("1");
 
             Assert.Equal(GConst.SuccessStatus, status.Status.ToString());
             Assert.Equal(1, this.context.Notifications.Count());

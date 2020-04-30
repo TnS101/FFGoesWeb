@@ -28,15 +28,16 @@
         public const string CommentCommandRedirect = "/Forum/CurrentTopic/id?id={0}";
         public const string FriendCommandRedirect = "/Friends/All/";
         public const string TopicCommandRedirect = @"\Forum\Home";
+        public const string TopicEditErrorRedirect = "/Topic/Edit/id?id={0}";
         public const string CreateTopicErrorRedirect = @"\Create";
         public const string CreateMessageCommandRedirect = "/Profile/Friends";
         public const string MessageCommandRedirect = "/Profile/Chats";
         public const string HomeRedirect = "/";
         public const string SendFeedbackRedirect = "Profile/Feedbacks";
-        public const string OpenCommentTicketRedirect = "/Social/TicketSent";
+        public const string OpenTicketRedirect = "/Social/TicketSent";
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
         public const string TicketCommandRedirect = "/Moderator/Mod";
-        public const string HeroCommandRedirect = "/Hero/All";
+        public const string HeroCommandRedirect = @"\Hero\All";
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";
         public const string NotEnoughEnergyRedirect = "/EnergyError";

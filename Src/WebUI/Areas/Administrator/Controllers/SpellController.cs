@@ -46,7 +46,7 @@
             }));
         }
 
-        [HttpGet("/Administrator/Update/Current/id")]
+        [HttpGet("/Administrator/Spell/Update/id")]
         public IActionResult Update()
         {
             return this.View();

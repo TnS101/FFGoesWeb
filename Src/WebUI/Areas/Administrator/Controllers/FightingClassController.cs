@@ -30,7 +30,7 @@
         [HttpPost]
         public async Task<IActionResult> Create([FromForm]string classType, [FromForm]double maxHP, [FromForm]double maxMana,
             [FromForm]double healthRegen, [FromForm]double manaRegen, [FromForm]double attackPower, [FromForm]double magicPower,
-            [FromForm]double armorValue, [FromForm]double resistanceValue, [FromForm]double critChance, [FromForm]string description)
+            [FromForm]double armorValue, [FromForm]double resistanceValue, [FromForm]double criticalChance, [FromForm]string description)
         {
             return this.Redirect(await this.Mediator.Send(new CreateFightingClassCommand
             {
@@ -43,7 +43,7 @@
                 MagicPower = magicPower,
                 ArmorValue = armorValue,
                 ResistanceValue = resistanceValue,
-                CritChance = critChance,
+                CritChance = criticalChance,
                 Description = description,
             }));
         }

@@ -18,7 +18,7 @@ namespace Application.Tests.GameCQ.Battles.Queries
 
         public GetBattleUnitsQueryHandlerTests()
         {
-            this.sut = new GetBattleUnitsQueryHandler(mapper);
+            this.sut = new GetBattleUnitsQueryHandler(mapper, context);
             CommandArrangeHelper.GetHeroId(context);
         }
 

@@ -22,8 +22,8 @@
 
             if (request.CommentId != null)
             {
-                if (this.Context.Comments.Any(c => c.Id == request.CommentId && c.UserId == user.Id)
-                    && await this.Context.Likes.AnyAsync(l => l.CommentId == request.CommentId && l.UserId == user.Id))
+                if (this.Context.Comments.Any(c => c.Id == request.CommentId && c.UserId != user.Id)
+                    && this.Context.Likes.Any(l => l.CommentId == request.CommentId && l.UserId == user.Id))
                 {
                     var likeToRemove = await this.Context.Likes.FirstOrDefaultAsync(l => l.CommentId == request.CommentId && l.UserId == user.Id);
 
@@ -36,8 +36,8 @@
             }
             else
             {
-                if (this.Context.Topics.Any(t => t.Id == request.TopicId && t.UserId == user.Id)
-                    && await this.Context.Likes.AnyAsync(l => l.TopicId == request.TopicId && l.UserId == user.Id))
+                if (this.Context.Topics.Any(t => t.Id == request.TopicId && t.UserId != user.Id)
+                    && this.Context.Likes.Any(l => l.TopicId == request.TopicId && l.UserId == user.Id))
                 {
                     var likeToRemove = await this.Context.Likes.FirstOrDefaultAsync(l => l.TopicId == request.TopicId && l.UserId == user.Id);
 

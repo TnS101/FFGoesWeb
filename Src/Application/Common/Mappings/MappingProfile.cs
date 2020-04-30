@@ -9,6 +9,7 @@
     using Application.CQ.Social.Comments.Queries.GetCurrentCommentQuery;
     using Application.CQ.Social.FriendRequests.Queries;
     using Application.CQ.Social.Friends.Queries.GetAllFriendsQuery;
+    using Application.CQ.Social.Likes.Queries;
     using Application.CQ.Social.Messages.Queries;
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery;
@@ -65,6 +66,7 @@
             this.CreateMap<Tool, ToolMinViewModel>();
             this.CreateMap<Spell, SpellFullViewModel>();
             this.CreateMap<FightingClass, FightingClassFullViewModel>();
+            this.CreateMap<Like, LikeFullViewModel>();
         }
     }
 }

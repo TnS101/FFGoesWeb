@@ -51,10 +51,10 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(topic);
+                return this.Redirect(string.Format(GConst.TopicEditErrorRedirect, id));
             }
 
-            return this.Redirect(await this.Mediator.Send(new EditTopicCommand { Id = id, NewTitle = topic.Title, NewCategory = topic.Category, NewContent = topic.Content }));
+            return this.Redirect(await this.Mediator.Send(new EditTopicCommand { Id = id, NewTitle = topic.Title, NewCategory = topic.Category, NewContent = topic.Content, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet("/Topic/Like/id")]

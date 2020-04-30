@@ -55,7 +55,7 @@
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return string.Format(GConst.OpenCommentTicketRedirect);
+            return string.Format(GConst.OpenTicketRedirect);
         }
     }
 }

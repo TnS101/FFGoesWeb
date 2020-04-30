@@ -1,33 +1,6 @@
 ﻿@model Application.CQ.Users.Queries.Panel.UserPanelViewModel
 <title>Profile Panel</title>
 <partial name="_NavBar">
-    <script>
-        $(document).ready(function showStatuses() {
-
-            var show = $('#show');
-            var statuses = $('#statuses');
-            var friends = $('#friends');
-            var statusMenu = $('#menu');
-            var feedbackButton = $('.feedback-button');
-            var feedbackPanel = $('#feedback-panel');
-
-            feedbackButton.click(function () {
-                feedbackPanel.show();
-                $('html, body').animate({ scrollTop: feedbackButton.offset().top - 10 }, 'slow');
-            })
-
-            show.on("mouseenter", function () {
-                statuses.show();
-                friends.hide();
-            });
-
-            statusMenu.on("mouseleave", function () {
-                statuses.hide();
-                friends.show();
-            })
-        })
-
-    </script>
     <div class="starting-div  fade-in">
         <h1 class="secondary-font-color has-huge-font-size item-padding">@Model.UserName</h1>
         <div class="item-padding">
@@ -39,9 +12,9 @@
                 <h3 class="item-padding">Your status is <i id="show" onclick="true" class="@Model.StatusIClass has-huge-font-size main-font-color" style="cursor: pointer;"></i></h3>
             </div>
             <cache vary-by="@Model.Statuses">
-                <div id="statuses" class="fade-in" style="margin-bottom:55px; display:none">
+                <div id="statuses" class="fade-in" style="display:none">
                     <div id="menu">
-                        <ul id="primary-menu" style="list-style:none; padding-left:340px">
+                        <ul id="primary-menu" style="list-style:none; margin-bottom:32px">
                             @foreach (var status in Model.Statuses)
                             {
                                 <li><a asp-controller="Profile" asp-action="UpdateStatus" asp-route-id="@status.Id"><i class="@status.IClass has-huge-font-size main-font-color"></i></a></li>
@@ -135,7 +108,7 @@
                 <div class="item-padding fade-in" id="feedback-panel" hidden>
                     <form asp-controller="Profile" asp-action="SendFeedback" method="post">
                         <label for="feedback">
-                            <input id="feedback" class="item-padding" type="text" name="content" value="" />
+                            <input id="feedback" class="item-padding" type="text" name="content" value="" required/>
 
                         </label>
                         <label for="rate">
@@ -181,3 +154,7 @@
     <div class="item-padding">
         <partial name="_Footer">
     </div>
+
+    @section scripts{
+        <script src="~/js/feedbackjs.js"></script>
+    }

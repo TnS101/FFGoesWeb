@@ -23,9 +23,9 @@
         {
             var users = new List<AppUser>
             {
-                new AppUser { Id = "1", Email = "someEmail@gmail.com", UserName = "username" },
-                new AppUser { Id = "2", Email = "hello@abv.bg", UserName = "username1" },
-                new AppUser { Id = "3", Email = "ivan4o@yahoo.com", UserName = "username2"},
+                new AppUser { Id = "1", Email = "someEmail@gmail.com", UserName = "username", Warnings = 0, Stars = 0, MasteryPoints = 0, LastFeedbackSentOn = null, AllowedHeroes = 4, ForumPoints = 0  },
+                new AppUser { Id = "2", Email = "hello@abv.bg", UserName = "username1", Warnings = 0, Stars = 0, MasteryPoints = 0, LastFeedbackSentOn = null, AllowedHeroes = 4, ForumPoints = 0    },
+                new AppUser { Id = "3", Email = "ivan4o@yahoo.com", UserName = "username2", Warnings = 0, Stars = 0 , MasteryPoints = 0, LastFeedbackSentOn = null, AllowedHeroes = 4, ForumPoints = 0  },
             };
 
             context.AppUsers.AddRange(users);
@@ -407,19 +407,17 @@
             context.SaveChanges();
         }
 
-        public static async Task AddFeedbacks(FFDbContext context)
+        public static void AddFeedbacks(FFDbContext context)
         {
-            var userId = await CommandArrangeHelper.GetUserId(context);
-
             var feedbacks = new List<Feedback>
             {
-                new Feedback { Id = 1, UserId = userId, Content = "sewew", IsAccepted = false, Rate = 0, SentOn = DateTime.UtcNow,
+                new Feedback { Id = 1, UserId = "1", Content = "sewew", IsAccepted = false, Rate = 0, SentOn = DateTime.UtcNow,
                 Stars = 0},
 
-                new Feedback { Id = 2, UserId = userId, Content = "sewew", IsAccepted = false, Rate = 0, SentOn = DateTime.UtcNow,
+                new Feedback { Id = 2, UserId = "1", Content = "sewew", IsAccepted = false, Rate = 0, SentOn = DateTime.UtcNow,
                 Stars = 0 },
 
-                new Feedback { Id = 3, UserId = userId, Content = "sewew", IsAccepted = false, Rate = 0, SentOn = DateTime.UtcNow,
+                new Feedback { Id = 3, UserId = "1", Content = "sewew", IsAccepted = false, Rate = 0, SentOn = DateTime.UtcNow,
                 Stars = 0 },
             };
 
@@ -438,7 +436,7 @@
                  ReplyId = "1", TopicId = "1" },
 
                 new Comment { Id = "3", UserId = "1", Content = "sewew", CreatedOn = DateTime.UtcNow, EditedOn = DateTime.UtcNow, IsRemoved = false,
-                 ReplyId = "1", TopicId = "1" },
+                 ReplyId = "1", TopicId = "2" },
             };
 
             context.Comments.AddRange(comments);
@@ -451,7 +449,10 @@
             {
                 new Friend { Id = "1", UserId = "2" },
                 new Friend { Id = "2", UserId = "1" },
-                new Friend { Id = "3", UserId = "2" },
+                new Friend { Id = "3", UserId = "4" },
+                new Friend { Id = "4", UserId = "3" },
+                new Friend { Id = "5", UserId = "6" },
+                new Friend { Id = "6", UserId = "5" },
             };
 
             context.Friends.AddRange(friends);
@@ -495,10 +496,10 @@
                 new Message { Id = "2", UserId = "1", Content = "sewew", SentOn = DateTime.UtcNow
                 , EditedOn = DateTime.UtcNow, IsRemoved = false, SenderName = "Somdwad" },
 
-                new Message { Id = "3", UserId = "1", Content = "sewew", SentOn = DateTime.UtcNow
+                new Message { Id = "3", UserId = "2", Content = "sewew", SentOn = DateTime.UtcNow
                 , EditedOn = DateTime.UtcNow, IsRemoved = false, SenderName = "Somdwad" },
 
-                new Message { Id = "4", UserId = "1", Content = "sewew", SentOn = DateTime.UtcNow
+                new Message { Id = "4", UserId = "2", Content = "sewew", SentOn = DateTime.UtcNow
                 , EditedOn = DateTime.UtcNow, IsRemoved = false, SenderName = "Somdwad" },
             };
 
@@ -506,16 +507,14 @@
             context.SaveChanges();
         }
 
-        public static async Task AddNotifications(FFDbContext context)
+        public static void AddNotifications(FFDbContext context)
         {
-            var userId = await CommandArrangeHelper.GetUserId(context);
-
             var notifications = new List<Notification>
             {
-                new Notification { Id = "1", UserId = userId },
-                new Notification { Id = "2", UserId = userId },
-                new Notification { Id = "3", UserId = userId },
-                new Notification { Id = "4", UserId = userId },
+                new Notification { Id = "1", UserId = "1", Type = "NaiDobriqProekt", ApplicationSection = "softuni", Content = "me" },
+                new Notification { Id = "2", UserId = "1", Type = "NaiDobriqProekt", ApplicationSection = "softuni", Content = "me" },
+                new Notification { Id = "3", UserId = "1", Type = "NaiDobriqProekt", ApplicationSection = "softuni", Content = "me" },
+                new Notification { Id = "4", UserId = "1", Type = "NaiDobriqProekt", ApplicationSection = "softuni", Content = "me" },
             };
 
             context.Notifications.AddRange(notifications);

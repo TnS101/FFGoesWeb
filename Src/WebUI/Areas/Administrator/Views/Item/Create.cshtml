@@ -1,219 +1,6 @@
 ﻿@model Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery.ToolsListViewModel
-<meta name="viewport" content="width=device-width" />
 <title>Create Item</title>
 <partial name="_AdminNavBar">
-    <script>
-        $(document).ready(function () {
-            $('select.slot').change(function () {
-
-                var slotOption = $(this).children('option:selected').val();
-
-                if (slotOption === 'Weapon') {
-                    $('#armor').hide();
-                    $('#resistance').hide();
-                    $('#rarity').hide();
-                    $('#reward').hide();
-                    $('#rarity').hide();
-                    $('#fuel').hide();
-                    $('#materials').hide();
-                    $('#refineable').hide();
-                    $('#disolveable').hide();
-                    $('#durability').hide();
-                    $('#craftable').hide();
-                    $('#material-type').hide();
-                    $('#none').hide();
-
-                    $('#name').show();
-                    $('#level').show();
-                    $('#class-type').show();
-                    $('#stamina').show();
-                    $('#strength').show();
-                    $('#agility').show();
-                    $('#intellect').show();
-                    $('#spirit').show();
-                    $('#attack').show();
-                    $('#buy').show();
-                    $('#sell').show();
-                }
-                else if (slotOption === 'Armor') {
-                    $('#attack').hide();
-                    $('#rarity').hide();
-                    $('#reward').hide();
-                    $('#rarity').hide();
-                    $('#fuel').hide();
-                    $('#materials').hide();
-                    $('#refineable').hide();
-                    $('#disolveable').hide();
-                    $('#durability').hide();
-                    $('#craftable').hide();
-                    $('#material-type').hide();
-                    $('#none').hide();
-
-                    $('#name').show();
-                    $('#level').show();
-                    $('#class-type').show();
-                    $('#stamina').show();
-                    $('#strength').show();
-                    $('#agility').show();
-                    $('#intellect').show();
-                    $('#spirit').show();
-                    $('#armor').show();
-                    $('#resistance').show();
-                    $('#buy').show();
-                    $('#sell').show();
-                }
-                else if (slotOption === 'Trinket') {
-                    $('#attack').hide();
-                    $('#armor').hide();
-                    $('#resistance').hide();
-                    $('#rarity').hide();
-                    $('#reward').hide();
-                    $('#rarity').hide();
-                    $('#fuel').hide();
-                    $('#materials').hide();
-                    $('#refineable').hide();
-                    $('#disolveable').hide();
-                    $('#durability').hide();
-                    $('#craftable').hide();
-                    $('#material-type').hide();
-                    $('#none').hide();
-
-                    $('#name').show();
-                    $('#level').show();
-                    $('#stamina').show();
-                    $('#strength').show();
-                    $('#agility').show();
-                    $('#intellect').show();
-                    $('#spirit').show();
-                    $('#buy').show();
-                    $('#sell').show();
-                }
-                else if (slotOption === 'Treasure') {
-                    $('#attack').hide();
-                    $('#armor').hide();
-                    $('#resistance').hide();
-                    $('#rarity').hide();
-                    $('#reward').hide();
-                    $('#fuel').hide();
-                    $('#materials').hide();
-                    $('#refineable').hide();
-                    $('#disolveable').hide();
-                    $('#durability').hide();
-                    $('#craftable').hide();
-                    $('#level').hide();
-                    $('#stamina').hide();
-                    $('#strength').hide();
-                    $('#agility').hide();
-                    $('#intellect').hide();
-                    $('#spirit').hide();
-                    $('#buy').hide();
-                    $('#sell').hide();
-                    $('#class-type').hide();
-                    $('#material-type').hide();
-                    $('#none').hide();
-
-                    $('#name').show();
-                    $('#rarity').show();
-                    $('#reward').show();
-                }
-                else if (slotOption === 'Treasure Key') {
-                    $('#reward').hide();
-                    $('#attack').hide();
-                    $('#armor').hide();
-                    $('#resistance').hide();
-                    $('#rarity').hide();
-                    $('#reward').hide();
-                    $('#fuel').hide();
-                    $('#materials').hide();
-                    $('#refineable').hide();
-                    $('#disolveable').hide();
-                    $('#durability').hide();
-                    $('#craftable').hide();
-                    $('#level').hide();
-                    $('#stamina').hide();
-                    $('#strength').hide();
-                    $('#agility').hide();
-                    $('#intellect').hide();
-                    $('#spirit').hide();
-                    $('#buy').hide();
-                    $('#sell').hide();
-                    $('#class-type').hide();
-                    $('#material-type').hide();
-                    $('#none').hide();
-
-                    $('#name').show();
-                    $('#rarity').show();
-                }
-                else if (slotOption === 'Material') {
-                    $('#reward').hide();
-                    $('#attack').hide();
-                    $('#armor').hide();
-                    $('#resistance').hide();
-                    $('#rarity').hide();
-                    $('#reward').hide();
-                    $('#materials').hide();
-                    $('#refineable').hide();
-                    $('#disolveable').hide();
-                    $('#durability').hide();
-                    $('#craftable').hide();
-                    $('#level').hide();
-                    $('#stamina').hide();
-                    $('#strength').hide();
-                    $('#agility').hide();
-                    $('#intellect').hide();
-                    $('#spirit').hide();
-                    $('#buy').hide();
-                    $('#sell').hide();
-                    $('#class-type').hide();
-
-                    $('#name').show();
-                    $('#material-type').show();
-                    $('#fuel').show();
-                    $('#none').show();
-                    $('#refineable').show();
-                    $('#disolveable').show();
-                    $('#craftable').show();
-
-                    $('input:radio[name="materialDiversity"]').change(function () {
-                        if ($(this).is(':checked') && $(this).val() == 'craftable' || $(this).val() == 'refineable' || $(this).val() == 'disolveable') {
-                            $('#materials').show();
-                            $('#tools').show();
-                        } else {
-                            $('#materials').hide();
-                            $('#tools').hide();
-                        }
-                    })
-                }
-                else if (slotOption === 'Tool') {
-                    $('#reward').hide();
-                    $('#attack').hide();
-                    $('#armor').hide();
-                    $('#resistance').hide();
-                    $('#rarity').hide();
-                    $('#reward').hide();
-                    $('#refineable').hide();
-                    $('#disolveable').hide();
-                    $('#materials').hide();
-
-                    $('#craftable').hide();
-                    $('#level').hide();
-                    $('#stamina').hide();
-                    $('#strength').hide();
-                    $('#agility').hide();
-                    $('#intellect').hide();
-                    $('#spirit').hide();
-                    $('#sell').hide();
-                    $('#class-type').hide();
-
-                    $('#name').show();
-                    $('#craftable').show();
-                    $('#buy').show();
-                    $('#durability').show();
-
-                }
-            })
-        })
-    </script>
     <div class="starting-div fade-in ">
         <h1 class="main-font-color has-large-font-size item-padding">Create an Item</h1>
         <div class="item-padding">
@@ -238,7 +25,7 @@
                         <div class="form-group fade-in item-padding has-normal-font-size" id="name" style="display:none">
                             <label for="input-name" class="contro-label has-normal-font-size">Name</label>
                             <br />
-                            <input type="text" id="input-name" name="name" class="form-control" />
+                            <input type="text" id="input-name" name="name" class="form-control" required/>
                         </div>
                         <div class="form-group fade-in item-padding" id="level" style="display:none">
                             <label for="input-level" class="contro-label has-normal-font-size">Level</label>
@@ -278,7 +65,7 @@
                         <div class="form-group fade-in item-padding" id="attack" style="display:none">
                             <label for="input-attackpower" class="contro-label has-normal-font-size">AttackPower</label>
                             <br />
-                            <input id="input-attackpower" name="attackPower" class="form-control" min="1" max="100" />
+                            <input id="input-attackpower" name="attackPower" class="form-control" min="1" max="100"  />
                         </div>
                         <div class="form-group fade-in item-padding" id="armor" style="display:none">
                             <label for="input-armorvalue" class="contro-label has-normal-font-size">ArmorValue</label>
@@ -312,7 +99,7 @@
                         <div class="form-group fade-in item-padding" id="reward" style="display:none">
                             <label for="input-reward" class="contro-label has-normal-font-size">Reward</label>
                             <br />
-                            <input id="input-reward" type="number" name="reward" class="form-control" min="1" max="1000" />
+                            <input id="input-reward" type="number" name="reward" class="form-control" min="1" max="1000"/>
                         </div>
                         <div class="form-group fade-in item-padding" style="display:none" id="material-type">
                             <label for="material-type-select" class="contro-label has-normal-font-size">Type</label>
@@ -328,7 +115,7 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="fuel">
                             <label for="input-fuelcount" class="contro-label has-normal-font-size">FuelCount</label>
                             <br />
-                            <input id="input-fuelcount" name="fuelCount" class="form-control" type="number" min="1" max="10" value="1" />
+                            <input id="input-fuelcount" name="fuelCount" class="form-control" type="number" min="1" max="10" value="1"/>
                         </div>
                         <div class="form-group fade-in item-padding" style="display:none" id="none">
                             <label for="input-none" class="contro-label has-normal-font-size">None</label>
@@ -353,7 +140,7 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="durability">
                             <label for="input-durability" class="contro-label has-normal-font-size">Durability</label>
                             <br />
-                            <input id="input-durability" name="durability" class="form-control" type="number" min="10" max="100" value="10" />
+                            <input id="input-durability" name="durability" class="form-control" type="number" min="10" max="100" value="10"/>
                         </div>
                         <div class="form-group fade-in item-padding" style="display:none" id="tools">
                             <label for="select-tool" class="contro-label has-normal-font-size">Required Tool</label>
@@ -370,7 +157,7 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="materials">
                             <label for="input-relatedmaterials" class="contro-label has-normal-font-size">Related Materials</label>
                             <br />
-                            <input type="text" id="input-relatedmaterials" name="relatedMaterials" class="form-control" />
+                            <input type="text" id="input-relatedmaterials" name="relatedMaterials" class="form-control"/>
                         </div>
                         <div class="form-group item-padding">
                             <input type="submit" value="Create" class="main-button" />
@@ -383,3 +170,7 @@
             </div>
         </div>
     </div>
+    @section scripts
+    {
+        <script src="~/js/createItem.js"></script>
+     }

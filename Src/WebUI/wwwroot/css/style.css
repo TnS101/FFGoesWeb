@@ -52,6 +52,7 @@ html {
  position: fixed;
  z-index: 1000;
  padding-top: -100px;
+ width:100%;
 }
 
 article,
@@ -1033,10 +1034,10 @@ a {
  margin: 0;
  color: #fff;
  text-align: center;
+ display: inline-flex;
 }
 
  #primary-menu li {
-  float:left;
   list-style: none;
  }
 
@@ -1224,6 +1225,11 @@ p.has-background {
 @media only screen and (max-width: 1024px) {
  #top-bar {
   border-width: 0;
+ }
+
+ .starting-div
+ {
+  padding-top:600px;
  }
 
  .toggle-nav {

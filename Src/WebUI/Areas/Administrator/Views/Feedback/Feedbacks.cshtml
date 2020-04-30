@@ -3,33 +3,28 @@
     int count = 0;
 }
     <title>All feedbacks</title>
-    <partial name="_AdminNavBar">
-        <script>
-
-            $(document).ready(function () {
-                var feedbackButton = $('.feedback-button');
-                var count = $('.count').val();
-                var feedback = $('.feedback').eq(count);
-                var closeButton = $('.close-button');
-
-                feedbackButton.click(function () {
-                    $('#top > .blurd').removeClass('blur-back');
-                    $('#top > .blurd').addClass('blur-all');
-                    feedback.removeClass('blur-all');
-                    feedback.show();
-                    feedbackButton.hide();
-                })
-
-                closeButton.click(function () {
-                    $('#top > .blurd').removeClass('blur-all');
-                    $('#top > .blurd').addClass('blur-back');
-                    feedback.hide();
-                    feedbackButton.show();
-                })
-
+    <script>
+        $(document).ready(function () {
+            var feedbackButton = $('.feedback-button');
+            var count = $('.count').val();
+            var feedback = $('.feedback').eq(count);
+            var closeButton = $('.close-button');
+            feedbackButton.click(function () {
+                $('#top > .blurd').removeClass('blur-back');
+                $('#top > .blurd').addClass('blur-all');
+                feedback.removeClass('blur-all');
+                feedback.show();
+                feedbackButton.hide();
             })
-
-        </script>
+            closeButton.click(function () {
+                $('#top > .blurd').removeClass('blur-all');
+                $('#top > .blurd').addClass('blur-back');
+                feedback.hide();
+                feedbackButton.show();
+            })
+        })
+    </script>
+    <partial name="_AdminNavBar">
     <div class="starting-div" id="top">
         <h1 class="main-font-color blurd has-larger-font-size item-padding">Feedbacks</h1>
         <div class="item-padding blurd">
@@ -71,7 +66,6 @@
 
                         <button onclick="true" class="close-button">Cancel</button>
                     </section>
-                    @count++;
                 </cache>
             }
         }

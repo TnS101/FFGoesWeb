@@ -14,7 +14,6 @@
                     <div class="item-padding">
                         <div class="">
                             <p class="main-font-color has-large-font-size"><a asp-controller="Profile" asp-action="CurrentUser" asp-route-id="@friend.Id"><span class="light-font-color">@friend.UserName</span></a></p>
-                            <a asp-controller="Message" asp-action="All" asp-route-id="@friend.Id"><i class="far fa-comment-alt has-large-font-size"></i></a>
                             <form asp-controller="Friends" asp-action="Remove" method="post">
                                 <input type="hidden" name="friendId" value="@friend.Id" />
                                 <div class="item-padding">

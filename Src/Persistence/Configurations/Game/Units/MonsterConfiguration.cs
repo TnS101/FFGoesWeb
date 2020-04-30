@@ -11,11 +11,10 @@
             builder.HasKey(m => m.Id);
 
             builder.Property(m => m.Name)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(m => m.Type)
-                .HasDefaultValue("Monster")
                 .IsRequired();
 
             builder.Property(m => m.Description)
@@ -23,7 +22,7 @@
                 .IsRequired();
 
             builder.Property(m => m.ImagePath)
-                .HasMaxLength(30)
+                .HasMaxLength(100)
                 .IsRequired();
         }
     }

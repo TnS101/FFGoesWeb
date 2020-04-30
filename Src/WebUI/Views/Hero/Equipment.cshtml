@@ -6,6 +6,8 @@
         string heroId = Context.Request.Query["id"];
     }
     <div class="starting-div fade-in">
+        <a asp-controller="Hero" asp-action="Inventory" asp-route-id="@heroId"><i class="fas fa-boxes has-massive-font-size main-font-color bottom-right-icon"></i></a>
+        <a asp-controller="Hero" asp-action="Equipment" asp-route-id="@heroId"><i class="fas fa-child has-massive-font-size main-font-color bottom-left-icon"></i></a>
         @if (Model.Items == null)
         {
             <h1 class="main-font-color has-large-font-size item-padding">No items to display</h1>

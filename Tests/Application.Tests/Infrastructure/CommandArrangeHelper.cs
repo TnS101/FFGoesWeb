@@ -558,7 +558,10 @@
                 ,
                 AdditionalInformation = "He doesnt",
                 SentOn = DateTime.UtcNow,
-                UserId = "1"
+                UserId = "1",
+                Stars = 1,
+                CommentId = "1",
+                MessageId = "1",
             };
 
             context.Tickets.Add(ticket);

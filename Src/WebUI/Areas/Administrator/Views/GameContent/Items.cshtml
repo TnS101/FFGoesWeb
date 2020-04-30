@@ -1,26 +1,6 @@
 ﻿@model Application.GameCQ.Items.Queries.GetPersonalItemsQuery.ItemListViewModel
 <title>Items</title>
 <partial name="_AdminNavBar">
-    <script>
-        $(document).ready(function () {
-            var scrollTop = $('#scroll-top');
-
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > 1200) {
-                    scrollTop.removeClass('fade-out');
-                    scrollTop.show();
-                } else {
-                    scrollTop.addClass('fade-out');
-                }
-            })
-
-            scrollTop.click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#top").offset().top
-                }, 1200);
-            })
-        })
-    </script>
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
     <div class="starting-div fade-in" id="top">
         <h1 class="main-font-color has-large-font-size item-padding">Items</h1>
@@ -42,3 +22,7 @@
                 }
         </div>
     </div>
+    @section scripts
+    {
+        <script src="~/js/scroll.js"></script>
+     }

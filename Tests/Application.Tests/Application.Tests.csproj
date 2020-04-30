@@ -24,17 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQ\Social\Friends\Queries\" />
-    <Folder Include="CQ\Social\Likes\Commands\" />
-    <Folder Include="CQ\Social\Likes\Queries\" />
-    <Folder Include="CQ\Social\Messages\Queries\" />
-    <Folder Include="CQ\Social\Notifications\Queries\" />
     <Folder Include="CQ\Social\Topics\Commands\" />
     <Folder Include="CQ\Social\Topics\Queries\" />
     <Folder Include="CQ\Users\Commands\" />
-    <Folder Include="CQ\Users\Feedbacks\" />
-    <Folder Include="CQ\Users\Tickets\" />
-    <Folder Include="CQ\Users\Queries\" />
     <Folder Include="GameCQ\Heroes\Queries\" />
     <Folder Include="GameCQ\TreasureKeys\Commands\" />
     <Folder Include="GameCQ\Treasures\Commands\" />

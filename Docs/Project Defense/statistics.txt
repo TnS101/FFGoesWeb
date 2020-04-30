@@ -11,7 +11,7 @@ Use EF Core : Check
 Style Design : Check
 Use Identity : Check
 Use Ajax : Not Yet
-Write Unit Tests : Not Yet
+Write Unit Tests : 66% total coverage (without scaffolded identity)
 Error Handling + Data Validation : Check
 Handle Correctly special HTML characters: Check
 Use Dependency Injection : Check

@@ -2,67 +2,62 @@
 <partial name="_AdminNavBar">
     <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
         <div class="row  fade-in starting-div">
-            <h1 class="main-font-color has-large-font-size item-padding">Create a Fighting Class</h1>
+            <h1 class="main-font-color has-large-font-size item-padding">Create a Spell</h1>
             <div class="col-md-4 item-padding">
                 <hr />
-                <form asp-controller="FightingClass" asp-action="Create" method="post">
+                <form asp-controller="Spell" asp-action="Create" method="post">
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-classType" class="contro-label has-normal-font-size">Type</label>
+                        <label for="input-name" class="contro-label has-normal-font-size">Name</label>
                         <br />
-                        <input type="text" id="input-classType" name="classType" class="form-control" />
+                        <input type="text" id="input-name" name="name" class="form-control" />
                     </div>
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-hp" class="contro-label has-normal-font-size">Max HP</label>
+                        <label for="input-type" class="contro-label has-normal-font-size">Type</label>
                         <br />
-                        <input type="number" id="input-hp" name="maxHP" class="form-control" min="80" max="999999999" />
+                        <input type="text" id="input-type" name="type" class="form-control" required />
                     </div>
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-mana" class="contro-label has-normal-font-size">Max Mana</label>
+                        <label for="input-classType" class="contro-label has-normal-font-size">Class Type</label>
                         <br />
-                        <input type="number" id="input-mana" name="maxMana" class="form-control" min="80" max="999999999" />
+                        <input type="text" id="input-classType" name="classType" class="form-control" required />
                     </div>
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-healthRegen" class="contro-label has-normal-font-size">Health Regen</label>
+                        <label for="input-power" class="contro-label has-normal-font-size">Power</label>
                         <br />
-                        <input type="number" id="input-healthRegen" name="healthRegen" class="form-control" min="1" max="10000" />
+                        <input type="number" id="input-power" name="power" class="form-control" min="0.1" max="3" required />
                     </div>
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-manaRegen" class="contro-label has-normal-font-size">Mana Regen</label>
+                        <label for="input-secondarypower" class="contro-label has-normal-font-size">Secondary Power</label>
                         <br />
-                        <input type="number" id="input-manaRegen" name="manaRegen" class="form-control" min="1" max="10000" />
+                        <input type="number" id="input-secondarypower" name="secondaryPower" class="form-control" min="0.1" max="3" required />
                     </div>
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-attackPower" class="contro-label has-normal-font-size">Attack Power</label>
+                        <label for="input-manaRequirment" class="contro-label has-normal-font-size">Mana Requirment</label>
                         <br />
-                        <input type="number" id="input-attackPower" name="attackPower" class="form-control" min="10" max="10000000" />
+                        <input type="number" id="input-manaRequirment" name="manaRequirment" class="form-control" min="0.1" max="1" required />
                     </div>
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-magicPower" class="contro-label has-normal-font-size">Magic Power</label>
+                        <label for="input-additionalEffect" class="contro-label has-normal-font-size">Additional Effect</label>
                         <br />
-                        <input type="number" id="input-magicPower" name="magicPower" class="form-control" min="10" max="10000000" />
+                        <input type="text" id="input-additionalEffect" name="additionalEffect" class="form-control" required />
                     </div>
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-armorValue" class="contro-label has-normal-font-size">Armor Value</label>
+                        <label for="input-effectPower" class="contro-label has-normal-font-size">Effect Power</label>
                         <br />
-                        <input type="number" id="input-armorValue" name="armorValue" class="form-control" min="1" max="100000" />
+                        <input type="number" id="input-effectPower" name="effectPower" class="form-control" min="0.1" max="1" required />
                     </div>
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-resistanceValue" class="contro-label has-normal-font-size">Resistance Value</label>
+                        <label for="input-buffOrEffectTarget" class="contro-label has-normal-font-size">Buff or Effect Target</label>
                         <br />
-                        <input type="number" id="input-resistanceValue" name="resistanceValue" class="form-control" min="1" max="100000" />
+                        <input type="text" id="input-buffOrEffectTarget" name="buffOrEffectTarget" class="form-control" required />
                     </div>
                     <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-criticalChance" class="contro-label has-normal-font-size">Critical Chance</label>
+                        <label for="input-resistanceAffect" class="contro-label has-normal-font-size">Resistance Affect</label>
                         <br />
-                        <input type="number" id="input-criticalChance" name="criticalChance" class="form-control" min="1" max="50" />
-                    </div>
-                    <div class="form-group fade-in item-padding has-normal-font-size">
-                        <label for="input-description" class="contro-label has-normal-font-size">Description</label>
-                        <br />
-                        <input type="text" id="input-description" name="description" class="form-control" />
+                        <input type="number" id="input-resistanceAffect" name="resistanceAffect" class="form-control" min="0.1" max="2" required />
                     </div>
                     <div class="form-group item-padding">
-                        <input type="submit" value="Update" class="main-button" />
+                        <input type="submit" value="Create" class="main-button" />
                     </div>
                     <div class="item-padding">
                         <hr />

@@ -1,7 +1,8 @@
 ﻿<title>Privacy Policy</title>
 <partial name="_NavBar">
     <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
-        <div class="starting-div fade-in">
+        <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
+        <div class="starting-div fade-in" id="top">
             <h1 class="secondary-font-color  has-large-font-size item-padding">Privacy Policy</h1>
             <hr />
             <div class="item-padding ">
@@ -118,3 +119,7 @@
         </div>
 
     </cache>
+    @section scripts
+    {
+        <script src="~/js/scroll.js"></script>
+    }

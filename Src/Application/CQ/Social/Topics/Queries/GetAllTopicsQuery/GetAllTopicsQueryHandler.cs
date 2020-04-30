@@ -5,9 +5,7 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
     public class GetAllTopicsQueryHandler : BaseHandler, IRequestHandler<GetAllTopicsQuery, TopicListViewModel>
@@ -42,7 +40,7 @@
                     Category = t.Category,
                     UserName = t.User.UserName,
                     CreateOn = t.CreateOn,
-                    Likes = t.Likes,
+                    Likes = this.Context.Likes.Where(l => l.TopicId == t.Id).ToList(),
                     Comments = t.Comments.Count(),
                     UserId = t.UserId,
                 })
@@ -62,7 +60,7 @@
                 Category = t.Category,
                 UserName = t.User.UserName,
                 CreateOn = t.CreateOn,
-                Likes = t.Likes,
+                Likes = this.Context.Likes.Where(l => l.TopicId == t.Id).ToList(),
                 UserId = t.UserId,
                 Comments = t.Comments.Count(),
             })

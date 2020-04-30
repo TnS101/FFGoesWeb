@@ -18,16 +18,26 @@
 
         public async Task<UnitFullViewModel> Handle(GetFullUnitQuery request, CancellationToken cancellationToken)
         {
+            if (request.HeroId != null)
+            {
+                var hero = await this.Context.Heroes.FindAsync(request.HeroId);
+
+                var spells = await this.Context.Spells.Where(s => s.ClassType == hero.ClassType).ToListAsync();
+
+                var mappedHero = this.Mapper.Map<UnitFullViewModel>(hero);
+
+                mappedHero.Spells = spells;
+
+                return mappedHero;
+            }
+
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
-            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
 
-            var mappedHero = this.Mapper.Map<UnitFullViewModel>(hero);
+            var userHero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
 
-            var spells = await this.Context.Spells.Where(s => s.ClassType == hero.ClassType).ToListAsync();
+            var userMappedHero = this.Mapper.Map<UnitFullViewModel>(userHero);
 
-            mappedHero.Spells = spells;
-
-            return mappedHero;
+            return userMappedHero;
         }
     }
 }

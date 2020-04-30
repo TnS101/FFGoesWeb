@@ -1,92 +1,5 @@
 ﻿<title>Guide</title>
 <partial name="_WorldNavBar">
-    <script>
-        $(document).ready(function () {
-
-            var scrollTop = $('#scroll-top');
-
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > 1200) {
-                    scrollTop.removeClass('fade-out');
-                    scrollTop.show();
-                } else {
-                    scrollTop.addClass('fade-out');
-                }
-            })
-
-            scrollTop.click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#top").offset().top
-                }, 1200);
-            })
-
-            $(".game-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Game").offset().top - 60
-                }, 1000);
-            });
-
-            $(".social-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Social").offset().top - 60
-                }, 1500);
-            });
-
-            $(".rules-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Rules").offset().top - 60
-                }, 150);
-            });
-
-            $(".rewards-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Rewards").offset().top - 60
-                }, 1500);
-            });
-
-            $(".spells-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Spells").offset().top - 60
-                }, 1500);
-            });
-
-            $(".classes-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Classes").offset().top - 60
-                }, 1500);
-            });
-
-            $(".items-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Items").offset().top - 60
-                }, 1800);
-            });
-
-            $(".crafting-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Crafting").offset().top - 60
-                }, 2000);
-            });
-
-            $(".professions-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Professions").offset().top - 60
-                }, 2100);
-            });
-
-            $(".pvp-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#PvP").offset().top - 60
-                }, 2200);
-            });
-
-            $(".shops-button").click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#Shops").offset().top - 60
-                }, 1500);
-            });
-        })
-    </script>
     <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
         <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
         <div class=" fade-in starting-div" id="top">
@@ -114,7 +27,7 @@
                         But the project was actually far from done. After a while, it Merged into <b>Final Fantasy Tryout Goes Web</b>(FF Goes Web for short)
                         by adding website functionality and some actual visualization of the game content. At this state, the game is just a fan-reproduction of the first
                         expansion of Final Fantasy, but there is a lot of distinctive content that wait's to see light. Like Final Fantasy, this game type is RPG, but with an
-                        integrated <a href="#Social"><em >Social System</em></a>, which means its something like a Gaming Facebook(not really though). The graphical content currently
+                        integrated <a href="#Social"><em>Social System</em></a>, which means its something like a Gaming Facebook(not really though). The graphical content currently
                         is NOT my possession and is NOT used for commercial uses, but as mentioned above, content will be added.
                     </p>
                 </div>
@@ -156,14 +69,14 @@
                             <p class="has-normal-font-size main-font-color">
                                 <i class="far fa-heart main-font-color">Health</i> is Regenerated every turn in Battle and every 4 minutes out of Battle by 10%.
                                 When your Health reaches zero, you Die and lose half of your Gold. You can use various
-                                <a class="items-button is-clickable"><em >Consumeable Items</em></a> in order to regen health exclusively.
+                                <a class="items-button is-clickable"><em>Consumeable Items</em></a> in order to regen health exclusively.
                                 The Primary Stat for Health is Stamina.
                             </p>
                             <div class="item-padding">
                                 <hr />
                                 <p class="item-padding has-normal-font-size  main-font-color">
                                     <i class="fas fa-diagnoses main-font-color">Mana</i> is Regenerated every turn in Battle and every 4 minutes out of Battle by 10%.
-                                    Mana is used to cast <a class="spells-button is-clickable"><em >Spells</em></a>. Note that Spells can do both Physical and Magical Damage depending on your stats.
+                                    Mana is used to cast <a class="spells-button is-clickable"><em>Spells</em></a>. Note that Spells can do both Physical and Magical Damage depending on your stats.
                                     The Primary Stat for Mana is Intellect and the Primary Stat for Mana Regeneration is Spirit.
                                 </p>
                             </div>
@@ -212,7 +125,7 @@
                                     Any bonus XP points for the previous Level will be added to the next, example : I have 90 points, I am Level 1 and I need 10 more to Level Up!
                                     I Kill a Monster that rewards me 13 XP points, which means that I will be Level 2 with 3 XP points.
                                     In addition : Every time you Level Up you will have the opportunity to choose following points : Strength, Intellect, Spirit, Stamina or Agility.
-                                    You can find more information about the following stats in the <a class="items-button is-clickable"><em >Items</em></a> section.
+                                    You can find more information about the following stats in the <a class="items-button is-clickable"><em>Items</em></a> section.
                                 </p>
                             </div>
 
@@ -271,7 +184,7 @@
                         <hr />
                         <p class="has-normal-font-size main-font-color">
                             Classes are the diversity of your Hero with the following factors included :
-                            Damage Contribution, Durability Contribution, Utility Contribution, Types of Equipment (<a class="items-button is-clickable"><em >Items</em></a>) and so on.
+                            Damage Contribution, Durability Contribution, Utility Contribution, Types of Equipment (<a class="items-button is-clickable"><em>Items</em></a>) and so on.
                             Currently, there are 9 Classes, but in the future more will be included (and the current will be modified).
                             They are designed in a way that there isn't a specific way of playing them (they basically don't have a META).
                             Long story short, you have a choice of playing your favourite class with at least 2 varieties of play style!
@@ -666,16 +579,16 @@
                             <p class="has-normal-font-size main-font-color">
                                 Let's start with the Equipment type. There are 3 Main types of Equipment : Weapon, Armor and Trinket.
                                 Every type has some value of the Primary Stats (Strength, Stamina, Intellect, Agility, Spirit) and contains all of them.
-                                Of course, Weapons and Armor differ from Trinkets, which have <em >only</em> the Primary Stats as Attributes.
+                                Of course, Weapons and Armor differ from Trinkets, which have <em>only</em> the Primary Stats as Attributes.
                                 Weapons have Attack Power, while Armor Parts have Armor Value and Resistance Value. Every Equipment Item has it's own
                                 Primary Stat, depending of the Class that the Item is relating to. For example : If I get a Mage Orb, it's Primary Stat will
-                                be the same as the Mage's (Intellect). That means that the <em >value</em> of this Stat will be significantly higher. As for Weapon
+                                be the same as the Mage's (Intellect). That means that the <em>value</em> of this Stat will be significantly higher. As for Weapon
                                 Variations we already read in the previous article, but we haven't really talked about Armor or Trinkets. Well, we can put the Trinkets
                                 aside instantly, because they are Universal for all Classes. Basically everyone can use any type of them without restriction. The interesting
                                 part is the Armor Item Type. We have 7 variations (Helmet, Shoulders, Chestplate, Bracers, Gloves, Pants and Boots) with 3 sub-Types which
                                 determine the Classes that can use the Items (Cloth, Leather, Metal). Like all other Items, Equipment ones can be either
-                                <a class="crafting-button is-clickable"><em >Crafted</em></a>
-                                or <a class="shops-button is-clickable"><em >Bought</em></a>. Tools are a good example, but we will talk about that later.
+                                <a class="crafting-button is-clickable"><em>Crafted</em></a>
+                                or <a class="shops-button is-clickable"><em>Bought</em></a>. Tools are a good example, but we will talk about that later.
                             </p>
                             <br />
                             <p class="has-normal-font-size main-font-color">
@@ -691,15 +604,15 @@
                         <p class="has-large-font-size main-font-color"><i class="fas fa-file main-font-color"></i> Crafting</p>
                         <hr />
                         <p class="has-normal-font-size main-font-color">
-                            Finally! The section that all Mine<em >Craft</em>, Terraria, Don't Starve, World of War<em >Craft</em> and every other game that has
-                            <em >Crafting</em> in it : child mol... Uh-um. Crafting. (Please Google and Domain Gods don't shut down the website. That was just a crappy joke).
+                            Finally! The section that all Mine<em>Craft</em>, Terraria, Don't Starve, World of War<em>Craft</em> and every other game that has
+                            <em>Crafting</em> in it : child mol... Uh-um. Crafting. (Please Google and Domain Gods don't shut down the website. That was just a crappy joke).
                             Crafting consists in three grounding point : Professions, Materials and Tools. We will discuss every one of them, but first we need to know
                             how Crafting works (I bet 101% of you already know that, but let's just be sure) : You want to Craft an Item that requires a typical Profession
                             and Skill Level (let's say you already have those), requires some set of Materials and also a Tool / Setting (in most cases) to finish the job.
                             That's everything, right? Wrong. When all conditions for a Craftable Item are met, one point of our Crafting Energy will be taken (if we have any...
                             otherwise we won't be able to Craft). Just like your Normal Energy, Crafting Energy regenerates once every 4 minutes, but you can only have a
                             maximum of 10 points at a time. In addition : Some Craftable Items may require more Energy points, but all of them require a certain level of
-                            <a class="professions-button is-clickable"><em >Profession Expertise</em></a> (Proffesion Skill Level). Keep in mind that there are different types of
+                            <a class="professions-button is-clickable"><em>Profession Expertise</em></a> (Proffesion Skill Level). Keep in mind that there are different types of
                             Crafting and some of them DO NOT require Energy. Let's check them out.
                         </p>
                         <br />
@@ -716,10 +629,10 @@
                                 <br />
                                 <p class="has-normal-font-size main-font-color">
                                     Refining consists in transforming a Raw Material into a Usable Crafting Ingredient. Let's say you got a Tree Log and want to make
-                                    Planks in order to Craft a Wooden Chair. The action you would perform in this case scenario would be <em >Refining</em>. It requires
-                                    <em >Tools</em> that are in Working Condition (aren't broken / Durability > 0). Like Energy, Tool's Durability is affected the same way.
+                                    Planks in order to Craft a Wooden Chair. The action you would perform in this case scenario would be <em>Refining</em>. It requires
+                                    <em>Tools</em> that are in Working Condition (aren't broken / Durability > 0). Like Energy, Tool's Durability is affected the same way.
                                     Some Crafting Tasks may go easy on your Tool, while other can completely demolish it. In order to make things balanced, Tools are Buyable
-                                    (not that expensive), Repairable (by their respective Profession Craftsmen) and Upgradeable. Refining is the <em >First Step</em> of making
+                                    (not that expensive), Repairable (by their respective Profession Craftsmen) and Upgradeable. Refining is the <em>First Step</em> of making
                                     a blueprint alive and is made countless times during the Crafting process. That's why Refining DOES NOT require Energy to perform.
                                 </p>
                                 <br />
@@ -732,7 +645,7 @@
                                     Disolving means technically 'Breaking' Items into 2 or more sub-Materials that can be used in future Constructing or Refining.
                                     Like Refining and Constructing it does require Tools for you to operate. Of course, Disolving works only ot Items that originally
                                     have two or more Materials included in them. Example : I am gonna Disolve this Garden Shovel into Stick and Metal. Now I can use these
-                                    Materials to <em >Construct</em> a Metal Sword. Disolving DOES NOT require Energy to perform.
+                                    Materials to <em>Construct</em> a Metal Sword. Disolving DOES NOT require Energy to perform.
                                 </p>
                                 <br />
                                 <hr />
@@ -742,11 +655,11 @@
                                 <br />
                                 <p class="has-normal-font-size main-font-color">
                                     Constructing as a term can have many names : Forging, Knitting, Tailoring, Leatherworking e.t.c.
-                                    This is the final step before you can recieve the reward of being a <em >Crafter</em>. Constructing also requires Tools
+                                    This is the final step before you can recieve the reward of being a <em>Crafter</em>. Constructing also requires Tools
                                     but in order to get the job done, you need Working Setting and / or additional Tools. For example : A Chef may need a
                                     Cooking Furnace for some dishes and surely will need a Cutting Board to prepare the Ingredients. Working Spaces (like the Furnace)
                                     are automatically included to your Profession Arsenal. You DO NOT need to buy them. All other Tools are included in the
-                                    <a class="shops-button is-clickable"><em >Shop</em></a>.
+                                    <a class="shops-button is-clickable"><em>Shop</em></a>.
                                 </p>
                             </div>
                         </div>
@@ -756,7 +669,7 @@
                         <p class="has-large-font-size main-font-color"><i class="fas fa-file main-font-color"></i> Professions</p>
                         <hr />
                         <p class="has-normal-font-size main-font-color">
-                            Professions divide into 2 main groups : Gatherers and Crafters. Yep. As it seems, only <em >Crafters</em> can <em >Craft</em>, but that's
+                            Professions divide into 2 main groups : Gatherers and Crafters. Yep. As it seems, only <em>Crafters</em> can <em>Craft</em>, but that's
                             not the whole story : Gatherers can't perform Constructing, but they can perform Refining and Disolving actions. Long story short, Crafters
                             use their Profession / Crafting Energy to make Items, while Gatherers use their Energy to collect the Materials / Ingredients. Of course, it's
                             a little more complex than that.
@@ -768,7 +681,7 @@
                             <br />
                             <p class="has-normal-font-size main-font-color">
                                 Every Gatherer Profession has it's own Zone. In it's Zone you are able to fight different Monsters that drop
-                                Specified Loot (Crafting Materials). Fighting in the Zone does not grant you Gold or XP, but it does grant you <em >Profession XP</em>
+                                Specified Loot (Crafting Materials). Fighting in the Zone does not grant you Gold or XP, but it does grant you <em>Profession XP</em>
                                 and of course takes 1 Profession Energy.
                             </p>
                             <div class="item-padding">
@@ -930,7 +843,7 @@
                                 </p>
 
                                 <p class="has-normal-font-size main-font-color">
-                                    do not have <em >Profession Zones</em>, but they can still Buy Materials via <a class="shops-button is-clickable"><em >Shops and Auction</em></a>.
+                                    do not have <em>Profession Zones</em>, but they can still Buy Materials via <a class="shops-button is-clickable"><em>Shops and Auction</em></a>.
                                     Crafting Items takes Profession Energy, based on the Crafting Complexity (required Profession Level) and grants XP based on it.
                                 </p>
 
@@ -1079,3 +992,8 @@
             <partial name="_Footer">
         </div>
     </cache>
+    @section scripts
+    {
+        <script src="~/js/aboutpage.js"></script>
+        <script src="~/js/scroll.js"></script>
+    }

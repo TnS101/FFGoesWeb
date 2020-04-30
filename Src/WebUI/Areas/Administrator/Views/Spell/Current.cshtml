@@ -3,7 +3,6 @@
 <partial name="_AdminNavBar">
     <a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-arrow-left has-massive-font-size top-left-icon main-font-color"></i></a>
     <div class="starting-div fade-in ">
-        <cache vary-by-query="id">
             <h1 class="main-font-color has-large-font-size item-padding">Reviewing @Model.Name used by @Model.ClassType</h1>
             <div class="item-padding">
                 <hr />
@@ -68,7 +67,7 @@
                             <div class="form-group fade-in item-padding">
                                 <label class="contro-label has-normal-font-size">Effect Power</label>
                                 <br />
-                                <h2 class="main-font-color has-normal-font-size">@Model.AdditionalEffect</h2>
+                                <h2 class="main-font-color has-normal-font-size">@Model.EffectPower</h2>
                             </div>
 
                             @if (Model.AdditionalEffect.Split(',').Count() > 2)
@@ -76,7 +75,7 @@
                                 <div class="form-group fade-in item-padding">
                                     <label class="contro-label has-normal-font-size">Secondary Effect Power</label>
                                     <br />
-                                    <h2 class="main-font-color has-normal-font-size">@{var secondaryEffectPower = Model.SecondaryPower * 100;}%</h2>
+                                    <h2 class="main-font-color has-normal-font-size">@Model.EffectPower</h2>
                                 </div>
                             }
                         }
@@ -115,5 +114,4 @@
                 </div>
 
             </div>
-        </cache>
     </div>
