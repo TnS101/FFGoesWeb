@@ -4,25 +4,23 @@
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units.ManyToMany;
-    using System;
     using System.Collections.Generic;
 
     public class Hero : Unit
     {
         public Hero()
         {
-            this.Id = Guid.NewGuid().ToString();
             this.EnergyChanges = new HashSet<EnergyChange>();
             this.HeroSpells = new HashSet<HeroSpell>();
         }
 
-        public string Id { get; set; }
+        public ulong Id { get; set; }
 
         public int FightingClassId { get; set; }
 
         public FightingClass FightingClass { get; set; }
 
-        public string EquipmentId { get; set; }
+        public ulong EquipmentId { get; set; }
 
         public Equipment Equipment { get; set; }
 
@@ -30,7 +28,7 @@
 
         public AppUser User { get; set; }
 
-        public string InventoryId { get; set; }
+        public ulong InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 

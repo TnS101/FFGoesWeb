@@ -142,7 +142,7 @@
 
             return new ItemFullViewModel
             {
-                Id = material.Id.ToString(),
+                Id = (ulong)material.Id,
                 Name = material.Name,
                 BuyPrice = material.BuyPrice,
                 SellPrice = material.SellPrice,
@@ -164,7 +164,7 @@
 
             return new ItemFullViewModel
             {
-                Id = tool.Id.ToString(),
+                Id = (ulong)tool.Id,
                 Name = tool.Name,
                 BuyPrice = tool.BuyPrice,
                 SellPrice = tool.SellPrice,
@@ -181,7 +181,7 @@
 
             return new ItemFullViewModel
             {
-                Id = treasure.Id.ToString(),
+                Id = (ulong)treasure.Id,
                 Name = treasure.Name,
                 Reward = treasure.Reward,
                 Rarity = treasure.Rarity,
@@ -196,7 +196,7 @@
 
             return new ItemFullViewModel
             {
-                Id = treasureKey.Id.ToString(),
+                Id = (ulong)treasureKey.Id,
                 Name = treasureKey.Name,
                 Rarity = treasureKey.Rarity,
                 Slot = treasureKey.Slot,

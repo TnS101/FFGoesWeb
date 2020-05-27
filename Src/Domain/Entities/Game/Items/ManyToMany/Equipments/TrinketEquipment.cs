@@ -2,11 +2,11 @@
 {
     public class TrinketEquipment
     {
-        public string TrinketId { get; set; }
+        public ulong TrinketId { get; set; }
 
         public Trinket Trinket { get; set; }
 
-        public string EquipmentId { get; set; }
+        public ulong EquipmentId { get; set; }
 
         public Equipment Equipment { get; set; }
     }

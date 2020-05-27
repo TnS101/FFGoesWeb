@@ -1,10 +1,8 @@
 ﻿namespace Domain.Entities.Game.Items
 {
-    using Domain.Base;
     using Domain.Contracts.Items;
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
-    using System;
     using System.Collections.Generic;
 
     public class Weapon : IEquipableItem
@@ -13,10 +11,9 @@
         {
             this.WeaponEquipments = new HashSet<WeaponEquipment>();
             this.WeaponInventories = new HashSet<WeaponInventory>();
-            this.Id = Guid.NewGuid().ToString();
         }
 
-        public string Id { get; set; }
+        public ulong Id { get; set; }
 
         public string Name { get; set; }
 

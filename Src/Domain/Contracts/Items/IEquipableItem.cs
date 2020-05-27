@@ -2,7 +2,7 @@
 {
     public interface IEquipableItem
     {
-        string Id { get; set; }
+        ulong Id { get; set; }
 
         string Name { get; set; }
 

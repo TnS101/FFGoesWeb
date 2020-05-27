@@ -7,11 +7,11 @@
             this.Count = 1;
         }
 
-        public string TrinketId { get; set; }
+        public ulong TrinketId { get; set; }
 
         public Trinket Trinket { get; set; }
 
-        public string InventoryId { get; set; }
+        public ulong InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 

@@ -25,11 +25,11 @@
                     double armorPenalty;
                     if (target.Type == "Player")
                     {
-                        armorPenalty = 0.30;
+                        armorPenalty = 0.3;
                     }
                     else
                     {
-                        armorPenalty = 0.70;
+                        armorPenalty = 0.7;
                     }
 
                     target.CurrentArmorValue -= armorPenalty * target.CurrentArmorValue;

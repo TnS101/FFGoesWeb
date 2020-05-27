@@ -26,7 +26,6 @@
                 var context = services.GetRequiredService<FFDbContext>();
 
                 await SeedUsersAndRoles(services, context);
-                
                 await DataSeeder.Seed(context);
             }
 
@@ -38,7 +37,7 @@
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://192.168.0.101:5000/", "https://192.168.0.101:5001");
+                    webBuilder.UseUrls("http://192.168.0.102:5000/", "https://192.168.0.102:5001");
                 });
 
         private static async Task SeedUsersAndRoles(IServiceProvider services, FFDbContext context)

@@ -1,7 +1,5 @@
 ﻿namespace Application.CQ.Admin.GameContent.Items.Commands.Create
 {
-    using System.Collections.Generic;
-    using Application.CQ.Admin.GameContent.Items.Queries.GetAllToolsQuery;
     using MediatR;
 
     public class CreateItemCommand : IRequest<string>

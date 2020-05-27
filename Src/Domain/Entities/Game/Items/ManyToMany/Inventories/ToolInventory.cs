@@ -11,7 +11,7 @@
 
         public Tool Tool { get; set; }
 
-        public string InventoryId { get; set; }
+        public ulong InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 

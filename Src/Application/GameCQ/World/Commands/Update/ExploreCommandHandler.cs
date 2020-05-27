@@ -5,11 +5,9 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using Domain.Entities.Game.Units;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
     public class ExploreCommandHandler : BaseHandler, IRequestHandler<ExploreCommand, string>

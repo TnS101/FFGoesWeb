@@ -73,7 +73,7 @@
             }
         }
 
-        public async Task ReverseSum(Hero hero, IFFDbContext context, string itemId, string itemSlot)
+        public async Task ReverseSum(Hero hero, IFFDbContext context, ulong itemId, string itemSlot)
         {
             if (itemSlot == "Weapon")
             {

@@ -3,7 +3,6 @@
     using Domain.Contracts.Items;
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
-    using System;
     using System.Collections.Generic;
 
     public class Armor : IEquipableItem
@@ -12,10 +11,9 @@
         {
             this.ArmorInventories = new HashSet<ArmorInventory>();
             this.ArmorEquipments = new HashSet<ArmorEquipment>();
-            this.Id = Guid.NewGuid().ToString();
         }
 
-        public string Id { get; set; }
+        public ulong Id { get; set; }
 
         public double ArmorValue { get; set; }
 

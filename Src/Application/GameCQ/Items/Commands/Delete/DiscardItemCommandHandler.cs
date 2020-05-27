@@ -75,7 +75,7 @@
             }
             else if (request.Slot == "Material")
             {
-                var materialToRemove = await this.Context.MaterialsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.MaterialId == int.Parse(request.ItemId));
+                var materialToRemove = await this.Context.MaterialsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.MaterialId == (int)request.ItemId);
 
                 int count;
 
@@ -90,13 +90,13 @@
                     count = request.Count;
                 }
 
-                var material = await this.Context.Materials.FindAsync(int.Parse(request.ItemId));
+                var material = await this.Context.Materials.FindAsync((int)request.ItemId);
 
                 hero.GoldAmount += material.SellPrice * count;
             }
             else if (request.Slot == "Treasure")
             {
-                var treasureToRemove = await this.Context.TreasuresInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.TreasureId == int.Parse(request.ItemId));
+                var treasureToRemove = await this.Context.TreasuresInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.TreasureId == (int)request.ItemId);
 
                 if (request.Count >= treasureToRemove.Count)
                 {
@@ -109,7 +109,7 @@
             }
             else if (request.Slot == "Treasure Key")
             {
-                var treasureKeyToRemove = await this.Context.TreasureKeysInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.TreasureKeyId == int.Parse(request.ItemId));
+                var treasureKeyToRemove = await this.Context.TreasureKeysInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.TreasureKeyId == (int)request.ItemId);
 
                 if (request.Count >= treasureKeyToRemove.Count)
                 {
@@ -122,7 +122,7 @@
             }
             else if (request.Slot == "Tool")
             {
-                var toolToRemove = await this.Context.ToolsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.ToolId == int.Parse(request.ItemId));
+                var toolToRemove = await this.Context.ToolsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.ToolId == (int)request.ItemId);
 
                 int count;
 
@@ -137,7 +137,7 @@
                     count = request.Count;
                 }
 
-                var tool = await this.Context.Tools.FindAsync(int.Parse(request.ItemId));
+                var tool = await this.Context.Tools.FindAsync((int)request.ItemId);
 
                 hero.GoldAmount += tool.SellPrice * count;
             }

@@ -2,6 +2,6 @@
 {
     public class UnitIdViewModel
     {
-        public string Id { get; set; }
+        public ulong Id { get; set; }
     }
 }

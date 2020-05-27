@@ -2,7 +2,7 @@ controllers : 25 / required 6
 views : 74 ; 63 without partial views / required 15
 entities : 41 ; 28 without relations / required 6
 
-=>General Requirments<= (12/14)
+=>General Requirments<= (13/14)
 
 Use VS 2019 : Check
 Use Razor template engine : Check
@@ -10,8 +10,8 @@ Use MS SQL Server : Check
 Use EF Core : Check
 Style Design : Check
 Use Identity : Check
-Use Ajax : Not Yet
-Write Unit Tests : 66% total coverage (without scaffolded identity)
+Use Ajax : Nope
+Write Unit Tests : 45% total coverage (without scaffolded identity)
 Error Handling + Data Validation : Check
 Handle Correctly special HTML characters: Check
 Use Dependency Injection : Check

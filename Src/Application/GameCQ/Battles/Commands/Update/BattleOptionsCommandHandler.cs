@@ -47,6 +47,7 @@
                 }
 
                 this.Context.Heroes.Update(hero);
+
                 await this.Context.SaveChangesAsync(cancellationToken);
 
                 return GConst.End;

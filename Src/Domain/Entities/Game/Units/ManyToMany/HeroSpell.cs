@@ -6,7 +6,7 @@
 
         public Spell Spell { get; set; }
 
-        public string HeroId { get; set; }
+        public ulong HeroId { get; set; }
 
         public Hero Hero { get; set; }
     }

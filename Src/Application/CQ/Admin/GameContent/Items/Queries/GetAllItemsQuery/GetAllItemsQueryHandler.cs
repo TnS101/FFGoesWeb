@@ -47,7 +47,7 @@
                 {
                     Items = await this.Context.Treasures.Select(t => new ItemMinViewModel
                     {
-                        Id = t.Id.ToString(),
+                        Id = (ulong)t.Id,
                         Name = t.Name,
                         Slot = t.Slot,
                         ImagePath = t.ImagePath,
@@ -60,7 +60,7 @@
                 {
                     Items = await this.Context.TreasureKeys.Select(tk => new ItemMinViewModel
                     {
-                        Id = tk.Id.ToString(),
+                        Id = (ulong)tk.Id,
                         Name = tk.Name,
                         Slot = tk.Slot,
                         ImagePath = tk.ImagePath,
@@ -73,7 +73,7 @@
                 {
                     Items = await this.Context.Materials.Select(m => new ItemMinViewModel
                     {
-                        Id = m.Id.ToString(),
+                        Id = (ulong)m.Id,
                         Name = m.Name,
                         Slot = m.Slot,
                         ImagePath = m.ImagePath,
@@ -86,7 +86,7 @@
                 {
                     Items = await this.Context.Tools.Select(t => new ItemMinViewModel
                     {
-                        Id = t.Id.ToString(),
+                        Id = (ulong)t.Id,
                         Name = t.Name,
                         Slot = t.Slot,
                         ImagePath = t.ImagePath,

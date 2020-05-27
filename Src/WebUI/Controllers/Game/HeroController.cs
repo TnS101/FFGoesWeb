@@ -74,7 +74,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> DiscardItem([FromForm]string id, [FromForm]int count, [FromForm]string slot, [FromForm]string heroId)
+        public async Task<IActionResult> DiscardItem([FromForm]ulong id, [FromForm]int count, [FromForm]string slot, [FromForm]ulong heroId)
         {
             return this.Redirect(await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId }));
         }

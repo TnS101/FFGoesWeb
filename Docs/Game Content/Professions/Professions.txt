@@ -9,4 +9,3 @@ Banisher <-> Conjurer
 Angler <-> Scaleworker
 Farmer <-> Chef
 Scrapper <-> Recycler
-

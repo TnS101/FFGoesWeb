@@ -2,12 +2,11 @@
 {
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
-    using System;
     using System.Collections.Generic;
 
     public class Inventory
     {
-        public Inventory(string heroId)
+        public Inventory(ulong heroId)
         {
             this.ArmorInventories = new HashSet<ArmorInventory>();
             this.WeaponInventories = new HashSet<WeaponInventory>();
@@ -18,12 +17,11 @@
             this.ConsumeableInventories = new HashSet<ConsumeableInventory>();
             this.ToolInventories = new HashSet<ToolInventory>();
             this.HeroId = heroId;
-            this.Id = Guid.NewGuid().ToString();
         }
 
-        public string Id { get; set; }
+        public ulong Id { get; set; }
 
-        public string HeroId { get; set; }
+        public ulong HeroId { get; set; }
 
         public Hero Hero { get; set; }
 

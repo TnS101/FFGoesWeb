@@ -79,7 +79,8 @@
 
             this.fightingClassStatCheck.Check(templateWeapon, fightingClassStatNumber, fightingClassNumber, this.rng);
 
-            string weaponId = string.Empty;
+            ulong weaponId = 0;
+
             if (!context.Weapons.Contains(templateWeapon))
             {
                 context.Weapons.Add(templateWeapon);
@@ -127,7 +128,8 @@
             };
             this.fightingClassStatCheck.Check(templateTrinket, fightingClassStatNumber, fightingClassNumber, this.rng);
 
-            string trinketId;
+            ulong trinketId;
+
             if (!context.Trinkets.Contains(templateTrinket))
             {
                 context.Trinkets.Add(templateTrinket);
@@ -178,7 +180,8 @@
 
             this.fightingClassStatCheck.Check(templateArmor, fightingClassStatNumber, fightingClassNumber, this.rng);
 
-            string armorId = string.Empty;
+            ulong armorId = 0;
+
             if (!context.Armors.Contains(templateArmor))
             {
                 context.Armors.Add(templateArmor);
@@ -212,7 +215,7 @@
             }
         }
 
-        private async Task TreasureKeyGenerate(IFFDbContext context, string inventoryId)
+        private async Task TreasureKeyGenerate(IFFDbContext context, ulong inventoryId)
         {
             var rarityNumber = this.rng.Next(0, 10);
 
@@ -247,7 +250,7 @@
             }
         }
 
-        private async Task ZoneVariety(string zoneName, IFFDbContext context, string inventoryId, Monster monster)
+        private async Task ZoneVariety(string zoneName, IFFDbContext context, ulong inventoryId, Monster monster)
         {
             await this.MainMaterialsGenerate(context, inventoryId, monster);
 
@@ -260,7 +263,7 @@
             //}
         }
 
-        private async Task MainMaterialsGenerate(IFFDbContext context, string inventoryId, Monster monster)
+        private async Task MainMaterialsGenerate(IFFDbContext context, ulong inventoryId, Monster monster)
         {
             var materialName = this.AllMaterialsVariety(monster);
 
@@ -282,7 +285,7 @@
             }
         }
 
-        private async Task ProffesionMaterialsGenerate(IFFDbContext context, string invetoryId, Monster monster, string zoneName)
+        private async Task ProffesionMaterialsGenerate(IFFDbContext context, ulong invetoryId, Monster monster, string zoneName)
         {
             var mainMaterialName = string.Empty;
 

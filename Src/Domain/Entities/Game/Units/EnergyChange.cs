@@ -6,12 +6,11 @@
     {
         public EnergyChange()
         {
-            this.Id = Guid.NewGuid().ToString();
         }
 
-        public string Id { get; set; }
+        public ulong Id { get; set; }
 
-        public string HeroId { get; set; }
+        public ulong HeroId { get; set; }
 
         public Hero Hero { get; set; }
 

@@ -2,11 +2,11 @@
 {
     public class ArmorEquipment
     {
-        public string ArmorId { get; set; }
+        public ulong ArmorId { get; set; }
 
         public Armor Armor { get; set; }
 
-        public string EquipmentId { get; set; }
+        public ulong EquipmentId { get; set; }
 
         public Equipment Equipment { get; set; }
     }

@@ -139,11 +139,6 @@
                             }
                         }
 
-                        if (energy > energyCap)
-                        {
-                            energy = energyCap;
-                        }
-
                         while (true)
                         {
                             var regeneration = new EnergyChange
@@ -163,6 +158,12 @@
 
                             break;
                         }
+                    }
+                    else if (energy >= energyCap)
+                    {
+                        var energyChanges = this.Context.EnergyChanges.Where(e => e.Type == energyChange.Type);
+
+                        this.Context.EnergyChanges.RemoveRange(energyChanges);
                     }
                 }
 
