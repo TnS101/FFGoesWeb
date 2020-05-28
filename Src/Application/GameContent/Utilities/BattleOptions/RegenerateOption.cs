@@ -10,21 +10,18 @@
 
         public void Regenerate(Unit caster)
         {
-            double hpRegen = caster.CurrentHealthRegen;
-            double manaRegen = caster.CurrentManaRegen;
-
-            if (caster.CurrentHP <= caster.MaxHP - hpRegen)
+            if (caster.CurrentHP <= caster.MaxHP - caster.CurrentHealthRegen)
             {
-                caster.CurrentHP += hpRegen;
+                caster.CurrentHP += caster.CurrentHealthRegen;
             }
             else
             {
                 caster.CurrentHP = caster.MaxHP;
             }
 
-            if (caster.CurrentMana <= caster.MaxMana - manaRegen)
+            if (caster.CurrentMana <= caster.MaxMana - caster.CurrentManaRegen)
             {
-                caster.CurrentMana += manaRegen;
+                caster.CurrentMana += caster.CurrentManaRegen;
             }
             else
             {

@@ -10,7 +10,7 @@
 
         public double Check(double power, double critChance)
         {
-            Random rng = new Random();
+            Random rng = new Random(Environment.TickCount);
 
             int critNumber = rng.Next(0, 100);
 

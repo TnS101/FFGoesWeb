@@ -10,22 +10,19 @@
 
         public void Defend(Unit caster)
         {
-            double armorBonus = 0;
             if (caster.Type == "Player")
             {
-                armorBonus += 0.2;
+                caster.CurrentArmorValue += 0.2 * caster.ArmorValue;
             }
             else
             {
-                armorBonus += 0.3;
+                caster.CurrentArmorValue += 0.4 * caster.ArmorValue;
             }
 
             if (caster.CurrentHP <= 0)
             {
                 caster.CurrentHP = 0;
             }
-
-            caster.CurrentArmorValue += armorBonus * caster.ArmorValue;
         }
     }
 }

@@ -19,9 +19,9 @@
 
         public async Task<Monster> Generate(int playerLevel, IFFDbContext context, string zoneName)
         {
-            Monster monster = new Monster { Level = playerLevel };
+            var monster = new Monster { Level = playerLevel };
 
-            StatIncrement statIncrement = new StatIncrement();
+            var statIncrement = new StatIncrement();
 
             int monsterId = 0;
 
@@ -77,7 +77,7 @@
                 statAmplifier = monsterRarity.StatAmplifier;
                 monster.ImagePath = monsterRarity.ImagePath.ToString();
             }
-            else if (number == 2 || number == 3 || number == 4)
+            else if (number > 1 && number < 5)
             {
                 monsterRarity = await context.MonstersRarities.FirstOrDefaultAsync(mr => mr.MonsterName == monster.Name && mr.Rarity == "Rare");
                 statAmplifier = monsterRarity.StatAmplifier;

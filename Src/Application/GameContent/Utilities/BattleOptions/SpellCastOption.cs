@@ -278,8 +278,6 @@
                     {
                         primaryDamage = spell.Power * target.MaxHP;
                     }
-
-                    this.HPDamageCap(caster, primaryDamage, secondaryDamage);
                 }
                 else if (mainStatType == "CurrentHP")
                 {
@@ -291,8 +289,6 @@
                     {
                         primaryDamage = spell.Power * target.CurrentHP;
                     }
-
-                    this.HPDamageCap(caster, primaryDamage, secondaryDamage);
                 }
                 else if (mainStatType == "CurrentMana")
                 {
@@ -398,8 +394,6 @@
                     {
                         primaryDamage = spell.Power * target.MaxHP;
                     }
-
-                    this.HPDamageCap(caster, primaryDamage, secondaryDamage);
                 }
                 else if (mainStatType == "CurrentHP")
                 {
@@ -411,8 +405,6 @@
                     {
                         primaryDamage = spell.Power * target.CurrentHP;
                     }
-
-                    this.HPDamageCap(caster, primaryDamage, secondaryDamage);
                 }
                 else if (mainStatType == "CurrentMana")
                 {
@@ -459,8 +451,6 @@
                     {
                         secondaryDamage = spell.SecondaryPower * target.MaxHP;
                     }
-
-                    this.HPDamageCap(caster, primaryDamage, secondaryDamage);
                 }
                 else if (secondaryStatType == "CurrentHP")
                 {
@@ -472,8 +462,6 @@
                     {
                         secondaryDamage = spell.SecondaryPower * target.CurrentHP;
                     }
-
-                    this.HPDamageCap(caster, primaryDamage, secondaryDamage);
                 }
                 else if (secondaryStatType == "CurrentMana")
                 {
@@ -488,12 +476,12 @@
                 }
             }
 
-            double damage = primaryDamage + secondaryDamage;
+            double damage = this.HPDamageCap(caster, primaryDamage, secondaryDamage);
 
             return damage;
         }
 
-        private void HPDamageCap(Unit caster, double primaryDamage, double secondaryDamage)
+        private double HPDamageCap(Unit caster, double primaryDamage, double secondaryDamage)
         {
             double magicDamageCap = 0.8 * caster.CurrentMagicPower;
             double physicalDamageCap = 0.65 * caster.CurrentAttackPower;
@@ -515,6 +503,8 @@
             {
                 secondaryDamage = physicalDamageCap;
             }
+
+            return primaryDamage + secondaryDamage;
         }
 
         private void EffectCast(string[] effectInfo, Spell spell, Unit caster, Unit target)

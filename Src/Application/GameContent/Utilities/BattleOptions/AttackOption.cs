@@ -1,9 +1,7 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
-    using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Validators.Battle;
     using Domain.Base;
-    using System.Threading;
 
     public class AttackOption
     {
@@ -22,17 +20,14 @@
             {
                 if (target.CurrentArmorValue >= damage)
                 {
-                    double armorPenalty;
                     if (target.Type == "Player")
                     {
-                        armorPenalty = 0.3;
+                        target.CurrentArmorValue -= 0.3 * target.CurrentArmorValue;
                     }
                     else
                     {
-                        armorPenalty = 0.7;
+                        target.CurrentArmorValue -= 0.7 * target.CurrentArmorValue;
                     }
-
-                    target.CurrentArmorValue -= armorPenalty * target.CurrentArmorValue;
                 }
                 else
                 {
