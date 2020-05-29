@@ -45,7 +45,6 @@
             var hero = new Hero
             {
                 Name = request.Name,
-                ClassType = request.ClassType,
                 Race = request.Race,
                 UserId = user.Id,
                 ImagePath = string.Empty,
@@ -60,11 +59,11 @@
 
             hero.InventoryId = hero.Inventory.Id;
 
-            await this.fightingClassCheck.Check(hero, request.ClassType, this.Context);
-
-            new RaceCheck(hero, request.Race);
+            new RaceCheck().Check(hero, request.Race);
 
             this.Context.Heroes.Add(hero);
+
+            await this.fightingClassCheck.Check(hero, request.ClassType, this.Context);
 
             await this.Context.SaveChangesAsync(cancellationToken);
 

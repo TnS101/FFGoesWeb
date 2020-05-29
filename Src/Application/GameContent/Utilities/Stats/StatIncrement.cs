@@ -6,7 +6,7 @@
     {
         public void Increment(FightingClass fightingClass, Hero hero)
         {
-            hero.ClassType = fightingClass.Type;
+            hero.FightingClassId = fightingClass.Id;
             hero.MaxHP = fightingClass.MaxHP;
             hero.CurrentHP = fightingClass.MaxHP;
             hero.HealthRegen = fightingClass.HealthRegen;

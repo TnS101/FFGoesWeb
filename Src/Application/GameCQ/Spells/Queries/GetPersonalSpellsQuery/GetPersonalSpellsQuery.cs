@@ -4,6 +4,6 @@
 
     public class GetPersonalSpellsQuery : IRequest<SpellListViewModel>
     {
-        public string ClassType { get; set; }
+        public int FightingClassId { get; set; }
     }
 }

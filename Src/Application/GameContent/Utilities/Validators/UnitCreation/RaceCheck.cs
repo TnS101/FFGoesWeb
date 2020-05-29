@@ -4,12 +4,7 @@
 
     public class RaceCheck
     {
-        public RaceCheck(Hero hero, string race)
-        {
-            this.Check(hero, race);
-        }
-
-        private void Check(Hero hero, string race)
+        public void Check(Hero hero, string race)
         {
             if (race == "Human")
             {

@@ -2,12 +2,14 @@
 {
     using Domain.Base;
     using Domain.Entities.Game.Units.OneToOne;
+    using System.Collections.Generic;
 
     public class Monster : Unit
     {
         public Monster()
         {
             this.Type = "Monster";
+            this.Spells = new HashSet<Spell>();
         }
 
         public int Id { get; set; }
@@ -61,5 +63,7 @@
         public string Description { get; set; }
 
         public override string Type { get; set; }
+
+        public ICollection<Spell> Spells { get; set; }
     }
 }

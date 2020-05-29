@@ -1,10 +1,10 @@
 ﻿namespace Application.GameCQ.Battles.Queries.GetBattleUnitsQuery
 {
+    using System.Linq;
     using Application.Common.Interfaces;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using AutoMapper;
     using MediatR;
-    using System.Linq;
 
     public class GetBattleUnitsQueryHandler : RequestHandler<GetBattleUnitsQuery, BattleUnitsViewModel>
     {
@@ -21,7 +21,7 @@
         {
             var hero = request.Hero;
 
-            foreach (var spell in this.context.Spells.Where(s => s.ClassType == hero.ClassType))
+            foreach (var spell in this.context.Spells.Where(s => s.FightingClassId == hero.FightingClassId))
             {
                 hero.Spells.Add(spell);
             }

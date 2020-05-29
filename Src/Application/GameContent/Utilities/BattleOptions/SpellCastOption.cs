@@ -35,7 +35,9 @@
 
                 int spellNumber = rng.Next(0, 4);
 
-                var spells = await context.Spells.Where(s => s.ClassType == caster.Name).ToListAsync();
+                var monster = (Monster)caster;
+
+                var spells = await context.Spells.Where(s => s.MonsterId == monster.Id).ToListAsync();
 
                 if (spellNumber == 0)
                 {

@@ -5,7 +5,6 @@
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
-    using Domain.Entities.Game.Units.ManyToMany;
     using Domain.Entities.Game.Units.OneToOne;
     using Domain.Entities.Social;
     using global::Domain.Entities.Common;
@@ -100,8 +99,6 @@
         public DbSet<ToolInventory> ToolsInventories { get; set; }
 
         public DbSet<EnergyChange> EnergyChanges { get; set; }
-
-        public DbSet<HeroSpell> HeroesSpells { get; set; }
 
         public DbSet<Like> Likes { get; set; }
 

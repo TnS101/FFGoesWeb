@@ -1,16 +1,16 @@
-﻿using Domain.Entities.Game.Units.ManyToMany;
-using System.Collections.Generic;
-
-namespace Domain.Entities.Game.Units
+﻿namespace Domain.Entities.Game.Units
 {
     public class Spell
     {
-        public Spell()
-        {
-            this.HeroSpells = new HashSet<HeroSpell>();
-        }
-
         public int Id { get; set; }
+
+        public int FightingClassId { get; set; }
+
+        public FightingClass FightingClass { get; set; }
+
+        public int MonsterId { get; set; }
+
+        public Monster Monster { get; set; }
 
         public string Name { get; set; }
 
@@ -26,12 +26,8 @@ namespace Domain.Entities.Game.Units
 
         public double EffectPower { get; set; }
 
-        public string ClassType { get; set; }
-
         public double ResistanceAffect { get; set; }
 
         public double SecondaryPower { get; set; }
-
-        public ICollection<HeroSpell> HeroSpells { get; set; }
     }
 }

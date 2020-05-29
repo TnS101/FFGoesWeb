@@ -8,6 +8,7 @@
         public FightingClass()
         {
             this.Heroes = new HashSet<Hero>();
+            this.Spells = new HashSet<Spell>();
         }
 
         public int Id { get; set; }
@@ -37,6 +38,8 @@
         public string IconPath { get; set; }
 
         public string ImagePath { get; set; }
+
+        public ICollection<Spell> Spells { get; set; }
 
         public ICollection<Hero> Heroes { get; set; }
     }

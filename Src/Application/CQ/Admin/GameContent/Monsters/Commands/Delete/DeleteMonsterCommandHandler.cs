@@ -20,7 +20,7 @@
         {
             var monster = await this.Context.Monsters.FindAsync(request.MonsterId);
 
-            var spells = await this.Context.Spells.Where(s => s.ClassType == monster.Name).ToListAsync();
+            var spells = await this.Context.Spells.Where(s => s.MonsterId == monster.Id).ToListAsync();
 
             this.Context.Spells.RemoveRange(spells);
 

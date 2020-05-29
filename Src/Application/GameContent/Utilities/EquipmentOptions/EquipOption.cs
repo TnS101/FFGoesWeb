@@ -18,9 +18,11 @@
         {
             var heroEquipment = await context.Equipments.FirstOrDefaultAsync(e => e.Id == hero.EquipmentId);
 
+            var fightingClass = await context.FightingClasses.FirstOrDefaultAsync(fc => fc.Type == item.ClassType);
+
             string itemSlot = string.Empty;
 
-            if ((item.ClassType != "Any" && hero.ClassType != item.ClassType) || item.Level > hero.Level)
+            if ((item.ClassType != "Any" && hero.FightingClassId != fightingClass.Id) || item.Level > hero.Level)
             {
                 return GConst.ErrorRedirect;
             }

@@ -17,11 +17,10 @@
 
         public async Task<string> Handle(CreateSpellCommand request, CancellationToken cancellationToken)
         {
-            this.Context.Spells.Add(new Spell
+            var spell = new Spell
             {
                 Name = request.Name,
                 ManaRequirement = request.ManaRequirement,
-                ClassType = request.ClassType,
                 Type = request.Type,
                 Power = request.Power,
                 SecondaryPower = request.SecondaryPower,
@@ -29,7 +28,18 @@
                 EffectPower = request.EffectPower,
                 BuffOrEffectTarget = request.BuffOrEffectTarget,
                 ResistanceAffect = request.ResistanceAffect,
-            });
+            };
+
+            if (request.IsForPlayer)
+            {
+                spell.FightingClassId = request.OwnerId;
+            }
+            else
+            {
+                spell.MonsterId = request.OwnerId;
+            }
+
+            this.Context.Spells.Add(spell);
 
             await this.Context.SaveChangesAsync(cancellationToken);
 

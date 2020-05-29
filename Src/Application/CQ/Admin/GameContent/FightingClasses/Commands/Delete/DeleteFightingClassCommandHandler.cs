@@ -20,7 +20,7 @@
         {
             var fightingClass = await this.Context.FightingClasses.FindAsync(request.FightingClassId);
 
-            var spells = await this.Context.Spells.Where(s => s.ClassType == fightingClass.Type).ToListAsync();
+            var spells = await this.Context.Spells.Where(s => s.FightingClassId == fightingClass.Id).ToListAsync();
 
             var heroes = await this.Context.Heroes.Where(h => h.FightingClassId == fightingClass.Id).ToListAsync();
 

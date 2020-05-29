@@ -22,13 +22,15 @@
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
+            var fightingClass = await this.Context.FightingClasses.FindAsync(hero.FightingClassId);
+
             if (request.Slot == "Weapon")
             {
-                return await this.GetWeapons(hero);
+                return await this.GetWeapons(hero, fightingClass.Type);
             }
             else if (request.Slot == "Armor")
             {
-                return await this.GetArmors(hero);
+                return await this.GetArmors(hero, fightingClass.Type);
             }
             else if (request.Slot == "Trinket")
             {
@@ -48,7 +50,7 @@
             }
         }
 
-        private async Task<ItemListViewModel> GetWeapons(Hero hero)
+        private async Task<ItemListViewModel> GetWeapons(Hero hero, string className)
         {
             if (this.Context.WeaponsInventories.Any(wi => wi.InventoryId == hero.InventoryId))
             {
@@ -81,7 +83,7 @@
                         Level = i.Level,
                         ClassType = i.ClassType,
                     }),
-                    HeroClass = hero.ClassType,
+                    HeroClass = className,
                     HeroLevel = hero.Level,
                 };
             }
@@ -91,7 +93,7 @@
             }
         }
 
-        private async Task<ItemListViewModel> GetArmors(Hero hero)
+        private async Task<ItemListViewModel> GetArmors(Hero hero, string className)
         {
             if (this.Context.ArmorsInventories.Any(ai => ai.InventoryId == hero.InventoryId))
             {
@@ -121,7 +123,7 @@
                         Level = i.Level,
                         ClassType = i.ClassType,
                     }),
-                    HeroClass = hero.ClassType,
+                    HeroClass = className,
                     HeroLevel = hero.Level,
                 };
             }
@@ -161,7 +163,7 @@
                         Level = i.Level,
                         ClassType = i.ClassType,
                     }),
-                    HeroClass = hero.ClassType,
+                    HeroClass = "Any",
                     HeroLevel = hero.Level,
                 };
             }

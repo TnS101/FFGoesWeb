@@ -4,10 +4,6 @@
 
     public class EnergyChange
     {
-        public EnergyChange()
-        {
-        }
-
         public long Id { get; set; }
 
         public long HeroId { get; set; }

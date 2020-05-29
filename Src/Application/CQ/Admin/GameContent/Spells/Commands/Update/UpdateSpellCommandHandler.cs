@@ -65,11 +65,6 @@
                 spellToUpdate.EffectPower = request.NewEffectPower;
             }
 
-            if (!string.IsNullOrWhiteSpace(request.NewClassType))
-            {
-                spellToUpdate.ClassType = request.NewClassType;
-            }
-
             if (request.NewResistanceAffect > 0)
             {
                 spellToUpdate.ResistanceAffect = request.NewResistanceAffect;

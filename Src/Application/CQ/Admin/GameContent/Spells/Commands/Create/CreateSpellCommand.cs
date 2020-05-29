@@ -18,7 +18,9 @@
 
         public double EffectPower { get; set; }
 
-        public string ClassType { get; set; }
+        public int OwnerId { get; set; }
+
+        public bool IsForPlayer { get; set; }
 
         public double ResistanceAffect { get; set; }
 

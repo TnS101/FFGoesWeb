@@ -22,7 +22,7 @@
             {
                 var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-                var spells = await this.Context.Spells.Where(s => s.ClassType == hero.ClassType).ToListAsync();
+                var spells = await this.Context.Spells.Where(s => s.FightingClassId == hero.FightingClassId).ToListAsync();
 
                 var mappedHero = this.Mapper.Map<UnitFullViewModel>(hero);
 

@@ -20,7 +20,7 @@
 
         public async Task<SpellListViewModel> Handle(GetAllSpellsQuery request, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(request.ClassType))
+            if (request.FightingClassId == 0)
             {
                 return new SpellListViewModel
                 {
@@ -30,7 +30,7 @@
 
             return new SpellListViewModel
             {
-                Spells = await this.Context.Spells.Where(s => s.ClassType == request.ClassType).ProjectTo<SpellMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                Spells = await this.Context.Spells.Where(s => s.FightingClassId == request.FightingClassId).ProjectTo<SpellMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
             };
         }
     }

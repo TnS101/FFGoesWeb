@@ -25,10 +25,6 @@
                 .HasMaxLength(20)
                 .IsRequired();
 
-            builder.Property(h => h.ClassType)
-                .HasMaxLength(20)
-                .IsRequired();
-
             builder.Property(h => h.Race)
                 .HasMaxLength(15)
                 .IsRequired();

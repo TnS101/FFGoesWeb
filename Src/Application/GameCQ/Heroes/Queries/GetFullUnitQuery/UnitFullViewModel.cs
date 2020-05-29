@@ -14,7 +14,7 @@
 
         public string Name { get; set; }
 
-        public string ClassType { get; set; }
+        public int FightingClassId { get; set; }
 
         public string Race { get; set; }
 

@@ -3,19 +3,15 @@
     using Domain.Base;
     using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
-    using Domain.Entities.Game.Units.ManyToMany;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Hero : Unit
     {
         public Hero()
         {
             this.EnergyChanges = new HashSet<EnergyChange>();
-            this.HeroSpells = new HashSet<HeroSpell>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         public int FightingClassId { get; set; }
@@ -39,8 +35,6 @@
         public Profession Profession { get; set; }
 
         public override string Name { get; set; }
-
-        public string ClassType { get; set; }
 
         public string Race { get; set; }
 
@@ -111,8 +105,6 @@
         public int PvPPoints { get; set; }
 
         public int EquipmentScore { get; set; }
-
-        public ICollection<HeroSpell> HeroSpells { get; set; }
 
         public ICollection<EnergyChange> EnergyChanges { get; set; }
     }
