@@ -27,9 +27,9 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Spells([FromQuery]string classType)
+        public async Task<IActionResult> Spells([FromQuery]int classId)
         {
-            return this.View(await this.Mediator.Send(new GetAllSpellsQuery { ClassType = classType }));
+            return this.View(await this.Mediator.Send(new GetAllSpellsQuery { FightingClassId = classId }));
         }
 
         [HttpGet]

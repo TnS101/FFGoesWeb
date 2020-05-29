@@ -1360,12 +1360,12 @@
 
         private async Task SeedEnemySpellsAsync(FFDbContext context, CancellationToken cancellationToken)
         {
-            // Beast
+            // Bear
             context.Spells.Add(new Spell
             {
                 Name = "Furious Roar",
                 ManaRequirement = 0.2,
-                ClassType = "Bear",
+                MonsterId = 9,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.2,
                 BuffOrEffectTarget = "Self",
@@ -1375,7 +1375,7 @@
             {
                 Name = "Bite",
                 ManaRequirement = 0.2,
-                ClassType = "Bear",
+                MonsterId = 9,
                 Type = "Damage,Physical,Self",
                 Power = 1.2,
                 AdditionalEffect = "hRegen,Negative",
@@ -1388,7 +1388,7 @@
             {
                 Name = "Thick Hide",
                 ManaRequirement = 0.5,
-                ClassType = "Bear",
+                MonsterId = 9,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.8,
                 BuffOrEffectTarget = "Self",
@@ -1398,7 +1398,7 @@
             {
                 Name = "Lick Wounds",
                 ManaRequirement = 0.4,
-                ClassType = "Bear",
+                MonsterId = 9,
                 Type = "Heal,Health,Self",
                 Power = 0.22,
                 BuffOrEffectTarget = "Self",
@@ -1409,7 +1409,7 @@
             {
                 Name = "Corruption",
                 ManaRequirement = 0.3,
-                ClassType = "Demon",
+                MonsterId = 1,
                 Type = "Buff,hRegen,Target,Negative",
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",
@@ -1419,7 +1419,7 @@
             {
                 Name = "Shadow Punch",
                 ManaRequirement = 0.25,
-                ClassType = "Demon",
+                MonsterId = 1,
                 Type = "Damage,Physical,Self",
                 Power = 1.2,
                 ResistanceAffect = 0.9,
@@ -1429,7 +1429,7 @@
             {
                 Name = "Eye Of The Void",
                 ManaRequirement = 0.25,
-                ClassType = "Demon",
+                MonsterId = 1,
                 Type = "Buff,Armor,Target,Negative",
                 Power = 0.33,
                 BuffOrEffectTarget = "Target",
@@ -1439,7 +1439,7 @@
             {
                 Name = "Ripping Hell-Fire",
                 ManaRequirement = 0.65,
-                ClassType = "Demon",
+                MonsterId = 1,
                 Type = "Damage,Magical,Self",
                 Power = 1.42,
                 ResistanceAffect = 0.88,
@@ -1450,7 +1450,7 @@
             {
                 Name = "Overgrowth",
                 ManaRequirement = 0.22,
-                ClassType = "Giant",
+                MonsterId = 4,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.36,
                 AdditionalEffect = "hRegen,Negative",
@@ -1462,7 +1462,7 @@
             {
                 Name = "Calming Mind",
                 ManaRequirement = 0.12,
-                ClassType = "Giant",
+                MonsterId = 4,
                 Type = "Buff,mRegen,Self,Positive",
                 Power = 0.3,
                 BuffOrEffectTarget = "Self",
@@ -1472,7 +1472,7 @@
             {
                 Name = "Raging Mind",
                 ManaRequirement = 0.4,
-                ClassType = "Giant",
+                MonsterId = 4,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.3,
                 AdditionalEffect = "Health,Negative",
@@ -1484,7 +1484,7 @@
             {
                 Name = "Overpowering Fist",
                 ManaRequirement = 0.4,
-                ClassType = "Giant",
+                MonsterId = 4,
                 Type = "Damage,Physical,Self",
                 Power = 1.2,
                 ResistanceAffect = 0.65,
@@ -1495,7 +1495,7 @@
             {
                 Name = "Diving Claw",
                 ManaRequirement = 0.3,
-                ClassType = "Gryphon",
+                MonsterId = 3,
                 Type = "Damage,Physical,Self",
                 Power = 1.18,
                 ResistanceAffect = 0.5,
@@ -1505,7 +1505,7 @@
             {
                 Name = "Petryfying Gaze",
                 ManaRequirement = 0.5,
-                ClassType = "Gryphon",
+                MonsterId = 3,
                 Type = "Buff,hRegen,Target,Negative",
                 Power = 0.42,
                 BuffOrEffectTarget = "Target",
@@ -1515,7 +1515,7 @@
             {
                 Name = "Gust",
                 ManaRequirement = 0.3,
-                ClassType = "Gryphon",
+                MonsterId = 3,
                 Type = "Buff,Attack,Target,Negative",
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",
@@ -1525,7 +1525,7 @@
             {
                 Name = "Peck",
                 ManaRequirement = 0.2,
-                ClassType = "Gryphon",
+                MonsterId = 3,
                 Type = "Damage,Physical,Self",
                 Power = 1.15,
                 ResistanceAffect = 0.85,
@@ -1536,7 +1536,7 @@
             {
                 Name = "Poison Spit",
                 ManaRequirement = 0.3,
-                ClassType = "Reptile",
+                MonsterId = 8,
                 Type = "Damage,Magical,Self",
                 Power = 1.2,
                 ResistanceAffect = 0.9,
@@ -1546,7 +1546,7 @@
             {
                 Name = "Reflelcting Scales",
                 ManaRequirement = 0.3,
-                ClassType = "Reptile",
+                MonsterId = 8,
                 Type = "Damage,Physical,Target",
                 Power = 0.4,
                 AdditionalEffect = "Armor,Positive",
@@ -1559,7 +1559,7 @@
             {
                 Name = "Skin Change",
                 ManaRequirement = 0.3,
-                ClassType = "Reptile",
+                MonsterId = 8,
                 Type = "Buff,Res,Self,Positive",
                 Power = 0.6,
                 AdditionalEffect = "Armor,Negative",
@@ -1571,7 +1571,7 @@
             {
                 Name = "Scratch",
                 ManaRequirement = 0.15,
-                ClassType = "Reptile",
+                MonsterId = 8,
                 Type = "Damage,Physical,Self",
                 Power = 1.22,
                 ResistanceAffect = 1,
@@ -1582,7 +1582,7 @@
             {
                 Name = "Sacred Words",
                 ManaRequirement = 0.4,
-                ClassType = "Saint",
+                MonsterId = 2,
                 Type = "Heal,Magical,Self",
                 Power = 1.8,
             });
@@ -1591,7 +1591,7 @@
             {
                 Name = "Illumination",
                 ManaRequirement = 0.35,
-                ClassType = "Saint",
+                MonsterId = 2,
                 Type = "Buff,Magic,Target,Negative",
                 Power = 0.28,
                 AdditionalEffect = "mRegen,Negative",
@@ -1603,7 +1603,7 @@
             {
                 Name = "Holy Smite",
                 ManaRequirement = 0.12,
-                ClassType = "Saint",
+                MonsterId = 2,
                 Type = "Damage,Magical,Self",
                 Power = 1,
                 ResistanceAffect = 1,
@@ -1613,7 +1613,7 @@
             {
                 Name = "Judgement Day",
                 ManaRequirement = 0.42,
-                ClassType = "Saint",
+                MonsterId = 2,
                 Type = "Damage,Magical,Self",
                 Power = 1.22,
                 AdditionalEffect = "Mana,Negative",
@@ -1627,7 +1627,7 @@
             {
                 Name = "Tombstone",
                 ManaRequirement = 0.15,
-                ClassType = "Skeleton",
+                MonsterId = 6,
                 Type = "Buff,Res,Self,Positive",
                 Power = 1.2,
                 AdditionalEffect = "hRegen,Negative",
@@ -1639,7 +1639,7 @@
             {
                 Name = "Wrath Of The Necropolis",
                 ManaRequirement = 0.4,
-                ClassType = "Skeleton",
+                MonsterId = 6,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 1,
                 SecondaryPower = 0.65,
@@ -1650,7 +1650,7 @@
             {
                 Name = "Suffocation",
                 ManaRequirement = 0.3,
-                ClassType = "Skeleton",
+                MonsterId = 6,
                 Type = "Damage,Physical,Self",
                 Power = 1.1,
                 AdditionalEffect = "hRegen,Negative,mRegen,Negative",
@@ -1664,7 +1664,7 @@
             {
                 Name = "Horrifying Scream",
                 ManaRequirement = 0.3,
-                ClassType = "Skeleton",
+                MonsterId = 6,
                 Type = "Buff,Attack,Target,Negative",
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",
@@ -1675,7 +1675,7 @@
             {
                 Name = "Tidal Slash",
                 ManaRequirement = 0.18,
-                ClassType = "Wyrm",
+                MonsterId = 5,
                 Type = "Damage,Physical,Self",
                 Power = 1.15,
                 AdditionalEffect = "Magic,Positive",
@@ -1688,7 +1688,7 @@
             {
                 Name = "Dive",
                 ManaRequirement = 0.3,
-                ClassType = "Wyrm",
+                MonsterId = 5,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.2,
                 AdditionalEffect = "Res,Positive",
@@ -1700,7 +1700,7 @@
             {
                 Name = "Hyper Speed",
                 ManaRequirement = 0.3,
-                ClassType = "Wyrm",
+                MonsterId = 5,
                 Type = "Buff,mRegen,Self,Positve",
                 Power = 0.6,
                 BuffOrEffectTarget = "Self",
@@ -1710,7 +1710,7 @@
             {
                 Name = "Thunder",
                 ManaRequirement = 0.5,
-                ClassType = "Wyrm",
+                MonsterId = 5,
                 Type = "Damage,Magical,Self",
                 Power = 1.3,
                 AdditionalEffect = "Res,Negative",
@@ -1724,7 +1724,7 @@
             {
                 Name = "Infecting Bite",
                 ManaRequirement = 0.4,
-                ClassType = "Zombie",
+                MonsterId = 7,
                 Type = "Damage,Physical,Self",
                 Power = 1,
                 AdditionalEffect = "hRegen,Negative",
@@ -1737,7 +1737,7 @@
             {
                 Name = "Feed",
                 ManaRequirement = 0.3,
-                ClassType = "Zombie",
+                MonsterId = 7,
                 Type = "Damage,Physical,Self",
                 Power = 1.2,
                 AdditionalEffect = "Health,Positive",
@@ -1750,7 +1750,7 @@
             {
                 Name = "Mutation",
                 ManaRequirement = 0.4,
-                ClassType = "Zombie",
+                MonsterId = 7,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.4,
                 AdditionalEffect = "mRegen,Positive",
@@ -1762,7 +1762,7 @@
             {
                 Name = "Decay",
                 ManaRequirement = 0.15,
-                ClassType = "Zombie",
+                MonsterId = 7,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.5,
                 AdditionalEffect = "hRegen,Negative",
@@ -1780,7 +1780,7 @@
             {
                 Name = "Hasting Arrow",
                 ManaRequirement = 0.12,
-                ClassType = "Hunter",
+                FightingClassId = 8,
                 Type = "Damage,Physical,Self",
                 Power = 1.2,
                 ResistanceAffect = 1,
@@ -1793,7 +1793,7 @@
             {
                 Name = "Grass Hop",
                 ManaRequirement = 0.5,
-                ClassType = "Hunter",
+                FightingClassId = 8,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.7,
                 BuffOrEffectTarget = "Self",
@@ -1803,7 +1803,7 @@
             {
                 Name = "Poison Shot",
                 ManaRequirement = 0.25,
-                ClassType = "Hunter",
+                FightingClassId = 8,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 0.5,
                 SecondaryPower = 0.7,
@@ -1814,7 +1814,7 @@
             {
                 Name = "Sharp Eye",
                 ManaRequirement = 0.5,
-                ClassType = "Hunter",
+                FightingClassId = 8,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.3,
                 BuffOrEffectTarget = "Self",
@@ -1825,7 +1825,7 @@
             {
                 Name = "Water Ball",
                 ManaRequirement = 0.2,
-                ClassType = "Mage",
+                FightingClassId = 7,
                 Type = "Damage,Magical,Self",
                 Power = 0.7,
                 AdditionalEffect = "mRegen,Positive",
@@ -1838,7 +1838,7 @@
             {
                 Name = "Fire Ball",
                 ManaRequirement = 0.25,
-                ClassType = "Mage",
+                FightingClassId = 7,
                 Type = "Damage,Magical/MaxHP,Self/Target",
                 Power = 0.8,
                 SecondaryPower = 0.05,
@@ -1852,7 +1852,7 @@
             {
                 Name = "Mana Conversion",
                 ManaRequirement = 0,
-                ClassType = "Mage",
+                FightingClassId = 7,
                 Type = "Buff,Mana,Self,Positive",
                 Power = 0.25,
                 AdditionalEffect = "Armor,Negative",
@@ -1864,7 +1864,7 @@
             {
                 Name = "All-Out Blast!",
                 ManaRequirement = 0.8,
-                ClassType = "Mage",
+                FightingClassId = 7,
                 Type = "Damage,Magical,Self",
                 Power = 2,
                 AdditionalEffect = "mRegen,Negative",
@@ -1878,7 +1878,7 @@
             {
                 Name = "Nature's Touch",
                 ManaRequirement = 0.4,
-                ClassType = "Naturalist",
+                FightingClassId = 6,
                 Type = "Heal,Magical,Self",
                 Power = 0.5,
                 AdditionalEffect = "Armor,Positive",
@@ -1890,7 +1890,7 @@
             {
                 Name = "Thorn Blast",
                 ManaRequirement = 0.28,
-                ClassType = "Naturalist",
+                FightingClassId = 6,
                 Type = "Damage,Magical,Self",
                 Power = 0.75,
                 AdditionalEffect = "Armor,Negative",
@@ -1903,7 +1903,7 @@
             {
                 Name = "Nature's Gift",
                 ManaRequirement = 0,
-                ClassType = "Naturalist",
+                FightingClassId = 6,
                 Type = "Buff,hRegen,Self,Positive",
                 Power = 1.2,
                 AdditionalEffect = "Magic,Positive,Health,Negative",
@@ -1916,7 +1916,7 @@
             {
                 Name = "Pouring Rain",
                 ManaRequirement = 0,
-                ClassType = "Naturalist",
+                FightingClassId = 6,
                 Type = "Buff,Mana,Self,Positive",
                 Power = 0.3,
                 AdditionalEffect = "mRegen,Negative",
@@ -1929,7 +1929,7 @@
             {
                 Name = "Shadow Touch",
                 ManaRequirement = 0.28,
-                ClassType = "Necroid",
+                FightingClassId = 5,
                 Type = "Damage,CurrentMana/MaxHP,Self/Target",
                 Power = 0.11,
                 SecondaryPower = 0.08,
@@ -1943,7 +1943,7 @@
             {
                 Name = "Life Syphon",
                 ManaRequirement = 0.4,
-                ClassType = "Necroid",
+                FightingClassId = 5,
                 Type = "Damage,Magical/MaxHP,Self/Target",
                 Power = 0.5,
                 SecondaryPower = 0.08,
@@ -1957,7 +1957,7 @@
             {
                 Name = "Arcane Bane",
                 ManaRequirement = 0.2,
-                ClassType = "Necroid",
+                FightingClassId = 5,
                 Type = "Buff,Magic,Target,Negative",
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",
@@ -1967,7 +1967,7 @@
             {
                 Name = "Mutual Darkness",
                 ManaRequirement = 0,
-                ClassType = "Necroid",
+                FightingClassId = 5,
                 Type = "Damage,MaxHP,Self",
                 Power = 0.15,
                 AdditionalEffect = "Health,Negative",
@@ -1981,7 +1981,7 @@
             {
                 Name = "Holy Strike",
                 ManaRequirement = 0.15,
-                ClassType = "Paladin",
+                FightingClassId = 4,
                 Type = "Damage,Physical,Self",
                 Power = 1,
                 AdditionalEffect = "Magic,Positive",
@@ -1994,7 +1994,7 @@
             {
                 Name = "Burning Light",
                 ManaRequirement = 0.15,
-                ClassType = "Paladin",
+                FightingClassId = 4,
                 Type = "Damage,Magical,Self",
                 Power = 1.1,
                 ResistanceAffect = 1,
@@ -2004,7 +2004,7 @@
             {
                 Name = "Vicious Spell-Guard",
                 ManaRequirement = 0.35,
-                ClassType = "Paladin",
+                FightingClassId = 4,
                 Type = "Buff,Res,Self,Positive",
                 Power = 0.55,
                 BuffOrEffectTarget = "Self",
@@ -2014,7 +2014,7 @@
             {
                 Name = "Divine Rune",
                 ManaRequirement = 0.2,
-                ClassType = "Paladin",
+                FightingClassId = 4,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.15,
                 BuffOrEffectTarget = "Self",
@@ -2025,7 +2025,7 @@
             {
                 Name = "Holy Light",
                 ManaRequirement = 0.3,
-                ClassType = "Priest",
+                FightingClassId = 3,
                 Type = "Heal,Magical,Self",
                 Power = 1.1,
             });
@@ -2034,7 +2034,7 @@
             {
                 Name = "Mana Drain",
                 ManaRequirement = 0.08,
-                ClassType = "Priest",
+                FightingClassId = 3,
                 Type = "Buff,Mana,Target,Negative",
                 Power = 0.2,
                 AdditionalEffect = "Mana,Positive",
@@ -2046,7 +2046,7 @@
             {
                 Name = "Staff Smash",
                 ManaRequirement = 0.14,
-                ClassType = "Priest",
+                FightingClassId = 3,
                 Type = "Damage,Physical,Self",
                 Power = 1.2,
                 AdditionalEffect = "Armor,Negative",
@@ -2059,7 +2059,7 @@
             {
                 Name = "Blessing",
                 ManaRequirement = 0.35,
-                ClassType = "Priest",
+                FightingClassId = 3,
                 Type = "Buff,Magic,Self,Positive",
                 Power = 0.25,
                 AdditionalEffect = "hRegen,Negative",
@@ -2072,7 +2072,7 @@
             {
                 Name = "Stab",
                 ManaRequirement = 0.12,
-                ClassType = "Rogue",
+                FightingClassId = 2,
                 Type = "Damage,Physical,Self",
                 Power = 1.05,
                 AdditionalEffect = "Attack,Positive",
@@ -2085,7 +2085,7 @@
             {
                 Name = "Poison Dagger",
                 ManaRequirement = 0.28,
-                ClassType = "Rogue",
+                FightingClassId = 2,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 0.2,
                 SecondaryPower = 1.1,
@@ -2096,7 +2096,7 @@
             {
                 Name = "Evasion",
                 ManaRequirement = 0.4,
-                ClassType = "Rogue",
+                FightingClassId = 2,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.55,
                 AdditionalEffect = "mRegen,Positive",
@@ -2108,7 +2108,7 @@
             {
                 Name = "Thievery",
                 ManaRequirement = 0.45,
-                ClassType = "Rogue",
+                FightingClassId = 2,
                 Type = "Buff,Gold,Self,Positive",
                 Power = 4,
                 BuffOrEffectTarget = "Self",
@@ -2119,7 +2119,7 @@
             {
                 Name = "Thunder Strike",
                 ManaRequirement = 0.45,
-                ClassType = "Shaman",
+                FightingClassId = 1,
                 Type = "Damage,Magical/Physical,Self",
                 Power = 1.2,
                 SecondaryPower = 0.2,
@@ -2133,7 +2133,7 @@
             {
                 Name = "Earth Strike",
                 ManaRequirement = 0.45,
-                ClassType = "Shaman",
+                FightingClassId = 1,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 1.2,
                 SecondaryPower = 0.2,
@@ -2147,7 +2147,7 @@
             {
                 Name = "Flame Strike",
                 ManaRequirement = 0.25,
-                ClassType = "Shaman",
+                FightingClassId = 1,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 1.15,
                 SecondaryPower = 0.11,
@@ -2160,7 +2160,7 @@
             {
                 Name = "Water Strike",
                 ManaRequirement = 0.24,
-                ClassType = "Shaman",
+                FightingClassId = 1,
                 Type = "Damage,Magical,Self",
                 Power = 1.1,
                 AdditionalEffect = "mRegen,Positive",
@@ -2174,7 +2174,7 @@
             {
                 Name = "Head Smash",
                 ManaRequirement = 0.35,
-                ClassType = "Warrior",
+                FightingClassId = 9,
                 Type = "Damage,Physical,Self",
                 Power = 1.3,
                 AdditionalEffect = "Health,Negative",
@@ -2187,7 +2187,7 @@
             {
                 Name = "Hyper Strength",
                 ManaRequirement = 0.35,
-                ClassType = "Warrior",
+                FightingClassId = 9,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.2,
                 BuffOrEffectTarget = "Self",
@@ -2197,7 +2197,7 @@
             {
                 Name = "Raging Blow",
                 ManaRequirement = 0.13,
-                ClassType = "Warrior",
+                FightingClassId = 9,
                 Type = "Damage,Physical,Self",
                 Power = 1,
                 AdditionalEffect = "mRegen,Positive",
@@ -2210,7 +2210,7 @@
             {
                 Name = "Disarm",
                 ManaRequirement = 0.50,
-                ClassType = "Warrior",
+                FightingClassId = 9,
                 Type = "Buff,Attack,Target,Negative",
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",

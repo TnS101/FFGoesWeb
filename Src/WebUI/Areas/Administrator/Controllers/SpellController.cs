@@ -27,15 +27,16 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm]string name, [FromForm]string type, [FromForm]string classType,
+        public async Task<IActionResult> Create([FromForm]string name, [FromForm]string type, [FromForm]int ownerId,
             [FromForm]double power, [FromForm]double secondaryPower, [FromForm]double manaRequirment, [FromForm]string additionalEffect,
-            [FromForm]double effectPower, [FromForm]string buffOrEffectTarget, [FromForm]double resistanceAffect)
+            [FromForm]double effectPower, [FromForm]string buffOrEffectTarget, [FromForm]double resistanceAffect, [FromForm]bool isForPlayer)
         {
             return this.Redirect(await this.Mediator.Send(new CreateSpellCommand
             {
                 Name = name,
                 Type = type,
-                ClassType = classType,
+                OwnerId = ownerId,
+                IsForPlayer = isForPlayer,
                 Power = power,
                 SecondaryPower = secondaryPower,
                 ManaRequirement = manaRequirment,
