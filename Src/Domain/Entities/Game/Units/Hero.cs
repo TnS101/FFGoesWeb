@@ -5,6 +5,7 @@
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units.ManyToMany;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Hero : Unit
     {
@@ -14,13 +15,14 @@
             this.HeroSpells = new HashSet<HeroSpell>();
         }
 
-        public ulong Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
 
         public int FightingClassId { get; set; }
 
         public FightingClass FightingClass { get; set; }
 
-        public ulong EquipmentId { get; set; }
+        public long EquipmentId { get; set; }
 
         public Equipment Equipment { get; set; }
 
@@ -28,7 +30,7 @@
 
         public AppUser User { get; set; }
 
-        public ulong InventoryId { get; set; }
+        public long InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 

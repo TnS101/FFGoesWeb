@@ -21,7 +21,7 @@
 
         public async Task<string> Handle(CreateItemCommand request, CancellationToken cancellationToken)
         {
-            ulong id;
+            long id;
 
             if (request.Slot == "Weapon")
             {
@@ -35,25 +35,25 @@
             {
                var result = await this.CreateMaterial(request, cancellationToken);
 
-               id = (ulong)result;
+               id = (long)result;
             }
             else if (request.Slot == "Treasure")
             {
                 var result = await this.CreateTreasure(request, cancellationToken);
 
-                id = (ulong)result;
+                id = (long)result;
             }
             else if (request.Slot == "Treasure Key")
             {
                 var result = await this.CreateTreasureKey(request, cancellationToken);
 
-                id = (ulong)result;
+                id = (long)result;
             }
             else if (request.Slot == "Tool")
             {
                 var result = await this.CreateTool(request, cancellationToken);
 
-                id = (ulong)result;
+                id = (long)result;
             }
             else
             {
@@ -63,7 +63,7 @@
             return string.Format(GConst.AdminItemCommandRedirectId, id, request.Slot);
         }
 
-        private async Task<ulong> CreateWeapon(CreateItemCommand request, CancellationToken cancellationToken)
+        private async Task<long> CreateWeapon(CreateItemCommand request, CancellationToken cancellationToken)
         {
             var weapon = new Weapon
             {
@@ -91,7 +91,7 @@
             return weapon.Id;
         }
 
-        private async Task<ulong> CreateArmor(CreateItemCommand request, CancellationToken cancellationToken)
+        private async Task<long> CreateArmor(CreateItemCommand request, CancellationToken cancellationToken)
         {
             var armor = new Armor
             {
@@ -120,7 +120,7 @@
             return armor.Id;
         }
 
-        private async Task<ulong> CreateTrinket(CreateItemCommand request, CancellationToken cancellationToken)
+        private async Task<long> CreateTrinket(CreateItemCommand request, CancellationToken cancellationToken)
         {
             var trinket = new Trinket
             {

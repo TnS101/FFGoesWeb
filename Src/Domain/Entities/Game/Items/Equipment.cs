@@ -6,7 +6,7 @@
 
     public class Equipment
     {
-        public Equipment(ulong heroId)
+        public Equipment(long heroId)
         {
             this.WeaponEquipments = new HashSet<WeaponEquipment>();
             this.ArmorEquipments = new HashSet<ArmorEquipment>();
@@ -14,9 +14,9 @@
             this.HeroId = heroId;
         }
 
-        public ulong Id { get; set; }
+        public long Id { get; set; }
 
-        public ulong HeroId { get; set; }
+        public long HeroId { get; set; }
 
         public Hero Hero { get; set; }
 

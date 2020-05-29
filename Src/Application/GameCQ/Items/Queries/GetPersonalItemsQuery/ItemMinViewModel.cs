@@ -2,7 +2,7 @@
 {
     public class ItemMinViewModel
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
 
         public string Name { get; set; }
 

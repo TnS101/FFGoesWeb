@@ -11,7 +11,7 @@
 
         public Consumeable Consumeable { get; set; }
 
-        public ulong InventoryId { get; set; }
+        public long InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 

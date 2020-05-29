@@ -7,11 +7,11 @@
             this.Count = 1;
         }
 
-        public ulong ArmorId { get; set; }
+        public long ArmorId { get; set; }
 
         public Armor Armor { get; set; }
 
-        public ulong InventoryId { get; set; }
+        public long InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 

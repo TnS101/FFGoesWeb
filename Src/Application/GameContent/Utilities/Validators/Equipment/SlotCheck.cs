@@ -79,7 +79,7 @@
 
             this.fightingClassStatCheck.Check(templateWeapon, fightingClassNumber, this.rng);
 
-            ulong weaponId = 0;
+            long weaponId = 0;
 
             if (!context.Weapons.Contains(templateWeapon))
             {
@@ -128,7 +128,7 @@
             };
             this.fightingClassStatCheck.Check(templateTrinket, fightingClassNumber, this.rng);
 
-            ulong trinketId;
+            long trinketId;
 
             if (!context.Trinkets.Contains(templateTrinket))
             {
@@ -180,7 +180,7 @@
 
             this.fightingClassStatCheck.Check(templateArmor, fightingClassNumber, this.rng);
 
-            ulong armorId = 0;
+            long armorId = 0;
 
             if (!context.Armors.Contains(templateArmor))
             {
@@ -215,7 +215,7 @@
             }
         }
 
-        private async Task TreasureKeyGenerate(IFFDbContext context, ulong inventoryId)
+        private async Task TreasureKeyGenerate(IFFDbContext context, long inventoryId)
         {
             var rarityNumber = this.rng.Next(0, 10);
 
@@ -250,7 +250,7 @@
             }
         }
 
-        private async Task ZoneVariety(string zoneName, IFFDbContext context, ulong inventoryId, Monster monster)
+        private async Task ZoneVariety(string zoneName, IFFDbContext context, long inventoryId, Monster monster)
         {
             await this.MainMaterialsGenerate(context, inventoryId, monster);
 
@@ -263,7 +263,7 @@
             //}
         }
 
-        private async Task MainMaterialsGenerate(IFFDbContext context, ulong inventoryId, Monster monster)
+        private async Task MainMaterialsGenerate(IFFDbContext context, long inventoryId, Monster monster)
         {
             var materialName = this.AllMaterialsVariety(monster);
 
@@ -285,7 +285,7 @@
             }
         }
 
-        private async Task ProffesionMaterialsGenerate(IFFDbContext context, ulong invetoryId, Monster monster, string zoneName)
+        private async Task ProffesionMaterialsGenerate(IFFDbContext context, long invetoryId, Monster monster, string zoneName)
         {
             var mainMaterialName = string.Empty;
 

@@ -4,9 +4,9 @@
 
     public class DiscardItemCommand : IRequest<string>
     {
-        public ulong HeroId { get; set; }
+        public long HeroId { get; set; }
 
-        public ulong ItemId { get; set; }
+        public long ItemId { get; set; }
 
         public string Slot { get; set; }
 

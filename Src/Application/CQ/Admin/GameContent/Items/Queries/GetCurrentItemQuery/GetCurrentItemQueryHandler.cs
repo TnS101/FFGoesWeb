@@ -142,7 +142,7 @@
 
             return new ItemFullViewModel
             {
-                Id = (ulong)material.Id,
+                Id = (long)material.Id,
                 Name = material.Name,
                 BuyPrice = material.BuyPrice,
                 SellPrice = material.SellPrice,
@@ -164,7 +164,7 @@
 
             return new ItemFullViewModel
             {
-                Id = (ulong)tool.Id,
+                Id = (long)tool.Id,
                 Name = tool.Name,
                 BuyPrice = tool.BuyPrice,
                 SellPrice = tool.SellPrice,
@@ -181,7 +181,7 @@
 
             return new ItemFullViewModel
             {
-                Id = (ulong)treasure.Id,
+                Id = (long)treasure.Id,
                 Name = treasure.Name,
                 Reward = treasure.Reward,
                 Rarity = treasure.Rarity,
@@ -196,7 +196,7 @@
 
             return new ItemFullViewModel
             {
-                Id = (ulong)treasureKey.Id,
+                Id = (long)treasureKey.Id,
                 Name = treasureKey.Name,
                 Rarity = treasureKey.Rarity,
                 Slot = treasureKey.Slot,

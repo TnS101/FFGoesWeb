@@ -13,7 +13,7 @@
             this.ArmorEquipments = new HashSet<ArmorEquipment>();
         }
 
-        public ulong Id { get; set; }
+        public long Id { get; set; }
 
         public double ArmorValue { get; set; }
 

@@ -9,6 +9,7 @@
         public void Configure(EntityTypeBuilder<HeroSpell> builder)
         {
             builder.HasKey(k => new { k.SpellId, k.HeroId });
+            builder.Property(h => h.HeroId).HasColumnType("bigint");
 
             builder.HasOne(s => s.Spell)
                 .WithMany(hs => hs.HeroSpells)

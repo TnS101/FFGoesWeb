@@ -8,9 +8,9 @@
         {
         }
 
-        public ulong Id { get; set; }
+        public long Id { get; set; }
 
-        public ulong HeroId { get; set; }
+        public long HeroId { get; set; }
 
         public Hero Hero { get; set; }
 
