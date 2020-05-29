@@ -5,20 +5,13 @@
 
     public class AttackOption
     {
-        private readonly CritCheck critCheck;
-
-        public AttackOption()
-        {
-            this.critCheck = new CritCheck();
-        }
-
         public void Attack(Unit caster, Unit target)
         {
-            double damage = this.critCheck.Check(caster.CurrentAttackPower, caster.CritChance);
+            target.CurrentAttackPower = new CritCheck().Check(caster.CurrentAttackPower, caster.CritChance);
 
             if (target.CurrentHP > 0)
             {
-                if (target.CurrentArmorValue >= damage)
+                if (target.CurrentArmorValue >= caster.CurrentAttackPower)
                 {
                     if (target.Type == "Player")
                     {
@@ -31,7 +24,7 @@
                 }
                 else
                 {
-                    target.CurrentHP -= damage - target.CurrentArmorValue;
+                    target.CurrentHP -= caster.CurrentAttackPower - target.CurrentArmorValue;
                 }
             }
         }

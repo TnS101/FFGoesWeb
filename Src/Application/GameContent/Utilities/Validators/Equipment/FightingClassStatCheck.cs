@@ -1,16 +1,11 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
     using System;
-    using Domain.Base;
     using Domain.Contracts.Items;
 
     public class FightingClassStatCheck
     {
-        public FightingClassStatCheck()
-        {
-        }
-
-        public void Check(IEquipableItem item, int fightingClassStatNumber, int fightingClassNumber, Random rng)
+        public void Check(IEquipableItem item, int fightingClassNumber, Random rng)
         {
             if (item.Slot == "Weapon")
             {
@@ -26,16 +21,9 @@
                 this.ArmorCheck(item, rng);
             }
 
-            if (item.ClassType != "Any")
+            if (item.Slot != "Trinket")
             {
-                if (item.ClassType.Contains(','))
-                {
-                    this.MultipleClassCheck(item, fightingClassStatNumber);
-                }
-                else
-                {
-                    this.SingleClassCheck(item, fightingClassStatNumber);
-                }
+                this.ClassCheck(item, fightingClassNumber);
             }
         }
 
@@ -269,79 +257,44 @@
             }
         }
 
-        private void MultipleClassCheck(IEquipableItem item, int fightingClassStatNumber)
+        private void ClassCheck(IEquipableItem item, int fightingClassStatNumber)
         {
-            string primaryUsable = item.ClassType.Split(',')[0];
+            string classUsable = item.ClassType;
 
-            if (primaryUsable == "Hunter")
+            if (item.ClassType.Contains(','))
             {
-                item.Agility = fightingClassStatNumber;
+                classUsable = item.ClassType.Split(',')[0];
             }
-            else if (primaryUsable == "Mage")
-            {
-                item.Intellect = fightingClassStatNumber;
-            }
-            else if (primaryUsable == "Naturalist")
-            {
-                item.Spirit = fightingClassStatNumber;
-            }
-            else if (primaryUsable == "Necroid")
-            {
-                item.Intellect = fightingClassStatNumber;
-            }
-            else if (primaryUsable == "Paladin")
-            {
-                item.Strength = fightingClassStatNumber;
-            }
-            else if (primaryUsable == "Priest")
-            {
-                item.Spirit = fightingClassStatNumber;
-            }
-            else if (primaryUsable == "Rogue")
-            {
-                item.Agility = fightingClassStatNumber;
-            }
-            else if (primaryUsable == "Shaman")
-            {
-                item.Stamina = fightingClassStatNumber;
-            }
-            else if (primaryUsable == "Warrior")
-            {
-                item.Strength = fightingClassStatNumber;
-            }
-        }
 
-        private void SingleClassCheck(IEquipableItem item, int fightingClassStatNumber)
-        {
-            if (item.ClassType == "Hunter")
+            if (classUsable == "Hunter")
             {
                 item.Agility = fightingClassStatNumber;
             }
-            else if (item.ClassType == "Mage")
+            else if (classUsable == "Mage")
             {
                 item.Intellect = fightingClassStatNumber;
             }
-            else if (item.ClassType == "Naturalist")
+            else if (classUsable == "Naturalist")
             {
                 item.Spirit = fightingClassStatNumber;
             }
-            else if (item.ClassType == "Necroid")
+            else if (classUsable == "Necroid")
             {
                 item.Intellect = fightingClassStatNumber;
             }
-            else if (item.ClassType == "Paladin")
+            else if (classUsable == "Paladin")
             {
                 item.Strength = fightingClassStatNumber;
             }
-            else if (item.ClassType == "Priest")
+            else if (classUsable == "Priest")
             {
                 item.Spirit = fightingClassStatNumber;
             }
-            else if (item.ClassType == "Rogue")
+            else if (classUsable == "Rogue")
             {
                 item.Agility = fightingClassStatNumber;
             }
-            else if (item.ClassType == "Shaman")
+            else if (classUsable == "Shaman")
             {
                 item.Stamina = fightingClassStatNumber;
             }

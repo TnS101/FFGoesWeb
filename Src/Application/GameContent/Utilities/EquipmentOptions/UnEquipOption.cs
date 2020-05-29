@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Utilities.FightingClassUtilites;
+    using Application.GameContent.Utilities.Stats;
     using Domain.Contracts.Items;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;

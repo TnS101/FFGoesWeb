@@ -4,24 +4,16 @@
 
     public class CritCheck
     {
-        public CritCheck()
+        public double Check(double damage, double critChance)
         {
-        }
-
-        public double Check(double power, double critChance)
-        {
-            Random rng = new Random(Environment.TickCount);
-
-            int critNumber = rng.Next(0, 100);
+            int critNumber = new Random().Next(0, 100);
 
             if (critNumber >= 0 && critNumber < Math.Floor(critChance))
             {
-                return power * 2;
+                return damage *= 2;
             }
-            else
-            {
-                return power;
-            }
+
+            return damage;
         }
     }
 }

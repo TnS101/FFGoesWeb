@@ -29,29 +29,29 @@
             this.rng = new Random();
             this.fightingClassStatCheck = new FightingClassStatCheck();
 
-            this.woods = new string[] { "Oak Log", "Walnut Log", "Birch Log", "Mahogany Log" };
-            this.ores = new string[] { "Coal Ore", "Copper Ore", "Iron Ore", "Gold Ore" };
-            this.leathers = new string[] { "Leather Scraps", "Animal Fur", "Light Leather", "Fine Leather" };
-            this.cloths = new string[] { "Cotton", "Linen Cloth", "Wool", "Silk Cloth" };
-            this.herbs = new string[] { "Mint", "Coriander", "Lavender", "Buttercup" };
-            this.essences = new string[] { "Water Essence", "Earth Essence", "Air Essence", "Fire Essence" };
-            this.scales = new string[] { "Shiny Scale", "Transparent Scale", "Hard Scale", "Golden Necklace" };
-            this.vegetables = new string[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
+            this.woods = new[] { "Oak Log", "Walnut Log", "Birch Log", "Mahogany Log" };
+            this.ores = new[] { "Coal Ore", "Copper Ore", "Iron Ore", "Gold Ore" };
+            this.leathers = new[] { "Leather Scraps", "Animal Fur", "Light Leather", "Fine Leather" };
+            this.cloths = new[] { "Cotton", "Linen Cloth", "Wool", "Silk Cloth" };
+            this.herbs = new[] { "Mint", "Coriander", "Lavender", "Buttercup" };
+            this.essences = new[] { "Water Essence", "Earth Essence", "Air Essence", "Fire Essence" };
+            this.scales = new[] { "Shiny Scale", "Transparent Scale", "Hard Scale", "Golden Necklace" };
+            this.vegetables = new[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
         public async Task Check(int fightingClassNumber, int slotNumber, List<int> stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, Monster monster, string zoneName, CancellationToken cancellationToken)
         {
             if (slotNumber == 0)
             {
-                await this.WeaponGenerate(fightingClassNumber, stats, fightingClassStatNumber, context, hero, cancellationToken);
+                await this.WeaponGenerate(fightingClassNumber, stats, context, hero, cancellationToken);
             }
             else if (slotNumber == 1)
             {
-                await this.TrinketGenerate(stats, fightingClassStatNumber, fightingClassNumber, context, hero, cancellationToken);
+                await this.TrinketGenerate(stats, fightingClassNumber, context, hero, cancellationToken);
             }
             else if (slotNumber == 2 || slotNumber == 3)
             {
-                await this.ArmorGenerate(stats, fightingClassStatNumber, fightingClassNumber, context, hero, cancellationToken);
+                await this.ArmorGenerate(stats, fightingClassNumber, context, hero, cancellationToken);
             }
             else if (slotNumber == 4 || slotNumber == 5)
             {
@@ -63,7 +63,7 @@
             }
         }
 
-        private async Task WeaponGenerate(int fightingClassNumber, List<int> stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
+        private async Task WeaponGenerate(int fightingClassNumber, List<int> stats, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
         {
             Weapon templateWeapon = new Weapon
             {
@@ -77,7 +77,7 @@
                 Slot = "Weapon",
             };
 
-            this.fightingClassStatCheck.Check(templateWeapon, fightingClassStatNumber, fightingClassNumber, this.rng);
+            this.fightingClassStatCheck.Check(templateWeapon, fightingClassNumber, this.rng);
 
             ulong weaponId = 0;
 
@@ -112,7 +112,7 @@
             }
         }
 
-        private async Task TrinketGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
+        private async Task TrinketGenerate(List<int> stats, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
         {
             Trinket templateTrinket = new Trinket
             {
@@ -126,7 +126,7 @@
                 Slot = "Trinket",
                 ImagePath = "https://gamepedia.cursecdn.com/wowpedia/4/43/Inv_trinket_80_alchemy02.png?version=95bdfece62d89349b5effa0bf80956d3",
             };
-            this.fightingClassStatCheck.Check(templateTrinket, fightingClassStatNumber, fightingClassNumber, this.rng);
+            this.fightingClassStatCheck.Check(templateTrinket, fightingClassNumber, this.rng);
 
             ulong trinketId;
 
@@ -163,7 +163,7 @@
             }
         }
 
-        private async Task ArmorGenerate(List<int> stats, int fightingClassStatNumber, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
+        private async Task ArmorGenerate(List<int> stats, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
         {
             Armor templateArmor = new Armor
             {
@@ -178,7 +178,7 @@
                 Slot = "Armor",
             };
 
-            this.fightingClassStatCheck.Check(templateArmor, fightingClassStatNumber, fightingClassNumber, this.rng);
+            this.fightingClassStatCheck.Check(templateArmor, fightingClassNumber, this.rng);
 
             ulong armorId = 0;
 

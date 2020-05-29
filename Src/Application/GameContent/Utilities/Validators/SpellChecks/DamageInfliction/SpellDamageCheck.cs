@@ -6,16 +6,9 @@
 
     public class SpellDamageCheck
     {
-        private readonly CritCheck critCheck;
-
-        public SpellDamageCheck()
-        {
-            this.critCheck = new CritCheck();
-        }
-
         public void Check(Unit caster, Unit target, double manaRequirment, double damage, ManaCheck manaCheck, string damageType, double resistanceAffect)
         {
-            damage = this.critCheck.Check(damage, caster.CritChance);
+            damage = new CritCheck().Check(damage, caster.CritChance);
 
             if (manaCheck.SpellManaCheck(caster, manaRequirment))
             {

@@ -10,6 +10,8 @@
         {
             builder.HasKey(h => h.Id);
 
+            builder.Property(h => h.Id).ValueGeneratedNever();
+
             builder.Property(h => h.EquipmentId)
                 .IsRequired();
 

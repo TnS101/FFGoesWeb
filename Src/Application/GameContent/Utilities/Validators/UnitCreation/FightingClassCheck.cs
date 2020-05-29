@@ -3,7 +3,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Utilities.FightingClassUtilites;
+    using Application.GameContent.Utilities.Stats;
     using Domain.Entities.Game.Units;
     using Domain.Entities.Game.Units.ManyToMany;
     using Microsoft.EntityFrameworkCore;

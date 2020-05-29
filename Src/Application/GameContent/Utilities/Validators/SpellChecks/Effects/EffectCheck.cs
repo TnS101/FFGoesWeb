@@ -5,10 +5,6 @@
 
     public class EffectCheck
     {
-        public EffectCheck()
-        {
-        }
-
         public void Check(Unit caster, Unit target, double manaRequirment,
             double effect, string statType, ManaCheck manaCheck, string effectType)
         {

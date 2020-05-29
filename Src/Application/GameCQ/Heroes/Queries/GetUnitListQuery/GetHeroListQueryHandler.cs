@@ -16,12 +16,12 @@
 
     public class GetHeroListQueryHandler : MapperHandler, IRequestHandler<GetHeroListQuery, HeroListViewModel>
     {
-        private readonly StatsReset statsReset;
+        private readonly StatReset statsReset;
 
         public GetHeroListQueryHandler(IFFDbContext context, IMapper mapper)
             : base(context, mapper)
         {
-            this.statsReset = new StatsReset();
+            this.statsReset = new StatReset();
         }
 
         public async Task<HeroListViewModel> Handle(GetHeroListQuery request, CancellationToken cancellationToken)

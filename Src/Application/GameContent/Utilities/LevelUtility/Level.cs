@@ -7,13 +7,6 @@
 
     public class Level
     {
-        private readonly StatsReset statsReset;
-
-        public Level()
-        {
-            this.statsReset = new StatsReset();
-        }
-
         public async Task Up(Hero hero, IFFDbContext context)
         {
             if (hero.Level == 10)
@@ -44,7 +37,9 @@
             hero.Level++;
 
             // Stat Re-Set
-            this.statsReset.HardReset(hero);
+            var statsReset = new StatReset();
+
+            statsReset.HardReset(hero);
 
             hero.XP -= hero.XPCap;
             hero.XPCap += hero.XPCap * 0.20;

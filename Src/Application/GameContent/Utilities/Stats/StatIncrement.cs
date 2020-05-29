@@ -1,13 +1,9 @@
-﻿namespace Application.GameContent.Utilities.FightingClassUtilites
+﻿namespace Application.GameContent.Utilities.Stats
 {
     using Domain.Entities.Game.Units;
 
     public class StatIncrement
     {
-        public StatIncrement()
-        {
-        }
-
         public void Increment(FightingClass fightingClass, Hero hero)
         {
             hero.ClassType = fightingClass.Type;
@@ -35,7 +31,7 @@
 
         public void MonsterIncrement(Monster baseMonster, Monster monster)
         {
-            int step = this.StepCalculator(monster.Level);
+            int step = this.StepCalculation(monster.Level);
 
             monster.Id = baseMonster.Id;
             monster.Name = baseMonster.Name;
@@ -52,18 +48,10 @@
             monster.ImagePath = baseMonster.ImagePath.ToString();
 
             // Stat Set
-            monster.CurrentHP = monster.MaxHP;
-            monster.CurrentHealthRegen = monster.HealthRegen;
-            monster.CurrentMana = monster.MaxMana;
-            monster.CurrentManaRegen = monster.ManaRegen;
-            monster.CurrentAttackPower = monster.AttackPower;
-            monster.CurrentMagicPower = monster.MagicPower;
-            monster.CurrentArmorValue = monster.ArmorValue;
-            monster.CurrentResistanceValue = monster.ResistanceValue;
-            monster.CurrentCritChance = monster.CritChance;
+            new StatReset().HardReset(monster);
         }
 
-        private int StepCalculator(int monsterLevel)
+        private int StepCalculation(int monsterLevel)
         {
             if (monsterLevel == 4)
             {

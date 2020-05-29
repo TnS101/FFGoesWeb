@@ -5,17 +5,11 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Generators;
+    using Application.GameContent.Utilities.Stats;
     using Domain.Entities.Game.Units;
 
     public class EndOption
     {
-        private readonly ItemGenerator itemGenerator;
-
-        public EndOption()
-        {
-            this.itemGenerator = new ItemGenerator();
-        }
-
         public async Task End(Hero hero, Monster monster, string zoneName, IFFDbContext context, CancellationToken cancellationToken)
         {
             if (zoneName == "World")
@@ -28,16 +22,9 @@
                 hero.ProffesionXP += this.EnemyCombinedStats(monster) / 20;
             }
 
-            // Stat reset
-            hero.CurrentAttackPower = hero.AttackPower;
-            hero.CurrentMagicPower = hero.MagicPower;
-            hero.CurrentArmorValue = hero.ArmorValue;
-            hero.CurrentResistanceValue = hero.ResistanceValue;
-            hero.CurrentHealthRegen = hero.HealthRegen;
-            hero.CurrentManaRegen = hero.ManaRegen;
-            hero.CurrentCritChance = hero.CritChance;
+            new StatReset().HardReset(hero);
 
-            await this.itemGenerator.Generate(hero, context, monster, zoneName, cancellationToken);
+            await new ItemGenerator().Generate(hero, context, monster, zoneName, cancellationToken);
         }
 
         private double EnemyCombinedStats(Monster monster)

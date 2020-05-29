@@ -15,13 +15,11 @@
     public class CreateHeroCommandHandler : BaseHandler, IRequestHandler<CreateHeroCommand, string>
     {
         private readonly FightingClassCheck fightingClassCheck;
-        private readonly RaceCheck raceCheck;
 
         public CreateHeroCommandHandler(IFFDbContext context)
             : base(context)
         {
             this.fightingClassCheck = new FightingClassCheck();
-            this.raceCheck = new RaceCheck();
         }
 
         public async Task<string> Handle(CreateHeroCommand request, CancellationToken cancellationToken)
@@ -64,7 +62,7 @@
 
             await this.fightingClassCheck.Check(hero, request.ClassType, this.Context);
 
-            this.raceCheck.Check(hero, request.Race);
+            new RaceCheck(hero, request.Race);
 
             this.Context.Heroes.Add(hero);
 

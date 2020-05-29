@@ -4,7 +4,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Utilities.FightingClassUtilites;
+    using Application.GameContent.Utilities.Stats;
     using Domain.Contracts.Items;
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
@@ -14,10 +14,6 @@
 
     public class EquipOption
     {
-        public EquipOption()
-        {
-        }
-
         public async Task<string> Equip(Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
         {
             var heroEquipment = await context.Equipments.FirstOrDefaultAsync(e => e.Id == hero.EquipmentId);

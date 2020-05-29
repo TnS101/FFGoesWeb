@@ -4,10 +4,6 @@
 
     public class DefendOption
     {
-        public DefendOption()
-        {
-        }
-
         public void Defend(Unit caster)
         {
             if (caster.Type == "Player")

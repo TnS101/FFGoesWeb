@@ -8,14 +8,8 @@
 
     public class TurnCheck
     {
-        public TurnCheck()
-        {
-        }
-
         public async Task<bool> Check(Unit player, Unit enemy, bool yourTurn, IFFDbContext context)
         {
-            var rng = new Random();
-
             var regenerationOption = new RegenerateOption();
 
             if (yourTurn)
@@ -24,25 +18,19 @@
                 return false;
             }
 
-            int enemyActionNumber = rng.Next(0, 2);
+            int enemyActionNumber = new Random().Next(0, 2);
 
             if (enemyActionNumber == 0 && enemy.CurrentMana >= 0.15 * enemy.CurrentMana)
             {
-                var spellCastOption = new SpellCastOption();
-
-                await spellCastOption.SpellCast(enemy, player, string.Empty, context);
+                await new SpellCastOption().SpellCast(enemy, player, string.Empty, context);
             }
             else if (enemyActionNumber == 1)
             {
-                var attackOption = new AttackOption();
-
-                attackOption.Attack(enemy, player);
+                new AttackOption().Attack(enemy, player);
             }
             else if (enemyActionNumber == 2)
             {
-                var defendOption = new DefendOption();
-
-                defendOption.Defend(enemy);
+                new DefendOption().Defend(enemy);
             }
 
             regenerationOption.Regenerate(enemy);

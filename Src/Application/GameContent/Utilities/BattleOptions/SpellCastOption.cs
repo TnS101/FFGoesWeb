@@ -4,7 +4,6 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
-    using Application.GameContent.Utilities.Validators.Battle;
     using Application.GameContent.Utilities.Validators.SpellChecks.Buffs;
     using Application.GameContent.Utilities.Validators.SpellChecks.DamageInfliction;
     using Application.GameContent.Utilities.Validators.SpellChecks.Effects;
@@ -112,9 +111,7 @@
                 healEffect = spell.Power * caster.MaxHP;
             }
 
-            var healCheck = new HealCheck();
-
-            healCheck.Check(caster, caster, manaRequirement, healEffect, this.manaCheck);
+            new HealCheck().Check(caster, caster, manaRequirement, healEffect, this.manaCheck);
         }
 
         private void BuffSpellCast(string spellStatType, Spell spell, Unit caster, Unit target, string positiveOrNegativeBuff)
@@ -154,8 +151,6 @@
         {
             double damage = 0;
             double manaRequirement = spell.ManaRequirement * caster.MaxMana;
-            string spellDamageType = string.Empty;
-
             var spellDamageCheck = new SpellDamageCheck();
 
             if (spellStatType.Contains("/")) // Combined Damage
@@ -165,6 +160,7 @@
                 spellDamageCheck.Check(caster, target, manaRequirement, damage, this.manaCheck, "Mixed", spell.ResistanceAffect);
             }
 
+            string spellDamageType;
             if (spellStatType == "Physical")
             {
                 if (statsProvider == "Self")

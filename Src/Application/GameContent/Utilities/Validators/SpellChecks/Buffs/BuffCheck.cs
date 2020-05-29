@@ -5,10 +5,6 @@
 
     public class BuffCheck
     {
-        public BuffCheck()
-        {
-        }
-
         public void Check(Unit caster, Unit target, double manaRequirment, double buffEffect, string buffStat, ManaCheck manaCheck, string buffType)
         {
             if (manaCheck.SpellManaCheck(caster, manaRequirment))

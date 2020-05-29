@@ -4,10 +4,6 @@
 
     public class RegenerateOption
     {
-        public RegenerateOption()
-        {
-        }
-
         public void Regenerate(Unit caster)
         {
             if (caster.CurrentHP <= caster.MaxHP - caster.CurrentHealthRegen)

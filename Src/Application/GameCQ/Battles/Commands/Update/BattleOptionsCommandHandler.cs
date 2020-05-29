@@ -36,9 +36,7 @@
 
                 if (hero.XP >= hero.XPCap)
                 {
-                    var level = new Level();
-
-                    await level.Up(hero, this.Context);
+                    await new Level().Up(hero, this.Context);
 
                     this.Context.Heroes.Update(hero);
                     await this.Context.SaveChangesAsync(cancellationToken);
@@ -69,16 +67,12 @@
             {
                 if (request.Command == "Attack")
                 {
-                    var attackOption = new AttackOption();
-
-                    attackOption.Attack(hero, request.Enemy);
+                    new AttackOption().Attack(hero, request.Enemy);
                 }
 
                 if (request.Command == "Defend")
                 {
-                    var defendOption = new DefendOption();
-
-                    defendOption.Defend(hero);
+                    new DefendOption().Defend(hero);
                 }
 
                 if (request.Command == "Spell")
@@ -90,9 +84,8 @@
 
                 if (request.Command == "Escape")
                 {
-                    var escapeOption = new EscapeOption();
+                    new EscapeOption().Escape(request.Player);
 
-                    escapeOption.Escape(request.Player);
                     await this.Context.SaveChangesAsync(cancellationToken);
 
                     hero.GoldAmount = initialGold;
