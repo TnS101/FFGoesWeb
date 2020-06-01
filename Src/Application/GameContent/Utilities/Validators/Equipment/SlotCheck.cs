@@ -6,6 +6,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
+    using Domain.Contracts.Items;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
@@ -77,6 +78,8 @@
                 Slot = "Weapon",
             };
 
+            templateWeapon.SellPrice = this.SellPriceCalculation(templateWeapon);
+
             this.fightingClassStatCheck.Check(templateWeapon, fightingClassNumber, this.rng);
 
             long weaponId = 0;
@@ -94,6 +97,8 @@
                 && w.Agility == templateWeapon.Agility && w.Stamina == templateWeapon.Stamina && w.Strength == templateWeapon.Strength
                 && w.Level == templateWeapon.Level && w.Intellect == templateWeapon.Intellect && w.Spirit == templateWeapon.Spirit
                 && w.ImagePath == templateWeapon.ImagePath);
+
+                weaponId = weapon.Id;
             }
 
             if (context.WeaponsInventories.Any(i => i.InventoryId == hero.InventoryId && i.WeaponId == weaponId))
@@ -126,6 +131,9 @@
                 Slot = "Trinket",
                 ImagePath = "https://gamepedia.cursecdn.com/wowpedia/4/43/Inv_trinket_80_alchemy02.png?version=95bdfece62d89349b5effa0bf80956d3",
             };
+
+            templateTrinket.SellPrice = this.SellPriceCalculation(templateTrinket);
+
             this.fightingClassStatCheck.Check(templateTrinket, fightingClassNumber, this.rng);
 
             long trinketId;
@@ -178,6 +186,8 @@
                 Slot = "Armor",
             };
 
+            templateArmor.SellPrice = this.SellPriceCalculation(templateArmor);
+
             this.fightingClassStatCheck.Check(templateArmor, fightingClassNumber, this.rng);
 
             long armorId = 0;
@@ -197,6 +207,8 @@
                 && a.Agility == templateArmor.Agility && a.Stamina == templateArmor.Stamina && a.Strength == templateArmor.Strength
                 && a.Level == templateArmor.Level && a.Intellect == templateArmor.Intellect && a.Spirit == templateArmor.Spirit
                 && a.ImagePath == templateArmor.ImagePath);
+
+                armorId = armor.Id;
             }
 
             if (context.ArmorsInventories.Any(i => i.InventoryId == hero.InventoryId && i.ArmorId == armorId))
@@ -213,6 +225,28 @@
                     ArmorId = armorId,
                 });
             }
+        }
+
+        private int SellPriceCalculation(IEquipableItem item)
+        {
+            double goldAmount = 0;
+
+            goldAmount += item.Agility + item.Intellect + item.Level + item.Spirit + item.Stamina + item.Strength;
+
+            if (item.Slot == "Weapon")
+            {
+                var weapon = (Weapon)item;
+
+                goldAmount += weapon.AttackPower;
+            }
+            else if (item.Slot != "Weapon" && item.Slot != "Trinket")
+            {
+                var armor = (Armor)item;
+
+                goldAmount += armor.ArmorValue + armor.ResistanceValue;
+            }
+
+            return (int)Math.Floor(goldAmount / 5);
         }
 
         private async Task TreasureKeyGenerate(IFFDbContext context, long inventoryId)

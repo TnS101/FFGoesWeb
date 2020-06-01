@@ -1,6 +1,5 @@
 ﻿namespace Domain.Contracts.FightingClass
 {
-    using Domain.Base;
     using Domain.Entities.Game.Units;
     using System.Collections.Generic;
 

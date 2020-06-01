@@ -21,9 +21,10 @@
                     <div class="item-padding">
                         <img src="@item.ImagePath" alt="Item Image" />
                         <p class="main-font-color has-normal-font-size">@item.Name</p>
-                        <p class="main-font-color has-normal-font-size">Required Level : @item.Level</p>
                         @if (item.ClassType != null)
                         {
+                            <p class="main-font-color has-normal-font-size">Required Level : @item.Level</p>
+
                             @if (item.ClassType == "Any" || item.ClassType == Model.HeroClass && item.Level <= Model.HeroLevel)
                             {
                                 <form asp-controller="Hero" asp-action="Equip" method="post">
@@ -39,13 +40,13 @@
                         {
                             <p>Materials</p>
                         }
-                    <form asp-controller="Hero" asp-action="DiscardItem" method="post" class="item-padding">
-                        <input type="hidden" name="id" value="@item.Id" />
-                        <input type="hidden" name="count" value="1" />
-                        <input type="hidden" name="slot" value="@item.Slot" />
-                        <input type="hidden" name="heroId" value="@heroId" />
-                        <input type="submit" name="action" value="Discard" class="main-button" />
-                    </form>
+                        <form asp-controller="Hero" asp-action="DiscardItem" method="post" class="item-padding">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <input type="hidden" name="count" value="1" />
+                            <input type="hidden" name="slot" value="@item.Slot" />
+                            <input type="hidden" name="heroId" value="@heroId" />
+                            <input type="submit" name="action" value="Discard" class="main-button" />
+                        </form>
                         <hr />
                     </div>
                 }
