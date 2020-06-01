@@ -28,15 +28,15 @@
 
             await this.SeedSampleUsers(context, cancellationToken);
 
-            await this.SeedPlayerSpellsAsync(context, cancellationToken);
-
-            await this.SeedFigthingClassesAsync(context, cancellationToken);
-
-            await this.SeedEnemySpellsAsync(context, cancellationToken);
-
             await this.SeedMonstersAsync(context, cancellationToken);
 
             await this.SeedMonsterRaritiesAsync(context, cancellationToken);
+
+            await this.SeedFigthingClassesAsync(context, cancellationToken);
+
+            await this.SeedPlayerSpellsAsync(context, cancellationToken);
+
+            await this.SeedMonsterSpellsAsync(context, cancellationToken);
 
             await this.SeedStatusesAsync(context, cancellationToken);
 
@@ -1358,7 +1358,7 @@
             await context.SaveChangesAsync(cancellationToken);
         }
 
-        private async Task SeedEnemySpellsAsync(FFDbContext context, CancellationToken cancellationToken)
+        private async Task SeedMonsterSpellsAsync(FFDbContext context, CancellationToken cancellationToken)
         {
             // Bear
             context.Spells.Add(new Spell

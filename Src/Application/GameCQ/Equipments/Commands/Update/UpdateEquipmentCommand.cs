@@ -4,12 +4,12 @@
 
     public class UpdateEquipmentCommand : IRequest<string>
     {
-        public string ItemId { get; set; }
+        public long ItemId { get; set; }
 
         public string Command { get; set; }
 
         public string Slot { get; set; }
 
-        public string HeroId { get; set; }
+        public long HeroId { get; set; }
     }
 }

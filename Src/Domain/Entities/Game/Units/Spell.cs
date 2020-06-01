@@ -4,11 +4,11 @@
     {
         public int Id { get; set; }
 
-        public int FightingClassId { get; set; }
+        public int? FightingClassId { get; set; }
 
         public FightingClass FightingClass { get; set; }
 
-        public int MonsterId { get; set; }
+        public int? MonsterId { get; set; }
 
         public Monster Monster { get; set; }
 

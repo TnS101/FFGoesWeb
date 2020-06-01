@@ -6,6 +6,7 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
+    using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
@@ -18,26 +19,25 @@
 
         public async Task<UnitFullViewModel> Handle(GetFullUnitQuery request, CancellationToken cancellationToken)
         {
-            if (request.HeroId != null)
+            Hero hero;
+            if (request.HeroId != 0)
             {
-                var hero = await this.Context.Heroes.FindAsync(request.HeroId);
+                hero = await this.Context.Heroes.FindAsync(request.HeroId);
+            }
+            else
+            {
+                var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
-                var spells = await this.Context.Spells.Where(s => s.FightingClassId == hero.FightingClassId).ToListAsync();
-
-                var mappedHero = this.Mapper.Map<UnitFullViewModel>(hero);
-
-                mappedHero.Spells = spells;
-
-                return mappedHero;
+                hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
             }
 
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
+            var spells = await this.Context.Spells.Where(s => s.FightingClassId == hero.FightingClassId).ToListAsync();
 
-            var userHero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
+            var mappedHero = this.Mapper.Map<UnitFullViewModel>(hero);
 
-            var userMappedHero = this.Mapper.Map<UnitFullViewModel>(userHero);
+            mappedHero.Spells = spells;
 
-            return userMappedHero;
+            return mappedHero;
         }
     }
 }

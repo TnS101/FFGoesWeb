@@ -22,7 +22,7 @@
 
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
-            var hero = await this.Context.Heroes.FindAsync(request.Player.Id);
+            var hero = await this.Context.Heroes.FindAsync(request.Hero.Id);
 
             int initialGold = hero.GoldAmount;
 
@@ -84,7 +84,7 @@
 
                 if (request.Command == "Escape")
                 {
-                    new EscapeOption().Escape(request.Player);
+                    new EscapeOption().Escape(request.Hero);
 
                     await this.Context.SaveChangesAsync(cancellationToken);
 

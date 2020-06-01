@@ -10,6 +10,8 @@
         {
             builder.HasKey(w => w.Id);
 
+            builder.Property(w => w.Id).HasColumnType("bigint");
+
             builder.Property(w => w.Name)
                 .HasMaxLength(50)
                 .IsRequired();

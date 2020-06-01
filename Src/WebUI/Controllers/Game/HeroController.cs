@@ -44,31 +44,31 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete([FromForm]string id)
+        public async Task<IActionResult> Delete([FromForm]long id)
         {
             return this.Redirect(await this.Mediator.Send(new DeleteHeroCommand { HeroId = id }));
         }
 
         [HttpGet("/Hero/Info/id")]
-        public async Task<IActionResult> Info([FromQuery]string id)
+        public async Task<IActionResult> Info([FromQuery]long id)
         {
             return this.View(await this.Mediator.Send(new GetFullUnitQuery { HeroId = id }));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Equip([FromForm]string id, [FromForm]string command, [FromForm]string heroId, [FromForm]string slot)
+        public async Task<IActionResult> Equip([FromForm]long id, [FromForm]string command, [FromForm]long heroId, [FromForm]string slot)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, HeroId = heroId, Slot = slot }));
         }
 
         [HttpGet("/Hero/Equipment/id&slot")]
-        public async Task<IActionResult> Equipment([FromQuery]string id, [FromQuery]string slot)
+        public async Task<IActionResult> Equipment([FromQuery]long id, [FromQuery]string slot)
         {
             return this.View(await this.Mediator.Send(new GetEquipmentQuery { HeroId = id, Slot = slot }));
         }
 
         [HttpGet("/Hero/Inventory/id&slot")]
-        public async Task<IActionResult> Inventory([FromQuery]string id, [FromQuery]string slot)
+        public async Task<IActionResult> Inventory([FromQuery]long id, [FromQuery]string slot)
         {
             return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
         }
@@ -86,9 +86,9 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Select(string id)
+        public async Task<IActionResult> Select(long id)
         {
-            return this.Redirect(await this.Mediator.Send(new SelectHeroCommand { UnitId = id, UserId = this.UserManager.GetUserId(this.User) }));
+            return this.Redirect(await this.Mediator.Send(new SelectHeroCommand { HeroId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
     }
 }

@@ -14,9 +14,6 @@
                 .HasMaxLength(30)
                 .IsRequired();
 
-            builder.Property(s => s.FightingClassId)
-                .IsRequired();
-
             builder.Property(s => s.Type)
                 .HasMaxLength(50)
                 .IsRequired();

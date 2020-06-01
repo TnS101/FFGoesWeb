@@ -10,7 +10,7 @@
         {
             builder.HasKey(h => h.Id);
 
-            builder.Property(h => h.Id).HasColumnType("bigint").ValueGeneratedOnAdd();
+            builder.Property(h => h.Id).HasColumnType("bigint");
 
             builder.Property(h => h.EquipmentId)
                 .IsRequired();

@@ -30,7 +30,7 @@
                 this.Context.Heroes.Update(oldHero);
             }
 
-            var hero = await this.Context.Heroes.FindAsync(request.UnitId);
+            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
             hero.IsSelected = true;
 

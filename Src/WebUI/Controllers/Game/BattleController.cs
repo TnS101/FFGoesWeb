@@ -20,21 +20,28 @@
         private static Monster monster;
         private static UnitFullViewModel hero;
         private static string zoneName;
+        private static long heroId;
 
         [HttpGet("Battle/Battle/zone")]
         public async Task<IActionResult> Battle([FromQuery]string zone)
         {
             zoneName = zone;
+
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
+
             monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zoneName });
+
+            heroId = playerPVM.Id;
+
             yourTurn = true;
+
             return this.View(@"\Battle", monster.Name);
         }
 
         [HttpGet]
         public async Task<IActionResult> Command()
         {
-            hero = await this.Mediator.Send(new GetFullUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
+            hero = await this.Mediator.Send(new GetFullUnitQuery { HeroId = heroId });
 
             var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { Hero = hero, Enemy = monster });
 
@@ -44,19 +51,19 @@
         [HttpPost]
         public async Task<IActionResult> Command([FromForm]string command, [FromForm]string spellName)
         {
-            hero = await this.Mediator.Send(new GetFullUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
+            hero = await this.Mediator.Send(new GetFullUnitQuery { HeroId = heroId });
 
             var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { Hero = hero, Enemy = monster });
 
             return this.View(
                 await this.Mediator.Send(new BattleOptionsCommand
-                { Command = command, Player = hero, Enemy = monster, YourTurn = yourTurn, SpellName = spellName, ZoneName = zoneName }), battleUnits);
+                { Command = command, Hero = hero, Enemy = monster, YourTurn = yourTurn, SpellName = spellName, ZoneName = zoneName }), battleUnits);
         }
 
         [HttpGet]
-        public async Task<IActionResult> End()
+        public IActionResult End()
         {
-            return this.View(await this.Mediator.Send(new GetUnitIdQuery { UserId = this.UserManager.GetUserId(this.User) }));
+            return this.View(heroId);
         }
 
         [HttpGet]

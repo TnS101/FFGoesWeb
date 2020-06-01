@@ -7,6 +7,6 @@
     {
         public string Slot { get; set; }
 
-        public string HeroId { get; set; }
+        public long HeroId { get; set; }
     }
 }

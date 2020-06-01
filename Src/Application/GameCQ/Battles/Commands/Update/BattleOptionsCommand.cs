@@ -6,7 +6,7 @@
 
     public class BattleOptionsCommand : IRequest<string>
     {
-        public UnitFullViewModel Player { get; set; }
+        public UnitFullViewModel Hero { get; set; }
 
         public Monster Enemy { get; set; }
 
