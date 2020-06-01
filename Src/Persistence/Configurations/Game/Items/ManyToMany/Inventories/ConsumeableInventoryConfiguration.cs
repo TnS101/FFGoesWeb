@@ -10,6 +10,8 @@
         {
             builder.HasKey(k => new { k.ConsumeableId, k.InventoryId });
 
+            builder.Property(ci => ci.InventoryId).HasColumnType("bigint");
+
             builder.HasOne(c => c.Consumeable)
                 .WithMany(ci => ci.ConsumeableInventories)
                 .HasForeignKey(c => c.ConsumeableId);

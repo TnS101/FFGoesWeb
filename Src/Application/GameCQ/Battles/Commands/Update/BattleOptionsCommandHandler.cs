@@ -28,11 +28,9 @@
 
             if (request.Enemy.CurrentHP <= -0.00000000000001)
             {
-                var endOption = new EndOption();
-
                 request.Enemy.CurrentHP = 0;
 
-                await endOption.End(hero, request.Enemy, request.ZoneName, this.Context, cancellationToken);
+                await new EndOption().End(hero, request.Enemy, request.ZoneName, this.Context, cancellationToken);
 
                 if (hero.XP >= hero.XPCap)
                 {

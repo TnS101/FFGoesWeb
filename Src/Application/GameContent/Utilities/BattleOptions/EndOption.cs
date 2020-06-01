@@ -22,7 +22,7 @@
                 hero.ProffesionXP += this.EnemyCombinedStats(monster) / 20;
             }
 
-            new StatReset().HardReset(hero);
+            new StatReset().Reset(hero);
 
             await new ItemGenerator().Generate(hero, context, monster, zoneName, cancellationToken);
         }

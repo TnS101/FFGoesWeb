@@ -10,6 +10,8 @@
         {
             builder.HasKey(mi => new { mi.MaterialId, mi.InventoryId });
 
+            builder.Property(mi => mi.InventoryId).HasColumnType("bigint");
+
             builder.HasOne(m => m.Material)
                 .WithMany(mi => mi.MaterialInventories)
                 .HasForeignKey(m => m.MaterialId);

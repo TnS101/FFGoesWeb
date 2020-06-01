@@ -51,19 +51,23 @@
                 IsSelected = true,
             };
 
-            hero.Inventory = new Inventory(hero.Id);
-
-            hero.Equipment = new Equipment(hero.Id);
-
-            hero.EquipmentId = hero.Equipment.Id;
-
-            hero.InventoryId = hero.Inventory.Id;
-
             new RaceCheck().Check(hero, request.Race);
+
+            await this.fightingClassCheck.Check(hero, request.ClassType, this.Context);
 
             this.Context.Heroes.Add(hero);
 
-            await this.fightingClassCheck.Check(hero, request.ClassType, this.Context);
+            await this.Context.SaveChangesAsync(cancellationToken);
+
+            var dbHero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
+
+            dbHero.Inventory = new Inventory(dbHero.Id);
+            dbHero.Equipment = new Equipment(dbHero.Id);
+
+            dbHero.InventoryId = dbHero.Id;
+            dbHero.EquipmentId = dbHero.Id;
+
+            this.Context.Heroes.Update(dbHero);
 
             await this.Context.SaveChangesAsync(cancellationToken);
 

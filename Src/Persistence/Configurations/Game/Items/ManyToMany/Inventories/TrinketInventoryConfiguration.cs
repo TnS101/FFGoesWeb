@@ -10,6 +10,10 @@
         {
             builder.HasKey(ti => new { ti.TrinketId, ti.InventoryId });
 
+            builder.Property(ti => ti.TrinketId).HasColumnType("bigint");
+
+            builder.Property(ti => ti.InventoryId).HasColumnType("bigint");
+
             builder.HasOne(t => t.Trinket)
                 .WithMany(ti => ti.TrinketInventories)
                 .HasForeignKey(t => t.TrinketId);

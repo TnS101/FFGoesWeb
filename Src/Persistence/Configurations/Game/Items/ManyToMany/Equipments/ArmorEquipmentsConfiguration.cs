@@ -10,6 +10,10 @@
         {
             builder.HasKey(ae => new { ae.ArmorId, ae.EquipmentId });
 
+            builder.Property(ae => ae.ArmorId).HasColumnType("bigint");
+
+            builder.Property(ae => ae.EquipmentId).HasColumnType("bigint");
+
             builder.HasOne(a => a.Armor)
                 .WithMany(a => a.ArmorEquipments)
                 .HasForeignKey(a => a.ArmorId);
