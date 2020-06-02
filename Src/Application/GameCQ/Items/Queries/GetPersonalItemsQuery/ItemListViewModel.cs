@@ -4,10 +4,10 @@
 
     public class ItemListViewModel
     {
-        public IEnumerable<ItemMinViewModel> Items { get; set; }
-
         public string HeroClass { get; set; }
 
         public int HeroLevel { get; set; }
+
+        public IEnumerable<ItemMinViewModel> Items { get; set; }
     }
 }

@@ -14,7 +14,7 @@
 
         public bool YourTurn { get; set; }
 
-        public string SpellName { get; set; }
+        public int SpellId { get; set; }
 
         public string ZoneName { get; set; }
     }

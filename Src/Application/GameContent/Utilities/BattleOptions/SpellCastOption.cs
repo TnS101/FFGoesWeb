@@ -21,11 +21,11 @@
             this.manaCheck = new ManaCheck();
         }
 
-        public async Task SpellCast(Unit caster, Unit target, string spellName, IFFDbContext context)
+        public async Task SpellCast(Unit caster, Unit target, int spellId, IFFDbContext context)
         {
             if (caster.Type == "Player")
             {
-                var spell = await context.Spells.FirstOrDefaultAsync(s => s.Name == spellName);
+                var spell = await context.Spells.FindAsync(spellId);
 
                 this.ProcessSpell(spell, caster, target);
             }

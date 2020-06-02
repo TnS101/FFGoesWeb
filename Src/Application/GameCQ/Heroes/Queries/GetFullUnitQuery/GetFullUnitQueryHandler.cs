@@ -5,7 +5,9 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
+    using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
@@ -31,11 +33,9 @@
                 hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
             }
 
-            var spells = await this.Context.Spells.Where(s => s.FightingClassId == hero.FightingClassId).ToListAsync();
-
             var mappedHero = this.Mapper.Map<UnitFullViewModel>(hero);
 
-            mappedHero.Spells = spells;
+            mappedHero.Spells = await this.Context.Spells.Where(s => s.FightingClassId == hero.FightingClassId).ProjectTo<SpellMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync();
 
             return mappedHero;
         }

@@ -51,10 +51,10 @@
                         <option value="Spell">Spell</option>
                     </select>
                     <div class="item-padding fade-in" hidden id="spells">
-                        <select name="spellName">
+                        <select name="spellId">
                             @foreach (var spell in Model.Hero.Spells)
                             {
-                                <option value="@spell.Name">@spell.Name</option>
+                                <option value="@spell.Id">@spell.Name</option>
                             }
                         </select>
                     </div>

@@ -1,15 +1,10 @@
 ﻿namespace Application.GameCQ.Heroes.Queries.GetFullUnitQuery
 {
     using System.Collections.Generic;
-    using Domain.Entities.Game.Units;
+    using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
 
     public class UnitFullViewModel
     {
-        public UnitFullViewModel()
-        {
-            this.Spells = new HashSet<Spell>();
-        }
-
         public long Id { get; set; }
 
         public string Name { get; set; }
@@ -70,6 +65,6 @@
 
         public double ProffesionXPCap { get; set; }
 
-        public ICollection<Spell> Spells { get; set; }
+        public ICollection<SpellMinViewModel> Spells { get; set; }
     }
 }

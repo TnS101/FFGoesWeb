@@ -45,7 +45,7 @@
             }
         }
 
-        public async Task<ItemFullViewModel> GetWeapon(GetCurrentItemQuery request)
+        private async Task<ItemFullViewModel> GetWeapon(GetCurrentItemQuery request)
         {
             var weapon = await this.Context.Weapons.FindAsync(request.ItemId);
 
@@ -68,7 +68,7 @@
             };
         }
 
-        public async Task<ItemFullViewModel> GetArmor(GetCurrentItemQuery request)
+        private async Task<ItemFullViewModel> GetArmor(GetCurrentItemQuery request)
         {
             var armor = await this.Context.Armors.FindAsync(request.ItemId);
 
@@ -92,7 +92,7 @@
             };
         }
 
-        public async Task<ItemFullViewModel> GetTrinket(GetCurrentItemQuery request)
+        private async Task<ItemFullViewModel> GetTrinket(GetCurrentItemQuery request)
         {
             var trinket = await this.Context.Trinkets.FindAsync(request.ItemId);
 
@@ -114,7 +114,7 @@
             };
         }
 
-        public async Task<ItemFullViewModel> GetMaterial(GetCurrentItemQuery request)
+        private async Task<ItemFullViewModel> GetMaterial(GetCurrentItemQuery request)
         {
             var material = await this.Context.Materials.FindAsync(int.Parse(request.ItemId));
 
@@ -158,7 +158,7 @@
             };
         }
 
-        public async Task<ItemFullViewModel> GetTool(GetCurrentItemQuery request)
+        private async Task<ItemFullViewModel> GetTool(GetCurrentItemQuery request)
         {
             var tool = await this.Context.Tools.FindAsync(int.Parse(request.ItemId));
 
@@ -175,7 +175,7 @@
             };
         }
 
-        public async Task<ItemFullViewModel> GetTreasure(GetCurrentItemQuery request)
+        private async Task<ItemFullViewModel> GetTreasure(GetCurrentItemQuery request)
         {
             var treasure = await this.Context.Treasures.FindAsync(int.Parse(request.ItemId));
 
@@ -190,7 +190,7 @@
             };
         }
 
-        public async Task<ItemFullViewModel> GetTreasureKey(GetCurrentItemQuery request)
+        private async Task<ItemFullViewModel> GetTreasureKey(GetCurrentItemQuery request)
         {
             var treasureKey = await this.Context.TreasureKeys.FindAsync(int.Parse(request.ItemId));
 

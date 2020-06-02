@@ -77,7 +77,7 @@
                 {
                     var spellCastOption = new SpellCastOption();
 
-                    await spellCastOption.SpellCast(hero, request.Enemy, request.SpellName, this.Context);
+                    await spellCastOption.SpellCast(hero, request.Enemy, request.SpellId, this.Context);
                 }
 
                 if (request.Command == "Escape")

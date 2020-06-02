@@ -7,16 +7,9 @@
 
     public class UserPanelViewModel
     {
-        public UserPanelViewModel()
-        {
-            this.Statuses = new HashSet<Status>();
-        }
-
         public string Id { get; set; }
 
         public string UserName { get; set; }
-
-        public ICollection<Status> Statuses { get; set; }
 
         public string StatusIClass { get; set; }
 
@@ -39,5 +32,7 @@
         public DateTime? LastFeedbackSentOn { get; set; }
 
         public SendFeedbackCommand Feedback { get; set; }
+
+        public ICollection<Status> Statuses { get; set; }
     }
 }

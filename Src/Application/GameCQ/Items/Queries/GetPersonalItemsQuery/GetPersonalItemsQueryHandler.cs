@@ -56,7 +56,7 @@
             {
                 var inventory = await this.Context.WeaponsInventories.Where(wi => wi.InventoryId == hero.InventoryId).ToListAsync();
 
-                var weapons = new List<Weapon>();
+                var weapons = new Stack<Weapon>();
 
                 if (inventory.Count() > 0)
                 {
@@ -66,7 +66,7 @@
                         {
                             if (item.WeaponId == baseWeapon.Id)
                             {
-                                weapons.Add(baseWeapon);
+                                weapons.Push(baseWeapon);
                             }
                         }
                     }
@@ -99,7 +99,7 @@
             {
                 var inventory = await this.Context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId).ToListAsync();
 
-                var armors = new List<Armor>();
+                var armors = new Stack<Armor>();
 
                 foreach (var baseArmor in this.Context.Armors)
                 {
@@ -107,7 +107,7 @@
                     {
                         if (item.ArmorId == baseArmor.Id)
                         {
-                            armors.Add(baseArmor);
+                            armors.Push(baseArmor);
                         }
                     }
                 }
@@ -139,7 +139,7 @@
             {
                 var inventory = await this.Context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
-                var trinkets = new List<Trinket>();
+                var trinkets = new Stack<Trinket>();
 
                 foreach (var baseTrinket in this.Context.Trinkets)
                 {
@@ -147,7 +147,7 @@
                     {
                         if (item.TrinketId == baseTrinket.Id)
                         {
-                            trinkets.Add(baseTrinket);
+                            trinkets.Push(baseTrinket);
                         }
                     }
                 }
@@ -179,7 +179,7 @@
             {
                 var inventory = await this.Context.TreasuresInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
-                var treasures = new List<Treasure>();
+                var treasures = new Stack<Treasure>();
 
                 foreach (var baseTreasure in this.Context.Treasures)
                 {
@@ -187,7 +187,7 @@
                     {
                         if (item.TreasureId == baseTreasure.Id)
                         {
-                            treasures.Add(baseTreasure);
+                            treasures.Push(baseTreasure);
                         }
                     }
                 }
@@ -215,7 +215,7 @@
             {
                 var inventory = await this.Context.TreasureKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
-                var treasureKeys = new List<TreasureKey>();
+                var treasureKeys = new Stack<TreasureKey>();
 
                 foreach (var baseTreasureKey in this.Context.TreasureKeys)
                 {
@@ -223,7 +223,7 @@
                     {
                         if (item.TreasureKeyId == baseTreasureKey.Id)
                         {
-                            treasureKeys.Add(baseTreasureKey);
+                            treasureKeys.Push(baseTreasureKey);
                         }
                     }
                 }
@@ -252,7 +252,7 @@
             {
                 var inventory = await this.Context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).ToListAsync();
 
-                var materials = new List<Material>();
+                var materials = new Stack<Material>();
 
                 if (inventory.Count > 0)
                 {
@@ -262,7 +262,7 @@
                         {
                             if (item.MaterialId == baseMaterial.Id)
                             {
-                                materials.Add(baseMaterial);
+                                materials.Push(baseMaterial);
                             }
                         }
                     }

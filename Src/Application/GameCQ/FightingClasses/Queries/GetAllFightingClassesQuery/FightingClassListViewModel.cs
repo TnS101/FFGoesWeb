@@ -5,8 +5,8 @@
 
     public class FightingClassListViewModel
     {
-        public IEnumerable<FightingClassMinViewModel> FightingClasses { get; set; }
-
         public CreateHeroCommand Hero { get; set; }
+
+        public IEnumerable<FightingClassMinViewModel> FightingClasses { get; set; }
     }
 }

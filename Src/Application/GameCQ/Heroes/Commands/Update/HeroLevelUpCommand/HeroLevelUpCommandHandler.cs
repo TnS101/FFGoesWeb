@@ -24,7 +24,7 @@
             }
             else if (request.StatPick == "Health")
             {
-                hero.MaxHP += 9 * hero.Level;
+                hero.MaxHP += 8 * hero.Level;
                 hero.CurrentHP = hero.MaxHP;
             }
             else if (request.StatPick == "Mana")
@@ -34,7 +34,7 @@
             }
             else if (request.StatPick == "Magic Power")
             {
-                hero.MagicPower += 2.15 * hero.Level;
+                hero.MagicPower += 2.1 * hero.Level;
                 hero.CurrentMagicPower = hero.MagicPower;
             }
 

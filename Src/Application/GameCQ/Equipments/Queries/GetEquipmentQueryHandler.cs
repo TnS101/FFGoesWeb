@@ -8,8 +8,6 @@
     using Application.Common.Interfaces;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-    using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
@@ -30,10 +28,9 @@
 
         private async Task<EquipmentViewModel> GetEquipement(Hero hero)
         {
-            var equipment = new List<ItemMinViewModel>();
+            var equipment = new HashSet<ItemMinViewModel>();
 
-            // Get Trinket
-            var trinketEquipment = await this.Context.TrinketEquipments.FirstOrDefaultAsync(te => te.EquipmentId == hero.EquipmentId && te.TrinketId != null);
+            var trinketEquipment = await this.Context.TrinketEquipments.FirstOrDefaultAsync(te => te.EquipmentId == hero.EquipmentId);
 
             if (trinketEquipment != null)
             {
@@ -42,8 +39,7 @@
                 equipment.Add(this.Mapper.Map<ItemMinViewModel>(trinket));
             }
 
-            // Get Weapon
-            var weaponEquipment = await this.Context.WeaponsEquipments.FirstOrDefaultAsync(we => we.EquipmentId == hero.EquipmentId && we.WeaponId != null);
+            var weaponEquipment = await this.Context.WeaponsEquipments.FirstOrDefaultAsync(we => we.EquipmentId == hero.EquipmentId);
 
             if (weaponEquipment != null)
             {
@@ -52,8 +48,7 @@
                 equipment.Add(this.Mapper.Map<ItemMinViewModel>(weapon));
             }
 
-            // Get Armors
-            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.EquipmentId && we.ArmorId != null);
+            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.EquipmentId);
 
             if (armorEquipments.Count() > 0)
             {

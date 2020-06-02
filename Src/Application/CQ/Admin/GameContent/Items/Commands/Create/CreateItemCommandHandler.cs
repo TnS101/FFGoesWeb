@@ -35,25 +35,25 @@
             {
                var result = await this.CreateMaterial(request, cancellationToken);
 
-               id = (long)result;
+               id = result;
             }
             else if (request.Slot == "Treasure")
             {
                 var result = await this.CreateTreasure(request, cancellationToken);
 
-                id = (long)result;
+                id = result;
             }
             else if (request.Slot == "Treasure Key")
             {
                 var result = await this.CreateTreasureKey(request, cancellationToken);
 
-                id = (long)result;
+                id = result;
             }
             else if (request.Slot == "Tool")
             {
                 var result = await this.CreateTool(request, cancellationToken);
 
-                id = (long)result;
+                id = result;
             }
             else
             {

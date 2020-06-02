@@ -22,7 +22,7 @@
 
             if (enemyActionNumber == 0 && enemy.CurrentMana >= 0.15 * enemy.CurrentMana)
             {
-                await new SpellCastOption().SpellCast(enemy, player, string.Empty, context);
+                await new SpellCastOption().SpellCast(enemy, player, 0, context);
             }
             else if (enemyActionNumber == 1)
             {

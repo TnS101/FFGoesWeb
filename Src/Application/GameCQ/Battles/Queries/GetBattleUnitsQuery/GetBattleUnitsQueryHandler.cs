@@ -3,6 +3,7 @@
     using System.Linq;
     using Application.Common.Interfaces;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
+    using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using MediatR;
 
@@ -23,7 +24,7 @@
 
             foreach (var spell in this.context.Spells.Where(s => s.FightingClassId == hero.FightingClassId))
             {
-                hero.Spells.Add(spell);
+                hero.Spells.Add(this.mapper.Map<SpellMinViewModel>(spell));
             }
 
             return new BattleUnitsViewModel

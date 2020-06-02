@@ -6,12 +6,10 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
     public class LootTreasureCommandHandler : BaseHandler, IRequestHandler<LootTreasureCommand, string>

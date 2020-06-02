@@ -49,7 +49,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Command([FromForm]string command, [FromForm]string spellName)
+        public async Task<IActionResult> Command([FromForm]string command, [FromForm]int spellId)
         {
             hero = await this.Mediator.Send(new GetFullUnitQuery { HeroId = heroId });
 
@@ -57,7 +57,7 @@
 
             return this.View(
                 await this.Mediator.Send(new BattleOptionsCommand
-                { Command = command, Hero = hero, Enemy = monster, YourTurn = yourTurn, SpellName = spellName, ZoneName = zoneName }), battleUnits);
+                { Command = command, Hero = hero, Enemy = monster, YourTurn = yourTurn, SpellId = spellId, ZoneName = zoneName }), battleUnits);
         }
 
         [HttpGet]
