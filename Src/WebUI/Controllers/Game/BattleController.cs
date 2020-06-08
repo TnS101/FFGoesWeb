@@ -5,7 +5,6 @@
     using Application.GameCQ.Battles.Queries.GetBattleUnitsQuery;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
-    using Application.GameCQ.Heroes.Queries.GetUnitIdQuery;
     using Application.GameCQ.Monsters.Commands.Create;
     using Domain.Entities.Game.Units;
     using global::Common;
@@ -14,22 +13,22 @@
     using WebUI.Controllers.Common;
 
     [Authorize(Roles = GConst.UserRole)]
-    public class BattleController : BaseController
+    public class BattleController : BaseApiController
     {
         private static bool yourTurn;
         private static Monster monster;
         private static UnitFullViewModel hero;
-        private static string zoneName;
         private static long heroId;
+        private string zoneName;
 
-        [HttpGet("Battle/Battle/zone")]
+        [HttpGet]
         public async Task<IActionResult> Battle([FromQuery]string zone)
         {
-            zoneName = zone;
+            this.zoneName = zone;
 
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
 
-            monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zoneName });
+            monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = this.zoneName });
 
             heroId = playerPVM.Id;
 
@@ -49,15 +48,15 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Command([FromForm]string command, [FromForm]int spellId)
+        public async Task<JsonResult> Command([FromForm]string command, [FromForm]int spellId)
         {
-            hero = await this.Mediator.Send(new GetFullUnitQuery { HeroId = heroId });
+            await this.Mediator.Send(new BattleOptionsCommand
+            { Command = command, Hero = hero, Enemy = monster, YourTurn = yourTurn, SpellId = spellId, ZoneName = this.zoneName });
 
+            hero = await this.Mediator.Send(new GetFullUnitQuery { HeroId = heroId });
             var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { Hero = hero, Enemy = monster });
 
-            return this.View(
-                await this.Mediator.Send(new BattleOptionsCommand
-                { Command = command, Hero = hero, Enemy = monster, YourTurn = yourTurn, SpellId = spellId, ZoneName = zoneName }), battleUnits);
+            return this.Json(new { battleUnits });
         }
 
         [HttpGet]

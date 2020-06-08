@@ -1,7 +1,6 @@
 ﻿namespace Application.CQ.Social.Comments.Commands.Create
 {
     using System.ComponentModel.DataAnnotations;
-    using System.Security.Claims;
     using global::Common;
     using MediatR;
 

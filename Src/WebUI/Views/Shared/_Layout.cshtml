@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html class="main-gradient">
 <head>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
     <link href="~/css/style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -12,8 +11,12 @@
 </head>
 <body class="main-gradient has-text-align-center">
     @RenderBody()
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

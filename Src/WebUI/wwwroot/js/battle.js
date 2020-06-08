@@ -11,23 +11,21 @@ var battleAction = $('#action');
 var hero = $('#hero');
 var enemy = $('#enemy');
 
-$(document).ready(function () {
-    $("select.command").change(function () {
-        var battleOption = $(this).children('option:selected').val();
+$("select.command").change(function () {
+    var battleOption = $(this).children('option:selected').val();
 
-        if (battleOption === 'Spell') {
-            $('#spells').removeAttr('hidden');
+    if (battleOption === 'Spell') {
+        $('#spells').removeAttr('hidden');
 
-        } else {
-            $('#spells').attr('hidden', true);
+    } else {
+        $('#spells').attr('hidden', true);
+    }
+
+    battleAction.click(function () {
+
+        if (battleOption === 'Attack') {
+            hero.toggleClass('roll-in-bottom');
+            enemy.toggleClass('jello enemy-hit');
         }
-
-        battleAction.click(function () {
-
-            if (battleOption === 'Attack') {
-                hero.toggleClass('roll-in-bottom');
-                enemy.toggleClass('jello enemy-hit');
-            }
-        });
     });
-})
+});

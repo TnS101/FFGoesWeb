@@ -7,7 +7,7 @@
         public void HardReset(Unit unit)
         {
             unit.CurrentHP = unit.MaxHP;
-            unit.CurrentMana = unit.CurrentMana;
+            unit.CurrentMana = unit.MaxMana;
 
             this.Reset(unit);
         }

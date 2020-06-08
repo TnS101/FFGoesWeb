@@ -2,28 +2,6 @@
 <title>Command</title>
 <partial name="_WorldNavBar">
 
-    <script>
-        $(document).ready(function () {
-            $("select.command").change(function () {
-                var battleOption = $(this).children('option:selected').val();
-
-                if (battleOption === 'Spell') {
-                    $('#spells').removeAttr('hidden');
-
-                } else {
-                    $('#spells').attr('hidden', true);
-                }
-
-                battleAction.click(function () {
-
-                    if (battleOption === 'Attack') {
-                        hero.toggleClass('roll-in-bottom');
-                        enemy.toggleClass('jello enemy-hit');
-                    }
-                });
-            });
-        })
-    </script>
     <div class="fade-in aligncenter starting-div">
         <h1 style="text-align:center" class="item-padding">@Model.Hero.Name  vs  @Model.Enemy.Name</h1>
         <div>
@@ -35,7 +13,7 @@
             <progress id="enemyDamage" value="@Model.Enemy.CurrentAttackPower" hidden></progress>
             <br />
             <div>
-                <progress class="player-healthBar" id="playerHealth" value="@Model.Hero.CurrentHP" max="@Model.Hero.MaxHP"></progress>
+                <progress class="player-healthBar" id="playerHealth" value="@(Model.Hero.CurrentHP + 1)" max="@Model.Hero.MaxHP"></progress>
                 <progress class="healthBar" id="enemyHealth" value="@Model.Enemy.CurrentHP" max="@Model.Enemy.MaxHP"></progress>
                 <br />
                 <br />
@@ -44,7 +22,7 @@
                 <div class="item-padding"><hr /></div>
             </div>
             <div class="item-padding">
-                <form asp-controller="Battle" asp-action="Command" method="post">
+                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/api/Battle/Command" data-ajax-complete="Action">
                     <select class="command" name="command">
                         <option value="Attack">Attack</option>
                         <option value="Defend">Defend</option>
@@ -68,3 +46,17 @@
         </div>
     </div>
     <partial name="_Footer">
+        @section scripts
+        {
+            <script>
+                Action = (data) => {
+                    if (data.status == 200) {
+                        document.getElementById('playerHealth').value = data.responseJSON.battleUnits.hero.currentHP;
+                    } else {
+                        console.log('Jivi i zdravi');
+                    }
+                }
+
+            </script>
+            <script src="~/js/battle.js"></script>
+        }

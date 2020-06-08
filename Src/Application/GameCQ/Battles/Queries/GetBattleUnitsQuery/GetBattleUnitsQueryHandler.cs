@@ -1,13 +1,16 @@
 ﻿namespace Application.GameCQ.Battles.Queries.GetBattleUnitsQuery
 {
     using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
-    public class GetBattleUnitsQueryHandler : RequestHandler<GetBattleUnitsQuery, BattleUnitsViewModel>
+    public class GetBattleUnitsQueryHandler : IRequestHandler<GetBattleUnitsQuery, BattleUnitsViewModel>
     {
         private readonly IMapper mapper;
         private readonly IFFDbContext context;
@@ -18,11 +21,11 @@
             this.context = context;
         }
 
-        protected override BattleUnitsViewModel Handle(GetBattleUnitsQuery request)
+        public async Task<BattleUnitsViewModel> Handle(GetBattleUnitsQuery request, CancellationToken cancellationToken)
         {
             var hero = request.Hero;
 
-            foreach (var spell in this.context.Spells.Where(s => s.FightingClassId == hero.FightingClassId))
+            foreach (var spell in await this.context.Spells.Where(s => s.FightingClassId == hero.FightingClassId).ToListAsync())
             {
                 hero.Spells.Add(this.mapper.Map<SpellMinViewModel>(spell));
             }
