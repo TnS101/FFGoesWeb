@@ -39,7 +39,7 @@
 
         public bool IsCraftable { get; set; }
 
-        public string Type { get; set; }
+        public string MaterialType { get; set; }
 
         public string Slot { get; set; }
 

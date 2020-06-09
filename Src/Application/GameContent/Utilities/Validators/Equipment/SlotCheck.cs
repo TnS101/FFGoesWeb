@@ -40,23 +40,26 @@
             this.vegetables = new[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
-        public async Task Check(int fightingClassNumber, int slotNumber, List<int> stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, Monster monster, string zoneName, CancellationToken cancellationToken)
+        public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, Monster monster, string zoneName, CancellationToken cancellationToken)
         {
             if (slotNumber == 0)
             {
-                await this.WeaponGenerate(fightingClassNumber, stats, context, hero, cancellationToken);
+                await this.WeaponGenerate(fightingClassNumber, fightingClassStatNumber, stats, context, hero.InventoryId, cancellationToken);
             }
             else if (slotNumber == 1)
             {
-                await this.TrinketGenerate(stats, fightingClassNumber, context, hero, cancellationToken);
+                await this.TrinketGenerate(stats, fightingClassNumber, context, hero.InventoryId, cancellationToken);
             }
             else if (slotNumber == 2 || slotNumber == 3)
             {
-                await this.ArmorGenerate(stats, fightingClassNumber, context, hero, cancellationToken);
+                await this.ArmorGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, hero.InventoryId, cancellationToken);
             }
             else if (slotNumber == 4 || slotNumber == 5)
             {
                 await this.TreasureKeyGenerate(context, hero.InventoryId);
+            }else if (slotNumber == 6)
+            {
+                await this.RelicGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, hero.InventoryId, cancellationToken);
             }
             else
             {
@@ -64,15 +67,15 @@
             }
         }
 
-        private async Task WeaponGenerate(int fightingClassNumber, List<int> stats, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
+        private async Task WeaponGenerate(int fightingClassNumber, int fightingClassStatNumber, int[] stats, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
             Weapon templateWeapon = new Weapon
             {
-                AttackPower = stats[0],
+                Level = stats[0],
                 Agility = stats[1],
                 Stamina = stats[2],
                 Strength = stats[3],
-                Level = stats[4],
+                AttackPower = stats[4],
                 Intellect = stats[5],
                 Spirit = stats[6],
                 Slot = "Weapon",
@@ -80,11 +83,16 @@
 
             templateWeapon.SellPrice = this.SellPriceCalculation(templateWeapon);
 
-            this.fightingClassStatCheck.Check(templateWeapon, fightingClassNumber, this.rng);
+            this.fightingClassStatCheck.Check(templateWeapon, fightingClassNumber, fightingClassStatNumber, this.rng);
 
-            long weaponId = 0;
+            long weaponId;
 
-            if (!context.Weapons.Contains(templateWeapon))
+            var weapon = await context.Weapons.FirstOrDefaultAsync(w => w.Name == templateWeapon.Name
+                && w.ClassType == templateWeapon.ClassType && w.AttackPower == templateWeapon.AttackPower
+                && w.Agility == templateWeapon.Agility && w.Stamina == templateWeapon.Stamina && w.Strength == templateWeapon.Strength
+                && w.Level == templateWeapon.Level && w.Intellect == templateWeapon.Intellect && w.Spirit == templateWeapon.Spirit);
+
+            if (weapon == null)
             {
                 context.Weapons.Add(templateWeapon);
                 await context.SaveChangesAsync(cancellationToken);
@@ -92,53 +100,53 @@
             }
             else
             {
-                var weapon = await context.Weapons.FirstOrDefaultAsync(w => w.Name == templateWeapon.Name
-                && w.ClassType == templateWeapon.ClassType && w.AttackPower == templateWeapon.AttackPower
-                && w.Agility == templateWeapon.Agility && w.Stamina == templateWeapon.Stamina && w.Strength == templateWeapon.Strength
-                && w.Level == templateWeapon.Level && w.Intellect == templateWeapon.Intellect && w.Spirit == templateWeapon.Spirit
-                && w.ImagePath == templateWeapon.ImagePath);
-
                 weaponId = weapon.Id;
             }
 
-            if (context.WeaponsInventories.Any(i => i.InventoryId == hero.InventoryId && i.WeaponId == weaponId))
-            {
-                var weapon = await context.WeaponsInventories.FirstOrDefaultAsync(w => w.InventoryId == hero.InventoryId && w.WeaponId == weaponId);
+            var weaponInventory = await context.WeaponsInventories.FirstOrDefaultAsync(w => w.InventoryId == inventoryId && w.WeaponId == weaponId);
 
-                weapon.Count++;
+            if (weaponInventory != null)
+            {
+                weaponInventory.Count++;
             }
             else
             {
                 context.WeaponsInventories.Add(new WeaponInventory
                 {
-                    InventoryId = hero.InventoryId,
+                    InventoryId = inventoryId,
                     WeaponId = weaponId,
                 });
             }
         }
 
-        private async Task TrinketGenerate(List<int> stats, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
+        private async Task TrinketGenerate(int[] stats, int fightingClassNumber, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
             Trinket templateTrinket = new Trinket
             {
                 Name = "Trinket",
-                Strength = stats[0],
+                Level = stats[0],
                 Stamina = stats[1],
                 Intellect = stats[2],
                 Spirit = stats[3],
                 Agility = stats[4],
-                Level = stats[5],
+                Strength = stats[5],
                 Slot = "Trinket",
                 ImagePath = "https://gamepedia.cursecdn.com/wowpedia/4/43/Inv_trinket_80_alchemy02.png?version=95bdfece62d89349b5effa0bf80956d3",
+                MaterialType = "Wood",
             };
 
             templateTrinket.SellPrice = this.SellPriceCalculation(templateTrinket);
 
-            this.fightingClassStatCheck.Check(templateTrinket, fightingClassNumber, this.rng);
+            this.fightingClassStatCheck.Check(templateTrinket, fightingClassNumber, 0, this.rng);
 
             long trinketId;
 
-            if (!context.Trinkets.Contains(templateTrinket))
+            var trinket = await context.Trinkets.FirstOrDefaultAsync(t => t.Name == templateTrinket.Name
+               && t.Agility == templateTrinket.Agility && t.Stamina == templateTrinket.Stamina
+               && t.Strength == templateTrinket.Strength
+               && t.Level == templateTrinket.Level && t.Intellect == templateTrinket.Intellect && t.Spirit == templateTrinket.Spirit);
+
+            if (trinket == null)
             {
                 context.Trinkets.Add(templateTrinket);
                 await context.SaveChangesAsync(cancellationToken);
@@ -146,38 +154,106 @@
             }
             else
             {
-                var trinket = await context.Trinkets.FirstOrDefaultAsync(t => t.Name == templateTrinket.Name
-                && t.Agility == templateTrinket.Agility && t.Stamina == templateTrinket.Stamina
-                && t.Strength == templateTrinket.Strength
-                && t.Level == templateTrinket.Level && t.Intellect == templateTrinket.Intellect && t.Spirit == templateTrinket.Spirit
-                && t.ImagePath == templateTrinket.ImagePath);
-
                 trinketId = trinket.Id;
             }
 
-            if (context.TrinketsInventories.Any(i => i.InventoryId == hero.InventoryId && i.TrinketId == trinketId))
-            {
-                var trinket = await context.TrinketsInventories.FirstOrDefaultAsync(t => t.InventoryId == hero.InventoryId && t.TrinketId == trinketId);
+            var trinketInventory = await context.TrinketsInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.TrinketId == trinketId);
 
-                trinket.Count++;
+            if (trinketInventory != null)
+            {
+                trinketInventory.Count++;
             }
             else
             {
                 context.TrinketsInventories.Add(new TrinketInventory
                 {
-                    InventoryId = hero.InventoryId,
+                    InventoryId = inventoryId,
                     TrinketId = trinketId,
                 });
             }
         }
 
-        private async Task ArmorGenerate(List<int> stats, int fightingClassNumber, IFFDbContext context, Hero hero, CancellationToken cancellationToken)
+        private async Task RelicGenerate(int[] stats, int fightingClassNumber, int fightingClassStatNumber, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
+        {
+            var effect = string.Empty;
+
+            var effectRng = this.rng.Next(0, 7);
+
+            var effectPower = this.rng.Next(5, 15);
+
+            switch (effectRng)
+            {
+                case 0: effect = "Stamina"; effectPower += 5; break;
+                case 1: effect = "Intellect"; effectPower += 6; break;
+                case 2: effect = "Spirit"; break;
+                case 3: effect = "Strength"; break;
+                case 4: effect = "Agility"; break;
+                case 5: effect = "Armor"; effectPower += 5; break;
+                case 6: effect = "Resistance"; effectPower += 5; break;
+            }
+
+            Relic templateRelic = new Relic()
+            {
+                Level = stats[0],
+                Spirit = stats[1],
+                Strength = stats[2],
+                Stamina = stats[3],
+                Agility = stats[4],
+                Intellect = stats[5],
+                Slot = "Relic",
+                EffectPower = effectPower,
+                Effect = effect,
+                MaterialType = "Stone",
+                ImagePath = "https://gamepedia.cursecdn.com/wowpedia/d/da/Inv_relics_6orunestone_ogremissive.png?version=7c1047730b8614176a63133aada863fe",
+            };
+
+            templateRelic.SellPrice = this.SellPriceCalculation(templateRelic);
+
+            this.fightingClassStatCheck.Check(templateRelic, fightingClassNumber, fightingClassStatNumber, this.rng);
+
+            long relicId;
+
+            var relic = await context.Relics.FirstOrDefaultAsync(r => r.Name == templateRelic.Name
+                && r.Agility == templateRelic.Agility && r.Stamina == templateRelic.Stamina && r.Strength == templateRelic.Strength
+                && r.Level == templateRelic.Level && r.Intellect == templateRelic.Intellect && r.Spirit == templateRelic.Spirit && r.Effect == templateRelic.Effect
+                && r.EffectPower == templateRelic.EffectPower);
+
+            if (relic == null)
+            {
+                context.Relics.Add(templateRelic);
+
+                await context.SaveChangesAsync(cancellationToken);
+
+                relicId = templateRelic.Id;
+            }
+            else
+            {
+                relicId = relic.Id;
+            }
+
+            var relicInventory = await context.RelicsInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.RelicId == relicId);
+
+            if (relicInventory != null)
+            {
+                relicInventory.Count++;
+            }
+            else
+            {
+                context.RelicsInventories.Add(new RelicInventory
+                {
+                    InventoryId = inventoryId,
+                    RelicId = relicId,
+                });
+            }
+        }
+
+        private async Task ArmorGenerate(int[] stats, int fightingClassNumber, int fightingClassStatNumber, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
             Armor templateArmor = new Armor
             {
-                ArmorValue = stats[0],
+                Level = stats[0],
                 ResistanceValue = stats[1],
-                Level = stats[2],
+                ArmorValue = stats[2],
                 Spirit = stats[3],
                 Strength = stats[4],
                 Stamina = stats[5],
@@ -188,11 +264,16 @@
 
             templateArmor.SellPrice = this.SellPriceCalculation(templateArmor);
 
-            this.fightingClassStatCheck.Check(templateArmor, fightingClassNumber, this.rng);
+            this.fightingClassStatCheck.Check(templateArmor, fightingClassNumber, fightingClassStatNumber, this.rng);
 
-            long armorId = 0;
+            long armorId;
 
-            if (!context.Armors.Contains(templateArmor))
+            var armor = await context.Armors.FirstOrDefaultAsync(a => a.Name == templateArmor.Name
+                && a.ClassType == templateArmor.ClassType && a.ArmorValue == templateArmor.ArmorValue && a.ResistanceValue == templateArmor.ResistanceValue
+                && a.Agility == templateArmor.Agility && a.Stamina == templateArmor.Stamina && a.Strength == templateArmor.Strength
+                && a.Level == templateArmor.Level && a.Intellect == templateArmor.Intellect && a.Spirit == templateArmor.Spirit);
+
+            if (armor == null)
             {
                 context.Armors.Add(templateArmor);
 
@@ -202,26 +283,20 @@
             }
             else
             {
-                var armor = await context.Armors.FirstOrDefaultAsync(a => a.Name == templateArmor.Name
-                && a.ClassType == templateArmor.ClassType && a.ArmorValue == templateArmor.ArmorValue && a.ResistanceValue == templateArmor.ResistanceValue
-                && a.Agility == templateArmor.Agility && a.Stamina == templateArmor.Stamina && a.Strength == templateArmor.Strength
-                && a.Level == templateArmor.Level && a.Intellect == templateArmor.Intellect && a.Spirit == templateArmor.Spirit
-                && a.ImagePath == templateArmor.ImagePath);
-
                 armorId = armor.Id;
             }
 
-            if (context.ArmorsInventories.Any(i => i.InventoryId == hero.InventoryId && i.ArmorId == armorId))
-            {
-                var armor = await context.ArmorsInventories.FirstOrDefaultAsync(t => t.InventoryId == hero.InventoryId && t.ArmorId == armorId);
+            var armorInventory = await context.ArmorsInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.ArmorId == armorId);
 
-                armor.Count++;
+            if (armorInventory != null)
+            {
+                armorInventory.Count++;
             }
             else
             {
                 context.ArmorsInventories.Add(new ArmorInventory
                 {
-                    InventoryId = hero.InventoryId,
+                    InventoryId = inventoryId,
                     ArmorId = armorId,
                 });
             }

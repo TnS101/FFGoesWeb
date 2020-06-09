@@ -97,6 +97,12 @@
 
         DbSet<Friend> Friends { get; set; }
 
+        DbSet<Relic> Relics { get; set; }
+
+        DbSet<RelicEquipment> RelicsEquipments { get; set; }
+
+        DbSet<RelicInventory> RelicsInventories { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

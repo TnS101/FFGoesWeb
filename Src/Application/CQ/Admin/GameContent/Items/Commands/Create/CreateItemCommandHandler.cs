@@ -81,7 +81,7 @@
                 IsCraftable = false,
                 Slot = request.Slot,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
-                Type = request.MaterialType,
+                MaterialType = request.MaterialType,
             };
 
             this.Context.Weapons.Add(weapon);
@@ -110,7 +110,7 @@
                 BuyPrice = request.BuyPrice,
                 IsCraftable = false,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
-                Type = request.MaterialType,
+                MaterialType = request.MaterialType,
             };
 
             this.Context.Armors.Add(armor);
@@ -137,7 +137,7 @@
                 Slot = request.Slot,
                 IsCraftable = false,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
-                Type = request.MaterialType,
+                MaterialType = request.MaterialType,
             };
 
             this.Context.Trinkets.Add(trinket);

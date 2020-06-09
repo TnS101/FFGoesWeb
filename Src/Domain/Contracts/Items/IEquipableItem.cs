@@ -24,7 +24,7 @@
 
         string ImagePath { get; set; }
 
-        string Type { get; set; }
+        string MaterialType { get; set; }
 
         int BuyPrice { get; set; }
 

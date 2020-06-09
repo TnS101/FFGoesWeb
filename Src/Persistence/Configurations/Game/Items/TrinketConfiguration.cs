@@ -24,7 +24,7 @@
                 .HasMaxLength(200)
                 .IsRequired();
 
-            builder.Property(t => t.Type)
+            builder.Property(t => t.MaterialType)
                 .HasMaxLength(30)
                 .IsRequired();
         }

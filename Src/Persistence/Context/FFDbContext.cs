@@ -104,6 +104,12 @@
 
         public DbSet<Friend> Friends { get; set; }
 
+        public DbSet<Relic> Relics { get; set; }
+
+        public DbSet<RelicEquipment> RelicsEquipments { get; set; }
+
+        public DbSet<RelicInventory> RelicsInventories { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

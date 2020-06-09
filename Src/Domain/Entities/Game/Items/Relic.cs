@@ -39,7 +39,7 @@
 
         public string ImagePath { get; set; }
 
-        public string Type { get; set; }
+        public string MaterialType { get; set; }
 
         public int BuyPrice { get; set; }
 

@@ -1,7 +1,6 @@
 ﻿namespace Application.GameContent.Utilities.Generators
 {
     using System;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
@@ -14,27 +13,27 @@
         {
             var rng = new Random();
             var slotCheck = new SlotCheck();
-            var stats = new List<int>();
+            var stats = new int[] { hero.Level == 1 ? rng.Next(hero.Level, hero.Level + 2) : rng.Next(hero.Level - 1, hero.Level + 3) };
 
             int fightingClassStatNumber = rng.Next(hero.Level, hero.Level + 5);
-            int slotNumber = rng.Next(0, 10);
+            int slotNumber = rng.Next(0, 12);
             int fightingClassNumber = rng.Next(0, 10);
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 1; i < 8; i++)
             {
                 int statNumber = rng.Next(0, 10);
 
                 if (statNumber <= 6)
                 {
-                    stats.Add(hero.Level);
+                    stats[i] = stats[0];
                 }
                 else if (statNumber > 6 && statNumber <= 8)
                 {
-                    stats.Add(hero.Level * 2);
+                    stats[i] = stats[0] + hero.Level;
                 }
                 else
                 {
-                    stats.Add(hero.Level * 3);
+                    stats[i] = stats[0] + (hero.Level * 2);
                 }
             }
 

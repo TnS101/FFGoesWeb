@@ -41,6 +41,8 @@
 
         public bool WeaponSlot { get; set; }
 
+        public bool RelicSlot { get; set; }
+
         public ICollection<ArmorEquipment> ArmorEquipments { get; set; }
 
         public ICollection<TrinketEquipment> TrinketEquipments { get; set; }
