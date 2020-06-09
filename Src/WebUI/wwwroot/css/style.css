@@ -10,12 +10,45 @@ html {
  font-size: 75px;
 }
 
-.healthBar {
- background-color: green;
+progress {
+	display:inline-block;
+	width:200px;
+	height:30px;
+	padding:15px 0 0 0;
+	margin:0;
+	background:none;
+	border: 0;
+	border-radius: 15px;
+	text-align: left;
+	position:relative;
 }
 
-.player-healthBar {
- margin-right: 100px
+progress::-webkit-progress-bar {
+	height:14px;
+	width:200px;
+	margin:0 auto;
+	background-color: #eaeaea;
+	border-radius: 15px;
+	box-shadow:0px 2px 5px #777 inset;
+}
+
+progress::-webkit-progress-value {
+	display:inline-block;
+	float:left;
+	height:14px;
+ background-color: #2d364c;
+	margin:0px -10px 0 0;
+	border-radius: 15px;
+	box-shadow:0px 1px 4px #666 inset;
+}
+
+
+.healthBar::-webkit-progress-value {
+ background: #f33066;
+}
+
+.manaBar::-webkit-progress-value {
+ background: #1db5e6;
 }
 
 .versus {
@@ -23,14 +56,6 @@ html {
  font-size: 50px;
  margin-top: -60px;
  margin-bottom: -20px
-}
-
-.manaBar {
- background-color: deepskyblue;
-}
-
-.player-manaBar {
- margin-right: 100px;
 }
 
 main.ng-enter {
@@ -52,7 +77,7 @@ html {
  position: fixed;
  z-index: 1000;
  padding-top: -100px;
- width:100%;
+ width: 100%;
 }
 
 article,
@@ -1227,9 +1252,8 @@ p.has-background {
   border-width: 0;
  }
 
- .starting-div
- {
-  padding-top:600px;
+ .starting-div {
+  padding-top: 600px;
  }
 
  .toggle-nav {

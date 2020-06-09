@@ -13,12 +13,14 @@
             <progress id="enemyDamage" value="@Model.Enemy.CurrentAttackPower" hidden></progress>
             <br />
             <div>
-                <progress class="player-healthBar" id="playerHealth" value="@(Model.Hero.CurrentHP + 1)" max="@Model.Hero.MaxHP"></progress>
+                <progress class="healthBar" id="playerHealth" value="@(Model.Hero.CurrentHP + 1)" max="@Model.Hero.MaxHP" style="margin-right: 100px"></progress>
                 <progress class="healthBar" id="enemyHealth" value="@Model.Enemy.CurrentHP" max="@Model.Enemy.MaxHP"></progress>
-                <br />
-                <br />
-                <progress class="player-manaBar" id="playerMana" value="@Model.Hero.CurrentMana" max="@Model.Hero.MaxMana"></progress>
-                <progress class="manaBar" id="enemyMana" value="@Model.Enemy.CurrentMana" max="@Model.Enemy.MaxMana"></progress>
+
+                <div class="item-padding progress-bar bg-info">
+                    <progress class="manaBar" id="playerMana" value="@Model.Hero.CurrentMana" max="@Model.Hero.MaxMana" style="margin-right: 100px"></progress>
+                    <progress class="manaBar" id="enemyMana" value="@Model.Enemy.CurrentMana" max="@Model.Enemy.MaxMana"></progress>
+                </div>
+
                 <div class="item-padding"><hr /></div>
             </div>
             <div class="item-padding">
@@ -50,24 +52,50 @@
         {
             <script src="~/js/battle.js"></script>
             <script>
-                Action = (data) => {
-                    if (data.status == 200) {
-                        let hero = data.responseJSON.battleUnits.hero;
-                        let enemy = data.responseJSON.battleUnits.enemy;
+                $(document).ready(function () {
 
-                        document.getElementById('playerHealth').value = hero.currentHP;
-                        document.getElementById('enemyHealth').value = enemy.currentHP;
-                        document.getElementById('playerMana').value = hero.currentMana;
-                        document.getElementById('enemyMana').value = enemy.currentMana;
+                    if (document.getElementById('playerHealth').value <= 0 || document.getElementById('enemyHealth').value <= 0) {
+                        window.location.href = "/Hero/All";
+                    }
 
-                        if (hero.currentHP <= 0) {
-                            window.location.href = "/Hero/Killed";
-                        } else if (enemy.currentHP <= 0)
-                        {
-                            window.location.href = "/Battle/End";
+                    Action = (data) => {
+                        if (data.status == 200) {
+                            let hero = data.responseJSON.battleUnits.hero;
+                            let enemy = data.responseJSON.battleUnits.enemy;
+
+                            function update(progress, max) {
+                                var msecsPerUpdate = 1000 / 60;
+                                var duration = 3;
+                                var interval = max / (duration * 1000 / msecsPerUpdate);
+                                var bar = $(progress);
+
+                                function animator() {
+                                    bar.val(bar.val() - interval);
+                                    if (bar.val() - interval > max) {
+                                        setTimeout(animator, msecsPerUpdate);
+                                    } else {
+                                        bar.val(max);
+                                    }
+                                }
+                                animator();
+                            }
+
+                            update('#playerHealth',hero.currentHP);
+                            update('#enemyHealth', enemy.currentHP);
+                            update('#playerMana', hero.currentMana);
+                            update('#enemyMana', hero.currentMana);
+
+                            if (hero.currentHP <= 0) {
+                                window.location.href = "/Hero/Killed";
+                            } else if (enemy.currentHP <= 0) {
+                                window.location.href = "/Battle/End";
+                            }
+
+                        } else {
+                            window.alert('Something Went Wrong :(');
                         }
                     }
-                }
+                });
 
             </script>
         }

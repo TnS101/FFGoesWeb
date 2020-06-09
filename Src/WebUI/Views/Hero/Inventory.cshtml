@@ -25,15 +25,18 @@
                         {
                             <p class="main-font-color has-normal-font-size">Required Level : @item.Level</p>
 
-                            @if (item.ClassType == "Any" || item.ClassType == Model.HeroClass && item.Level <= Model.HeroLevel)
+                            @if (item.ClassType == "Any" || item.ClassType == Model.HeroClass)
                             {
-                                <form asp-controller="Hero" asp-action="Equip" method="post">
-                                    <input type="hidden" name="id" value="@item.Id" />
-                                    <input type="hidden" name="command" value="Equip" />
-                                    <input type="hidden" name="slot" value="@item.Slot" />
-                                    <input type="hidden" name="heroId" value="@heroId" />
-                                    <input type="submit" name="action" value="Equip" class="main-button" />
-                                </form>
+                                if (item.Level <= Model.HeroLevel)
+                                {
+                                    <form asp-controller="Hero" asp-action="Equip" method="post">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <input type="hidden" name="command" value="Equip" />
+                                        <input type="hidden" name="slot" value="@item.Slot" />
+                                        <input type="hidden" name="heroId" value="@heroId" />
+                                        <input type="submit" name="action" value="Equip" class="main-button" />
+                                    </form>
+                                }
                             }
                         }
                         else

@@ -4,7 +4,6 @@
     using Application.GameCQ.Battles.Commands.Delete;
     using Application.GameCQ.Battles.Commands.Update;
     using Application.GameCQ.Battles.Queries.GetBattleUnitsQuery;
-    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Heroes.Queries.GetPartialUnitQuery;
     using Application.GameCQ.Monsters.Commands.Create;
     using Domain.Entities.Game.Units;
