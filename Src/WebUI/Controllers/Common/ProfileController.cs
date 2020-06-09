@@ -7,7 +7,6 @@
     using Application.CQ.Users.Queries.GetCurrentUser;
     using Application.CQ.Users.Queries.Panel;
     using Application.CQ.Users.Statuses.Commands.Update;
-    using Application.CQ.Users.Statuses.Queries;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;
@@ -22,16 +21,10 @@
             return this.View(await this.Mediator.Send(new UserPanelQuery { UserId = this.UserManager.GetUserId(this.User) }));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Status()
-        {
-            return this.PartialView("_Statuses", await this.Mediator.Send(new GetAllStatusesQuery { }));
-        }
-
         [HttpGet("/UpdateStatus/id")]
         public async Task<IActionResult> UpdateStatus([FromQuery]int id)
         {
-            return this.Redirect(await this.Mediator.Send(new UpdateStatusCommand { StatusId = id, UserId = this.UserManager.GetUserId(this.User) }));
+            return this.Json(await this.Mediator.Send(new UpdateStatusCommand { StatusId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet]

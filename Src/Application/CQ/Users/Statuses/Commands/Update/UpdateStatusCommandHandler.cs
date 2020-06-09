@@ -4,30 +4,25 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
+    using AutoMapper;
     using Domain.Entities.Social;
-    using global::Common;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class UpdateStatusCommandHandler : BaseHandler, IRequestHandler<UpdateStatusCommand, string>
+    public class UpdateStatusCommandHandler : MapperHandler, IRequestHandler<UpdateStatusCommand, StatusMinViewModel>
     {
-        public UpdateStatusCommandHandler(IFFDbContext context)
-            : base(context)
+        public UpdateStatusCommandHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
         }
 
-        public async Task<string> Handle(UpdateStatusCommand request, CancellationToken cancellationToken)
+        public async Task<StatusMinViewModel> Handle(UpdateStatusCommand request, CancellationToken cancellationToken)
         {
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var userStatus = await this.Context.UserStatuses.SingleOrDefaultAsync(us => us.UserId == user.Id);
 
             this.Context.UserStatuses.Remove(userStatus);
-
-            if (request.StatusId == 0)
-            {
-                return $"{GConst.ProfileRedirect}#statuses";
-            }
 
             this.Context.UserStatuses.Add(new UserStatus
             {
@@ -37,7 +32,9 @@
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return $"{GConst.ProfileRedirect}#statuses";
+            var status = await this.Context.Statuses.FindAsync(request.StatusId);
+
+            return this.Mapper.Map<StatusMinViewModel>(status);
         }
     }
 }

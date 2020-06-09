@@ -11,40 +11,114 @@ html {
 }
 
 progress {
-	display:inline-block;
-	width:200px;
-	height:30px;
-	padding:15px 0 0 0;
-	margin:0;
-	background:none;
-	border: 0;
-	border-radius: 15px;
-	text-align: left;
-	position:relative;
+ display: inline-block;
+ width: 200px;
+ height: 10px;
+ padding: 15px 0 0 0;
+ margin: 0;
+ background: none;
+ border: 0;
+ border-radius: 15px;
+ text-align: left;
+ position: relative;
 }
 
-progress::-webkit-progress-bar {
-	height:14px;
-	width:200px;
-	margin:0 auto;
-	background-color: #eaeaea;
-	border-radius: 15px;
-	box-shadow:0px 2px 5px #777 inset;
-}
+ progress::-webkit-progress-bar {
+  height: 14px;
+  width: 200px;
+  margin: 0 auto;
+  background-color: #eaeaea;
+  border-radius: 15px;
+  box-shadow: 0px 2px 5px #777 inset;
+ }
 
-progress::-webkit-progress-value {
-	display:inline-block;
-	float:left;
-	height:14px;
- background-color: #2d364c;
-	margin:0px -10px 0 0;
-	border-radius: 15px;
-	box-shadow:0px 1px 4px #666 inset;
-}
-
+ progress::-webkit-progress-value {
+  display: inline-block;
+  float: left;
+  height: 14px;
+  background-color: #2d364c;
+  margin: 0px -10px 0 0;
+  border-radius: 15px;
+  box-shadow: 0px 1px 4px #666 inset;
+ }
 
 .healthBar::-webkit-progress-value {
- background: #f33066;
+ background: rgb(184,0,0);
+ background: linear-gradient(90deg, rgba(184,0,0,1) 0%, rgba(255,0,0,0.5802696078431373) 44%, rgba(0,255,111,1) 100%);
+}
+
+.attack-option-gradient {
+    background: linear-gradient(228deg, #c81212, #c9df19, #df7b19);
+    background-size: 600% 600%;
+    -webkit-animation: ATO1 7s ease infinite;
+    -moz-animation: ATO2 7s ease infinite;
+    animation: ATO3 7s ease infinite;
+}
+
+@-webkit-keyframes ATO1 {
+    0%{background-position:75% 0%}
+    50%{background-position:26% 100%}
+    100%{background-position:75% 0%}
+}
+@-moz-keyframes ATO2 {
+    0%{background-position:75% 0%}
+    50%{background-position:26% 100%}
+    100%{background-position:75% 0%}
+}
+@keyframes ATO3 {
+    0%{background-position:75% 0%}
+    50%{background-position:26% 100%}
+    100%{background-position:75% 0%}
+}
+
+.spell-option-gradient {
+    background: linear-gradient(107deg, #130b8e, #0dd4df, #961de8);
+    background-size: 600% 600%;
+
+    -webkit-animation: SO1 7s ease infinite;
+    -moz-animation: SO2 7s ease infinite;
+    animation: SO3 7s ease infinite;
+}
+
+@-webkit-keyframes SO1 {
+    0%{background-position:75% 0%}
+    50%{background-position:26% 100%}
+    100%{background-position:75% 0%}
+}
+@-moz-keyframes SO2 {
+    0%{background-position:75% 0%}
+    50%{background-position:26% 100%}
+    100%{background-position:75% 0%}
+}
+@keyframes SO3 {
+    0%{background-position:75% 0%}
+    50%{background-position:26% 100%}
+    100%{background-position:75% 0%}
+}
+
+.defend-option-gradient {
+    background: linear-gradient(107deg, #000000, #7b7f7f, #fbfbfb);
+    background-size: 600% 600%;
+
+    -webkit-animation: DO1 7s ease infinite;
+    -moz-animation: DO2 7s ease infinite;
+    animation: DO3 7s ease infinite;
+}
+
+@-webkit-keyframes DO1 {
+    0%{background-position:75% 0%}
+    50%{background-position:26% 100%}
+    100%{background-position:75% 0%}
+}
+@-moz-keyframes DO2 {
+    0%{background-position:75% 0%}
+    50%{background-position:26% 100%}
+    100%{background-position:75% 0%}
+}
+@keyframes DO3 {
+    0%{background-position:75% 0%}
+    50%{background-position:26% 100%}
+    100%{background-position:75% 0%}
 }
 
 .manaBar::-webkit-progress-value {

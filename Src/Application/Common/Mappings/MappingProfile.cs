@@ -14,6 +14,7 @@
     using Application.CQ.Social.Notifications.Queries.GetPersonalNotificationsQuery;
     using Application.CQ.Social.Topics.Queries.GetCurrentTopicQuery;
     using Application.CQ.Users.Feedbacks.Queries;
+    using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
     using Application.GameCQ.Battles.Queries.GetBattleUnitsQuery;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
@@ -70,6 +71,7 @@
             this.CreateMap<Like, LikeFullViewModel>();
             this.CreateMap<Hero, BattleUnitViewModel>();
             this.CreateMap<Monster, BattleUnitViewModel>();
+            this.CreateMap<Status, StatusMinViewModel>();
         }
     }
 }

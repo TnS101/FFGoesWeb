@@ -75,6 +75,7 @@
     using Application.GameCQ.Treasures.Commands.Update;
     using Application.GameCQ.World.Commands.Update;
     using Domain.Entities.Game.Units;
+    using Domain.Entities.Social;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -150,7 +151,7 @@
             services.AddScoped<IRequestHandler<DeleteMessageCommand, string>, DeleteMessageCommandHandler>();
             services.AddScoped<IRequestHandler<EditMessageCommand, string>, EditMessageCommandHandler>();
             services.AddScoped<IRequestHandler<SelectHeroCommand, string>, SelectHeroCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateStatusCommand, string>, UpdateStatusCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateStatusCommand, StatusMinViewModel>, UpdateStatusCommandHandler>();
             services.AddScoped<IRequestHandler<ExploreCommand, string>, ExploreCommandHandler>();
             services.AddScoped<IRequestHandler<SendFeedbackCommand, string>, SendFeedbackCommandHandler>();
             services.AddScoped<IRequestHandler<OpenTicketCommand, string>, OpenTicketCommandHandler>();

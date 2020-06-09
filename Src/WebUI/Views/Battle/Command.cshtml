@@ -38,7 +38,7 @@
                             }
                         </select>
                     </div>
-                    <div class="item-padding">
+                    <div class="item-padding" id="button">
                         <input type="submit" class="main-button" name="button" id="action" value="Action" />
                     </div>
                 </form>
@@ -80,7 +80,7 @@
                                 animator();
                             }
 
-                            update('#playerHealth',hero.currentHP);
+                            update('#playerHealth', hero.currentHP);
                             update('#enemyHealth', enemy.currentHP);
                             update('#playerMana', hero.currentMana);
                             update('#enemyMana', hero.currentMana);
