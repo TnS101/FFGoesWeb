@@ -58,6 +58,15 @@
 
                 this.MainStatSum(hero, trinket, "+");
             }
+
+            if (heroEquipment.RelicSlot)
+            {
+                var relicEquipment = await context.RelicsEquipments.FirstOrDefaultAsync(r => r.EquipmentId == heroEquipment.Id);
+
+                var relic = await context.Relics.FindAsync(relicEquipment.RelicId);
+
+                this.MainStatSum(hero, relic, "+");
+            }
         }
 
         public async Task ReverseSum(Hero hero, IFFDbContext context, long itemId, string itemSlot)
@@ -75,6 +84,12 @@
                 var trinket = await context.Trinkets.FindAsync(itemId);
 
                 this.MainStatSum(hero, trinket, "-");
+            }
+            else if (itemSlot == "Relic")
+            {
+                var relic = await context.Relics.FindAsync(itemId);
+
+                this.MainStatSum(hero, relic, "-");
             }
             else
             {

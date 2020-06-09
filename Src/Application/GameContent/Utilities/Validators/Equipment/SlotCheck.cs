@@ -42,24 +42,32 @@
 
         public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, Monster monster, string zoneName, CancellationToken cancellationToken)
         {
-            if (slotNumber == 0)
+            if (zoneName == "World")
             {
-                await this.WeaponGenerate(fightingClassNumber, fightingClassStatNumber, stats, context, hero.InventoryId, cancellationToken);
-            }
-            else if (slotNumber == 1)
-            {
-                await this.TrinketGenerate(stats, fightingClassNumber, context, hero.InventoryId, cancellationToken);
-            }
-            else if (slotNumber == 2 || slotNumber == 3)
-            {
-                await this.ArmorGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, hero.InventoryId, cancellationToken);
-            }
-            else if (slotNumber == 4 || slotNumber == 5)
-            {
-                await this.TreasureKeyGenerate(context, hero.InventoryId);
-            }else if (slotNumber == 6)
-            {
-                await this.RelicGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, hero.InventoryId, cancellationToken);
+                if (slotNumber == 0)
+                {
+                    await this.WeaponGenerate(fightingClassNumber, fightingClassStatNumber, stats, context, hero.InventoryId, cancellationToken);
+                }
+                else if (slotNumber == 1)
+                {
+                    await this.TrinketGenerate(stats, fightingClassNumber, context, hero.InventoryId, cancellationToken);
+                }
+                else if (slotNumber == 2 || slotNumber == 3)
+                {
+                    await this.ArmorGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, hero.InventoryId, cancellationToken);
+                }
+                else if (slotNumber == 4 || slotNumber == 5)
+                {
+                    await this.TreasureKeyGenerate(context, hero.InventoryId);
+                }
+                else if (slotNumber == 6)
+                {
+                    await this.RelicGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, hero.InventoryId, cancellationToken);
+                }
+                else
+                {
+                    await this.ZoneVariety(zoneName, context, hero.InventoryId, monster);
+                }
             }
             else
             {
@@ -343,10 +351,10 @@
                 treasureKeyId = 3; // Bronze
             }
 
-            if (context.TreasureKeysInventories.Any(i => i.InventoryId == inventoryId && i.TreasureKeyId == treasureKeyId))
-            {
-                var treasureKey = await context.TreasureKeysInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.TreasureKeyId == treasureKeyId);
+            var treasureKey = await context.TreasureKeysInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.TreasureKeyId == treasureKeyId);
 
+            if (treasureKey != null)
+            {
                 treasureKey.Count++;
             }
             else
@@ -378,11 +386,11 @@
 
             var material = await context.Materials.FirstOrDefaultAsync(m => m.Name == materialName);
 
-            if (context.MaterialsInventories.Any(i => i.InventoryId == inventoryId && i.MaterialId == material.Id))
-            {
-                var materialFromInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.MaterialId == material.Id);
+            var materialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.MaterialId == material.Id);
 
-                materialFromInventory.Count++;
+            if (materialInventory != null)
+            {
+                materialInventory.Count++;
             }
             else
             {
