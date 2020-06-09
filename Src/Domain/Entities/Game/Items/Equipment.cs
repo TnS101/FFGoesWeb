@@ -11,6 +11,7 @@
             this.WeaponEquipments = new HashSet<WeaponEquipment>();
             this.ArmorEquipments = new HashSet<ArmorEquipment>();
             this.TrinketEquipments = new HashSet<TrinketEquipment>();
+            this.RelicEquipments = new HashSet<RelicEquipment>();
             this.HeroId = heroId;
         }
 
@@ -45,5 +46,7 @@
         public ICollection<TrinketEquipment> TrinketEquipments { get; set; }
 
         public ICollection<WeaponEquipment> WeaponEquipments { get; set; }
+
+        public ICollection<RelicEquipment> RelicEquipments { get; set; }
     }
 }

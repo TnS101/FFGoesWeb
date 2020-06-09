@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class ArmorEquipmentsConfiguration : IEntityTypeConfiguration<ArmorEquipment>
+    public class ArmorEquipmentConfiguration : IEntityTypeConfiguration<ArmorEquipment>
     {
         public void Configure(EntityTypeBuilder<ArmorEquipment> builder)
         {

@@ -16,6 +16,7 @@
             this.TreasureInventories = new HashSet<TreasureInventory>();
             this.ConsumeableInventories = new HashSet<ConsumeableInventory>();
             this.ToolInventories = new HashSet<ToolInventory>();
+            this.RelicInventories = new HashSet<RelicInventory>();
             this.HeroId = heroId;
         }
 
@@ -42,5 +43,7 @@
         public ICollection<TreasureKeyInventory> TreasureKeyInventories { get; set; }
 
         public ICollection<ToolInventory> ToolInventories { get; set; }
+
+        public ICollection<RelicInventory> RelicInventories { get; set; }
     }
 }

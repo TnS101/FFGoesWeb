@@ -9,7 +9,7 @@
         <div class="item-padding">
             <h2 class="main-font-color has-large-font-size">Social</h2>
             <div>
-                <h3 class="item-padding">Your status is <i id="show" class="@Model.StatusIClass has-huge-font-size main-font-color" style="cursor: pointer;"></i></h3>
+                <h3 class="item-padding">Your status is <i id="show" class="@Model.StatusIClass has-huge-font-size main-font-color"></i></h3>
             </div>
             <cache vary-by="@Model.Statuses">
                 <div id="statuses" class="fade-in" style="display:none">
@@ -17,7 +17,7 @@
                         <ul id="primary-menu" style="list-style:none; margin-bottom:32px">
                             @foreach (var status in Model.Statuses)
                             {
-                                <li><a data-ajax="true" data-ajax-url="/UpdateStatus/id?id=@status.Id" data-ajax-complete="Action"><i class="@status.IClass has-huge-font-size main-font-color"></i></a></li>
+                                <li><a data-ajax="true" data-ajax-url="/UpdateStatus/id?id=@status.Id" data-ajax-complete="Action"><i class="@status.IClass has-huge-font-size main-font-color" style="cursor: pointer;"></i></a></li>
                             }
                         </ul>
                     </div>
