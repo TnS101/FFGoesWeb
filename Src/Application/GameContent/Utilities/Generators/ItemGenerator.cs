@@ -13,7 +13,8 @@
         {
             var rng = new Random();
             var slotCheck = new SlotCheck();
-            var stats = new int[] { hero.Level == 1 ? rng.Next(hero.Level, hero.Level + 2) : rng.Next(hero.Level - 1, hero.Level + 3) };
+            var stats = new int[8];
+            stats[0] = hero.Level == 1 ? rng.Next(hero.Level, hero.Level + 2) : rng.Next(hero.Level - 1, hero.Level + 3);
 
             int fightingClassStatNumber = rng.Next(hero.Level, hero.Level + 5);
             int slotNumber = rng.Next(0, 13);

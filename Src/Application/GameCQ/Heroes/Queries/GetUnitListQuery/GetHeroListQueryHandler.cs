@@ -131,7 +131,7 @@
                         }
                         else if (energyChange.Type == "Mana")
                         {
-                            hero.CurrentMana += 0.1 * hero.MaxMana;
+                            hero.CurrentMana += 0.1 * hero.MaxMana * recoveryTimes;
 
                             if (hero.CurrentMana > hero.MaxMana)
                             {
