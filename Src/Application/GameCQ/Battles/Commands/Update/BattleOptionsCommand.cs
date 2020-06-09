@@ -1,12 +1,12 @@
 ﻿namespace Application.GameCQ.Battles.Commands.Update
 {
-    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
+    using Application.GameCQ.Battles.Queries.GetBattleUnitsQuery;
     using Domain.Entities.Game.Units;
     using MediatR;
 
     public class BattleOptionsCommand : IRequest<string>
     {
-        public UnitFullViewModel Hero { get; set; }
+        public long HeroId { get; set; }
 
         public Monster Enemy { get; set; }
 

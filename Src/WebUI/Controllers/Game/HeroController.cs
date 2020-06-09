@@ -90,5 +90,11 @@
         {
             return this.Redirect(await this.Mediator.Send(new SelectHeroCommand { HeroId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
+
+        [HttpGet]
+        public IActionResult Killed()
+        {
+            return this.View();
+        }
     }
 }

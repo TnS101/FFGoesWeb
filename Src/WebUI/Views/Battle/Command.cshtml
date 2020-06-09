@@ -1,4 +1,4 @@
-﻿@model Application.GameCQ.Battles.Queries.GetBattleUnitsQuery.BattleUnitsViewModel
+﻿@model Application.GameCQ.Battles.Queries.GetBattleUnitsQuery.BattleUnitsListViewModel
 <title>Command</title>
 <partial name="_WorldNavBar">
 
@@ -22,7 +22,7 @@
                 <div class="item-padding"><hr /></div>
             </div>
             <div class="item-padding">
-                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/api/Battle/Command" data-ajax-complete="Action">
+                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Battle/Command" data-ajax-complete="Action">
                     <select class="command" name="command">
                         <option value="Attack">Attack</option>
                         <option value="Defend">Defend</option>
@@ -48,15 +48,26 @@
     <partial name="_Footer">
         @section scripts
         {
+            <script src="~/js/battle.js"></script>
             <script>
                 Action = (data) => {
                     if (data.status == 200) {
-                        document.getElementById('playerHealth').value = data.responseJSON.battleUnits.hero.currentHP;
-                    } else {
-                        console.log('Jivi i zdravi');
+                        let hero = data.responseJSON.battleUnits.hero;
+                        let enemy = data.responseJSON.battleUnits.enemy;
+
+                        document.getElementById('playerHealth').value = hero.currentHP;
+                        document.getElementById('enemyHealth').value = enemy.currentHP;
+                        document.getElementById('playerMana').value = hero.currentMana;
+                        document.getElementById('enemyMana').value = enemy.currentMana;
+
+                        if (hero.currentHP <= 0) {
+                            window.location.href = "/Hero/Killed";
+                        } else if (enemy.currentHP <= 0)
+                        {
+                            window.location.href = "/Battle/End";
+                        }
                     }
                 }
 
             </script>
-            <script src="~/js/battle.js"></script>
         }

@@ -4,9 +4,9 @@
     using Domain.Entities.Game.Units;
     using MediatR;
 
-    public class GetBattleUnitsQuery : IRequest<BattleUnitsViewModel>
+    public class GetBattleUnitsQuery : IRequest<BattleUnitsListViewModel>
     {
-        public UnitFullViewModel Hero { get; set; }
+        public long HeroId { get; set; }
 
         public Monster Enemy { get; set; }
     }

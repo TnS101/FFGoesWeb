@@ -50,6 +50,7 @@
     using Application.CQ.Users.Statuses.Commands.Update;
     using Application.CQ.Users.Statuses.Queries;
     using Application.CQ.Users.Tickets.Commands.Create;
+    using Application.GameCQ.Battles.Commands.Delete;
     using Application.GameCQ.Battles.Commands.Update;
     using Application.GameCQ.Battles.Queries.GetBattleUnitsQuery;
     using Application.GameCQ.Equipments.Commands.Update;
@@ -156,6 +157,7 @@
             services.AddScoped<IRequestHandler<LeaveLikeCommand, string>, LeaveLikeCommandHandler>();
             services.AddScoped<IRequestHandler<DislikeCommand, string>, DislikeCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveFriendCommand, string>, RemoveFriendCommandHandler>();
+            services.AddScoped<IRequestHandler<EndBattleCommand, long>, EndBattleCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)
@@ -180,7 +182,7 @@
             services.AddScoped<IRequestHandler<GetPersonalNotificationsQuery, NotificationListViewModel>, GetPersonalNotificationsQueryHandler>();
             services.AddScoped<IRequestHandler<GetUnitIdQuery, UnitIdViewModel>, GetUnitIdQueryHandler>();
             services.AddScoped<IRequestHandler<GetCurrentUserQuery, UserPartialViewModel>, GetCurrentUserQueryHandler>();
-            services.AddScoped<IRequestHandler<GetBattleUnitsQuery, BattleUnitsViewModel>, GetBattleUnitsQueryHandler>();
+            services.AddScoped<IRequestHandler<GetBattleUnitsQuery, BattleUnitsListViewModel>, GetBattleUnitsQueryHandler>();
             services.AddScoped<IRequestHandler<GetCurrentFightingClassQuery, FightingClassFullViewModel>, GetCurrentFightingClassQueryHandler>();
         }
 

@@ -3,37 +3,35 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class GetBattleUnitsQueryHandler : IRequestHandler<GetBattleUnitsQuery, BattleUnitsViewModel>
+    public class GetBattleUnitsQueryHandler : MapperHandler, IRequestHandler<GetBattleUnitsQuery, BattleUnitsListViewModel>
     {
-        private readonly IMapper mapper;
-        private readonly IFFDbContext context;
-
         public GetBattleUnitsQueryHandler(IMapper mapper, IFFDbContext context)
+            : base(context, mapper)
         {
-            this.mapper = mapper;
-            this.context = context;
         }
 
-        public async Task<BattleUnitsViewModel> Handle(GetBattleUnitsQuery request, CancellationToken cancellationToken)
+        public async Task<BattleUnitsListViewModel> Handle(GetBattleUnitsQuery request, CancellationToken cancellationToken)
         {
-            var hero = request.Hero;
+            var dbHero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-            foreach (var spell in await this.context.Spells.Where(s => s.FightingClassId == hero.FightingClassId).ToListAsync())
+            var hero = this.Mapper.Map<BattleUnitViewModel>(dbHero);
+
+            foreach (var spell in await this.Context.Spells.Where(s => s.FightingClassId == dbHero.FightingClassId).ToListAsync())
             {
-                hero.Spells.Add(this.mapper.Map<SpellMinViewModel>(spell));
+                hero.Spells.Add(this.Mapper.Map<SpellMinViewModel>(spell));
             }
 
-            return new BattleUnitsViewModel
+            return new BattleUnitsListViewModel
             {
-                Hero = request.Hero,
-                Enemy = this.mapper.Map<UnitFullViewModel>(request.Enemy),
+                Hero = hero,
+                Enemy = this.Mapper.Map<BattleUnitViewModel>(request.Enemy),
             };
         }
     }

@@ -37,7 +37,7 @@
         public const string OpenTicketRedirect = "/Social/TicketSent";
         public const string OpenMessageTicketRedirect = "Profile/Friends/Chat{0}";
         public const string TicketCommandRedirect = "/Moderator/Mod";
-        public const string HeroCommandRedirect = @"\Hero\All";
+        public const string HeroCommandRedirect = "/Hero/All";
         public const string WorldRedirect = "/World/Home";
         public const string ProfileRedirect = "/Profile/Panel";
         public const string NotEnoughEnergyRedirect = "/EnergyError";
@@ -45,6 +45,7 @@
         public const string EnemyEncounterRedirect = "EnemyEncounter";
         public const string HeroCreationErrorRedirect = "/Hero/Create";
         public const string SuccesfulFeedbackRedirect = @"\FeedbackSuccess";
+        public const string Battle = @"\Battle";
         public const string ErrorRedirect = @"\Error\Default";
         public const string EquipmentCommandRedirect = "/Hero/Equipment/id%26slot?id={0}&slot={1}";
         public const string InventoryCommandRedirect = "/Hero/Inventory/id%26slot?id={0}&slot={1}";
@@ -110,11 +111,11 @@
         public const string SampleEntityDescription = "Sample {0}. This {0} does not reffer to any actual content!";
 
         // Battle Commands
-        public const string EscapeCommand = @"\Escape";
+        public const string EscapeCommand = "/Battle/Escape";
         public const string BattleCommand = @"\Command";
-        public const string LevelUp = @"Unit\LevelUp";
-        public const string End = @"\End";
-        public const string UnitKilled = @"\Killed";
+        public const string LevelUp = "/Unit/LevelUp";
+        public const string End = "/Battle/End";
+        public const string UnitKilled = "/Battle/Killed";
 
         // Filters (Regex)
         public const string UsernameFilter = @"[0-9]*[a-z]+[0-9]*";

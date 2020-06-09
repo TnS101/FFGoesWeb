@@ -1,6 +1,7 @@
 ﻿namespace WebUI.Controllers.Game
 {
     using System.Threading.Tasks;
+    using Application.GameCQ.Battles.Commands.Delete;
     using Application.GameCQ.Battles.Commands.Update;
     using Application.GameCQ.Battles.Queries.GetBattleUnitsQuery;
     using Application.GameCQ.Heroes.Queries.GetFullUnitQuery;
@@ -13,62 +14,52 @@
     using WebUI.Controllers.Common;
 
     [Authorize(Roles = GConst.UserRole)]
-    public class BattleController : BaseApiController
+    public class BattleController : BaseController
     {
         private static bool yourTurn;
         private static Monster monster;
-        private static UnitFullViewModel hero;
         private static long heroId;
-        private string zoneName;
+        private static string zoneName;
 
         [HttpGet]
         public async Task<IActionResult> Battle([FromQuery]string zone)
         {
-            this.zoneName = zone;
+            zoneName = zone;
 
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
 
-            monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = this.zoneName });
+            monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zoneName });
 
             heroId = playerPVM.Id;
 
             yourTurn = true;
 
-            return this.View(@"\Battle", monster.Name);
+            return this.View(GConst.Battle, monster.Name);
         }
 
         [HttpGet]
         public async Task<IActionResult> Command()
         {
-            hero = await this.Mediator.Send(new GetFullUnitQuery { HeroId = heroId });
+            var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { HeroId = heroId, Enemy = monster });
 
-            var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { Hero = hero, Enemy = monster });
-
-            return this.View(@"\Command", battleUnits);
+            return this.View(GConst.BattleCommand, battleUnits);
         }
 
         [HttpPost]
-        public async Task<JsonResult> Command([FromForm]string command, [FromForm]int spellId)
+        public async Task<IActionResult> Command([FromForm]string command, [FromForm]int spellId)
         {
             await this.Mediator.Send(new BattleOptionsCommand
-            { Command = command, Hero = hero, Enemy = monster, YourTurn = yourTurn, SpellId = spellId, ZoneName = this.zoneName });
+            { Command = command, HeroId = heroId, Enemy = monster, YourTurn = yourTurn, SpellId = spellId, ZoneName = zoneName });
 
-            hero = await this.Mediator.Send(new GetFullUnitQuery { HeroId = heroId });
-            var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { Hero = hero, Enemy = monster });
+            var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { HeroId = heroId, Enemy = monster });
 
             return this.Json(new { battleUnits });
         }
 
         [HttpGet]
-        public IActionResult End()
+        public async Task<IActionResult> End()
         {
-            return this.View(heroId);
-        }
-
-        [HttpGet]
-        public IActionResult Killed()
-        {
-            return this.View();
+            return this.View(await this.Mediator.Send(new EndBattleCommand { HeroId = heroId, Monster = monster, ZoneName = zoneName }));
         }
     }
 }

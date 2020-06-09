@@ -22,46 +22,9 @@
 
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
-            var hero = await this.Context.Heroes.FindAsync(request.Hero.Id);
+            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-            int initialGold = hero.GoldAmount;
-
-            if (request.Enemy.CurrentHP <= -0.00000000000001)
-            {
-                request.Enemy.CurrentHP = 0;
-
-                await new EndOption().End(hero, request.Enemy, request.ZoneName, this.Context, cancellationToken);
-
-                if (hero.XP >= hero.XPCap)
-                {
-                    await new Level().Up(hero, this.Context);
-
-                    this.Context.Heroes.Update(hero);
-                    await this.Context.SaveChangesAsync(cancellationToken);
-
-                    return GConst.HeroCommandRedirect;
-                }
-
-                this.Context.Heroes.Update(hero);
-
-                await this.Context.SaveChangesAsync(cancellationToken);
-
-                return GConst.End;
-            }
-
-            if (hero.CurrentHP <= 0)
-            {
-                hero.CurrentHP = 0;
-
-                this.Context.Heroes.Update(hero);
-
-                await this.Context.SaveChangesAsync(cancellationToken);
-
-                hero.GoldAmount = initialGold;
-
-                return GConst.UnitKilled;
-            }
-            else if (request.Enemy.CurrentHP > 0 && request.YourTurn)
+            if (request.Enemy.CurrentHP > 0 && request.YourTurn)
             {
                 if (request.Command == "Attack")
                 {
@@ -80,17 +43,6 @@
                     await spellCastOption.SpellCast(hero, request.Enemy, request.SpellId, this.Context);
                 }
 
-                if (request.Command == "Escape")
-                {
-                    new EscapeOption().Escape(request.Hero);
-
-                    await this.Context.SaveChangesAsync(cancellationToken);
-
-                    hero.GoldAmount = initialGold;
-
-                    return GConst.EscapeCommand;
-                }
-
                 request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);
 
                 if (!request.YourTurn)
@@ -99,18 +51,9 @@
                 }
 
                 await this.Context.SaveChangesAsync(cancellationToken);
-
-                return GConst.BattleCommand;
             }
 
-            if (request.Enemy.CurrentHP == 0)
-            {
-                return GConst.End;
-            }
-            else
-            {
-                return GConst.BattleCommand;
-            }
+            return GConst.BattleCommand;
         }
     }
 }
