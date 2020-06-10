@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class DiscardItemCommand : IRequest<string>
+    public class DiscardItemCommand : IRequest<object>
     {
         public long HeroId { get; set; }
 

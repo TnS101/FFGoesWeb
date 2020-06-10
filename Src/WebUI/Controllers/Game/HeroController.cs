@@ -70,13 +70,18 @@
         [HttpGet("/Hero/Inventory/id&slot")]
         public async Task<IActionResult> Inventory([FromQuery]long id, [FromQuery]string slot)
         {
-            return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
+            if (string.IsNullOrEmpty(slot))
+            {
+                return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
+            }
+
+            return this.Json(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
         }
 
         [HttpPost]
         public async Task<IActionResult> DiscardItem([FromForm]long id, [FromForm]int count, [FromForm]string slot, [FromForm]long heroId)
         {
-            return this.Redirect(await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId }));
+            return this.Json(await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId }));
         }
 
         [HttpGet]

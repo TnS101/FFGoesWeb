@@ -162,8 +162,13 @@
             {
                 Action = (data) =>
                 {
-                    $('#show').removeClass();
-                    $('#show').addClass(data.responseJSON.iClass + ' has-huge-font-size main-font-color');
+                    if (data.status == 200) {
+                        $('#show').removeClass();
+                        $('#show').addClass(data.responseJSON.iClass + ' has-huge-font-size main-font-color');
+                    } else
+                    {
+                        window.location.href = '/Error/Default';
+                    }
                 }
             });
                 

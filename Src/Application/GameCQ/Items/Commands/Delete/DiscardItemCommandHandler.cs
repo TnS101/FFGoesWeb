@@ -5,32 +5,34 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Domain.Entities.Game.Units;
-    using global::Common;
     using MediatR;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
-    public class DiscardItemCommandHandler : BaseHandler, IRequestHandler<DiscardItemCommand, string>
+    public class DiscardItemCommandHandler : BaseHandler, IRequestHandler<DiscardItemCommand, object>
     {
         public DiscardItemCommandHandler(IFFDbContext context)
             : base(context)
         {
         }
 
-        public async Task<string> Handle(DiscardItemCommand request, CancellationToken cancellationToken)
+        public async Task<object> Handle(DiscardItemCommand request, CancellationToken cancellationToken)
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-            await this.DiscardItem(request, hero);
+            var reward = await this.DiscardItem(request, hero);
 
             this.Context.Heroes.Update(hero);
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return string.Format(GConst.InventoryCommandRedirect, hero.Id, request.Slot);
+            return new ObjectResult(reward);
         }
 
-        private async Task DiscardItem(DiscardItemCommand request, Hero hero)
+        private async Task<int> DiscardItem(DiscardItemCommand request, Hero hero)
         {
+            int reward = 0;
+
             if (request.Slot == "Weapon")
             {
                 var weaponToRemove = await this.Context.WeaponsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.WeaponId == request.ItemId);
@@ -50,7 +52,7 @@
 
                 var weapon = await this.Context.Weapons.FindAsync(request.ItemId);
 
-                hero.GoldAmount += weapon.SellPrice * count;
+                reward = weapon.SellPrice * count;
             }
             else if (request.Slot == "Trinket")
             {
@@ -71,7 +73,7 @@
 
                 var trinket = await this.Context.Trinkets.FindAsync(request.ItemId);
 
-                hero.GoldAmount += trinket.SellPrice * count;
+                reward = trinket.SellPrice * count;
             }
             else if (request.Slot == "Material")
             {
@@ -92,7 +94,7 @@
 
                 var material = await this.Context.Materials.FindAsync((int)request.ItemId);
 
-                hero.GoldAmount += material.SellPrice * count;
+                reward = material.SellPrice * count;
             }
             else if (request.Slot == "Treasure")
             {
@@ -139,7 +141,7 @@
 
                 var tool = await this.Context.Tools.FindAsync((int)request.ItemId);
 
-                hero.GoldAmount += tool.SellPrice * count;
+                reward = tool.SellPrice * count;
             }
             else
             {
@@ -160,8 +162,12 @@
 
                 var armor = await this.Context.Armors.FindAsync(request.ItemId);
 
-                hero.GoldAmount += armor.SellPrice * count;
+                reward = armor.SellPrice * count;
             }
+
+            hero.GoldAmount += reward;
+
+            return reward;
         }
     }
 }

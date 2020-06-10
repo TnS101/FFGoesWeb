@@ -36,6 +36,10 @@
             {
                 return await this.GetTrinkets(hero);
             }
+            else if (request.Slot == "Relic")
+            {
+                return await this.GetRelics(hero);
+            }
             else if (request.Slot == "Treasure")
             {
                 return await this.GetTreasures(hero);
@@ -50,12 +54,55 @@
             }
         }
 
+        private async Task<ItemListViewModel> GetRelics(Hero hero)
+        {
+            var inventory = await this.Context.RelicsInventories.Where(ri => ri.InventoryId == hero.InventoryId).ToListAsync();
+
+            if (inventory != null)
+            {
+                var relics = new Stack<Relic>();
+
+                if (inventory.Count() > 0)
+                {
+                    foreach (var baseRelic in this.Context.Relics.ToList())
+                    {
+                        foreach (var item in inventory)
+                        {
+                            if (item.RelicId == baseRelic.Id)
+                            {
+                                relics.Push(baseRelic);
+                            }
+                        }
+                    }
+                }
+
+                return new ItemListViewModel
+                {
+                    Items = relics.Select(i => new ItemMinViewModel
+                    {
+                        Id = i.Id,
+                        Name = i.Name,
+                        ImagePath = i.ImagePath,
+                        Slot = i.Slot,
+                        Level = i.Level,
+                        ClassType = i.ClassType,
+                    }),
+                    HeroClass = "Any",
+                    HeroLevel = hero.Level,
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private async Task<ItemListViewModel> GetWeapons(Hero hero, string className)
         {
-            if (this.Context.WeaponsInventories.Any(wi => wi.InventoryId == hero.InventoryId))
-            {
-                var inventory = await this.Context.WeaponsInventories.Where(wi => wi.InventoryId == hero.InventoryId).ToListAsync();
+            var inventory = await this.Context.WeaponsInventories.Where(wi => wi.InventoryId == hero.InventoryId).ToListAsync();
 
+            if (inventory != null)
+            {
                 var weapons = new Stack<Weapon>();
 
                 if (inventory.Count() > 0)
@@ -95,10 +142,10 @@
 
         private async Task<ItemListViewModel> GetArmors(Hero hero, string className)
         {
-            if (this.Context.ArmorsInventories.Any(ai => ai.InventoryId == hero.InventoryId))
-            {
-                var inventory = await this.Context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId).ToListAsync();
+            var inventory = await this.Context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId).ToListAsync();
 
+            if (inventory != null)
+            {
                 var armors = new Stack<Armor>();
 
                 foreach (var baseArmor in this.Context.Armors)
@@ -135,10 +182,10 @@
 
         private async Task<ItemListViewModel> GetTrinkets(Hero hero)
         {
-            if (this.Context.TrinketsInventories.Any(ti => ti.InventoryId == hero.InventoryId))
-            {
-                var inventory = await this.Context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
+            var inventory = await this.Context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
+            if (inventory != null)
+            {
                 var trinkets = new Stack<Trinket>();
 
                 foreach (var baseTrinket in this.Context.Trinkets)
@@ -175,10 +222,10 @@
 
         private async Task<ItemListViewModel> GetTreasures(Hero hero)
         {
-            if (this.Context.TreasuresInventories.Any(ti => ti.InventoryId == hero.InventoryId))
-            {
-                var inventory = await this.Context.TreasuresInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
+            var inventory = await this.Context.TreasuresInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
+            if (inventory != null)
+            {
                 var treasures = new Stack<Treasure>();
 
                 foreach (var baseTreasure in this.Context.Treasures)
@@ -211,10 +258,10 @@
 
         private async Task<ItemListViewModel> GetTreasureKeys(Hero hero)
         {
-            if (this.Context.TreasureKeysInventories.Any(ti => ti.InventoryId == hero.InventoryId))
-            {
-                var inventory = await this.Context.TreasureKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
+            var inventory = await this.Context.TreasureKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
+            if (inventory != null)
+            {
                 var treasureKeys = new Stack<TreasureKey>();
 
                 foreach (var baseTreasureKey in this.Context.TreasureKeys)
@@ -248,10 +295,10 @@
 
         private async Task<ItemListViewModel> GetMaterials(Hero hero)
         {
-            if (this.Context.MaterialsInventories.ToList().Any(mi => mi.InventoryId == hero.InventoryId))
-            {
-                var inventory = await this.Context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).ToListAsync();
+            var inventory = await this.Context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).ToListAsync();
 
+            if (inventory != null)
+            {
                 var materials = new Stack<Material>();
 
                 if (inventory.Count > 0)

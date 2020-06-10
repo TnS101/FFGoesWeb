@@ -4,63 +4,83 @@
     @{
         string heroId = Context.Request.Query["id"];
     }
-    <div class=" fade-in starting-div">
+    <div class="fade-in starting-div">
         <h1 class="secondary-font-color item-padding">Your Inventory</h1>
         <div class="item-padding">
             <hr />
-            <a asp-controller="Hero" asp-action="Inventory" asp-route-id="@heroId" asp-route-slot="Armor"><i class="fas fa-shield-alt main-font-color has-massive-font-size bottom-right-icon"></i></a>
-            <a asp-controller="Hero" asp-action="Inventory" asp-route-id="@heroId" asp-route-slot="Weapon"><i class="fas fa-khanda main-font-color has-massive-font-size bottom-right-icon" style="bottom:120px"></i></a>
-            <a asp-controller="Hero" asp-action="Inventory" asp-route-id="@heroId" asp-route-slot="Trinket"><i class="fas fa-ankh main-font-color has-massive-font-size bottom-right-icon" style="right:130px"></i></a>
-            <a asp-controller="Hero" asp-action="Inventory" asp-route-id="@heroId" asp-route-slot="Treasure Key"><i class="fas fa-gem main-font-color has-massive-font-size bottom-left-icon"></i></a>
-            <a asp-controller="Hero" asp-action="Inventory" asp-route-id="@heroId" asp-route-slot="Material"><i class="fas fa-cog main-font-color has-massive-font-size bottom-left-icon" style="bottom:120px"></i></a>
-            <a asp-controller="Hero" asp-action="Inventory" asp-route-id="@heroId" asp-route-slot="Tool"><i class="fas fa-hammer main-font-color has-massive-font-size bottom-left-icon" style="left:130px"></i></a>
-            @if (Model != null)
-            {
-                @foreach (var item in Model.Items)
-                {
-                    <div class="item-padding">
-                        <img src="@item.ImagePath" alt="Item Image" />
-                        <p class="main-font-color has-normal-font-size">@item.Name</p>
-                        @if (item.ClassType != null)
-                        {
-                            <p class="main-font-color has-normal-font-size">Required Level : @item.Level</p>
+            <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Armor" data-ajax-complete="Action"><i class="fas fa-shield-alt main-font-color has-massive-font-size bottom-right-icon" style="cursor:pointer"></i></a>
+            <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Weapon" data-ajax-complete="Action"><i class="fas fa-khanda main-font-color has-massive-font-size bottom-right-icon" style="bottom:120px; cursor:pointer"></i></a>
+            <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Trinket" data-ajax-complete="Action"><i class="fas fa-ankh main-font-color has-massive-font-size bottom-right-icon" style="right:130px; cursor:pointer"></i></a>
+            <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Relic" data-ajax-complete="Action"><i class="fas fa-hamsa main-font-color has-massive-font-size bottom-right-icon" style="right:205px; cursor:pointer"></i></a>
+            <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Treasure Key" data-ajax-complete="Action"><i class="fas fa-gem main-font-color has-massive-font-size bottom-left-icon" style="cursor:pointer"></i></a>
+            <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Material" data-ajax-complete="Action"><i class="fas fa-cog main-font-color has-massive-font-size bottom-left-icon" style="bottom:120px; cursor:pointer"></i></a>
+            <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Tool" data-ajax-complete="Action"><i class="fas fa-hammer main-font-color has-massive-font-size bottom-left-icon" style="left:130px; cursor:pointer"></i></a>
 
-                            @if (item.ClassType == "Any" || item.ClassType == Model.HeroClass)
-                            {
-                                if (item.Level <= Model.HeroLevel)
-                                {
-                                    <form asp-controller="Hero" asp-action="Equip" method="post">
-                                        <input type="hidden" name="id" value="@item.Id" />
-                                        <input type="hidden" name="command" value="Equip" />
-                                        <input type="hidden" name="slot" value="@item.Slot" />
-                                        <input type="hidden" name="heroId" value="@heroId" />
-                                        <input type="submit" name="action" value="Equip" class="main-button" />
-                                    </form>
-                                }
-                            }
-                        }
-                        else
-                        {
-                            <p>Materials</p>
-                        }
-                        <form asp-controller="Hero" asp-action="DiscardItem" method="post" class="item-padding">
-                            <input type="hidden" name="id" value="@item.Id" />
-                            <input type="hidden" name="count" value="1" />
-                            <input type="hidden" name="slot" value="@item.Slot" />
-                            <input type="hidden" name="heroId" value="@heroId" />
-                            <input type="submit" name="action" value="Discard" class="main-button" />
-                        </form>
-                        <hr />
-                    </div>
-                }
-            }
-            else
-            {
-                <div class="item-padding">
-                    <p class="main-font-color has-normal-font-size">
-                        No items to display in this section.
-                    </p>
-                </div>
-            }
+            <div class="item-padding fade-in" id="items">
+            </div>
+
         </div>
     </div>
+    @section scripts
+    {
+        <script>
+            $(document).ready(function () {
+
+                Action = (data) =>
+                {
+                    var items = $('#items');
+                    items.text('');
+                    var result = '<div>';
+
+                    if (data.status == 200)
+                    {
+                        if (data.responseJSON.items.length > 0)
+                        {
+                            $(data).each(function (i) {
+                            var item = data.responseJSON.items[i];
+                            result += `<img src="${item.imagePath}" alt="Item Image" />`;
+                            result += `<p class="main-font-color has-normal-font-size">${item.name}</p>`;
+
+                            if (item.classType != null) {
+                                result += `<p class="main-font-color has-normal-font-size">Required Level : ${item.level}</p>`;
+                            }
+
+                            if (item.classType == 'Any' || item.classType == '@Model.HeroClass')
+                            {
+                                if (item.level <= @Model.HeroLevel) {
+                                    result += `<form asp-controller="Hero" asp-action="Equip" method="post">
+                                            <input type="hidden" name="id" value="${item.id}" />
+                                            <input type="hidden" name="command" value="Equip" />
+                                            <input type="hidden" name="slot" value="${item.slot}" />
+                                            <input type="hidden" name="heroId" value="@heroId" />
+                                            <input type="submit" name="action" value="Equip" class="main-button" />
+                                        </form>`;
+                                }
+                            }
+
+                                result += `<form method="post" data-ajax="true" data-ajax-url="/Hero/DiscardItem" data-ajax-complete="Discard" data-ajax-method="post"
+                                class="item-padding">
+                                <input type="hidden" name="id" value="${item.id}" />
+                                <input type="hidden" name="count" value="1" />
+                                <input type="hidden" name="slot" value="${item.slot}" />
+                                <input type="hidden" name="heroId" value="@heroId" />
+                                <input type="submit" name="action" value="Discard" class="main-button" />
+                                <div class="item-padding"><hr/></div>
+                            </form>`
+
+                            items.append(result);
+                        });
+                        }
+                    }
+                    else
+                       {
+                            window.location.href = '/Error/Default';
+                       }
+                }
+
+                Discard = (discard) => {
+                window.alert(discard.responseJSON);
+                }
+            });
+        </script>
+    }
