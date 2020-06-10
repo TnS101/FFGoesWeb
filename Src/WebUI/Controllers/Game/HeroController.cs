@@ -81,7 +81,9 @@
         [HttpPost]
         public async Task<IActionResult> DiscardItem([FromForm]long id, [FromForm]int count, [FromForm]string slot, [FromForm]long heroId)
         {
-            return this.Json(await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId }));
+            var result = await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId });
+
+            return this.Json(new { result });
         }
 
         [HttpGet]

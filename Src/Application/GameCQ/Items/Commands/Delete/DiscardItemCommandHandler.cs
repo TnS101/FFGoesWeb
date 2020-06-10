@@ -6,17 +6,16 @@
     using Application.Common.Interfaces;
     using Domain.Entities.Game.Units;
     using MediatR;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
-    public class DiscardItemCommandHandler : BaseHandler, IRequestHandler<DiscardItemCommand, object>
+    public class DiscardItemCommandHandler : BaseHandler, IRequestHandler<DiscardItemCommand, GoldRewardViewModel>
     {
         public DiscardItemCommandHandler(IFFDbContext context)
             : base(context)
         {
         }
 
-        public async Task<object> Handle(DiscardItemCommand request, CancellationToken cancellationToken)
+        public async Task<GoldRewardViewModel> Handle(DiscardItemCommand request, CancellationToken cancellationToken)
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
@@ -26,7 +25,7 @@
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return new ObjectResult(reward);
+            return new GoldRewardViewModel { Reward = reward };
         }
 
         private async Task<int> DiscardItem(DiscardItemCommand request, Hero hero)

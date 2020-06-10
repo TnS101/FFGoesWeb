@@ -2,58 +2,7 @@
 
 <title>Current Topic</title>
 <partial name="_ForumNavBar">
-    <script>
-        $(document).ready(function () {
 
-            var scrollTop = $('#scroll-top');
-
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > 900) {
-                    scrollTop.removeClass('fade-out');
-                    scrollTop.show();
-                } else {
-                    scrollTop.addClass('fade-out');
-                }
-            })
-
-            scrollTop.click(function () {
-                $('html, body').animate({
-                    scrollTop: $("#top").offset().top
-                }, 1200);
-            })
-
-            var reportButton = $('#report-button');
-            var reportPanel = $('#report-panel');
-            var firstCommentButton = $('#first-comment-button');
-            var commentButton = $('#comment-button');
-            var commentPanel = $('#comment-panel');
-            var editButton = $('.edit-button');
-            var commentReportButton = $('#comment-report-button');
-
-            editButton.click(function () {
-                $('.edit-panel').show();
-            })
-
-            commentReportButton.click(function () {
-                $('#comment-report-panel').show();
-            })
-
-            reportButton.click(function () {
-                reportPanel.show();
-                return false;
-            })
-
-            firstCommentButton.click(function () {
-                commentPanel.show();
-                $('html, body').animate({ scrollTop: firstCommentButton.offset().top - 10 }, 'slow');
-            })
-
-            commentButton.click(function () {
-                commentPanel.show();
-                $('html, body').animate({ scrollTop: commentButton.offset().top - 10 }, 'slow');
-            })
-        })
-    </script>
     <i id="scroll-top" class="icofont-bubble-up fade-in is-clickable icofont-6x main-font-color bottom-right-icon" style="display:none"></i>
     <div class="fade-in starting-div" id="top">
         <h1 class="has-large-font-size item-padding">@Model.Title</h1>
@@ -97,7 +46,7 @@
                         <option value="Spam">Spam</option>
                     </select>
                     <div class="item-padding">
-                        <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." required/>
+                        <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." required />
                     </div>
                     <div class="item-padding">
                         <input type="submit" name="button" class="main-button" value="Send" />
@@ -164,7 +113,7 @@
                                             <option value="Spam">Spam</option>
                                         </select>
                                         <div class="item-padding">
-                                            <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." required/>
+                                            <input type="text" name="additionalInformation" value="" placeholder="Please, give us more information about this content." required />
                                         </div>
                                         <div class="item-padding">
                                             <input type="submit" name="button" class="main-button" value="Send" />
@@ -193,3 +142,58 @@
             </div>
         </div>
     </div>
+    @section scripts
+    {
+        <script>
+            $(document).ready(function () {
+
+                var scrollTop = $('#scroll-top');
+
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 900) {
+                        scrollTop.removeClass('fade-out');
+                        scrollTop.show();
+                    } else {
+                        scrollTop.addClass('fade-out');
+                    }
+                })
+
+                scrollTop.click(function () {
+                    $('html, body').animate({
+                        scrollTop: $("#top").offset().top
+                    }, 1200);
+                })
+
+                var reportButton = $('#report-button');
+                var reportPanel = $('#report-panel');
+                var firstCommentButton = $('#first-comment-button');
+                var commentButton = $('#comment-button');
+                var commentPanel = $('#comment-panel');
+                var editButton = $('.edit-button');
+                var commentReportButton = $('#comment-report-button');
+
+                editButton.click(function () {
+                    $('.edit-panel').show();
+                })
+
+                commentReportButton.click(function () {
+                    $('#comment-report-panel').show();
+                })
+
+                reportButton.click(function () {
+                    reportPanel.show();
+                    return false;
+                })
+
+                firstCommentButton.click(function () {
+                    commentPanel.show();
+                    $('html, body').animate({ scrollTop: firstCommentButton.offset().top - 10 }, 'slow');
+                })
+
+                commentButton.click(function () {
+                    commentPanel.show();
+                    $('html, body').animate({ scrollTop: commentButton.offset().top - 10 }, 'slow');
+                })
+            })
+        </script>
+    }
