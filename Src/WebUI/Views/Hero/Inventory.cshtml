@@ -15,9 +15,27 @@
             <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Material" data-ajax-complete="Action"><i class="fas fa-cog main-font-color has-massive-font-size bottom-left-icon" style="bottom:120px; cursor:pointer"></i></a>
             <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Tool" data-ajax-complete="Action"><i class="fas fa-hammer main-font-color has-massive-font-size bottom-left-icon" style="left:130px; cursor:pointer"></i></a>
 
-            <div class="item-padding fade-in" id="items">
+            <div id="items">
+                
             </div>
 
+            <div id="options">
+                <form hidden data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/Equip" data-ajax-complete="EquipdAction" method="post" id="equip-temp">
+                    <input type="hidden" name="id" value="" />
+                    <input type="hidden" name="command" value="Equip" />
+                    <input type="hidden" name="slot" value="" />
+                    <input type="hidden" name="heroId" value="" />
+                    <input type="submit" name="action" value="Equip" class="main-button" />
+                </form>
+                <form hidden method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/DiscardItem" data-ajax-complete="DiscardAction" class="item-padding" id="discard-temp">
+                    <input type="hidden" name="id" value="" />
+                    <input type="hidden" name="count" value="" />
+                    <input type="hidden" name="slot" value="" />
+                    <input type="hidden" name="heroId" value="" />
+                    <input type="submit" name="action" value="Discard" class="main-button" />
+                    <div class="item-padding"><hr /></div>
+                </form>
+            </div>
         </div>
     </div>
     @section scripts
@@ -25,69 +43,81 @@
         <script>
             $(document).ready(function () {
 
-                Action = (data) =>
-                {
+                Action = (data) => {
                     var items = $('#items');
-                    items.text('');
-                    var result = '<div>';
+                    var options = $('#options');
 
-                    if (data.status == 200)
-                    {
+                    $(options.children()).each(function (i) {
+                        if (i > 2)
+                        {
+                            options.children().remove(options.children()[i]);
+                        }
+                    });
+
+                    items.empty();
+
+                    var discardForm = $('#discard-temp').clone(true);
+                    var equipForm = $('#equip-temp').clone(true);
+                    var itemInfo = document.createElement('div');
+
+                    discardForm.removeAttr('id');
+                    discardForm.removeAttr('hidden');
+
+                    equipForm.removeAttr('id');
+                    equipForm.removeAttr('hidden');
+
+                    var discardChildren = discardForm.children();
+                    var equipChildren = equipForm.children();
+
+                    if (data.status == 200) {
                         if (data.responseJSON.items.length > 0) {
-                            $(data).each(function (i) {
+                            $(data.responseJSON.items).each(function (i) {
                                 var item = data.responseJSON.items[i];
-                                result += `<img src="${item.imagePath}" alt="Item Image" />`;
-                                result += `<p class="main-font-color has-normal-font-size">${item.name}</p>`;
 
+                                $(`<img src="${item.imagePath}" alt="Item Image" />`).appendTo(itemInfo);
+
+                                $(`<p class="main-font-color has-normal-font-size">${item.name}</p>`).appendTo(itemInfo);
                                 if (item.classType != null) {
-                                    result += `<p class="main-font-color has-normal-font-size">Required Level : ${item.level}</p>`;
+                                    $(`<p class="main-font-color has-normal-font-size">Required Level : ${item.level}</p>`).appendTo(itemInfo);
                                 }
 
                                 if (item.classType == 'Any' || item.classType == data.responseJSON.heroClass) {
                                     if (Number(item.level) <= data.responseJSON.heroLevel) {
-                                        result += `<form asp-controller="Hero" asp-action="Equip" method="post">
-                                            <input type="hidden" name="id" value="${item.id}" />
-                                            <input type="hidden" name="command" value="Equip" />
-                                            <input type="hidden" name="slot" value="${item.slot}" />
-                                            <input type="hidden" name="heroId" value="@heroId" />
-                                            <input type="submit" name="action" value="Equip" class="main-button" />
-                                        </form>`;
+                                        equipChildren[0].value = item.id;
+                                        equipChildren[2].value = item.slot;
+                                        equipChildren[3].value = @heroId;
+
+                                        $('#options').append(equipForm);
                                     }
                                 }
 
-                                result += `<form method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/DiscardItem" data-ajax-complete="DiscardAction"
-                                class="item-padding">
-                                <input type="hidden" name="id" value="${item.id}" />
-                                <input type="hidden" name="count" value="1" />
-                                <input type="hidden" name="slot" value="${item.slot}" />
-                                <input type="hidden" name="heroId" value="@heroId" />
-                                <input type="submit" name="action" value="Discard" class="main-button" />
-                                <div class="item-padding"><hr/></div>
-                            </form>`
+                                discardChildren[0].value = item.id;
+                                discardChildren[1].value = 1;
+                                discardChildren[2].value = item.slot;
+                                discardChildren[3].value = @heroId;
+                                options.append(discardForm);
 
+                                items.append(itemInfo);
                             });
-                            items.append(result);
-                            $('#title').text(`Reviewing ${data.responseJSON.items[0].slot} Inventory`);
-                        } else
-                        {
-                        $('#title').text('No items in this section');
+                            $('#title').text(`Reviewing the ${data.responseJSON.items[0].slot} section`);
+                        } else {
+                            $('#title').text('No items in this section');
                         }
                     }
-                    else
-                       {
-                            window.location.href = '/Error/Default';
-                       }
+                    else {
+                        window.location.href = '/Error/Default';
+                    }
                 }
 
+                DiscardAction = (discard) => {
+                    if (discard.status == 200) {
 
+                    } else {
+                        window.alert(discard.status);
+                    }
+                }
             });
 
-            DiscardAction = (discard) => {
-            if (discard.status == 200) {
-                window.alert(discard.responseJSON.reward);
-             } else {
-                window.alert(discard.status);
-                }
-            }
+
         </script>
     }
