@@ -47,6 +47,47 @@ progress {
  background: linear-gradient(90deg, rgba(184,0,0,1) 0%, rgba(255,0,0,0.5802696078431373) 44%, rgba(0,255,111,1) 100%);
 }
 
+.flow-bar
+{
+  height: 30px;
+  width: 400px;
+  margin: 0 auto;
+  background-color: #2d364c;
+  border-radius: 11px;
+  border:solid,2px;
+  box-shadow: 0px 1px 3px #777 inset;
+}
+
+.flow {
+    height: 30px;
+    background: linear-gradient(30deg, #079671, #12a780, #0ec295, #14deab, #13eeb6, #18f7bf, #2cfec9);
+    box-shadow: 0px 1px 3px #777 inset;
+    background-size: 100% 480%;
+
+    -webkit-animation: Flow1 3s ease infinite;
+    -moz-animation: Flow2 3s ease infinite;
+    animation: Flow3 3s ease infinite;
+}
+
+@-webkit-keyframes Flow1 {
+    0%{background-position:0% 10%}
+    25%{background-position:34% 50%}
+    50%{background-position:84% 100%}
+    75%{background-position:34% 50%}
+    100%{background-position:0% 10%}
+}
+
+@-moz-keyframes Flow2 {
+   0%{background-position:17% 0%}
+    50%{background-position:84% 100%}
+    100%{background-position:17% 0%}
+}
+@keyframes Flow3 {
+    0%{background-position:17% 0%}
+    50%{background-position:84% 100%}
+    100%{background-position:17% 0%}
+}
+
 .attack-option-gradient {
     background: linear-gradient(228deg, #c81212, #c9df19, #df7b19);
     background-size: 600% 600%;
