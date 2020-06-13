@@ -9,14 +9,14 @@
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class UpdateStatusCommandHandler : MapperHandler, IRequestHandler<UpdateStatusCommand, StatusMinViewModel>
+    public class UpdateStatusCommandHandler : MapperHandler, IRequestHandler<UpdateStatusCommand, UpdateStatusJsonResult>
     {
         public UpdateStatusCommandHandler(IFFDbContext context, IMapper mapper)
             : base(context, mapper)
         {
         }
 
-        public async Task<StatusMinViewModel> Handle(UpdateStatusCommand request, CancellationToken cancellationToken)
+        public async Task<UpdateStatusJsonResult> Handle(UpdateStatusCommand request, CancellationToken cancellationToken)
         {
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
@@ -34,7 +34,7 @@
 
             var status = await this.Context.Statuses.FindAsync(request.StatusId);
 
-            return this.Mapper.Map<StatusMinViewModel>(status);
+            return this.Mapper.Map<UpdateStatusJsonResult>(status);
         }
     }
 }

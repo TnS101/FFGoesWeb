@@ -71,7 +71,7 @@
             this.CreateMap<Like, LikeFullViewModel>();
             this.CreateMap<Hero, BattleUnitViewModel>();
             this.CreateMap<Monster, BattleUnitViewModel>();
-            this.CreateMap<Status, StatusMinViewModel>();
+            this.CreateMap<Status, UpdateStatusJsonResult>();
         }
     }
 }

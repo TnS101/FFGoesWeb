@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class DiscardItemCommand : IRequest<GoldRewardViewModel>
+    public class DiscardItemCommand : IRequest<DiscardItemJsonResult>
     {
         public long HeroId { get; set; }
 

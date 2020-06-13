@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class UpdateStatusCommand : IRequest<StatusMinViewModel>
+    public class UpdateStatusCommand : IRequest<UpdateStatusJsonResult>
     {
         public string UserId { get; set; }
 

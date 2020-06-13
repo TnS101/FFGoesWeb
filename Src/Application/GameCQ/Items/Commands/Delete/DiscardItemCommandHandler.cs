@@ -8,14 +8,14 @@
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class DiscardItemCommandHandler : BaseHandler, IRequestHandler<DiscardItemCommand, GoldRewardViewModel>
+    public class DiscardItemCommandHandler : BaseHandler, IRequestHandler<DiscardItemCommand, DiscardItemJsonResult>
     {
         public DiscardItemCommandHandler(IFFDbContext context)
             : base(context)
         {
         }
 
-        public async Task<GoldRewardViewModel> Handle(DiscardItemCommand request, CancellationToken cancellationToken)
+        public async Task<DiscardItemJsonResult> Handle(DiscardItemCommand request, CancellationToken cancellationToken)
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
@@ -25,7 +25,7 @@
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return new GoldRewardViewModel { Reward = reward };
+            return new DiscardItemJsonResult { Reward = reward, ItemId = request.ItemId };
         }
 
         private async Task<int> DiscardItem(DiscardItemCommand request, Hero hero)

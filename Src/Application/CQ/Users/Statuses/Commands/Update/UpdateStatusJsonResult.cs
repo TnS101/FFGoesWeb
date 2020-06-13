@@ -1,6 +1,6 @@
 ﻿namespace Application.CQ.Users.Statuses.Commands.Update
 {
-    public class StatusMinViewModel
+    public class UpdateStatusJsonResult
     {
         public string IClass { get; set; }
     }

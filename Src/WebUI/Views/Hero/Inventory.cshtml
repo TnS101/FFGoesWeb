@@ -45,14 +45,13 @@
 
                 Action = (data) => {
                     var items = $('#items');
-
                     items.empty();
 
                     if (data.status == 200) {
                         if (data.responseJSON.items.length > 0) {
                             $(data.responseJSON.items).each(function (i) {
-                                var itemInfo = $('<div></div>');
                                 var item = data.responseJSON.items[i];
+                                var itemInfo = $(`<div class="item-padding" id="${item.id}"></div>`);
 
                                 $(`<img src="${item.imagePath}" alt="Item Image" />`).appendTo(itemInfo);
 
@@ -102,10 +101,11 @@
                     }
                 }
 
-                DiscardAction = (discard) => {
-                    if (discard.status == 200) {
+                DiscardAction = (data) => {
+                    if (data.status == 200) {
+                        $(`#${data.responseJSON.result.itemId}`).text('');
                     } else {
-                        window.alert(discard.status);
+                        window.location.href = '/Error/Default';
                     }
                 }
             });
