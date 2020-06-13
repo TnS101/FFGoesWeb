@@ -42,16 +42,22 @@ progress {
   box-shadow: 0px 1px 4px #666 inset;
  }
 
+ .flow 
+ {
+  
+ }
+
 .player-health-bar{
- height: 15px;  
- box-shadow: 0px 1px 4px #079671 inset;
- border-radius: 10px;
- background: linear-gradient(30deg, #067c5d,#079671, #12a780, #0ec295, #14deab, #13eeb6, #18f7bf, #2cfec9);
- background-size: 100% 480%;
- -webkit-animation: Flow1 3s eas infinite;
- -moz-animation: Flow2 3s ease infinite;
- animation: Flow3 3s ease infinite;
- -o-animation: Flow4 3s ease infinite;
+  background: linear-gradient(30deg, #067c5d,#079671, #12a780, #0ec295, #14deab, #13eeb6, #18f7bf, #2cfec9);
+
+  height: 15px;  
+  box-shadow: 0px 1px 4px #079671 inset;
+  border-radius: 10px;
+  background-size: 100% 480%;
+  -webkit-animation: Flow1 3s ease infinite;
+  -moz-animation: Flow2 3s ease infinite;
+  animation: Flow3 3s ease infinite;
+  -o-animation: Flow4 3s ease infinite;
 }
 
 .enemy-health-bar
@@ -71,7 +77,7 @@ progress {
  height: 15px;  
  box-shadow: 0px 1px 4px #079671 inset;
  border-radius: 10px;
- background: linear-gradient(30deg, #5f0000, #850505, #a80909, #c61616, #d41010, #e61f1f, #e82b2b, #f73e3e);
+ background: linear-gradient(30deg, #001589, #0b44b7, #0e73c5, #1295d2, #1da8e8, #33b8f5, #33c9f5, #3ce5f7);
  background-size: 100% 480%;
  -webkit-animation: Flow1 3s eas infinite;
  -moz-animation: Flow2 3s ease infinite;
@@ -95,16 +101,8 @@ progress {
   background-position: 0% 10%
  }
 
- 25% {
-  background-position: 34% 50%
- }
-
  50% {
   background-position: 84% 100%
- }
-
- 75% {
-  background-position: 34% 50%
  }
 
  100% {
@@ -117,16 +115,8 @@ progress {
   background-position: 0% 10%
  }
 
- 25% {
-  background-position: 34% 50%
- }
-
  50% {
   background-position: 84% 100%
- }
-
- 75% {
-  background-position: 34% 50%
  }
 
  100% {
@@ -139,16 +129,8 @@ progress {
   background-position: 0% 10%
  }
 
- 25% {
-  background-position: 34% 50%
- }
-
  50% {
   background-position: 84% 100%
- }
-
- 75% {
-  background-position: 34% 50%
  }
 
  100% {
@@ -161,16 +143,8 @@ progress {
   background-position: 0% 10%
  }
 
- 25% {
-  background-position: 34% 50%
- }
-
  50% {
   background-position: 84% 100%
- }
-
- 75% {
-  background-position: 34% 50%
  }
 
  100% {
