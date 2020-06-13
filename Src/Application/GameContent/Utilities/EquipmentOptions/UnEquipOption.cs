@@ -11,7 +11,7 @@
 
     public class UnEquipOption
     {
-        public async Task<string> UnEquip(Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
+        public async Task<long> UnEquip(Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
         {
             var heroEquipment = await context.Equipments.FindAsync(hero.EquipmentId);
 
@@ -92,7 +92,7 @@
 
             context.Equipments.Update(heroEquipment);
 
-            return string.Format(GConst.EquipmentCommandRedirect, hero.Id, itemSlot);
+            return item.Id;
         }
     }
 }

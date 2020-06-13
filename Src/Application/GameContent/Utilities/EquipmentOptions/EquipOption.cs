@@ -1,6 +1,6 @@
 ﻿namespace Application.GameContent.Utilities.EquipmentOptions
 {
-    using System.Linq;
+    using System.Dynamic;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
@@ -9,12 +9,11 @@
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
-    using global::Common;
     using Microsoft.EntityFrameworkCore;
 
     public class EquipOption
     {
-        public async Task<string> Equip(Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
+        public async Task<long> Equip(Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
         {
             var heroEquipment = await context.Equipments.FirstOrDefaultAsync(e => e.Id == hero.EquipmentId);
 
@@ -24,7 +23,7 @@
 
             if ((item.ClassType != "Any" && hero.FightingClassId != fightingClass.Id) || item.Level > hero.Level)
             {
-                return GConst.ErrorRedirect;
+                return 0;
             }
 
             if (item.Slot == "Weapon")
@@ -303,7 +302,7 @@
 
             await statSum.Sum(hero, context, heroEquipment);
 
-            return string.Format(GConst.EquipmentCommandRedirect, hero.Id, itemSlot);
+            return item.Id;
         }
 
         private void EquipArmor(Hero hero, IFFDbContext context, ArmorInventory armor)

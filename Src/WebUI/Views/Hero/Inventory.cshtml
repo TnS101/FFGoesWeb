@@ -20,14 +20,14 @@
             </div>
 
             <div id="options">
-                <form hidden data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/Equip" data-ajax-complete="EquipdAction" method="post" id="equip-temp">
+                <form hidden data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/Equip" data-ajax-complete="InventoryAction" method="post" id="equip-temp">
                     <input type="hidden" name="id" value="" />
                     <input type="hidden" name="command" value="Equip" />
                     <input type="hidden" name="slot" value="" />
                     <input type="hidden" name="heroId" value="" />
                     <input type="submit" name="action" value="Equip" class="main-button" />
                 </form>
-                <form hidden method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/DiscardItem" data-ajax-complete="DiscardAction" class="item-padding" id="discard-temp">
+                <form hidden method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/DiscardItem" data-ajax-complete="InventoryAction" class="item-padding" id="discard-temp">
                     <input type="hidden" name="id" value="" />
                     <input type="hidden" name="count" value="" />
                     <input type="hidden" name="slot" value="" />
@@ -55,7 +55,7 @@
 
                                 $(`<img src="${item.imagePath}" alt="Item Image" />`).appendTo(itemInfo);
 
-                                $(`<p class="main-font-color has-normal-font-size">${item.name}</p>`).appendTo(itemInfo);
+                                $(`<p class="main-font-color has-normal-font-size">${item.name} x ${item.count}</p>`).appendTo(itemInfo);
                                 if (item.classType != null) {
                                     $(`<p class="main-font-color has-normal-font-size">Required Level : ${item.level}</p>`).appendTo(itemInfo);
                                 }
@@ -105,16 +105,9 @@
                         window.location.href = '/Error/Default';
                     }
                 }
-
-                DiscardAction = (data) => {
-                    if (data.status == 200) {
-                        $(`#${data.responseJSON.result.itemId}`).text('');
-                    } else {
-                        window.location.href = '/Error/Default';
-                    }
-                }
             });
 
 
         </script>
+        <script src="~/js/inventoryaction.js"></script>
     }

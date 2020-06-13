@@ -10,34 +10,40 @@
         <a asp-controller="Hero" asp-action="Equipment" asp-route-id="@heroId"><i class="fas fa-child has-massive-font-size main-font-color bottom-left-icon"></i></a>
         @if (Model.Items == null)
         {
-            <h1 class="main-font-color has-large-font-size item-padding">No items to display</h1>
+            <h1 id="title" class="main-font-color has-large-font-size item-padding">No items in this section</h1>
             <div class="item-padding">
                 <hr />
             </div>
         }
         else
         {
-            <h1 class="main-font-color has-large-font-size item-padding">Your Equipment</h1>
+            <h1 id="title" class="main-font-color has-large-font-size item-padding">Your Equipment</h1>
             <div class="item-padding">
                 <hr />
             </div>
-
-            @foreach (var item in Model.Items)
-            {
-                <div class="item-padding">
+            <div id="items">
+                @foreach (var item in Model.Items)
+                {
+                <div class="item-padding" id="@item.Id">
                     <img src="@item.ImagePath" alt="Item Image" />
                     <p class="main-font-color has-normal-font-size">@item.Name</p>
                     <p class="main-font-color has-normal-font-size">Level : @item.Level</p>
+
+                    <form data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/Equip" data-ajax-complete="InventoryAction" method="post" id="equip-temp @item.Id">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <input type="hidden" name="command" value="UnEquip" />
+                        <input type="hidden" name="slot" value="@item.Slot" />
+                        <input type="hidden" name="heroId" value="@heroId" />
+                        <input type="submit" name="action" value="UnEquip" class="main-button" />
+                    </form>
+                    <hr />
                 </div>
-                <form asp-controller="Hero" asp-action="Equip" method="post">
-                    <input type="hidden" name="id" value="@item.Id" />
-                    <input type="hidden" name="command" value="UnEquip" />
-                    <input type="hidden" name="slot" value="@item.Slot" />
-                    <input type="hidden" name="heroId" value="@heroId" />
-                    <input type="submit" name="action" value="UnEquip" class="main-button" />
-                </form>
-                <hr />
-            }
+                }
+            </div>
         }
 
     </div>
+    @section scripts
+    {
+        <script src="~/js/inventoryaction.js"></script>
+    }

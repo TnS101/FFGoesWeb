@@ -1,6 +1,5 @@
 ﻿namespace Application.GameCQ.Equipments.Commands.Update
 {
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Handlers;
@@ -10,7 +9,7 @@
     using Domain.Contracts.Items;
     using MediatR;
 
-    public class UpdateEquipmentCommandHandler : BaseHandler, IRequestHandler<UpdateEquipmentCommand, string>
+    public class UpdateEquipmentCommandHandler : BaseHandler, IRequestHandler<UpdateEquipmentCommand, long>
     {
         private readonly StatSum statSum;
 
@@ -20,11 +19,11 @@
             this.statSum = new StatSum();
         }
 
-        public async Task<string> Handle(UpdateEquipmentCommand request, CancellationToken cancellationToken)
+        public async Task<long> Handle(UpdateEquipmentCommand request, CancellationToken cancellationToken)
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-            string result;
+            long result;
             if (request.Command == "Equip")
             {
                 var equipOption = new EquipOption();
@@ -47,18 +46,13 @@
 
         public async Task<IEquipableItem> EquipableItem(UpdateEquipmentCommand request)
         {
-            if (request.Slot == "Weapon")
+            return request.Slot switch
             {
-                return await this.Context.Weapons.FindAsync(request.ItemId);
-            }
-            else if (request.Slot == "Trinket")
-            {
-                return await this.Context.Trinkets.FindAsync(request.ItemId);
-            }
-            else
-            {
-                return await this.Context.Armors.FindAsync(request.ItemId);
-            }
+                "Weapon" => await this.Context.Weapons.FindAsync(request.ItemId),
+                "Trinket" => await this.Context.Trinkets.FindAsync(request.ItemId),
+                "Relic" => await this.Context.Relics.FindAsync(request.ItemId),
+                _ => await this.Context.Armors.FindAsync(request.ItemId),
+            };
         }
     }
 }

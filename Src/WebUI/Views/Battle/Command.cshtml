@@ -1,26 +1,38 @@
 ﻿@model Application.GameCQ.Battles.Queries.GetBattleUnitsQuery.BattleUnitsListViewModel
 <title>Command</title>
 <partial name="_WorldNavBar">
-
+    @{
+        double heroCurrentHPBar = ((Model.Hero.MaxHP / 210) * Model.Hero.CurrentHP) / (Model.Hero.MaxHP / 210);
+        double heroCurrentManaBar = ((Model.Hero.MaxMana) / 210 * Model.Hero.CurrentMana) / (Model.Hero.MaxHP / 210);
+        double enemyCurrentHPBar = ((Model.Enemy.MaxHP / 210) * Model.Enemy.CurrentHP) / (Model.Enemy.MaxHP / 210);
+    }
     <div class="fade-in aligncenter starting-div">
         <h1 style="text-align:center" class="item-padding">@Model.Hero.Name  vs  @Model.Enemy.Name</h1>
         <div>
             <img src="@Model.Hero.ImagePath" alt="Player" width="80" height="80" id="hero" />
             <img src="@Model.Enemy.ImagePath" alt="Enemy" style="padding-left:250px;" id="enemy" />
             <br />
-
-            <progress id="playerDamage" value="@Model.Hero.CurrentAttackPower" hidden></progress>
-            <progress id="enemyDamage" value="@Model.Enemy.CurrentAttackPower" hidden></progress>
             <br />
             <div>
-                <progress class="healthBar" id="playerHealth" value="@(Model.Hero.CurrentHP + 1)" max="@Model.Hero.MaxHP" style="margin-right: 100px"></progress>
-                <progress class="healthBar" id="enemyHealth" value="@Model.Enemy.CurrentHP" max="@Model.Enemy.MaxHP"></progress>
-
-                <div class="item-padding progress-bar bg-info">
-                    <progress class="manaBar" id="playerMana" value="@Model.Hero.CurrentMana" max="@Model.Hero.MaxMana" style="margin-right: 100px"></progress>
-                    <progress class="manaBar" id="enemyMana" value="@Model.Enemy.CurrentMana" max="@Model.Enemy.MaxMana"></progress>
+                <div class="flow-bar" style="margin-right:128px">
+                    <div id="player-health-bar" class="player-health-bar" style="width: @(((Model.Hero.MaxHP / 210) * Model.Hero.CurrentHP) / (Model.Hero.MaxHP / 210))px; max-width: 210px">
+                    </div>
                 </div>
+                <div class="flow-bar">
+                    <div id="enemy-health-bar" class="enemy-health-bar" style="width: @(((Model.Enemy.MaxHP / 210) * Model.Enemy.CurrentHP) / (Model.Enemy.MaxHP / 210))px; max-width: 210px">
+                    </div>
+                </div>
+                <div class="item-padding">
+                    <div class="flow-bar" style="margin-right:128px">
+                        <div id="player-mana-bar" class="mana-bar" style="width: @(((Model.Hero.MaxMana / 210) * Model.Hero.CurrentMana) / (Model.Hero.MaxMana / 210))px; max-width: 210px">
+                        </div>
+                    </div>
 
+                    <div class="flow-bar">
+                        <div id="enemy-mana-bar" class="mana-bar" style="width: @(((Model.Enemy.MaxMana / 210) * Model.Enemy.CurrentMana) / (Model.Enemy.MaxMana / 210))px; max-width: 210px">
+                        </div>
+                    </div>
+                </div>
                 <div class="item-padding"><hr /></div>
             </div>
             <div class="item-padding">
@@ -54,7 +66,7 @@
             <script>
                 $(document).ready(function () {
 
-                    if (document.getElementById('playerHealth').value <= 0 || document.getElementById('enemyHealth').value <= 0) {
+                    if ('@heroCurrentHPBar' <= 0 || '@enemyCurrentHPBar' <= 0) {
                         window.location.href = "/Hero/All";
                     }
 
@@ -63,27 +75,29 @@
                             let hero = data.responseJSON.battleUnits.hero;
                             let enemy = data.responseJSON.battleUnits.enemy;
 
-                            function update(progress, max) {
+                            function update(div, max) {
                                 var msecsPerUpdate = 1000 / 60;
-                                var duration = 1;
+                                var duration = 1.6;
                                 var interval = max / (duration * 1000 / msecsPerUpdate);
-                                var bar = $(progress);
 
-                                function animator() {
-                                    bar.val(bar.val() - interval);
-                                    if (bar.val() - interval >= max) {
+                                function animator()
+                                {
+                                    var width = $(`#${div}`).width() > 210 ? width = 210 : width = $(`#${div}`).width();
+
+                                    $(`#${div}`).width(width - interval);
+                                    if ($(`#${div}`).width() - interval >= max)
+                                    {
                                         setTimeout(animator, msecsPerUpdate);
-                                    } else {
-                                        bar.val(max);
                                     }
                                 }
+
                                 animator();
                             }
 
-                            update('#playerHealth', hero.currentHP);
-                            update('#enemyHealth', enemy.currentHP);
-                            update('#playerMana', hero.currentMana);
-                            update('#enemyMana', hero.currentMana);
+                            update('player-health-bar', ((hero.maxHP / 210) * hero.currentHP) /(hero.maxHP / 210));
+                            update('player-mana-bar', ((hero.maxMana / 210) * hero.currentMana) /(hero.maxMana / 210));
+                            update('enemy-health-bar', ((enemy.maxHP / 210) * enemy.currentHP) /(enemy.maxHP / 210));
+                            update('enemy-mana-bar', ((enemy.maxMana / 210) * enemy.currentMana) /(enemy.maxMana / 210));
 
                             if (hero.currentHP <= 0) {
                                 window.location.href = "/Hero/Killed";

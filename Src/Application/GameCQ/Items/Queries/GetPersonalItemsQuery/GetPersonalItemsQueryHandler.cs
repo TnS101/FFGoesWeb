@@ -18,7 +18,7 @@
 
         public async Task<ItemListViewModel> Handle(GetPersonalItemsQuery request, CancellationToken cancellationToken)
         {
-            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
+            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.Id == request.HeroId && h.UserId == request.UserId);
 
             var fightingClass = await this.Context.FightingClasses.FindAsync(hero.FightingClassId);
 

@@ -58,13 +58,15 @@
         [HttpPost]
         public async Task<IActionResult> Equip([FromForm]long id, [FromForm]string command, [FromForm]long heroId, [FromForm]string slot)
         {
-            return this.Redirect(await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, HeroId = heroId, Slot = slot }));
+            var result = await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, HeroId = heroId, Slot = slot });
+
+            return this.Json(new { result });
         }
 
         [HttpGet("/Hero/Equipment/id&slot")]
         public async Task<IActionResult> Equipment([FromQuery]long id, [FromQuery]string slot)
         {
-            return this.View(await this.Mediator.Send(new GetEquipmentQuery { HeroId = id, Slot = slot }));
+            return this.View(await this.Mediator.Send(new GetEquipmentQuery { HeroId = id, Slot = slot, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet("/Hero/Inventory/id&slot")]
@@ -72,14 +74,14 @@
         {
             if (string.IsNullOrEmpty(slot))
             {
-                return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
+                return this.View(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot, UserId = this.UserManager.GetUserId(this.User) }));
             }
 
-            return this.Json(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot }));
+            return this.Json(await this.Mediator.Send(new GetPersonalItemsQuery { HeroId = id, Slot = slot, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpPost]
-        public async Task<IActionResult> DiscardItem([FromForm]long id, [FromForm]int count, [FromForm]string slot, [FromForm]long heroId)
+        public async Task<IActionResult> DiscardItem([FromForm]long id, [FromForm]int count, [FromForm]long heroId, [FromForm]string slot)
         {
             var result = await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId });
 

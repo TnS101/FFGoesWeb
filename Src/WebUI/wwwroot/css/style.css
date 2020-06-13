@@ -42,128 +42,290 @@ progress {
   box-shadow: 0px 1px 4px #666 inset;
  }
 
-.healthBar::-webkit-progress-value {
- background: rgb(184,0,0);
- background: linear-gradient(90deg, rgba(184,0,0,1) 0%, rgba(255,0,0,0.5802696078431373) 44%, rgba(0,255,111,1) 100%);
+.player-health-bar{
+ height: 15px;  
+ box-shadow: 0px 1px 4px #079671 inset;
+ border-radius: 10px;
+ background: linear-gradient(30deg, #067c5d,#079671, #12a780, #0ec295, #14deab, #13eeb6, #18f7bf, #2cfec9);
+ background-size: 100% 480%;
+ -webkit-animation: Flow1 3s eas infinite;
+ -moz-animation: Flow2 3s ease infinite;
+ animation: Flow3 3s ease infinite;
+ -o-animation: Flow4 3s ease infinite;
 }
 
-.flow-bar
+.enemy-health-bar
 {
-  height: 30px;
-  width: 400px;
-  margin: 0 auto;
-  background-color: #2d364c;
-  border-radius: 11px;
-  border:solid,2px;
-  box-shadow: 0px 1px 3px #777 inset;
+ height: 15px;  
+ box-shadow: 0px 1px 4px #079671 inset;
+ border-radius: 10px;
+ background: linear-gradient(30deg, #3b0303, #7c0606, #c40c0c, #d70000, #f11b1b, #fc2d2d, #ff3737, #ff5e5e);
+ background-size: 100% 600%;
+ -webkit-animation: Flow1 3s ease infinite;
+ -moz-animation: Flow2 3s ease infinite;
+ animation: Flow3 3s ease infinite;
+ -o-animation: Flow4 3s ease infinite;
 }
 
-.flow {
-    height: 30px;
-    background: linear-gradient(30deg, #079671, #12a780, #0ec295, #14deab, #13eeb6, #18f7bf, #2cfec9);
-    box-shadow: 0px 1px 3px #777 inset;
-    background-size: 100% 480%;
+.mana-bar{
+ height: 15px;  
+ box-shadow: 0px 1px 4px #079671 inset;
+ border-radius: 10px;
+ background: linear-gradient(30deg, #5f0000, #850505, #a80909, #c61616, #d41010, #e61f1f, #e82b2b, #f73e3e);
+ background-size: 100% 480%;
+ -webkit-animation: Flow1 3s eas infinite;
+ -moz-animation: Flow2 3s ease infinite;
+ animation: Flow3 3s ease infinite;
+ -o-animation: Flow4 3s ease infinite;
+}
 
-    -webkit-animation: Flow1 3s ease infinite;
-    -moz-animation: Flow2 3s ease infinite;
-    animation: Flow3 3s ease infinite;
+.flow-bar {
+ height: 15px;
+ width: 210px;
+ margin: 0 auto;
+ background-color: #32677d;
+ border: solid,4px;
+ border-radius: 10px;
+ box-shadow: 0px 3px 3px #494747 inset;
+ display:inline-block;
 }
 
 @-webkit-keyframes Flow1 {
-    0%{background-position:0% 10%}
-    25%{background-position:34% 50%}
-    50%{background-position:84% 100%}
-    75%{background-position:34% 50%}
-    100%{background-position:0% 10%}
+ 0% {
+  background-position: 0% 10%
+ }
+
+ 25% {
+  background-position: 34% 50%
+ }
+
+ 50% {
+  background-position: 84% 100%
+ }
+
+ 75% {
+  background-position: 34% 50%
+ }
+
+ 100% {
+  background-position: 0% 10%
+ }
 }
 
 @-moz-keyframes Flow2 {
-   0%{background-position:17% 0%}
-    50%{background-position:84% 100%}
-    100%{background-position:17% 0%}
+ 0% {
+  background-position: 0% 10%
+ }
+
+ 25% {
+  background-position: 34% 50%
+ }
+
+ 50% {
+  background-position: 84% 100%
+ }
+
+ 75% {
+  background-position: 34% 50%
+ }
+
+ 100% {
+  background-position: 0% 10%
+ }
 }
+
 @keyframes Flow3 {
-    0%{background-position:17% 0%}
-    50%{background-position:84% 100%}
-    100%{background-position:17% 0%}
+ 0% {
+  background-position: 0% 10%
+ }
+
+ 25% {
+  background-position: 34% 50%
+ }
+
+ 50% {
+  background-position: 84% 100%
+ }
+
+ 75% {
+  background-position: 34% 50%
+ }
+
+ 100% {
+  background-position: 0% 10%
+ }
+}
+
+@-o-keyframes Flow4 {
+    0% {
+  background-position: 0% 10%
+ }
+
+ 25% {
+  background-position: 34% 50%
+ }
+
+ 50% {
+  background-position: 84% 100%
+ }
+
+ 75% {
+  background-position: 34% 50%
+ }
+
+ 100% {
+  background-position: 0% 10%
+ }
 }
 
 .attack-option-gradient {
-    background: linear-gradient(228deg, #c81212, #c9df19, #df7b19);
-    background-size: 600% 600%;
-    -webkit-animation: ATO1 7s ease infinite;
-    -moz-animation: ATO2 7s ease infinite;
-    animation: ATO3 7s ease infinite;
+ background: linear-gradient(228deg, #c81212, #c9df19, #df7b19);
+ background-size: 600% 600%;
+ -webkit-animation: ATO1 7s ease infinite;
+ -moz-animation: ATO2 7s ease infinite;
+ animation: ATO3 7s ease infinite;
 }
 
 @-webkit-keyframes ATO1 {
-    0%{background-position:75% 0%}
-    50%{background-position:26% 100%}
-    100%{background-position:75% 0%}
+ 0% {
+  background-position: 75% 0%
+ }
+
+ 50% {
+  background-position: 26% 100%
+ }
+
+ 100% {
+  background-position: 75% 0%
+ }
 }
+
 @-moz-keyframes ATO2 {
-    0%{background-position:75% 0%}
-    50%{background-position:26% 100%}
-    100%{background-position:75% 0%}
+ 0% {
+  background-position: 75% 0%
+ }
+
+ 50% {
+  background-position: 26% 100%
+ }
+
+ 100% {
+  background-position: 75% 0%
+ }
 }
+
 @keyframes ATO3 {
-    0%{background-position:75% 0%}
-    50%{background-position:26% 100%}
-    100%{background-position:75% 0%}
+ 0% {
+  background-position: 75% 0%
+ }
+
+ 50% {
+  background-position: 26% 100%
+ }
+
+ 100% {
+  background-position: 75% 0%
+ }
 }
 
 .spell-option-gradient {
-    background: linear-gradient(107deg, #130b8e, #0dd4df, #961de8);
-    background-size: 600% 600%;
-
-    -webkit-animation: SO1 7s ease infinite;
-    -moz-animation: SO2 7s ease infinite;
-    animation: SO3 7s ease infinite;
+ background: linear-gradient(107deg, #130b8e, #0dd4df, #961de8);
+ background-size: 600% 600%;
+ -webkit-animation: SO1 7s ease infinite;
+ -moz-animation: SO2 7s ease infinite;
+ animation: SO3 7s ease infinite;
 }
 
 @-webkit-keyframes SO1 {
-    0%{background-position:75% 0%}
-    50%{background-position:26% 100%}
-    100%{background-position:75% 0%}
+ 0% {
+  background-position: 75% 0%
+ }
+
+ 50% {
+  background-position: 26% 100%
+ }
+
+ 100% {
+  background-position: 75% 0%
+ }
 }
+
 @-moz-keyframes SO2 {
-    0%{background-position:75% 0%}
-    50%{background-position:26% 100%}
-    100%{background-position:75% 0%}
+ 0% {
+  background-position: 75% 0%
+ }
+
+ 50% {
+  background-position: 26% 100%
+ }
+
+ 100% {
+  background-position: 75% 0%
+ }
 }
+
 @keyframes SO3 {
-    0%{background-position:75% 0%}
-    50%{background-position:26% 100%}
-    100%{background-position:75% 0%}
+ 0% {
+  background-position: 75% 0%
+ }
+
+ 50% {
+  background-position: 26% 100%
+ }
+
+ 100% {
+  background-position: 75% 0%
+ }
 }
 
 .defend-option-gradient {
-    background: linear-gradient(107deg, #000000, #7b7f7f, #fbfbfb);
-    background-size: 600% 600%;
-
-    -webkit-animation: DO1 7s ease infinite;
-    -moz-animation: DO2 7s ease infinite;
-    animation: DO3 7s ease infinite;
+ background: linear-gradient(107deg, #000000, #7b7f7f, #fbfbfb);
+ background-size: 600% 600%;
+ -webkit-animation: DO1 7s ease infinite;
+ -moz-animation: DO2 7s ease infinite;
+ animation: DO3 7s ease infinite;
 }
 
 @-webkit-keyframes DO1 {
-    0%{background-position:75% 0%}
-    50%{background-position:26% 100%}
-    100%{background-position:75% 0%}
-}
-@-moz-keyframes DO2 {
-    0%{background-position:75% 0%}
-    50%{background-position:26% 100%}
-    100%{background-position:75% 0%}
-}
-@keyframes DO3 {
-    0%{background-position:75% 0%}
-    50%{background-position:26% 100%}
-    100%{background-position:75% 0%}
+ 0% {
+  background-position: 75% 0%
+ }
+
+ 50% {
+  background-position: 26% 100%
+ }
+
+ 100% {
+  background-position: 75% 0%
+ }
 }
 
-.manaBar::-webkit-progress-value {
- background: #1db5e6;
+@-moz-keyframes DO2 {
+ 0% {
+  background-position: 75% 0%
+ }
+
+ 50% {
+  background-position: 26% 100%
+ }
+
+ 100% {
+  background-position: 75% 0%
+ }
+}
+
+@keyframes DO3 {
+ 0% {
+  background-position: 75% 0%
+ }
+
+ 50% {
+  background-position: 26% 100%
+ }
+
+ 100% {
+  background-position: 75% 0%
+ }
 }
 
 .versus {

@@ -212,6 +212,7 @@
                 EffectPower = effectPower,
                 Effect = effect,
                 MaterialType = "Stone",
+                Name = $"Relic of {effect}",
                 ImagePath = "https://gamepedia.cursecdn.com/wowpedia/d/da/Inv_relics_6orunestone_ogremissive.png?version=7c1047730b8614176a63133aada863fe",
             };
 

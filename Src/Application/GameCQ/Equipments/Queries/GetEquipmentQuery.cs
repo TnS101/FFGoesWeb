@@ -7,5 +7,7 @@
         public long HeroId { get; set; }
 
         public string Slot { get; set; }
+
+        public string UserId { get; set; }
     }
 }
