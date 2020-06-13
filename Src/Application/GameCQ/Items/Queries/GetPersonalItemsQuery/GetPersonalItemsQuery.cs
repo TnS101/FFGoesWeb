@@ -1,6 +1,5 @@
 ﻿namespace Application.GameCQ.Items.Queries.GetPersonalItemsQuery
 {
-    using System.Security.Claims;
     using MediatR;
 
     public class GetPersonalItemsQuery : IRequest<ItemListViewModel>

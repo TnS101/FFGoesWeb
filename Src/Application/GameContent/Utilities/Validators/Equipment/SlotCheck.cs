@@ -322,7 +322,7 @@
 
                 goldAmount += weapon.AttackPower;
             }
-            else if (item.Slot != "Weapon" && item.Slot != "Trinket")
+            else if (item.Slot != "Weapon" && item.Slot != "Trinket" && item.Slot != "Relic")
             {
                 var armor = (Armor)item;
 

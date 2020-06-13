@@ -1,12 +1,10 @@
 ﻿namespace Application.GameCQ.Items.Queries.GetPersonalItemsQuery
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
@@ -60,7 +58,7 @@
 
             if (inventory != null)
             {
-                var relics = new Stack<Relic>();
+                var result = new ItemListViewModel { HeroClass = "Any", HeroLevel = hero.Level };
 
                 if (inventory.Count() > 0)
                 {
@@ -70,26 +68,23 @@
                         {
                             if (item.RelicId == baseRelic.Id)
                             {
-                                relics.Push(baseRelic);
+                                result.Items.ToList().Add(new ItemMinViewModel
+                                {
+                                    Id = baseRelic.Id,
+                                    Name = baseRelic.Name,
+                                    ImagePath = baseRelic.ImagePath,
+                                    Slot = baseRelic.Slot,
+                                    Level = baseRelic.Level,
+                                    ClassType = baseRelic.ClassType,
+                                    SellPrice = baseRelic.SellPrice,
+                                    Count = item.Count,
+                                });
                             }
                         }
                     }
                 }
 
-                return new ItemListViewModel
-                {
-                    Items = relics.Select(i => new ItemMinViewModel
-                    {
-                        Id = i.Id,
-                        Name = i.Name,
-                        ImagePath = i.ImagePath,
-                        Slot = i.Slot,
-                        Level = i.Level,
-                        ClassType = i.ClassType,
-                    }),
-                    HeroClass = "Any",
-                    HeroLevel = hero.Level,
-                };
+                return result;
             }
             else
             {
@@ -103,7 +98,7 @@
 
             if (inventory != null)
             {
-                var weapons = new Stack<Weapon>();
+                var result = new ItemListViewModel() { HeroClass = className, HeroLevel = hero.Level };
 
                 if (inventory.Count() > 0)
                 {
@@ -113,26 +108,23 @@
                         {
                             if (item.WeaponId == baseWeapon.Id)
                             {
-                                weapons.Push(baseWeapon);
+                                result.Items.Add(new ItemMinViewModel
+                                {
+                                    Id = baseWeapon.Id,
+                                    Name = baseWeapon.Name,
+                                    ImagePath = baseWeapon.ImagePath,
+                                    Slot = baseWeapon.Slot,
+                                    Level = baseWeapon.Level,
+                                    ClassType = baseWeapon.ClassType,
+                                    SellPrice = baseWeapon.SellPrice,
+                                    Count = item.Count,
+                                });
                             }
                         }
                     }
                 }
 
-                return new ItemListViewModel
-                {
-                    Items = weapons.Select(i => new ItemMinViewModel
-                    {
-                        Id = i.Id,
-                        Name = i.Name,
-                        ImagePath = i.ImagePath,
-                        Slot = i.Slot,
-                        Level = i.Level,
-                        ClassType = i.ClassType,
-                    }),
-                    HeroClass = className,
-                    HeroLevel = hero.Level,
-                };
+                return result;
             }
             else
             {
@@ -146,7 +138,7 @@
 
             if (inventory != null)
             {
-                var armors = new Stack<Armor>();
+                var result = new ItemListViewModel() { HeroClass = className, HeroLevel = hero.Level };
 
                 foreach (var baseArmor in this.Context.Armors)
                 {
@@ -154,25 +146,22 @@
                     {
                         if (item.ArmorId == baseArmor.Id)
                         {
-                            armors.Push(baseArmor);
+                            result.Items.Add(new ItemMinViewModel
+                            {
+                                Id = baseArmor.Id,
+                                Name = baseArmor.Name,
+                                ImagePath = baseArmor.ImagePath,
+                                Slot = baseArmor.Slot,
+                                Level = baseArmor.Level,
+                                ClassType = baseArmor.ClassType,
+                                SellPrice = baseArmor.SellPrice,
+                                Count = item.Count,
+                            });
                         }
                     }
                 }
 
-                return new ItemListViewModel
-                {
-                    Items = armors.Select(i => new ItemMinViewModel
-                    {
-                        Id = i.Id,
-                        Name = i.Name,
-                        ImagePath = i.ImagePath,
-                        Slot = i.Slot,
-                        Level = i.Level,
-                        ClassType = i.ClassType,
-                    }),
-                    HeroClass = className,
-                    HeroLevel = hero.Level,
-                };
+                return result;
             }
             else
             {
@@ -186,7 +175,7 @@
 
             if (inventory != null)
             {
-                var trinkets = new Stack<Trinket>();
+                var result = new ItemListViewModel() { HeroClass = "Any", HeroLevel = hero.Level };
 
                 foreach (var baseTrinket in this.Context.Trinkets)
                 {
@@ -194,25 +183,22 @@
                     {
                         if (item.TrinketId == baseTrinket.Id)
                         {
-                            trinkets.Push(baseTrinket);
+                            result.Items.Add(new ItemMinViewModel
+                            {
+                                Id = baseTrinket.Id,
+                                Name = baseTrinket.Name,
+                                ImagePath = baseTrinket.ImagePath,
+                                Slot = baseTrinket.Slot,
+                                Level = baseTrinket.Level,
+                                ClassType = baseTrinket.ClassType,
+                                SellPrice = baseTrinket.SellPrice,
+                                Count = item.Count,
+                            });
                         }
                     }
                 }
 
-                return new ItemListViewModel
-                {
-                    Items = trinkets.Select(i => new ItemMinViewModel
-                    {
-                        Id = i.Id,
-                        Name = i.Name,
-                        ImagePath = i.ImagePath,
-                        Slot = i.Slot,
-                        Level = i.Level,
-                        ClassType = i.ClassType,
-                    }),
-                    HeroClass = "Any",
-                    HeroLevel = hero.Level,
-                };
+                return result;
             }
             else
             {
@@ -226,7 +212,7 @@
 
             if (inventory != null)
             {
-                var treasures = new Stack<Treasure>();
+                var result = new ItemListViewModel();
 
                 foreach (var baseTreasure in this.Context.Treasures)
                 {
@@ -234,21 +220,19 @@
                     {
                         if (item.TreasureId == baseTreasure.Id)
                         {
-                            treasures.Push(baseTreasure);
+                            result.Items.Add(new ItemMinViewModel
+                            {
+                                Id = baseTreasure.Id,
+                                Name = baseTreasure.Name,
+                                ImagePath = baseTreasure.ImagePath,
+                                Slot = baseTreasure.Slot,
+                                Count = item.Count,
+                            });
                         }
                     }
                 }
 
-                return new ItemListViewModel
-                {
-                    Items = treasures.Select(i => new ItemMinViewModel
-                    {
-                        Id = (long)i.Id,
-                        Name = i.Name,
-                        ImagePath = i.ImagePath,
-                        Slot = "Treasure",
-                    }),
-                };
+                return result;
             }
             else
             {
@@ -262,7 +246,7 @@
 
             if (inventory != null)
             {
-                var treasureKeys = new Stack<TreasureKey>();
+                var result = new ItemListViewModel();
 
                 foreach (var baseTreasureKey in this.Context.TreasureKeys)
                 {
@@ -270,22 +254,19 @@
                     {
                         if (item.TreasureKeyId == baseTreasureKey.Id)
                         {
-                            treasureKeys.Push(baseTreasureKey);
+                            result.Items.Add(new ItemMinViewModel
+                            {
+                                Id = baseTreasureKey.Id,
+                                Name = baseTreasureKey.Name,
+                                ImagePath = baseTreasureKey.ImagePath,
+                                Slot = baseTreasureKey.Slot,
+                                Count = item.Count,
+                            });
                         }
                     }
                 }
 
-                return new ItemListViewModel
-                {
-                    Items = treasureKeys.Select(i => new ItemMinViewModel
-                    {
-                        Id = (long)i.Id,
-                        Name = i.Name,
-                        ImagePath = i.ImagePath,
-                        Slot = "Treasure Key",
-                        Level = 1,
-                    }),
-                };
+                return result;
             }
             else
             {
@@ -299,7 +280,7 @@
 
             if (inventory != null)
             {
-                var materials = new Stack<Material>();
+                var result = new ItemListViewModel();
 
                 if (inventory.Count > 0)
                 {
@@ -309,22 +290,21 @@
                         {
                             if (item.MaterialId == baseMaterial.Id)
                             {
-                                materials.Push(baseMaterial);
+                                result.Items.Add(new ItemMinViewModel
+                                {
+                                    Id = baseMaterial.Id,
+                                    Name = baseMaterial.Name,
+                                    ImagePath = baseMaterial.ImagePath,
+                                    Slot = baseMaterial.Slot,
+                                    SellPrice = baseMaterial.SellPrice,
+                                    Count = item.Count,
+                                });
                             }
                         }
                     }
                 }
 
-                return new ItemListViewModel
-                {
-                    Items = materials.Select(i => new ItemMinViewModel
-                    {
-                        Id = (long)i.Id,
-                        Name = i.Name,
-                        ImagePath = i.ImagePath,
-                        Slot = "Material",
-                    }),
-                };
+                return result;
             }
             else
             {

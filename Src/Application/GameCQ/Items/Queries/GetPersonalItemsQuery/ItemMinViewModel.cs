@@ -13,5 +13,9 @@
         public string ClassType { get; set; }
 
         public int Level { get; set; }
+
+        public int SellPrice { get; set; }
+
+        public int Count { get; set; }
     }
 }

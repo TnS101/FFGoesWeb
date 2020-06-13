@@ -71,7 +71,7 @@
 
                                 function animator() {
                                     bar.val(bar.val() - interval);
-                                    if (bar.val() - interval > max) {
+                                    if (bar.val() - interval >= max) {
                                         setTimeout(animator, msecsPerUpdate);
                                     } else {
                                         bar.val(max);

@@ -60,6 +60,11 @@
                                     $(`<p class="main-font-color has-normal-font-size">Required Level : ${item.level}</p>`).appendTo(itemInfo);
                                 }
 
+                                if (item.sellPrice > 0)
+                                {
+                                    $(`<p class="main-font-color has-normal-font-size">Sell Price : ${item.sellPrice}</p>`).appendTo(itemInfo);
+                                }
+
                                 if (item.classType == 'Any' || item.classType == data.responseJSON.heroClass) {
                                     if (Number(item.level) <= data.responseJSON.heroLevel && Number(item.level) > 0) {
                                         var equipForm = $('#equip-temp').clone(true);

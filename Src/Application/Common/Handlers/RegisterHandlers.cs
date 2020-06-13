@@ -151,7 +151,7 @@
             services.AddScoped<IRequestHandler<DeleteMessageCommand, string>, DeleteMessageCommandHandler>();
             services.AddScoped<IRequestHandler<EditMessageCommand, string>, EditMessageCommandHandler>();
             services.AddScoped<IRequestHandler<SelectHeroCommand, string>, SelectHeroCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateStatusCommand, StatusMinViewModel>, UpdateStatusCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateStatusCommand, UpdateStatusJsonResult>, UpdateStatusCommandHandler>();
             services.AddScoped<IRequestHandler<ExploreCommand, string>, ExploreCommandHandler>();
             services.AddScoped<IRequestHandler<SendFeedbackCommand, string>, SendFeedbackCommandHandler>();
             services.AddScoped<IRequestHandler<OpenTicketCommand, string>, OpenTicketCommandHandler>();
