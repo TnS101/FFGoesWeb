@@ -91,6 +91,16 @@
 
         public override double CurrentCritChance { get; set; }
 
+        public override bool IsConfused { get; set; }
+
+        public override bool IsProvoked { get; set; }
+
+        public override bool IsSilenced { get; set; }
+
+        public override bool IsStunned { get; set; }
+
+        public override bool IsBlinded { get; set; }
+
         public override int GoldAmount { get; set; }
 
         public int Mastery { get; set; }

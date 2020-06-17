@@ -97,7 +97,7 @@
             }
             else if (request.Slot == "Treasure")
             {
-                var treasureToRemove = await this.Context.TreasuresInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.TreasureId == (int)request.ItemId);
+                var treasureToRemove = await this.Context.TreasuresInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.LootBoxId == (int)request.ItemId);
 
                 if (request.Count >= treasureToRemove.Count)
                 {
@@ -110,7 +110,7 @@
             }
             else if (request.Slot == "Treasure Key")
             {
-                var treasureKeyToRemove = await this.Context.TreasureKeysInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.TreasureKeyId == (int)request.ItemId);
+                var treasureKeyToRemove = await this.Context.TreasureKeysInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.LootKeyId == (int)request.ItemId);
 
                 if (request.Count >= treasureKeyToRemove.Count)
                 {

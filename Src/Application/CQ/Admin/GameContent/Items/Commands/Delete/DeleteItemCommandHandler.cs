@@ -58,18 +58,18 @@
 
             if (request.Slot == "Treasure")
             {
-                var treasure = await this.Context.Treasures.FindAsync(int.Parse(request.ItemId));
-                var inventories = await this.Context.TreasuresInventories.Where(e => e.TreasureId == treasure.Id).ToListAsync();
+                var treasure = await this.Context.LootBoxes.FindAsync(int.Parse(request.ItemId));
+                var inventories = await this.Context.TreasuresInventories.Where(e => e.LootBoxId == treasure.Id).ToListAsync();
                 this.Context.TreasuresInventories.RemoveRange(inventories);
-                this.Context.Treasures.Remove(treasure);
+                this.Context.LootBoxes.Remove(treasure);
             }
 
             if (request.Slot == "Treasure Key")
             {
-                var treasureKey = await this.Context.TreasureKeys.FindAsync(int.Parse(request.ItemId));
-                var inventories = await this.Context.TreasureKeysInventories.Where(e => e.TreasureKeyId == treasureKey.Id).ToListAsync();
+                var treasureKey = await this.Context.LootKeys.FindAsync(int.Parse(request.ItemId));
+                var inventories = await this.Context.TreasureKeysInventories.Where(e => e.LootKeyId == treasureKey.Id).ToListAsync();
                 this.Context.TreasureKeysInventories.RemoveRange(inventories);
-                this.Context.TreasureKeys.Remove(treasureKey);
+                this.Context.LootKeys.Remove(treasureKey);
             }
 
             if (request.Slot == "Tool")

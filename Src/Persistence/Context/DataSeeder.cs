@@ -44,26 +44,26 @@
 
             await this.SeedMainMaterialsAsync(context, cancellationToken);
 
-            await this.SeedTreasureKeysAsync(context, cancellationToken);
+            await this.SeedLootKeysAsync(context, cancellationToken);
         }
 
-        private async Task SeedTreasureKeysAsync(FFDbContext context, CancellationToken cancellationToken)
+        private async Task SeedLootKeysAsync(FFDbContext context, CancellationToken cancellationToken)
         {
-            context.TreasureKeys.Add(new TreasureKey
+            context.LootKeys.Add(new LootKey
             {
                 Name = "Basic Bronze Key",
                 Rarity = "Bronze",
                 Slot = "Treasure Key",
                 ImagePath = "/images/Items/Treasure Keys/Basic Bronze Key.png",
             });
-            context.TreasureKeys.Add(new TreasureKey
+            context.LootKeys.Add(new LootKey
             {
                 Name = "Basic Silver Key",
                 Rarity = "Silver",
                 Slot = "Treasure Key",
                 ImagePath = "/images/Items/Treasure Keys/Basic Silver Key.png",
             });
-            context.TreasureKeys.Add(new TreasureKey
+            context.LootKeys.Add(new LootKey
             {
                 Name = "Basic Gold Key",
                 Rarity = "Gold",

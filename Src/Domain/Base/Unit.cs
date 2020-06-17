@@ -50,6 +50,16 @@
 
         public virtual double CurrentCritChance { get; set; }
 
+        public virtual bool IsStunned { get; set; }
+
+        public virtual bool IsSilenced { get; set; }
+
+        public virtual bool IsBlinded { get; set; }
+
+        public virtual bool IsConfused { get; set; }
+
+        public virtual bool IsProvoked { get; set; }
+
         public virtual string ImagePath { get; set; }
 
         public virtual int GoldAmount { get; set; }

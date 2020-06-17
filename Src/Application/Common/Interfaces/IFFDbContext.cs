@@ -21,9 +21,9 @@
 
         DbSet<Spell> Spells { get; set; }
 
-        DbSet<Treasure> Treasures { get; set; }
+        DbSet<LootBox> LootBoxes { get; set; }
 
-        DbSet<TreasureKey> TreasureKeys { get; set; }
+        DbSet<LootKey> LootKeys { get; set; }
 
         DbSet<Comment> Comments { get; set; }
 
@@ -75,9 +75,9 @@
 
         DbSet<MaterialInventory> MaterialsInventories { get; set; }
 
-        DbSet<TreasureInventory> TreasuresInventories { get; set; }
+        DbSet<LootBoxInventory> TreasuresInventories { get; set; }
 
-        DbSet<TreasureKeyInventory> TreasureKeysInventories { get; set; }
+        DbSet<LootKeyInventory> TreasureKeysInventories { get; set; }
 
         DbSet<TrinketInventory> TrinketsInventories { get; set; }
 

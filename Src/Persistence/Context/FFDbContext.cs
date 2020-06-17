@@ -28,9 +28,9 @@
 
         public DbSet<Spell> Spells { get; set; }
 
-        public DbSet<Treasure> Treasures { get; set; }
+        public DbSet<LootBox> LootBoxes { get; set; }
 
-        public DbSet<TreasureKey> TreasureKeys { get; set; }
+        public DbSet<LootKey> LootKeys { get; set; }
 
         public DbSet<Inventory> Inventories { get; set; }
 
@@ -80,9 +80,9 @@
 
         public DbSet<MaterialInventory> MaterialsInventories { get; set; }
 
-        public DbSet<TreasureInventory> TreasuresInventories { get; set; }
+        public DbSet<LootBoxInventory> TreasuresInventories { get; set; }
 
-        public DbSet<TreasureKeyInventory> TreasureKeysInventories { get; set; }
+        public DbSet<LootKeyInventory> TreasureKeysInventories { get; set; }
 
         public DbSet<TrinketInventory> TrinketsInventories { get; set; }
 

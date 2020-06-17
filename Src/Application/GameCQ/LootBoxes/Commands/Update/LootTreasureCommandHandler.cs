@@ -25,14 +25,14 @@
 
             var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            var treasure = new Treasure();
+            var treasure = new LootBox();
 
-            treasure = await this.Context.Treasures.FirstOrDefaultAsync(r => r.Rarity == this.TreasureRarity());
+            treasure = await this.Context.LootBoxes.FirstOrDefaultAsync(r => r.Rarity == this.TreasureRarity());
 
-            hero.Inventory.TreasureInventories.Add(new TreasureInventory
+            hero.Inventory.LootBoxInventories.Add(new LootBoxInventory
             {
                 InventoryId = hero.InventoryId,
-                TreasureId = treasure.Id,
+                LootBoxId = treasure.Id,
             });
 
             await this.Context.SaveChangesAsync(cancellationToken);

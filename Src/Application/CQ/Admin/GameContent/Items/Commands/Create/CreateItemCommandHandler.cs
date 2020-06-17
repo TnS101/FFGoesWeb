@@ -37,15 +37,15 @@
 
                id = result;
             }
-            else if (request.Slot == "Treasure")
+            else if (request.Slot == "Loot Box")
             {
-                var result = await this.CreateTreasure(request, cancellationToken);
+                var result = await this.CreateLootBox(request, cancellationToken);
 
                 id = result;
             }
-            else if (request.Slot == "Treasure Key")
+            else if (request.Slot == "Loot Key")
             {
-                var result = await this.CreateTreasureKey(request, cancellationToken);
+                var result = await this.CreateLootKey(request, cancellationToken);
 
                 id = result;
             }
@@ -184,9 +184,9 @@
             return material.Id;
         }
 
-        private async Task<int> CreateTreasure(CreateItemCommand request, CancellationToken cancellationToken)
+        private async Task<int> CreateLootBox(CreateItemCommand request, CancellationToken cancellationToken)
         {
-            var treasure = new Treasure
+            var treasure = new LootBox
             {
                 Name = request.Name,
                 Rarity = request.Rarity,
@@ -195,16 +195,16 @@
                 Slot = request.Slot,
             };
 
-            this.Context.Treasures.Add(treasure);
+            this.Context.LootBoxes.Add(treasure);
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
             return treasure.Id;
         }
 
-        private async Task<int> CreateTreasureKey(CreateItemCommand request, CancellationToken cancellationToken)
+        private async Task<int> CreateLootKey(CreateItemCommand request, CancellationToken cancellationToken)
         {
-            var treasureKey = new TreasureKey
+            var treasureKey = new LootKey
             {
                 Name = request.Name,
                 Rarity = request.Rarity,
@@ -212,7 +212,7 @@
                 Slot = request.Slot,
             };
 
-            this.Context.TreasureKeys.Add(treasureKey);
+            this.Context.LootKeys.Add(treasureKey);
 
             await this.Context.SaveChangesAsync(cancellationToken);
 

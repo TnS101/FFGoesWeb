@@ -38,13 +38,13 @@
             {
                 return await this.GetRelics(hero);
             }
-            else if (request.Slot == "Treasure")
+            else if (request.Slot == "Loot Box")
             {
-                return await this.GetTreasures(hero);
+                return await this.GetLootBoxes(hero);
             }
-            else if (request.Slot == "Treasure Key")
+            else if (request.Slot == "Loot Key")
             {
-                return await this.GetTreasureKeys(hero);
+                return await this.GetLootKeys(hero);
             }
             else
             {
@@ -206,7 +206,7 @@
             }
         }
 
-        private async Task<ItemListViewModel> GetTreasures(Hero hero)
+        private async Task<ItemListViewModel> GetLootBoxes(Hero hero)
         {
             var inventory = await this.Context.TreasuresInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
@@ -214,11 +214,11 @@
             {
                 var result = new ItemListViewModel();
 
-                foreach (var baseTreasure in this.Context.Treasures)
+                foreach (var baseTreasure in this.Context.LootBoxes)
                 {
                     foreach (var item in inventory)
                     {
-                        if (item.TreasureId == baseTreasure.Id)
+                        if (item.LootBoxId == baseTreasure.Id)
                         {
                             result.Items.Add(new ItemMinViewModel
                             {
@@ -240,7 +240,7 @@
             }
         }
 
-        private async Task<ItemListViewModel> GetTreasureKeys(Hero hero)
+        private async Task<ItemListViewModel> GetLootKeys(Hero hero)
         {
             var inventory = await this.Context.TreasureKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId).ToListAsync();
 
@@ -248,11 +248,11 @@
             {
                 var result = new ItemListViewModel();
 
-                foreach (var baseTreasureKey in this.Context.TreasureKeys)
+                foreach (var baseTreasureKey in this.Context.LootKeys)
                 {
                     foreach (var item in inventory)
                     {
-                        if (item.TreasureKeyId == baseTreasureKey.Id)
+                        if (item.LootKeyId == baseTreasureKey.Id)
                         {
                             result.Items.Add(new ItemMinViewModel
                             {

@@ -45,7 +45,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.Treasures.Select(t => new ItemMinViewModel
+                    Items = await this.Context.LootBoxes.Select(t => new ItemMinViewModel
                     {
                         Id = t.Id,
                         Name = t.Name,
@@ -58,7 +58,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.TreasureKeys.Select(tk => new ItemMinViewModel
+                    Items = await this.Context.LootKeys.Select(tk => new ItemMinViewModel
                     {
                         Id = tk.Id,
                         Name = tk.Name,

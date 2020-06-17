@@ -27,13 +27,13 @@
             {
                 return await this.GetMaterial(request);
             }
-            else if (request.Slot == "Treasure")
+            else if (request.Slot == "Loot Box")
             {
-                return await this.GetTreasure(request);
+                return await this.GetLootBox(request);
             }
-            else if (request.Slot == "Treasure Key")
+            else if (request.Slot == "Loot Key")
             {
-                return await this.GetTreasureKey(request);
+                return await this.GetLootKey(request);
             }
             else if (request.Slot == "Tool")
             {
@@ -142,7 +142,7 @@
 
             return new ItemFullViewModel
             {
-                Id = (long)material.Id,
+                Id = material.Id,
                 Name = material.Name,
                 BuyPrice = material.BuyPrice,
                 SellPrice = material.SellPrice,
@@ -164,7 +164,7 @@
 
             return new ItemFullViewModel
             {
-                Id = (long)tool.Id,
+                Id = tool.Id,
                 Name = tool.Name,
                 BuyPrice = tool.BuyPrice,
                 SellPrice = tool.SellPrice,
@@ -175,13 +175,13 @@
             };
         }
 
-        private async Task<ItemFullViewModel> GetTreasure(GetCurrentItemQuery request)
+        private async Task<ItemFullViewModel> GetLootBox(GetCurrentItemQuery request)
         {
-            var treasure = await this.Context.Treasures.FindAsync(int.Parse(request.ItemId));
+            var treasure = await this.Context.LootBoxes.FindAsync(int.Parse(request.ItemId));
 
             return new ItemFullViewModel
             {
-                Id = (long)treasure.Id,
+                Id = treasure.Id,
                 Name = treasure.Name,
                 Reward = treasure.Reward,
                 Rarity = treasure.Rarity,
@@ -190,13 +190,13 @@
             };
         }
 
-        private async Task<ItemFullViewModel> GetTreasureKey(GetCurrentItemQuery request)
+        private async Task<ItemFullViewModel> GetLootKey(GetCurrentItemQuery request)
         {
-            var treasureKey = await this.Context.TreasureKeys.FindAsync(int.Parse(request.ItemId));
+            var treasureKey = await this.Context.LootKeys.FindAsync(int.Parse(request.ItemId));
 
             return new ItemFullViewModel
             {
-                Id = (long)treasureKey.Id,
+                Id = treasureKey.Id,
                 Name = treasureKey.Name,
                 Rarity = treasureKey.Rarity,
                 Slot = treasureKey.Slot,

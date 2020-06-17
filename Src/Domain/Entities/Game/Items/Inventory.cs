@@ -12,8 +12,8 @@
             this.WeaponInventories = new HashSet<WeaponInventory>();
             this.TrinketInventories = new HashSet<TrinketInventory>();
             this.MaterialInventories = new HashSet<MaterialInventory>();
-            this.TreasureKeyInventories = new HashSet<TreasureKeyInventory>();
-            this.TreasureInventories = new HashSet<TreasureInventory>();
+            this.LootKeyInventories = new HashSet<LootKeyInventory>();
+            this.LootBoxInventories = new HashSet<LootBoxInventory>();
             this.ConsumeableInventories = new HashSet<ConsumeableInventory>();
             this.ToolInventories = new HashSet<ToolInventory>();
             this.RelicInventories = new HashSet<RelicInventory>();
@@ -40,9 +40,9 @@
 
         public ICollection<MaterialInventory> MaterialInventories { get; set; }
 
-        public ICollection<TreasureInventory> TreasureInventories { get; set; }
+        public ICollection<LootBoxInventory> LootBoxInventories { get; set; }
 
-        public ICollection<TreasureKeyInventory> TreasureKeyInventories { get; set; }
+        public ICollection<LootKeyInventory> LootKeyInventories { get; set; }
 
         public ICollection<ToolInventory> ToolInventories { get; set; }
 

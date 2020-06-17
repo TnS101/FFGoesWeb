@@ -4,9 +4,9 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class TreasureKeyConfiguration : IEntityTypeConfiguration<TreasureKey>
+    public class LootKeyConfiguration : IEntityTypeConfiguration<LootKey>
     {
-        public void Configure(EntityTypeBuilder<TreasureKey> builder)
+        public void Configure(EntityTypeBuilder<LootKey> builder)
         {
             builder.HasKey(t => t.Id);
 

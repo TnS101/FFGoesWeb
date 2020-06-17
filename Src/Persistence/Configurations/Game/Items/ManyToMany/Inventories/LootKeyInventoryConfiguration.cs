@@ -4,20 +4,20 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class TreasureInventoryConfiguration : IEntityTypeConfiguration<TreasureInventory>
+    public class LootKeyInventoryConfiguration : IEntityTypeConfiguration<LootKeyInventory>
     {
-        public void Configure(EntityTypeBuilder<TreasureInventory> builder)
+        public void Configure(EntityTypeBuilder<LootKeyInventory> builder)
         {
-            builder.HasKey(ti => new { ti.TreasureId, ti.InventoryId });
+            builder.HasKey(ti => new { ti.LootKeyId, ti.InventoryId });
 
             builder.Property(ti => ti.InventoryId).HasColumnType("bigint");
 
-            builder.HasOne(t => t.Treasure)
-                .WithMany(ti => ti.TreasureInventories)
-                .HasForeignKey(t => t.TreasureId);
+            builder.HasOne(t => t.LootKey)
+                .WithMany(ti => ti.LootKeyInventories)
+                .HasForeignKey(t => t.LootKeyId);
 
             builder.HasOne(i => i.Inventory)
-                .WithMany(ti => ti.TreasureInventories)
+                .WithMany(ti => ti.LootKeyInventories)
                 .HasForeignKey(i => i.InventoryId);
 
             builder.Property(i => i.Count)

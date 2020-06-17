@@ -62,8 +62,8 @@
             this.CreateMap<Notification, NotificationFullViewModel>();
             this.CreateMap<Material, ItemMinViewModel>();
             this.CreateMap<Tool, ItemMinViewModel>();
-            this.CreateMap<TreasureKey, ItemMinViewModel>();
-            this.CreateMap<Treasure, ItemMinViewModel>();
+            this.CreateMap<LootKey, ItemMinViewModel>();
+            this.CreateMap<LootBox, ItemMinViewModel>();
             this.CreateMap<FriendRequest, FriendRequestFullViewModel>();
             this.CreateMap<Tool, ToolMinViewModel>();
             this.CreateMap<Spell, SpellFullViewModel>();

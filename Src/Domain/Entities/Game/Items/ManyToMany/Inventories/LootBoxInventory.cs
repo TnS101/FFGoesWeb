@@ -1,15 +1,15 @@
 ﻿namespace Domain.Entities.Game.Items.ManyToMany.Inventories
 {
-    public class TreasureInventory
+    public class LootBoxInventory
     {
-        public TreasureInventory()
+        public LootBoxInventory()
         {
             this.Count = 1;
         }
 
-        public int TreasureId { get; set; }
+        public int LootBoxId { get; set; }
 
-        public Treasure Treasure { get; set; }
+        public LootBox LootBox { get; set; }
 
         public long InventoryId { get; set; }
 

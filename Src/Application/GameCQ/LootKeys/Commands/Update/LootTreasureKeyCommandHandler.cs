@@ -25,10 +25,10 @@
 
             var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            this.Context.TreasureKeysInventories.Add(new TreasureKeyInventory
+            this.Context.TreasureKeysInventories.Add(new LootKeyInventory
             {
                 InventoryId = hero.InventoryId,
-                TreasureKeyId = await this.FindKeyId(),
+                LootKeyId = await this.FindKeyId(),
             });
 
             await this.Context.SaveChangesAsync(cancellationToken);
@@ -56,7 +56,7 @@
                 rarity = "Gold";
             }
 
-            var treasureKey = await this.Context.TreasureKeys.FirstOrDefaultAsync(tk => tk.Rarity == rarity);
+            var treasureKey = await this.Context.LootKeys.FirstOrDefaultAsync(tk => tk.Rarity == rarity);
 
             return treasureKey.Id;
         }

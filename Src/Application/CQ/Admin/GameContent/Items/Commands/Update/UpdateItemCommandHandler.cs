@@ -29,13 +29,13 @@
             {
                 await this.MaterialUpdate(request);
             }
-            else if (request.Slot == "Treasure")
+            else if (request.Slot == "Loot Box")
             {
-                await this.TreasureUpdate(request);
+                await this.LootBoxUpdate(request);
             }
-            else if (request.Slot == "Treasure Key")
+            else if (request.Slot == "Loot Key")
             {
-                await this.TreasureKeyUpdate(request);
+                await this.LootKeyUpdate(request);
             }
             else if (request.Slot == "Tool")
             {
@@ -161,9 +161,9 @@
             this.Context.Materials.Update(material);
         }
 
-        private async Task TreasureUpdate(UpdateItemCommand request)
+        private async Task LootBoxUpdate(UpdateItemCommand request)
         {
-            var treasure = await this.Context.Treasures.FindAsync(int.Parse(request.Id));
+            var treasure = await this.Context.LootBoxes.FindAsync(int.Parse(request.Id));
 
             if (!string.IsNullOrWhiteSpace(request.NewName))
             {
@@ -180,12 +180,12 @@
                 treasure.Rarity = request.NewRarity;
             }
 
-            this.Context.Treasures.Update(treasure);
+            this.Context.LootBoxes.Update(treasure);
         }
 
-        private async Task TreasureKeyUpdate(UpdateItemCommand request)
+        private async Task LootKeyUpdate(UpdateItemCommand request)
         {
-            var treasureKey = await this.Context.TreasureKeys.FindAsync(int.Parse(request.Id));
+            var treasureKey = await this.Context.LootKeys.FindAsync(int.Parse(request.Id));
 
             if (!string.IsNullOrWhiteSpace(request.NewName))
             {
@@ -197,7 +197,7 @@
                 treasureKey.Rarity = request.NewRarity;
             }
 
-            this.Context.TreasureKeys.Update(treasureKey);
+            this.Context.LootKeys.Update(treasureKey);
         }
 
         private async Task ToolUpdate(UpdateItemCommand request)

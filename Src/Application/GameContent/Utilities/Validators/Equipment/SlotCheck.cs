@@ -56,7 +56,7 @@
             }
             else if (slotNumber > 3 && slotNumber < 6)
             {
-                await this.TreasureKeyGenerate(context, inventoryId);
+                await this.LootKeyGenerate(context, inventoryId);
             }
             else if (slotNumber > 5 && slotNumber < 7)
             {
@@ -304,7 +304,7 @@
             }
         }
 
-        private async Task TreasureKeyGenerate(IFFDbContext context, long inventoryId)
+        private async Task LootKeyGenerate(IFFDbContext context, long inventoryId)
         {
             var rarityNumber = this.rng.Next(0, 10);
 
@@ -323,7 +323,7 @@
                 treasureKeyId = 3; // Bronze
             }
 
-            var treasureKey = await context.TreasureKeysInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.TreasureKeyId == treasureKeyId);
+            var treasureKey = await context.TreasureKeysInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.LootKeyId == treasureKeyId);
 
             if (treasureKey != null)
             {
@@ -331,10 +331,10 @@
             }
             else
             {
-                context.TreasureKeysInventories.Add(new TreasureKeyInventory
+                context.TreasureKeysInventories.Add(new LootKeyInventory
                 {
                     InventoryId = inventoryId,
-                    TreasureKeyId = treasureKeyId,
+                    LootKeyId = treasureKeyId,
                 });
             }
         }

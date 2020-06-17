@@ -3,11 +3,11 @@
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using System.Collections.Generic;
 
-    public class Treasure
+    public class LootBox
     {
-        public Treasure()
+        public LootBox()
         {
-            this.TreasureInventories = new HashSet<TreasureInventory>();
+            this.LootBoxInventories = new HashSet<LootBoxInventory>();
         }
         public int Id { get; set; }
 
@@ -21,6 +21,6 @@
 
         public string Slot { get; set; }
 
-        public ICollection<TreasureInventory> TreasureInventories { get; set; }
+        public ICollection<LootBoxInventory> LootBoxInventories { get; set; }
     }
 }
