@@ -18,6 +18,14 @@
 
         public double StatReplenish { get; set; }
 
+        public string Effect { get; set; }
+
+        public int EffectPower { get; set; }
+
+        public int Duration { get; set; }
+
+        public string ZoneName { get; set; }
+
         public bool IsCraftable { get; set; }
 
         public int BuyPrice { get; set; }

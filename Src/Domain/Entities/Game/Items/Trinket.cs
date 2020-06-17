@@ -21,6 +21,12 @@
 
         public string ClassType { get; set; }
 
+        public string Effect { get; set; }
+
+        public int EffectPower { get; set; }
+
+        public bool IsPositive { get; set; }
+
         public int Stamina { get; set; }
 
         public int Strength { get; set; }

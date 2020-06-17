@@ -40,39 +40,38 @@
             this.vegetables = new[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
-        public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, IFFDbContext context, Hero hero, Monster monster, string zoneName, CancellationToken cancellationToken)
+        public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, IFFDbContext context, long inventoryId, Monster monster, string zoneName, CancellationToken cancellationToken)
         {
-            if (zoneName == "World")
+            if (slotNumber == 0)
             {
-                if (slotNumber == 0)
-                {
-                    await this.WeaponGenerate(fightingClassNumber, fightingClassStatNumber, stats, context, hero.InventoryId, cancellationToken);
-                }
-                else if (slotNumber == 1)
-                {
-                    await this.TrinketGenerate(stats, fightingClassNumber, context, hero.InventoryId, cancellationToken);
-                }
-                else if (slotNumber == 2 || slotNumber == 3)
-                {
-                    await this.ArmorGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, hero.InventoryId, cancellationToken);
-                }
-                else if (slotNumber == 4 || slotNumber == 5)
-                {
-                    await this.TreasureKeyGenerate(context, hero.InventoryId);
-                }
-                else if (slotNumber == 6)
-                {
-                    await this.RelicGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, hero.InventoryId, cancellationToken);
-                }
-                else
-                {
-                    await this.ZoneVariety(zoneName, context, hero.InventoryId, monster);
-                }
+                await this.WeaponGenerate(fightingClassNumber, fightingClassStatNumber, stats, context, inventoryId, cancellationToken);
+            }
+            else if (slotNumber == 1)
+            {
+                await this.TrinketGenerate(stats, fightingClassNumber, context, inventoryId, cancellationToken);
+            }
+            else if (slotNumber > 1 && slotNumber < 4)
+            {
+                await this.ArmorGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, inventoryId, cancellationToken);
+            }
+            else if (slotNumber > 3 && slotNumber < 6)
+            {
+                await this.TreasureKeyGenerate(context, inventoryId);
+            }
+            else if (slotNumber > 5 && slotNumber < 7)
+            {
+                await this.RelicGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, inventoryId, cancellationToken);
+            }
+            else if (slotNumber > 6 && slotNumber < 10)
+            {
+                await this.ConsumeableGenerate(zoneName, context, inventoryId);
             }
             else
             {
-                await this.ZoneVariety(zoneName, context, hero.InventoryId, monster);
+                await this.ZoneVariety(zoneName, context, inventoryId, monster);
             }
+
+            // TODO Fix Zone Variety
         }
 
         private async Task WeaponGenerate(int fightingClassNumber, int fightingClassStatNumber, int[] stats, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
@@ -129,9 +128,11 @@
 
         private async Task TrinketGenerate(int[] stats, int fightingClassNumber, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
+            var effect = this.EffectGenerator("Trinket")[0];
+
             Trinket templateTrinket = new Trinket
             {
-                Name = "Trinket",
+                Name = $"Trinket of {effect}",
                 Level = stats[0],
                 Stamina = stats[1],
                 Intellect = stats[2],
@@ -141,6 +142,9 @@
                 Slot = "Trinket",
                 ImagePath = "https://gamepedia.cursecdn.com/wowpedia/4/43/Inv_trinket_80_alchemy02.png?version=95bdfece62d89349b5effa0bf80956d3",
                 MaterialType = "Wood",
+                Effect = effect,
+                EffectPower = int.Parse(this.EffectGenerator("Trinket")[1]),
+                IsPositive = bool.Parse(this.EffectGenerator("Trinket")[2]),
             };
 
             templateTrinket.SellPrice = this.SellPriceCalculation(templateTrinket);
@@ -183,22 +187,7 @@
 
         private async Task RelicGenerate(int[] stats, int fightingClassNumber, int fightingClassStatNumber, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
-            var effect = string.Empty;
-
-            var effectRng = this.rng.Next(0, 7);
-
-            var effectPower = this.rng.Next(5, 15);
-
-            switch (effectRng)
-            {
-                case 0: effect = "Stamina"; effectPower += 5; break;
-                case 1: effect = "Intellect"; effectPower += 6; break;
-                case 2: effect = "Spirit"; break;
-                case 3: effect = "Strength"; break;
-                case 4: effect = "Agility"; break;
-                case 5: effect = "Armor"; effectPower += 5; break;
-                case 6: effect = "Resistance"; effectPower += 5; break;
-            }
+            var effect = this.EffectGenerator("Relic")[0];
 
             Relic templateRelic = new Relic()
             {
@@ -209,11 +198,12 @@
                 Agility = stats[4],
                 Intellect = stats[5],
                 Slot = "Relic",
-                EffectPower = effectPower,
+                EffectPower = int.Parse(this.EffectGenerator("Relic")[1]),
                 Effect = effect,
                 MaterialType = "Stone",
                 Name = $"Relic of {effect}",
                 ImagePath = "https://gamepedia.cursecdn.com/wowpedia/d/da/Inv_relics_6orunestone_ogremissive.png?version=7c1047730b8614176a63133aada863fe",
+                IsPositive = bool.Parse(this.EffectGenerator("Relic")[2]),
             };
 
             templateRelic.SellPrice = this.SellPriceCalculation(templateRelic);
@@ -311,28 +301,6 @@
             }
         }
 
-        private int SellPriceCalculation(IEquipableItem item)
-        {
-            double goldAmount = 0;
-
-            goldAmount += item.Agility + item.Intellect + item.Level + item.Spirit + item.Stamina + item.Strength;
-
-            if (item.Slot == "Weapon")
-            {
-                var weapon = (Weapon)item;
-
-                goldAmount += weapon.AttackPower;
-            }
-            else if (item.Slot != "Weapon" && item.Slot != "Trinket" && item.Slot != "Relic")
-            {
-                var armor = (Armor)item;
-
-                goldAmount += armor.ArmorValue + armor.ResistanceValue;
-            }
-
-            return (int)Math.Floor(goldAmount / 5);
-        }
-
         private async Task TreasureKeyGenerate(IFFDbContext context, long inventoryId)
         {
             var rarityNumber = this.rng.Next(0, 10);
@@ -366,6 +334,86 @@
                     TreasureKeyId = treasureKeyId,
                 });
             }
+        }
+
+        private async Task ConsumeableGenerate(string zoneName, IFFDbContext context, long inventoryId)
+        {
+            var consumeables = await context.Consumeables.Where(c => c.ZoneName == zoneName || c.ZoneName == "Any").ToListAsync();
+
+            int consumeableId;
+
+            while (true)
+            {
+                consumeableId = this.rng.Next(1, consumeables.Count);
+
+                if (consumeables[consumeableId] != null)
+                {
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            var consumeableInventory = await context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.InventoryId == inventoryId && ci.ConsumeableId == consumeableId);
+
+            if (consumeableInventory != null)
+            {
+                consumeableInventory.Count++;
+            }
+            else
+            {
+                context.ConsumeablesInventories.Add(new ConsumeableInventory
+                {
+                    ConsumeableId = consumeableId,
+                    InventoryId = inventoryId,
+                });
+            }
+        }
+
+        private string[] EffectGenerator(string slot)
+        {
+            var effect = string.Empty;
+            var effectRng = this.rng.Next(0, 7);
+            var effectPower = slot == "Relic" ? this.rng.Next(5, 15) : this.rng.Next(2, 10);
+            var statBonus = slot == "Relic" ? 5 : 2;
+            var isPositive = this.rng.Next(0, 2) == 0 ? true : false;
+
+            switch (effectRng)
+            {
+                case 0: effect = "Stamina"; effectPower += statBonus; break;
+                case 1: effect = "Intellect"; effectPower += statBonus; break;
+                case 2: effect = "Spirit"; break;
+                case 3: effect = "Strength"; break;
+                case 4: effect = "Agility"; break;
+                case 5: effect = "Armor"; effectPower += statBonus; break;
+                case 6: effect = "Resistance"; effectPower += statBonus; break;
+            }
+
+            return new string[] { effect, effectPower.ToString(), isPositive.ToString() };
+        }
+
+        private int SellPriceCalculation(IEquipableItem item)
+        {
+            double goldAmount = 0;
+
+            goldAmount += item.Agility + item.Intellect + item.Level + item.Spirit + item.Stamina + item.Strength;
+
+            if (item.Slot == "Weapon")
+            {
+                var weapon = (Weapon)item;
+
+                goldAmount += weapon.AttackPower;
+            }
+            else if (item.Slot != "Weapon" && item.Slot != "Trinket" && item.Slot != "Relic")
+            {
+                var armor = (Armor)item;
+
+                goldAmount += armor.ArmorValue + armor.ResistanceValue;
+            }
+
+            return (int)Math.Floor(goldAmount / 5);
         }
 
         private async Task ZoneVariety(string zoneName, IFFDbContext context, long inventoryId, Monster monster)

@@ -17,7 +17,7 @@
             stats[0] = hero.Level == 1 ? rng.Next(hero.Level, hero.Level + 2) : rng.Next(hero.Level - 1, hero.Level + 3);
 
             int fightingClassStatNumber = rng.Next(hero.Level, hero.Level + 5);
-            int slotNumber = rng.Next(0, 13);
+            int slotNumber = rng.Next(0, 15);
             int fightingClassNumber = rng.Next(0, 10);
 
             for (int i = 1; i < 8; i++)
@@ -38,7 +38,7 @@
                 }
             }
 
-            await slotCheck.Check(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero, monster, zoneName, cancellationToken);
+            await slotCheck.Check(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero.InventoryId, monster, zoneName, cancellationToken);
         }
     }
 }
