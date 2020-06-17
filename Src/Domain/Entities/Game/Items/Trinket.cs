@@ -23,7 +23,7 @@
 
         public string Effect { get; set; }
 
-        public int EffectPower { get; set; }
+        public double EffectPower { get; set; }
 
         public int Duration { get; set; }
 

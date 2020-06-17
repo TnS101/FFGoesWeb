@@ -66,6 +66,10 @@
             {
                 await this.ConsumeableGenerate(zoneName, context, inventoryId);
             }
+            else if (slotNumber > 9 && slotNumber < 12)
+            {
+                await this.CardGenerate(stats, context, inventoryId, cancellationToken);
+            }
             else
             {
                 await this.ZoneVariety(zoneName, context, inventoryId, monster);
@@ -76,7 +80,7 @@
 
         private async Task WeaponGenerate(int fightingClassNumber, int fightingClassStatNumber, int[] stats, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
-            Weapon templateWeapon = new Weapon
+            var templateWeapon = new Weapon
             {
                 Level = stats[0],
                 Agility = stats[1],
@@ -132,7 +136,7 @@
 
             var duration = this.rng.Next(1, 4);
 
-            Trinket templateTrinket = new Trinket
+            var templateTrinket = new Trinket
             {
                 Name = $"Trinket of {effect}",
                 Level = stats[0],
@@ -145,7 +149,7 @@
                 ImagePath = "https://gamepedia.cursecdn.com/wowpedia/4/43/Inv_trinket_80_alchemy02.png?version=95bdfece62d89349b5effa0bf80956d3",
                 MaterialType = "Wood",
                 Effect = effect,
-                EffectPower = int.Parse(this.EffectGenerator("Trinket")[1]),
+                EffectPower = int.Parse(this.EffectGenerator("Trinket")[1]) / 100,
                 IsPositive = bool.Parse(this.EffectGenerator("Trinket")[2]),
                 Duration = duration,
             };
@@ -190,7 +194,7 @@
         {
             var effect = this.EffectGenerator("Relic")[0];
 
-            Relic templateRelic = new Relic()
+            var templateRelic = new Relic()
             {
                 Level = stats[0],
                 Spirit = stats[1],
@@ -199,7 +203,7 @@
                 Agility = stats[4],
                 Intellect = stats[5],
                 Slot = "Relic",
-                EffectPower = int.Parse(this.EffectGenerator("Relic")[1]),
+                EffectPower = int.Parse(this.EffectGenerator("Relic")[1]) / 100,
                 Effect = effect,
                 MaterialType = "Stone",
                 Name = $"Relic of {effect}",
@@ -247,7 +251,7 @@
 
         private async Task ArmorGenerate(int[] stats, int fightingClassNumber, int fightingClassStatNumber, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
-            Armor templateArmor = new Armor
+            var templateArmor = new Armor
             {
                 Level = stats[0],
                 ResistanceValue = stats[1],
@@ -335,6 +339,94 @@
             }
         }
 
+        private async Task CardGenerate(int[] stats, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
+        {
+            var fightingClasses = await context.FightingClasses.ToListAsync();
+
+            int fightingClassId;
+            int spellId;
+            while (true)
+            {
+                fightingClassId = this.rng.Next(1, fightingClasses.Count);
+
+                if (fightingClasses[fightingClassId] != null)
+                {
+                    var spells = await context.Spells.Where(s => s.FightingClassId == fightingClassId).ToListAsync();
+                    spellId = this.rng.Next(1, spells.Count);
+
+                    if (spells[spellId] != null)
+                    {
+                        break;
+                    }
+                }
+
+                continue;
+            }
+
+            string effect = string.Empty;
+            int effectPower = this.rng.Next(15, 51);
+
+            switch (this.rng.Next(0, 4))
+            {
+                case 0: effect = "Damage"; break;
+                case 1: effect = "Heal"; effectPower += 10; break;
+                case 2: effect = "ReCast"; break;
+                case 3: effect = "Mana"; effectPower += 15; break;
+            }
+
+            var templateCard = new Card
+            {
+                Level = stats[0],
+                Spirit = stats[1],
+                Strength = stats[2],
+                Stamina = stats[3],
+                Agility = stats[4],
+                Intellect = stats[5],
+                SpellId = spellId,
+                MaterialType = "Paper",
+                ClassType = fightingClasses[fightingClassId].Type,
+                ImagePath = string.Empty,
+                Effect = effect,
+                EffectPower = effectPower,
+                Slot = "Card",
+                Name = $"Card of {context.Spells.Find(spellId).Name}",
+            };
+
+            templateCard.SellPrice = this.SellPriceCalculation(templateCard);
+
+            var card = await context.Cards.FirstOrDefaultAsync(c => c.Level == templateCard.Level && c.Spirit == templateCard.Spirit && c.Strength == templateCard.Strength
+            && c.Stamina == templateCard.Stamina && c.Agility == templateCard.Agility && c.Intellect == templateCard.Intellect && c.SpellId == spellId && c.ClassType == 
+            templateCard.ClassType && c.Effect == effect && c.EffectPower == effectPower);
+
+            long cardId;
+
+            if (card == null)
+            {
+                context.Cards.Add(card);
+                await context.SaveChangesAsync(cancellationToken);
+                cardId = templateCard.Id;
+            }
+            else
+            {
+                cardId = card.Id;
+            }
+
+            var cardInvetory = await context.CardsInventories.FirstOrDefaultAsync(ci => ci.InventoryId == inventoryId && ci.CardId == cardId);
+
+            if (cardInvetory != null)
+            {
+                cardInvetory.Count++;
+            }
+            else
+            {
+                context.CardsInventories.Add(new CardInventory
+                {
+                    CardId = cardId,
+                    InventoryId = inventoryId,
+                });
+            }
+        }
+
         private async Task ConsumeableGenerate(string zoneName, IFFDbContext context, long inventoryId)
         {
             var consumeables = await context.Consumeables.Where(c => c.ZoneName == zoneName || c.ZoneName == "Any").ToListAsync();
@@ -349,10 +441,8 @@
                 {
                     break;
                 }
-                else
-                {
-                    continue;
-                }
+
+                continue;
             }
 
             var consumeableInventory = await context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.InventoryId == inventoryId && ci.ConsumeableId == consumeableId);

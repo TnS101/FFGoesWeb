@@ -3,6 +3,7 @@
     using Domain.Contracts.Items;
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
+    using Domain.Entities.Game.Units;
     using System.Collections.Generic;
 
     public class Card : IEquipableItem
@@ -15,6 +16,10 @@
 
         public long Id { get; set; }
 
+        public int SpellId { get; set; }
+
+        public Spell Spell { get; set; }
+
         public string Name { get; set; }
 
         public string Slot { get; set; }
@@ -25,11 +30,7 @@
 
         public string Effect { get; set; }
 
-        public int EffectPower { get; set; }
-
-        public int Duration { get; set; }
-
-        public bool IsPositive { get; set; }
+        public double EffectPower { get; set; }
 
         public int Agility { get; set; }
 

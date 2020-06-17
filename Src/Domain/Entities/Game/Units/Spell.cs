@@ -1,7 +1,15 @@
-﻿namespace Domain.Entities.Game.Units
+﻿using Domain.Entities.Game.Items;
+using System.Collections.Generic;
+
+namespace Domain.Entities.Game.Units
 {
     public class Spell
     {
+        public Spell()
+        {
+            this.Cards = new HashSet<Card>();
+        }
+
         public int Id { get; set; }
 
         public int? FightingClassId { get; set; }
@@ -29,5 +37,7 @@
         public double ResistanceAffect { get; set; }
 
         public double SecondaryPower { get; set; }
+
+        public ICollection<Card> Cards { get; set; }
     }
 }
