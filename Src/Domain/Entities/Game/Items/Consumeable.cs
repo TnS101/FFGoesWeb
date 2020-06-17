@@ -20,6 +20,10 @@
 
         public double StatReplenish { get; set; }
 
+        public int HungerReplenish { get; set; }
+        
+        public int ThirstReplenish { get; set; }
+
         public string Effect { get; set; }
 
         public int EffectPower { get; set; }
@@ -35,8 +39,6 @@
         public int SellPrice { get; set; }
 
         public string ImagePath { get; set; }
-
-        public string RequiredItemType { get; set; }
 
         public string Slot { get; set; }
 

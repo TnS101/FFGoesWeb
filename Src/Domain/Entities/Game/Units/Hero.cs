@@ -10,6 +10,9 @@
         public Hero()
         {
             this.EnergyChanges = new HashSet<EnergyChange>();
+            this.Hunger = 10;
+            this.Thirst = 10;
+            this.Happiness = 10;
         }
 
         public long Id { get; set; }
@@ -91,6 +94,12 @@
         public override int GoldAmount { get; set; }
 
         public int Mastery { get; set; }
+
+        public int Hunger { get; set; }
+
+        public int Thirst { get; set; }
+
+        public int Happiness { get; set; }
 
         public string IconPath { get; set; }
 
