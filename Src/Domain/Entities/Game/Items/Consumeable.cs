@@ -16,6 +16,8 @@
 
         public string Type { get; set; }
 
+        public string Stat { get; set; }
+
         public double StatReplenish { get; set; }
 
         public string Effect { get; set; }

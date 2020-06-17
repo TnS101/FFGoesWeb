@@ -10,7 +10,7 @@
         public Armor()
         {
             this.ArmorInventories = new HashSet<ArmorInventory>();
-            this.ArmorEquipments = new HashSet<ArmorEquipment>();
+            this.ArmorEquipment = new HashSet<ArmorEquipment>();
         }
 
         public long Id { get; set; }
@@ -49,6 +49,6 @@
 
         public ICollection<ArmorInventory> ArmorInventories { get; set; }
 
-        public ICollection<ArmorEquipment> ArmorEquipments { get; set; }
+        public ICollection<ArmorEquipment> ArmorEquipment { get; set; }
     }
 }

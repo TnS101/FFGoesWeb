@@ -1,4 +1,4 @@
-﻿namespace Persistence.Configurations.Game.Items.ManyToMany
+﻿namespace Persistence.Configurations.Game.Items
 {
     using Domain.Entities.Game.Items;
     using Microsoft.EntityFrameworkCore;
@@ -13,7 +13,7 @@
             builder.Property(r => r.Id).HasColumnType("bigint");
 
             builder.Property(r => r.Name)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(r => r.Slot)
@@ -21,7 +21,11 @@
                 .IsRequired();
 
             builder.Property(r => r.ClassType)
-                .HasMaxLength(30)
+                .HasDefaultValue("Any")
+                .IsRequired();
+
+            builder.Property(r => r.Effect)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(r => r.ImagePath)

@@ -8,10 +8,11 @@
     {
         public Equipment(long heroId)
         {
-            this.WeaponEquipments = new HashSet<WeaponEquipment>();
-            this.ArmorEquipments = new HashSet<ArmorEquipment>();
-            this.TrinketEquipments = new HashSet<TrinketEquipment>();
-            this.RelicEquipments = new HashSet<RelicEquipment>();
+            this.WeaponEquipment = new HashSet<WeaponEquipment>();
+            this.ArmorEquipment = new HashSet<ArmorEquipment>();
+            this.TrinketEquipment = new HashSet<TrinketEquipment>();
+            this.RelicEquipment = new HashSet<RelicEquipment>();
+            this.CardEquipment = new HashSet<CardEquipment>();
             this.HeroId = heroId;
         }
 
@@ -43,12 +44,16 @@
 
         public bool RelicSlot { get; set; }
 
-        public ICollection<ArmorEquipment> ArmorEquipments { get; set; }
+        public int CardCount { get; set; }
 
-        public ICollection<TrinketEquipment> TrinketEquipments { get; set; }
+        public ICollection<ArmorEquipment> ArmorEquipment { get; set; }
 
-        public ICollection<WeaponEquipment> WeaponEquipments { get; set; }
+        public ICollection<TrinketEquipment> TrinketEquipment { get; set; }
 
-        public ICollection<RelicEquipment> RelicEquipments { get; set; }
+        public ICollection<WeaponEquipment> WeaponEquipment { get; set; }
+
+        public ICollection<RelicEquipment> RelicEquipment { get; set; }
+
+        public ICollection<CardEquipment> CardEquipment { get; set; }
     }
 }

@@ -15,11 +15,11 @@
             builder.Property(we => we.EquipmentId).HasColumnType("bigint");
 
             builder.HasOne(w => w.Weapon)
-                .WithMany(we => we.WeaponEquipments)
+                .WithMany(we => we.WeaponEquipment)
                 .HasForeignKey(w => w.WeaponId);
 
             builder.HasOne(e => e.Equipment)
-                 .WithMany(we => we.WeaponEquipments)
+                 .WithMany(we => we.WeaponEquipment)
                  .HasForeignKey(e => e.EquipmentId);
         }
     }

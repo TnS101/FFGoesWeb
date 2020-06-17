@@ -103,6 +103,12 @@
 
         DbSet<RelicInventory> RelicsInventories { get; set; }
 
+        DbSet<Card> Cards { get; set; }
+
+        DbSet<CardEquipment> CardsEquipment { get; set; }
+
+        DbSet<CardInventory> CardsInventories { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

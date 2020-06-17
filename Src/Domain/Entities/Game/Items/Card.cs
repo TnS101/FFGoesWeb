@@ -1,9 +1,18 @@
 ﻿namespace Domain.Entities.Game.Items
 {
     using Domain.Contracts.Items;
+    using Domain.Entities.Game.Items.ManyToMany.Equipments;
+    using Domain.Entities.Game.Items.ManyToMany.Inventories;
+    using System.Collections.Generic;
 
     public class Card : IEquipableItem
     {
+        public Card()
+        {
+            this.CardEquipment = new HashSet<CardEquipment>();
+            this.CardInventories = new HashSet<CardInventory>();
+        }
+
         public long Id { get; set; }
 
         public string Name { get; set; }
@@ -17,6 +26,8 @@
         public string Effect { get; set; }
 
         public int EffectPower { get; set; }
+
+        public int Duration { get; set; }
 
         public bool IsPositive { get; set; }
 
@@ -37,5 +48,9 @@
         public int BuyPrice { get; set; }
 
         public int SellPrice { get; set; }
+
+        public ICollection<CardInventory> CardInventories { get; set; }
+
+        public ICollection<CardEquipment> CardEquipment { get; set; }
     }
 }

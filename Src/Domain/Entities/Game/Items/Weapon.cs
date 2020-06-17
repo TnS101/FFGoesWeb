@@ -9,7 +9,7 @@
     {
         public Weapon()
         {
-            this.WeaponEquipments = new HashSet<WeaponEquipment>();
+            this.WeaponEquipment = new HashSet<WeaponEquipment>();
             this.WeaponInventories = new HashSet<WeaponInventory>();
         }
 
@@ -47,6 +47,6 @@
 
         public ICollection<WeaponInventory> WeaponInventories { get; set; }
 
-        public ICollection<WeaponEquipment> WeaponEquipments { get; set; }
+        public ICollection<WeaponEquipment> WeaponEquipment { get; set; }
     }
 }

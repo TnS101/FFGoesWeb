@@ -19,7 +19,7 @@
                 .HasForeignKey(r => r.RelicId);
 
             builder.HasOne(e => e.Equipment)
-                .WithMany(r => r.RelicEquipments)
+                .WithMany(r => r.RelicEquipment)
                 .HasForeignKey(e => e.EquipmentId);
         }
     }

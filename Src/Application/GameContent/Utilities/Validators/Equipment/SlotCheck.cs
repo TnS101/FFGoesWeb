@@ -48,7 +48,7 @@
             }
             else if (slotNumber == 1)
             {
-                await this.TrinketGenerate(stats, fightingClassNumber, context, inventoryId, cancellationToken);
+                await this.TrinketGenerate(stats, context, inventoryId, cancellationToken);
             }
             else if (slotNumber > 1 && slotNumber < 4)
             {
@@ -60,7 +60,7 @@
             }
             else if (slotNumber > 5 && slotNumber < 7)
             {
-                await this.RelicGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, inventoryId, cancellationToken);
+                await this.RelicGenerate(stats, context, inventoryId, cancellationToken);
             }
             else if (slotNumber > 6 && slotNumber < 10)
             {
@@ -126,9 +126,11 @@
             }
         }
 
-        private async Task TrinketGenerate(int[] stats, int fightingClassNumber, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
+        private async Task TrinketGenerate(int[] stats, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
             var effect = this.EffectGenerator("Trinket")[0];
+
+            var duration = this.rng.Next(1, 4);
 
             Trinket templateTrinket = new Trinket
             {
@@ -145,11 +147,10 @@
                 Effect = effect,
                 EffectPower = int.Parse(this.EffectGenerator("Trinket")[1]),
                 IsPositive = bool.Parse(this.EffectGenerator("Trinket")[2]),
+                Duration = duration,
             };
 
             templateTrinket.SellPrice = this.SellPriceCalculation(templateTrinket);
-
-            this.fightingClassStatCheck.Check(templateTrinket, fightingClassNumber, 0, this.rng);
 
             long trinketId;
 
@@ -185,7 +186,7 @@
             }
         }
 
-        private async Task RelicGenerate(int[] stats, int fightingClassNumber, int fightingClassStatNumber, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
+        private async Task RelicGenerate(int[] stats, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
             var effect = this.EffectGenerator("Relic")[0];
 
@@ -207,8 +208,6 @@
             };
 
             templateRelic.SellPrice = this.SellPriceCalculation(templateRelic);
-
-            this.fightingClassStatCheck.Check(templateRelic, fightingClassNumber, fightingClassStatNumber, this.rng);
 
             long relicId;
 

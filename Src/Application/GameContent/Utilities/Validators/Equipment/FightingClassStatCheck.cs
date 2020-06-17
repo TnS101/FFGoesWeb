@@ -11,10 +11,6 @@
             {
                 this.WeaponCheck(item, fightingClassNumber, rng);
             }
-            else if (item.Slot == "Trinket" || item.Slot == "Relic")
-            {
-                item.ClassType = "Any";
-            }
             else
             {
                 this.ArmorCheck(item, rng);

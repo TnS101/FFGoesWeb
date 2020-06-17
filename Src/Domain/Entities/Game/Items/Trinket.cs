@@ -9,7 +9,7 @@
     {
         public Trinket()
         {
-            this.TrinketEquipments = new HashSet<TrinketEquipment>();
+            this.TrinketEquipment = new HashSet<TrinketEquipment>();
             this.TrinketInventories = new HashSet<TrinketInventory>();
         }
 
@@ -24,6 +24,8 @@
         public string Effect { get; set; }
 
         public int EffectPower { get; set; }
+
+        public int Duration { get; set; }
 
         public bool IsPositive { get; set; }
 
@@ -51,6 +53,6 @@
 
         public ICollection<TrinketInventory> TrinketInventories { get; set; }
 
-        public ICollection<TrinketEquipment> TrinketEquipments { get; set; }
+        public ICollection<TrinketEquipment> TrinketEquipment { get; set; }
     }
 }

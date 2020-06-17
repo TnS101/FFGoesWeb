@@ -4,35 +4,35 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class TrinketConfiguration : IEntityTypeConfiguration<Trinket>
+    public class CardConfiguration : IEntityTypeConfiguration<Card>
     {
-        public void Configure(EntityTypeBuilder<Trinket> builder)
+        public void Configure(EntityTypeBuilder<Card> builder)
         {
-            builder.HasKey(t => t.Id);
+            builder.HasKey(c => c.Id);
 
-            builder.Property(t => t.Id).HasColumnType("bigint");
+            builder.Property(c => c.Id).HasColumnType("bigint");
 
-            builder.Property(t => t.Name)
+            builder.Property(c => c.Name)
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(t => t.Slot)
-                .HasDefaultValue("Trinket")
+            builder.Property(c => c.Slot)
+                .HasMaxLength(30)
                 .IsRequired();
 
-            builder.Property(t => t.ClassType)
+            builder.Property(c => c.ClassType)
                 .HasDefaultValue("Any")
                 .IsRequired();
 
-            builder.Property(t => t.Effect)
+            builder.Property(c => c.Effect)
                 .HasMaxLength(50)
                 .IsRequired();
 
-            builder.Property(t => t.ImagePath)
+            builder.Property(c => c.ImagePath)
                 .HasMaxLength(200)
                 .IsRequired();
 
-            builder.Property(t => t.MaterialType)
+            builder.Property(c => c.MaterialType)
                 .HasMaxLength(30)
                 .IsRequired();
         }

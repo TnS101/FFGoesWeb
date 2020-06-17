@@ -110,6 +110,12 @@
 
         public DbSet<RelicInventory> RelicsInventories { get; set; }
 
+        public DbSet<Card> Cards { get; set; }
+
+        public DbSet<CardEquipment> CardsEquipment { get; set; }
+
+        public DbSet<CardInventory> CardsInventories { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
