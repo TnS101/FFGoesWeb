@@ -53,7 +53,7 @@
                 SellPrice = sellPrice,
                 Durability = durability,
                 FuelCount = fuelCount,
-                Rarity = rarity,
+                BoxType = rarity,
                 MaterialDiversity = materialDiversity,
                 MaterialType = materialType,
                 RelatedMaterials = relatedMaterials,

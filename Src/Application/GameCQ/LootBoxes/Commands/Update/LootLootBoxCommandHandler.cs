@@ -43,7 +43,7 @@
         {
             var rng = new Random();
 
-            int treasureNumber = rng.Next(0, 17);
+            int treasureNumber = rng.Next(0, 29);
 
             if (treasureNumber >= 0 && treasureNumber <= 4)
             {
@@ -60,6 +60,22 @@
             else if (treasureNumber >= 12 && treasureNumber <= 14)
             {
                 return "Consumeable";
+            }
+            else if (treasureNumber >= 15 && treasureNumber <= 17)
+            {
+                return "Tool";
+            }
+            else if (treasureNumber >= 18 && treasureNumber <= 20)
+            {
+                return "Junk";
+            }
+            else if (treasureNumber >= 21 && treasureNumber <= 23)
+            {
+                return "Toy";
+            }
+            else if (treasureNumber >= 24 && treasureNumber <= 26)
+            {
+                return "Key";
             }
             else
             {

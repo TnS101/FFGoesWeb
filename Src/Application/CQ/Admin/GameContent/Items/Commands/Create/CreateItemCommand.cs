@@ -32,9 +32,11 @@
 
         public int BuyPrice { get; set; }
 
-        public string Rarity { get; set; }
+        public string BoxType { get; set; }
 
-        public int Reward { get; set; }
+        public bool RequiresKey { get; set; }
+
+        public int RewardAmplifier { get; set; }
 
         public int FuelCount { get; set; }
 

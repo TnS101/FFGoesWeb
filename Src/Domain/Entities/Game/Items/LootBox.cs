@@ -15,6 +15,10 @@
 
         public string Type { get; set; }
 
+        public int RewardAmplifier { get; set; }
+
+        public bool RequiresKey { get; set; }
+
         public string ImagePath { get; set; }
 
         public string Slot { get; set; }

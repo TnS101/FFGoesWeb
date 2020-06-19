@@ -44,7 +44,7 @@
                 {
                     var materials = await this.Context.Materials.Where(m => m.Type != "Junk" && !m.IsCraftable).ToListAsync();
 
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
                         var materialId = rng.Next(1, materials.Count() + 1);
 
@@ -77,40 +77,39 @@
                     var tools = await this.Context.Tools.Where(t => !t.IsCraftable).ToListAsync();
 
                     int toolId;
-                    while (true)
+                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
                         toolId = rng.Next(1, tools.Count + 1);
 
                         if (tools[toolId] != null)
                         {
-                            break;
+                            var toolInventory = await this.Context.ToolsInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.InventoryId && ti.ToolId == toolId);
+
+                            if (toolInventory != null)
+                            {
+                                toolInventory.Count++;
+                            }
+                            else
+                            {
+                                this.Context.ToolsInventories.Add(new ToolInventory
+                                {
+                                    ToolId = toolId,
+                                    InventoryId = hero.InventoryId,
+                                });
+                            }
                         }
                         else
                         {
+                            i--;
                             continue;
                         }
-                    }
-
-                    var toolInventory = await this.Context.ToolsInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.InventoryId && ti.ToolId == toolId);
-
-                    if (toolInventory != null)
-                    {
-                        toolInventory.Count++;
-                    }
-                    else
-                    {
-                        this.Context.ToolsInventories.Add(new ToolInventory
-                        {
-                            ToolId = toolId,
-                            InventoryId = hero.InventoryId,
-                        });
                     }
                 }
                 else if (lootBox.Type == "Consumeable")
                 {
                     var consumeables = await this.Context.Tools.Where(t => !t.IsCraftable).ToListAsync();
 
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
                         var consumeableId = rng.Next(1, consumeables.Count + 1);
 
@@ -140,7 +139,35 @@
                 }
                 else if (lootBox.Type == "Junk")
                 {
-                    var junk = await this.Context.Materials.Where(m => m.Type == "Junk").ToListAsync();
+                    var junks = await this.Context.Materials.Where(m => m.Type == "Junk").ToListAsync();
+
+                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
+                    {
+                        var junkId = rng.Next(1, junks.Count + 1);
+
+                        if (junks[junkId] != null)
+                        {
+                            var junkInventory = await this.Context.MaterialsInventories.FirstOrDefaultAsync(mi => mi.InventoryId == hero.InventoryId && mi.MaterialId == junkId);
+
+                            if (junkInventory != null)
+                            {
+                                junkInventory.Count++;
+                            }
+                            else
+                            {
+                                this.Context.MaterialsInventories.Add(new MaterialInventory
+                                {
+                                    MaterialId = junkId,
+                                    InventoryId = hero.InventoryId,
+                                });
+                            }
+                        }
+                        else
+                        {
+                            i--;
+                            continue;
+                        }
+                    }
                 }
                 else if (lootBox.Type == "Toy")
                 {
@@ -148,33 +175,32 @@
 
                     int toyId;
 
-                    while (true)
+                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
                         toyId = rng.Next(1, toys.Count + 1);
 
                         if (toys[toyId] != null)
                         {
-                            break;
+                            var toyInventory = await this.Context.ToyInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.InventoryId && ti.ToyId == toyId);
+
+                            if (toyInventory != null)
+                            {
+                                toyInventory.Count++;
+                            }
+                            else
+                            {
+                                this.Context.ToyInventories.Add(new ToyInventory
+                                {
+                                    ToyId = toyId,
+                                    InventoryId = hero.InventoryId,
+                                });
+                            }
                         }
                         else
                         {
+                            i--;
                             continue;
                         }
-                    }
-
-                    var toyInventory = await this.Context.ToyInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.InventoryId && ti.ToyId == toyId);
-
-                    if (toyInventory != null)
-                    {
-                        toyInventory.Count++;
-                    }
-                    else
-                    {
-                        this.Context.ToyInventories.Add(new ToyInventory
-                        {
-                            ToyId = toyId,
-                            InventoryId = hero.InventoryId,
-                        });
                     }
                 }
                 else if (lootBox.Type == "Key")
@@ -183,33 +209,32 @@
 
                     int keyId;
 
-                    while (true)
+                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
                         keyId = rng.Next(1, keys.Count + 1);
 
                         if (keys[keyId] != null)
                         {
-                            break;
+                            var keyInventory = await this.Context.LootKeysInventories.FirstOrDefaultAsync(ki => ki.InventoryId == hero.InventoryId && ki.LootKeyId == keyId);
+
+                            if (keyInventory != null)
+                            {
+                                keyInventory.Count++;
+                            }
+                            else
+                            {
+                                this.Context.LootKeysInventories.Add(new LootKeyInventory
+                                {
+                                    LootKeyId = keyId,
+                                    InventoryId = hero.InventoryId,
+                                });
+                            }
                         }
                         else
                         {
+                            i--;
                             continue;
                         }
-                    }
-
-                    var keyInventory = await this.Context.LootKeysInventories.FirstOrDefaultAsync(ki => ki.InventoryId == hero.InventoryId && ki.LootKeyId == keyId);
-
-                    if (keyInventory != null)
-                    {
-                        keyInventory.Count++;
-                    }
-                    else
-                    {
-                        this.Context.LootKeysInventories.Add(new LootKeyInventory
-                        {
-                            LootKeyId = keyId,
-                            InventoryId = hero.InventoryId,
-                        });
                     }
                 }
 
