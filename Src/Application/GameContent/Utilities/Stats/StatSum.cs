@@ -13,7 +13,7 @@
     {
         public async Task Sum(Hero hero, IFFDbContext context, Equipment heroEquipment)
         {
-            var armorEquipment = await context.ArmorsEquipments.Where(ae => ae.EquipmentId == hero.EquipmentId).ToListAsync();
+            var armorEquipment = context.ArmorsEquipments.Where(ae => ae.EquipmentId == hero.EquipmentId);
 
             if (armorEquipment.Count() > 0)
             {

@@ -7,7 +7,6 @@
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class DeleteMonsterCommandHandler : BaseHandler, IRequestHandler<DeleteMonsterCommand, string>
     {
@@ -20,7 +19,7 @@
         {
             var monster = await this.Context.Monsters.FindAsync(request.MonsterId);
 
-            var spells = await this.Context.Spells.Where(s => s.MonsterId == monster.Id).ToListAsync();
+            var spells = this.Context.Spells.Where(s => s.MonsterId == monster.Id);
 
             this.Context.Spells.RemoveRange(spells);
 

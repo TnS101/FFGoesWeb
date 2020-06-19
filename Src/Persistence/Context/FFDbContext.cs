@@ -80,9 +80,9 @@
 
         public DbSet<MaterialInventory> MaterialsInventories { get; set; }
 
-        public DbSet<LootBoxInventory> TreasuresInventories { get; set; }
+        public DbSet<LootBoxInventory> LootBoxesInventories { get; set; }
 
-        public DbSet<LootKeyInventory> TreasureKeysInventories { get; set; }
+        public DbSet<LootKeyInventory> LootKeysInventories { get; set; }
 
         public DbSet<TrinketInventory> TrinketsInventories { get; set; }
 
@@ -115,6 +115,8 @@
         public DbSet<CardEquipment> CardsEquipment { get; set; }
 
         public DbSet<CardInventory> CardsInventories { get; set; }
+
+        public DbSet<Toy> Toys { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

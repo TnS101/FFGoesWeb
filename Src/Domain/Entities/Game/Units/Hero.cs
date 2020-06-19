@@ -101,7 +101,7 @@
 
         public override bool IsBlinded { get; set; }
 
-        public override int GoldAmount { get; set; }
+        public override int CoinAmount { get; set; }
 
         public int Mastery { get; set; }
 

@@ -52,23 +52,23 @@
             context.LootKeys.Add(new LootKey
             {
                 Name = "Basic Bronze Key",
-                Rarity = "Bronze",
-                Slot = "Treasure Key",
-                ImagePath = "/images/Items/Treasure Keys/Basic Bronze Key.png",
+                Type = "Bronze Coin",
+                Slot = "Loot Key",
+                ImagePath = "/images/Items/Loot Keys/Basic Bronze Key.png",
             });
             context.LootKeys.Add(new LootKey
             {
                 Name = "Basic Silver Key",
-                Rarity = "Silver",
-                Slot = "Treasure Key",
-                ImagePath = "/images/Items/Treasure Keys/Basic Silver Key.png",
+                Type = "Silver Coin",
+                Slot = "Loot Key",
+                ImagePath = "/images/Items/Loot Keys/Basic Silver Key.png",
             });
             context.LootKeys.Add(new LootKey
             {
-                Name = "Basic Gold Key",
-                Rarity = "Gold",
-                Slot = "Gold Key",
-                ImagePath = "/images/Items/Treasure Keys/Basic Gold Key.png",
+                Name = "Basic Golden Key",
+                Type = "Gold Coin",
+                Slot = "Loot Key",
+                ImagePath = "/images/Items/Loot Keys/Basic Golden Key.png",
             });
 
             await context.SaveChangesAsync(cancellationToken);

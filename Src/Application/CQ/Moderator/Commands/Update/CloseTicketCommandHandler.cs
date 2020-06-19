@@ -51,7 +51,7 @@
             {
                 var comment = await this.Context.Comments.FindAsync(ticket.CommentId);
 
-                var likesToRemove = await this.Context.Likes.Where(l => l.CommentId == comment.Id).ToListAsync();
+                var likesToRemove = this.Context.Likes.Where(l => l.CommentId == comment.Id);
 
                 this.Context.Likes.RemoveRange(likesToRemove);
 
@@ -71,7 +71,7 @@
 
                 var comments = this.Context.Comments.FirstOrDefault(c => c.TopicId == topic.Id);
 
-                var likesToRemove = await this.Context.Likes.Where(l => l.CommentId == topic.Id).ToListAsync();
+                var likesToRemove = this.Context.Likes.Where(l => l.CommentId == topic.Id);
 
                 this.Context.Likes.RemoveRange(likesToRemove);
 

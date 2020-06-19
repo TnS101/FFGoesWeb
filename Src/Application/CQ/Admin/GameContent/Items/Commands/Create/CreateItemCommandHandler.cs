@@ -189,7 +189,7 @@
             var treasure = new LootBox
             {
                 Name = request.Name,
-                Rarity = request.Rarity,
+                Type = request.Rarity,
                 Reward = request.Reward,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
                 Slot = request.Slot,
@@ -207,7 +207,7 @@
             var treasureKey = new LootKey
             {
                 Name = request.Name,
-                Rarity = request.Rarity,
+                Type = request.Rarity,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
                 Slot = request.Slot,
             };

@@ -39,11 +39,11 @@
                     {
                         buffEffect *= caster.Level;
 
-                        caster.GoldAmount += (int)buffEffect;
+                        caster.CoinAmount += (int)buffEffect;
                     }
                     else if (buffStat == "Magic")
                     {
-                        caster.CurrentMagicPower += buffEffect * caster.GoldAmount;
+                        caster.CurrentMagicPower += buffEffect * caster.CoinAmount;
                     }
                 }
                 else

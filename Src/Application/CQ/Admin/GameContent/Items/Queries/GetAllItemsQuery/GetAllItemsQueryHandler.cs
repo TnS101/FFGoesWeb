@@ -41,7 +41,7 @@
                     Items = await this.Context.Trinkets.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
-            else if (request.Slot == "Treasure")
+            else if (request.Slot == "LootBox")
             {
                 return new ItemListViewModel
                 {
@@ -54,7 +54,7 @@
                     }).ToListAsync(),
                 };
             }
-            else if (request.Slot == "Treasure Key")
+            else if (request.Slot == "Loot Key")
             {
                 return new ItemListViewModel
                 {

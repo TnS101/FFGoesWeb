@@ -24,26 +24,11 @@
 
             topic.Comments = await this.Context.Comments.Where(c => c.TopicId == topic.Id).ToListAsync();
 
-            var topicTickets = await this.Context.Tickets.Where(t => t.TopicId == topic.Id).ToListAsync();
+            var topicTickets = this.Context.Tickets.Where(t => t.TopicId == topic.Id);
 
-            var topicTicketsIds = topicTickets.Select(t => t.UserId).ToList();
+            var topicTicketsIds = topicTickets.Select(t => t.UserId);
 
-            var commentTicketsIds = new Queue<string>();
-
-            foreach (var ticket in topicTickets)
-            {
-                foreach (var comment in topic.Comments)
-                {
-                    if (ticket.CommentId == comment.Id)
-                    {
-                        commentTicketsIds.Enqueue(ticket.UserId);
-                    }
-                }
-            }
-
-            await this.Context.SaveChangesAsync(cancellationToken);
-
-            return new TopicFullViewModel
+            var result = new TopicFullViewModel()
             {
                 Category = topic.Category,
                 Comments = topic.Comments,
@@ -53,10 +38,22 @@
                 Title = topic.Title,
                 UserId = topic.UserId,
                 Id = topic.Id,
-                TopicTicketsIds = topicTicketsIds,
-                CommentTicketsIds = commentTicketsIds,
+                TopicTicketsIds = topicTicketsIds.ToList(),
                 ViewerId = viewer.Id,
             };
+
+            foreach (var ticket in topicTickets)
+            {
+                foreach (var comment in topic.Comments)
+                {
+                    if (ticket.CommentId == comment.Id)
+                    {
+                        result.TopicTicketsIds.Add(ticket.UserId);
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

@@ -22,9 +22,9 @@
         {
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
-            var friends = await this.Context.Friends.Where(f => f.UserId == user.Id).ToListAsync();
+            var friends = this.Context.Friends.Where(f => f.UserId == user.Id);
 
-            var users = new Queue<AppUser>();
+            var result = new UserListViewModel { };
 
             foreach (var appUser in this.Context.AppUsers)
             {
@@ -32,21 +32,18 @@
                 {
                     if (appUser.Id == friend.Id)
                     {
-                        users.Enqueue(appUser);
+                        result.Users.ToList().Add(new UserPartialViewModel
+                        {
+                            Id = appUser.Id,
+                            UserName = appUser.UserName,
+                            ForumPoints = appUser.ForumPoints,
+                            MasteryPoints = appUser.MasteryPoints,
+                        });
                     }
                 }
             }
 
-            return new UserListViewModel
-            {
-                Users = users.Select(u => new UserPartialViewModel
-                {
-                    Id = u.Id,
-                    UserName = u.UserName,
-                    ForumPoints = u.ForumPoints,
-                    MasteryPoints = u.MasteryPoints,
-                }),
-            };
+            return result;
         }
     }
 }

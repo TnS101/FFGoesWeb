@@ -75,9 +75,9 @@
 
         DbSet<MaterialInventory> MaterialsInventories { get; set; }
 
-        DbSet<LootBoxInventory> TreasuresInventories { get; set; }
+        DbSet<LootBoxInventory> LootBoxesInventories { get; set; }
 
-        DbSet<LootKeyInventory> TreasureKeysInventories { get; set; }
+        DbSet<LootKeyInventory> LootKeysInventories { get; set; }
 
         DbSet<TrinketInventory> TrinketsInventories { get; set; }
 
@@ -108,6 +108,8 @@
         DbSet<CardEquipment> CardsEquipment { get; set; }
 
         DbSet<CardInventory> CardsInventories { get; set; }
+
+        DbSet<Toy> Toys { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

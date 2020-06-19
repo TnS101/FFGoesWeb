@@ -5,11 +5,9 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
+    using Domain.Entities.Social;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
 
     public class DeleteTopicCommandHandler : BaseHandler, IRequestHandler<DeleteTopicCommand, string>
     {
@@ -26,9 +24,9 @@
 
             if (user.Id == topicToRemove.UserId)
             {
-                var topicTickets = await this.Context.Tickets.Where(t => t.TopicId == topicToRemove.Id).ToListAsync();
+                var topicTickets = this.Context.Tickets.Where(t => t.TopicId == topicToRemove.Id);
 
-                var comments = await this.Context.Comments.Where(c => c.TopicId == topicToRemove.Id).ToListAsync();
+                var comments = this.Context.Comments.Where(c => c.TopicId == topicToRemove.Id);
 
                 if (comments.Count() > 0)
                 {
@@ -43,13 +41,7 @@
                         }
                     }
 
-                    this.Context.Comments.RemoveRange(comments);
-
-                    await this.Context.SaveChangesAsync(cancellationToken);
-
-                    this.Context.Topics.Remove(topicToRemove);
-
-                    await this.Context.SaveChangesAsync(cancellationToken);
+                    await this.RemoveTopic(topicToRemove, comments, cancellationToken);
 
                     return GConst.TopicCommandRedirect;
                 }
@@ -59,18 +51,23 @@
                     return GConst.InModerationRedirect;
                 }
 
-                this.Context.Comments.RemoveRange(comments);
-
-                await this.Context.SaveChangesAsync(cancellationToken);
-
-                this.Context.Topics.Remove(topicToRemove);
-
-                await this.Context.SaveChangesAsync(cancellationToken);
+                await this.RemoveTopic(topicToRemove, comments, cancellationToken);
 
                 return GConst.TopicCommandRedirect;
             }
 
             return GConst.ErrorRedirect;
+        }
+
+        private async Task RemoveTopic(Topic topicToRemove, IQueryable<Comment> comments, CancellationToken cancellationToken)
+        {
+            this.Context.Comments.RemoveRange(comments);
+
+            await this.Context.SaveChangesAsync(cancellationToken);
+
+            this.Context.Topics.Remove(topicToRemove);
+
+            await this.Context.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -323,7 +323,7 @@
                 treasureKeyId = 3; // Bronze
             }
 
-            var treasureKey = await context.TreasureKeysInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.LootKeyId == treasureKeyId);
+            var treasureKey = await context.LootKeysInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.LootKeyId == treasureKeyId);
 
             if (treasureKey != null)
             {
@@ -331,7 +331,7 @@
             }
             else
             {
-                context.TreasureKeysInventories.Add(new LootKeyInventory
+                context.LootKeysInventories.Add(new LootKeyInventory
                 {
                     InventoryId = inventoryId,
                     LootKeyId = treasureKeyId,
@@ -345,6 +345,7 @@
 
             int fightingClassId;
             int spellId;
+
             while (true)
             {
                 fightingClassId = this.rng.Next(1, fightingClasses.Count);

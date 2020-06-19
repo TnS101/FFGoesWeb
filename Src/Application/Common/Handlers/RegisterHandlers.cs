@@ -132,9 +132,9 @@
             services.AddScoped<IRequestHandler<GenerateMonsterCommand, Monster>, GenerateMonsterCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateEquipmentCommand, long>, UpdateEquipmentCommandHandler>();
             services.AddScoped<IRequestHandler<DiscardItemCommand, DiscardItemJsonResult>, DiscardItemCommandHandler>();
-            services.AddScoped<IRequestHandler<OpenTreasureCommand, string>, OpenTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();
-            services.AddScoped<IRequestHandler<LootTreasureCommand, string>, LootTreasureCommandHandler>();
+            services.AddScoped<IRequestHandler<OpenLootBoxCommand, string>, OpenLootBoxCommandHandler>();
+            services.AddScoped<IRequestHandler<LootLootBoxCommand, string>, LootLootBoxCommandHandler>();
+            services.AddScoped<IRequestHandler<LootLootBoxCommand, string>, LootLootBoxCommandHandler>();
             services.AddScoped<IRequestHandler<CreateHeroCommand, string>, CreateHeroCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteHeroCommand, string>, DeleteHeroCommandHandler>();
             services.AddScoped<IRequestHandler<HeroLevelUpCommand>, HeroLevelUpCommandHandler>();

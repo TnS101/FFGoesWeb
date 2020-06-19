@@ -10,6 +10,11 @@
 
     public class TopicFullViewModel : RegexFilter
     {
+        public TopicFullViewModel()
+        {
+            this.TopicTicketsIds = new List<string>();
+        }
+
         public string Id { get; set; }
 
         public string UserId { get; set; }
@@ -41,6 +46,6 @@
 
         public ICollection<Like> Likes { get; set; }
 
-        public Queue<string> CommentTicketsIds { get; set; }
+        public ICollection<string> CommentTicketsIds { get; set; }
     }
 }

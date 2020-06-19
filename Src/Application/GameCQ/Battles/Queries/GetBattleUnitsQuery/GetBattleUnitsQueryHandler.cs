@@ -8,7 +8,6 @@
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class GetBattleUnitsQueryHandler : MapperHandler, IRequestHandler<GetBattleUnitsQuery, BattleUnitsListViewModel>
     {
@@ -23,7 +22,7 @@
 
             var hero = this.Mapper.Map<BattleUnitViewModel>(dbHero);
 
-            foreach (var spell in await this.Context.Spells.Where(s => s.FightingClassId == dbHero.FightingClassId).ToListAsync())
+            foreach (var spell in this.Context.Spells.Where(s => s.FightingClassId == dbHero.FightingClassId))
             {
                 hero.Spells.Add(this.Mapper.Map<SpellMinViewModel>(spell));
             }

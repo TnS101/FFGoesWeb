@@ -62,6 +62,6 @@
 
         public virtual string ImagePath { get; set; }
 
-        public virtual int GoldAmount { get; set; }
+        public virtual int CoinAmount { get; set; }
     }
 }

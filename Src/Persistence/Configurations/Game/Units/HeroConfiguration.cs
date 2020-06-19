@@ -49,7 +49,7 @@
                 .HasDefaultValue(100)
                 .IsRequired();
 
-            builder.Property(h => h.GoldAmount)
+            builder.Property(h => h.CoinAmount)
                 .HasDefaultValue(100)
                 .IsRequired();
 

@@ -97,11 +97,11 @@
             }
             else if (request.Slot == "Treasure")
             {
-                var treasureToRemove = await this.Context.TreasuresInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.LootBoxId == (int)request.ItemId);
+                var treasureToRemove = await this.Context.LootBoxesInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.LootBoxId == (int)request.ItemId);
 
                 if (request.Count >= treasureToRemove.Count)
                 {
-                    this.Context.TreasuresInventories.Remove(treasureToRemove);
+                    this.Context.LootBoxesInventories.Remove(treasureToRemove);
                 }
                 else
                 {
@@ -110,11 +110,11 @@
             }
             else if (request.Slot == "Treasure Key")
             {
-                var treasureKeyToRemove = await this.Context.TreasureKeysInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.LootKeyId == (int)request.ItemId);
+                var treasureKeyToRemove = await this.Context.LootKeysInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.LootKeyId == (int)request.ItemId);
 
                 if (request.Count >= treasureKeyToRemove.Count)
                 {
-                    this.Context.TreasureKeysInventories.Remove(treasureKeyToRemove);
+                    this.Context.LootKeysInventories.Remove(treasureKeyToRemove);
                 }
                 else
                 {
@@ -164,7 +164,7 @@
                 reward = armor.SellPrice * count;
             }
 
-            hero.GoldAmount += reward;
+            hero.CoinAmount += reward;
 
             return reward;
         }

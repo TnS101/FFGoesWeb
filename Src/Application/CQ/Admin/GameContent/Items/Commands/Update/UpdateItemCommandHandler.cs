@@ -177,7 +177,7 @@
 
             if (!string.IsNullOrWhiteSpace(request.NewRarity))
             {
-                treasure.Rarity = request.NewRarity;
+                treasure.Type = request.NewRarity;
             }
 
             this.Context.LootBoxes.Update(treasure);
@@ -194,7 +194,7 @@
 
             if (!string.IsNullOrWhiteSpace(request.NewRarity))
             {
-                treasureKey.Rarity = request.NewRarity;
+                treasureKey.Type = request.NewRarity;
             }
 
             this.Context.LootKeys.Update(treasureKey);

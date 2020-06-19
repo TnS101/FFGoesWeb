@@ -1,9 +1,8 @@
 ﻿namespace Application.GameCQ.LootBoxes.Commands.Delete
 {
-    using System.Security.Claims;
     using MediatR;
 
-    public class OpenTreasureCommand : IRequest<string>
+    public class OpenLootBoxCommand : IRequest<string>
     {
         public string Id { get; set; }
 

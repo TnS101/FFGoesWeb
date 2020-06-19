@@ -21,8 +21,8 @@
             if (request.Slot == "Weapon")
             {
                 var weapon = await this.Context.Weapons.FindAsync(request.ItemId);
-                var equipments = await this.Context.WeaponsEquipments.Where(e => e.WeaponId == weapon.Id).ToListAsync();
-                var inventories = await this.Context.WeaponsInventories.Where(i => i.WeaponId == weapon.Id).ToListAsync();
+                var equipments = this.Context.WeaponsEquipments.Where(e => e.WeaponId == weapon.Id);
+                var inventories = this.Context.WeaponsInventories.Where(i => i.WeaponId == weapon.Id);
                 this.Context.WeaponsEquipments.RemoveRange(equipments);
                 this.Context.WeaponsInventories.RemoveRange(inventories);
                 this.Context.Weapons.Remove(weapon);
@@ -31,8 +31,8 @@
             if (request.Slot == "Armor")
             {
                 var armor = await this.Context.Armors.FindAsync(request.ItemId);
-                var equipments = await this.Context.ArmorsEquipments.Where(e => e.ArmorId == armor.Id).ToListAsync();
-                var inventories = await this.Context.ArmorsInventories.Where(i => i.ArmorId == armor.Id).ToListAsync();
+                var equipments = this.Context.ArmorsEquipments.Where(e => e.ArmorId == armor.Id);
+                var inventories = this.Context.ArmorsInventories.Where(i => i.ArmorId == armor.Id);
                 this.Context.ArmorsEquipments.RemoveRange(equipments);
                 this.Context.ArmorsInventories.RemoveRange(inventories);
                 this.Context.Armors.Remove(armor);
@@ -41,8 +41,8 @@
             if (request.Slot == "Trinket")
             {
                 var trinket = await this.Context.Trinkets.FindAsync(request.ItemId);
-                var equipments = await this.Context.TrinketEquipments.Where(e => e.TrinketId == trinket.Id).ToListAsync();
-                var inventories = await this.Context.TrinketsInventories.Where(i => i.TrinketId == trinket.Id).ToListAsync();
+                var equipments = this.Context.TrinketEquipments.Where(e => e.TrinketId == trinket.Id);
+                var inventories = this.Context.TrinketsInventories.Where(i => i.TrinketId == trinket.Id);
                 this.Context.TrinketEquipments.RemoveRange(equipments);
                 this.Context.TrinketsInventories.RemoveRange(inventories);
                 this.Context.Trinkets.Remove(trinket);
@@ -51,7 +51,7 @@
             if (request.Slot == "Material")
             {
                 var material = await this.Context.Materials.FindAsync(int.Parse(request.ItemId));
-                var inventories = await this.Context.MaterialsInventories.Where(e => e.MaterialId == material.Id).ToListAsync();
+                var inventories = this.Context.MaterialsInventories.Where(e => e.MaterialId == material.Id);
                 this.Context.MaterialsInventories.RemoveRange(inventories);
                 this.Context.Materials.Remove(material);
             }
@@ -59,23 +59,23 @@
             if (request.Slot == "Treasure")
             {
                 var treasure = await this.Context.LootBoxes.FindAsync(int.Parse(request.ItemId));
-                var inventories = await this.Context.TreasuresInventories.Where(e => e.LootBoxId == treasure.Id).ToListAsync();
-                this.Context.TreasuresInventories.RemoveRange(inventories);
+                var inventories = this.Context.LootBoxesInventories.Where(e => e.LootBoxId == treasure.Id);
+                this.Context.LootBoxesInventories.RemoveRange(inventories);
                 this.Context.LootBoxes.Remove(treasure);
             }
 
             if (request.Slot == "Treasure Key")
             {
                 var treasureKey = await this.Context.LootKeys.FindAsync(int.Parse(request.ItemId));
-                var inventories = await this.Context.TreasureKeysInventories.Where(e => e.LootKeyId == treasureKey.Id).ToListAsync();
-                this.Context.TreasureKeysInventories.RemoveRange(inventories);
+                var inventories = this.Context.LootKeysInventories.Where(e => e.LootKeyId == treasureKey.Id);
+                this.Context.LootKeysInventories.RemoveRange(inventories);
                 this.Context.LootKeys.Remove(treasureKey);
             }
 
             if (request.Slot == "Tool")
             {
                 var tool = await this.Context.Tools.FindAsync(int.Parse(request.ItemId));
-                var inventories = await this.Context.ToolsInventories.Where(e => e.ToolId == tool.Id).ToListAsync();
+                var inventories = this.Context.ToolsInventories.Where(e => e.ToolId == tool.Id);
                 this.Context.ToolsInventories.RemoveRange(inventories);
                 this.Context.Tools.Remove(tool);
             }

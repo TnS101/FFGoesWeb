@@ -33,7 +33,7 @@
         [HttpGet]
         public async Task<IActionResult> LootBoxEncounter()
         {
-            return this.View(@"\TreasureEncounter", await this.Mediator.Send(new LootTreasureCommand { UserId = this.UserManager.GetUserId(this.User) }));
+            return this.View(@"\TreasureEncounter", await this.Mediator.Send(new LootLootBoxCommand { UserId = this.UserManager.GetUserId(this.User) }));
         }
     }
 }

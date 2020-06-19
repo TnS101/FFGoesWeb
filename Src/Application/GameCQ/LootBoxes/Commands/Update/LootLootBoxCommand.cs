@@ -2,7 +2,7 @@
 {
     using MediatR;
 
-    public class LootTreasureCommand : IRequest<string>
+    public class LootLootBoxCommand : IRequest<string>
     {
         public string UserId { get; set; }
     }

@@ -9,7 +9,6 @@
     using Domain.Entities.Common;
     using Domain.Entities.Social;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class UserPanelQueryHandler : BaseHandler, IRequestHandler<UserPanelQuery, UserPanelViewModel>
     {
@@ -30,7 +29,7 @@
 
             var friends = this.Context.Friends.Where(f => f.UserId == user.Id);
 
-            var statuses = await this.Context.Statuses.ToListAsync();
+            var statuses = this.Context.Statuses;
 
             Status status = null;
 

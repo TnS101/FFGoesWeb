@@ -14,7 +14,7 @@
                 .HasMaxLength(50)
                 .IsRequired();
 
-            builder.Property(t => t.Rarity)
+            builder.Property(t => t.Type)
                 .HasMaxLength(20)
                 .IsRequired();
 

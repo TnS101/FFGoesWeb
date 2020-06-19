@@ -26,13 +26,13 @@
         {
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
-            var heroes = await this.Context.Heroes.Where(h => h.UserId == user.Id).ToListAsync();
+            var heroes = this.Context.Heroes.Where(h => h.UserId == user.Id);
 
             if (heroes.Count() == user.AllowedHeroes)
             {
                 return GConst.HeroCreationErrorRedirect;
             }
-            else if (heroes.Count > 0)
+            else if (heroes.Count() > 0)
             {
                 foreach (var unit in heroes)
                 {

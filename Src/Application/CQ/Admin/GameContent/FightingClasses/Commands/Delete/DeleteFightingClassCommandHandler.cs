@@ -7,7 +7,6 @@
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class DeleteFightingClassCommandHandler : BaseHandler, IRequestHandler<DeleteFightingClassCommand, string>
     {
@@ -20,9 +19,9 @@
         {
             var fightingClass = await this.Context.FightingClasses.FindAsync(request.FightingClassId);
 
-            var spells = await this.Context.Spells.Where(s => s.FightingClassId == fightingClass.Id).ToListAsync();
+            var spells = this.Context.Spells.Where(s => s.FightingClassId == fightingClass.Id);
 
-            var heroes = await this.Context.Heroes.Where(h => h.FightingClassId == fightingClass.Id).ToListAsync();
+            var heroes = this.Context.Heroes.Where(h => h.FightingClassId == fightingClass.Id);
 
             this.Context.Heroes.RemoveRange(heroes);
 

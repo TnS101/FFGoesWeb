@@ -6,33 +6,32 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using global::Common;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
-    public class LootTreasureCommandHandler : BaseHandler, IRequestHandler<LootTreasureCommand, string>
+    public class LootLootBoxCommandHandler : BaseHandler, IRequestHandler<LootLootBoxCommand, string>
     {
-        public LootTreasureCommandHandler(IFFDbContext context)
+        public LootLootBoxCommandHandler(IFFDbContext context)
             : base(context)
         {
         }
 
-        public async Task<string> Handle(LootTreasureCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(LootLootBoxCommand request, CancellationToken cancellationToken)
         {
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            var treasure = new LootBox();
+            var lootBoxType = this.LootBoxType();
 
-            treasure = await this.Context.LootBoxes.FirstOrDefaultAsync(r => r.Rarity == this.TreasureRarity());
+            var lootBox = await this.Context.LootBoxes.FirstOrDefaultAsync(r => r.Type == lootBoxType);
 
             hero.Inventory.LootBoxInventories.Add(new LootBoxInventory
             {
                 InventoryId = hero.InventoryId,
-                LootBoxId = treasure.Id,
+                LootBoxId = lootBox.Id,
             });
 
             await this.Context.SaveChangesAsync(cancellationToken);
@@ -40,19 +39,27 @@
             return GConst.WorldRedirect;
         }
 
-        private string TreasureRarity()
+        private string LootBoxType()
         {
             var rng = new Random();
 
-            int treasureNumber = rng.Next(0, 10);
+            int treasureNumber = rng.Next(0, 17);
 
-            if (treasureNumber >= 0 && treasureNumber < 5)
+            if (treasureNumber >= 0 && treasureNumber <= 4)
             {
                 return "Bronze";
             }
-            else if (treasureNumber >= 5 && treasureNumber < 8)
+            else if (treasureNumber >= 5 && treasureNumber <= 8)
             {
                 return "Silver";
+            }
+            else if (treasureNumber >= 9 && treasureNumber <= 11)
+            {
+                return "Material";
+            }
+            else if (treasureNumber >= 12 && treasureNumber <= 14)
+            {
+                return "Consumeable";
             }
             else
             {
