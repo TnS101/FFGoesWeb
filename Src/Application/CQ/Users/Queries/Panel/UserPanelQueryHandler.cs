@@ -81,7 +81,7 @@
                 ForumPoints = user.ForumPoints,
                 Friends = friends.Count(),
                 Units = units.Count(),
-                Statuses = statuses,
+                Statuses = statuses.ToList(),
             };
         }
 

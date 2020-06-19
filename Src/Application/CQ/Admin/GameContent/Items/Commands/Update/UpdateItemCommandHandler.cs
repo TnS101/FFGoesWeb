@@ -170,11 +170,6 @@
                 treasure.Name = request.NewName;
             }
 
-            if (request.NewReward > 0)
-            {
-                treasure.Reward = request.NewReward;
-            }
-
             if (!string.IsNullOrWhiteSpace(request.NewRarity))
             {
                 treasure.Type = request.NewRarity;

@@ -2,11 +2,6 @@
 {
     public class LootKeyInventory
     {
-        public LootKeyInventory()
-        {
-            this.Count = 1;
-        }
-
         public int LootKeyId { get; set; }
 
         public LootKey LootKey { get; set; }

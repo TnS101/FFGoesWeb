@@ -111,6 +111,8 @@
 
         DbSet<Toy> Toys { get; set; }
 
+        DbSet<ToyInventory> ToyInventories { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

@@ -2,11 +2,6 @@
 {
     public class TrinketInventory
     {
-        public TrinketInventory()
-        {
-            this.Count = 1;
-        }
-
         public long TrinketId { get; set; }
 
         public Trinket Trinket { get; set; }

@@ -348,7 +348,7 @@
 
             while (true)
             {
-                fightingClassId = this.rng.Next(1, fightingClasses.Count);
+                fightingClassId = this.rng.Next(1, fightingClasses.Count + 1);
 
                 if (fightingClasses[fightingClassId] != null)
                 {
@@ -436,7 +436,7 @@
 
             while (true)
             {
-                consumeableId = this.rng.Next(1, consumeables.Count);
+                consumeableId = this.rng.Next(1, consumeables.Count + 1);
 
                 if (consumeables[consumeableId] != null)
                 {

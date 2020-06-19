@@ -21,6 +21,9 @@
             builder.HasOne(i => i.Inventory)
                 .WithMany(r => r.RelicInventories)
                 .HasForeignKey(i => i.InventoryId);
+
+            builder.Property(i => i.Count)
+               .HasDefaultValue(1);
         }
     }
 }

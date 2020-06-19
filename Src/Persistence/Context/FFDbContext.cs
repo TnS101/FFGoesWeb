@@ -118,6 +118,8 @@
 
         public DbSet<Toy> Toys { get; set; }
 
+        public DbSet<ToyInventory> ToyInventories { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

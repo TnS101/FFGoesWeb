@@ -2,11 +2,6 @@
 {
     public class LootBoxInventory
     {
-        public LootBoxInventory()
-        {
-            this.Count = 1;
-        }
-
         public int LootBoxId { get; set; }
 
         public LootBox LootBox { get; set; }

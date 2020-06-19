@@ -183,7 +183,6 @@
             {
                 Id = treasure.Id,
                 Name = treasure.Name,
-                Reward = treasure.Reward,
                 Rarity = treasure.Type,
                 Slot = treasure.Slot,
                 ImagePath = treasure.ImagePath,

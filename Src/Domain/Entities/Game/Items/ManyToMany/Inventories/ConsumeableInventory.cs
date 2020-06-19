@@ -2,11 +2,6 @@
 {
     public class ConsumeableInventory
     {
-        public ConsumeableInventory()
-        {
-            this.Count = 1;
-        }
-
         public int ConsumeableId { get; set; }
 
         public Consumeable Consumeable { get; set; }

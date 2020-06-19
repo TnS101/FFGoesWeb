@@ -16,7 +16,7 @@
                 .IsRequired();
 
             builder.Property(i => i.Capacity)
-                .HasDefaultValue(50);
+                .HasDefaultValue(100);
 
             builder.HasOne(u => u.Hero)
            .WithOne(i => i.Inventory)

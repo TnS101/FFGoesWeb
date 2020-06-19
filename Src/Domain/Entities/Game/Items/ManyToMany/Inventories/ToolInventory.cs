@@ -2,11 +2,6 @@
 {
     public class ToolInventory
     {
-        public ToolInventory()
-        {
-            this.Count = 1;
-        }
-
         public int ToolId { get; set; }
 
         public Tool Tool { get; set; }

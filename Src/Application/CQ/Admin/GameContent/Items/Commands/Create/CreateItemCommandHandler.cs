@@ -190,7 +190,6 @@
             {
                 Name = request.Name,
                 Type = request.Rarity,
-                Reward = request.Reward,
                 ImagePath = this.imagePath.Process(new string[] { "Item", request.Slot, request.Name }),
                 Slot = request.Slot,
             };

@@ -2,11 +2,6 @@
 {
     public class WeaponInventory
     {
-        public WeaponInventory()
-        {
-            this.Count = 1;
-        }
-
         public long WeaponId { get; set; }
 
         public Weapon Weapon { get; set; }
