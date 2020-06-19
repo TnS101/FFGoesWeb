@@ -34,7 +34,7 @@
 
         public string BoxType { get; set; }
 
-        public bool RequiresKey { get; set; }
+        public string RequiresKey { get; set; }
 
         public int RewardAmplifier { get; set; }
 

@@ -11,18 +11,18 @@
             builder.HasKey(t => t.Id);
 
             builder.Property(t => t.Name)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(t => t.Type)
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder.Property(t => t.Slot)
                 .HasDefaultValue("Treasure Key");
 
             builder.Property(t => t.ImagePath)
-                .HasMaxLength(50)
+                .HasMaxLength(200)
                 .IsRequired();
         }
     }

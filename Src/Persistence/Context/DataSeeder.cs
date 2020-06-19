@@ -44,7 +44,254 @@
 
             await this.SeedMainMaterialsAsync(context, cancellationToken);
 
+            await this.SeedLootBoxesAsync(context, cancellationToken);
+
             await this.SeedLootKeysAsync(context, cancellationToken);
+        }
+
+        private async Task SeedLootBoxesAsync(FFDbContext context, CancellationToken cancellationToken) 
+        {
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Bronze Lockbox",
+                Type = "Bronze",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 1,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Bronze Case",
+                Type = "Bronze",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 2,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Bronze Trunk",
+                Type = "Bronze",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 3,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Silver Lockbox",
+                Type = "Silver",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 4,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Silver Case",
+                Type = "Silver",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 5,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Silver Trunk",
+                Type = "Silver",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 6,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Golden Lockbox",
+                Type = "Golden",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 7,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Golden Case",
+                Type = "Golden",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 8,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Golden Trunk",
+                Type = "Golden",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 10,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Small Material Package",
+                Type = "Material",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = false,
+                RewardAmplifier = 2,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Old Salvage Box",
+                Type = "Material",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = false,
+                RewardAmplifier = 3,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Craftsman's Crate",
+                Type = "Material",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = false,
+                RewardAmplifier = 4,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Lunchbox",
+                Type = "Consumeable",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 2,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Bento!!",
+                Type = "Consumeable",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 3,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Provision Crate",
+                Type = "Consumeable",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 4,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Small Tool Package",
+                Type = "Tool",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 1,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Toolkit",
+                Type = "Tool",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 2,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Dirty Plastic Bag",
+                Type = "Junk",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 2,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Dustbin",
+                Type = "Junk",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 3,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Trash Can",
+                Type = "Junk",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 4,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Mysterious Toy Pack",
+                Type = "Toy",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 1,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Toy Bag",
+                Type = "Toy",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 2,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Random Lock Opener",
+                Type = "Key",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 1,
+            });
+
+            context.LootBoxes.Add(new LootBox
+            {
+                Name = "Keychain",
+                Type = "Key",
+                Slot = "Loot Box",
+                ImagePath = "/images/Items/Loot Boxes/06_4.png",
+                RequiresKey = true,
+                RewardAmplifier = 2,
+            });
+
+            await context.SaveChangesAsync(cancellationToken);
         }
 
         private async Task SeedLootKeysAsync(FFDbContext context, CancellationToken cancellationToken)
@@ -52,21 +299,21 @@
             context.LootKeys.Add(new LootKey
             {
                 Name = "Basic Bronze Key",
-                Type = "Bronze Coin",
+                Type = "Bronze",
                 Slot = "Loot Key",
                 ImagePath = "/images/Items/Loot Keys/Basic Bronze Key.png",
             });
             context.LootKeys.Add(new LootKey
             {
                 Name = "Basic Silver Key",
-                Type = "Silver Coin",
+                Type = "Silver",
                 Slot = "Loot Key",
                 ImagePath = "/images/Items/Loot Keys/Basic Silver Key.png",
             });
             context.LootKeys.Add(new LootKey
             {
                 Name = "Basic Golden Key",
-                Type = "Gold Coin",
+                Type = "Golden",
                 Slot = "Loot Key",
                 ImagePath = "/images/Items/Loot Keys/Basic Golden Key.png",
             });

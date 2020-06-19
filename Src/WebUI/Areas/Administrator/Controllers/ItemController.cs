@@ -32,7 +32,7 @@
             [FromForm]string classType, [FromForm]int stamina, [FromForm]int strength, [FromForm]int agility,
             [FromForm]int intellect, [FromForm]int spirit, [FromForm] double attackPower,
             [FromForm]double armorValue, [FromForm] double resistanceValue, [FromForm]int sellPrice,
-            [FromForm]int buyPrice, [FromForm]string rarity, [FromForm]int reward, [FromForm]int fuelCount,
+            [FromForm]int buyPrice, [FromForm]string boxType, [FromForm]string requiresKey, [FromForm]int rewardAmplifier, [FromForm]int fuelCount,
             [FromForm]string relatedMaterials, [FromForm]string materialDiversity, [FromForm]int durability,
             [FromForm]string materialType, [FromForm]int toolId, [FromForm]string slot)
         {
@@ -53,11 +53,12 @@
                 SellPrice = sellPrice,
                 Durability = durability,
                 FuelCount = fuelCount,
-                BoxType = rarity,
+                BoxType = boxType,
                 MaterialDiversity = materialDiversity,
                 MaterialType = materialType,
                 RelatedMaterials = relatedMaterials,
-                Reward = reward,
+                RequiresKey = requiresKey,
+                RewardAmplifier = rewardAmplifier,
                 ToolId = toolId,
                 Slot = slot,
             }));

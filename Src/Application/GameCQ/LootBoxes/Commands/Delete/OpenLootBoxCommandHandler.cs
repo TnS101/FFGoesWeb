@@ -246,7 +246,7 @@
 
                 if (lootKeyToRemove != null)
                 {
-                    hero.CoinAmount += rng.Next(hero.Level * 4, hero.Level * 8);
+                    hero.CoinAmount += rng.Next(hero.Level * lootBox.RewardAmplifier, hero.Level * lootBox.RewardAmplifier * 2);
 
                     this.Context.LootKeysInventories.Remove(lootKeyToRemove);
 

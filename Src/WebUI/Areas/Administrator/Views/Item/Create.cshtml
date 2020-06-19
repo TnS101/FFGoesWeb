@@ -16,8 +16,8 @@
                                 <option value="Weapon">Weapon</option>
                                 <option value="Armor">Armor</option>
                                 <option value="Trinket">Trinket</option>
-                                <option value="Treasure">Treasure</option>
-                                <option value="Treasure Key">Treasure Key</option>
+                                <option value="Loot Box">Loot Box</option>
+                                <option value="Loot Key">Loot Key</option>
                                 <option value="Material">Material</option>
                                 <option value="Tool">Tool</option>
                             </select>
@@ -25,7 +25,7 @@
                         <div class="form-group fade-in item-padding has-normal-font-size" id="name" style="display:none">
                             <label for="input-name" class="contro-label has-normal-font-size">Name</label>
                             <br />
-                            <input type="text" id="input-name" name="name" class="form-control" required/>
+                            <input type="text" id="input-name" name="name" class="form-control" required />
                         </div>
                         <div class="form-group fade-in item-padding" id="level" style="display:none">
                             <label for="input-level" class="contro-label has-normal-font-size">Level</label>
@@ -65,7 +65,7 @@
                         <div class="form-group fade-in item-padding" id="attack" style="display:none">
                             <label for="input-attackpower" class="contro-label has-normal-font-size">AttackPower</label>
                             <br />
-                            <input id="input-attackpower" name="attackPower" class="form-control" min="1" max="100"  />
+                            <input id="input-attackpower" name="attackPower" class="form-control" min="1" max="100" />
                         </div>
                         <div class="form-group fade-in item-padding" id="armor" style="display:none">
                             <label for="input-armorvalue" class="contro-label has-normal-font-size">ArmorValue</label>
@@ -87,19 +87,31 @@
                             <br />
                             <input id="input-buyprice" name="buyPrice" class="form-control" min="1" max="1000" />
                         </div>
-                        <div class="form-group fade-in item-padding" id="rarity" style="display:none">
+                        <div class="form-group fade-in item-padding" id="boxType" style="display:none">
                             <label for="rarity-select" class="contro-label has-normal-font-size">Rarity</label>
                             <br />
-                            <select id="rarity-select" name="rarity">
-                                <option value="Bronze">Bronze</option>
-                                <option value="Silver">Silver</option>
-                                <option value="Gold">Gold</option>
+                            <select id="rarity-select" name="boxType">
+                                <option value="Bronze">Bronze Coin Box</option>
+                                <option value="Silver">Silver Coin Box</option>
+                                <option value="Golden">Golden Coin Box</option>
+                                <option value="Material">Material Box</option>
+                                <option value="Tool">Tool Box</option>
+                                <option value="Consumeable">Consumeable's Box</option>
+                                <option value="Junk">Junk Box</option>
+                                <option value="Key">Key Box</option>
+                                <option value="Consumeable">Consumeable's Box</option>
+                                <option value="Toy">Toy Box</option>
                             </select>
                         </div>
-                        <div class="form-group fade-in item-padding" id="reward" style="display:none">
+                        <div class="form-group fade-in item-padding" id="rewardAmplifier" style="display:none">
                             <label for="input-reward" class="contro-label has-normal-font-size">Reward</label>
                             <br />
-                            <input id="input-reward" type="number" name="reward" class="form-control" min="1" max="1000"/>
+                            <input id="input-reward" type="number" name="rewardAmplifier" class="form-control" min="1" max="99" />
+                        </div>
+                        <div class="form-group fade-in item-padding" style="display:none" id="requiresKey">
+                            <label for="input-craftable" class="contro-label has-normal-font-size">Is Craftable</label>
+                            <br />
+                            <input id="input-craftable" class="form-control" type="radio" value="true" name="requiresKey" />
                         </div>
                         <div class="form-group fade-in item-padding" style="display:none" id="material-type">
                             <label for="material-type-select" class="contro-label has-normal-font-size">Type</label>
@@ -115,7 +127,7 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="fuel">
                             <label for="input-fuelcount" class="contro-label has-normal-font-size">FuelCount</label>
                             <br />
-                            <input id="input-fuelcount" name="fuelCount" class="form-control" type="number" min="1" max="10" value="1"/>
+                            <input id="input-fuelcount" name="fuelCount" class="form-control" type="number" min="1" max="10" value="1" />
                         </div>
                         <div class="form-group fade-in item-padding" style="display:none" id="none">
                             <label for="input-none" class="contro-label has-normal-font-size">None</label>
@@ -140,7 +152,7 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="durability">
                             <label for="input-durability" class="contro-label has-normal-font-size">Durability</label>
                             <br />
-                            <input id="input-durability" name="durability" class="form-control" type="number" min="10" max="100" value="10"/>
+                            <input id="input-durability" name="durability" class="form-control" type="number" min="10" max="100" value="10" />
                         </div>
                         <div class="form-group fade-in item-padding" style="display:none" id="tools">
                             <label for="select-tool" class="contro-label has-normal-font-size">Required Tool</label>
@@ -157,7 +169,7 @@
                         <div class="form-group fade-in item-padding" style="display:none" id="materials">
                             <label for="input-relatedmaterials" class="contro-label has-normal-font-size">Related Materials</label>
                             <br />
-                            <input type="text" id="input-relatedmaterials" name="relatedMaterials" class="form-control"/>
+                            <input type="text" id="input-relatedmaterials" name="relatedMaterials" class="form-control" />
                         </div>
                         <div class="form-group item-padding">
                             <input type="submit" value="Create" class="main-button" />

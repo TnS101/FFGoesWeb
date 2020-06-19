@@ -20,18 +20,36 @@
 
         public async Task<string> Handle(LootLootBoxCommand request, CancellationToken cancellationToken)
         {
+            var rng = new Random();
+
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
             var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
 
-            var lootBoxType = this.LootBoxType();
+            var lootBoxType = this.LootBoxType(rng);
 
-            var lootBox = await this.Context.LootBoxes.FirstOrDefaultAsync(r => r.Type == lootBoxType);
+            var lootBoxes = await this.Context.LootBoxes.Where(lb => lb.Type == lootBoxType).ToListAsync();
+
+            int lootBoxId;
+
+            while (true)
+            {
+                lootBoxId = rng.Next(1, lootBoxes.Count + 1);
+
+                if (lootBoxes[lootBoxId] != null)
+                {
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
 
             hero.Inventory.LootBoxInventories.Add(new LootBoxInventory
             {
                 InventoryId = hero.InventoryId,
-                LootBoxId = lootBox.Id,
+                LootBoxId = lootBoxId,
             });
 
             await this.Context.SaveChangesAsync(cancellationToken);
@@ -39,10 +57,8 @@
             return GConst.WorldRedirect;
         }
 
-        private string LootBoxType()
+        private string LootBoxType(Random rng)
         {
-            var rng = new Random();
-
             int treasureNumber = rng.Next(0, 29);
 
             if (treasureNumber >= 0 && treasureNumber <= 4)
@@ -79,7 +95,7 @@
             }
             else
             {
-                return "Gold";
+                return "Golden";
             }
         }
     }

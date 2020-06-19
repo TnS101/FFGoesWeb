@@ -32,7 +32,7 @@
 
         public int BuyPrice { get; set; }
 
-        public string Rarity { get; set; }
+        public string LootType { get; set; }
 
         public int Reward { get; set; }
 
@@ -53,5 +53,7 @@
         public string ToolName { get; set; }
 
         public string ImagePath { get; set; }
+
+        public bool RequiresKey { get; set; }
     }
 }

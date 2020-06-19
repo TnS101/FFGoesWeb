@@ -183,8 +183,9 @@
             {
                 Id = treasure.Id,
                 Name = treasure.Name,
-                Rarity = treasure.Type,
+                LootType = treasure.Type,
                 Slot = treasure.Slot,
+                RequiresKey = treasure.RequiresKey,
                 ImagePath = treasure.ImagePath,
             };
         }
@@ -197,7 +198,7 @@
             {
                 Id = treasureKey.Id,
                 Name = treasureKey.Name,
-                Rarity = treasureKey.Type,
+                LootType = treasureKey.Type,
                 Slot = treasureKey.Slot,
                 ImagePath = treasureKey.ImagePath,
             };

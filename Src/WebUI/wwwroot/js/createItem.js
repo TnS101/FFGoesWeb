@@ -3,11 +3,11 @@
     var slotOption = $(this).children('option:selected').val();
 
     if (slotOption === 'Weapon') {
+        $('#requiresKey').hide();
         $('#armor').hide();
         $('#resistance').hide();
-        $('#rarity').hide();
-        $('#reward').hide();
-        $('#rarity').hide();
+        $('#rewardAmplifier').hide();
+        $('#boxType').hide();
         $('#fuel').hide();
         $('#materials').hide();
         $('#refineable').hide();
@@ -30,10 +30,10 @@
         $('#sell').show();
     }
     else if (slotOption === 'Armor') {
+        $('#requiresKey').hide();
         $('#attack').hide();
-        $('#rarity').hide();
-        $('#reward').hide();
-        $('#rarity').hide();
+        $('#rewardAmplifier').hide();
+        $('#boxType').hide();
         $('#fuel').hide();
         $('#materials').hide();
         $('#refineable').hide();
@@ -57,12 +57,12 @@
         $('#sell').show();
     }
     else if (slotOption === 'Trinket') {
+        $('#requiresKey').hide();
         $('#attack').hide();
         $('#armor').hide();
         $('#resistance').hide();
-        $('#rarity').hide();
-        $('#reward').hide();
-        $('#rarity').hide();
+        $('#rewardAmplifier').hide();
+        $('#boxType').hide();
         $('#fuel').hide();
         $('#materials').hide();
         $('#refineable').hide();
@@ -86,8 +86,7 @@
         $('#attack').hide();
         $('#armor').hide();
         $('#resistance').hide();
-        $('#rarity').hide();
-        $('#reward').hide();
+        $('#boxType').hide();
         $('#fuel').hide();
         $('#materials').hide();
         $('#refineable').hide();
@@ -107,16 +106,17 @@
         $('#none').hide();
 
         $('#name').show();
-        $('#rarity').show();
-        $('#reward').show();
+        $('#rewardAmplifier').show();
+        $('#boxType').show();
+        $('#requiresKey').show();
     }
     else if (slotOption === 'Treasure Key') {
-        $('#reward').hide();
+        $('#requiresKey').hide();
+        $('#boxType').hide();
         $('#attack').hide();
         $('#armor').hide();
         $('#resistance').hide();
-        $('#rarity').hide();
-        $('#reward').hide();
+        $('#boxType').hide();
         $('#fuel').hide();
         $('#materials').hide();
         $('#refineable').hide();
@@ -136,15 +136,16 @@
         $('#none').hide();
 
         $('#name').show();
-        $('#rarity').show();
+        $('#boxType').show();
     }
     else if (slotOption === 'Material') {
-        $('#reward').hide();
+        $('#requiresKey').hide();
+        $('#boxType').hide();
         $('#attack').hide();
         $('#armor').hide();
         $('#resistance').hide();
-        $('#rarity').hide();
-        $('#reward').hide();
+        $('#rewardAmplifier').hide();
+        $('#boxType').hide();
         $('#materials').hide();
         $('#refineable').hide();
         $('#disolveable').hide();
@@ -179,12 +180,13 @@
         });
     }
     else if (slotOption === 'Tool') {
-        $('#reward').hide();
+        $('#requiresKey').hide();
+        $('#boxType').hide();
         $('#attack').hide();
         $('#armor').hide();
         $('#resistance').hide();
-        $('#rarity').hide();
-        $('#reward').hide();
+        $('#rewardAmplifier').hide();
+        $('#boxType').hide();
         $('#refineable').hide();
         $('#disolveable').hide();
         $('#materials').hide();
@@ -203,6 +205,5 @@
         $('#craftable').show();
         $('#buy').show();
         $('#durability').show();
-
     }
 });
