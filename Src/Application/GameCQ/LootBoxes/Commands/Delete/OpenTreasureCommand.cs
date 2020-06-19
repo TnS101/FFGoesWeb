@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Treasures.Commands.Delete
+﻿namespace Application.GameCQ.LootBoxes.Commands.Delete
 {
     using System.Security.Claims;
     using MediatR;

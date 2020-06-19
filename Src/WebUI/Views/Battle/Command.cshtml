@@ -13,9 +13,8 @@
             <img src="@Model.Enemy.ImagePath" alt="Enemy" style="padding-left:250px;" id="enemy" />
             <br />
             <br />
-            <div>
                 <div class="flow-bar" style="margin-right:128px">
-                    <div id="player-health-bar" class="player-health-bar flow" style="width: @(((Model.Hero.MaxHP / 210) * Model.Hero.CurrentHP) / (Model.Hero.MaxHP / 210))px; max-width: 210px">
+                    <div id="player-health-bar" class="player-health-bar" style="width: @(((Model.Hero.MaxHP / 210) * Model.Hero.CurrentHP) / (Model.Hero.MaxHP / 210))px; max-width: 210px">
                     </div>
                 </div>
                 <div class="flow-bar">
@@ -34,7 +33,6 @@
                     </div>
                 </div>
                 <div class="item-padding"><hr /></div>
-            </div>
             <div class="item-padding">
                 <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Battle/Command" data-ajax-complete="Action">
                     <select class="command" name="command">

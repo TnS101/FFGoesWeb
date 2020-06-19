@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.Treasures.Commands.Update
+﻿namespace Application.GameCQ.LootBoxes.Commands.Update
 {
     using System;
     using System.Linq;

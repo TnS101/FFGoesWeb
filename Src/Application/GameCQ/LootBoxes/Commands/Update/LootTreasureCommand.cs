@@ -1,6 +1,5 @@
-﻿namespace Application.GameCQ.Treasures.Commands.Update
+﻿namespace Application.GameCQ.LootBoxes.Commands.Update
 {
-    using System.Security.Claims;
     using MediatR;
 
     public class LootTreasureCommand : IRequest<string>

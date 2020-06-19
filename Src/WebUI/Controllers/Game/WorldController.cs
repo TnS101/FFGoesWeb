@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
-    using Application.GameCQ.Treasures.Commands.Update;
+    using Application.GameCQ.LootBoxes.Commands.Update;
     using Application.GameCQ.World.Commands.Update;
     using global::Common;
     using Microsoft.AspNetCore.Authorization;

@@ -71,8 +71,8 @@
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
     using Application.GameCQ.Monsters.Queries.GetCurrentMonsterQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
-    using Application.GameCQ.Treasures.Commands.Delete;
-    using Application.GameCQ.Treasures.Commands.Update;
+    using Application.GameCQ.LootBoxes.Commands.Delete;
+    using Application.GameCQ.LootBoxes.Commands.Update;
     using Application.GameCQ.World.Commands.Update;
     using Domain.Entities.Game.Units;
     using Domain.Entities.Social;

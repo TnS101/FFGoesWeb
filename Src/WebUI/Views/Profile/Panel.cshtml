@@ -108,7 +108,7 @@
                 <div class="item-padding fade-in" id="feedback-panel" hidden>
                     <form asp-controller="Profile" asp-action="SendFeedback" method="post">
                         <label for="feedback">
-                            <input id="feedback" class="item-padding" type="text" name="content" value="" required/>
+                            <input id="feedback" class="item-padding" type="text" name="content" value="" required />
 
                         </label>
                         <label for="rate">
@@ -153,8 +153,19 @@
     </div>
 
     <div class="flow-bar">
-        <div class="flow" style="width:100px">
-
+        <div class="player-health-bar flow" style="width:100px">
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="flow-bar">
+        <div class="enemy-health-bar flow" style="width:100px">
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="flow-bar">
+        <div class="mana-bar flow" style="width:100px">
         </div>
     </div>
 
@@ -165,19 +176,16 @@
     @section scripts{
         <script src="~/js/feedbackjs.js"></script>
         <script>
-            $(document).ready(function ()
-            {
-                Action = (data) =>
-                {
+            $(document).ready(function () {
+                Action = (data) => {
                     if (data.status == 200) {
                         $('#show').removeClass();
                         $('#show').addClass(data.responseJSON.iClass + ' has-huge-font-size main-font-color');
-                    } else
-                    {
+                    } else {
                         window.location.href = '/Error/Default';
                     }
                 }
             });
-                
+
         </script>
     }

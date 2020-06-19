@@ -1,4 +1,4 @@
-﻿namespace Application.GameCQ.TreasureKeys.Commands.Update
+﻿namespace Application.GameCQ.LootKeys.Commands.Update
 {
     using System;
     using System.Linq;
@@ -6,20 +6,18 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public class LootTreasureKeyCommandHandler : BaseHandler, IRequestHandler<LootTreasureKeyCommand>
+    public class LootLootKeyCommandHandler : BaseHandler, IRequestHandler<LootLootKeyCommand>
     {
-        public LootTreasureKeyCommandHandler(IFFDbContext context)
+        public LootLootKeyCommandHandler(IFFDbContext context)
             : base(context)
         {
         }
 
-        public async Task<Unit> Handle(LootTreasureKeyCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(LootLootKeyCommand request, CancellationToken cancellationToken)
         {
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
