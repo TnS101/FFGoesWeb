@@ -27,21 +27,6 @@
 
                 await SeedUsersAndRoles(services, context);
                 await DataSeeder.Seed(context);
-
-                //var counter = 12;
-
-                //while (context.WeaponsInventories.Count() < 105)
-                //{
-                //    context.WeaponsInventories.Add(new Domain.Entities.Game.Items.ManyToMany.Inventories.WeaponInventory
-                //    {
-                //        WeaponId = counter,
-                //        InventoryId = 6,
-                //    });
-
-                //    await context.SaveChangesAsync(CancellationToken.None);
-
-                //    counter++;
-                //}
             }
 
             host.Run();
