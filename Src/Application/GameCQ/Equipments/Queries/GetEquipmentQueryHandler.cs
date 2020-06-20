@@ -48,21 +48,19 @@
                 equipment.Add(this.Mapper.Map<ItemMinViewModel>(weapon));
             }
 
-            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.EquipmentId);
-
-            if (armorEquipments.Count() > 0)
+            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.EquipmentId).Select(ae => new ItemMinViewModel
             {
-                foreach (var armor in this.Context.Armors)
-                {
-                    foreach (var equip in armorEquipments)
-                    {
-                        if (equip.ArmorId == armor.Id)
-                        {
-                            equipment.Add(this.Mapper.Map<ItemMinViewModel>(armor));
-                        }
-                    }
-                }
-            }
+                Id = ae.ArmorId,
+                Name = ae.Armor.Name,
+                ClassType = ae.Armor.ClassType,
+                Level = ae.Armor.Level,
+                ImagePath = ae.Armor.ImagePath,
+                Slot = ae.Armor.Slot,
+                SellPrice = ae.Armor.SellPrice,
+                Count = 1,
+            });
+
+            equipment.ToList().AddRange(armorEquipments);
 
             if (equipment.Count == 0)
             {

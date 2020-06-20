@@ -14,9 +14,18 @@
             <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Loot Key" data-ajax-complete="Action"><i class="fas fa-gem main-font-color has-massive-font-size bottom-left-icon" style="cursor:pointer"></i></a>
             <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Material" data-ajax-complete="Action"><i class="fas fa-cog main-font-color has-massive-font-size bottom-left-icon" style="bottom:120px; cursor:pointer"></i></a>
             <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Tool" data-ajax-complete="Action"><i class="fas fa-hammer main-font-color has-massive-font-size bottom-left-icon" style="left:130px; cursor:pointer"></i></a>
-            <h1 class="has-huge-font-size" id="time"></h1>
+            
             <div id="items">
+
             </div>
+
+            <div class="item-padding" id="item-temp" hidden>
+                <img src="" alt="Item Image" />
+                <p class="main-font-color has-normal-font-size"></p>
+                <p class="main-font-color has-normal-font-size"></p>
+                <p class="main-font-color has-normal-font-size"></p>
+            </div>
+
             <div id="options">
                 <form hidden data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/Equip" data-ajax-complete="InventoryAction" method="post" id="equip-temp">
                     <input type="hidden" name="id" value="" />
@@ -40,13 +49,19 @@
     {
         <script>
             $(document).ready(function () {
-                
                 Action = (data) => {
                     var items = $('#items');
                     items.empty();
 
                     if (data.status == 200) {
                         if (data.responseJSON.items.length > 0) {
+
+                            var itemInfo = $('#item-temp').clone(true);
+                            var itemChildren = itemInfo.children();
+
+                            itemInfo.removeAttr('id');
+                            itemInfo.removeAttr('hidden');
+
                             var equipForm = $('#equip-temp').clone(true);
                             var equipChildren = equipForm.children();
 
@@ -62,18 +77,18 @@
 
                             $(data.responseJSON.items).each(function (i) {
                                 var item = data.responseJSON.items[i];
-                                var itemInfo = $(`<div class="item-padding" id="${item.id}"></div>`);
 
-                                $(`<img src="${item.imagePath}" alt="Item Image" />`).appendTo(itemInfo);
+                                itemInfo.attr('id', item.id);
+                                itemChildren[0].setAttribute('src', `${item.imagePath}`);
+                                itemChildren[1].textContent = `${item.name} x ${item.count}`;
 
-                                $(`<p class="main-font-color has-normal-font-size">${item.name} x ${item.count}</p>`).appendTo(itemInfo);
                                 if (item.classType != null) {
-                                    $(`<p class="main-font-color has-normal-font-size">Required Level : ${item.level}</p>`).appendTo(itemInfo);
+                                    itemChildren[2].textContent = `Required Level : ${item.level}`;
                                 }
 
                                 if (item.sellPrice > 0)
                                 {
-                                    $(`<p class="main-font-color has-normal-font-size">Sell Price : ${item.sellPrice}</p>`).appendTo(itemInfo);
+                                    itemChildren[3].textContent = `Sell Price : ${item.sellPrice}`;
                                 }
 
                                 if (item.classType == 'Any' || item.classType == data.responseJSON.heroClass) {
@@ -92,7 +107,7 @@
                                 discardChildren[3].value = @heroId;
                                 discardForm.appendTo(itemInfo);
 
-                                items.append(itemInfo);
+                                itemInfo.clone(true).appendTo(items);
                             });
                             $('#title').text(`Reviewing the ${data.responseJSON.items[0].slot} section`);
                         } else {

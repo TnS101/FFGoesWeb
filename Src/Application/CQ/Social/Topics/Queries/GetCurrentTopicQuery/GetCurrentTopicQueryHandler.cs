@@ -24,9 +24,9 @@
 
             topic.Comments = await this.Context.Comments.Where(c => c.TopicId == topic.Id).ToListAsync();
 
-            var topicTickets = this.Context.Tickets.Where(t => t.TopicId == topic.Id);
+            var topicReportersIds = await this.Context.Tickets.Where(t => t.TopicId == topic.Id).Select(t => t.UserId).ToListAsync();
 
-            var topicTicketsIds = topicTickets.Select(t => t.UserId);
+            var commentReportersIds = await this.Context.Comments.Where(c => c.TopicId == topic.Id).SelectMany(c => c.Tickets).Select(t => t.UserId).ToListAsync();
 
             var result = new TopicFullViewModel()
             {
@@ -38,20 +38,10 @@
                 Title = topic.Title,
                 UserId = topic.UserId,
                 Id = topic.Id,
-                TopicTicketsIds = topicTicketsIds.ToList(),
+                TopicTicketsIds = topicReportersIds,
                 ViewerId = viewer.Id,
+                CommentTicketsIds = commentReportersIds,
             };
-
-            foreach (var ticket in topicTickets)
-            {
-                foreach (var comment in topic.Comments)
-                {
-                    if (ticket.CommentId == comment.Id)
-                    {
-                        result.TopicTicketsIds.Add(ticket.UserId);
-                    }
-                }
-            }
 
             return result;
         }
