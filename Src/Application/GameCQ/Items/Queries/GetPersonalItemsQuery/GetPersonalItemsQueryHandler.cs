@@ -1,6 +1,5 @@
 ﻿namespace Application.GameCQ.Items.Queries.GetPersonalItemsQuery
 {
-    using System.Diagnostics;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -25,291 +24,145 @@
 
             if (request.Slot == "Weapon")
             {
-                return await this.GetWeapons(hero, fightingClass.Type);
+                return await this.GetWeapons(hero.InventoryId, fightingClass.Type, hero.Level);
             }
             else if (request.Slot == "Armor")
             {
-                return this.GetArmors(hero, fightingClass.Type);
+                return await this.GetArmors(hero.InventoryId, fightingClass.Type, hero.Level);
             }
             else if (request.Slot == "Trinket")
             {
-                return this.GetTrinkets(hero);
+                return await this.GetTrinkets(hero.InventoryId, hero.Level);
             }
             else if (request.Slot == "Relic")
             {
-                return this.GetRelics(hero);
+                return await this.GetRelics(hero.InventoryId, hero.Level);
             }
             else if (request.Slot == "Loot Box")
             {
-                return this.GetLootBoxes(hero);
+                return await this.GetLootBoxes(hero.InventoryId);
             }
             else if (request.Slot == "Loot Key")
             {
-                return this.GetLootKeys(hero);
+                return await this.GetLootKeys(hero);
             }
             else
             {
-                return this.GetMaterials(hero);
+                return await this.GetMaterials(hero);
             }
         }
 
-        private ItemListViewModel GetRelics(Hero hero)
+        private async Task<ItemListViewModel> GetRelics(long inventoryId, int heroLevel)
         {
-            var inventory = this.Context.RelicsInventories.Where(ri => ri.InventoryId == hero.InventoryId);
-
-            if (inventory != null)
+            var inventory = await this.Context.RelicsInventories.Where(ri => ri.InventoryId == inventoryId).Select(ri => new ItemMinViewModel
             {
-                var result = new ItemListViewModel { HeroClass = "Any", HeroLevel = hero.Level };
+                Id = ri.Relic.Id,
+                Name = ri.Relic.Name,
+                ImagePath = ri.Relic.ImagePath,
+                Slot = ri.Relic.Slot,
+                Level = ri.Relic.Level,
+                ClassType = ri.Relic.ClassType,
+                SellPrice = ri.Relic.SellPrice,
+                Count = ri.Count,
+            }).ToListAsync();
 
-                if (inventory.Count() > 0)
-                {
-                    foreach (var baseRelic in this.Context.Relics) // 10000140+5456075564056
-                    {
-                        foreach (var item in inventory) // 1
-                        {
-                            if (item.RelicId == baseRelic.Id)
-                            {
-                                result.Items.ToList().Add(new ItemMinViewModel
-                                {
-                                    Id = baseRelic.Id,
-                                    Name = baseRelic.Name,
-                                    ImagePath = baseRelic.ImagePath,
-                                    Slot = baseRelic.Slot,
-                                    Level = baseRelic.Level,
-                                    ClassType = baseRelic.ClassType,
-                                    SellPrice = baseRelic.SellPrice,
-                                    Count = item.Count,
-                                });
-                            }
-                        }
-                    }
-                }
-
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            return new ItemListViewModel { HeroClass = "Any", HeroLevel = heroLevel, Items = inventory };
         }
 
-        private async Task<ItemListViewModel> GetWeapons(Hero hero, string className)
+        private async Task<ItemListViewModel> GetWeapons(long inventoryId, string className, int heroLevel)
         {
-            var inventory = this.Context.WeaponsInventories.Where(wi => wi.InventoryId == hero.InventoryId);
-
-            if (inventory != null)
-            {
-                var result = new ItemListViewModel() { HeroClass = className, HeroLevel = hero.Level };
-
-                var stopWatch = new Stopwatch();
-                if (inventory.Count() > 0)
+            var inventory = await this.Context.WeaponsInventories
+                .Where(wi => wi.InventoryId == inventoryId)
+                .Select(r => new ItemMinViewModel
                 {
-                    foreach (var item in inventory) // 1
-                    {
-                        var baseWeapon = await this.Context.Weapons.FindAsync(item.WeaponId);
-                        result.Items.Add(new ItemMinViewModel
-                        {
-                            Id = baseWeapon.Id,
-                            Name = baseWeapon.Name,
-                            ImagePath = baseWeapon.ImagePath,
-                            Slot = baseWeapon.Slot,
-                            Level = baseWeapon.Level,
-                            ClassType = baseWeapon.ClassType,
-                            SellPrice = baseWeapon.SellPrice,
-                            Count = item.Count,
-                        });
-                    }
+                    Id = r.Weapon.Id,
+                    Name = r.Weapon.Name,
+                    ImagePath = r.Weapon.ImagePath,
+                    Slot = r.Weapon.Slot,
+                    Level = r.Weapon.Level,
+                    ClassType = r.Weapon.ClassType,
+                    SellPrice = r.Weapon.SellPrice,
+                    Count = r.Count,
+                }).ToListAsync();
 
-                    stopWatch.Stop();
-                }
-
-                result.Time = stopWatch.ElapsedMilliseconds.ToString();
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            return new ItemListViewModel() { HeroClass = className, HeroLevel = heroLevel, Items = inventory };
         }
 
-        private ItemListViewModel GetArmors(Hero hero, string className)
+        private async Task<ItemListViewModel> GetArmors(long inventoryId, string className, int heroLevel)
         {
-            var inventory = this.Context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId);
-
-            if (inventory != null)
+            var inventory = await this.Context.ArmorsInventories.Where(ai => ai.InventoryId == inventoryId).Select(ai => new ItemMinViewModel
             {
-                var result = new ItemListViewModel() { HeroClass = className, HeroLevel = hero.Level };
+                Id = ai.Armor.Id,
+                Name = ai.Armor.Name,
+                ImagePath = ai.Armor.ImagePath,
+                Slot = ai.Armor.Slot,
+                Level = ai.Armor.Level,
+                ClassType = ai.Armor.ClassType,
+                SellPrice = ai.Armor.SellPrice,
+                Count = ai.Count,
+            }).ToListAsync();
 
-                foreach (var baseArmor in this.Context.Armors)
-                {
-                    foreach (var item in inventory)
-                    {
-                        if (item.ArmorId == baseArmor.Id)
-                        {
-                            result.Items.Add(new ItemMinViewModel
-                            {
-                                Id = baseArmor.Id,
-                                Name = baseArmor.Name,
-                                ImagePath = baseArmor.ImagePath,
-                                Slot = baseArmor.Slot,
-                                Level = baseArmor.Level,
-                                ClassType = baseArmor.ClassType,
-                                SellPrice = baseArmor.SellPrice,
-                                Count = item.Count,
-                            });
-                        }
-                    }
-                }
-
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            return new ItemListViewModel() { HeroClass = className, HeroLevel = heroLevel, Items = inventory };
         }
 
-        private ItemListViewModel GetTrinkets(Hero hero)
+        private async Task<ItemListViewModel> GetTrinkets(long inventoryId, int heroLevel)
         {
-            var inventory = this.Context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId);
-
-            if (inventory != null)
+            var inventory = await this.Context.TrinketsInventories.Where(ti => ti.InventoryId == inventoryId).Select(ti => new ItemMinViewModel
             {
-                var result = new ItemListViewModel() { HeroClass = "Any", HeroLevel = hero.Level };
+                Id = ti.Trinket.Id,
+                Name = ti.Trinket.Name,
+                ImagePath = ti.Trinket.ImagePath,
+                Slot = ti.Trinket.Slot,
+                Level = ti.Trinket.Level,
+                ClassType = ti.Trinket.ClassType,
+                SellPrice = ti.Trinket.SellPrice,
+                Count = ti.Count,
+            }).ToListAsync();
 
-                foreach (var baseTrinket in this.Context.Trinkets)
-                {
-                    foreach (var item in inventory)
-                    {
-                        if (item.TrinketId == baseTrinket.Id)
-                        {
-                            result.Items.Add(new ItemMinViewModel
-                            {
-                                Id = baseTrinket.Id,
-                                Name = baseTrinket.Name,
-                                ImagePath = baseTrinket.ImagePath,
-                                Slot = baseTrinket.Slot,
-                                Level = baseTrinket.Level,
-                                ClassType = baseTrinket.ClassType,
-                                SellPrice = baseTrinket.SellPrice,
-                                Count = item.Count,
-                            });
-                        }
-                    }
-                }
-
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            return new ItemListViewModel() { HeroClass = "Any", HeroLevel = heroLevel, Items = inventory };
         }
 
-        private ItemListViewModel GetLootBoxes(Hero hero)
+        private async Task<ItemListViewModel> GetLootBoxes(long inventoryId)
         {
-            var inventory = this.Context.LootBoxesInventories.Where(ti => ti.InventoryId == hero.InventoryId);
-
-            if (inventory != null)
+            var inventory = await this.Context.LootBoxesInventories.Where(ti => ti.InventoryId == inventoryId).Select(li => new ItemMinViewModel
             {
-                var result = new ItemListViewModel();
+                Id = li.LootBox.Id,
+                Name = li.LootBox.Name,
+                ImagePath = li.LootBox.ImagePath,
+                Slot = li.LootBox.Slot,
+                Count = li.Count,
+            }).ToListAsync();
 
-                foreach (var baseTreasure in this.Context.LootBoxes)
-                {
-                    foreach (var item in inventory)
-                    {
-                        if (item.LootBoxId == baseTreasure.Id)
-                        {
-                            result.Items.Add(new ItemMinViewModel
-                            {
-                                Id = baseTreasure.Id,
-                                Name = baseTreasure.Name,
-                                ImagePath = baseTreasure.ImagePath,
-                                Slot = baseTreasure.Slot,
-                                Count = item.Count,
-                            });
-                        }
-                    }
-                }
-
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            return new ItemListViewModel() { Items = inventory };
         }
 
-        private ItemListViewModel GetLootKeys(Hero hero)
+        private async Task<ItemListViewModel> GetLootKeys(Hero hero)
         {
-            var inventory = this.Context.LootKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId);
-
-            if (inventory != null)
+            var inventory = await this.Context.LootKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId).Select(li => new ItemMinViewModel
             {
-                var result = new ItemListViewModel();
+                Id = li.LootKey.Id,
+                Name = li.LootKey.Name,
+                ImagePath = li.LootKey.ImagePath,
+                Slot = li.LootKey.Slot,
+                Count = li.Count,
+            }).ToListAsync();
 
-                foreach (var baseTreasureKey in this.Context.LootKeys)
-                {
-                    foreach (var item in inventory)
-                    {
-                        if (item.LootKeyId == baseTreasureKey.Id)
-                        {
-                            result.Items.Add(new ItemMinViewModel
-                            {
-                                Id = baseTreasureKey.Id,
-                                Name = baseTreasureKey.Name,
-                                ImagePath = baseTreasureKey.ImagePath,
-                                Slot = baseTreasureKey.Slot,
-                                Count = item.Count,
-                            });
-                        }
-                    }
-                }
-
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            return new ItemListViewModel() { Items = inventory };
         }
 
-        private ItemListViewModel GetMaterials(Hero hero)
+        private async Task<ItemListViewModel> GetMaterials(Hero hero)
         {
-            var inventory = this.Context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId);
-
-            if (inventory != null)
+            var inventory = await this.Context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).Select(mi => new ItemMinViewModel
             {
-                var result = new ItemListViewModel();
+                Id = mi.Material.Id,
+                Name = mi.Material.Name,
+                ImagePath = mi.Material.ImagePath,
+                Slot = mi.Material.Slot,
+                SellPrice = mi.Material.SellPrice,
+                Count = mi.Count,
+            }).ToListAsync();
 
-                if (inventory.Count() > 0)
-                {
-                    foreach (var baseMaterial in this.Context.Materials)
-                    {
-                        foreach (var item in inventory)
-                        {
-                            if (item.MaterialId == baseMaterial.Id)
-                            {
-                                result.Items.Add(new ItemMinViewModel
-                                {
-                                    Id = baseMaterial.Id,
-                                    Name = baseMaterial.Name,
-                                    ImagePath = baseMaterial.ImagePath,
-                                    Slot = baseMaterial.Slot,
-                                    SellPrice = baseMaterial.SellPrice,
-                                    Count = item.Count,
-                                });
-                            }
-                        }
-                    }
-                }
-
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            return new ItemListViewModel() { Items = inventory };
         }
     }
 }

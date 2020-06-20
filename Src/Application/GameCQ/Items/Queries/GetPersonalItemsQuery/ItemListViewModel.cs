@@ -13,8 +13,6 @@
 
         public int HeroLevel { get; set; }
 
-        public string Time { get; set; }
-
         public ICollection<ItemMinViewModel> Items { get; set; }
     }
 }

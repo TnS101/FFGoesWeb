@@ -14,13 +14,9 @@
             <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Loot Key" data-ajax-complete="Action"><i class="fas fa-gem main-font-color has-massive-font-size bottom-left-icon" style="cursor:pointer"></i></a>
             <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Material" data-ajax-complete="Action"><i class="fas fa-cog main-font-color has-massive-font-size bottom-left-icon" style="bottom:120px; cursor:pointer"></i></a>
             <a data-ajax="true" data-ajax-url="/Hero/Inventory/id%26slot?id=@heroId&slot=Tool" data-ajax-complete="Action"><i class="fas fa-hammer main-font-color has-massive-font-size bottom-left-icon" style="left:130px; cursor:pointer"></i></a>
-
             <h1 class="has-huge-font-size" id="time"></h1>
-
             <div id="items">
-
             </div>
-
             <div id="options">
                 <form hidden data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/Equip" data-ajax-complete="InventoryAction" method="post" id="equip-temp">
                     <input type="hidden" name="id" value="" />
@@ -50,8 +46,20 @@
                     items.empty();
 
                     if (data.status == 200) {
-                        $('#time').text(data.responseJSON.time);
                         if (data.responseJSON.items.length > 0) {
+                            var equipForm = $('#equip-temp').clone(true);
+                            var equipChildren = equipForm.children();
+
+                            equipForm.removeAttr('id');
+                            equipForm.removeAttr('hidden');
+
+                            var discardForm = $('#discard-temp').clone(true);
+
+                            discardForm.removeAttr('id');
+                            discardForm.removeAttr('hidden');
+
+                            var discardChildren = discardForm.children();
+
                             $(data.responseJSON.items).each(function (i) {
                                 var item = data.responseJSON.items[i];
                                 var itemInfo = $(`<div class="item-padding" id="${item.id}"></div>`);
@@ -70,12 +78,6 @@
 
                                 if (item.classType == 'Any' || item.classType == data.responseJSON.heroClass) {
                                     if (Number(item.level) <= data.responseJSON.heroLevel && Number(item.level) > 0) {
-                                        var equipForm = $('#equip-temp').clone(true);
-                                        var equipChildren = equipForm.children();
-
-                                        equipForm.removeAttr('id');
-                                        equipForm.removeAttr('hidden');
-
                                         equipChildren[0].value = item.id;
                                         equipChildren[2].value = item.slot;
                                         equipChildren[3].value = @heroId;
@@ -83,13 +85,6 @@
                                         equipForm.appendTo(itemInfo);
                                     }
                                 }
-
-                                var discardForm = $('#discard-temp').clone(true);
-
-                                discardForm.removeAttr('id');
-                                discardForm.removeAttr('hidden');
-
-                                var discardChildren = discardForm.children();
 
                                 discardChildren[0].value = item.id;
                                 discardChildren[1].value = 1;

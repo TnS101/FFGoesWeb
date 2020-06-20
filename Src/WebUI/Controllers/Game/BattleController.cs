@@ -41,6 +41,11 @@
         {
             var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { HeroId = heroId, Enemy = monster });
 
+            if (monster.CurrentHP <= 0)
+            {
+                return this.Redirect("/Hero/All");
+            }
+
             return this.View(GConst.BattleCommand, battleUnits);
         }
 
