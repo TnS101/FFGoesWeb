@@ -24,7 +24,7 @@
 
             if (request.ZoneName == "World")
             {
-                hero.XP += this.EnemyCombinedStats(request.Monster) / 18;
+                hero.XP += (this.EnemyCombinedStats(request.Monster) / 18) * ((hero.Happiness / 40) + 1);
                 hero.CoinAmount += (int)Math.Round(this.EnemyCombinedStats(request.Monster) / 30);
             }
             else

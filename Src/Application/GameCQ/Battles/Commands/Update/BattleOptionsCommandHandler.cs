@@ -5,7 +5,6 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.BattleOptions;
-    using Application.GameContent.Utilities.LevelUtility;
     using Application.GameContent.Utilities.Validators.Battle;
     using global::Common;
     using MediatR;
@@ -23,6 +22,9 @@
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
+
+            hero.CurrentHealthRegen += hero.Hunger * hero.Level / 10;
+            hero.CurrentManaRegen += hero.Thirst * hero.Level / 7;
 
             if (request.Enemy.CurrentHP > 0 && request.YourTurn)
             {

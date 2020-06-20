@@ -32,7 +32,11 @@
 
         public string ZoneName { get; set; }
 
+        public bool IsRefineable { get; set; }
+
         public bool IsCraftable { get; set; }
+
+        public string RelatedMaterials { get; set; }
 
         public int BuyPrice { get; set; }
 

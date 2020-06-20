@@ -1,5 +1,6 @@
 ﻿namespace Application.GameCQ.Items.Queries.GetPersonalItemsQuery
 {
+    using System.Diagnostics;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -24,7 +25,7 @@
 
             if (request.Slot == "Weapon")
             {
-                return this.GetWeapons(hero, fightingClass.Type);
+                return await this.GetWeapons(hero, fightingClass.Type);
             }
             else if (request.Slot == "Armor")
             {
@@ -62,9 +63,9 @@
 
                 if (inventory.Count() > 0)
                 {
-                    foreach (var baseRelic in this.Context.Relics.ToList())
+                    foreach (var baseRelic in this.Context.Relics) // 10000140+5456075564056
                     {
-                        foreach (var item in inventory)
+                        foreach (var item in inventory) // 1
                         {
                             if (item.RelicId == baseRelic.Id)
                             {
@@ -92,7 +93,7 @@
             }
         }
 
-        private ItemListViewModel GetWeapons(Hero hero, string className)
+        private async Task<ItemListViewModel> GetWeapons(Hero hero, string className)
         {
             var inventory = this.Context.WeaponsInventories.Where(wi => wi.InventoryId == hero.InventoryId);
 
@@ -100,30 +101,29 @@
             {
                 var result = new ItemListViewModel() { HeroClass = className, HeroLevel = hero.Level };
 
+                var stopWatch = new Stopwatch();
                 if (inventory.Count() > 0)
                 {
-                    foreach (var baseWeapon in this.Context.Weapons.ToList())
+                    foreach (var item in inventory) // 1
                     {
-                        foreach (var item in inventory)
+                        var baseWeapon = await this.Context.Weapons.FindAsync(item.WeaponId);
+                        result.Items.Add(new ItemMinViewModel
                         {
-                            if (item.WeaponId == baseWeapon.Id)
-                            {
-                                result.Items.Add(new ItemMinViewModel
-                                {
-                                    Id = baseWeapon.Id,
-                                    Name = baseWeapon.Name,
-                                    ImagePath = baseWeapon.ImagePath,
-                                    Slot = baseWeapon.Slot,
-                                    Level = baseWeapon.Level,
-                                    ClassType = baseWeapon.ClassType,
-                                    SellPrice = baseWeapon.SellPrice,
-                                    Count = item.Count,
-                                });
-                            }
-                        }
+                            Id = baseWeapon.Id,
+                            Name = baseWeapon.Name,
+                            ImagePath = baseWeapon.ImagePath,
+                            Slot = baseWeapon.Slot,
+                            Level = baseWeapon.Level,
+                            ClassType = baseWeapon.ClassType,
+                            SellPrice = baseWeapon.SellPrice,
+                            Count = item.Count,
+                        });
                     }
+
+                    stopWatch.Stop();
                 }
 
+                result.Time = stopWatch.ElapsedMilliseconds.ToString();
                 return result;
             }
             else

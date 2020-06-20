@@ -49,7 +49,26 @@
             await this.SeedLootKeysAsync(context, cancellationToken);
         }
 
-        private async Task SeedLootBoxesAsync(FFDbContext context, CancellationToken cancellationToken) 
+        private async Task SeedConsumeablesAsync(FFDbContext context, CancellationToken cancellationToken)
+        {
+            context.Consumeables.Add(new Consumeable
+            {
+                Name = "Tomato",
+                Type = "Edible",
+                Stat = "HP",
+                StatReplenish = 0.05,
+                HungerReplenish = 1,
+                IsRefineable = true,
+                RelatedMaterials = "Salad",
+                ZoneName = "Any",
+                Slot = "Consumeable",
+                BuyPrice = 10,
+                SellPrice = 10,
+                ImagePath = "",
+            });
+        }
+
+        private async Task SeedLootBoxesAsync(FFDbContext context, CancellationToken cancellationToken)
         {
             context.LootBoxes.Add(new LootBox
             {
