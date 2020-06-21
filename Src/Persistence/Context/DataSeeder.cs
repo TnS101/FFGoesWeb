@@ -47,6 +47,8 @@
             await this.SeedLootBoxesAsync(context, cancellationToken);
 
             await this.SeedLootKeysAsync(context, cancellationToken);
+
+            await this.SeedConsumeablesAsync(context, cancellationToken);
         }
 
         private async Task SeedConsumeablesAsync(FFDbContext context, CancellationToken cancellationToken)
@@ -66,6 +68,8 @@
                 SellPrice = 10,
                 ImagePath = "",
             });
+
+            await context.SaveChangesAsync(cancellationToken);
         }
 
         private async Task SeedLootBoxesAsync(FFDbContext context, CancellationToken cancellationToken)

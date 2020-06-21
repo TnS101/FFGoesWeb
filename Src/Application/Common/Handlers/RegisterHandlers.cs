@@ -53,6 +53,7 @@
     using Application.GameCQ.Battles.Commands.Delete;
     using Application.GameCQ.Battles.Commands.Update;
     using Application.GameCQ.Battles.Queries.GetBattleUnitsQuery;
+    using Application.GameCQ.Consumeables.Commands.Delete;
     using Application.GameCQ.Equipments.Commands.Update;
     using Application.GameCQ.Equipments.Queries;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
@@ -67,15 +68,14 @@
     using Application.GameCQ.Heroes.Queries.GetUnitListQuery;
     using Application.GameCQ.Items.Commands.Delete;
     using Application.GameCQ.Items.Queries.GetPersonalItemsQuery;
+    using Application.GameCQ.LootBoxes.Commands.Delete;
+    using Application.GameCQ.LootBoxes.Commands.Update;
     using Application.GameCQ.Monsters.Commands.Create;
     using Application.GameCQ.Monsters.Queries.GetAllMonstersQuery;
     using Application.GameCQ.Monsters.Queries.GetCurrentMonsterQuery;
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
-    using Application.GameCQ.LootBoxes.Commands.Delete;
-    using Application.GameCQ.LootBoxes.Commands.Update;
     using Application.GameCQ.World.Commands.Update;
     using Domain.Entities.Game.Units;
-    using Domain.Entities.Social;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -159,6 +159,7 @@
             services.AddScoped<IRequestHandler<DislikeCommand, string>, DislikeCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveFriendCommand, string>, RemoveFriendCommandHandler>();
             services.AddScoped<IRequestHandler<EndBattleCommand, long>, EndBattleCommandHandler>();
+            services.AddScoped<IRequestHandler<ConsumeCommand>, ConsumeCommandHandler>();
         }
 
         private void UserQueries(IServiceCollection services)

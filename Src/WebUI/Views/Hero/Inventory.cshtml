@@ -31,16 +31,21 @@
                     <input type="hidden" name="id" value="" />
                     <input type="hidden" name="command" value="Equip" />
                     <input type="hidden" name="slot" value="" />
-                    <input type="hidden" name="heroId" value="" />
+                    <input type="hidden" name="heroId" value="@heroId" />
                     <input type="submit" name="action" value="Equip" class="main-button" />
                 </form>
                 <form hidden method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/DiscardItem" data-ajax-complete="InventoryAction" id="discard-temp">
                     <input type="hidden" name="id" value="" />
                     <input type="hidden" name="count" value="" />
                     <input type="hidden" name="slot" value="" />
-                    <input type="hidden" name="heroId" value="" />
+                    <input type="hidden" name="heroId" value="@heroId" />
                     <input type="submit" name="action" value="Discard" class="main-button" />
                     <div class="item-padding"><hr /></div>
+                </form>
+                <form hidden method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/Consume" data-ajax-complete="InventoryAction" id="consume-temp">
+                    <input type="hidden" name="id" value="" />
+                    <input type="hidden" name="heroId" value="@heroId" />
+                    <input type="submit" name="action" value="Consume" class="main-button"/>
                 </form>
             </div>
         </div>
@@ -69,11 +74,16 @@
                             equipForm.removeAttr('hidden');
 
                             var discardForm = $('#discard-temp').clone(true);
+                            var discardChildren = discardForm.children();
 
                             discardForm.removeAttr('id');
                             discardForm.removeAttr('hidden');
 
-                            var discardChildren = discardForm.children();
+                            var consumeForm = $('#consume-temp').clone(true);
+                            var consumeChildren = consumeForm.children();
+
+                            consumeForm.removeAttr('id');
+                            consumeForm.removeAttr('hidden');
 
                             $(data.responseJSON.inventory).each(function (i) {
                                 var item = data.responseJSON.inventory[i];
@@ -95,16 +105,18 @@
                                     if (Number(item.level) <= data.responseJSON.heroLevel && Number(item.level) > 0) {
                                         equipChildren[0].value = item.id;
                                         equipChildren[2].value = item.slot;
-                                        equipChildren[3].value = @heroId;
 
                                         equipForm.appendTo(itemInfo);
                                     }
                                 }
 
+                                if (item.slot == 'Consumeable') {
+                                    consumeChildren[0].value = item.id;
+                                }
+
                                 discardChildren[0].value = item.id;
                                 discardChildren[1].value = 1;
                                 discardChildren[2].value = item.slot;
-                                discardChildren[3].value = @heroId;
                                 discardForm.appendTo(itemInfo);
 
                                 itemInfo.clone(true).appendTo(items);

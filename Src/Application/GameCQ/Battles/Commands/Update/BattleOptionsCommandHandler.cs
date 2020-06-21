@@ -56,10 +56,5 @@
 
             return GConst.BattleCommand;
         }
-
-        private void EffectHandle(IUnit unit)
-        {
-            unit.
-        }
     }
 }

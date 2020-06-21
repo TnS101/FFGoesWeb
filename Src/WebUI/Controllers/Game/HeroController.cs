@@ -1,6 +1,7 @@
 ﻿namespace WebUI.Controllers.Game
 {
     using System.Threading.Tasks;
+    using Application.GameCQ.Consumeables.Commands.Delete;
     using Application.GameCQ.Equipments.Commands.Update;
     using Application.GameCQ.Equipments.Queries;
     using Application.GameCQ.FightingClasses.Queries.GetAllFightingClassesQuery;
@@ -86,6 +87,14 @@
             var result = await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId });
 
             return this.Json(new { result });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Consume([FromForm]int id, [FromForm]long heroId)
+        {
+            await this.Mediator.Send(new ConsumeCommand { ConsumeableId = id, HeroId = heroId });
+
+            return this.Ok();
         }
 
         [HttpGet]
