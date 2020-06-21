@@ -6,6 +6,7 @@
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.BattleOptions;
     using Application.GameContent.Utilities.Validators.Battle;
+    using Domain.Contracts.Units;
     using global::Common;
     using MediatR;
 
@@ -40,9 +41,7 @@
 
                 if (request.Command == "Spell")
                 {
-                    var spellCastOption = new SpellCastOption();
-
-                    await spellCastOption.SpellCast(hero, request.Enemy, request.SpellId, this.Context);
+                    await new SpellCastOption().SpellCast(hero, request.Enemy, request.SpellId, this.Context);
                 }
 
                 request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);
@@ -56,6 +55,11 @@
             }
 
             return GConst.BattleCommand;
+        }
+
+        private void EffectHandle(IUnit unit)
+        {
+            unit.
         }
     }
 }

@@ -4,15 +4,10 @@
 
     public class ItemListViewModel
     {
-        public ItemListViewModel()
-        {
-            this.Items = new List<ItemMinViewModel>();
-        }
-
         public string HeroClass { get; set; }
 
         public int HeroLevel { get; set; }
 
-        public ICollection<ItemMinViewModel> Items { get; set; }
+        public ICollection<ItemMinViewModel> Inventory { get; set; }
     }
 }

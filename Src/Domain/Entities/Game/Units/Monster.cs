@@ -1,10 +1,10 @@
 ﻿namespace Domain.Entities.Game.Units
 {
-    using Domain.Base;
+    using Domain.Contracts.Units;
     using Domain.Entities.Game.Units.OneToOne;
     using System.Collections.Generic;
 
-    public class Monster : Unit
+    public class Monster : IUnit
     {
         public Monster()
         {
@@ -18,61 +18,63 @@
 
         public MonsterRarity MonsterRarity { get; set; }
 
-        public override string Name { get; set; }
+        public string Name { get; set; }
 
-        public override int Level { get; set; }
+        public int Level { get; set; }
 
-        public override string ImagePath { get; set; }
+        public string ImagePath { get; set; }
 
-        public override double MaxHP { get; set; }
+        public double MaxHP { get; set; }
 
-        public override double CurrentHP { get; set; }
+        public double CurrentHP { get; set; }
 
-        public override double HealthRegen { get; set; }
+        public double HealthRegen { get; set; }
 
-        public override double CurrentHealthRegen { get; set; }
+        public double CurrentHealthRegen { get; set; }
 
-        public override double MaxMana { get; set; }
+        public double MaxMana { get; set; }
 
-        public override double CurrentMana { get; set; }
+        public double CurrentMana { get; set; }
 
-        public override double ManaRegen { get; set; }
+        public double ManaRegen { get; set; }
 
-        public override double CurrentManaRegen { get; set; }
+        public double CurrentManaRegen { get; set; }
 
-        public override double AttackPower { get; set; }
+        public double AttackPower { get; set; }
 
-        public override double CurrentAttackPower { get; set; }
+        public double CurrentAttackPower { get; set; }
 
-        public override double MagicPower { get; set; }
+        public double MagicPower { get; set; }
 
-        public override double CurrentMagicPower { get; set; }
+        public double CurrentMagicPower { get; set; }
 
-        public override double ArmorValue { get; set; }
+        public double ArmorValue { get; set; }
 
-        public override double CurrentArmorValue { get; set; }
+        public double CurrentArmorValue { get; set; }
 
-        public override double ResistanceValue { get; set; }
+        public double ResistanceValue { get; set; }
 
-        public override double CurrentResistanceValue { get; set; }
+        public double CurrentResistanceValue { get; set; }
 
-        public override double CritChance { get; set; }
+        public double CritChance { get; set; }
 
-        public override double CurrentCritChance { get; set; }
+        public double CurrentCritChance { get; set; }
 
-        public override bool IsConfused { get; set; }
+        public bool IsConfused { get; set; }
 
-        public override bool IsProvoked { get; set; }
+        public bool IsProvoked { get; set; }
 
-        public override bool IsSilenced { get; set; }
+        public bool IsSilenced { get; set; }
 
-        public override bool IsStunned { get; set; }
+        public bool IsStunned { get; set; }
 
-        public override bool IsBlinded { get; set; }
+        public bool IsBlinded { get; set; }
 
         public string Description { get; set; }
 
-        public override string Type { get; set; }
+        public string Type { get; set; }
+
+        public int CoinAmount { get; set; }
 
         public ICollection<Spell> Spells { get; set; }
     }

@@ -6,7 +6,7 @@
         <h1 class="main-font-color has-large-font-size item-padding">Items</h1>
         <div class="item-padding">
             <hr />
-                @foreach (var item in Model.Items)
+                @foreach (var item in Model.Inventory)
                 {
                     <div class="item-padding " id="@item.Id">
                         <img src="@item.ImagePath" alt="@item.Name's Image">

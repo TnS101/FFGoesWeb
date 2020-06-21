@@ -24,28 +24,28 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.Weapons.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Inventory = await this.Context.Weapons.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
             else if (request.Slot == "Armor")
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Inventory = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
             else if (request.Slot == "Trinket")
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.Trinkets.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Inventory = await this.Context.Trinkets.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
             else if (request.Slot == "LootBox")
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.LootBoxes.Select(t => new ItemMinViewModel
+                    Inventory = await this.Context.LootBoxes.Select(t => new ItemMinViewModel
                     {
                         Id = t.Id,
                         Name = t.Name,
@@ -58,7 +58,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.LootKeys.Select(tk => new ItemMinViewModel
+                    Inventory = await this.Context.LootKeys.Select(tk => new ItemMinViewModel
                     {
                         Id = tk.Id,
                         Name = tk.Name,
@@ -71,7 +71,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.Materials.Select(m => new ItemMinViewModel
+                    Inventory = await this.Context.Materials.Select(m => new ItemMinViewModel
                     {
                         Id = m.Id,
                         Name = m.Name,
@@ -84,7 +84,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.Tools.Select(t => new ItemMinViewModel
+                    Inventory = await this.Context.Tools.Select(t => new ItemMinViewModel
                     {
                         Id = t.Id,
                         Name = t.Name,
@@ -97,7 +97,7 @@
             {
                 return new ItemListViewModel
                 {
-                    Items = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Inventory = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
                 };
             }
         }
