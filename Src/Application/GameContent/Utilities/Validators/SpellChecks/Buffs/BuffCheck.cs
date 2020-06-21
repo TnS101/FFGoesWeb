@@ -1,11 +1,11 @@
 ﻿namespace Application.GameContent.Utilities.Validators.SpellChecks.Buffs
 {
     using Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
-    using Domain.Base;
+    using Domain.Contracts.Units;
 
     public class BuffCheck
     {
-        public void Check(Unit caster, Unit target, double manaRequirment, double buffEffect, string buffStat, ManaCheck manaCheck, string buffType)
+        public void Check(IUnit caster, IUnit target, double manaRequirment, double buffEffect, string buffStat, ManaCheck manaCheck, string buffType)
         {
             if (manaCheck.SpellManaCheck(caster, manaRequirment))
             {
@@ -37,13 +37,11 @@
                     }
                     else if (buffStat == "Gold")
                     {
-                        buffEffect *= caster.Level;
-
-                        caster.CoinAmount += (int)buffEffect;
+                        caster.CoinAmount += (int)(buffEffect * caster.Level);
                     }
                     else if (buffStat == "Magic")
                     {
-                        caster.CurrentMagicPower += buffEffect * caster.CoinAmount;
+                        caster.CurrentMagicPower += buffEffect * caster.MagicPower;
                     }
                 }
                 else

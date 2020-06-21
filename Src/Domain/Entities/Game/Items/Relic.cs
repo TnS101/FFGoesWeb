@@ -47,6 +47,8 @@
 
         public int SellPrice { get; set; }
 
+        public bool IsUsed { get; set; }
+
         public ICollection<RelicInventory> RelicInventories { get; set; }
 
         public ICollection<RelicEquipment> RelicEquipments { get; set; }

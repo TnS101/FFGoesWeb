@@ -22,13 +22,13 @@
                     <hr style="width:1730px" />
                     <div class=" item-padding">
                         <h3 class="main-font-color"><img src="~/images/Icons/Heart.png" alt="Health" />  Health</h3>
-                        <progress class="item-padding aligncenter has-large-font-size" value="@Model.CurrentHP" max="@Model.MaxHP"></progress>
+                        <progress class="item-padding aligncenter has-large-font-size player-health-info" value="@Model.CurrentHP" max="@Model.MaxHP"></progress>
                         <br />
-                        <hr style="width:1900px"/>
+                        <hr style="width:1900px" />
                     </div>
                     <div class="item-padding">
                         <h3 class="main-font-color"><img src="~/images/Icons/mana.png" alt="Mana" /> Mana</h3>
-                        <progress class="item-padding aligncenter has-large-font-size progress-bar progress-bar-danger" value="@Model.CurrentMana" max="@Model.MaxMana"></progress>
+                        <progress class="item-padding aligncenter has-large-font-size player-mana-info" value="@Model.CurrentMana" max="@Model.MaxMana"></progress>
                         <br />
                         <hr />
                     </div>
@@ -46,19 +46,23 @@
                     </div>
                     <div class="item-padding">
                         <h3 class="main-font-color"><img src="~/images/Icons/Wand.png" alt="Magic Power" width="56" /> Magic Power : @Model.MagicPower.ToString("f2")</h3>
-                        <hr style="width:1780px"/>
+                        <hr style="width:1780px" />
                     </div>
                     <div class="item-padding">
                         <h3 class="main-font-color"><img src="~/images/Icons/Helm.png" alt="Armor" width="57" /> Armor : @Model.ArmorValue.ToString("f2")</h3>
-                        <hr style="width:1740px"/>
+                        <hr style="width:1740px" />
                     </div>
                     <div class="item-padding">
                         <h3 class="main-font-color"><img src="~/images/Icons/Cap.png" alt="Resistance" width="57" /> Resistance : @Model.ResistanceValue.ToString("f2")</h3>
                         <hr style="width:1700px" />
                     </div>
                     <div class="item-padding">
+                        <h3 class="main-font-color"><img src="~/images/Icons/Scythe.png" alt="Crit" width="57" /> Critical Chance : @Model.CritChance.ToString("f2")%</h3>
+                        <hr style="width:1650px" />
+                    </div>
+                    <div class="item-padding">
                         <h3 class="main-font-color"><i class="fas fa-certificate main-font-color has-large-font-size"></i> Level : @Model.Level</h3>
-                        <hr style="width:1600px" />
+                        <hr style="width:1530px" />
                     </div>
                     <div class="item-padding">
                         <h3 class="main-font-color">Experience</h3>
@@ -70,7 +74,7 @@
                     </div>
                     <div class="item-padding">
                         <i class="icofont-coins icofont-3x main-font-color"></i>
-                        <h3 class=" main-font-color item-padding">Gold : @Model.GoldAmount</h3>
+                        <h3 class=" main-font-color item-padding">Gold : @Model.CoinAmount</h3>
                     </div>
                 </div>
             </div>

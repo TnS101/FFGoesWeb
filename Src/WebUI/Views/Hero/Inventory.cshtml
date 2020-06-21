@@ -34,7 +34,7 @@
                     <input type="hidden" name="heroId" value="" />
                     <input type="submit" name="action" value="Equip" class="main-button" />
                 </form>
-                <form hidden method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/DiscardItem" data-ajax-complete="InventoryAction" class="item-padding" id="discard-temp">
+                <form hidden method="post" data-ajax="true" data-ajax-method="post" data-ajax-url="/Hero/DiscardItem" data-ajax-complete="InventoryAction" id="discard-temp">
                     <input type="hidden" name="id" value="" />
                     <input type="hidden" name="count" value="" />
                     <input type="hidden" name="slot" value="" />
@@ -54,7 +54,7 @@
                     items.empty();
 
                     if (data.status == 200) {
-                        if (data.responseJSON.items.length > 0) {
+                        if (data.responseJSON.inventory.length > 0) {
 
                             var itemInfo = $('#item-temp').clone(true);
                             var itemChildren = itemInfo.children();
@@ -75,8 +75,8 @@
 
                             var discardChildren = discardForm.children();
 
-                            $(data.responseJSON.items).each(function (i) {
-                                var item = data.responseJSON.items[i];
+                            $(data.responseJSON.inventory).each(function (i) {
+                                var item = data.responseJSON.inventory[i];
 
                                 itemInfo.attr('id', item.id);
                                 itemChildren[0].setAttribute('src', `${item.imagePath}`);
@@ -109,7 +109,7 @@
 
                                 itemInfo.clone(true).appendTo(items);
                             });
-                            $('#title').text(`Reviewing the ${data.responseJSON.items[0].slot} section`);
+                            $('#title').text(`Reviewing the ${data.responseJSON.inventory[0].slot} section`);
                         } else {
                             $('#title').text('No items in this section');
                         }

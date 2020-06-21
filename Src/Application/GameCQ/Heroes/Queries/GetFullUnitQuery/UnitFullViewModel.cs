@@ -57,7 +57,7 @@
 
         public string ImagePath { get; set; }
 
-        public int GoldAmount { get; set; }
+        public int CoinAmount { get; set; }
 
         public int ProffesionLevel { get; set; }
 

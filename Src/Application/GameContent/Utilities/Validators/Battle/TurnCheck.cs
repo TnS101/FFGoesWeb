@@ -4,11 +4,11 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.BattleOptions;
-    using Domain.Base;
+    using Domain.Contracts.Units;
 
     public class TurnCheck
     {
-        public async Task<bool> Check(Unit player, Unit enemy, bool yourTurn, IFFDbContext context)
+        public async Task<bool> Check(IUnit player, IUnit enemy, bool yourTurn, IFFDbContext context)
         {
             var regenerationOption = new RegenerateOption();
 

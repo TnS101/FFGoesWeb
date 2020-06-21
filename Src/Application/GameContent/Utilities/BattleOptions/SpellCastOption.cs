@@ -8,7 +8,7 @@
     using Application.GameContent.Utilities.Validators.SpellChecks.DamageInfliction;
     using Application.GameContent.Utilities.Validators.SpellChecks.Effects;
     using Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
-    using Domain.Base;
+    using Domain.Contracts.Units;
     using Domain.Entities.Game.Units;
     using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +21,7 @@
             this.manaCheck = new ManaCheck();
         }
 
-        public async Task SpellCast(Unit caster, Unit target, int spellId, IFFDbContext context)
+        public async Task SpellCast(IUnit caster, IUnit target, int spellId, IFFDbContext context)
         {
             if (caster.Type == "Player")
             {
@@ -58,7 +58,7 @@
             }
         }
 
-        private void ProcessSpell(Spell spell, Unit caster, Unit target)
+        private void ProcessSpell(Spell spell, IUnit caster, IUnit target)
         {
             // Spell
             string[] spellInfo = spell.Type.Split(',');
@@ -94,7 +94,7 @@
             }
         }
 
-        private void HealSpellCast(string spellStatType, Spell spell, Unit caster)
+        private void HealSpellCast(string spellStatType, Spell spell, IUnit caster)
         {
             double healEffect = 0;
 
@@ -116,7 +116,7 @@
             new HealCheck().Check(caster, caster, manaRequirement, healEffect, this.manaCheck);
         }
 
-        private void BuffSpellCast(string spellStatType, Spell spell, Unit caster, Unit target, string positiveOrNegativeBuff)
+        private void BuffSpellCast(string spellStatType, Spell spell, IUnit caster, IUnit target, string positiveOrNegativeBuff)
         {
             double manaRequirement = spell.ManaRequirement * caster.MaxMana;
 
@@ -149,7 +149,7 @@
             }
         }
 
-        private void DamageSpellCast(string spellStatType, string statsProvider, Spell spell, Unit caster, Unit target)
+        private void DamageSpellCast(string spellStatType, string statsProvider, Spell spell, IUnit caster, IUnit target)
         {
             double damage = 0;
             double manaRequirement = spell.ManaRequirement * caster.MaxMana;
@@ -229,7 +229,7 @@
             spellDamageCheck.Check(caster, target, manaRequirement, damage, this.manaCheck, spellDamageType, spell.ResistanceAffect);
         }
 
-        private double MixedDamageSpellCast(string statsProvider, string spellStatType, Spell spell, Unit caster, Unit target)
+        private double MixedDamageSpellCast(string statsProvider, string spellStatType, Spell spell, IUnit caster, IUnit target)
         {
             string mainStatType = spellStatType.Split('/')[0];
             string secondaryStatType = spellStatType.Split('/')[1];
@@ -479,7 +479,7 @@
             return damage;
         }
 
-        private double HPDamageCap(Unit caster, double primaryDamage, double secondaryDamage)
+        private double HPDamageCap(IUnit caster, double primaryDamage, double secondaryDamage)
         {
             double magicDamageCap = 0.8 * caster.CurrentMagicPower;
             double physicalDamageCap = 0.65 * caster.CurrentAttackPower;
@@ -505,7 +505,7 @@
             return primaryDamage + secondaryDamage;
         }
 
-        private void EffectCast(string[] effectInfo, Spell spell, Unit caster, Unit target)
+        private void EffectCast(string[] effectInfo, Spell spell, IUnit caster, IUnit target)
         {
             var effectCheck = new EffectCheck();
 

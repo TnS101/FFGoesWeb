@@ -1,11 +1,11 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
     using Application.GameContent.Utilities.Validators.Battle;
-    using Domain.Base;
+    using Domain.Contracts.Units;
 
     public class AttackOption
     {
-        public void Attack(Unit caster, Unit target)
+        public void Attack(IUnit caster, IUnit target)
         {
             target.CurrentAttackPower = new CritCheck().Check(caster.CurrentAttackPower, caster.CritChance);
 

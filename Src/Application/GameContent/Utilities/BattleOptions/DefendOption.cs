@@ -1,10 +1,10 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
-    using Domain.Base;
+    using Domain.Contracts.Units;
 
     public class DefendOption
     {
-        public void Defend(Unit caster)
+        public void Defend(IUnit caster)
         {
             if (caster.Type == "Player")
             {

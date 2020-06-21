@@ -1,11 +1,11 @@
 ﻿namespace Application.GameContent.Utilities.Validators.SpellChecks.Effects
 {
     using Application.GameContent.Utilities.Validators.SpellChecks.MainStats;
-    using Domain.Base;
+    using Domain.Contracts.Units;
 
     public class EffectCheck
     {
-        public void Check(Unit caster, Unit target, double manaRequirment,
+        public void Check(IUnit caster, IUnit target, double manaRequirment,
             double effect, string statType, ManaCheck manaCheck, string effectType)
         {
             if (manaCheck.EffectManaCheck(caster, manaRequirment))

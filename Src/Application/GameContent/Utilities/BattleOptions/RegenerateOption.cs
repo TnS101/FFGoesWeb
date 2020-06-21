@@ -1,10 +1,10 @@
 ﻿namespace Application.GameContent.Utilities.BattleOptions
 {
-    using Domain.Base;
+    using Domain.Contracts.Units;
 
     public class RegenerateOption
     {
-        public void Regenerate(Unit caster)
+        public void Regenerate(IUnit caster)
         {
             if (caster.CurrentHP <= caster.MaxHP - caster.CurrentHealthRegen)
             {

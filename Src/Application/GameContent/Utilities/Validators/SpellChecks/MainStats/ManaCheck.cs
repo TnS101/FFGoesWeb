@@ -1,10 +1,10 @@
 ﻿namespace Application.GameContent.Utilities.Validators.SpellChecks.MainStats
 {
-    using Domain.Base;
+    using Domain.Contracts.Units;
 
     public class ManaCheck
     {
-        public bool SpellManaCheck(Unit caster, double manaRequirment)
+        public bool SpellManaCheck(IUnit caster, double manaRequirment)
         {
             if (caster.CurrentMana >= manaRequirment)
             {
@@ -17,7 +17,7 @@
             }
         }
 
-        public bool EffectManaCheck(Unit caster, double manaRequirment)
+        public bool EffectManaCheck(IUnit caster, double manaRequirment)
         {
             if (caster.CurrentMana >= manaRequirment)
             {
