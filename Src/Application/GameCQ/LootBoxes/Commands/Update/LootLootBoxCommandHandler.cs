@@ -34,7 +34,7 @@
 
             while (true)
             {
-                lootBoxId = rng.Next(1, lootBoxes.Count + 1);
+                lootBoxId = rng.Next(0, lootBoxes.Count);
 
                 if (lootBoxes[lootBoxId] != null)
                 {

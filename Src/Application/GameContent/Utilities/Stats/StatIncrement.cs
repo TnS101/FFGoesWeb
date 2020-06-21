@@ -35,15 +35,15 @@
 
             monster.Id = baseMonster.Id;
             monster.Name = baseMonster.Name;
-            monster.MaxHP = baseMonster.MaxHP + (step * 11);
-            monster.HealthRegen = baseMonster.HealthRegen + (step * 1.15);
-            monster.MaxMana = baseMonster.MaxMana + (step * 11);
+            monster.MaxHP = baseMonster.MaxHP + (step * 10);
+            monster.HealthRegen = baseMonster.HealthRegen + (step * 1.1);
+            monster.MaxMana = baseMonster.MaxMana + (step * 10);
             monster.ManaRegen = baseMonster.ManaRegen + (step * 1.1);
-            monster.AttackPower = baseMonster.AttackPower + (step * 2.22);
-            monster.MagicPower = baseMonster.MagicPower + (step * 2.5);
+            monster.AttackPower = baseMonster.AttackPower + (step * 2.2);
+            monster.MagicPower = baseMonster.MagicPower + (step * 2.4);
             monster.ArmorValue = baseMonster.ArmorValue + (step * 1);
-            monster.ResistanceValue = baseMonster.ResistanceValue + (step * 1.2);
-            monster.CritChance = baseMonster.CritChance + (monster.Level * 0.04);
+            monster.ResistanceValue = baseMonster.ResistanceValue + (step * 1);
+            monster.CritChance = baseMonster.CritChance + (monster.Level * 0.03);
             monster.Type = baseMonster.Type;
             monster.ImagePath = baseMonster.ImagePath.ToString();
 
