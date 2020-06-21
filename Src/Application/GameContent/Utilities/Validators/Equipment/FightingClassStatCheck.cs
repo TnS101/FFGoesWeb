@@ -16,7 +16,7 @@
                 this.ArmorCheck(item, rng);
             }
 
-            if (item.Slot != "Trinket")
+            if (item.Slot != "Trinket" && item.Slot != "Relic")
             {
                 this.ClassCheck(item, fightingClassStatNumber);
             }

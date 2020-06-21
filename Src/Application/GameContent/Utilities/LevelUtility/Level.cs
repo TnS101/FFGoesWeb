@@ -25,15 +25,15 @@
             }
 
             // Increment
-            hero.AttackPower += 2.1 * hero.Level;
+            hero.AttackPower += 2.2 * hero.Level;
             hero.ArmorValue += 1 * hero.Level;
             hero.CritChance += 0.05;
-            hero.HealthRegen += 1.1;
-            hero.MaxHP += 10.2 * hero.Level;
+            hero.HealthRegen += 1;
+            hero.MaxHP += 11.2 * hero.Level;
             hero.MagicPower += 2.4 * hero.Level;
-            hero.MaxMana += 10.5 * hero.Level;
-            hero.ManaRegen += 1.1 * hero.Level;
-            hero.ResistanceValue += 1.32 * hero.Level;
+            hero.MaxMana += 12.5 * hero.Level;
+            hero.ManaRegen += 1 * hero.Level;
+            hero.ResistanceValue += 1.2 * hero.Level;
             hero.Level++;
 
             // Stat Re-Set

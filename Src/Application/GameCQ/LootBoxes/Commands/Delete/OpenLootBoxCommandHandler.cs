@@ -46,7 +46,7 @@
 
                     for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
-                        var materialId = rng.Next(1, materials.Count() + 1);
+                        var materialId = rng.Next(0, materials.Count);
 
                         if (materials[materialId] != null)
                         {
@@ -79,7 +79,7 @@
                     int toolId;
                     for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
-                        toolId = rng.Next(1, tools.Count + 1);
+                        toolId = rng.Next(0, tools.Count);
 
                         if (tools[toolId] != null)
                         {
@@ -111,7 +111,7 @@
 
                     for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
-                        var consumeableId = rng.Next(1, consumeables.Count + 1);
+                        var consumeableId = rng.Next(0, consumeables.Count);
 
                         if (consumeables[consumeableId] != null)
                         {
@@ -143,7 +143,7 @@
 
                     for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
-                        var junkId = rng.Next(1, junks.Count + 1);
+                        var junkId = rng.Next(0, junks.Count);
 
                         if (junks[junkId] != null)
                         {
@@ -177,7 +177,7 @@
 
                     for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
-                        toyId = rng.Next(1, toys.Count + 1);
+                        toyId = rng.Next(0, toys.Count);
 
                         if (toys[toyId] != null)
                         {
@@ -211,7 +211,7 @@
 
                     for (int i = 0; i < lootBox.RewardAmplifier; i++)
                     {
-                        keyId = rng.Next(1, keys.Count + 1);
+                        keyId = rng.Next(0, keys.Count);
 
                         if (keys[keyId] != null)
                         {

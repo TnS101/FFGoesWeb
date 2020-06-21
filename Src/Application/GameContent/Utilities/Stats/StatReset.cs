@@ -1,10 +1,10 @@
 ﻿namespace Application.GameContent.Utilities.Stats
 {
-    using Domain.Base;
+    using Domain.Contracts.Units;
 
     public class StatReset
     {
-        public void HardReset(Unit unit)
+        public void HardReset(IUnit unit)
         {
             unit.CurrentHP = unit.MaxHP;
             unit.CurrentMana = unit.MaxMana;
@@ -12,7 +12,7 @@
             this.Reset(unit);
         }
 
-        public void Reset(Unit unit)
+        public void Reset(IUnit unit)
         {
             unit.CurrentMagicPower = unit.MagicPower;
             unit.CurrentAttackPower = unit.AttackPower;

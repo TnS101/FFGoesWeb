@@ -18,7 +18,7 @@
 
             int fightingClassStatNumber = rng.Next(hero.Level, hero.Level + 5);
             int slotNumber = rng.Next(0, 16);
-            int fightingClassNumber = rng.Next(0, 10);
+            int fightingClassNumber = rng.Next(0, 9);
 
             for (int i = 1; i < 8; i++)
             {
