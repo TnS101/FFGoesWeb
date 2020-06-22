@@ -42,219 +42,148 @@
             {
                 if (lootBox.Type == "Material")
                 {
-                    var materials = await this.Context.Materials.Where(m => m.Type != "Junk" && !m.IsCraftable).ToListAsync();
+                    var materials = await this.Context.Materials.Where(m => m.Type != "Junk" && !m.IsCraftable).ToArrayAsync();
 
-                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
+                    var materialId = materials[rng.Next(materials.Length)].Id;
+
+                    var materialInventory = await this.Context.MaterialsInventories.FirstOrDefaultAsync(mi => mi.InventoryId == hero.InventoryId && mi.MaterialId == materialId);
+
+                    if (materialInventory != null)
                     {
-                        var materialId = rng.Next(0, materials.Count);
-
-                        if (materials[materialId] != null)
+                        materialInventory.Count++;
+                    }
+                    else
+                    {
+                        this.Context.MaterialsInventories.Add(new MaterialInventory
                         {
-                            var materialInventory = await this.Context.MaterialsInventories.FirstOrDefaultAsync(mi => mi.InventoryId == hero.InventoryId && mi.MaterialId == materialId);
-
-                            if (materialInventory != null)
-                            {
-                                materialInventory.Count++;
-                            }
-                            else
-                            {
-                                this.Context.MaterialsInventories.Add(new MaterialInventory
-                                {
-                                    MaterialId = materialId,
-                                    InventoryId = hero.InventoryId,
-                                });
-                            }
-                        }
-                        else
-                        {
-                            i--;
-                            continue;
-                        }
+                            MaterialId = materialId,
+                            InventoryId = hero.InventoryId,
+                        });
                     }
                 }
                 else if (lootBox.Type == "Tool")
                 {
-                    var tools = await this.Context.Tools.Where(t => !t.IsCraftable).ToListAsync();
+                    var tools = await this.Context.Tools.Where(t => !t.IsCraftable).ToArrayAsync();
 
-                    int toolId;
-                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
+                    var toolId = tools[rng.Next(tools.Length)].Id;
+
+                    var toolInventory = await this.Context.ToolsInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.InventoryId && ti.ToolId == toolId);
+
+                    if (toolInventory != null)
                     {
-                        toolId = rng.Next(0, tools.Count);
-
-                        if (tools[toolId] != null)
+                        toolInventory.Count++;
+                    }
+                    else
+                    {
+                        this.Context.ToolsInventories.Add(new ToolInventory
                         {
-                            var toolInventory = await this.Context.ToolsInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.InventoryId && ti.ToolId == toolId);
-
-                            if (toolInventory != null)
-                            {
-                                toolInventory.Count++;
-                            }
-                            else
-                            {
-                                this.Context.ToolsInventories.Add(new ToolInventory
-                                {
-                                    ToolId = toolId,
-                                    InventoryId = hero.InventoryId,
-                                });
-                            }
-                        }
-                        else
-                        {
-                            i--;
-                            continue;
-                        }
+                            ToolId = toolId,
+                            InventoryId = hero.InventoryId,
+                        });
                     }
                 }
                 else if (lootBox.Type == "Consumeable")
                 {
-                    var consumeables = await this.Context.Tools.Where(t => !t.IsCraftable).ToListAsync();
+                    var consumeables = await this.Context.Tools.Where(t => !t.IsCraftable).ToArrayAsync();
 
-                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
+                    var consumeableId = consumeables[rng.Next(consumeables.Length)].Id;
+
+                    var consumeableInventory = await this.Context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.InventoryId == hero.InventoryId && ci.ConsumeableId == consumeableId);
+
+                    if (consumeableInventory != null)
                     {
-                        var consumeableId = rng.Next(0, consumeables.Count);
-
-                        if (consumeables[consumeableId] != null)
+                        consumeableInventory.Count++;
+                    }
+                    else
+                    {
+                        this.Context.ConsumeablesInventories.Add(new ConsumeableInventory
                         {
-                            var consumeableInventory = await this.Context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.InventoryId == hero.InventoryId && ci.ConsumeableId == consumeableId);
-
-                            if (consumeableInventory != null)
-                            {
-                                consumeableInventory.Count++;
-                            }
-                            else
-                            {
-                                this.Context.ConsumeablesInventories.Add(new ConsumeableInventory
-                                {
-                                    ConsumeableId = consumeableId,
-                                    InventoryId = hero.InventoryId,
-                                });
-                            }
-                        }
-                        else
-                        {
-                            i--;
-                            continue;
-                        }
+                            ConsumeableId = consumeableId,
+                            InventoryId = hero.InventoryId,
+                        });
                     }
                 }
                 else if (lootBox.Type == "Junk")
                 {
-                    var junks = await this.Context.Materials.Where(m => m.Type == "Junk").ToListAsync();
+                    var junks = await this.Context.Materials.Where(m => m.Type == "Junk").ToArrayAsync();
 
-                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
+                    var junkId = junks[rng.Next(junks.Length)].Id;
+
+                    var junkInventory = await this.Context.MaterialsInventories.FirstOrDefaultAsync(mi => mi.InventoryId == hero.InventoryId && mi.MaterialId == junkId);
+
+                    if (junkInventory != null)
                     {
-                        var junkId = rng.Next(0, junks.Count);
-
-                        if (junks[junkId] != null)
+                        junkInventory.Count++;
+                    }
+                    else
+                    {
+                        this.Context.MaterialsInventories.Add(new MaterialInventory
                         {
-                            var junkInventory = await this.Context.MaterialsInventories.FirstOrDefaultAsync(mi => mi.InventoryId == hero.InventoryId && mi.MaterialId == junkId);
-
-                            if (junkInventory != null)
-                            {
-                                junkInventory.Count++;
-                            }
-                            else
-                            {
-                                this.Context.MaterialsInventories.Add(new MaterialInventory
-                                {
-                                    MaterialId = junkId,
-                                    InventoryId = hero.InventoryId,
-                                });
-                            }
-                        }
-                        else
-                        {
-                            i--;
-                            continue;
-                        }
+                            MaterialId = junkId,
+                            InventoryId = hero.InventoryId,
+                        });
                     }
                 }
                 else if (lootBox.Type == "Toy")
                 {
-                    var toys = await this.Context.Toys.Where(t => !t.IsCraftable).ToListAsync();
+                    var toys = await this.Context.Toys.Where(t => !t.IsCraftable).ToArrayAsync();
 
-                    int toyId;
+                    var toyId = toys[rng.Next(toys.Length)].Id;
 
-                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
+                    var toyInventory = await this.Context.ToyInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.InventoryId && ti.ToyId == toyId);
+
+                    if (toyInventory != null)
                     {
-                        toyId = rng.Next(0, toys.Count);
-
-                        if (toys[toyId] != null)
+                        toyInventory.Count++;
+                    }
+                    else
+                    {
+                        this.Context.ToyInventories.Add(new ToyInventory
                         {
-                            var toyInventory = await this.Context.ToyInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.InventoryId && ti.ToyId == toyId);
-
-                            if (toyInventory != null)
-                            {
-                                toyInventory.Count++;
-                            }
-                            else
-                            {
-                                this.Context.ToyInventories.Add(new ToyInventory
-                                {
-                                    ToyId = toyId,
-                                    InventoryId = hero.InventoryId,
-                                });
-                            }
-                        }
-                        else
-                        {
-                            i--;
-                            continue;
-                        }
+                            ToyId = toyId,
+                            InventoryId = hero.InventoryId,
+                        });
                     }
                 }
                 else if (lootBox.Type == "Key")
                 {
-                    var keys = await this.Context.LootKeys.ToListAsync();
+                    var keys = await this.Context.LootKeys.ToArrayAsync();
 
-                    int keyId;
+                    var keyId = keys[rng.Next(keys.Length)].Id;
 
-                    for (int i = 0; i < lootBox.RewardAmplifier; i++)
+                    var keyInventory = await this.Context.LootKeysInventories.FirstOrDefaultAsync(ki => ki.InventoryId == hero.InventoryId && ki.LootKeyId == keyId);
+
+                    if (keyInventory != null)
                     {
-                        keyId = rng.Next(0, keys.Count);
-
-                        if (keys[keyId] != null)
-                        {
-                            var keyInventory = await this.Context.LootKeysInventories.FirstOrDefaultAsync(ki => ki.InventoryId == hero.InventoryId && ki.LootKeyId == keyId);
-
-                            if (keyInventory != null)
-                            {
-                                keyInventory.Count++;
-                            }
-                            else
-                            {
-                                this.Context.LootKeysInventories.Add(new LootKeyInventory
-                                {
-                                    LootKeyId = keyId,
-                                    InventoryId = hero.InventoryId,
-                                });
-                            }
-                        }
-                        else
-                        {
-                            i--;
-                            continue;
-                        }
+                        keyInventory.Count++;
                     }
-                }
-
-                this.Context.LootBoxesInventories.Remove(lootBoxToRemove);
-            }
-            else
-            {
-                var lootKeyToRemove = await this.Context.LootKeysInventories.FirstOrDefaultAsync(t => t.LootKeyId == lootKey.Id);
-
-                if (lootKeyToRemove != null)
-                {
-                    hero.CoinAmount += rng.Next(hero.Level * lootBox.RewardAmplifier, hero.Level * lootBox.RewardAmplifier * 2);
-
-                    this.Context.LootKeysInventories.Remove(lootKeyToRemove);
+                    else
+                    {
+                        this.Context.LootKeysInventories.Add(new LootKeyInventory
+                        {
+                            LootKeyId = keyId,
+                            InventoryId = hero.InventoryId,
+                        });
+                    }
 
                     this.Context.LootBoxesInventories.Remove(lootBoxToRemove);
                 }
-            }
+                else
+                {
+                    var lootKeyToRemove = await this.Context.LootKeysInventories.FirstOrDefaultAsync(t => t.LootKeyId == lootKey.Id);
 
-            await this.Context.SaveChangesAsync(cancellationToken);
+                    if (lootKeyToRemove != null)
+                    {
+                        hero.CoinAmount += rng.Next(hero.Level * lootBox.RewardAmplifier, hero.Level * lootBox.RewardAmplifier * 2);
+
+                        this.Context.LootKeysInventories.Remove(lootKeyToRemove);
+
+                        this.Context.LootBoxesInventories.Remove(lootBoxToRemove);
+                    }
+                }
+
+                await this.Context.SaveChangesAsync(cancellationToken);
+            }
 
             return "/Inventory";
         }

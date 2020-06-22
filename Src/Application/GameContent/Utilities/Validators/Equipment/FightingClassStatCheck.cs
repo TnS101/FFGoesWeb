@@ -24,11 +24,11 @@
 
         private void ArmorCheck(IEquipableItem item, Random rng)
         {
-            int slotNumber = rng.Next(0, 7);
+            int slotNumber = rng.Next(7);
 
-            int typeNumber = rng.Next(0, 3);
+            int typeNumber = rng.Next(3);
 
-            int usableOrder = rng.Next(0, 3);
+            int usableOrder = rng.Next(3);
             if (slotNumber == 0)
             {
                 item.Slot = "Helmet";
@@ -120,7 +120,7 @@
             }
             else if (fightingClassNumber == 1)
             {
-                classOrder = rng.Next(0, 3);
+                classOrder = rng.Next(3);
 
                 if (classOrder == 0)
                 {
@@ -141,7 +141,7 @@
             }
             else if (fightingClassNumber == 2)
             {
-                classOrder = rng.Next(0, 2);
+                classOrder = rng.Next(2);
 
                 if (classOrder == 0)
                 {
@@ -165,7 +165,7 @@
             }
             else if (fightingClassNumber == 4)
             {
-                classOrder = rng.Next(0, 3);
+                classOrder = rng.Next(3);
 
                 if (classOrder == 0)
                 {
@@ -186,7 +186,7 @@
             }
             else if (fightingClassNumber == 5)
             {
-                classOrder = rng.Next(0, 4);
+                classOrder = rng.Next(4);
 
                 if (classOrder == 0)
                 {
@@ -218,7 +218,7 @@
             }
             else if (fightingClassNumber == 7)
             {
-                classOrder = rng.Next(0, 2);
+                classOrder = rng.Next(2);
 
                 if (classOrder == 0)
                 {
@@ -235,7 +235,7 @@
             }
             else if (fightingClassNumber == 8)
             {
-                classOrder = rng.Next(0, 2);
+                classOrder = rng.Next(2);
 
                 if (classOrder == 0)
                 {

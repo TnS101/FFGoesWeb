@@ -1,5 +1,6 @@
 ﻿namespace Application.GameCQ.Battles.Commands.Update
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Handlers;
@@ -24,24 +25,34 @@
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-            hero.CurrentHealthRegen += hero.Hunger * hero.Level / 10;
-            hero.CurrentManaRegen += hero.Thirst * hero.Level / 7;
-
             if (request.Enemy.CurrentHP > 0 && request.YourTurn)
             {
-                if (request.Command == "Attack")
+                if (hero.StunDuration == 0)
                 {
-                    new AttackOption().Attack(hero, request.Enemy);
-                }
+                    if (request.Command == "Attack" && hero.BlindDuration == 0)
+                    {
+                        if (hero.ConfusionDuration == 0)
+                        {
+                            new AttackOption().Attack(hero, request.Enemy);
+                        }
+                        else
+                        {
+                            if (new Random().Next(2) == 1)
+                            {
+                                new AttackOption().Attack(hero, request.Enemy);
+                            }
+                        }
+                    }
 
-                if (request.Command == "Defend")
-                {
-                    new DefendOption().Defend(hero);
-                }
+                    if (request.Command == "Defend" && hero.ProvokeDuration == 0)
+                    {
+                        new DefendOption().Defend(hero);
+                    }
 
-                if (request.Command == "Spell")
-                {
-                    await new SpellCastOption().SpellCast(hero, request.Enemy, request.SpellId, this.Context);
+                    if (request.Command == "Spell" && hero.SilenceDuration == 0)
+                    {
+                        await new SpellCastOption().SpellCast(hero, request.Enemy, request.SpellId, this.Context);
+                    }
                 }
 
                 request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);

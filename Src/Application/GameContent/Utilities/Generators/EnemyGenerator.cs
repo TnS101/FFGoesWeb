@@ -27,19 +27,19 @@
 
         private async Task<Monster> RarityRng(Monster monster, IFFDbContext context, Random rng)
         {
-            int number = rng.Next(1, 11);
+            int number = rng.Next(11);
 
             var monsterRarity = new MonsterRarity();
 
             double statAmplifier = 1;
 
-            if (number == 1)
+            if (number == 0)
             {
                 monsterRarity = await context.MonstersRarities.FirstOrDefaultAsync(mr => mr.MonsterName == monster.Name && mr.Rarity == "Heroic");
                 statAmplifier = monsterRarity.StatAmplifier;
                 monster.ImagePath = monsterRarity.ImagePath.ToString();
             }
-            else if (number > 1 && number < 5)
+            else if (number > 0 && number < 5)
             {
                 monsterRarity = await context.MonstersRarities.FirstOrDefaultAsync(mr => mr.MonsterName == monster.Name && mr.Rarity == "Rare");
                 statAmplifier = monsterRarity.StatAmplifier;
@@ -58,7 +58,7 @@
 
         private string MonsterName(string zoneName, Random rng)
         {
-            int enemyNumber = rng.Next(0, 27);
+            int enemyNumber = rng.Next(27);
 
             if (zoneName == "World")
             {

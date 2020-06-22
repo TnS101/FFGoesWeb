@@ -23,17 +23,16 @@
 
         public async Task SpellCast(IUnit caster, IUnit target, int spellId, IFFDbContext context)
         {
-            if (caster.Type == "Player")
+            if (caster.Type == "Player" && caster.SilenceDuration == 0)
             {
                 var spell = await context.Spells.FindAsync(spellId);
 
                 this.ProcessSpell(spell, caster, target);
             }
-            else
-            {
-                Random rng = new Random();
 
-                int spellNumber = rng.Next(0, 4);
+            if (caster.Type == "Monster")
+            {
+                int spellNumber = new Random().Next(4);
 
                 var monster = (Monster)caster;
 
@@ -72,7 +71,7 @@
             // Effect
             if (spell.AdditionalEffect != null)
             {
-                string[] effectInfo = spell.AdditionalEffect.Split(',');
+                string[] effectInfo = spell.AdditionalEffect.Contains(',') ? spell.AdditionalEffect.Split(',') : new string[] { spell.AdditionalEffect };
 
                 this.EffectCast(effectInfo, spell, caster, target);
             }
@@ -512,79 +511,87 @@
             string spellTarget = spell.BuffOrEffectTarget;
             double manaRequirement = spell.ManaRequirement * caster.MaxMana;
 
-            string firstEffectType = effectInfo[0];
-            string firstPositiveOrNegativeEffect = effectInfo[1];
-            string secondEffectType = string.Empty;
-            string secondPositiveOrNegativeEffect = string.Empty;
+            string statType = effectInfo[0];
 
-            if (effectInfo.Count() > 2)
+            if (effectInfo.Length == 1)
             {
-                secondEffectType = effectInfo[2];
-                secondPositiveOrNegativeEffect = effectInfo[3];
+                effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, statType, this.manaCheck, string.Empty);
             }
-
-            if (spell.BuffOrEffectTarget.Contains('/'))
+            else
             {
-                string[] targets = spell.BuffOrEffectTarget.Split('/');
+                string effectType = effectInfo[1];
+                string secondEffectType = string.Empty;
+                string secondPositiveOrNegativeEffect = string.Empty;
 
-                string firstTarget = targets[0];
-                string secondTarget = targets[1];
-
-                if (effectInfo.Count() > 2) // Two Effects and Two Providers (Caster and Target)
-                {
-                    if (firstTarget == "Self")
-                    {
-                        effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
-                    }
-                    else
-                    {
-                        effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
-                    }
-
-                    if (secondTarget == "Self")
-                    {
-                        effectCheck.Check(caster, caster, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
-                    }
-                    else
-                    {
-                        effectCheck.Check(caster, target, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
-                    }
-                }
-                else // One Effect and Two Providers (Caster and Target)
-                {
-                    if (firstTarget == "Self" || secondTarget == "Self")
-                    {
-                        effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
-                    }
-                    else
-                    {
-                        effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
-                    }
-                }
-            }
-            else // Two Effects and Single Provider (Caster or Target)
-            {
                 if (effectInfo.Count() > 2)
                 {
-                    if (spellTarget == "Self")
+                    secondEffectType = effectInfo[2];
+                    secondPositiveOrNegativeEffect = effectInfo[3];
+                }
+
+                if (spell.BuffOrEffectTarget.Contains('/'))
+                {
+                    string[] targets = spell.BuffOrEffectTarget.Split('/');
+
+                    string firstTarget = targets[0];
+                    string secondTarget = targets[1];
+
+                    if (effectInfo.Count() > 2) // Two Effects and Two Providers (Caster and Target)
                     {
-                        effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
-                        effectCheck.Check(caster, caster, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
+                        if (firstTarget == "Self")
+                        {
+                            effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, statType, this.manaCheck, effectType);
+                        }
+                        else
+                        {
+                            effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, statType, this.manaCheck, effectType);
+                        }
+
+                        if (secondTarget == "Self")
+                        {
+                            effectCheck.Check(caster, caster, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
+                        }
+                        else
+                        {
+                            effectCheck.Check(caster, target, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
+                        }
+                    }
+                    else // One Effect and Two Providers (Caster and Target)
+                    {
+                        if (firstTarget == "Self" || secondTarget == "Self")
+                        {
+                            effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, statType, this.manaCheck, effectType);
+                        }
+                        else
+                        {
+                            effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, statType, this.manaCheck, effectType);
+                        }
+                    }
+                }
+                else // Two Effects and Single Provider (Caster or Target)
+                {
+                    if (effectInfo.Count() > 2)
+                    {
+                        if (spellTarget == "Self")
+                        {
+                            effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, statType, this.manaCheck, effectType);
+                            effectCheck.Check(caster, caster, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
+                        }
+                        else
+                        {
+                            effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, statType, this.manaCheck, effectType);
+                            effectCheck.Check(caster, target, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
+                        }
+                    }
+
+                    if (spellTarget == "Self") // One Effect and One Provider
+                    {
+                        effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, statType, this.manaCheck, effectType);
                     }
                     else
                     {
-                        effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
-                        effectCheck.Check(caster, target, manaRequirement, spell.SecondaryPower, secondEffectType, this.manaCheck, secondPositiveOrNegativeEffect);
+                        effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, statType, this.manaCheck, effectType);
                     }
-                }
-
-                if (spellTarget == "Self") // One Effect and One Provider
-                {
-                    effectCheck.Check(caster, caster, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
-                }
-                else
-                {
-                    effectCheck.Check(caster, target, manaRequirement, spell.EffectPower, firstEffectType, this.manaCheck, firstPositiveOrNegativeEffect);
                 }
             }
         }

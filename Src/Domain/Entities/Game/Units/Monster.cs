@@ -77,5 +77,15 @@
         public int CoinAmount { get; set; }
 
         public ICollection<Spell> Spells { get; set; }
+
+        public int ConfusionDuration { get; set; }
+
+        public int ProvokeDuration { get; set; }
+
+        public int SilenceDuration { get; set; }
+
+        public int StunDuration { get; set; }
+
+        public int BlindDuration { get; set; }
     }
 }

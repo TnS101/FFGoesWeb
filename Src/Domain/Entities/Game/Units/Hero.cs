@@ -93,15 +93,15 @@
 
         public double CurrentCritChance { get; set; }
 
-        public bool IsConfused { get; set; }
+        public int ConfusionDuration { get; set; }
 
-        public bool IsProvoked { get; set; }
+        public int ProvokeDuration { get; set; }
 
-        public bool IsSilenced { get; set; }
+        public int SilenceDuration { get; set; }
 
-        public bool IsStunned { get; set; }
+        public int StunDuration { get; set; }
 
-        public bool IsBlinded { get; set; }
+        public int BlindDuration { get; set; }
 
         public int CoinAmount { get; set; }
 

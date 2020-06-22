@@ -23,7 +23,7 @@
 
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
-            int exploreNumber = rng.Next(0, 10);
+            int exploreNumber = rng.Next(10);
 
             var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
 

@@ -37,7 +37,7 @@
         private async Task<int> FindKeyId()
         {
             var rng = new Random();
-            int generationNumber = rng.Next(0, 10);
+            int generationNumber = rng.Next(10);
 
             string rarity = string.Empty;
 

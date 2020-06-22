@@ -306,7 +306,7 @@
 
         private async Task LootKeyGenerate(IFFDbContext context, long inventoryId)
         {
-            var rarityNumber = this.rng.Next(0, 10);
+            var rarityNumber = this.rng.Next(10);
 
             int treasureKeyId;
 
@@ -342,32 +342,15 @@
         private async Task CardGenerate(int[] stats, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
             var fightingClasses = await context.FightingClasses.ToListAsync();
+            var fightingClass = fightingClasses[this.rng.Next(fightingClasses.Count())];
 
-            int fightingClassId;
-            int spellId;
-
-            while (true)
-            {
-                fightingClassId = this.rng.Next(0, fightingClasses.Count);
-
-                if (fightingClasses[fightingClassId] != null)
-                {
-                    var spells = await context.Spells.Where(s => s.FightingClassId == fightingClassId).ToListAsync();
-                    spellId = this.rng.Next(1, spells.Count);
-
-                    if (spells[spellId] != null)
-                    {
-                        break;
-                    }
-                }
-
-                continue;
-            }
+            var spells = await context.Spells.Where(s => s.FightingClassId == fightingClass.Id).ToListAsync();
+            var spellId = spells[this.rng.Next(spells.Count)].Id;
 
             string effect = string.Empty;
             int effectPower = this.rng.Next(15, 51);
 
-            switch (this.rng.Next(0, 4))
+            switch (this.rng.Next(4))
             {
                 case 0: effect = "Damage"; break;
                 case 1: effect = "Heal"; effectPower += 10; break;
@@ -385,7 +368,7 @@
                 Intellect = stats[5],
                 SpellId = spellId,
                 MaterialType = "Paper",
-                ClassType = fightingClasses[fightingClassId].Type,
+                ClassType = fightingClass.Type,
                 ImagePath = string.Empty,
                 Effect = effect,
                 EffectPower = effectPower,
@@ -396,7 +379,7 @@
             templateCard.SellPrice = this.SellPriceCalculation(templateCard);
 
             var card = await context.Cards.FirstOrDefaultAsync(c => c.Level == templateCard.Level && c.Spirit == templateCard.Spirit && c.Strength == templateCard.Strength
-            && c.Stamina == templateCard.Stamina && c.Agility == templateCard.Agility && c.Intellect == templateCard.Intellect && c.SpellId == spellId && c.ClassType == 
+            && c.Stamina == templateCard.Stamina && c.Agility == templateCard.Agility && c.Intellect == templateCard.Intellect && c.SpellId == spellId && c.ClassType ==
             templateCard.ClassType && c.Effect == effect && c.EffectPower == effectPower);
 
             long cardId;
@@ -432,19 +415,7 @@
         {
             var consumeables = await context.Consumeables.Where(c => c.ZoneName == zoneName || c.ZoneName == "Any").ToListAsync();
 
-            int consumeableId;
-
-            while (true)
-            {
-                consumeableId = this.rng.Next(0, consumeables.Count);
-
-                if (consumeables[consumeableId] != null)
-                {
-                    break;
-                }
-
-                continue;
-            }
+            var consumeableId = consumeables[this.rng.Next(consumeables.Count)].Id;
 
             var consumeableInventory = await context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.InventoryId == inventoryId && ci.ConsumeableId == consumeableId);
 
@@ -465,10 +436,10 @@
         private string[] EffectGenerator(string slot)
         {
             var effect = string.Empty;
-            var effectRng = this.rng.Next(0, 7);
+            var effectRng = this.rng.Next(7);
             var effectPower = slot == "Relic" ? this.rng.Next(5, 15) : this.rng.Next(2, 10);
             var statBonus = slot == "Relic" ? 5 : 2;
-            var isPositive = this.rng.Next(0, 2) == 0 ? true : false;
+            var isPositive = this.rng.Next(2) == 0 ? true : false;
 
             switch (effectRng)
             {
@@ -621,7 +592,7 @@
 
         private string AllMaterialsVariety(Monster monster)
         {
-            int materialNumber = this.rng.Next(0, 10);
+            int materialNumber = this.rng.Next(10);
 
             string materialName = string.Empty;
 
@@ -715,7 +686,7 @@
 
         private string JunkVariety(Monster monster)
         {
-            int junkNumber = this.rng.Next(0, 3);
+            int junkNumber = this.rng.Next(3);
 
             var junks = new List<string>();
 
@@ -777,7 +748,7 @@
 
         private string MainMaterialVariety(string[] materials)
         {
-            int rarityNumber = this.rng.Next(0, 12);
+            int rarityNumber = this.rng.Next(12);
 
             if (rarityNumber >= 0 && rarityNumber < 4)
             {

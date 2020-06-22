@@ -44,18 +44,18 @@
 
         double CurrentCritChance { get; set; }
 
-        bool IsStunned { get; set; }
-
-        bool IsSilenced { get; set; }
-
-        bool IsBlinded { get; set; }
-
-        bool IsConfused { get; set; }
-
-        bool IsProvoked { get; set; }
-
         string ImagePath { get; set; }
 
         int CoinAmount { get; set; }
+
+        int ConfusionDuration { get; set; }
+
+        int ProvokeDuration { get; set; }
+
+        int SilenceDuration { get; set; }
+
+        int StunDuration { get; set; }
+
+        int BlindDuration { get; set; }
     }
 }

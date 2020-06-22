@@ -17,12 +17,12 @@
             stats[0] = hero.Level == 1 ? rng.Next(hero.Level, hero.Level + 2) : rng.Next(hero.Level - 1, hero.Level + 3);
 
             int fightingClassStatNumber = rng.Next(hero.Level, hero.Level + 5);
-            int slotNumber = rng.Next(0, 16);
-            int fightingClassNumber = rng.Next(0, 9);
+            int slotNumber = rng.Next(16);
+            int fightingClassNumber = rng.Next(9);
 
             for (int i = 1; i < 8; i++)
             {
-                int statNumber = rng.Next(0, 10);
+                int statNumber = rng.Next(10);
 
                 if (statNumber <= 6)
                 {

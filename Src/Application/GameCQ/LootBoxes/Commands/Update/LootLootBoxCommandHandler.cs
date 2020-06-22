@@ -28,23 +28,9 @@
 
             var lootBoxType = this.LootBoxType(rng);
 
-            var lootBoxes = await this.Context.LootBoxes.Where(lb => lb.Type == lootBoxType).ToListAsync();
+            var lootBoxes = await this.Context.LootBoxes.Where(lb => lb.Type == lootBoxType).ToArrayAsync();
 
-            int lootBoxId;
-
-            while (true)
-            {
-                lootBoxId = rng.Next(0, lootBoxes.Count);
-
-                if (lootBoxes[lootBoxId] != null)
-                {
-                    break;
-                }
-                else
-                {
-                    continue;
-                }
-            }
+            var lootBoxId = lootBoxes[rng.Next(lootBoxes.Length)].Id;
 
             hero.Inventory.LootBoxInventories.Add(new LootBoxInventory
             {
@@ -59,7 +45,7 @@
 
         private string LootBoxType(Random rng)
         {
-            int treasureNumber = rng.Next(0, 29);
+            int treasureNumber = rng.Next(29);
 
             if (treasureNumber >= 0 && treasureNumber <= 4)
             {

@@ -59,7 +59,7 @@
                         }
                     }
                 }
-                else
+                else if (effectType == "Negative")
                 {
                     if (statType == "Attack")
                     {
@@ -161,6 +161,26 @@
                             target.CurrentMagicPower -= effect;
                         }
                     }
+                }
+                else if (statType == "Stun")
+                {
+                    target.StunDuration = (int)effect;
+                }
+                else if (statType == "Confusion")
+                {
+                    target.ConfusionDuration = (int)effect;
+                }
+                else if (statType == "Provoke")
+                {
+                    target.ProvokeDuration = (int)effect;
+                }
+                else if (statType == "Silence")
+                {
+                    target.SilenceDuration = (int)effect;
+                }
+                else if (statType == "Blind")
+                {
+                    target.BlindDuration = (int)effect;
                 }
             }
         }
