@@ -20,7 +20,7 @@
         {
             return new FightingClassListViewModel
             {
-                FightingClasses = await this.Context.FightingClasses.ProjectTo<FightingClassMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                FightingClasses = await this.Context.FightingClasses.ProjectTo<FightingClassMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

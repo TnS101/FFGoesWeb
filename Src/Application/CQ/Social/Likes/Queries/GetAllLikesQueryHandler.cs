@@ -23,13 +23,13 @@
             {
                 return new LikesListViewModel
                 {
-                    Likes = await this.Context.Likes.Where(l => l.CommentId == request.CommentId).ProjectTo<LikeFullViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Likes = await this.Context.Likes.Where(l => l.CommentId == request.CommentId).ProjectTo<LikeFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
                 };
             }
 
             return new LikesListViewModel
             {
-                Likes = await this.Context.Likes.Where(l => l.TopicId == request.TopicId).ProjectTo<LikeFullViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                Likes = await this.Context.Likes.Where(l => l.TopicId == request.TopicId).ProjectTo<LikeFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

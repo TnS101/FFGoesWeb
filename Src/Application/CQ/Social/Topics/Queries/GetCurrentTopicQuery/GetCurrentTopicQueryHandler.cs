@@ -22,11 +22,11 @@
 
             var viewer = await this.Context.AppUsers.FindAsync(request.UserId);
 
-            topic.Comments = await this.Context.Comments.Where(c => c.TopicId == topic.Id).ToListAsync();
+            topic.Comments = await this.Context.Comments.Where(c => c.TopicId == topic.Id).ToArrayAsync();
 
-            var topicReportersIds = await this.Context.Tickets.Where(t => t.TopicId == topic.Id).Select(t => t.UserId).ToListAsync();
+            var topicReportersIds = await this.Context.Tickets.Where(t => t.TopicId == topic.Id).Select(t => t.UserId).ToArrayAsync();
 
-            var commentReportersIds = await this.Context.Comments.Where(c => c.TopicId == topic.Id).SelectMany(c => c.Tickets).Select(t => t.UserId).ToListAsync();
+            var commentReportersIds = await this.Context.Comments.Where(c => c.TopicId == topic.Id).SelectMany(c => c.Tickets).Select(t => t.UserId).ToArrayAsync();
 
             var result = new TopicFullViewModel()
             {

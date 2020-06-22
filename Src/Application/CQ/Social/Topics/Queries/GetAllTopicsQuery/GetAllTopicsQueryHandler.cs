@@ -45,7 +45,7 @@
                     UserId = t.UserId,
                 })
             .OrderByDescending(t => t.CreateOn)
-            .ToListAsync(),
+            .ToArrayAsync(),
             };
         }
 
@@ -65,7 +65,7 @@
                 Comments = t.Comments.Count(),
             })
                 .OrderByDescending(t => t.CreateOn)
-                .ToListAsync();
+                .ToArrayAsync();
 
             if (request.Filter.Count() == 0 || request.Filter.Count() >= 4)
             {

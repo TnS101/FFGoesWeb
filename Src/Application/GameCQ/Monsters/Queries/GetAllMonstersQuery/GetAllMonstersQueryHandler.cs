@@ -20,7 +20,7 @@
         {
             return new MonsterListViewModel
             {
-                Monsters = await this.Context.Monsters.ProjectTo<MonsterMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                Monsters = await this.Context.Monsters.ProjectTo<MonsterMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

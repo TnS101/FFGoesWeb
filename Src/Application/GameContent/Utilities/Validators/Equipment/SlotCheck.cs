@@ -341,11 +341,11 @@
 
         private async Task CardGenerate(int[] stats, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
         {
-            var fightingClasses = await context.FightingClasses.ToListAsync();
+            var fightingClasses = await context.FightingClasses.ToArrayAsync();
             var fightingClass = fightingClasses[this.rng.Next(fightingClasses.Count())];
 
-            var spells = await context.Spells.Where(s => s.FightingClassId == fightingClass.Id).ToListAsync();
-            var spellId = spells[this.rng.Next(spells.Count)].Id;
+            var spells = await context.Spells.Where(s => s.FightingClassId == fightingClass.Id).ToArrayAsync();
+            var spellId = spells[this.rng.Next(spells.Length)].Id;
 
             string effect = string.Empty;
             int effectPower = this.rng.Next(15, 51);
@@ -413,9 +413,9 @@
 
         private async Task ConsumeableGenerate(string zoneName, IFFDbContext context, long inventoryId)
         {
-            var consumeables = await context.Consumeables.Where(c => c.ZoneName == zoneName || c.ZoneName == "Any").ToListAsync();
+            var consumeables = await context.Consumeables.Where(c => c.ZoneName == zoneName || c.ZoneName == "Any").ToArrayAsync();
 
-            var consumeableId = consumeables[this.rng.Next(consumeables.Count)].Id;
+            var consumeableId = consumeables[this.rng.Next(consumeables.Length)].Id;
 
             var consumeableInventory = await context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.InventoryId == inventoryId && ci.ConsumeableId == consumeableId);
 

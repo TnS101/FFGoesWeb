@@ -37,7 +37,7 @@
                     ClassType = r.Weapon.ClassType,
                     SellPrice = r.Weapon.SellPrice,
                     Count = r.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else if (request.Slot == "Armor")
             {
@@ -51,7 +51,7 @@
                     ClassType = ai.Armor.ClassType,
                     SellPrice = ai.Armor.SellPrice,
                     Count = ai.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else if (request.Slot == "Trinket")
             {
@@ -65,7 +65,7 @@
                     ClassType = "Any",
                     SellPrice = ti.Trinket.SellPrice,
                     Count = ti.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else if (request.Slot == "Relic")
             {
@@ -79,7 +79,7 @@
                     ClassType = "Any",
                     SellPrice = ri.Relic.SellPrice,
                     Count = ri.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else if (request.Slot == "Loot Box")
             {
@@ -90,7 +90,7 @@
                     ImagePath = li.LootBox.ImagePath,
                     Slot = li.LootBox.Slot,
                     Count = li.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else if (request.Slot == "Loot Key")
             {
@@ -101,7 +101,7 @@
                     ImagePath = li.LootKey.ImagePath,
                     Slot = li.LootKey.Slot,
                     Count = li.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else if (request.Slot == "Consumeable")
             {
@@ -111,7 +111,7 @@
                     Name = ci.Consumeable.Name,
                     ImagePath = ci.Consumeable.ImagePath,
                     Slot = ci.Consumeable.Slot,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else if (request.Slot == "Card")
             {
@@ -124,7 +124,7 @@
                     SellPrice = ci.Card.SellPrice,
                     ClassType = ci.Card.ClassType,
                     Count = ci.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else if (request.Slot == "Tool")
             {
@@ -136,7 +136,7 @@
                     Slot = ti.Tool.Name,
                     SellPrice = ti.Tool.SellPrice,
                     Count = ti.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else if (request.Slot == "Toy")
             {
@@ -148,7 +148,7 @@
                     Slot = ti.Toy.Slot,
                     SellPrice = ti.Toy.SellPrice,
                     Count = ti.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
             else
             {
@@ -160,7 +160,7 @@
                     Slot = mi.Material.Slot,
                     SellPrice = mi.Material.SellPrice,
                     Count = mi.Count,
-                }).ToListAsync();
+                }).ToArrayAsync();
             }
 
             return result;

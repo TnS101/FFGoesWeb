@@ -25,14 +25,14 @@
             {
                 return new NotificationListViewModel
                 {
-                    Notifications = await this.Context.Notifications.Where(n => n.UserId == user.Id).ProjectTo<NotificationFullViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Notifications = await this.Context.Notifications.Where(n => n.UserId == user.Id).ProjectTo<NotificationFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
                 };
             }
             else
             {
                 return new NotificationListViewModel
                 {
-                    Notifications = await this.Context.Notifications.Where(n => n.UserId == user.Id && n.Type == request.Filter).ProjectTo<NotificationFullViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Notifications = await this.Context.Notifications.Where(n => n.UserId == user.Id && n.Type == request.Filter).ProjectTo<NotificationFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
                 };
             }
         }

@@ -42,7 +42,7 @@
 
             return new HeroListViewModel
             {
-                Heroes = await heroes.ProjectTo<HeroMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                Heroes = await heroes.ProjectTo<HeroMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
 

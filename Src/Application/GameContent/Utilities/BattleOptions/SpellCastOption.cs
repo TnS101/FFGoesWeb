@@ -36,7 +36,7 @@
 
                 var monster = (Monster)caster;
 
-                var spells = await context.Spells.Where(s => s.MonsterId == monster.Id).ToListAsync();
+                var spells = await context.Spells.Where(s => s.MonsterId == monster.Id).ToArrayAsync();
 
                 if (spellNumber == 0)
                 {

@@ -26,7 +26,7 @@
             return new FriendRequestListViewModel
             {
                 FriendRequests = await this.Context.FriendRequests.Where(f => f.UserId == reciever.Id).ProjectTo<FriendRequestFullViewModel>(this.Mapper.ConfigurationProvider)
-                .ToListAsync(),
+                .ToArrayAsync(),
             };
         }
     }

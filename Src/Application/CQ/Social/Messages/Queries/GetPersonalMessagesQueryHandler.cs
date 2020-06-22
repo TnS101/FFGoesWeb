@@ -28,7 +28,7 @@
             return new MessageListViewModel
             {
                 Messages = await this.Context.Messages.Where(m => m.UserId == reciever.Id && m.UserId == sender.Id)
-                .ProjectTo<MessageFullViewModel>(this.Mapper.ConfigurationProvider).OrderByDescending(m => m.SentOn).ToListAsync(),
+                .ProjectTo<MessageFullViewModel>(this.Mapper.ConfigurationProvider).OrderByDescending(m => m.SentOn).ToArrayAsync(),
             };
         }
     }

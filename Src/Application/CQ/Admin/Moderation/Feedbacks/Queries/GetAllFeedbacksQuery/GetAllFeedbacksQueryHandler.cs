@@ -24,7 +24,7 @@
             {
                 Feedbacks = await this.Context.Feedbacks.Where(f => !f.IsAccepted).ProjectTo<FeedbackFullViewModel>(this.Mapper.ConfigurationProvider)
                  .OrderBy(t => t.SentOn)
-                 .ToListAsync(),
+                 .ToArrayAsync(),
             };
         }
     }

@@ -24,21 +24,21 @@
             {
                 return new ItemListViewModel
                 {
-                    Inventory = await this.Context.Weapons.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Inventory = await this.Context.Weapons.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
                 };
             }
             else if (request.Slot == "Armor")
             {
                 return new ItemListViewModel
                 {
-                    Inventory = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Inventory = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
                 };
             }
             else if (request.Slot == "Trinket")
             {
                 return new ItemListViewModel
                 {
-                    Inventory = await this.Context.Trinkets.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Inventory = await this.Context.Trinkets.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
                 };
             }
             else if (request.Slot == "LootBox")
@@ -51,7 +51,7 @@
                         Name = t.Name,
                         Slot = t.Slot,
                         ImagePath = t.ImagePath,
-                    }).ToListAsync(),
+                    }).ToArrayAsync(),
                 };
             }
             else if (request.Slot == "Loot Key")
@@ -64,7 +64,7 @@
                         Name = tk.Name,
                         Slot = tk.Slot,
                         ImagePath = tk.ImagePath,
-                    }).ToListAsync(),
+                    }).ToArrayAsync(),
                 };
             }
             else if (request.Slot == "Material")
@@ -77,7 +77,7 @@
                         Name = m.Name,
                         Slot = m.Slot,
                         ImagePath = m.ImagePath,
-                    }).ToListAsync(),
+                    }).ToArrayAsync(),
                 };
             }
             else if (request.Slot == "Tool")
@@ -90,14 +90,14 @@
                         Name = t.Name,
                         Slot = t.Slot,
                         ImagePath = t.ImagePath,
-                    }).ToListAsync(),
+                    }).ToArrayAsync(),
                 };
             }
             else
             {
                 return new ItemListViewModel
                 {
-                    Inventory = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                    Inventory = await this.Context.Armors.ProjectTo<ItemMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
                 };
             }
         }

@@ -20,7 +20,7 @@
         {
             return new ToolsListViewModel
             {
-                Tools = await this.Context.Tools.ProjectTo<ToolMinViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                Tools = await this.Context.Tools.ProjectTo<ToolMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

@@ -21,7 +21,7 @@
         {
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
             var mappedUser = this.Mapper.Map<UserPartialViewModel>(user);
-            mappedUser.Friends = await this.Context.Friends.Where(f => f.UserId == user.Id).ToListAsync();
+            mappedUser.Friends = await this.Context.Friends.Where(f => f.UserId == user.Id).ToArrayAsync();
 
             return mappedUser;
         }

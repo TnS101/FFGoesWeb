@@ -21,7 +21,7 @@
         {
             return new FeedbackTaskListViewModel
             {
-                Tasks = await this.Context.Feedbacks.Where(f => f.IsAccepted).ProjectTo<FeedbackTaskViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                Tasks = await this.Context.Feedbacks.Where(f => f.IsAccepted).ProjectTo<FeedbackTaskViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

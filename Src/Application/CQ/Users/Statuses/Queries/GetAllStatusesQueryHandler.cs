@@ -20,7 +20,7 @@
         {
             return new StatusListViewModel
             {
-                Statuses = await this.Context.Statuses.ProjectTo<StatusFullViewModel>(this.Mapper.ConfigurationProvider).ToListAsync(),
+                Statuses = await this.Context.Statuses.ProjectTo<StatusFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }
