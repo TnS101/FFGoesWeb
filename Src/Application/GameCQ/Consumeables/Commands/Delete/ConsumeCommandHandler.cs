@@ -20,7 +20,7 @@
 
             var consumeable = await this.Context.Consumeables.FindAsync(request.ConsumeableId);
 
-            var consumeableInventory = await this.Context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.ConsumeableId == consumeable.Id && ci.InventoryId == hero.InventoryId);
+            var consumeableInventory = await this.Context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.ConsumeableId == consumeable.Id && ci.InventoryId == hero.Id);
 
             if (consumeableInventory.Count > 1)
             {

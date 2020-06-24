@@ -5,14 +5,13 @@
 
     public class Equipment
     {
-        public Equipment(long heroId)
+        public Equipment()
         {
             this.WeaponEquipment = new HashSet<WeaponEquipment>();
             this.ArmorEquipment = new HashSet<ArmorEquipment>();
             this.TrinketEquipment = new HashSet<TrinketEquipment>();
             this.RelicEquipment = new HashSet<RelicEquipment>();
             this.CardEquipment = new HashSet<CardEquipment>();
-            this.Id = heroId;
         }
 
         public long Id { get; set; }

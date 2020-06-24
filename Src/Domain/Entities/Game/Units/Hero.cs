@@ -2,7 +2,6 @@
 {
     using Domain.Contracts.Units;
     using Domain.Entities.Common;
-    using Domain.Entities.Game.Items;
     using System.Collections.Generic;
 
     public class Hero : IUnit
@@ -23,17 +22,9 @@
 
         public FightingClass FightingClass { get; set; }
 
-        public long EquipmentId { get; set; }
-
-        public Equipment Equipment { get; set; }
-
         public string UserId { get; set; }
 
         public AppUser User { get; set; }
-
-        public long InventoryId { get; set; }
-
-        public Inventory Inventory { get; set; }
 
         public int? ProfessionId { get; set; }
 

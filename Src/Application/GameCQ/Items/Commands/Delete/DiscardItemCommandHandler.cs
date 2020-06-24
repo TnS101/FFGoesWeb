@@ -34,7 +34,7 @@
 
             if (request.Slot == "Weapon")
             {
-                var weaponToRemove = await this.Context.WeaponsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.WeaponId == request.ItemId);
+                var weaponToRemove = await this.Context.WeaponsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.Id && i.WeaponId == request.ItemId);
 
                 int count;
 
@@ -55,7 +55,7 @@
             }
             else if (request.Slot == "Trinket")
             {
-                var trinketToRemove = await this.Context.TrinketsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.TrinketId == request.ItemId);
+                var trinketToRemove = await this.Context.TrinketsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.Id && i.TrinketId == request.ItemId);
 
                 int count;
 
@@ -76,7 +76,7 @@
             }
             else if (request.Slot == "Material")
             {
-                var materialToRemove = await this.Context.MaterialsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.MaterialId == (int)request.ItemId);
+                var materialToRemove = await this.Context.MaterialsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.Id && i.MaterialId == (int)request.ItemId);
 
                 int count;
 
@@ -97,7 +97,7 @@
             }
             else if (request.Slot == "Treasure")
             {
-                var treasureToRemove = await this.Context.LootBoxesInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.LootBoxId == (int)request.ItemId);
+                var treasureToRemove = await this.Context.LootBoxesInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.Id && i.LootBoxId == (int)request.ItemId);
 
                 if (request.Count >= treasureToRemove.Count)
                 {
@@ -110,7 +110,7 @@
             }
             else if (request.Slot == "Treasure Key")
             {
-                var treasureKeyToRemove = await this.Context.LootKeysInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.LootKeyId == (int)request.ItemId);
+                var treasureKeyToRemove = await this.Context.LootKeysInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.Id && i.LootKeyId == (int)request.ItemId);
 
                 if (request.Count >= treasureKeyToRemove.Count)
                 {
@@ -123,7 +123,7 @@
             }
             else if (request.Slot == "Tool")
             {
-                var toolToRemove = await this.Context.ToolsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.ToolId == (int)request.ItemId);
+                var toolToRemove = await this.Context.ToolsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.Id && i.ToolId == (int)request.ItemId);
 
                 int count;
 
@@ -144,7 +144,7 @@
             }
             else
             {
-                var armorToRemove = await this.Context.ArmorsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.InventoryId && i.ArmorId == request.ItemId);
+                var armorToRemove = await this.Context.ArmorsInventories.FirstOrDefaultAsync(i => i.InventoryId == hero.Id && i.ArmorId == request.ItemId);
 
                 int count;
 

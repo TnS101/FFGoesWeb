@@ -32,9 +32,9 @@
 
             var lootBoxId = lootBoxes[rng.Next(lootBoxes.Length)].Id;
 
-            hero.Inventory.LootBoxInventories.Add(new LootBoxInventory
+            this.Context.LootBoxesInventories.Add(new LootBoxInventory
             {
-                InventoryId = hero.InventoryId,
+                InventoryId = hero.Id,
                 LootBoxId = lootBoxId,
             });
 

@@ -26,7 +26,7 @@
             if (request.Slot == "Weapon")
             {
                 result.Inventory = await this.Context.WeaponsInventories
-                .Where(wi => wi.InventoryId == hero.InventoryId)
+                .Where(wi => wi.InventoryId == hero.Id)
                 .Select(r => new ItemMinViewModel
                 {
                     Id = r.WeaponId,
@@ -41,7 +41,7 @@
             }
             else if (request.Slot == "Armor")
             {
-                result.Inventory = await this.Context.ArmorsInventories.Where(ai => ai.InventoryId == hero.InventoryId).Select(ai => new ItemMinViewModel
+                result.Inventory = await this.Context.ArmorsInventories.Where(ai => ai.InventoryId == hero.Id).Select(ai => new ItemMinViewModel
                 {
                     Id = ai.ArmorId,
                     Name = ai.Armor.Name,
@@ -55,7 +55,7 @@
             }
             else if (request.Slot == "Trinket")
             {
-                result.Inventory = await this.Context.TrinketsInventories.Where(ti => ti.InventoryId == hero.InventoryId).Select(ti => new ItemMinViewModel
+                result.Inventory = await this.Context.TrinketsInventories.Where(ti => ti.InventoryId == hero.Id).Select(ti => new ItemMinViewModel
                 {
                     Id = ti.TrinketId,
                     Name = ti.Trinket.Name,
@@ -69,7 +69,7 @@
             }
             else if (request.Slot == "Relic")
             {
-                result.Inventory = await this.Context.RelicsInventories.Where(ri => ri.InventoryId == hero.InventoryId).Select(ri => new ItemMinViewModel
+                result.Inventory = await this.Context.RelicsInventories.Where(ri => ri.InventoryId == hero.Id).Select(ri => new ItemMinViewModel
                 {
                     Id = ri.RelicId,
                     Name = ri.Relic.Name,
@@ -83,7 +83,7 @@
             }
             else if (request.Slot == "Loot Box")
             {
-                result.Inventory = await this.Context.LootBoxesInventories.Where(ti => ti.InventoryId == hero.InventoryId).Select(li => new ItemMinViewModel
+                result.Inventory = await this.Context.LootBoxesInventories.Where(ti => ti.InventoryId == hero.Id).Select(li => new ItemMinViewModel
                 {
                     Id = li.LootBoxId,
                     Name = li.LootBox.Name,
@@ -94,7 +94,7 @@
             }
             else if (request.Slot == "Loot Key")
             {
-                result.Inventory = await this.Context.LootKeysInventories.Where(ti => ti.InventoryId == hero.InventoryId).Select(li => new ItemMinViewModel
+                result.Inventory = await this.Context.LootKeysInventories.Where(ti => ti.InventoryId == hero.Id).Select(li => new ItemMinViewModel
                 {
                     Id = li.LootKeyId,
                     Name = li.LootKey.Name,
@@ -105,7 +105,7 @@
             }
             else if (request.Slot == "Consumeable")
             {
-                result.Inventory = await this.Context.ConsumeablesInventories.Where(ci => ci.InventoryId == hero.InventoryId).Select(ci => new ItemMinViewModel
+                result.Inventory = await this.Context.ConsumeablesInventories.Where(ci => ci.InventoryId == hero.Id).Select(ci => new ItemMinViewModel
                 {
                     Id = ci.ConsumeableId,
                     Name = ci.Consumeable.Name,
@@ -115,7 +115,7 @@
             }
             else if (request.Slot == "Card")
             {
-                result.Inventory = await this.Context.CardsInventories.Where(ci => ci.InventoryId == hero.InventoryId).Select(ci => new ItemMinViewModel
+                result.Inventory = await this.Context.CardsInventories.Where(ci => ci.InventoryId == hero.Id).Select(ci => new ItemMinViewModel
                 {
                     Id = ci.CardId,
                     Name = ci.Card.Name,
@@ -128,7 +128,7 @@
             }
             else if (request.Slot == "Tool")
             {
-                result.Inventory = await this.Context.ToolsInventories.Where(ti => ti.InventoryId == hero.InventoryId).Select(ti => new ItemMinViewModel
+                result.Inventory = await this.Context.ToolsInventories.Where(ti => ti.InventoryId == hero.Id).Select(ti => new ItemMinViewModel
                 {
                     Id = ti.ToolId,
                     Name = ti.Tool.Name,
@@ -140,7 +140,7 @@
             }
             else if (request.Slot == "Toy")
             {
-                result.Inventory = await this.Context.ToyInventories.Where(ti => ti.InventoryId == hero.InventoryId).Select(ti => new ItemMinViewModel
+                result.Inventory = await this.Context.ToyInventories.Where(ti => ti.InventoryId == hero.Id).Select(ti => new ItemMinViewModel
                 {
                     Id = ti.ToyId,
                     Name = ti.Toy.Name,
@@ -152,7 +152,7 @@
             }
             else
             {
-                result.Inventory = await this.Context.MaterialsInventories.Where(mi => mi.InventoryId == hero.InventoryId).Select(mi => new ItemMinViewModel
+                result.Inventory = await this.Context.MaterialsInventories.Where(mi => mi.InventoryId == hero.Id).Select(mi => new ItemMinViewModel
                 {
                     Id = mi.MaterialId,
                     Name = mi.Material.Name,

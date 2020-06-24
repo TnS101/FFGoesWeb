@@ -57,17 +57,8 @@
 
             this.Context.Heroes.Add(hero);
 
-            await this.Context.SaveChangesAsync(cancellationToken);
-
-            var dbHero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
-
-            dbHero.Inventory = new Inventory(dbHero.Id);
-            dbHero.Equipment = new Equipment(dbHero.Id);
-
-            dbHero.InventoryId = dbHero.Id;
-            dbHero.EquipmentId = dbHero.Id;
-
-            this.Context.Heroes.Update(dbHero);
+            this.Context.Equipments.Add(new Equipment());
+            this.Context.Inventories.Add(new Inventory());
 
             await this.Context.SaveChangesAsync(cancellationToken);
 

@@ -5,7 +5,7 @@
 
     public class Inventory
     {
-        public Inventory(long heroId)
+        public Inventory()
         {
             this.ArmorInventories = new HashSet<ArmorInventory>();
             this.WeaponInventories = new HashSet<WeaponInventory>();
@@ -18,7 +18,6 @@
             this.RelicInventories = new HashSet<RelicInventory>();
             this.CardInventories = new HashSet<CardInventory>();
             this.ToyInventories = new HashSet<ToyInventory>();
-            this.Id = heroId;
         }
 
         public long Id { get; set; }

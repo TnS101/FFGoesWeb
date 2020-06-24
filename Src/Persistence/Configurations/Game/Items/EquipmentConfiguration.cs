@@ -10,17 +10,10 @@
         {
             builder.HasKey(e => e.Id);
 
-            builder.Property(e => e.Id).HasColumnType("bigint");
-
-            builder.Property(e => e.HeroId)
-                .IsRequired();
+            builder.Property(e => e.Id).HasColumnType("bigint").ValueGeneratedOnAdd();
 
             builder.Property(e => e.Capacity)
                 .HasDefaultValue(11);
-
-            builder.HasOne(h => h.Hero)
-           .WithOne(e => e.Equipment)
-           .HasForeignKey<Equipment>(h => h.HeroId);
         }
     }
 }

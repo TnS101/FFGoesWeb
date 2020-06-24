@@ -7,7 +7,6 @@
     using Application.Common.Interfaces;
     using global::Common;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class DeleteHeroCommandHandler : BaseHandler, IRequestHandler<DeleteHeroCommand, string>
     {
@@ -20,9 +19,9 @@
         {
             var hero = await this.Context.Heroes.FindAsync(request.HeroId);
 
-            var inventory = await this.Context.Inventories.FirstOrDefaultAsync(i => i.HeroId == hero.Id);
+            var inventory = await this.Context.Inventories.FindAsync(hero.Id);
 
-            var equipment = await this.Context.Equipments.FirstOrDefaultAsync(e => e.HeroId == hero.Id);
+            var equipment = await this.Context.Equipments.FindAsync(hero.Id);
 
             var energyChanges = this.Context.EnergyChanges.Where(ec => ec.HeroId == hero.Id);
 

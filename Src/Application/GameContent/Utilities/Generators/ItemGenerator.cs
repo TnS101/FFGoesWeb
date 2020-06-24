@@ -38,7 +38,7 @@
                 }
             }
 
-            await slotCheck.Check(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero.InventoryId, monster, zoneName, cancellationToken);
+            await slotCheck.Check(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero.Id, monster, zoneName, cancellationToken);
         }
     }
 }

@@ -12,13 +12,7 @@
 
             builder.Property(h => h.Id).HasColumnType("bigint");
 
-            builder.Property(h => h.EquipmentId)
-                .IsRequired();
-
             builder.Property(h => h.UserId)
-                .IsRequired();
-
-            builder.Property(h => h.InventoryId)
                 .IsRequired();
 
             builder.Property(h => h.Name)

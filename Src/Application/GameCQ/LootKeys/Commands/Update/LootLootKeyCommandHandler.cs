@@ -25,7 +25,7 @@
 
             this.Context.LootKeysInventories.Add(new LootKeyInventory
             {
-                InventoryId = hero.InventoryId,
+                InventoryId = hero.Id,
                 LootKeyId = await this.FindKeyId(),
             });
 
