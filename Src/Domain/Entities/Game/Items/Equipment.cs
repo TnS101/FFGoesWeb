@@ -1,7 +1,6 @@
 ﻿namespace Domain.Entities.Game.Items
 {
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
-    using Domain.Entities.Game.Units;
     using System.Collections.Generic;
 
     public class Equipment
@@ -13,14 +12,10 @@
             this.TrinketEquipment = new HashSet<TrinketEquipment>();
             this.RelicEquipment = new HashSet<RelicEquipment>();
             this.CardEquipment = new HashSet<CardEquipment>();
-            this.HeroId = heroId;
+            this.Id = heroId;
         }
 
         public long Id { get; set; }
-
-        public long HeroId { get; set; }
-
-        public Hero Hero { get; set; }
 
         public int Capacity { get; set; }
 

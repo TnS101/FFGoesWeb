@@ -1,14 +1,9 @@
-﻿using System;
-
-namespace Domain.Entities.Game.Stations
+﻿namespace Domain.Entities.Game.Stations
 {
+    using System;
+
     public class Shop
     {
-        public Shop()
-        {
-
-        }
-
         public int Id { get; set; }
 
         public string Name { get; set; }
