@@ -164,23 +164,23 @@
                 }
                 else if (statType == "Stun")
                 {
-                    target.StunDuration = (int)effect;
+                    target.StunDuration += (int)effect;
                 }
                 else if (statType == "Confusion")
                 {
-                    target.ConfusionDuration = (int)effect;
+                    target.ConfusionDuration += (int)effect;
                 }
                 else if (statType == "Provoke")
                 {
-                    target.ProvokeDuration = (int)effect;
+                    target.ProvokeDuration += (int)effect;
                 }
                 else if (statType == "Silence")
                 {
-                    target.SilenceDuration = (int)effect;
+                    target.SilenceDuration += (int)effect;
                 }
                 else if (statType == "Blind")
                 {
-                    target.BlindDuration = (int)effect;
+                    target.BlindDuration += (int)effect;
                 }
             }
         }

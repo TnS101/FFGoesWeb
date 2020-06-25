@@ -38,6 +38,8 @@ namespace Domain.Entities.Game.Units
 
         public double SecondaryPower { get; set; }
 
+        public string Condition { get; set; }
+
         public ICollection<Card> Cards { get; set; }
     }
 }

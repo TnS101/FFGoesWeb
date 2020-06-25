@@ -369,7 +369,7 @@
                 SpellId = spellId,
                 MaterialType = "Paper",
                 ClassType = fightingClass.Type,
-                ImagePath = string.Empty,
+                ImagePath = $"/images/Cards/Template-{fightingClass.Type}.png",
                 Effect = effect,
                 EffectPower = effectPower,
                 Slot = "Card",

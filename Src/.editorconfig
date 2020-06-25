@@ -20,3 +20,6 @@ dotnet_diagnostic.SA1118.severity = silent
 
 # SA1600: Elements should be documented
 dotnet_diagnostic.SA1600.severity = suggestion
+
+# IDE0055: Fix formatting
+dotnet_diagnostic.IDE0055.severity = silent

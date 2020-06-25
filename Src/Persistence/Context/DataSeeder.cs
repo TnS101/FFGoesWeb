@@ -1313,7 +1313,7 @@
                 HealthRegen = 2,
                 MaxMana = 80,
                 ManaRegen = 5,
-                AttackPower = 9,
+                AttackPower = 10,
                 MagicPower = 5,
                 ArmorValue = 5,
                 ResistanceValue = 2,
@@ -1330,7 +1330,7 @@
                 HealthRegen = 2,
                 MaxMana = 60,
                 ManaRegen = 7,
-                AttackPower = 12,
+                AttackPower = 13,
                 MagicPower = 5,
                 ArmorValue = 3,
                 ResistanceValue = 1,
@@ -1347,7 +1347,7 @@
                 HealthRegen = 2,
                 MaxMana = 80,
                 ManaRegen = 5,
-                AttackPower = 7,
+                AttackPower = 6,
                 MagicPower = 4,
                 ArmorValue = 1,
                 ResistanceValue = 2,
@@ -1364,7 +1364,7 @@
                 HealthRegen = 8,
                 MaxMana = 70,
                 ManaRegen = 4,
-                AttackPower = 11,
+                AttackPower = 12,
                 MagicPower = 4,
                 ArmorValue = 1,
                 ResistanceValue = 2,
@@ -1381,7 +1381,7 @@
                 HealthRegen = 2,
                 MaxMana = 80,
                 ManaRegen = 10,
-                AttackPower = 8,
+                AttackPower = 9,
                 MagicPower = 11,
                 ArmorValue = 3,
                 ResistanceValue = 4,
@@ -1398,7 +1398,7 @@
                 HealthRegen = 2,
                 MaxMana = 90,
                 ManaRegen = 10,
-                AttackPower = 6,
+                AttackPower = 7,
                 MagicPower = 6,
                 ArmorValue = 6,
                 ResistanceValue = 6,
@@ -1415,7 +1415,7 @@
                 HealthRegen = 2,
                 MaxMana = 110,
                 ManaRegen = 8,
-                AttackPower = 11,
+                AttackPower = 12,
                 MagicPower = 6,
                 ArmorValue = 3,
                 ResistanceValue = 4,
@@ -1432,8 +1432,8 @@
                 HealthRegen = 2,
                 MaxMana = 120,
                 ManaRegen = 8,
-                AttackPower = 8,
-                MagicPower = 15,
+                AttackPower = 9,
+                MagicPower = 16,
                 ArmorValue = 2,
                 ResistanceValue = 6,
                 CritChance = 3,
@@ -1449,8 +1449,8 @@
                 HealthRegen = 3.6,
                 MaxMana = 100,
                 ManaRegen = 6,
-                AttackPower = 14,
-                MagicPower = 8,
+                AttackPower = 15,
+                MagicPower = 9,
                 ArmorValue = 7.3,
                 ResistanceValue = 3.2,
                 CritChance = 5.6,
@@ -1634,7 +1634,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Furious Roar",
-                ManaRequirement = 0.2,
+                ManaRequirement = 0.18,
                 MonsterId = 9,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.22,
@@ -1644,7 +1644,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Bite",
-                ManaRequirement = 0.2,
+                ManaRequirement = 0.18,
                 MonsterId = 9,
                 Type = "Damage,Physical,Self",
                 Power = 1.2,
@@ -1657,10 +1657,10 @@
             context.Spells.Add(new Spell
             {
                 Name = "Thick Hide",
-                ManaRequirement = 0.5,
+                ManaRequirement = 0.4,
                 MonsterId = 9,
                 Type = "Buff,Armor,Self,Positive",
-                Power = 0.75,
+                Power = 0.8,
                 BuffOrEffectTarget = "Self",
             });
 
@@ -1688,7 +1688,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Shadow Punch",
-                ManaRequirement = 0.25,
+                ManaRequirement = 0.22,
                 MonsterId = 1,
                 Type = "Damage,Physical,Self",
                 Power = 1.18,
@@ -1698,7 +1698,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Eye Of The Void",
-                ManaRequirement = 0.25,
+                ManaRequirement = 0.22,
                 MonsterId = 1,
                 Type = "Buff,Armor,Target,Negative",
                 Power = 0.4,
@@ -1712,7 +1712,7 @@
                 MonsterId = 1,
                 Type = "Damage,Magical,Self",
                 Power = 1.4,
-                ResistanceAffect = 0.9,
+                ResistanceAffect = 0.8,
             });
 
             // Giant
@@ -1724,7 +1724,7 @@
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.38,
                 AdditionalEffect = "hRegen,Negative",
-                EffectPower = 0.3,
+                EffectPower = 0.25,
                 BuffOrEffectTarget = "Self",
             });
 
@@ -1767,14 +1767,14 @@
                 ManaRequirement = 0.3,
                 MonsterId = 3,
                 Type = "Damage,Physical,Self",
-                Power = 1.1,
+                Power = 1.12,
                 ResistanceAffect = 0.6,
             });
 
             context.Spells.Add(new Spell
             {
                 Name = "Petryfying Gaze",
-                ManaRequirement = 0.5,
+                ManaRequirement = 0.45,
                 MonsterId = 3,
                 Type = "Buff,hRegen,Target,Negative",
                 Power = 0.5,
@@ -1787,17 +1787,17 @@
                 ManaRequirement = 0.3,
                 MonsterId = 3,
                 Type = "Buff,Attack,Target,Negative",
-                Power = 0.18,
+                Power = 0.2,
                 BuffOrEffectTarget = "Target",
             });
 
             context.Spells.Add(new Spell
             {
                 Name = "Peck",
-                ManaRequirement = 0.18,
+                ManaRequirement = 0.2,
                 MonsterId = 3,
                 Type = "Damage,Physical,Self",
-                Power = 1.13,
+                Power = 1.15,
                 ResistanceAffect = 1,
             });
 
@@ -1805,7 +1805,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Poison Spit",
-                ManaRequirement = 0.32,
+                ManaRequirement = 0.3,
                 MonsterId = 8,
                 Type = "Damage,Magical,Self",
                 Power = 1,
@@ -1815,7 +1815,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Reflecting Scales",
-                ManaRequirement = 0.28,
+                ManaRequirement = 0.26,
                 MonsterId = 8,
                 Type = "Damage,Physical,Target",
                 Power = 0.3,
@@ -1840,10 +1840,10 @@
             context.Spells.Add(new Spell
             {
                 Name = "Scratch",
-                ManaRequirement = 0.18,
+                ManaRequirement = 0.15,
                 MonsterId = 8,
                 Type = "Damage,Physical,Self",
-                Power = 1.2,
+                Power = 1.18,
                 ResistanceAffect = 1,
             });
 
@@ -1851,7 +1851,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Sacred Words",
-                ManaRequirement = 0.4,
+                ManaRequirement = 0.38,
                 MonsterId = 2,
                 Type = "Heal,Magical,Self",
                 Power = 1.58,
@@ -1860,7 +1860,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Illumination",
-                ManaRequirement = 0.35,
+                ManaRequirement = 0.33,
                 MonsterId = 2,
                 Type = "Buff,Magic,Target,Negative",
                 Power = 0.22,
@@ -1875,7 +1875,7 @@
                 ManaRequirement = 0.15,
                 MonsterId = 2,
                 Type = "Damage,Magical,Self",
-                Power = 1,
+                Power = 1.04,
                 ResistanceAffect = 1,
             });
 
