@@ -348,14 +348,41 @@
             var spellId = spells[this.rng.Next(spells.Length)].Id;
 
             string effect = string.Empty;
-            int effectPower = this.rng.Next(15, 51);
+            string effectType = string.Empty;
+            double effectPower = this.rng.Next(15, 51);
+            string effectTarget = string.Empty;
+            string mathOperator = string.Empty;
 
-            switch (this.rng.Next(4))
+            switch (this.rng.Next(3))
             {
-                case 0: effect = "Damage"; break;
-                case 1: effect = "Heal"; effectPower += 10; break;
-                case 2: effect = "ReCast"; break;
-                case 3: effect = "Mana"; effectPower += 15; break;
+                case 0: effectTarget = "Spell"; mathOperator = "+"; break;
+                case 1: effectTarget = "Self"; mathOperator = "+"; break;
+                case 2: effectTarget = "Enemy"; mathOperator = "-"; break;
+            }
+
+            if (effectTarget == "Spell")
+            {
+                switch (this.rng.Next(3))
+                {
+                    case 0: effectType = "Power"; break;
+                    case 1: effectType = "ResistanceAffect"; break;
+                    case 2: effectType = "ManaRequirement"; effectPower += 30; break;
+                }
+            }
+            else
+            {
+                switch (this.rng.Next(8))
+                {
+                    case 0: effectType = "CurrentHP"; effectPower = this.rng.Next(8, 16); break;
+                    case 1: effectType = "CurrentMana"; effectPower = this.rng.Next(15, 31); break;
+                    case 2: effectType = "CurrentArmor"; break;
+                    case 3: effectType = "CurrentResistance"; break;
+                    case 4: effectType = "CurrentHealthRegen"; effectPower = this.rng.Next(60, 101); break;
+                    case 5: effectType = "CurrentManaRegen"; effectPower = this.rng.Next(60, 101); break;
+                    case 6: effectType = "CurrentCritChance"; effectPower = this.rng.Next(6, 17); break;
+                    case 7: effectType = "CurrentAttackPower"; effectPower = this.rng.Next(5, 13); break;
+                    case 8: effectType = "CurrentMagicPower"; effectPower = this.rng.Next(5, 13); break;
+                }
             }
 
             var templateCard = new Card
@@ -370,8 +397,7 @@
                 MaterialType = "Paper",
                 ClassType = fightingClass.Type,
                 ImagePath = $"/images/Cards/Template-{fightingClass.Type}.png",
-                Effect = effect,
-                EffectPower = effectPower,
+                Condition = $"Self,CurrentHP,>,1{effectTarget},{effectType},{mathOperator},{effectTarget}",
                 Slot = "Card",
                 Name = $"Card of {context.Spells.Find(spellId).Name}",
             };
@@ -380,7 +406,7 @@
 
             var card = await context.Cards.FirstOrDefaultAsync(c => c.Level == templateCard.Level && c.Spirit == templateCard.Spirit && c.Strength == templateCard.Strength
             && c.Stamina == templateCard.Stamina && c.Agility == templateCard.Agility && c.Intellect == templateCard.Intellect && c.SpellId == spellId && c.ClassType ==
-            templateCard.ClassType && c.Effect == effect && c.EffectPower == effectPower);
+            templateCard.ClassType && c.Condition == templateCard.Condition);
 
             long cardId;
 

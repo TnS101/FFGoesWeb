@@ -7,16 +7,17 @@
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.BattleOptions;
     using Application.GameContent.Utilities.Validators.Battle;
+    using AutoMapper;
     using Domain.Contracts.Units;
     using global::Common;
     using MediatR;
 
-    public class BattleOptionsCommandHandler : BaseHandler, IRequestHandler<BattleOptionsCommand, string>
+    public class BattleOptionsCommandHandler : MapperHandler, IRequestHandler<BattleOptionsCommand, string>
     {
         private readonly TurnCheck turnCheck;
 
-        public BattleOptionsCommandHandler(IFFDbContext context)
-            : base(context)
+        public BattleOptionsCommandHandler(IFFDbContext context, IMapper mapper)
+            : base(context, mapper)
         {
             this.turnCheck = new TurnCheck();
         }
@@ -51,7 +52,7 @@
 
                     if (request.Command == "Spell" && hero.SilenceDuration == 0)
                     {
-                        await new SpellCastOption().SpellCast(hero, request.Enemy, request.SpellId, this.Context);
+                        await new SpellCastOption().SpellCast(hero, request.Enemy, request.SpellId, this.Context, this.Mapper);
                     }
                 }
 

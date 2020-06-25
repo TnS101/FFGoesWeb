@@ -8,6 +8,7 @@ namespace Domain.Entities.Game.Units
         public Spell()
         {
             this.Cards = new HashSet<Card>();
+            this.Talents = new HashSet<Talent>();
         }
 
         public int Id { get; set; }
@@ -41,5 +42,7 @@ namespace Domain.Entities.Game.Units
         public string Condition { get; set; }
 
         public ICollection<Card> Cards { get; set; }
+
+        public ICollection<Talent> Talents { get; set; }
     }
 }

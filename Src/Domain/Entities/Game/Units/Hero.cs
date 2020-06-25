@@ -2,6 +2,7 @@
 {
     using Domain.Contracts.Units;
     using Domain.Entities.Common;
+    using Domain.Entities.Game.Units.ManyToMany;
     using System.Collections.Generic;
 
     public class Hero : IUnit
@@ -9,6 +10,7 @@
         public Hero()
         {
             this.EnergyChanges = new HashSet<EnergyChange>();
+            this.HeroTalents = new HashSet<HeroTalents>();
             this.Hunger = 10;
             this.Thirst = 10;
             this.Happiness = 10;
@@ -119,6 +121,8 @@
         public int EquipmentScore { get; set; }
 
         public ICollection<EnergyChange> EnergyChanges { get; set; }
+
+        public ICollection<HeroTalents> HeroTalents { get; set; }
 
         public string Type { get; set; }
     }

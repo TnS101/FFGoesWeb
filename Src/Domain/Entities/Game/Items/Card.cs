@@ -28,9 +28,7 @@
 
         public string ClassType { get; set; }
 
-        public string Effect { get; set; }
-
-        public double EffectPower { get; set; }
+        public string Condition { get; set; }
 
         public int Agility { get; set; }
 
@@ -49,6 +47,8 @@
         public int BuyPrice { get; set; }
 
         public int SellPrice { get; set; }
+
+        public string Description { get; set; }
 
         public ICollection<CardInventory> CardInventories { get; set; }
 

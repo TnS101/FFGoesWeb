@@ -9,6 +9,7 @@
         {
             this.Heroes = new HashSet<Hero>();
             this.Spells = new HashSet<Spell>();
+            this.Talents = new HashSet<Talent>();
         }
 
         public int Id { get; set; }
@@ -42,5 +43,7 @@
         public ICollection<Spell> Spells { get; set; }
 
         public ICollection<Hero> Heroes { get; set; }
+
+        public ICollection<Talent> Talents { get; set; }
     }
 }
