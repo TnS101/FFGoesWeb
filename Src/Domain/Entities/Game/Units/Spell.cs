@@ -43,6 +43,8 @@ namespace Domain.Entities.Game.Units
 
         public bool SatisfiesCondition { get; set; }
 
+        public string Description { get; set; }
+
         public ICollection<Card> Cards { get; set; }
 
         public ICollection<Talent> Talents { get; set; }

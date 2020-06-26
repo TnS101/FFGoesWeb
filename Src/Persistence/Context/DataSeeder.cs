@@ -1634,7 +1634,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Furious Roar",
-                ManaRequirement = 0.18,
+                ManaRequirement = 15,
                 MonsterId = 9,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.22,
@@ -1644,7 +1644,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Bite",
-                ManaRequirement = 0.18,
+                ManaRequirement = 15,
                 MonsterId = 9,
                 Type = "Damage,Physical,Self",
                 Power = 1.2,
@@ -1657,7 +1657,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Thick Hide",
-                ManaRequirement = 0.4,
+                ManaRequirement = 36,
                 MonsterId = 9,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.8,
@@ -1667,7 +1667,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Lick Wounds",
-                ManaRequirement = 0.4,
+                ManaRequirement = 36,
                 MonsterId = 9,
                 Type = "Heal,Health,Self",
                 Power = 0.22,
@@ -1678,7 +1678,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Corruption",
-                ManaRequirement = 0.3,
+                ManaRequirement = 30,
                 MonsterId = 1,
                 Type = "Buff,hRegen,Target,Negative",
                 Power = 0.2,
@@ -1688,7 +1688,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Shadow Punch",
-                ManaRequirement = 0.22,
+                ManaRequirement = 22,
                 MonsterId = 1,
                 Type = "Damage,Physical,Self",
                 Power = 1.18,
@@ -1698,7 +1698,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Eye Of The Void",
-                ManaRequirement = 0.22,
+                ManaRequirement = 22,
                 MonsterId = 1,
                 Type = "Buff,Armor,Target,Negative",
                 Power = 0.4,
@@ -1708,7 +1708,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Ripping Hell-Fire",
-                ManaRequirement = 0.6,
+                ManaRequirement = 60,
                 MonsterId = 1,
                 Type = "Damage,Magical,Self",
                 Power = 1.4,
@@ -1719,7 +1719,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Overgrowth",
-                ManaRequirement = 0.2,
+                ManaRequirement = 18,
                 MonsterId = 4,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.38,
@@ -1731,7 +1731,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Calming Mind",
-                ManaRequirement = 0.12,
+                ManaRequirement = 11,
                 MonsterId = 4,
                 Type = "Buff,mRegen,Self,Positive",
                 Power = 0.25,
@@ -1741,7 +1741,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Raging Mind",
-                ManaRequirement = 0.4,
+                ManaRequirement = 38,
                 MonsterId = 4,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.22,
@@ -1753,7 +1753,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Overpowering Fist",
-                ManaRequirement = 0.3,
+                ManaRequirement = 30,
                 MonsterId = 4,
                 Type = "Damage,Physical,Self",
                 Power = 1.1,
@@ -1764,7 +1764,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Diving Claw",
-                ManaRequirement = 0.3,
+                ManaRequirement = 33,
                 MonsterId = 3,
                 Type = "Damage,Physical,Self",
                 Power = 1.12,
@@ -1774,7 +1774,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Petryfying Gaze",
-                ManaRequirement = 0.45,
+                ManaRequirement = 49,
                 MonsterId = 3,
                 Type = "Buff,hRegen,Target,Negative",
                 Power = 0.5,
@@ -1784,7 +1784,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Gust",
-                ManaRequirement = 0.3,
+                ManaRequirement = 33,
                 MonsterId = 3,
                 Type = "Buff,Attack,Target,Negative",
                 Power = 0.2,
@@ -1794,7 +1794,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Peck",
-                ManaRequirement = 0.2,
+                ManaRequirement = 22,
                 MonsterId = 3,
                 Type = "Damage,Physical,Self",
                 Power = 1.15,
@@ -1805,7 +1805,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Poison Spit",
-                ManaRequirement = 0.3,
+                ManaRequirement = 20,
                 MonsterId = 8,
                 Type = "Damage,Magical,Self",
                 Power = 1,
@@ -1815,7 +1815,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Reflecting Scales",
-                ManaRequirement = 0.26,
+                ManaRequirement = 14,
                 MonsterId = 8,
                 Type = "Damage,Physical,Target",
                 Power = 0.3,
@@ -1828,7 +1828,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Skin Change",
-                ManaRequirement = 0.3,
+                ManaRequirement = 20,
                 MonsterId = 8,
                 Type = "Buff,Res,Self,Positive",
                 Power = 0.6,
@@ -1840,7 +1840,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Scratch",
-                ManaRequirement = 0.15,
+                ManaRequirement = 9,
                 MonsterId = 8,
                 Type = "Damage,Physical,Self",
                 Power = 1.18,
@@ -1851,7 +1851,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Sacred Words",
-                ManaRequirement = 0.38,
+                ManaRequirement = 45,
                 MonsterId = 2,
                 Type = "Heal,Magical,Self",
                 Power = 1.58,
@@ -1860,7 +1860,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Illumination",
-                ManaRequirement = 0.33,
+                ManaRequirement = 40,
                 MonsterId = 2,
                 Type = "Buff,Magic,Target,Negative",
                 Power = 0.22,
@@ -1872,7 +1872,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Holy Smite",
-                ManaRequirement = 0.15,
+                ManaRequirement = 18,
                 MonsterId = 2,
                 Type = "Damage,Magical,Self",
                 Power = 1.04,
@@ -1882,7 +1882,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Judgement Day",
-                ManaRequirement = 0.5,
+                ManaRequirement = 60,
                 MonsterId = 2,
                 Type = "Damage,Magical,Self",
                 Power = 1.2,
@@ -1896,7 +1896,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Tombstone",
-                ManaRequirement = 0.15,
+                ManaRequirement = 10,
                 MonsterId = 6,
                 Type = "Buff,Res,Self,Positive",
                 Power = 1,
@@ -1908,7 +1908,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Wrath Of The Necropolis",
-                ManaRequirement = 0.4,
+                ManaRequirement = 28,
                 MonsterId = 6,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 0.9,
@@ -1919,7 +1919,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Suffocation",
-                ManaRequirement = 0.3,
+                ManaRequirement = 21,
                 MonsterId = 6,
                 Type = "Damage,Physical,Self",
                 Power = 1,
@@ -1933,7 +1933,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Horrifying Scream",
-                ManaRequirement = 0.3,
+                ManaRequirement = 21,
                 MonsterId = 6,
                 Type = "Buff,Attack,Target,Negative",
                 Power = 0.18,
@@ -1944,7 +1944,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Tidal Slash",
-                ManaRequirement = 0.2,
+                ManaRequirement = 16,
                 MonsterId = 5,
                 Type = "Damage,Physical,Self",
                 Power = 1.1,
@@ -1957,7 +1957,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Dive",
-                ManaRequirement = 0.35,
+                ManaRequirement = 28,
                 MonsterId = 5,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.2,
@@ -1969,7 +1969,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Hyper Speed",
-                ManaRequirement = 0.4,
+                ManaRequirement = 32,
                 MonsterId = 5,
                 Type = "Buff,mRegen,Self,Positve",
                 Power = 1,
@@ -1979,7 +1979,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Thunder",
-                ManaRequirement = 0.5,
+                ManaRequirement = 40,
                 MonsterId = 5,
                 Type = "Damage,Magical,Self",
                 Power = 1,
@@ -1993,7 +1993,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Infecting Bite",
-                ManaRequirement = 0.3,
+                ManaRequirement = 24,
                 MonsterId = 7,
                 Type = "Damage,Physical,Self",
                 Power = 0.8,
@@ -2006,7 +2006,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Feed",
-                ManaRequirement = 0.3,
+                ManaRequirement = 24,
                 MonsterId = 7,
                 Type = "Damage,Physical,Self",
                 Power = 1.1,
@@ -2019,7 +2019,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Mutation",
-                ManaRequirement = 0.5,
+                ManaRequirement = 38,
                 MonsterId = 7,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.3,
@@ -2031,7 +2031,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Decay",
-                ManaRequirement = 0.12,
+                ManaRequirement = 10,
                 MonsterId = 7,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.4,
@@ -2049,7 +2049,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Hasting Arrow",
-                ManaRequirement = 0.12,
+                ManaRequirement = 13,
                 FightingClassId = 8,
                 Type = "Damage,Physical,Self",
                 Power = 1.22,
@@ -2062,7 +2062,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Grass Hop",
-                ManaRequirement = 0.4,
+                ManaRequirement = 44,
                 FightingClassId = 8,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 1,
@@ -2072,7 +2072,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Poison Shot",
-                ManaRequirement = 0.23,
+                ManaRequirement = 25,
                 FightingClassId = 8,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 0.4,
@@ -2083,10 +2083,10 @@
             context.Spells.Add(new Spell
             {
                 Name = "Sharp Eye",
-                ManaRequirement = 0.5,
+                ManaRequirement = 40,
                 FightingClassId = 8,
                 Type = "Buff,Attack,Self,Positive",
-                Power = 0.3,
+                Power = 0.32,
                 BuffOrEffectTarget = "Self",
             });
 
@@ -2094,7 +2094,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Water Ball",
-                ManaRequirement = 0.2,
+                ManaRequirement = 30,
                 FightingClassId = 7,
                 Type = "Damage,Magical,Self",
                 Power = 0.7,
@@ -2107,7 +2107,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Fire Ball",
-                ManaRequirement = 0.25,
+                ManaRequirement = 37,
                 FightingClassId = 7,
                 Type = "Damage,Magical/MaxHP,Self/Target",
                 Power = 0.8,
@@ -2133,7 +2133,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "All-Out Blast!",
-                ManaRequirement = 0.7,
+                ManaRequirement = 110,
                 FightingClassId = 7,
                 Type = "Damage,Magical,Self",
                 Power = 2,
@@ -2147,7 +2147,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Nature's Touch",
-                ManaRequirement = 0.37,
+                ManaRequirement = 48,
                 FightingClassId = 6,
                 Type = "Heal,Magical,Self",
                 Power = 0.53,
@@ -2159,7 +2159,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Thorn Blast",
-                ManaRequirement = 0.25,
+                ManaRequirement = 32,
                 FightingClassId = 6,
                 Type = "Damage,Magical,Self",
                 Power = 0.75,
@@ -2185,7 +2185,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Pouring Rain",
-                ManaRequirement = 0.15,
+                ManaRequirement = 20,
                 FightingClassId = 6,
                 Type = "Buff,Mana,Self,Positive",
                 Power = 0.35,
@@ -2197,8 +2197,8 @@
             // Necroid
             context.Spells.Add(new Spell
             {
-                Name = "Shadow Melt",
-                ManaRequirement = 0.2,
+                Name = "Melting Shadow",
+                ManaRequirement = 28,
                 FightingClassId = 5,
                 Type = "Damage,CurrentMana/CurrentHP,Self/Target",
                 Power = 0.12,
@@ -2212,13 +2212,13 @@
             context.Spells.Add(new Spell
             {
                 Name = "Life Syphon",
-                ManaRequirement = 0.38,
+                ManaRequirement = 50,
                 FightingClassId = 5,
                 Type = "Damage,Magical/MaxHP,Self/Target",
-                Power = 0.58,
+                Power = 0.6,
                 SecondaryPower = 0.07,
                 AdditionalEffect = "Health,Positive",
-                EffectPower = 0.12,
+                EffectPower = 0.1,
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
@@ -2226,7 +2226,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Arcane Bane",
-                ManaRequirement = 0.2,
+                ManaRequirement = 30,
                 FightingClassId = 5,
                 Type = "Buff,Magic,Target,Negative",
                 Power = 0.2,
@@ -2236,12 +2236,12 @@
             context.Spells.Add(new Spell
             {
                 Name = "Mutual Darkness",
-                ManaRequirement = 0.08,
+                ManaRequirement = 14,
                 FightingClassId = 5,
                 Type = "Damage,MaxHP,Self",
                 Power = 0.15,
                 AdditionalEffect = "Health,Negative",
-                EffectPower = 0.06,
+                EffectPower = 0.07,
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
             });
@@ -2250,7 +2250,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Holy Strike",
-                ManaRequirement = 0.12,
+                ManaRequirement = 15,
                 FightingClassId = 4,
                 Type = "Damage,Physical,Self",
                 Power = 1,
@@ -2263,7 +2263,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Burning Light",
-                ManaRequirement = 0.2,
+                ManaRequirement = 24,
                 FightingClassId = 4,
                 Type = "Damage,Magical,Self",
                 Power = 1.2,
@@ -2273,7 +2273,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Vicious Spell-Guard",
-                ManaRequirement = 0.4,
+                ManaRequirement = 48,
                 FightingClassId = 4,
                 Type = "Buff,Res,Self,Positive",
                 Power = 0.8,
@@ -2283,7 +2283,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Divine Rune",
-                ManaRequirement = 0.3,
+                ManaRequirement = 40,
                 FightingClassId = 4,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.18,
@@ -2294,7 +2294,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Holy Light",
-                ManaRequirement = 0.3,
+                ManaRequirement = 52,
                 FightingClassId = 3,
                 Type = "Heal,Magical,Self",
                 Power = 1.22,
@@ -2315,7 +2315,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Staff Smash",
-                ManaRequirement = 0.17,
+                ManaRequirement = 30,
                 FightingClassId = 3,
                 Type = "Damage,Physical,Self",
                 Power = 1.2,
@@ -2328,7 +2328,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Blessing",
-                ManaRequirement = 0.3,
+                ManaRequirement = 56,
                 FightingClassId = 3,
                 Type = "Buff,Magic,Self,Positive",
                 Power = 0.2,
@@ -2341,7 +2341,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Stab",
-                ManaRequirement = 0.15,
+                ManaRequirement = 17,
                 FightingClassId = 2,
                 Type = "Damage,Physical,Self",
                 Power = 1.1,
@@ -2354,7 +2354,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Poison Dagger",
-                ManaRequirement = 0.3,
+                ManaRequirement = 35,
                 FightingClassId = 2,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 0.3,
@@ -2365,7 +2365,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Evasion",
-                ManaRequirement = 0.35,
+                ManaRequirement = 40,
                 FightingClassId = 2,
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.6,
@@ -2377,7 +2377,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Thievery",
-                ManaRequirement = 0.5,
+                ManaRequirement = 50,
                 FightingClassId = 2,
                 Type = "Buff,Gold,Self,Positive",
                 Power = 4,
@@ -2388,7 +2388,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Thunder Strike",
-                ManaRequirement = 0.4,
+                ManaRequirement = 46,
                 FightingClassId = 1,
                 Type = "Damage,Magical/Physical,Self",
                 Power = 1.2,
@@ -2402,7 +2402,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Earth Strike",
-                ManaRequirement = 0.4,
+                ManaRequirement = 46,
                 FightingClassId = 1,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 1.2,
@@ -2416,7 +2416,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Flame Strike",
-                ManaRequirement = 0.25,
+                ManaRequirement = 30,
                 FightingClassId = 1,
                 Type = "Damage,Physical/Magical,Self",
                 Power = 1.15,
@@ -2429,7 +2429,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Water Strike",
-                ManaRequirement = 0.2,
+                ManaRequirement = 23,
                 FightingClassId = 1,
                 Type = "Damage,Magical,Self",
                 Power = 1,
@@ -2443,7 +2443,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Head Smash",
-                ManaRequirement = 0.3,
+                ManaRequirement = 38,
                 FightingClassId = 9,
                 Type = "Damage,Physical,Self",
                 Power = 1.3,
@@ -2456,7 +2456,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Hyper Strength",
-                ManaRequirement = 0.3,
+                ManaRequirement = 40,
                 FightingClassId = 9,
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.2,
@@ -2466,7 +2466,7 @@
             context.Spells.Add(new Spell
             {
                 Name = "Raging Blow",
-                ManaRequirement = 0.12,
+                ManaRequirement = 14,
                 FightingClassId = 9,
                 Type = "Damage,Physical,Self",
                 Power = 1,
@@ -2479,10 +2479,10 @@
             context.Spells.Add(new Spell
             {
                 Name = "Disarm",
-                ManaRequirement = 0.5,
+                ManaRequirement = 55,
                 FightingClassId = 9,
                 Type = "Buff,Attack,Target,Negative",
-                Power = 0.2,
+                Power = 0.24,
                 BuffOrEffectTarget = "Target",
             });
 

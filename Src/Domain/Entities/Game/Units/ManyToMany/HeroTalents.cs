@@ -9,5 +9,7 @@
         public int TalentId { get; set; }
         
         public Talent Talent { get; set; }
+
+        public string Condition { get; set; }
     }
 }

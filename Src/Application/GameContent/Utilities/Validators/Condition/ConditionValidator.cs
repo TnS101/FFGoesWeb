@@ -10,12 +10,17 @@
         {
         }
 
-        public void Process(Spell spell, IUnit caster, IUnit target, string cardCondition, bool preview)
+        public void Process(Spell spell, IUnit caster, IUnit target, string cardCondition, string talentCondition, bool preview)
         {
             // Enemy,CurrentHP,>,10%,Spell,Power,+,10%
             if (cardCondition != null)
             {
                 spell.Condition += $"/{cardCondition}";
+            }
+
+            if (talentCondition != null)
+            {
+                spell.Condition += $"/{talentCondition}";
             }
 
             var conditions = new List<string>();

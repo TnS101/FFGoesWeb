@@ -15,7 +15,7 @@
 
         public FightingClass FightingClass { get; set; }
 
-        public int SpellId { get; set; }
+        public int? SpellId { get; set; }
 
         public Spell Spell { get; set; }
             

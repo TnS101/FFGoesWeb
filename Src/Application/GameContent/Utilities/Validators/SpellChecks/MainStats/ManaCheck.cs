@@ -6,9 +6,11 @@
     {
         public bool SpellManaCheck(IUnit caster, double manaRequirment)
         {
-            if (caster.CurrentMana >= manaRequirment)
+            var scaledManaRequirement = manaRequirment + ((caster.Level - 1) * 15);
+
+            if (caster.CurrentMana >= scaledManaRequirement)
             {
-                caster.CurrentMana -= manaRequirment;
+                caster.CurrentMana -= scaledManaRequirement;
                 return true;
             }
             else
@@ -19,7 +21,7 @@
 
         public bool EffectManaCheck(IUnit caster, double manaRequirment)
         {
-            if (caster.CurrentMana >= manaRequirment)
+            if (caster.CurrentMana >= manaRequirment + ((caster.Level - 1) * 15))
             {
                 return true;
             }

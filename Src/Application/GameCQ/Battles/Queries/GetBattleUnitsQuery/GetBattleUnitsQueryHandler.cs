@@ -29,7 +29,7 @@
 
             foreach (var spell in dbSpells)
             {
-                conditionValidator.Process(spell, dbHero, request.Enemy, null, true);
+                conditionValidator.Process(spell, dbHero, request.Enemy, null, null, true);
             }
 
             hero.Spells = await dbSpells.ProjectTo<SpellMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync();

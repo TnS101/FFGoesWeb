@@ -27,12 +27,19 @@
         {
             var spell = new Spell();
             var cardCondition = string.Empty;
+            var talentCondition = string.Empty;
 
             if (caster.Type == "Player" && caster.SilenceDuration == 0)
             {
                 var dbSpell = await context.Spells.FindAsync(spellId);
                 var hero = (Hero)caster;
                 var card = context.CardsEquipment.Where(c => c.EquipmentId == hero.Id).FirstOrDefault(c => c.Card.SpellId == dbSpell.Id && !c.Card.IsUsed && c.Card.IsActivated).Card;
+                var talent = context.HeroesTalents.FirstOrDefault(ht => ht.HeroId == hero.Id && ht.Talent.SpellId == dbSpell.Id).Talent;
+
+                if (talent != null)
+                {
+                    talentCondition = talent.Condition;
+                }
 
                 if (card != null)
                 {
@@ -74,10 +81,10 @@
                 }
             }
 
-            this.ProcessSpell(spell, caster, target, cardCondition);
+            this.ProcessSpell(spell, caster, target, cardCondition, talentCondition);
         }
 
-        private void ProcessSpell(Spell spell, IUnit caster, IUnit target, string cardCondition)
+        private void ProcessSpell(Spell spell, IUnit caster, IUnit target, string cardCondition, string talentCondition)
         {
             // Spell
             string[] spellInfo = spell.Type.Split(',');
@@ -90,7 +97,7 @@
 
             if (spell.Condition != null)
             {
-                new ConditionValidator().Process(spell, caster, target, cardCondition, false);
+                new ConditionValidator().Process(spell, caster, target, cardCondition, talentCondition, false);
             }
 
             // Effect
