@@ -8,7 +8,6 @@
 
     public class CreateHeroCommand : RegexFilter, IRequest<string>
     {
-
         public string UserId { get; set; }
 
         [Required(ErrorMessage = GConst.RequiredMessage)]

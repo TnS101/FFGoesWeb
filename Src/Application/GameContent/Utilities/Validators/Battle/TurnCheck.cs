@@ -4,11 +4,12 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.BattleOptions;
+    using AutoMapper;
     using Domain.Contracts.Units;
 
     public class TurnCheck
     {
-        public async Task<bool> Check(IUnit player, IUnit enemy, bool yourTurn, IFFDbContext context)
+        public async Task<bool> Check(IUnit player, IUnit enemy, bool yourTurn, IFFDbContext context, IMapper mapper)
         {
             var regenerationOption = new RegenerateOption();
 
@@ -26,7 +27,7 @@
 
                 if (enemyActionNumber == 0 && enemy.CurrentMana >= 0.15 * enemy.CurrentMana && enemy.SilenceDuration == 0)
                 {
-                    await new SpellCastOption().SpellCast(enemy, player, 0, context);
+                    await new SpellCastOption().SpellCast(enemy, player, 0, context, mapper);
                 }
                 else if (enemyActionNumber == 1 && enemy.BlindDuration == 0)
                 {

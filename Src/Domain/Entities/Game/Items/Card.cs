@@ -50,6 +50,10 @@
 
         public string Description { get; set; }
 
+        public bool IsUsed { get; set; }
+
+        public bool IsActivated { get; set; }
+
         public ICollection<CardInventory> CardInventories { get; set; }
 
         public ICollection<CardEquipment> CardEquipment { get; set; }

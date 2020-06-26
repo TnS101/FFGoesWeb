@@ -21,8 +21,7 @@
                 .IsRequired();
 
             builder.Property(w => w.Slot)
-                .HasDefaultValue("Weapon")
-                .IsRequired();
+                .HasDefaultValue("Weapon");
 
             builder.Property(w => w.ImagePath)
                 .HasMaxLength(200)

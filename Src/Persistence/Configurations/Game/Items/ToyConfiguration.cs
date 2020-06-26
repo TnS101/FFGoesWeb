@@ -17,8 +17,7 @@
                 .IsRequired();
 
             builder.Property(t => t.Slot)
-                .HasDefaultValue("Toy")
-                .IsRequired();
+                .HasDefaultValue("Toy");
         }
     }
 }

@@ -17,15 +17,14 @@
                 .IsRequired();
 
             builder.Property(c => c.Slot)
+                .HasDefaultValue("Card");
+
+            builder.Property(c => c.ClassType)
                 .HasMaxLength(30)
                 .IsRequired();
 
-            builder.Property(c => c.ClassType)
-                .HasDefaultValue("Any")
-                .IsRequired();
-
-            builder.Property(c => c.Effect)
-                .HasMaxLength(50)
+            builder.Property(c => c.Condition)
+                .HasMaxLength(150)
                 .IsRequired();
 
             builder.Property(c => c.ImagePath)
@@ -33,8 +32,11 @@
                 .IsRequired();
 
             builder.Property(c => c.MaterialType)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsRequired();
+
+            builder.Ignore(c => c.IsActivated);
+            builder.Ignore(c => c.IsUsed);
         }
     }
 }

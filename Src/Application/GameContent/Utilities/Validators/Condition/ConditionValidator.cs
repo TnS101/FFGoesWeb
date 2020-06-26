@@ -1,38 +1,68 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Condition
 {
+    using System.Collections.Generic;
     using Domain.Contracts.Units;
     using Domain.Entities.Game.Units;
 
     public class ConditionValidator
     {
-        public void Process(Spell spell, IUnit caster, IUnit target)
+        public ConditionValidator()
+        {
+        }
+
+        public void Process(Spell spell, IUnit caster, IUnit target, string cardCondition, bool preview)
         {
             // Enemy,CurrentHP,>,10%,Spell,Power,+,10%
-            var info = spell.Condition.Split(',');
-            var conditionTarget = info[0];
-            var conditionValueType = info[1];
-            var comparator = info[2];
-            var conditionValue = double.Parse(info[3]);
-
-            var completionTarget = info[4];
-            var completionValueType = info[5];
-            var completionOperator = info[6];
-            var completionValue = double.Parse(info[7]);
-
-            if (conditionTarget == "Enemy" && !this.ConditionIsSatisfied(target, conditionValueType, conditionValue, comparator))
+            if (cardCondition != null)
             {
-                return;
-            }
-            else if (conditionTarget == "Self" && !this.ConditionIsSatisfied(caster, conditionValueType, conditionValue, comparator))
-            {
-                return;
+                spell.Condition += $"/{cardCondition}";
             }
 
-            switch (completionTarget)
+            var conditions = new List<string>();
+
+            if (spell.Condition.Contains("/"))
             {
-                case "Spell": this.ConditionCompletion(completionValueType, completionValue, completionOperator, null, spell); break;
-                case "Enemy": this.ConditionCompletion(completionValueType, completionValue, completionOperator, target, null); break;
-                case "Self": this.ConditionCompletion(completionValueType, completionValue, completionOperator, caster, null); break;
+                conditions.AddRange(spell.Condition.Split('/'));
+            }
+            else
+            {
+                conditions.Add(spell.Condition);
+            }
+
+            foreach (var condition in conditions)
+            {
+                var info = condition.Split(',');
+                var conditionTarget = info[0];
+                var conditionValueType = info[1];
+                var comparator = info[2];
+                var conditionValue = double.Parse(info[3]) / 100;
+
+                var completionTarget = info[4];
+                var completionValueType = info[5];
+                var completionOperator = info[6];
+                var completionValue = double.Parse(info[7]) / 100;
+
+                if (conditionTarget == "Enemy" && !this.ConditionIsSatisfied(target, conditionValueType, conditionValue, comparator))
+                {
+                    return;
+                }
+                else if (conditionTarget == "Self" && !this.ConditionIsSatisfied(caster, conditionValueType, conditionValue, comparator))
+                {
+                    return;
+                }
+
+                if (preview == true)
+                {
+                    spell.SatisfiesCondition = true;
+                    return;
+                }
+
+                switch (completionTarget)
+                {
+                    case "Spell": this.ConditionCompletion(completionValueType, completionValue, completionOperator, null, spell); break;
+                    case "Enemy": this.ConditionCompletion(completionValueType, completionValue, completionOperator, target, null); break;
+                    case "Self": this.ConditionCompletion(completionValueType, completionValue, completionOperator, caster, null); break;
+                }
             }
         }
 

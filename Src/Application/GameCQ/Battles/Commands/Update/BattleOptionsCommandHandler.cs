@@ -8,7 +8,6 @@
     using Application.GameContent.Utilities.BattleOptions;
     using Application.GameContent.Utilities.Validators.Battle;
     using AutoMapper;
-    using Domain.Contracts.Units;
     using global::Common;
     using MediatR;
 
@@ -56,11 +55,11 @@
                     }
                 }
 
-                request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);
+                request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context, this.Mapper);
 
                 if (!request.YourTurn)
                 {
-                    request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context);
+                    request.YourTurn = await this.turnCheck.Check(hero, request.Enemy, request.YourTurn, this.Context, this.Mapper);
                 }
 
                 await this.Context.SaveChangesAsync(cancellationToken);

@@ -17,8 +17,7 @@
                 .IsRequired();
 
             builder.Property(r => r.Slot)
-                .HasMaxLength(30)
-                .IsRequired();
+                .HasDefaultValue("Relic");
 
             builder.Property(r => r.ClassType)
                 .HasDefaultValue("Any")

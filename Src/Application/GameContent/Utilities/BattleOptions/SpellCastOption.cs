@@ -26,10 +26,20 @@
         public async Task SpellCast(IUnit caster, IUnit target, int spellId, IFFDbContext context, IMapper mapper)
         {
             var spell = new Spell();
+            var cardCondition = string.Empty;
 
             if (caster.Type == "Player" && caster.SilenceDuration == 0)
             {
                 var dbSpell = await context.Spells.FindAsync(spellId);
+                var hero = (Hero)caster;
+                var card = context.CardsEquipment.Where(c => c.EquipmentId == hero.Id).FirstOrDefault(c => c.Card.SpellId == dbSpell.Id && !c.Card.IsUsed && c.Card.IsActivated).Card;
+
+                if (card != null)
+                {
+                    cardCondition = card.Condition;
+                    card.IsUsed = true;
+                    card.IsActivated = false;
+                }
 
                 spell = mapper.Map<Spell>(dbSpell);
 
@@ -64,10 +74,10 @@
                 }
             }
 
-            this.ProcessSpell(spell, caster, target);
+            this.ProcessSpell(spell, caster, target, cardCondition);
         }
 
-        private void ProcessSpell(Spell spell, IUnit caster, IUnit target)
+        private void ProcessSpell(Spell spell, IUnit caster, IUnit target, string cardCondition)
         {
             // Spell
             string[] spellInfo = spell.Type.Split(',');
@@ -80,7 +90,7 @@
 
             if (spell.Condition != null)
             {
-                new ConditionValidator().Process(spell, caster, target);
+                new ConditionValidator().Process(spell, caster, target, cardCondition, false);
             }
 
             // Effect

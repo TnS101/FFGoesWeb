@@ -5,6 +5,7 @@
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
+    using Domain.Entities.Game.Units.ManyToMany;
     using Domain.Entities.Game.Units.OneToOne;
     using Domain.Entities.Social;
     using global::Domain.Entities.Common;
@@ -119,6 +120,10 @@
         public DbSet<Toy> Toys { get; set; }
 
         public DbSet<ToyInventory> ToyInventories { get; set; }
+
+        public DbSet<Talent> Talents { get; set; }
+
+        public DbSet<HeroTalents> HeroesTalents { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

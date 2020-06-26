@@ -23,6 +23,8 @@
 
             builder.Property(s => s.AdditionalEffect)
                 .HasMaxLength(50);
+
+            builder.Ignore(s => s.SatisfiesCondition);
         }
     }
 }

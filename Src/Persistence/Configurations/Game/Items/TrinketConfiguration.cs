@@ -17,12 +17,10 @@
                 .IsRequired();
 
             builder.Property(t => t.Slot)
-                .HasDefaultValue("Trinket")
-                .IsRequired();
+                .HasDefaultValue("Trinket");
 
             builder.Property(t => t.ClassType)
-                .HasDefaultValue("Any")
-                .IsRequired();
+                .HasDefaultValue("Any");
 
             builder.Property(t => t.Effect)
                 .HasMaxLength(50)

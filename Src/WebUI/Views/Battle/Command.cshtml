@@ -40,7 +40,7 @@
                         <option value="Spell">Spell</option>
                     </select>
                     <div class="item-padding fade-in" hidden id="spells">
-                        <select name="spellId">
+                        <select name="spellId" id="spellId">
                             @foreach (var spell in Model.Hero.Spells)
                             {
                                 <option value="@spell.Id">@spell.Name</option>
@@ -48,7 +48,7 @@
                         </select>
                     </div>
                     <div class="item-padding" id="button">
-                        <input type="submit" class="main-button" name="button" id="action" value="Action" />
+                        <input type="submit" class="main-button" name="button" id="action" value="Action"/>
                     </div>
                 </form>
                 <div class="item-padding">
@@ -71,6 +71,12 @@
                         if (data.status == 200) {
                             let hero = data.responseJSON.battleUnits.hero;
                             let enemy = data.responseJSON.battleUnits.enemy;
+
+                            $hero.spells.each(spell, function () {
+                                if (spell.satsifiesCondition == true) {
+                                    $(`#spellId [value='${spell.id}']`).css('background-color','red');
+                                }
+                            });
 
                             function update(div, max) {
                                 var msecsPerUpdate = 1000 / 60;

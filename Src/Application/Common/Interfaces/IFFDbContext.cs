@@ -6,6 +6,7 @@
     using Domain.Entities.Game.Items.ManyToMany.Equipments;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
     using Domain.Entities.Game.Units;
+    using Domain.Entities.Game.Units.ManyToMany;
     using Domain.Entities.Game.Units.OneToOne;
     using global::Domain.Entities.Common;
     using global::Domain.Entities.Moderation;
@@ -112,6 +113,10 @@
         DbSet<Toy> Toys { get; set; }
 
         DbSet<ToyInventory> ToyInventories { get; set; }
+
+        DbSet<Talent> Talents { get; set; }
+
+        DbSet<HeroTalents> HeroesTalents { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

@@ -9,5 +9,7 @@
         public string ClassType { get; set; }
 
         public double ManaRequirment { get; set; }
+
+        public bool SatisfiesCondition { get; set; }
     }
 }
