@@ -65,6 +65,8 @@
                 await this.Context.SaveChangesAsync(cancellationToken);
             }
 
+            request.TurnCount++;
+
             return GConst.BattleCommand;
         }
     }

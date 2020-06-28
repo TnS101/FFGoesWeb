@@ -17,5 +17,7 @@
         public int SpellId { get; set; }
 
         public string ZoneName { get; set; }
+
+        public int TurnCount { get; set; }
     }
 }

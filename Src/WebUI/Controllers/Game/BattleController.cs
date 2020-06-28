@@ -19,19 +19,18 @@
         private static Monster monster;
         private static long heroId;
         private static string zoneName;
+        private static int turnCount;
 
         [HttpGet]
         public async Task<IActionResult> Battle([FromQuery]string zone)
         {
-            zoneName = zone;
-
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
 
             monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zoneName });
-
             heroId = playerPVM.Id;
-
             yourTurn = true;
+            zoneName = zone;
+            turnCount = 0;
 
             return this.View(GConst.Battle, monster.Name);
         }
@@ -53,7 +52,7 @@
         public async Task<IActionResult> Command([FromForm]string command, [FromForm]int spellId)
         {
             await this.Mediator.Send(new BattleOptionsCommand
-            { Command = command, HeroId = heroId, Enemy = monster, YourTurn = yourTurn, SpellId = spellId, ZoneName = zoneName });
+            { Command = command, HeroId = heroId, Enemy = monster, YourTurn = yourTurn, SpellId = spellId, ZoneName = zoneName, TurnCount = turnCount });
 
             var battleUnits = await this.Mediator.Send(new GetBattleUnitsQuery { HeroId = heroId, Enemy = monster });
 

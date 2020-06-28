@@ -1639,6 +1639,7 @@
                 Type = "Buff,Attack,Self,Positive",
                 Power = 0.22,
                 BuffOrEffectTarget = "Self",
+                Description = "A DeBuff Spell that decreases the Target's Attack Power by 22%. Base Mana Cost: 18%.",
             });
 
             context.Spells.Add(new Spell
@@ -1652,6 +1653,7 @@
                 EffectPower = 0.2,
                 BuffOrEffectTarget = "Target",
                 ResistanceAffect = 1,
+                Description = "A Spell that deals 120% Physical Damage and decreases the Target's Health Regen by 20%. Base Mana Cost: 18%.",
             });
 
             context.Spells.Add(new Spell
@@ -1662,6 +1664,7 @@
                 Type = "Buff,Armor,Self,Positive",
                 Power = 0.8,
                 BuffOrEffectTarget = "Self",
+                Description = "A Buff Spell that increases the Caster's Armor Value by 80%. Base Mana Cost: 40%.",
             });
 
             context.Spells.Add(new Spell
@@ -1672,6 +1675,7 @@
                 Type = "Heal,Health,Self",
                 Power = 0.22,
                 BuffOrEffectTarget = "Self",
+                Description = "A Healing Spell that recovers 22% of the Caster's Maximum Health. Base Mana Cost: 36%.",
             });
 
             // Demon
@@ -1683,6 +1687,7 @@
                 Type = "Buff,hRegen,Target,Negative",
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",
+                Description = "A DeBuff Spell that decreases the Target's Health Regen by 20%. Base Mana Cost: 30%.",
             });
 
             context.Spells.Add(new Spell
@@ -1693,6 +1698,7 @@
                 Type = "Damage,Physical,Self",
                 Power = 1.18,
                 ResistanceAffect = 0.9,
+                Description = "A Spell that deals 118% Physical Damage and Ignores 10% of the Target's Armor. Base Mana Cost: 22%.",
             });
 
             context.Spells.Add(new Spell
@@ -1703,6 +1709,7 @@
                 Type = "Buff,Armor,Target,Negative",
                 Power = 0.4,
                 BuffOrEffectTarget = "Target",
+                Description = "A DeBuff Spell that reduces the Target's Armor Value by 40%. Base Mana Cost: 22%.",
             });
 
             context.Spells.Add(new Spell
@@ -1713,6 +1720,7 @@
                 Type = "Damage,Magical,Self",
                 Power = 1.4,
                 ResistanceAffect = 0.8,
+                Description = "A Spell that deals 140% Magical Damage and Ignores 20% of the Target's Resistance Value. Base Mana Cost: 60%.",
             });
 
             // Giant
@@ -1726,6 +1734,7 @@
                 AdditionalEffect = "hRegen,Negative",
                 EffectPower = 0.25,
                 BuffOrEffectTarget = "Self",
+                Description = "A Buff Spell that increases the Caster's Armor by 38% and decreases his Health Regen by 25%. Base Mana Cost: 20%.",
             });
 
             context.Spells.Add(new Spell
@@ -1736,6 +1745,7 @@
                 Type = "Buff,mRegen,Self,Positive",
                 Power = 0.25,
                 BuffOrEffectTarget = "Self",
+                Description = "A Buff Spell that increases the Caster's Mana Regen by 25%. Base Mana Cost: 12%.",
             });
 
             context.Spells.Add(new Spell
@@ -1744,10 +1754,11 @@
                 ManaRequirement = 38,
                 MonsterId = 4,
                 Type = "Buff,Attack,Self,Positive",
-                Power = 0.22,
+                Power = 0.21,
                 AdditionalEffect = "Health,Negative",
                 EffectPower = 0.15,
                 BuffOrEffectTarget = "Self",
+                Description = "A Buff Spell that increases the Caster's Attack Power by 21% and decreases his Health by 15%. Base Mana Cost: 40%.",
             });
 
             context.Spells.Add(new Spell
@@ -1758,6 +1769,7 @@
                 Type = "Damage,Physical,Self",
                 Power = 1.1,
                 ResistanceAffect = 0.7,
+                Description = "A Spell that deals 110% Physical Damage and Ignores 30% of the Target's Armor Value. Base Mana Cost: 30%.",
             });
 
             // Gryphon
@@ -1769,6 +1781,7 @@
                 Type = "Damage,Physical,Self",
                 Power = 1.12,
                 ResistanceAffect = 0.6,
+                Description = "A Spell that deals 112% Physical Damage and Ignores 40% of the Target's Armor Value. Base Mana Cost: 30%.",
             });
 
             context.Spells.Add(new Spell
@@ -1779,6 +1792,7 @@
                 Type = "Buff,hRegen,Target,Negative",
                 Power = 0.5,
                 BuffOrEffectTarget = "Target",
+                Description = "A DeBuff Spell that decreases the Target's Health Regen by 50%. Base Mana Cost: 45%.",
             });
 
             context.Spells.Add(new Spell
@@ -1789,6 +1803,7 @@
                 Type = "Buff,Attack,Target,Negative",
                 Power = 0.2,
                 BuffOrEffectTarget = "Target",
+                Description = "A DeBuff Spell that decreases the Target's Attack by 20%. Base Mana Cost: 30%.",
             });
 
             context.Spells.Add(new Spell
@@ -1799,6 +1814,7 @@
                 Type = "Damage,Physical,Self",
                 Power = 1.15,
                 ResistanceAffect = 1,
+                Description = "A Spell that deals 115% Physical Damage. Base Mana Cost: 20%.",
             });
 
             // Reptile
@@ -1810,6 +1826,7 @@
                 Type = "Damage,Magical,Self",
                 Power = 1,
                 ResistanceAffect = 0.5,
+                Description = "A Spell that deals 100% Magical Damage and Ignores the Target's Resistance Value by 50%. Base Mana Cost: 30%.",
             });
 
             context.Spells.Add(new Spell
@@ -1818,11 +1835,12 @@
                 ManaRequirement = 14,
                 MonsterId = 8,
                 Type = "Damage,Physical,Target",
-                Power = 0.3,
+                Power = 0.35,
                 AdditionalEffect = "Armor,Positive",
-                EffectPower = 0.3,
+                EffectPower = 0.35,
                 BuffOrEffectTarget = "Self",
                 ResistanceAffect = 1,
+                Description = "A Spell that deals 35% Physical Damage and increases the Caster's Armor Value by 35%. Base Mana Cost: 26%.",
             });
 
             context.Spells.Add(new Spell
@@ -1831,20 +1849,22 @@
                 ManaRequirement = 20,
                 MonsterId = 8,
                 Type = "Buff,Res,Self,Positive",
-                Power = 0.6,
+                Power = 0.7,
                 AdditionalEffect = "Armor,Negative",
-                EffectPower = 0.25,
+                EffectPower = 0.20,
                 BuffOrEffectTarget = "Self",
+                Description = "A Buff Spell that increases the Caster's Resistance Value by 70% and decreases his Armor Value by 20%. Base Mana Cost: 30%.",
             });
 
             context.Spells.Add(new Spell
             {
                 Name = "Scratch",
-                ManaRequirement = 9,
+                ManaRequirement = 8,
                 MonsterId = 8,
                 Type = "Damage,Physical,Self",
-                Power = 1.18,
+                Power = 1.17,
                 ResistanceAffect = 1,
+                Description = "A Spell that deals 117% Physical Damage. Base Mana Cost: 14%.",
             });
 
             // Saint
