@@ -6,6 +6,7 @@
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class GetAllFriendsQueryHandler : BaseHandler, IRequestHandler<GetAllFriendsQuery, UserListViewModel>
     {
@@ -24,7 +25,7 @@
                 UserName = f.User.UserName,
                 ForumPoints = f.User.ForumPoints,
                 MasteryPoints = f.User.MasteryPoints,
-            });
+            }).AsNoTracking();
 
             return new UserListViewModel { Users = friends };
         }

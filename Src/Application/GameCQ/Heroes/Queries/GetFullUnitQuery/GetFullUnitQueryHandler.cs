@@ -35,7 +35,7 @@
 
             var mappedHero = this.Mapper.Map<UnitFullViewModel>(hero);
 
-            mappedHero.Spells = await this.Context.Spells.Where(s => s.FightingClassId == hero.FightingClassId).ProjectTo<SpellMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync();
+            mappedHero.Spells = await this.Context.Spells.Where(s => s.FightingClassId == hero.FightingClassId).AsNoTracking().ProjectTo<SpellMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync();
 
             return mappedHero;
         }

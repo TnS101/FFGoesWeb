@@ -19,12 +19,10 @@
         {
             var comment = await this.Context.Comments.FindAsync(request.CommentId);
 
-            if (string.IsNullOrWhiteSpace(request.Content))
+            if (!string.IsNullOrWhiteSpace(request.Content))
             {
-                request.Content = comment.Content;
+                comment.Content = request.Content;
             }
-
-            comment.Content = request.Content;
 
             comment.EditedOn = DateTime.UtcNow;
 

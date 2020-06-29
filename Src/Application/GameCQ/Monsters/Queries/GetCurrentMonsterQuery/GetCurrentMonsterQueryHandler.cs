@@ -16,9 +16,7 @@
 
         public async Task<MonsterFullViewModel> Handle(GetCurrentMonsterQuery request, CancellationToken cancellationToken)
         {
-            var monster = await this.Context.Monsters.FindAsync(request.MonsterId);
-
-            return this.Mapper.Map<MonsterFullViewModel>(monster);
+            return this.Mapper.Map<MonsterFullViewModel>(await this.Context.Monsters.FindAsync(request.MonsterId));
         }
     }
 }

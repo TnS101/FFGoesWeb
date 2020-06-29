@@ -9,6 +9,7 @@
     using Domain.Entities.Common;
     using Domain.Entities.Social;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class UserPanelQueryHandler : BaseHandler, IRequestHandler<UserPanelQuery, UserPanelViewModel>
     {
@@ -21,15 +22,15 @@
         {
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
-            var units = this.Context.Heroes.Where(u => u.UserId == user.Id);
+            var units = this.Context.Heroes.Where(u => u.UserId == user.Id).AsNoTracking();
 
-            var topics = this.Context.Topics.Where(t => t.UserId == user.Id);
+            var topics = this.Context.Topics.Where(t => t.UserId == user.Id).AsNoTracking();
 
-            var feedbacks = this.Context.Feedbacks.Where(f => f.UserId == user.Id);
+            var feedbacks = this.Context.Feedbacks.Where(f => f.UserId == user.Id).AsNoTracking();
 
-            var friends = this.Context.Friends.Where(f => f.UserId == user.Id);
+            var friends = this.Context.Friends.Where(f => f.UserId == user.Id).AsNoTracking();
 
-            var statuses = this.Context.Statuses;
+            var statuses = this.Context.Statuses.AsNoTracking();
 
             Status status = null;
 

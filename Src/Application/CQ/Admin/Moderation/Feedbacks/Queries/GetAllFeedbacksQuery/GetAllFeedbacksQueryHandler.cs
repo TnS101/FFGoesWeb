@@ -22,7 +22,7 @@
         {
             return new FeedbacksListViewModel
             {
-                Feedbacks = await this.Context.Feedbacks.Where(f => !f.IsAccepted).ProjectTo<FeedbackFullViewModel>(this.Mapper.ConfigurationProvider)
+                Feedbacks = await this.Context.Feedbacks.Where(f => !f.IsAccepted).AsNoTracking().ProjectTo<FeedbackFullViewModel>(this.Mapper.ConfigurationProvider)
                  .OrderBy(t => t.SentOn)
                  .ToArrayAsync(),
             };

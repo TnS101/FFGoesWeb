@@ -1,12 +1,12 @@
 ﻿namespace Application.GameCQ.Heroes.Queries.GetPartialUnitQuery
 {
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
     using AutoMapper;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class GetPartialUnitQueryHandler : MapperHandler, IRequestHandler<GetPartialUnitQuery, UnitPartialViewModel>
     {
@@ -19,7 +19,7 @@
         {
             var user = await this.Context.AppUsers.FindAsync(request.UserId);
 
-            var unit = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var unit = await this.Context.Heroes.FirstOrDefaultAsync(u => u.UserId == user.Id && u.IsSelected);
 
             return this.Mapper.Map<UnitPartialViewModel>(unit);
         }

@@ -20,7 +20,7 @@
         {
             return new TicketsListViewModel
             {
-                Tickets = await this.Context.Tickets.ProjectTo<TicketPartialViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
+                Tickets = await this.Context.Tickets.AsNoTracking().ProjectTo<TicketPartialViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

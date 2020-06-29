@@ -30,7 +30,7 @@
 
             var heroes = this.Context.Heroes.Where(h => h.UserId == user.Id);
 
-            this.EnergyManagement(heroes.ToList());
+            this.EnergyManagement(heroes);
 
             foreach (var hero in heroes)
             {
@@ -46,7 +46,7 @@
             };
         }
 
-        private void EnergyManagement(List<Hero> heroes)
+        private void EnergyManagement(IQueryable<Hero> heroes)
         {
             foreach (var hero in heroes)
             {

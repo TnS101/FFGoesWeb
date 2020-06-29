@@ -24,7 +24,7 @@
             var dbHero = await this.Context.Heroes.FindAsync(request.HeroId);
             var hero = this.Mapper.Map<BattleUnitViewModel>(dbHero);
 
-            var dbSpells = this.Context.Spells.Where(s => s.FightingClassId == dbHero.FightingClassId);
+            var dbSpells = this.Context.Spells.Where(s => s.FightingClassId == dbHero.FightingClassId).AsNoTracking();
             var conditionValidator = new ConditionValidator();
 
             foreach (var spell in dbSpells)

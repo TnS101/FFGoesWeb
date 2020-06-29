@@ -7,9 +7,7 @@
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
     public class GetPersonalFriendRequestsQueryHandler : MapperHandler, IRequestHandler<GetPersonalFriendRequestsQuery, FriendRequestListViewModel>
@@ -25,7 +23,7 @@
 
             return new FriendRequestListViewModel
             {
-                FriendRequests = await this.Context.FriendRequests.Where(f => f.UserId == reciever.Id).ProjectTo<FriendRequestFullViewModel>(this.Mapper.ConfigurationProvider)
+                FriendRequests = await this.Context.FriendRequests.Where(f => f.UserId == reciever.Id).AsNoTracking().ProjectTo<FriendRequestFullViewModel>(this.Mapper.ConfigurationProvider)
                 .ToArrayAsync(),
             };
         }

@@ -23,7 +23,7 @@
 
             return new FeedbackListViewModel
             {
-                Feedbacks = await this.Context.Feedbacks.Where(f => f.UserId == user.Id).ProjectTo<FeedbackFulllViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
+                Feedbacks = await this.Context.Feedbacks.Where(f => f.UserId == user.Id).AsNoTracking().ProjectTo<FeedbackFulllViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

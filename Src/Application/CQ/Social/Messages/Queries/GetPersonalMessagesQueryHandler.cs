@@ -7,9 +7,7 @@
     using Application.Common.Interfaces;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Domain.Entities.Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 
     public class GetPersonalMessagesQueryHandler : MapperHandler, IRequestHandler<GetPersonalMessagesQuery, MessageListViewModel>
@@ -27,8 +25,8 @@
 
             return new MessageListViewModel
             {
-                Messages = await this.Context.Messages.Where(m => m.UserId == reciever.Id && m.UserId == sender.Id)
-                .ProjectTo<MessageFullViewModel>(this.Mapper.ConfigurationProvider).OrderByDescending(m => m.SentOn).ToArrayAsync(),
+                Messages = await this.Context.Messages.Where(m => m.UserId == reciever.Id && m.UserId == sender.Id).OrderByDescending(m => m.SentOn)
+                .AsNoTracking().ProjectTo<MessageFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

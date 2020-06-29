@@ -21,7 +21,7 @@
         {
             return new SpellListViewModel
             {
-                Spells = await this.Context.Spells.Where(s => s.FightingClassId == request.FightingClassId).ProjectTo<SpellMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
+                Spells = await this.Context.Spells.Where(s => s.FightingClassId == request.FightingClassId).AsNoTracking().ProjectTo<SpellMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

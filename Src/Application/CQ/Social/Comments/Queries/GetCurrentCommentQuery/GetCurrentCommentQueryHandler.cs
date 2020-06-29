@@ -16,9 +16,7 @@
 
         public async Task<CommentMinViewModel> Handle(GetCurrentCommentQuery request, CancellationToken cancellationToken)
         {
-            var comment = await this.Context.Comments.FindAsync(request.CommentId);
-
-            return this.Mapper.Map<CommentMinViewModel>(comment);
+            return this.Mapper.Map<CommentMinViewModel>(await this.Context.Comments.FindAsync(request.CommentId));
         }
     }
 }

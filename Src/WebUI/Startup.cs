@@ -8,12 +8,12 @@
     using Domain.Entities.Common;
     using Domain.Models;
     using MediatR;
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
@@ -45,8 +45,8 @@
             var registerHandlers = new RegisterHandlers(services);
 
             // Database
-            services.AddDbContext<FFDbContext>()
-            .AddScoped<IFFDbContext, FFDbContext>();
+            services.AddDbContextPool<FFDbContext>(opt => opt.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")))
+                .AddScoped<IFFDbContext, FFDbContext>();
 
             // Identity
             services.AddDefaultIdentity<AppUser>(options =>

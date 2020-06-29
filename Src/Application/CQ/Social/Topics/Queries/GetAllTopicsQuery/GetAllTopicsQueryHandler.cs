@@ -45,6 +45,7 @@
                     UserId = t.UserId,
                 })
             .OrderByDescending(t => t.CreateOn)
+            .AsNoTracking()
             .ToArrayAsync(),
             };
         }
@@ -65,6 +66,7 @@
                 Comments = t.Comments.Count(),
             })
                 .OrderByDescending(t => t.CreateOn)
+                .AsNoTracking()
                 .ToArrayAsync();
 
             if (request.Filter.Count() == 0 || request.Filter.Count() >= 4)
@@ -77,11 +79,26 @@
             }
             else if (request.Filter.Count() == 1)
             {
-                string singleFilter = request.Filter.FirstOrDefault();
+                string singleFilter = request.Filter[0];
+
+                var singleFilterTopics = await this.Context.Topics.Select(t => new TopicPartialViewModel
+                {
+                    Id = t.Id,
+                    Title = t.Title,
+                    Category = singleFilter,
+                    UserName = t.User.UserName,
+                    CreateOn = t.CreateOn,
+                    Likes = this.Context.Likes.Where(l => l.TopicId == t.Id).ToList(),
+                    UserId = t.UserId,
+                    Comments = t.Comments.Count(),
+                })
+                .OrderByDescending(t => t.CreateOn)
+                .AsNoTracking()
+                .ToArrayAsync();
 
                 return new TopicListViewModel
                 {
-                    Topics = topics.Where(t => t.Category == singleFilter),
+                    Topics = singleFilterTopics,
                     ViewerId = viewer.Id,
                 };
             }
@@ -89,17 +106,46 @@
             {
                 if (request.Filter.Count() == 2)
                 {
+                    var duoFilterTopics = await this.Context.Topics.Where(c => c.Category == request.Filter[0] || c.Category == request.Filter[1]).Select(t => new TopicPartialViewModel
+                    {
+                        Id = t.Id,
+                        Title = t.Title,
+                        UserName = t.User.UserName,
+                        CreateOn = t.CreateOn,
+                        Likes = this.Context.Likes.Where(l => l.TopicId == t.Id).ToList(),
+                        UserId = t.UserId,
+                        Comments = t.Comments.Count(),
+                    })
+                    .OrderByDescending(t => t.CreateOn)
+                    .AsNoTracking()
+                    .ToArrayAsync();
+
                     return new TopicListViewModel
                     {
-                        Topics = topics.Where(t => t.Category == request.Filter[0] || t.Category == request.Filter[1]),
+                        Topics = duoFilterTopics,
                         ViewerId = viewer.Id,
                     };
                 }
                 else
                 {
+                    var multiFilterTopics = await this.Context.Topics.Where(c => c.Category == request.Filter[0] || c.Category == request.Filter[1] || c.Category == request.Filter[2])
+                        .Select(t => new TopicPartialViewModel
+                    {
+                        Id = t.Id,
+                        Title = t.Title,
+                        UserName = t.User.UserName,
+                        CreateOn = t.CreateOn,
+                        Likes = this.Context.Likes.Where(l => l.TopicId == t.Id).ToList(),
+                        UserId = t.UserId,
+                        Comments = t.Comments.Count(),
+                    })
+                    .OrderByDescending(t => t.CreateOn)
+                    .AsNoTracking()
+                    .ToArrayAsync();
+
                     return new TopicListViewModel
                     {
-                        Topics = topics.Where(t => t.Category == request.Filter[0] || t.Category == request.Filter[1] || t.Category == request.Filter[2]),
+                        Topics = multiFilterTopics,
                         ViewerId = viewer.Id,
                     };
                 }

@@ -48,7 +48,7 @@
                 equipment.Add(this.Mapper.Map<ItemMinViewModel>(weapon));
             }
 
-            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.Id).Select(ae => new ItemMinViewModel
+            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.Id).AsNoTracking().Select(ae => new ItemMinViewModel
             {
                 Id = ae.ArmorId,
                 Name = ae.Armor.Name,
