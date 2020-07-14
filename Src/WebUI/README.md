@@ -1,9 +1,3 @@
-Areas -> Administrator, Moderator and Applicaiton User areas
-
-Controllers -> Common, Game and Social controllers
-
-Properties -> launch settings
-
-Views -> lots of them
-
+Areas -> Administrator, Moderator and User
+Controllers -> Common, Game and Social
 wwwroot -> css, js and images
