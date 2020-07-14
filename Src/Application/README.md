@@ -4,8 +4,8 @@ and https://refactoring.guru/design-patterns/mediator (Mediator pattern).
 
 CQ -> commands and queries (app)
 
-Common -> custom handlers, interfaces, mapping profiles, etc
+Common -> custom handlers, interfaces, mapping profiles, etc.
 
 GameCQ -> commands and queries (game)
 
-GameContent/Utilities -> game logic and it's validators
+GameContent/Utilities -> game logic and validators
