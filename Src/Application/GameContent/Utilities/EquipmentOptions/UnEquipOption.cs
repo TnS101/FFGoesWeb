@@ -22,11 +22,20 @@
 
                 context.WeaponsEquipments.Remove(weapon);
 
-                context.WeaponsInventories.Add(new WeaponInventory
+                var weaponInventory = await context.WeaponsInventories.FirstOrDefaultAsync(w => w.WeaponId == weapon.WeaponId && w.InventoryId == hero.Id);
+
+                if (weaponInventory != null)
                 {
-                    InventoryId = hero.Id,
-                    WeaponId = weapon.WeaponId,
-                });
+                    weaponInventory.Count++;
+                }
+                else
+                {
+                    context.WeaponsInventories.Add(new WeaponInventory
+                    {
+                        InventoryId = hero.Id,
+                        WeaponId = weapon.WeaponId,
+                    });
+                }
             }
             else if (item.Slot == "Trinket")
             {
@@ -36,11 +45,20 @@
 
                 context.TrinketEquipments.Remove(trinket);
 
-                context.TrinketsInventories.Add(new TrinketInventory
+                var trinketInventory = await context.TrinketsInventories.FirstOrDefaultAsync(t => t.TrinketId == trinket.TrinketId && t.InventoryId == hero.Id);
+
+                if (trinketInventory != null)
                 {
-                    InventoryId = hero.Id,
-                    TrinketId = trinket.TrinketId,
-                });
+                    trinketInventory.Count++;
+                }
+                else
+                {
+                    context.TrinketsInventories.Add(new TrinketInventory
+                    {
+                        InventoryId = hero.Id,
+                        TrinketId = trinket.TrinketId,
+                    });
+                }
             }
             else
             {
@@ -73,11 +91,20 @@
 
                 context.ArmorsEquipments.Remove(armor);
 
-                context.ArmorsInventories.Add(new ArmorInventory
+                var armorInventory = await context.ArmorsInventories.FirstOrDefaultAsync(a => a.ArmorId == armor.ArmorId && a.InventoryId == hero.Id);
+
+                if (armorInventory != null)
                 {
-                    InventoryId = hero.Id,
-                    ArmorId = item.Id,
-                });
+                    armorInventory.Count++;
+                }
+                else
+                {
+                    context.ArmorsInventories.Add(new ArmorInventory
+                    {
+                        InventoryId = hero.Id,
+                        ArmorId = item.Id,
+                    });
+                }
             }
 
             await statSum.ReverseSum(hero, context, item.Id, item.Slot);

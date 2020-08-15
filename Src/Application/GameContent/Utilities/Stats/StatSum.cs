@@ -13,31 +13,12 @@
     {
         public async Task Sum(Hero hero, IFFDbContext context, Equipment heroEquipment)
         {
-            var armorEquipment = context.ArmorsEquipments.Where(ae => ae.EquipmentId == hero.Id);
-
-            if (armorEquipment.Count() > 0)
+            await context.ArmorsEquipments.Where(ae => ae.EquipmentId == hero.Id).Select(a => a.Armor).ForEachAsync(a =>
             {
-                var items = new HashSet<Armor>();
-
-                foreach (var armor in context.Armors)
-                {
-                    foreach (var equipment in armorEquipment)
-                    {
-                        if (armor.Id == equipment.ArmorId)
-                        {
-                            items.Add(armor);
-                        }
-                    }
-                }
-
-                foreach (var item in items)
-                {
-                    this.MainStatSum(hero, item, "+");
-
-                    hero.ArmorValue += item.ArmorValue;
-                    hero.ResistanceValue += item.ResistanceValue;
-                }
-            }
+                this.MainStatSum(hero, a, "+");
+                hero.ArmorValue += a.ArmorValue;
+                hero.ResistanceValue += a.ResistanceValue;
+            });
 
             if (heroEquipment.WeaponSlot)
             {
