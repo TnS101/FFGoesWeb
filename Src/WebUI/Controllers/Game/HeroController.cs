@@ -34,14 +34,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Name,Race,ClassType")] CreateHeroCommand hero)
+        public async Task<IActionResult> Create([Bind("Name,Race")] CreateHeroCommand hero)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.Redirect(GConst.HeroCreationErrorRedirect);
             }
 
-            return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassType = hero.ClassType, Race = hero.Race, Name = hero.Name, UserId = this.UserManager.GetUserId(this.User) }));
+            return this.Redirect(await this.Mediator.Send(new CreateHeroCommand { ClassId = hero.ClassId, Race = hero.Race, Name = hero.Name, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpPost]

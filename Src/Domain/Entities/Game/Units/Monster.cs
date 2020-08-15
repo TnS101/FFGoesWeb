@@ -22,6 +22,8 @@
 
         public int Level { get; set; }
 
+        public string Zone { get; set; }
+
         public string ImagePath { get; set; }
 
         public double MaxHP { get; set; }

@@ -53,7 +53,7 @@
 
             new RaceCheck().Check(hero, request.Race);
 
-            await this.fightingClassCheck.Check(hero, request.ClassType, this.Context);
+            await this.fightingClassCheck.Check(hero, request.ClassId, this.Context);
 
             this.Context.Heroes.Add(hero);
 

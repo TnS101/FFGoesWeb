@@ -39,7 +39,7 @@
                     }
                     else
                     {
-                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.3;
+                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.35;
                     }
                 }
                 else if (damageType == "Mixed")
@@ -54,8 +54,8 @@
                     }
                     else
                     {
-                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.15;
                         target.CurrentArmorValue -= target.CurrentArmorValue * 0.15;
+                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.2;
                     }
                 }
             }

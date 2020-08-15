@@ -22,7 +22,7 @@
             this.fightingClassStatCheck = new FightingClassStatCheck();
         }
 
-        public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, IFFDbContext context, long inventoryId, Monster monster, string zoneName, CancellationToken cancellationToken)
+        public async Task Execute(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, IFFDbContext context, long inventoryId, Monster monster, string zoneName, CancellationToken cancellationToken)
         {
             if (slotNumber == 0)
             {

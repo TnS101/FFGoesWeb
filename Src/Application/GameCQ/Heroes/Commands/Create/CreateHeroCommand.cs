@@ -1,7 +1,6 @@
 ﻿namespace Application.GameCQ.Heroes.Commands.Create
 {
     using System.ComponentModel.DataAnnotations;
-    using System.Security.Claims;
     using Application.Common.StringProcessing.RegexFilters;
     using global::Common;
     using MediatR;
@@ -19,7 +18,6 @@
         [Required(ErrorMessage = GConst.RequiredMessage)]
         public string Race { get; set; }
 
-        [Required(ErrorMessage = GConst.RequiredMessage)]
-        public string ClassType { get; set; }
+        public int ClassId { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace Application.GameContent.Utilities.Stats
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;

@@ -1,6 +1,7 @@
 ﻿namespace Application.GameContent.Utilities.Generators
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Stats;
@@ -18,9 +19,9 @@
 
             var statIncrement = new StatIncrement();
 
-            string monsterName = this.MonsterName(zoneName, rng);
+            var monsters = await context.Monsters.Where(m => m.Zone == zoneName).ToArrayAsync();
 
-            statIncrement.MonsterIncrement(await context.Monsters.FirstOrDefaultAsync(m => m.Name == monsterName), monster);
+            statIncrement.MonsterIncrement(monsters[rng.Next(monsters.Length)], monster);
 
             return await this.RarityRng(monster, context, rng);
         }
@@ -54,53 +55,6 @@
             monster.CurrentMagicPower += statAmplifier * monster.CurrentMagicPower;
 
             return monster;
-        }
-
-        private string MonsterName(string zoneName, Random rng)
-        {
-            int enemyNumber = rng.Next(27);
-
-            if (zoneName == "World")
-            {
-                if (enemyNumber >= 0 && enemyNumber <= 5)
-                {
-                    return "Bear";
-                }
-                else if (enemyNumber >= 6 && enemyNumber <= 10)
-                {
-                    return "Reptile";
-                }
-                else if (enemyNumber >= 11 && enemyNumber <= 14)
-                {
-                    return "Zombie";
-                }
-                else if (enemyNumber >= 15 && enemyNumber <= 18)
-                {
-                    return "Skeleton";
-                }
-                else if (enemyNumber == 19 || enemyNumber == 20)
-                {
-                    return "Wyrm";
-                }
-                else if (enemyNumber == 21 || enemyNumber == 22)
-                {
-                    return "Giant";
-                }
-                else if (enemyNumber == 23 || enemyNumber == 24)
-                {
-                    return "Gryphon";
-                }
-                else if (enemyNumber == 25)
-                {
-                    return "Saint";
-                }
-                else
-                {
-                    return "Demon";
-                }
-            }
-
-            return string.Empty;
         }
     }
 }
