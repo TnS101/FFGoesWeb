@@ -20,6 +20,10 @@
             builder.Property(m => m.ImagePath)
                 .HasMaxLength(100)
                 .IsRequired();
+
+            builder.Property(m => m.DroppedFrom)
+                .HasMaxLength(100)
+                .IsRequired();
         }
     }
 }

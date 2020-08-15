@@ -1,7 +1,6 @@
 ﻿namespace Application.GameContent.Utilities.Validators.Equipment
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -12,32 +11,15 @@
     using Domain.Entities.Game.Units;
     using Microsoft.EntityFrameworkCore;
 
-    public class SlotCheck
+    public class ItemHandler
     {
         private readonly Random rng;
         private readonly FightingClassStatCheck fightingClassStatCheck;
-        private readonly string[] woods;
-        private readonly string[] ores;
-        private readonly string[] leathers;
-        private readonly string[] cloths;
-        private readonly string[] herbs;
-        private readonly string[] essences;
-        private readonly string[] scales;
-        private readonly string[] vegetables;
 
-        public SlotCheck()
+        public ItemHandler()
         {
             this.rng = new Random();
             this.fightingClassStatCheck = new FightingClassStatCheck();
-
-            this.woods = new[] { "Oak Log", "Walnut Log", "Birch Log", "Mahogany Log" };
-            this.ores = new[] { "Coal Ore", "Copper Ore", "Iron Ore", "Gold Ore" };
-            this.leathers = new[] { "Leather Scraps", "Animal Fur", "Light Leather", "Fine Leather" };
-            this.cloths = new[] { "Cotton", "Linen Cloth", "Wool", "Silk Cloth" };
-            this.herbs = new[] { "Mint", "Coriander", "Lavender", "Buttercup" };
-            this.essences = new[] { "Water Essence", "Earth Essence", "Air Essence", "Fire Essence" };
-            this.scales = new[] { "Shiny Scale", "Transparent Scale", "Hard Scale", "Golden Necklace" };
-            this.vegetables = new[] { "Tomato", "Lettuce", "Turnip", "Pumpkin" };
         }
 
         public async Task Check(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, IFFDbContext context, long inventoryId, Monster monster, string zoneName, CancellationToken cancellationToken)
@@ -72,10 +54,8 @@
             }
             else
             {
-                await this.ZoneVariety(zoneName, context, inventoryId, monster);
+                await this.MaterialGenerate(context, inventoryId, zoneName);
             }
-
-            // TODO Fix Zone Variety
         }
 
         private async Task WeaponGenerate(int fightingClassNumber, int fightingClassStatNumber, int[] stats, IFFDbContext context, long inventoryId, CancellationToken cancellationToken)
@@ -515,26 +495,16 @@
             return (int)Math.Floor(goldAmount / 5);
         }
 
-        private async Task ZoneVariety(string zoneName, IFFDbContext context, long inventoryId, Monster monster)
+        private async Task MaterialGenerate(IFFDbContext context, long inventoryId, string zoneName)
         {
-            await this.MainMaterialsGenerate(context, inventoryId, monster);
+            var materials = await context.Materials.Where(m => m.DroppedFrom == zoneName && !m.RequiresProfession).OrderBy(m => m.Rarity).ToArrayAsync();
+            var professionMaterials = await context.Materials.Where(m => m.DroppedFrom == zoneName && m.RequiresProfession).OrderBy(m => m.Rarity).ToArrayAsync();
 
-            //if (zoneName == "World")
-            //{
-            //}
-            //else
-            //{
-            //    await this.ProffesionMaterialsGenerate(context, inventoryId, monster, zoneName);
-            //}
-        }
+            var materialId = this.GetMainMaterial(materials).Id;
+            var professionMaterialId = professionMaterials[this.rng.Next(professionMaterials.Length)].Id;
 
-        private async Task MainMaterialsGenerate(IFFDbContext context, long inventoryId, Monster monster)
-        {
-            var materialName = this.AllMaterialsVariety(monster);
-
-            var material = await context.Materials.FirstOrDefaultAsync(m => m.Name == materialName);
-
-            var materialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.MaterialId == material.Id);
+            var materialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.MaterialId == materialId);
+            var professionMaterialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.InventoryId == inventoryId && t.MaterialId == professionMaterialId);
 
             if (materialInventory != null)
             {
@@ -545,280 +515,33 @@
                 context.MaterialsInventories.Add(new MaterialInventory
                 {
                     InventoryId = inventoryId,
-                    MaterialId = material.Id,
+                    MaterialId = materialId,
+                });
+            }
+
+            if (professionMaterialInventory != null)
+            {
+                professionMaterialInventory.Count++;
+            }
+            else
+            {
+                context.MaterialsInventories.Add(new MaterialInventory
+                {
+                    InventoryId = inventoryId,
+                    MaterialId = professionMaterialId,
                 });
             }
         }
 
-        private async Task ProffesionMaterialsGenerate(IFFDbContext context, long invetoryId, Monster monster, string zoneName)
-        {
-            var mainMaterialName = string.Empty;
-
-            var secondaryMaterialName = string.Empty;
-
-            if (zoneName == "Tainted Forest")
-            {
-                mainMaterialName = this.MainMaterialVariety(this.woods);
-
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Dry Branch", "Green Leaves", "Tree Stump", "Acorn" });
-            }
-            else if (zoneName == "Endless Mine")
-            {
-                mainMaterialName = this.MainMaterialVariety(this.ores);
-
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Granite", "Marble", "Quartzite", "Obsidian" });
-            }
-            else if (zoneName == "The Wilderness")
-            {
-                mainMaterialName = this.MainMaterialVariety(this.leathers);
-
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Animal Stomach", "Animal Skull", "Animal Bones", "Fangs" });
-            }
-            else if (zoneName == "Vile City")
-            {
-                mainMaterialName = this.MainMaterialVariety(this.cloths);
-
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "T-Shirt", "Shoes", "Pants", "Human Soul" });
-            }
-            else if (zoneName == "Magical Flower Shop")
-            {
-                mainMaterialName = this.MainMaterialVariety(this.herbs);
-
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Rose", "Daisy", "Clay Pot", "Plastic Vase" });
-            }
-            else if (zoneName == "The Core")
-            {
-                mainMaterialName = this.MainMaterialVariety(this.essences);
-
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Life Essence", "Light Essence", "Shadow Essence", "Death Essence" });
-            }
-            else if (zoneName == "Rocky Basin")
-            {
-                mainMaterialName = this.MainMaterialVariety(this.scales);
-
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "String", "Puffer Fish", "Turtle Eggs", "Bottled Message" });
-            }
-            else if (zoneName == "Happy Garden")
-            {
-                mainMaterialName = this.MainMaterialVariety(this.vegetables);
-
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Potato", "Corn", "Garden Shovel", "Watering Can" });
-            }
-            else if (zoneName == "Scrap Terminal")
-            {
-                mainMaterialName = this.JunkVariety(monster);
-
-                secondaryMaterialName = this.ProffesionMaterialsVariety(new string[] { "Broken Glass Cup", "Stale Hotdog", "Crushed Can", "Rubber Band" });
-            }
-
-            var mainMaterial = await context.Materials.SingleOrDefaultAsync(m => m.Name == mainMaterialName);
-
-            var secondaryMaterial = context.Materials.SingleOrDefault(m => m.Name == secondaryMaterialName);
-
-            context.MaterialsInventories.Add(new MaterialInventory
-            {
-                InventoryId = invetoryId,
-                MaterialId = mainMaterial.Id,
-            });
-
-            context.MaterialsInventories.Add(new MaterialInventory
-            {
-                InventoryId = invetoryId,
-                MaterialId = secondaryMaterial.Id,
-            });
-        }
-
-        private string AllMaterialsVariety(Monster monster)
-        {
-            int materialNumber = this.rng.Next(10);
-
-            string materialName = string.Empty;
-
-            while (true)
-            {
-                if (materialNumber == 0)
-                {
-                    // wood
-                    materialName = this.MainMaterialVariety(this.woods);
-                }
-                else if (materialNumber == 1)
-                {
-                    // ore
-                    materialName = this.MainMaterialVariety(this.ores);
-                }
-                else if (materialNumber == 2)
-                {
-                    // leather
-                    if (monster.Type == "Beast")
-                    {
-                        materialName = this.MainMaterialVariety(this.leathers);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                else if (materialNumber == 3)
-                {
-                    // cloth
-                    if (monster.Type == "Humanoid")
-                    {
-                        materialName = this.MainMaterialVariety(this.cloths);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                else if (materialNumber == 4)
-                {
-                    // herb
-                    materialName = this.MainMaterialVariety(this.herbs);
-                }
-                else if (materialNumber == 5)
-                {
-                    // essence
-                    if (monster.Type == "Elemental")
-                    {
-                        materialName = this.MainMaterialVariety(this.essences);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                else if (materialNumber == 6)
-                {
-                    // scale
-                    if (monster.Type == "Reptile" || monster.Type == "Pisces")
-                    {
-                        materialName = this.MainMaterialVariety(this.scales);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                else if (materialNumber == 7)
-                {
-                    if (monster.Type == "Plant")
-                    {
-                        materialName = this.MainMaterialVariety(this.vegetables);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
-                else if (materialNumber > 7 && materialNumber < 11)
-                {
-                    materialName = this.JunkVariety(monster);
-                    break;
-                }
-
-                break;
-            }
-
-            return materialName;
-        }
-
-        private string JunkVariety(Monster monster)
-        {
-            int junkNumber = this.rng.Next(3);
-
-            var junks = new List<string>();
-
-            if (monster.Type == "Beast")
-            {
-                junks.Add("Animal Blood");
-                junks.Add("Dead Critters");
-                junks.Add("Broken Skull");
-            }
-
-            if (monster.Type == "Humanoid")
-            {
-                junks.Add("Broken Watch");
-                junks.Add("Empty Plastic Bottle");
-                junks.Add("Broken Skull");
-            }
-
-            if (monster.Type == "Mechanical")
-            {
-                junks.Add("Broken Cogs");
-                junks.Add("Rusty Pipes");
-                junks.Add("Dead Battery");
-            }
-
-            if (monster.Type == "Elemental")
-            {
-                junks.Add("Cracked Water Orb");
-                junks.Add("Coal Piece");
-                junks.Add("Water Flask");
-            }
-
-            if (monster.Type == "Reptile")
-            {
-                junks.Add("Worm");
-                junks.Add("Dead Critters");
-                junks.Add("Water Flask");
-            }
-
-            if (monster.Type == "Plant")
-            {
-                junks.Add("Withered Roots");
-                junks.Add("Mud");
-                junks.Add("Broken Branches");
-            }
-
-            if (junkNumber == 0)
-            {
-                return junks[0];
-            }
-            else if (junkNumber == 1)
-            {
-                return junks[1];
-            }
-            else
-            {
-                return junks[2];
-            }
-        }
-
-        private string MainMaterialVariety(string[] materials)
+        private Material GetMainMaterial(Material[] materials)
         {
             int rarityNumber = this.rng.Next(12);
 
-            if (rarityNumber >= 0 && rarityNumber < 4)
+            if (rarityNumber >= 0 && rarityNumber < 8)
             {
-                return materials[0];
-            }
-            else if (rarityNumber >= 4 && rarityNumber < 8)
-            {
-                return materials[1];
+                return materials[this.rng.Next(materials.Length - 2)];
             }
             else if (rarityNumber >= 8 && rarityNumber < 11)
-            {
-                return materials[2];
-            }
-            else
-            {
-                return materials[3];
-            }
-        }
-
-        private string ProffesionMaterialsVariety(string[] materials)
-        {
-            var itemNumber = this.rng.Next(0, 4);
-
-            if (itemNumber == 0)
-            {
-                return materials[0];
-            }
-            else if (itemNumber == 1)
-            {
-                return materials[1];
-            }
-            else if (itemNumber == 2)
             {
                 return materials[2];
             }

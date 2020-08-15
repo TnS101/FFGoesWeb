@@ -36,6 +36,12 @@
 
         public string Slot { get; set; }
 
+        public string DroppedFrom { get; set; }
+
+        public bool RequiresProfession { get; set; }
+
+        public int Rarity { get; set; }
+
         public string ImagePath { get; set; }
 
         public ICollection<MaterialInventory> MaterialInventories { get; set; }
