@@ -33,7 +33,7 @@
             {
                 var dbSpell = await context.Spells.FindAsync(spellId);
                 var hero = (Hero)caster;
-                var card = context.CardsEquipment.Where(c => c.HeroId == hero.Id).FirstOrDefault(c => c.Card.SpellId == dbSpell.Id && !c.Card.IsUsed && c.Card.IsActivated).Card;
+                var card = context.CardsEquipments.Where(c => c.HeroId == hero.Id).FirstOrDefault(c => c.Card.SpellId == dbSpell.Id && !c.Card.IsUsed && c.Card.IsActivated).Card;
                 var talent = context.HeroesTalents.FirstOrDefault(ht => ht.HeroId == hero.Id && ht.Talent.SpellId == dbSpell.Id).Talent;
 
                 if (talent != null)

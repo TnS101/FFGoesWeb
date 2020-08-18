@@ -26,7 +26,7 @@
             if (request.Slot == "Weapon")
             {
                 result.Inventory = await this.Context.WeaponsInventories
-                .Where(wi => wi.InventoryId == hero.Id)
+                .Where(wi => wi.HeroId == hero.Id)
                 .AsNoTracking()
                 .Select(r => new ItemMinViewModel
                 {
@@ -43,7 +43,7 @@
             else if (request.Slot == "Armor")
             {
                 result.Inventory = await this.Context.ArmorsInventories
-                    .Where(ai => ai.InventoryId == hero.Id)
+                    .Where(ai => ai.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(ai => new ItemMinViewModel
                     {
@@ -60,7 +60,7 @@
             else if (request.Slot == "Trinket")
             {
                 result.Inventory = await this.Context.TrinketsInventories
-                    .Where(ti => ti.InventoryId == hero.Id)
+                    .Where(ti => ti.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(ti => new ItemMinViewModel
                 {
@@ -77,7 +77,7 @@
             else if (request.Slot == "Relic")
             {
                 result.Inventory = await this.Context.RelicsInventories
-                    .Where(ri => ri.InventoryId == hero.Id)
+                    .Where(ri => ri.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(ri => new ItemMinViewModel
                 {
@@ -94,7 +94,7 @@
             else if (request.Slot == "Loot Box")
             {
                 result.Inventory = await this.Context.LootBoxesInventories
-                    .Where(ti => ti.InventoryId == hero.Id)
+                    .Where(ti => ti.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(li => new ItemMinViewModel
                 {
@@ -108,7 +108,7 @@
             else if (request.Slot == "Loot Key")
             {
                 result.Inventory = await this.Context.LootKeysInventories
-                    .Where(ti => ti.InventoryId == hero.Id)
+                    .Where(ti => ti.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(li => new ItemMinViewModel
                 {
@@ -122,7 +122,7 @@
             else if (request.Slot == "Consumeable")
             {
                 result.Inventory = await this.Context.ConsumeablesInventories
-                    .Where(ci => ci.InventoryId == hero.Id)
+                    .Where(ci => ci.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(ci => new ItemMinViewModel
                 {
@@ -135,7 +135,7 @@
             else if (request.Slot == "Card")
             {
                 result.Inventory = await this.Context.CardsInventories
-                    .Where(ci => ci.InventoryId == hero.Id)
+                    .Where(ci => ci.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(ci => new ItemMinViewModel
                 {
@@ -151,7 +151,7 @@
             else if (request.Slot == "Tool")
             {
                 result.Inventory = await this.Context.ToolsInventories
-                    .Where(ti => ti.InventoryId == hero.Id)
+                    .Where(ti => ti.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(ti => new ItemMinViewModel
                 {
@@ -166,7 +166,7 @@
             else if (request.Slot == "Toy")
             {
                 result.Inventory = await this.Context.ToyInventories
-                    .Where(ti => ti.InventoryId == hero.Id)
+                    .Where(ti => ti.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(ti => new ItemMinViewModel
                 {
@@ -181,7 +181,7 @@
             else
             {
                 result.Inventory = await this.Context.MaterialsInventories
-                    .Where(mi => mi.InventoryId == hero.Id)
+                    .Where(mi => mi.HeroId == hero.Id)
                     .AsNoTracking()
                     .Select(mi => new ItemMinViewModel
                 {

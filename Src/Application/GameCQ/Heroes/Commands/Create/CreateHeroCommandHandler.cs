@@ -56,9 +56,6 @@
 
             this.Context.Heroes.Add(hero);
 
-            this.Context.Equipments.Add(new Equipment());
-            this.Context.Inventories.Add(new Inventory());
-
             await this.Context.SaveChangesAsync(cancellationToken);
 
             return GConst.HeroCommandRedirect;

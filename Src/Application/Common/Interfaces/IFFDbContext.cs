@@ -102,7 +102,7 @@
 
         DbSet<Card> Cards { get; set; }
 
-        DbSet<CardEquipment> CardsEquipment { get; set; }
+        DbSet<CardEquipment> CardsEquipments { get; set; }
 
         DbSet<CardInventory> CardsInventories { get; set; }
 

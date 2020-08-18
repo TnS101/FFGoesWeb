@@ -46,7 +46,7 @@
 
                     var materialId = materials[rng.Next(materials.Length)].Id;
 
-                    var materialInventory = await this.Context.MaterialsInventories.FirstOrDefaultAsync(mi => mi.InventoryId == hero.Id && mi.MaterialId == materialId);
+                    var materialInventory = await this.Context.MaterialsInventories.FirstOrDefaultAsync(mi => mi.HeroId == hero.Id && mi.MaterialId == materialId);
 
                     if (materialInventory != null)
                     {
@@ -57,7 +57,7 @@
                         this.Context.MaterialsInventories.Add(new MaterialInventory
                         {
                             MaterialId = materialId,
-                            InventoryId = hero.Id,
+                            HeroId = hero.Id,
                         });
                     }
                 }
@@ -67,7 +67,7 @@
 
                     var toolId = tools[rng.Next(tools.Length)].Id;
 
-                    var toolInventory = await this.Context.ToolsInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.Id && ti.ToolId == toolId);
+                    var toolInventory = await this.Context.ToolsInventories.FirstOrDefaultAsync(ti => ti.HeroId == hero.Id && ti.ToolId == toolId);
 
                     if (toolInventory != null)
                     {
@@ -78,7 +78,7 @@
                         this.Context.ToolsInventories.Add(new ToolInventory
                         {
                             ToolId = toolId,
-                            InventoryId = hero.Id,
+                            HeroId = hero.Id,
                         });
                     }
                 }
@@ -88,7 +88,7 @@
 
                     var consumeableId = consumeables[rng.Next(consumeables.Length)].Id;
 
-                    var consumeableInventory = await this.Context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.InventoryId == hero.Id && ci.ConsumeableId == consumeableId);
+                    var consumeableInventory = await this.Context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.HeroId == hero.Id && ci.ConsumeableId == consumeableId);
 
                     if (consumeableInventory != null)
                     {
@@ -99,7 +99,7 @@
                         this.Context.ConsumeablesInventories.Add(new ConsumeableInventory
                         {
                             ConsumeableId = consumeableId,
-                            InventoryId = hero.Id,
+                            HeroId = hero.Id,
                         });
                     }
                 }
@@ -109,7 +109,7 @@
 
                     var junkId = junks[rng.Next(junks.Length)].Id;
 
-                    var junkInventory = await this.Context.MaterialsInventories.FirstOrDefaultAsync(mi => mi.InventoryId == hero.Id && mi.MaterialId == junkId);
+                    var junkInventory = await this.Context.MaterialsInventories.FirstOrDefaultAsync(mi => mi.HeroId == hero.Id && mi.MaterialId == junkId);
 
                     if (junkInventory != null)
                     {
@@ -120,7 +120,7 @@
                         this.Context.MaterialsInventories.Add(new MaterialInventory
                         {
                             MaterialId = junkId,
-                            InventoryId = hero.Id,
+                            HeroId = hero.Id,
                         });
                     }
                 }
@@ -130,7 +130,7 @@
 
                     var toyId = toys[rng.Next(toys.Length)].Id;
 
-                    var toyInventory = await this.Context.ToyInventories.FirstOrDefaultAsync(ti => ti.InventoryId == hero.Id && ti.ToyId == toyId);
+                    var toyInventory = await this.Context.ToyInventories.FirstOrDefaultAsync(ti => ti.HeroId == hero.Id && ti.ToyId == toyId);
 
                     if (toyInventory != null)
                     {
@@ -141,7 +141,7 @@
                         this.Context.ToyInventories.Add(new ToyInventory
                         {
                             ToyId = toyId,
-                            InventoryId = hero.Id,
+                            HeroId = hero.Id,
                         });
                     }
                 }
@@ -151,7 +151,7 @@
 
                     var keyId = keys[rng.Next(keys.Length)].Id;
 
-                    var keyInventory = await this.Context.LootKeysInventories.FirstOrDefaultAsync(ki => ki.InventoryId == hero.Id && ki.LootKeyId == keyId);
+                    var keyInventory = await this.Context.LootKeysInventories.FirstOrDefaultAsync(ki => ki.HeroId == hero.Id && ki.LootKeyId == keyId);
 
                     if (keyInventory != null)
                     {
@@ -162,7 +162,7 @@
                         this.Context.LootKeysInventories.Add(new LootKeyInventory
                         {
                             LootKeyId = keyId,
-                            InventoryId = hero.Id,
+                            HeroId = hero.Id,
                         });
                     }
 

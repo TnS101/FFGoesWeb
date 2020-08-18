@@ -25,15 +25,11 @@
 
         public DbSet<ApplicationRole> ApplicationRoles { get; set; }
 
-        public DbSet<Equipment> Equipments { get; set; }
-
         public DbSet<Spell> Spells { get; set; }
 
         public DbSet<LootBox> LootBoxes { get; set; }
 
         public DbSet<LootKey> LootKeys { get; set; }
-
-        public DbSet<Inventory> Inventories { get; set; }
 
         public DbSet<Comment> Comments { get; set; }
 
@@ -113,7 +109,7 @@
 
         public DbSet<Card> Cards { get; set; }
 
-        public DbSet<CardEquipment> CardsEquipment { get; set; }
+        public DbSet<CardEquipment> CardsEquipments { get; set; }
 
         public DbSet<CardInventory> CardsInventories { get; set; }
 

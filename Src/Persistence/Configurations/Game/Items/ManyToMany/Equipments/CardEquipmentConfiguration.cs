@@ -20,7 +20,7 @@
 
             builder.HasOne(e => e.Hero)
                 .WithMany(ce => ce.CardEquipment)
-                .HasForeignKey(e => e.EquipmentId);
+                .HasForeignKey(e => e.HeroId);
         }
     }
 }

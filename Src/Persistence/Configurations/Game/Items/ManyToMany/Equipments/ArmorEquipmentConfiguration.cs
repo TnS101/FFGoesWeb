@@ -18,9 +18,9 @@
                 .WithMany(ae => ae.ArmorEquipment)
                 .HasForeignKey(a => a.ArmorId);
 
-            builder.HasOne(e => e.Equipment)
+            builder.HasOne(e => e.Hero)
                 .WithMany(ae => ae.ArmorEquipment)
-                .HasForeignKey(e => e.EquipmentId);
+                .HasForeignKey(e => e.HeroId);
         }
     }
 }

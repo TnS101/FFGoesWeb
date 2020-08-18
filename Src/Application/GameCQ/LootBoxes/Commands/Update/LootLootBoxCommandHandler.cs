@@ -34,7 +34,7 @@
 
             this.Context.LootBoxesInventories.Add(new LootBoxInventory
             {
-                InventoryId = hero.Id,
+                HeroId = hero.Id,
                 LootBoxId = lootBoxId,
             });
 
