@@ -30,7 +30,7 @@
         {
             var equipment = new HashSet<ItemMinViewModel>();
 
-            var trinketEquipment = await this.Context.TrinketEquipments.FirstOrDefaultAsync(te => te.EquipmentId == hero.Id);
+            var trinketEquipment = await this.Context.TrinketEquipments.FirstOrDefaultAsync(te => te.HeroId == hero.Id);
 
             if (trinketEquipment != null)
             {
@@ -39,7 +39,7 @@
                 equipment.Add(this.Mapper.Map<ItemMinViewModel>(trinket));
             }
 
-            var weaponEquipment = await this.Context.WeaponsEquipments.FirstOrDefaultAsync(we => we.EquipmentId == hero.Id);
+            var weaponEquipment = await this.Context.WeaponsEquipments.FirstOrDefaultAsync(we => we.HeroId == hero.Id);
 
             if (weaponEquipment != null)
             {
@@ -48,7 +48,7 @@
                 equipment.Add(this.Mapper.Map<ItemMinViewModel>(weapon));
             }
 
-            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.EquipmentId == hero.Id).AsNoTracking().Select(ae => new ItemMinViewModel
+            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.HeroId == hero.Id).AsNoTracking().Select(ae => new ItemMinViewModel
             {
                 Id = ae.ArmorId,
                 Name = ae.Armor.Name,

@@ -18,8 +18,6 @@
     {
         DbSet<AppUser> AppUsers { get; set; }
 
-        DbSet<Equipment> Equipments { get; set; }
-
         DbSet<Spell> Spells { get; set; }
 
         DbSet<LootBox> LootBoxes { get; set; }
@@ -61,8 +59,6 @@
         DbSet<Hero> Heroes { get; set; }
 
         DbSet<Monster> Monsters { get; set; }
-
-        DbSet<Inventory> Inventories { get; set; }
 
         DbSet<MonsterRarity> MonstersRarities { get; set; }
 

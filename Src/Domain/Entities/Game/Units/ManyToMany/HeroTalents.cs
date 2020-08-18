@@ -6,7 +6,7 @@
 
         public Hero Hero { get; set; }
 
-        public int TalentId { get; set; }
+        public int? TalentId { get; set; }
         
         public Talent Talent { get; set; }
 

@@ -1,14 +1,16 @@
 ﻿namespace Domain.Entities.Game.Items.ManyToMany.Inventories
 {
+    using Domain.Entities.Game.Units;
+
     public class WeaponInventory
     {
         public long WeaponId { get; set; }
 
         public Weapon Weapon { get; set; }
 
-        public long InventoryId { get; set; }
+        public long HeroId { get; set; }
 
-        public Inventory Inventory { get; set; }
+        public Hero Hero { get; set; }
 
         public int Count { get; set; }
     }

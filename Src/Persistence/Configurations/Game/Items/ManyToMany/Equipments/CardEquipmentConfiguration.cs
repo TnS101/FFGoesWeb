@@ -8,17 +8,17 @@
     {
         public void Configure(EntityTypeBuilder<CardEquipment> builder)
         {
-            builder.HasKey(ce => new { ce.CardId, ce.EquipmentId });
+            builder.HasKey(ce => new { ce.CardId, ce.HeroId });
 
             builder.Property(ce => ce.CardId).HasColumnType("bigint");
 
-            builder.Property(ce => ce.EquipmentId).HasColumnType("bigint");
+            builder.Property(ce => ce.HeroId).HasColumnType("bigint");
 
             builder.HasOne(c => c.Card)
                 .WithMany(ce => ce.CardEquipment)
                 .HasForeignKey(c => c.CardId);
 
-            builder.HasOne(e => e.Equipment)
+            builder.HasOne(e => e.Hero)
                 .WithMany(ce => ce.CardEquipment)
                 .HasForeignKey(e => e.EquipmentId);
         }

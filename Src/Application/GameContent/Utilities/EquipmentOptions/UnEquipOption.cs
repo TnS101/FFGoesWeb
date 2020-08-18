@@ -16,7 +16,7 @@
 
             if (item.Slot == "Weapon")
             {
-                var weapon = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.EquipmentId == hero.Id && w.WeaponId == item.Id);
+                var weapon = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.HeroId == hero.Id && w.WeaponId == item.Id);
 
                 heroEquipment.WeaponSlot = false;
 
@@ -39,7 +39,7 @@
             }
             else if (item.Slot == "Trinket")
             {
-                var trinket = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.EquipmentId == hero.Id && t.TrinketId == item.Id);
+                var trinket = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.HeroId == hero.Id && t.TrinketId == item.Id);
 
                 heroEquipment.TrinketSlot = false;
 
@@ -62,7 +62,7 @@
             }
             else
             {
-                var armor = await context.ArmorsEquipments.FirstOrDefaultAsync(a => a.EquipmentId == hero.Id && a.ArmorId == item.Id);
+                var armor = await context.ArmorsEquipments.FirstOrDefaultAsync(a => a.HeroId == hero.Id && a.ArmorId == item.Id);
 
                 if (item.Slot == "Helmet" && heroEquipment.HelmetSlot)
                 {

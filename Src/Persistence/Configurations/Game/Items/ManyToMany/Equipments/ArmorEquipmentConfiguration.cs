@@ -8,11 +8,11 @@
     {
         public void Configure(EntityTypeBuilder<ArmorEquipment> builder)
         {
-            builder.HasKey(ae => new { ae.ArmorId, ae.EquipmentId });
+            builder.HasKey(ae => new { ae.ArmorId, ae.HeroId });
 
             builder.Property(ae => ae.ArmorId).HasColumnType("bigint");
 
-            builder.Property(ae => ae.EquipmentId).HasColumnType("bigint");
+            builder.Property(ae => ae.HeroId).HasColumnType("bigint");
 
             builder.HasOne(a => a.Armor)
                 .WithMany(ae => ae.ArmorEquipment)

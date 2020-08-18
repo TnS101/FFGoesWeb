@@ -10,18 +10,18 @@
 
     public class StatSum
     {
-        public async Task Sum(Hero hero, IFFDbContext context, Equipment heroEquipment)
+        public async Task Sum(Hero hero, IFFDbContext context)
         {
-            await context.ArmorsEquipments.Where(ae => ae.EquipmentId == hero.Id).Select(a => a.Armor).ForEachAsync(a =>
+            await context.ArmorsEquipments.Where(ae => ae.HeroId == hero.Id).Select(a => a.Armor).ForEachAsync(a =>
             {
                 this.MainStatSum(hero, a, "+");
                 hero.ArmorValue += a.ArmorValue;
                 hero.ResistanceValue += a.ResistanceValue;
             });
 
-            if (heroEquipment.WeaponSlot)
+            if (hero.WeaponSlot)
             {
-                var weaponEquipment = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.EquipmentId == heroEquipment.Id);
+                var weaponEquipment = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.HeroId == hero.Id);
 
                 var weapon = await context.Weapons.FindAsync(weaponEquipment.WeaponId);
 
@@ -30,18 +30,18 @@
                 hero.AttackPower += weapon.AttackPower;
             }
 
-            if (heroEquipment.TrinketSlot)
+            if (hero.TrinketSlot)
             {
-                var trinketEquipment = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.EquipmentId == heroEquipment.Id);
+                var trinketEquipment = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.HeroId == hero.Id);
 
                 var trinket = await context.Trinkets.FindAsync(trinketEquipment.TrinketId);
 
                 this.MainStatSum(hero, trinket, "+");
             }
 
-            if (heroEquipment.RelicSlot)
+            if (hero.RelicSlot)
             {
-                var relicEquipment = await context.RelicsEquipments.FirstOrDefaultAsync(r => r.EquipmentId == heroEquipment.Id);
+                var relicEquipment = await context.RelicsEquipments.FirstOrDefaultAsync(r => r.HeroId == hero.Id);
 
                 var relic = await context.Relics.FindAsync(relicEquipment.RelicId);
 

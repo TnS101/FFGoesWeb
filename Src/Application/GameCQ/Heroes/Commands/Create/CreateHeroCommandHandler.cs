@@ -10,7 +10,6 @@
     using Domain.Entities.Game.Units;
     using global::Common;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class CreateHeroCommandHandler : BaseHandler, IRequestHandler<CreateHeroCommand, string>
     {

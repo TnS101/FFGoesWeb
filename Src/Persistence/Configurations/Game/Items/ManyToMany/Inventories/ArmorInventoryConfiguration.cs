@@ -18,7 +18,7 @@
                 .WithMany(ai => ai.ArmorInventories)
                 .HasForeignKey(a => a.ArmorId);
 
-            builder.HasOne(i => i.Inventory)
+            builder.HasOne(i => i.Hero)
                 .WithMany(ai => ai.ArmorInventories)
                 .HasForeignKey(i => i.InventoryId);
 

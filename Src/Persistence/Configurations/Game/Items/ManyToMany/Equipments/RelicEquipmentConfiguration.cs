@@ -8,17 +8,17 @@
     {
         public void Configure(EntityTypeBuilder<RelicEquipment> builder)
         {
-            builder.HasKey(re => new { re.RelicId, re.EquipmentId });
+            builder.HasKey(re => new { re.RelicId, re.HeroId });
 
             builder.Property(re => re.RelicId).HasColumnType("bigint");
 
-            builder.Property(re => re.EquipmentId).HasColumnType("bigint");
+            builder.Property(re => re.HeroId).HasColumnType("bigint");
 
             builder.HasOne(r => r.Relic)
                 .WithMany(r => r.RelicEquipments)
                 .HasForeignKey(r => r.RelicId);
 
-            builder.HasOne(e => e.Equipment)
+            builder.HasOne(e => e.HeroId)
                 .WithMany(r => r.RelicEquipment)
                 .HasForeignKey(e => e.EquipmentId);
         }

@@ -8,7 +8,7 @@ var feedbackPanel = $('#feedback-panel');
 feedbackButton.click(function () {
     feedbackPanel.show();
     $('html, body').animate({ scrollTop: feedbackButton.offset().top - 10 }, 'slow');
-})
+});
 
 show.on("mouseenter", function () {
     statuses.show();
@@ -18,4 +18,4 @@ show.on("mouseenter", function () {
 statusMenu.on("mouseleave", function () {
     statuses.hide();
     friends.show();
-})
+});

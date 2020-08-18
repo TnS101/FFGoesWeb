@@ -38,6 +38,29 @@
 
         public int Level { get; set; }
 
+        public int InventoryCapacity { get; set; }
+
+        public bool WeaponSlot { get; set; }
+
+        public bool TrinketSlot { get; set; }
+
+        public bool RelicSlot { get; set; }
+
+        public bool HelmetSlot { get; set; }
+
+        public bool ShoulderSlot { get; set; }
+
+        public bool BracerSlot { get; set; }
+
+        public bool BootsSlot { get; set; }
+
+        public bool LeggingsSlot { get; set; }
+
+        public bool ChestplateSlot { get; set; }
+
+        public bool GlovesSlot { get; set; }
+
+
         public int ProfessionLevel { get; set; }
 
         public int ProfessionEnergy { get; set; }
