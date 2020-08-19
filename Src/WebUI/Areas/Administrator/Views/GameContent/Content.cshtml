@@ -64,12 +64,68 @@
                         <hr />
                     </div>
                     <div class="item-padding">
-                        <a asp-controller="GameContent" asp-action="FightingClasses"><i class="icofont-magician-hat icofont-3x main-font-color"></i> <span class="has-large-font-size main-font-color">Classes</span></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/FightingClasses" data-ajax-complete="Action"><i class="icofont-magician-hat icofont-3x main-font-color"></i> <span class="has-large-font-size main-font-color">Classes</span></a>
                     </div>
                 </div>
                 <div class="item-padding">
                     <hr />
                 </div>
             </div>
+            <main>
+                <div class="entry-content single-entry-content item-padding fightingClass" id="" hidden>
+                    <div class="entry-header with-image full site-background main-gradient">
+                        <div class="wp-block-image is-style-circle-mask">
+                            <figure class="size-large is-resized">
+                                <img src="" alt="" width="100" height="100" />
+                            </figure>
+                        </div>
+                        <a href="/Administrator/FightingClass/Current/id?id="><h1 class="main-font-color has-large-font-size"></h1></a>
+                    </div>
+                    <a href="/Administrator/FightingClass/Update/id?id="><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                    <form asp-controller="FightingClass" asp-action="Delete" method="post" class="item-padding">
+                        <input type="hidden" name="id" value="" />
+                        <input type="submit" name="button" value="Delete" class="main-button" />
+                    </form>
+                </div>
+            </main>
         </div>
     </cache>
+
+    <script>
+        Action = (data) => {
+            if (data.status == 200) {
+                var element;
+                var main = this.document.getElementsByTagName('main')[0];
+
+                if (data.responseJSON.fightingClasses !== this.undefined) {
+
+                    data.responseJSON.fightingClasses.reduce(function (acc, el) {
+                        element = this.document.getElementsByClassName('fightingClass')[0].cloneNode(true);
+                        element.style.display = 'block';
+
+                        element.setAttribute('id', el.id);
+                        element.querySelector('img').src = el.imagePath;
+                        var name = element.querySelector('a');
+                        name.href += el.id;
+                        name.firstChild.textContent = el.type;
+                        element.querySelectorAll('a')[1].href += el.id;
+                        element.querySelector('form').firstChild.value = el.id;
+
+                        main.appendChild(element);
+
+                    }, 0);
+
+                } else if (data.responseJSON.hasOwnProperty('items')) {
+
+                }
+                else if (data.responseJSON.hasOwnProperty('monsters')) {
+
+                } else if (data.responseJSON.hasOwnProperty('spells')) {
+
+                }
+
+            } else {
+                this.window.alert('Something went wrong!');
+            }
+        }
+    </script>

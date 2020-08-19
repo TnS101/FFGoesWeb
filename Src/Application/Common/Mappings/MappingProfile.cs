@@ -66,7 +66,7 @@
             this.CreateMap<LootBox, ItemMinViewModel>();
             this.CreateMap<FriendRequest, FriendRequestFullViewModel>();
             this.CreateMap<Tool, ToolMinViewModel>();
-            this.CreateMap<Spell, SpellFullViewModel>();
+            this.CreateMap<Spell, SpellFullViewModel>().ForMember(c => c.ClassType, opt => opt.Ignore());
             this.CreateMap<FightingClass, FightingClassFullViewModel>();
             this.CreateMap<Like, LikeFullViewModel>();
             this.CreateMap<Hero, BattleUnitViewModel>();

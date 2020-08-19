@@ -23,25 +23,25 @@
         [HttpGet("Administrator/GameContent/Items/slot")]
         public async Task<IActionResult> Items([FromQuery]string slot)
         {
-            return this.View(await this.Mediator.Send(new GetAllItemsQuery { Slot = slot }));
+            return this.Json(await this.Mediator.Send(new GetAllItemsQuery { Slot = slot }));
         }
 
         [HttpGet]
         public async Task<IActionResult> Spells([FromQuery]int classId)
         {
-            return this.View(await this.Mediator.Send(new GetAllSpellsQuery { FightingClassId = classId }));
+            return this.Json(await this.Mediator.Send(new GetAllSpellsQuery { FightingClassId = classId }));
         }
 
         [HttpGet]
         public async Task<IActionResult> Monsters()
         {
-            return this.View(await this.Mediator.Send(new GetAllMonstersQuery { }));
+            return this.Json(await this.Mediator.Send(new GetAllMonstersQuery { }));
         }
 
         [HttpGet]
         public async Task<IActionResult> FightingClasses()
         {
-            return this.View(await this.Mediator.Send(new GetAllFightingClassesQuery { }));
+            return this.Json(await this.Mediator.Send(new GetAllFightingClassesQuery { }));
         }
     }
 }

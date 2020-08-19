@@ -16,7 +16,12 @@
 
         public async Task<SpellFullViewModel> Handle(GetCurrentSpellQuery request, CancellationToken cancellationToken)
         {
-            return this.Mapper.Map<SpellFullViewModel>(await this.Context.Spells.FindAsync(request.SpellId));
+            var spell = await this.Context.Spells.FindAsync(request.SpellId);
+            var mapped = this.Mapper.Map<SpellFullViewModel>(spell);
+
+            mapped.ClassType = this.Context.FightingClasses.Find(spell.FightingClassId).Type;
+
+            return mapped;
         }
     }
 }
