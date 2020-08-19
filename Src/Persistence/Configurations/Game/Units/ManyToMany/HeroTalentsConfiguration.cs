@@ -14,11 +14,13 @@
 
             builder.HasOne(h => h.Hero)
                 .WithMany(ht => ht.HeroTalents)
-                .HasForeignKey(h => h.HeroId);
+                .HasForeignKey(h => h.HeroId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(t => t.Talent)
                 .WithMany(ht => ht.HeroTalents)
-                .HasForeignKey(t => t.TalentId);
+                .HasForeignKey(t => t.TalentId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
