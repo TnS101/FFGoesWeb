@@ -24,6 +24,8 @@
 
         public double CritChance { get; set; }
 
+        public string Zone { get; set; }
+
         public string Description { get; set; }
     }
 }

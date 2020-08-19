@@ -34,7 +34,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Name,Race")] CreateHeroCommand hero)
+        public async Task<IActionResult> Create([Bind("Name,Race,ClassId")] CreateHeroCommand hero)
         {
             if (!this.ModelState.IsValid)
             {

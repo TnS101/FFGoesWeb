@@ -27,51 +27,49 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm]string name, [FromForm]double maxHP, [FromForm]double maxMana,
-            [FromForm]double healthRegen, [FromForm]double manaRegen, [FromForm]double attackPower, [FromForm]double magicPower,
-            [FromForm]double armorValue, [FromForm]double resistanceValue, [FromForm]double critChance, [FromForm]string description)
+        public async Task<IActionResult> Create(CreateMonsterCommand monster)
         {
             return this.Redirect(await this.Mediator.Send(new CreateMonsterCommand
             {
-                Name = name,
-                MaxHP = maxHP,
-                MaxMana = maxMana,
-                HealthRegen = healthRegen,
-                ManaRegen = manaRegen,
-                AttackPower = attackPower,
-                MagicPower = magicPower,
-                ArmorValue = armorValue,
-                ResistanceValue = resistanceValue,
-                CritChance = critChance,
-                Description = description,
+                Name = monster.Name,
+                MaxHP = monster.MaxHP,
+                MaxMana = monster.MaxMana,
+                HealthRegen = monster.HealthRegen,
+                ManaRegen = monster.ManaRegen,
+                AttackPower = monster.AttackPower,
+                MagicPower = monster.MagicPower,
+                ArmorValue = monster.ArmorValue,
+                ResistanceValue = monster.ResistanceValue,
+                CritChance = monster.CritChance,
+                Description = monster.Description,
+                Zone = monster.Zone,
             }));
         }
 
         [HttpGet("/Administrator/Monster/Update/id")]
-        public IActionResult Update()
+        public async Task<IActionResult> Update([FromQuery]int id)
         {
-            return this.View();
+            return this.View(await this.Mediator.Send(new GetCurrentMonsterQuery { MonsterId = id }));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update([FromForm]int id, [FromForm]string name, [FromForm]double maxHP, [FromForm]double maxMana,
-            [FromForm]double healthRegen, [FromForm]double manaRegen, [FromForm]double attackPower, [FromForm]double magicPower,
-            [FromForm]double armorValue, [FromForm]double resistanceValue, [FromForm]double critChance, [FromForm]string description)
+        public async Task<IActionResult> Update(UpdateMonsterCommand monster, int id)
         {
             return this.Redirect(await this.Mediator.Send(new UpdateMonsterCommand
             {
                 MonsterId = id,
-                NewName = name,
-                NewMaxHP = maxHP,
-                NewMaxMana = maxMana,
-                NewHealthRegen = healthRegen,
-                NewManaRegen = manaRegen,
-                NewAttackPower = attackPower,
-                NewMagicPower = magicPower,
-                NewArmorValue = armorValue,
-                NewResistanceValue = resistanceValue,
-                NewCritChance = critChance,
-                NewDescription = description,
+                Name = monster.Name,
+                MaxHP = monster.MaxHP,
+                MaxMana = monster.MaxMana,
+                HealthRegen = monster.HealthRegen,
+                ManaRegen = monster.ManaRegen,
+                AttackPower = monster.AttackPower,
+                MagicPower = monster.MagicPower,
+                ArmorValue = monster.ArmorValue,
+                ResistanceValue = monster.ResistanceValue,
+                CritChance = monster.CritChance,
+                Description = monster.Description,
+                Zone = monster.Zone,
             }));
         }
 

@@ -36,59 +36,59 @@
 
         private void StatsNullCheck(UpdateMonsterCommand request, Monster monster)
         {
-            if (!string.IsNullOrWhiteSpace(request.NewName))
+            if (!string.IsNullOrWhiteSpace(request.Name))
             {
-                monster.Name = request.NewName;
+                monster.Name = request.Name;
             }
 
-            if (request.NewMaxHP > 0)
+            if (request.MaxHP > 0)
             {
-                monster.MaxHP = request.NewMaxHP;
+                monster.MaxHP = request.MaxHP;
             }
 
-            if (request.NewMaxMana > 0)
+            if (request.MaxMana > 0)
             {
-                monster.MaxMana = request.NewMaxMana;
+                monster.MaxMana = request.MaxMana;
             }
 
-            if (request.NewHealthRegen > 0)
+            if (request.HealthRegen > 0)
             {
-                monster.HealthRegen = request.NewHealthRegen;
+                monster.HealthRegen = request.HealthRegen;
             }
 
-            if (request.NewManaRegen > 0)
+            if (request.ManaRegen > 0)
             {
-                monster.ManaRegen = request.NewManaRegen;
+                monster.ManaRegen = request.ManaRegen;
             }
 
-            if (request.NewAttackPower > 0)
+            if (request.AttackPower > 0)
             {
-                monster.AttackPower = request.NewAttackPower;
+                monster.AttackPower = request.AttackPower;
             }
 
-            if (request.NewMagicPower > 0)
+            if (request.MagicPower > 0)
             {
-                monster.MagicPower = request.NewMagicPower;
+                monster.MagicPower = request.MagicPower;
             }
 
-            if (request.NewArmorValue > 0)
+            if (request.ArmorValue > 0)
             {
-                monster.ArmorValue = request.NewArmorValue;
+                monster.ArmorValue = request.ArmorValue;
             }
 
-            if (request.NewResistanceValue > 0)
+            if (request.ResistanceValue > 0)
             {
-                monster.ResistanceValue = request.NewResistanceValue;
+                monster.ResistanceValue = request.ResistanceValue;
             }
 
-            if (request.NewCritChance > 0)
+            if (request.CritChance > 0)
             {
-                monster.CritChance = request.NewCritChance;
+                monster.CritChance = request.CritChance;
             }
 
-            if (!string.IsNullOrWhiteSpace(request.NewDescription))
+            if (!string.IsNullOrWhiteSpace(request.Description))
             {
-                monster.Description = request.NewDescription;
+                monster.Description = request.Description;
             }
         }
     }

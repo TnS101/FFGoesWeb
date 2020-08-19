@@ -1,6 +1,4 @@
-﻿@{
-    string id = Context.Request.Query["id"];
-}
+﻿@model Application.GameCQ.Monsters.Queries.GetCurrentMonsterQuery.MonsterFullViewModel
 <title>Update Monster</title>
 <partial name="_AdminNavBar">
     <div class="starting-div fade-in ">
@@ -12,72 +10,75 @@
                     <form asp-controller="Monster" asp-action="Update" method="post">
                         <cache vary-by-query="id">
                             <div class="form-group item-padding">
-                                <input type="hidden" name="id" value="@id" />
+                                <input type="hidden" name="id" value="@Model.Id" />
                             </div>
                         </cache>
-                        <cache priority="Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove">
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-name" class="contro-label has-normal-font-size">New Name</label>
-                            <br />
-                            <input type="text" id="input-name" name="name" class="form-control" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-hp" class="contro-label has-normal-font-size">New Max HP</label>
-                            <br />
-                            <input type="number" id="input-hp" name="maxHP" class="form-control" min="80" max="999999999" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-mana" class="contro-label has-normal-font-size">New Max Mana</label>
-                            <br />
-                            <input type="number" id="input-mana" name="maxMana" class="form-control" min="80" max="999999999" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-healthRegen" class="contro-label has-normal-font-size">New Health Regen</label>
-                            <br />
-                            <input type="number" id="input-healthRegen" name="healthRegen" class="form-control" min="1" max="10000" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-manaRegen" class="contro-label has-normal-font-size">New Mana Regen</label>
-                            <br />
-                            <input type="number" id="input-manaRegen" name="manaRegen" class="form-control" min="1" max="10000" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-attackPower" class="contro-label has-normal-font-size">New Attack Power</label>
-                            <br />
-                            <input type="number" id="input-attackPower" name="attackPower" class="form-control" min="10" max="10000000" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-magicPower" class="contro-label has-normal-font-size">New Magic Power</label>
-                            <br />
-                            <input type="number" id="input-magicPower" name="magicPower" class="form-control" min="10" max="10000000" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-armorValue" class="contro-label has-normal-font-size">New Armor Value</label>
-                            <br />
-                            <input type="number" id="input-armorValue" name="armorValue" class="form-control" min="1" max="100000" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-resistanceValue" class="contro-label has-normal-font-size">New Resistance Value</label>
-                            <br />
-                            <input type="number" id="input-resistanceValue" name="resistanceValue" class="form-control" min="1" max="100000" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-criticalChance" class="contro-label has-normal-font-size">New Critical Chance</label>
-                            <br />
-                            <input type="number" id="input-criticalChance" name="criticalChance" class="form-control" min="1" max="50" required/>
-                        </div>
-                        <div class="form-group fade-in item-padding has-normal-font-size">
-                            <label for="input-description" class="contro-label has-normal-font-size">New Description</label>
-                            <br />
-                            <input type="text" id="input-description" name="description" class="form-control" />
-                        </div>
-                        <div class="form-group item-padding">
-                            <input type="submit" value="Update" class="main-button" />
-                        </div>
-                        <div class="item-padding">
-                            <hr />
-                        </div>
-                            </cache>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-name" class="contro-label has-normal-font-size">New Name</label>
+                                <br />
+                                <input type="text" id="input-name" name="name" class="form-control" placeholder="@Model.Name" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-hp" class="contro-label has-normal-font-size">New Max HP</label>
+                                <br />
+                                <input type="number" id="input-hp" name="maxHP" class="form-control" min="80" max="999999999" placeholder="@Model.MaxHP" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-mana" class="contro-label has-normal-font-size">New Max Mana</label>
+                                <br />
+                                <input type="number" id="input-mana" name="maxMana" class="form-control" min="80" max="999999999" placeholder="@Model.MaxMana" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-healthRegen" class="contro-label has-normal-font-size">New Health Regen</label>
+                                <br />
+                                <input type="number" id="input-healthRegen" name="healthRegen" class="form-control" min="1" max="10000" placeholder="@Model.HealthRegen" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-manaRegen" class="contro-label has-normal-font-size">New Mana Regen</label>
+                                <br />
+                                <input type="number" id="input-manaRegen" name="manaRegen" class="form-control" min="1" max="10000" placeholder="@Model.ManaRegen" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-attackPower" class="contro-label has-normal-font-size">New Attack Power</label>
+                                <br />
+                                <input type="number" id="input-attackPower" name="attackPower" class="form-control" min="10" max="10000000" placeholder="@Model.AttackPower" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-magicPower" class="contro-label has-normal-font-size">New Magic Power</label>
+                                <br />
+                                <input type="number" id="input-magicPower" name="magicPower" class="form-control" min="10" max="10000000" placeholder="@Model.MagicPower" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-armorValue" class="contro-label has-normal-font-size">New Armor Value</label>
+                                <br />
+                                <input type="number" id="input-armorValue" name="armorValue" class="form-control" min="1" max="100000" placeholder="@Model.ArmorValue" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-resistanceValue" class="contro-label has-normal-font-size">New Resistance Value</label>
+                                <br />
+                                <input type="number" id="input-resistanceValue" name="resistanceValue" class="form-control" min="1" max="100000" placeholder="@Model.ResistanceValue" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-criticalChance" class="contro-label has-normal-font-size">New Critical Chance</label>
+                                <br />
+                                <input type="number" id="input-criticalChance" name="criticalChance" class="form-control" min="1" max="50" placeholder="@Model.CritChance" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-zone" class="contro-label has-normal-font-size">New Zone</label>
+                                <br />
+                                <input type="text" id="input-zone" name="zone" class="form-control" placeholder="@Model.Zone" />
+                            </div>
+                            <div class="form-group fade-in item-padding has-normal-font-size">
+                                <label for="input-description" class="contro-label has-normal-font-size">New Description</label>
+                                <br />
+                                <input type="text" id="input-description" name="description" class="form-control" placeholder="@Model.Description" />
+                            </div>
+                            <div class="form-group item-padding">
+                                <input type="submit" value="Update" class="main-button" />
+                            </div>
+                            <div class="item-padding">
+                                <hr />
+                            </div>
                     </form>
                 </div>
             </div>

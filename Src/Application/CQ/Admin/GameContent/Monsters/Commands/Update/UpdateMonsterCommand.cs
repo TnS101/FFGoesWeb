@@ -6,26 +6,28 @@
     {
         public int MonsterId { get; set; }
 
-        public string NewName { get; set; }
+        public string Name { get; set; }
 
-        public double NewMaxHP { get; set; }
+        public double MaxHP { get; set; }
 
-        public double NewMaxMana { get; set; }
+        public double MaxMana { get; set; }
 
-        public double NewHealthRegen { get; set; }
+        public double HealthRegen { get; set; }
 
-        public double NewManaRegen { get; set; }
+        public double ManaRegen { get; set; }
 
-        public double NewAttackPower { get; set; }
+        public double AttackPower { get; set; }
 
-        public double NewMagicPower { get; set; }
+        public double MagicPower { get; set; }
 
-        public double NewArmorValue { get; set; }
+        public double ArmorValue { get; set; }
 
-        public double NewResistanceValue { get; set; }
+        public double ResistanceValue { get; set; }
 
-        public double NewCritChance { get; set; }
+        public double CritChance { get; set; }
 
-        public string NewDescription { get; set; }
+        public string Zone { get; set; }
+
+        public string Description { get; set; }
     }
 }
