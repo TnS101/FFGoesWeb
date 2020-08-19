@@ -11,82 +11,54 @@
             <div class="item-padding">
                 <hr />
                 <div class="item-padding">
-                    <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Weapon"><i class="icofont-angry-monster main-font-color icofont-4x"></i> <span class="has-large-font-size main-font-color">Weapons</span></a>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                    <div class="item-padding">
-                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Armor"><i class="icofont-shield-alt main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Armor</span></a>
-                    </div>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                    <div class="item-padding">
-                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Trinket"><i class="icofont-woman-bird main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Trinkets</span></a>
-                    </div>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                    <div class="item-padding">
-                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="LootBox"><i class="fas fa-gem has-large-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Treasures</span></a>
-                    </div>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                    <div class="item-padding">
-                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Loot Key"><i class="icofont-key main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Treasure Keys</span></a>
-                    </div>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                    <div class="item-padding">
-                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Material"><i class="icofont-leaf main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Materials</span></a>
-                    </div>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                    <div class="item-padding">
-                        <a asp-controller="GameContent" asp-action="Items" asp-route-slot="Tool"><i class="fas fa-hammer has-larger-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Tools</span></a>
-                    </div>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                    <div class="item-padding">
-                        <a asp-controller="GameContent" asp-action="Spells"><i class="fas fa-magic has-larger-font-size main-font-color"></i> <span class="has-large-font-size main-font-color">Spells</span></a>
-                    </div>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                    <div class="item-padding">
-                        <a asp-controller="GameContent" asp-action="Monsters"><i class="icofont-tiger-face main-font-color icofont-3x"></i> <span class="has-large-font-size main-font-color">Monsters</span></a>
-                    </div>
-                    <div class="item-padding">
-                        <hr />
-                    </div>
-                    <div class="item-padding">
-                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/FightingClasses" data-ajax-complete="Action"><i class="icofont-magician-hat icofont-3x main-font-color"></i> <span class="has-large-font-size main-font-color">Classes</span></a>
-                    </div>
+                    <nav>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/Items/slot?slot=Weapon" data-ajax-complete="Action"><i class="icofont-angry-monster main-font-color icofont-4x"></i></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/Items/slot?slot=Armor" data-ajax-complete="Action"><i class="icofont-shield-alt main-font-color icofont-3x"></i></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/Items/slot?slot=Trinket" data-ajax-complete="Action"><i class="icofont-woman-bird main-font-color icofont-3x"></i></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/Items/slot?slot=LootBox" data-ajax-complete="Action"><i class="fas fa-gem has-large-font-size main-font-color"></i></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/Items/slot?slot=Loot Key" data-ajax-complete="Action"><i class="icofont-key main-font-color icofont-3x"></i></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/Items/slot?slot=Material" data-ajax-complete="Action"><i class="icofont-leaf main-font-color icofont-3x"></i></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/Items/slot?slot=Tool" data-ajax-complete="Action"><i class="fas fa-hammer has-larger-font-size main-font-color"></i></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/Spells" data-ajax-complete="Action"><i class="fas fa-magic has-larger-font-size main-font-color"></i></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/Monsters" data-ajax-complete="Action"><i class="icofont-tiger-face main-font-color icofont-3x"></i></a>
+                        <a data-ajax="true" data-ajax-url="/Administrator/GameContent/FightingClasses" data-ajax-complete="Action"><i class="icofont-magician-hat icofont-3x main-font-color"></i></a>
+                    </nav>
                 </div>
                 <div class="item-padding">
                     <hr />
                 </div>
             </div>
-            <main>
-                <div class="entry-content single-entry-content item-padding fightingClass" id="" hidden>
-                    <div class="entry-header with-image full site-background main-gradient">
-                        <div class="wp-block-image is-style-circle-mask">
-                            <figure class="size-large is-resized">
-                                <img src="" alt="" width="100" height="100" />
-                            </figure>
-                        </div>
-                        <a href="/Administrator/FightingClass/Current/id?id="><h1 class="main-font-color has-large-font-size"></h1></a>
-                    </div>
-                    <a href="/Administrator/FightingClass/Update/id?id="><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
-                    <form asp-controller="FightingClass" asp-action="Delete" method="post" class="item-padding">
+            <div>
+                <div class="item-padding " id="item" hidden>
+                    <img src="" alt="Item Image">
+                    <a href="/Administrator/Item/Current/id%26slot?id="><h3 class="main-font-color"></h3></a>
+                    <a href="/Administrator/Item/Update/id%26slot?id="><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                    <form asp-controller="Item" asp-action="Delete" method="post" class="item-padding">
                         <input type="hidden" name="id" value="" />
                         <input type="submit" name="button" value="Delete" class="main-button" />
+                        <input type="hidden" name="slot" value="" />
                     </form>
+                    <hr />
                 </div>
+            </div>
+
+            <div class="entry-content single-entry-content item-padding" id="fightingClass" hidden>
+                <div class="entry-header with-image full site-background main-gradient">
+                    <div class="wp-block-image is-style-circle-mask">
+                        <figure class="size-large is-resized">
+                            <img src="" alt="" width="100" height="100" />
+                        </figure>
+                    </div>
+                    <a href="/Administrator/FightingClass/Current/id?id="><h1 class="main-font-color has-large-font-size"></h1></a>
+                </div>
+                <a href="/Administrator/FightingClass/Update/id?id="><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                <form asp-controller="FightingClass" asp-action="Delete" method="post" class="item-padding">
+                    <input type="hidden" name="id" value="" />
+                    <input type="submit" name="button" value="Delete" class="main-button" />
+                </form>
+            </div>
+            <main>
+
             </main>
         </div>
     </cache>
@@ -99,8 +71,10 @@
 
                 if (data.responseJSON.fightingClasses !== this.undefined) {
 
+                    var cloneable = this.document.getElementById('fightingClass');
+                    main.innerHTML = '';
                     data.responseJSON.fightingClasses.reduce(function (acc, el) {
-                        element = this.document.getElementsByClassName('fightingClass')[0].cloneNode(true);
+                        element = cloneable.cloneNode(true);
                         element.style.display = 'block';
 
                         element.setAttribute('id', el.id);
@@ -116,7 +90,24 @@
                     }, 0);
 
                 } else if (data.responseJSON.hasOwnProperty('items')) {
+                    var cloneable = this.document.getElementById('item');
+                    main.innerHTML = '';
 
+                    data.responseJSON.fightingClasses.reduce(function (acc, el) {
+                        element = cloneable.cloneNode(true);
+                        element.style.display = 'block';
+
+                        element.setAttribute('id', el.id);
+                        element.querySelector('img').src = el.imagePath;
+                        var name = element.querySelector('a');
+                        name.href += `${el.id}&slot=${el.slot}`;
+                        name.firstChild.textContent = el.name;
+                        element.querySelectorAll('a')[1].href += `${el.id}&slot=${el.slot}`;
+                        element.querySelector('form').firstChild.value = el.id;
+                        element.querySelector('form').lastChild.value = el.id;
+
+                        main.appendChild(element);
+                    }, 0);
                 }
                 else if (data.responseJSON.hasOwnProperty('monsters')) {
 
