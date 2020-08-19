@@ -56,7 +56,46 @@
                     <input type="hidden" name="id" value="" />
                     <input type="submit" name="button" value="Delete" class="main-button" />
                 </form>
+                <hr />
             </div>
+
+            <div id="monster" hidden>
+                <div class="main-gradient secondary-background-color item-padding">
+                    <div style="flex-basis: 33.33%">
+                        <div class="wp-block-image">
+                            <figure class="size-large is-resized">
+                                <img src="" alt="Monster" width="100" height="100">
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="wp-block-column" style="flex-basis:66.66%">
+                        <h1 class="has-large-font-size"><a href="/Administrator/Monster/Current/id?id="><span class="light-font-color"></span></a></h1>
+                    </div>
+                </div>
+                <a href="/Administrator/Monster/Update/id?id="><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                <form asp-controller="Monster" asp-action="Delete" method="post" class="item-padding">
+                    <input type="hidden" name="id" value="" />
+                    <input type="submit" name="button" value="Delete" class="main-button" />
+                </form>
+                <hr />
+                <br />
+            </div>
+
+            <div class="item-padding" id="spell" hidden>
+                <div class="wp-block-image">
+                    <figure class="size-large is-resized">
+                        <img src="" alt="Spell" width="100" height="100">
+                    </figure>
+                </div>
+                <a href="/Administrator/Spell/Current/id?id="><h3 class="main-font-color"></h3></a>
+                <a href="/Administrator/Spell/Update/id?id="><i class="fas fa-edit has-large-font-size main-font-color"></i></a>
+                <form asp-controller="Spell" asp-action="Delete" method="post" class="item-padding">
+                    <input type="hidden" name="id" value="" />
+                    <input type="submit" name="button" value="Delete" class="main-button" />
+                </form>
+                <hr />
+            </div>
+
             <main>
 
             </main>
@@ -68,29 +107,10 @@
             if (data.status == 200) {
                 var element;
                 var main = this.document.getElementsByTagName('main')[0];
+                var cloneable;
 
-                if (data.responseJSON.fightingClasses !== this.undefined) {
-
-                    var cloneable = this.document.getElementById('fightingClass');
-                    main.innerHTML = '';
-                    data.responseJSON.fightingClasses.reduce(function (acc, el) {
-                        element = cloneable.cloneNode(true);
-                        element.style.display = 'block';
-
-                        element.setAttribute('id', el.id);
-                        element.querySelector('img').src = el.imagePath;
-                        var name = element.querySelector('a');
-                        name.href += el.id;
-                        name.firstChild.textContent = el.type;
-                        element.querySelectorAll('a')[1].href += el.id;
-                        element.querySelector('form').firstChild.value = el.id;
-
-                        main.appendChild(element);
-
-                    }, 0);
-
-                } else if (data.responseJSON.hasOwnProperty('items')) {
-                    var cloneable = this.document.getElementById('item');
+                if (data.responseJSON.items !== undefined) {
+                    cloneable = this.document.getElementById('item');
                     main.innerHTML = '';
 
                     data.responseJSON.fightingClasses.reduce(function (acc, el) {
@@ -108,11 +128,41 @@
 
                         main.appendChild(element);
                     }, 0);
-                }
-                else if (data.responseJSON.hasOwnProperty('monsters')) {
 
-                } else if (data.responseJSON.hasOwnProperty('spells')) {
+                } else {
 
+                    var collection;
+
+                    if (data.responseJSON.fightingClasses !== this.undefined) {
+
+                        cloneable = this.document.getElementById('fightingClass');
+                        collection = data.responseJSON.fightingClasses;
+                    }
+                    else if (data.responseJSON.hasOwnProperty('monsters')) {
+                        cloneable = this.document.getElementById('monster');
+                        collection = data.responseJSON.monsters;
+
+                    } else if (data.responseJSON.hasOwnProperty('spells')) {
+                        cloneable = this.document.getElementById('spell');
+                        collection = data.responseJSON.spells;
+                    }
+
+                    main.innerHTML = '';
+                    collection.reduce(function (acc, el) {
+                        element = cloneable.cloneNode(true);
+                        element.style.display = 'block';
+
+                        element.setAttribute('id', el.id);
+                        element.querySelector('img').src = el.imagePath;
+                        var name = element.querySelector('a');
+                        name.href += el.id;
+                        name.firstChild.textContent = el.type != undefined ? el.type : el.name;
+                        element.querySelectorAll('a')[1].href += el.id;
+                        element.querySelector('form').firstChild.value = el.id;
+
+                        main.appendChild(element);
+
+                    }, 0);
                 }
 
             } else {
