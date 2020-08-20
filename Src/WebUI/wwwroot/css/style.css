@@ -10,6 +10,15 @@ html {
  font-size: 75px;
 }
 
+a
+{
+ cursor:pointer
+}
+
+a:link{
+ text-decoration: none;
+}
+
 progress {
  display: inline-block;
  width: 200px;

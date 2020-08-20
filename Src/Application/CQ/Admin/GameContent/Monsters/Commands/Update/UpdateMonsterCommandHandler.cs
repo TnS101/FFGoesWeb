@@ -90,6 +90,11 @@
             {
                 monster.Description = request.Description;
             }
+
+            if (!string.IsNullOrWhiteSpace(request.Zone))
+            {
+                monster.Zone = request.Zone;
+            }
         }
     }
 }

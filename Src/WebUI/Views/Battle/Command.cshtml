@@ -72,7 +72,9 @@
                             let hero = data.responseJSON.battleUnits.hero;
                             let enemy = data.responseJSON.battleUnits.enemy;
 
-                            $hero.spells.each(spell, function () {
+                            console.log(data.responseJSON);
+
+                            hero.spells.reduce(function (acc, spell) {
                                 if (spell.satsifiesCondition == true) {
                                     $(`#spellId [value='${spell.id}']`).css('background-color','red');
                                 }

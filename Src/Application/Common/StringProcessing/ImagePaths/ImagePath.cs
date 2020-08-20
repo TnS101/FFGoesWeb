@@ -32,13 +32,16 @@
                 section += "s";
             }
 
-            if (subSection.EndsWith('s'))
+            if (subSection != string.Empty)
             {
-                subSection += "es";
-            }
-            else
-            {
-                subSection += "s";
+                if (subSection.EndsWith('s'))
+                {
+                    subSection += "es";
+                }
+                else
+                {
+                    subSection += "s";
+                }
             }
 
             return $"/images/{section}{subSection}/{name}.png";

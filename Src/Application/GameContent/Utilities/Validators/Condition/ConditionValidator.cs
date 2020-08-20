@@ -23,6 +23,11 @@
                 spell.Condition += $"/{talentCondition}";
             }
 
+            if (spell.Condition == null)
+            {
+                return;
+            }
+
             var conditions = new List<string>();
 
             if (spell.Condition.Contains("/"))
