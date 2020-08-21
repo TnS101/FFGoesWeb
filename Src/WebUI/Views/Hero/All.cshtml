@@ -22,7 +22,7 @@
                     <div class="item-padding" id="">
                         <a asp-controller="Hero" asp-action="Info" asp-route-id="@hero.Id" class=""><p class="has-large-font-size light-font-color">@hero.Name</p></a>
                         <hr class="has-narrow-width" />
-                        <h3><img src="@hero.IconURL" alt="" />@hero.ClassType</h3>
+                        <h3><img src="@hero.IconURL" alt="@hero.ClassType" /></h3>
                         <hr class="has-narrow-width" />
                         <h3><i class="fas fa-certificate main-font-color"></i> @hero.Level</h3>
                         <hr class="has-narrow-width" />

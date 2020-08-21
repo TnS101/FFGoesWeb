@@ -4,6 +4,6 @@
 
     public class HeroListViewModel
     {
-        public IEnumerable<HeroMinViewModel> Heroes { get; set; }
+        public ICollection<HeroMinViewModel> Heroes { get; set; }
     }
 }

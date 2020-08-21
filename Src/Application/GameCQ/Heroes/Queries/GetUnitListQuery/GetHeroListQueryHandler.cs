@@ -32,18 +32,25 @@
 
             this.EnergyManagement(heroes);
 
+            var result = new HeroListViewModel { Heroes = new List<HeroMinViewModel>() };
+
             foreach (var hero in heroes)
             {
                 // Stat reset
+                var mappedHero = this.Mapper.Map<HeroMinViewModel>(hero);
+                var fightingClass = await this.Context.FightingClasses.FindAsync(hero.FightingClassId);
+
+                mappedHero.ClassType = fightingClass.Type;
+                mappedHero.IconURL = fightingClass.IconPath;
+
+                result.Heroes.Add(mappedHero);
+
                 this.statsReset.Reset(hero);
             }
 
             await this.Context.SaveChangesAsync(cancellationToken);
 
-            return new HeroListViewModel
-            {
-                Heroes = await heroes.ProjectTo<HeroMinViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
-            };
+            return result;
         }
 
         private void EnergyManagement(IQueryable<Hero> heroes)
