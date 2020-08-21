@@ -63,3 +63,28 @@ $(".shops-button").click(function () {
         scrollTop: $("#Shops").offset().top - 60
     }, 1500);
 });
+
+function show(id) {
+    const clicked = document.getElementById(`${id}`).querySelectorAll('i')[1];
+    const section = document.getElementById(`${id}`).getElementsByClassName('about-section')[0];
+
+    section.style.display = 'inline-block';
+
+    $('html, body').animate({scrollTop: $(`#${id}`).offset().top - 60}, 800);
+
+    clicked.className = 'fas fa-caret-square-up light-font-color clickable';
+
+    clicked.onclick = function () {
+        return false;
+    };
+
+    clicked.onclick = function hide(e) {
+        e.preventDefault();
+        section.style.display = 'none';
+        clicked.className = 'fas fa-caret-square-down main-font-color clickable';
+
+        clicked.onclick = function () {
+            return show(id);
+        };
+    };
+}

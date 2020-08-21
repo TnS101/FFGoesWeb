@@ -10,6 +10,24 @@ html {
  font-size: 75px;
 }
 
+.about-section
+{
+  width: 70%;
+  display: inline-block;           
+  box-shadow: 0px 4px 10px -5px #c49b79;
+}
+
+.about-section p 
+{
+  width: 90%;
+  display: inline-block;
+}
+
+.clickable
+{
+ cursor:pointer;
+}
+
 a
 {
  cursor:pointer
