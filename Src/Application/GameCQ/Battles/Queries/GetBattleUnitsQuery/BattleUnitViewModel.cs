@@ -50,6 +50,8 @@
 
         public string ImagePath { get; set; }
 
+        public string Type { get; set; }
+
         public ICollection<SpellMinViewModel> Spells { get; set; }
     }
 }

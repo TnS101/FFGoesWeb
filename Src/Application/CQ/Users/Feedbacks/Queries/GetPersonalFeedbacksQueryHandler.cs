@@ -19,11 +19,9 @@
 
         public async Task<FeedbackListViewModel> Handle(GetPersonalFeedbacksQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
             return new FeedbackListViewModel
             {
-                Feedbacks = await this.Context.Feedbacks.Where(f => f.UserId == user.Id).AsNoTracking().ProjectTo<FeedbackFulllViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
+                Feedbacks = await this.Context.Feedbacks.Where(f => f.UserId == request.UserId).AsNoTracking().ProjectTo<FeedbackFulllViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }
     }

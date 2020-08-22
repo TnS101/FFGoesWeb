@@ -25,28 +25,28 @@
 
         public async Task SpellCast(IUnit caster, IUnit target, int spellId, IFFDbContext context, IMapper mapper)
         {
-            var spell = new Spell();
+            Spell spell = null;
             var cardCondition = string.Empty;
             var talentCondition = string.Empty;
 
             if (caster.Type == "Player" && caster.SilenceDuration == 0)
             {
                 var dbSpell = await context.Spells.FindAsync(spellId);
-                var hero = (Hero)caster;
-                var card = context.CardsEquipments.Where(c => c.HeroId == hero.Id).FirstOrDefault(c => c.Card.SpellId == dbSpell.Id && !c.Card.IsUsed && c.Card.IsActivated).Card;
-                var talent = context.HeroesTalents.FirstOrDefault(ht => ht.HeroId == hero.Id && ht.Talent.SpellId == dbSpell.Id).Talent;
+                //var hero = (Hero)caster;
+                //var card = context.CardsEquipments.Where(c => c.HeroId == hero.Id).FirstOrDefault(c => c.Card.SpellId == dbSpell.Id && !c.Card.IsUsed && c.Card.IsActivated).Card;
+                //var talent = context.HeroesTalents.FirstOrDefault(ht => ht.HeroId == hero.Id && ht.Talent.SpellId == dbSpell.Id).Talent;
 
-                if (talent != null)
-                {
-                    talentCondition = talent.Condition;
-                }
+                //if (talent != null)
+                //{
+                //    talentCondition = talent.Condition;
+                //}
 
-                if (card != null)
-                {
-                    cardCondition = card.Condition;
-                    card.IsUsed = true;
-                    card.IsActivated = false;
-                }
+                //if (card != null)
+                //{
+                //    cardCondition = card.Condition;
+                //    card.IsUsed = true;
+                //    card.IsActivated = false;
+                //}
 
                 spell = mapper.Map<Spell>(dbSpell);
 
@@ -56,7 +56,7 @@
                 }
             }
 
-            if (caster.Type == "Monster")
+            if (caster.Type != "Player" && caster.SilenceDuration == 0)
             {
                 var monster = (Monster)caster;
                 var spells = await context.Spells.Where(s => s.MonsterId == monster.Id).ToArrayAsync();
@@ -73,6 +73,8 @@
                         {
                             break;
                         }
+
+                        return;
                     }
                     else
                     {

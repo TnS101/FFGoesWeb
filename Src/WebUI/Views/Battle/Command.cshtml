@@ -41,6 +41,7 @@
                     </select>
                     <div class="item-padding fade-in" hidden id="spells">
                         <select name="spellId" id="spellId">
+                            <option selected value="0">Choose A Spell</option>
                             @foreach (var spell in Model.Hero.Spells)
                             {
                                 <option value="@spell.Id">@spell.Name</option>
@@ -71,8 +72,6 @@
                         if (data.status == 200) {
                             let hero = data.responseJSON.battleUnits.hero;
                             let enemy = data.responseJSON.battleUnits.enemy;
-
-                            console.log(data.responseJSON);
 
                             hero.spells.reduce(function (acc, spell) {
                                 if (spell.satsifiesCondition == true) {
@@ -119,7 +118,8 @@
                             }
 
                         } else {
-                            window.location.href = '/Error/Default';
+                            console.log(data.responseJSON);
+                            //window.location.href = '/Error/Default';
                         }
                     }
                 });

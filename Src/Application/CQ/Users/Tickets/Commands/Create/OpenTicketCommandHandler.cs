@@ -18,13 +18,11 @@
 
         public async Task<string> Handle(OpenTicketCommand request, CancellationToken cancellationToken)
         {
-            var sender = await this.Context.AppUsers.FindAsync(request.UserId);
-
             var ticket = new Ticket
             {
                 Category = request.Category,
                 AdditionalInformation = request.AdditionalInformation,
-                UserId = sender.Id,
+                UserId = request.UserId,
                 SentOn = DateTime.UtcNow,
                 Content = request.Content,
             };

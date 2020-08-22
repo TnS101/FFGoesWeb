@@ -20,8 +20,6 @@
         {
             var topic = await this.Context.Topics.FindAsync(request.TopicId);
 
-            var viewer = await this.Context.AppUsers.FindAsync(request.UserId);
-
             topic.Comments = await this.Context.Comments.Where(c => c.TopicId == topic.Id).AsNoTracking().ToArrayAsync();
 
             var topicReportersIds = await this.Context.Tickets.Where(t => t.TopicId == topic.Id).AsNoTracking().Select(t => t.UserId).ToArrayAsync();
@@ -40,7 +38,7 @@
                 UserId = topic.UserId,
                 Id = topic.Id,
                 TopicTicketsIds = topicReportersIds,
-                ViewerId = viewer.Id,
+                ViewerId = request.UserId,
                 CommentTicketsIds = commentReportersIds,
             };
 

@@ -22,9 +22,7 @@
         {
             var rng = new Random();
 
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
-            var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == request.UserId && u.IsSelected);
 
             var lootBoxType = this.LootBoxType(rng);
 

@@ -8,6 +8,7 @@
     using Application.GameContent.Utilities.Stats;
     using Domain.Contracts.Items;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class UpdateEquipmentCommandHandler : BaseHandler, IRequestHandler<UpdateEquipmentCommand, long>
     {
@@ -21,7 +22,7 @@
 
         public async Task<long> Handle(UpdateEquipmentCommand request, CancellationToken cancellationToken)
         {
-            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
+            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.Id == request.HeroId && h.UserId == request.UserId);
 
             long result;
             if (request.Command == "Equip")

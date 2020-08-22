@@ -18,11 +18,9 @@
 
         public async Task<string> Handle(DeleteTopicCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
             var topicToRemove = await this.Context.Topics.FindAsync(request.TopicId);
 
-            if (user.Id == topicToRemove.UserId)
+            if (request.UserId == topicToRemove.UserId)
             {
                 var topicTickets = this.Context.Tickets.Where(t => t.TopicId == topicToRemove.Id);
 

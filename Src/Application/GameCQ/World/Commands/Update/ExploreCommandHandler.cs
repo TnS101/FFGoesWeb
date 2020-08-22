@@ -21,11 +21,9 @@
         {
             var rng = new Random();
 
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
             int exploreNumber = rng.Next(10);
 
-            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
+            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == request.UserId && h.IsSelected);
 
             if (hero.Energy == 0)
             {

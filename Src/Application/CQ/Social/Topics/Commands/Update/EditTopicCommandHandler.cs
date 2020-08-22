@@ -5,10 +5,8 @@
     using System.Threading.Tasks;
     using Application.Common.Handlers;
     using Application.Common.Interfaces;
-    using Domain.Entities.Common;
     using global::Common;
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
 
     public class EditTopicCommandHandler : BaseHandler, IRequestHandler<EditTopicCommand, string>
     {
@@ -19,11 +17,9 @@
 
         public async Task<string> Handle(EditTopicCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
             var topic = await this.Context.Topics.FindAsync(request.Id);
 
-            if (user.Id == topic.UserId)
+            if (request.UserId == topic.UserId)
             {
                 if (!string.IsNullOrWhiteSpace(request.NewTitle))
                 {

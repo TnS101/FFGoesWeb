@@ -17,9 +17,7 @@
 
         public async Task<string> Handle(SelectHeroCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
-            var oldHero = await this.Context.Heroes.FirstOrDefaultAsync(u => u.UserId == user.Id && u.IsSelected);
+            var oldHero = await this.Context.Heroes.FirstOrDefaultAsync(u => u.UserId == request.UserId && u.IsSelected);
 
             if (oldHero != null)
             {
@@ -28,7 +26,7 @@
                 this.Context.Heroes.Update(oldHero);
             }
 
-            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
+            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.Id == request.HeroId && h.UserId == request.UserId);
 
             hero.IsSelected = true;
 

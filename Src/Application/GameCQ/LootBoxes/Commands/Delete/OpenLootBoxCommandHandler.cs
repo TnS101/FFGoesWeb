@@ -21,9 +21,7 @@
 
         public async Task<string> Handle(OpenLootBoxCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
-            var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == user.Id && u.IsSelected);
+            var hero = this.Context.Heroes.FirstOrDefault(u => u.UserId == request.UserId && u.IsSelected);
 
             var lootBox = await this.Context.LootBoxes.FindAsync(request.Id);
 

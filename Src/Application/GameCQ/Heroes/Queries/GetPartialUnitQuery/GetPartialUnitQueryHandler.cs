@@ -17,9 +17,7 @@
 
         public async Task<UnitPartialViewModel> Handle(GetPartialUnitQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
-            var unit = await this.Context.Heroes.FirstOrDefaultAsync(u => u.UserId == user.Id && u.IsSelected);
+            var unit = await this.Context.Heroes.FirstOrDefaultAsync(u => u.UserId == request.UserId && u.IsSelected);
 
             return this.Mapper.Map<UnitPartialViewModel>(unit);
         }

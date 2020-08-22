@@ -19,20 +19,18 @@
 
         public async Task<NotificationListViewModel> Handle(GetPersonalNotificationsQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
             if (request.Filter is null)
             {
                 return new NotificationListViewModel
                 {
-                    Notifications = await this.Context.Notifications.Where(n => n.UserId == user.Id).AsNoTracking().ProjectTo<NotificationFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
+                    Notifications = await this.Context.Notifications.Where(n => n.UserId == request.UserId).AsNoTracking().ProjectTo<NotificationFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
                 };
             }
             else
             {
                 return new NotificationListViewModel
                 {
-                    Notifications = await this.Context.Notifications.Where(n => n.UserId == user.Id && n.Type == request.Filter).AsNoTracking().ProjectTo<NotificationFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
+                    Notifications = await this.Context.Notifications.Where(n => n.UserId == request.UserId && n.Type == request.Filter).AsNoTracking().ProjectTo<NotificationFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
                 };
             }
         }

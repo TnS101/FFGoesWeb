@@ -16,12 +16,14 @@ $("select.command").change(function () {
         background.removeClass();
 
         background.addClass('attack-option-gradient');
+        $('#spellId').val(0);
 
         $('#spells').attr('hidden', true);
     }
     else{
         background.removeClass();
         background.addClass('defend-option-gradient');
+        $('#spellId').val(0);
 
         $('#spells').attr('hidden', true);
     }

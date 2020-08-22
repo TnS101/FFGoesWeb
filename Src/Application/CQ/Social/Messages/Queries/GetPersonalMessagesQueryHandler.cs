@@ -19,13 +19,9 @@
 
         public async Task<MessageListViewModel> Handle(GetPersonalMessagesQuery request, CancellationToken cancellationToken)
         {
-            var reciever = await this.Context.AppUsers.FindAsync(request.UserId);
-
-            var sender = await this.Context.AppUsers.FindAsync(request.SenderId);
-
             return new MessageListViewModel
             {
-                Messages = await this.Context.Messages.Where(m => m.UserId == reciever.Id && m.UserId == sender.Id).OrderByDescending(m => m.SentOn)
+                Messages = await this.Context.Messages.Where(m => m.UserId == request.UserId && m.UserId == request.SenderId).OrderByDescending(m => m.SentOn)
                 .AsNoTracking().ProjectTo<MessageFullViewModel>(this.Mapper.ConfigurationProvider).ToArrayAsync(),
             };
         }

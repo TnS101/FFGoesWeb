@@ -7,5 +7,7 @@
         public int ConsumeableId { get; set; }
 
         public long HeroId { get; set; }
+
+        public string UserId { get; set; }
     }
 }

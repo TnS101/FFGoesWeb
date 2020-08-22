@@ -41,7 +41,7 @@
             this.CreateMap<Weapon, ItemMinViewModel>();
             this.CreateMap<Trinket, ItemMinViewModel>();
             this.CreateMap<Material, ItemMinViewModel>();
-            this.CreateMap<Spell, SpellMinViewModel>();
+            this.CreateMap<Spell, SpellMinViewModel>().ForMember(c => c.ClassType, opt => opt.Ignore());
             this.CreateMap<AppUser, UserPartialViewModel>().ForMember(u => u.Friends, opt => opt.Ignore());
             this.CreateMap<Topic, TopicFullViewModel>();
             this.CreateMap<Message, MessageFullViewModel>();
@@ -51,7 +51,7 @@
             this.CreateMap<Feedback, FeedbackFullViewModel>();
             this.CreateMap<Feedback, FeedbackTaskViewModel>();
             this.CreateMap<Status, StatusFullViewModel>();
-            this.CreateMap<Hero, HeroMinViewModel>();
+            this.CreateMap<Hero, HeroMinViewModel>().ForMember(h => h.ClassType, opt => opt.Ignore()).ForMember(h => h.IconURL, opt => opt.Ignore());
             this.CreateMap<Hero, UnitPartialViewModel>();
             this.CreateMap<Hero, UnitFullViewModel>().ForMember(h => h.Spells, opt => opt.Ignore());
             this.CreateMap<FightingClass, FightingClassMinViewModel>();

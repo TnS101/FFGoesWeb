@@ -17,9 +17,7 @@
 
         public async Task<UserListViewModel> Handle(GetAllFriendsQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
-            var friends = this.Context.Friends.Where(f => f.UserId == user.Id).Select(f => new UserPartialViewModel
+            var friends = this.Context.Friends.Where(f => f.UserId == request.UserId).Select(f => new UserPartialViewModel
             {
                 Id = f.Id,
                 UserName = f.User.UserName,

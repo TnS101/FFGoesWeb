@@ -5,5 +5,7 @@
     public class DeleteHeroCommand : IRequest<string>
     {
         public long HeroId { get; set; }
+
+        public string UserId { get; set; }
     }
 }

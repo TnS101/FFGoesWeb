@@ -16,7 +16,7 @@
 
         public async Task<Unit> Handle(ConsumeCommand request, CancellationToken cancellationToken)
         {
-            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
+            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.Id == request.HeroId && h.UserId == request.UserId);
 
             var consumeable = await this.Context.Consumeables.FindAsync(request.ConsumeableId);
 

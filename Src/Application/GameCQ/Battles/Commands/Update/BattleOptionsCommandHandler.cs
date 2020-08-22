@@ -49,7 +49,7 @@
                         new DefendOption().Defend(hero);
                     }
 
-                    if (request.Command == "Spell" && hero.SilenceDuration == 0)
+                    if (request.Command == "Spell" && hero.SilenceDuration == 0 && request.SpellId != 0)
                     {
                         await new SpellCastOption().SpellCast(hero, request.Enemy, request.SpellId, this.Context, this.Mapper);
                     }

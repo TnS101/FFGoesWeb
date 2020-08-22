@@ -8,7 +8,6 @@
     using Application.GameCQ.Spells.Queries.GetPersonalSpellsQuery;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Domain.Entities.Game.Units;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
 
@@ -21,17 +20,7 @@
 
         public async Task<UnitFullViewModel> Handle(GetFullUnitQuery request, CancellationToken cancellationToken)
         {
-            Hero hero;
-            if (request.HeroId != 0)
-            {
-                hero = await this.Context.Heroes.FindAsync(request.HeroId);
-            }
-            else
-            {
-                var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
-                hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.UserId == user.Id && h.IsSelected);
-            }
+            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.Id == request.HeroId && h.UserId == request.UserId);
 
             var mappedHero = this.Mapper.Map<UnitFullViewModel>(hero);
 

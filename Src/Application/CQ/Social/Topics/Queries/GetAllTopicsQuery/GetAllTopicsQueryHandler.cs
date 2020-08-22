@@ -52,8 +52,6 @@
 
         private async Task<TopicListViewModel> PublicTopics(GetAllTopicsQuery request)
         {
-            var viewer = await this.Context.AppUsers.FindAsync(request.UserId);
-
             var topics = await this.Context.Topics.Select(t => new TopicPartialViewModel
             {
                 Id = t.Id,
@@ -74,7 +72,7 @@
                 return new TopicListViewModel
                 {
                     Topics = topics,
-                    ViewerId = viewer.Id,
+                    ViewerId = request.UserId,
                 };
             }
             else if (request.Filter.Count() == 1)
@@ -99,7 +97,7 @@
                 return new TopicListViewModel
                 {
                     Topics = singleFilterTopics,
-                    ViewerId = viewer.Id,
+                    ViewerId = request.UserId,
                 };
             }
             else
@@ -123,7 +121,7 @@
                     return new TopicListViewModel
                     {
                         Topics = duoFilterTopics,
-                        ViewerId = viewer.Id,
+                        ViewerId = request.UserId,
                     };
                 }
                 else
@@ -146,7 +144,7 @@
                     return new TopicListViewModel
                     {
                         Topics = multiFilterTopics,
-                        ViewerId = viewer.Id,
+                        ViewerId = request.UserId,
                     };
                 }
             }

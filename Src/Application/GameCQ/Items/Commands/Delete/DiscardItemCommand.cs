@@ -11,5 +11,7 @@
         public string Slot { get; set; }
 
         public int Count { get; set; }
+
+        public string UserId { get; set; }
     }
 }

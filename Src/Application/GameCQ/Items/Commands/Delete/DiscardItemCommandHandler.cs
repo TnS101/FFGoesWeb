@@ -17,7 +17,7 @@
 
         public async Task<DiscardItemJsonResult> Handle(DiscardItemCommand request, CancellationToken cancellationToken)
         {
-            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
+            var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.Id == request.HeroId && h.UserId == request.UserId);
 
             var reward = await this.DiscardItem(request, hero);
 

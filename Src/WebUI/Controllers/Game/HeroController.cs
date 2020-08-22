@@ -47,19 +47,19 @@
         [HttpPost]
         public async Task<IActionResult> Delete([FromForm]long id)
         {
-            return this.Redirect(await this.Mediator.Send(new DeleteHeroCommand { HeroId = id }));
+            return this.Redirect(await this.Mediator.Send(new DeleteHeroCommand { HeroId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpGet("/Hero/Info/id")]
         public async Task<IActionResult> Info([FromQuery]long id)
         {
-            return this.View(await this.Mediator.Send(new GetFullUnitQuery { HeroId = id }));
+            return this.View(await this.Mediator.Send(new GetFullUnitQuery { HeroId = id, UserId = this.UserManager.GetUserId(this.User) }));
         }
 
         [HttpPost]
         public async Task<IActionResult> Equip([FromForm]long id, [FromForm]string command, [FromForm]long heroId, [FromForm]string slot)
         {
-            var result = await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, HeroId = heroId, Slot = slot });
+            var result = await this.Mediator.Send(new UpdateEquipmentCommand { ItemId = id, Command = command, HeroId = heroId, Slot = slot, UserId = this.UserManager.GetUserId(this.User) });
 
             return this.Json(new { result });
         }
@@ -84,7 +84,7 @@
         [HttpPost]
         public async Task<IActionResult> DiscardItem([FromForm]long id, [FromForm]int count, [FromForm]long heroId, [FromForm]string slot)
         {
-            var result = await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId });
+            var result = await this.Mediator.Send(new DiscardItemCommand { ItemId = id, Count = count, Slot = slot, HeroId = heroId, UserId = this.UserManager.GetUserId(this.User) });
 
             return this.Json(new { result });
         }
@@ -92,7 +92,7 @@
         [HttpPost]
         public async Task<IActionResult> Consume([FromForm]int id, [FromForm]long heroId)
         {
-            await this.Mediator.Send(new ConsumeCommand { ConsumeableId = id, HeroId = heroId });
+            await this.Mediator.Send(new ConsumeCommand { ConsumeableId = id, HeroId = heroId, UserId = this.UserManager.GetUserId(this.User) });
 
             return this.Ok();
         }

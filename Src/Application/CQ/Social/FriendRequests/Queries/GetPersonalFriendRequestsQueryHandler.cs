@@ -19,11 +19,9 @@
 
         public async Task<FriendRequestListViewModel> Handle(GetPersonalFriendRequestsQuery request, CancellationToken cancellationToken)
         {
-            var reciever = await this.Context.AppUsers.FindAsync(request.UserId);
-
             return new FriendRequestListViewModel
             {
-                FriendRequests = await this.Context.FriendRequests.Where(f => f.UserId == reciever.Id).AsNoTracking().ProjectTo<FriendRequestFullViewModel>(this.Mapper.ConfigurationProvider)
+                FriendRequests = await this.Context.FriendRequests.Where(f => f.UserId == request.UserId).AsNoTracking().ProjectTo<FriendRequestFullViewModel>(this.Mapper.ConfigurationProvider)
                 .ToArrayAsync(),
             };
         }

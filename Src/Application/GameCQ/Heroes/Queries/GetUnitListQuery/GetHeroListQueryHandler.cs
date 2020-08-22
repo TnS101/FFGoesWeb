@@ -9,10 +9,8 @@
     using Application.Common.Interfaces;
     using Application.GameContent.Utilities.Stats;
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using Domain.Entities.Game.Units;
     using MediatR;
-    using Microsoft.EntityFrameworkCore;
 
     public class GetHeroListQueryHandler : MapperHandler, IRequestHandler<GetHeroListQuery, HeroListViewModel>
     {
@@ -26,9 +24,7 @@
 
         public async Task<HeroListViewModel> Handle(GetHeroListQuery request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
-            var heroes = this.Context.Heroes.Where(h => h.UserId == user.Id);
+            var heroes = this.Context.Heroes.Where(h => h.UserId == request.UserId);
 
             this.EnergyManagement(heroes);
 

@@ -18,16 +18,14 @@
 
         public async Task<UpdateStatusJsonResult> Handle(UpdateStatusCommand request, CancellationToken cancellationToken)
         {
-            var user = await this.Context.AppUsers.FindAsync(request.UserId);
-
-            var userStatus = await this.Context.UserStatuses.SingleOrDefaultAsync(us => us.UserId == user.Id);
+            var userStatus = await this.Context.UserStatuses.SingleOrDefaultAsync(us => us.UserId == request.UserId);
 
             this.Context.UserStatuses.Remove(userStatus);
 
             this.Context.UserStatuses.Add(new UserStatus
             {
                 StatusId = request.StatusId,
-                UserId = user.Id,
+                UserId = request.UserId,
             });
 
             await this.Context.SaveChangesAsync(cancellationToken);
