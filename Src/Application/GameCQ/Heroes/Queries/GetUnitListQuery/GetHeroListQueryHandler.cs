@@ -11,6 +11,7 @@
     using AutoMapper;
     using Domain.Entities.Game.Units;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class GetHeroListQueryHandler : MapperHandler, IRequestHandler<GetHeroListQuery, HeroListViewModel>
     {
@@ -26,7 +27,7 @@
         {
             var heroes = this.Context.Heroes.Where(h => h.UserId == request.UserId);
 
-            this.EnergyManagement(heroes);
+            await this.EnergyManagement(heroes);
 
             var result = new HeroListViewModel { Heroes = new List<HeroMinViewModel>() };
 
@@ -49,13 +50,14 @@
             return result;
         }
 
-        private void EnergyManagement(IQueryable<Hero> heroes)
+        private async Task EnergyManagement(IQueryable<Hero> heroes)
         {
             foreach (var hero in heroes)
             {
                 this.MainStatsRegen(hero);
+                var energyChanges = await this.Context.EnergyChanges.Where(ec => ec.HeroId == hero.Id).OrderBy(l => l.LastChangedOn).ToListAsync();
 
-                foreach (var energyChange in this.Context.EnergyChanges.Where(ec => ec.HeroId == hero.Id).OrderBy(l => l.LastChangedOn).ToList())
+                foreach (var energyChange in energyChanges)
                 {
                     double energyCap = 0;
                     int rechargeTime = 4;
@@ -164,9 +166,9 @@
                     }
                     else if (energy >= energyCap)
                     {
-                        var energyChanges = this.Context.EnergyChanges.Where(e => e.Type == energyChange.Type);
+                        var energyChangesToRemove = this.Context.EnergyChanges.Where(e => e.Type == energyChange.Type);
 
-                        this.Context.EnergyChanges.RemoveRange(energyChanges);
+                        this.Context.EnergyChanges.RemoveRange(energyChangesToRemove);
                     }
                 }
 

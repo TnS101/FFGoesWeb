@@ -25,10 +25,11 @@
                 var topicTickets = this.Context.Tickets.Where(t => t.TopicId == topicToRemove.Id);
 
                 var comments = this.Context.Comments.Where(c => c.TopicId == topicToRemove.Id);
+                var tickets = this.Context.Tickets;
 
                 if (comments.Count() > 0)
                 {
-                    foreach (var ticket in this.Context.Tickets)
+                    foreach (var ticket in tickets)
                     {
                         foreach (var comment in comments)
                         {

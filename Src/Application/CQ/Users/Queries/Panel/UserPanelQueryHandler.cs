@@ -88,37 +88,11 @@
 
         private int SumForumPoints(AppUser user)
         {
-            var topics = this.Context.Topics.Where(t => t.UserId == user.Id && !t.IsRemoved);
+            var topicLikes = this.Context.Topics.Where(t => t.UserId == user.Id && !t.IsRemoved).Select(t => t.Likes);
 
-            var comments = this.Context.Comments.Where(c => c.UserId == user.Id && !c.IsRemoved);
+            var commentLikes = this.Context.Comments.Where(c => c.UserId == user.Id && !c.IsRemoved).Select(c => c.Likes);
 
-            var topicLikes = new Queue<Like>();
-
-            var commentLikes = new Queue<Like>();
-
-            foreach (var like in this.Context.Likes)
-            {
-                foreach (var topic in topics)
-                {
-                    if (like.TopicId == topic.Id)
-                    {
-                        topicLikes.Enqueue(like);
-                    }
-                }
-            }
-
-            foreach (var like in this.Context.Likes)
-            {
-                foreach (var comment in comments)
-                {
-                    if (like.CommentId == comment.Id)
-                    {
-                        commentLikes.Enqueue(like);
-                    }
-                }
-            }
-
-            return topicLikes.Count + commentLikes.Count;
+            return topicLikes.Count() + commentLikes.Count();
         }
     }
 }
