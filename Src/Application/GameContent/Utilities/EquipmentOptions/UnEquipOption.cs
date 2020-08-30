@@ -14,13 +14,13 @@
         {
             if (item.Slot == "Weapon")
             {
-                var weapon = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.HeroId == hero.Id && w.WeaponId == item.Id);
+                var weaponEquipment = await context.WeaponsEquipments.FirstOrDefaultAsync(w => w.HeroId == hero.Id);
 
                 hero.WeaponSlot = false;
 
-                context.WeaponsEquipments.Remove(weapon);
+                context.WeaponsEquipments.Remove(weaponEquipment);
 
-                var weaponInventory = await context.WeaponsInventories.FirstOrDefaultAsync(w => w.HeroId == hero.Id && w.WeaponId == item.Id);
+                var weaponInventory = await context.WeaponsInventories.FirstOrDefaultAsync(w => w.HeroId == hero.Id && w.WeaponId == weaponEquipment.WeaponId);
 
                 if (weaponInventory != null)
                 {
@@ -31,19 +31,19 @@
                     context.WeaponsInventories.Add(new WeaponInventory
                     {
                         HeroId = hero.Id,
-                        WeaponId = item.Id,
+                        WeaponId = weaponEquipment.WeaponId,
                     });
                 }
             }
             else if (item.Slot == "Trinket")
             {
-                var trinket = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.HeroId == hero.Id && t.TrinketId == item.Id);
+                var trinketEquipment = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.HeroId == hero.Id);
 
                 hero.TrinketSlot = false;
 
-                context.TrinketEquipments.Remove(trinket);
+                context.TrinketEquipments.Remove(trinketEquipment);
 
-                var trinketInventory = await context.TrinketsInventories.FirstOrDefaultAsync(t => t.HeroId == hero.Id && t.TrinketId == item.Id);
+                var trinketInventory = await context.TrinketsInventories.FirstOrDefaultAsync(t => t.HeroId == hero.Id && t.TrinketId == trinketEquipment.TrinketId);
 
                 if (trinketInventory != null)
                 {
@@ -54,19 +54,19 @@
                     context.TrinketsInventories.Add(new TrinketInventory
                     {
                         HeroId = hero.Id,
-                        TrinketId = item.Id,
+                        TrinketId = trinketEquipment.TrinketId,
                     });
                 }
             }
             else if (item.Slot == "Relic")
             {
-                var relic = await context.RelicsEquipments.FirstOrDefaultAsync(r => r.HeroId == hero.Id && r.RelicId == item.Id);
+                var relicEquipment = await context.RelicsEquipments.FirstOrDefaultAsync(r => r.HeroId == hero.Id);
 
                 hero.RelicSlot = false;
 
-                context.RelicsEquipments.Remove(relic);
+                context.RelicsEquipments.Remove(relicEquipment);
 
-                var relicInventory = await context.RelicsInventories.FirstOrDefaultAsync(r => r.HeroId == hero.Id && r.RelicId == item.Id);
+                var relicInventory = await context.RelicsInventories.FirstOrDefaultAsync(r => r.HeroId == hero.Id && r.RelicId == relicEquipment.RelicId);
 
                 if (relicInventory != null)
                 {
@@ -77,13 +77,13 @@
                     context.RelicsInventories.Add(new RelicInventory
                     {
                         HeroId = hero.Id,
-                        RelicId = item.Id,
+                        RelicId = relicEquipment.RelicId,
                     });
                 }
             }
             else if (item.Slot == "Card")
             {
-                var cardEquipment = await context.CardsEquipments.FirstOrDefaultAsync(c => c.HeroId == hero.Id && c.CardId == item.Id);
+                var cardEquipment = await context.CardsEquipments.FirstOrDefaultAsync(c => c.HeroId == hero.Id);
 
                 hero.CardSlots++;
 
@@ -94,7 +94,7 @@
 
                 context.CardsEquipments.Remove(cardEquipment);
 
-                var cardInventory = await context.CardsInventories.FirstOrDefaultAsync(c => c.HeroId == hero.Id && c.CardId == item.Id);
+                var cardInventory = await context.CardsInventories.FirstOrDefaultAsync(c => c.HeroId == hero.Id && c.CardId == cardEquipment.CardId);
 
                 if (cardInventory != null)
                 {
@@ -105,13 +105,13 @@
                     context.CardsInventories.Add(new CardInventory
                     {
                         HeroId = hero.Id,
-                        CardId = item.Id,
+                        CardId = cardEquipment.CardId,
                     });
                 }
             }
             else
             {
-                var armor = await context.ArmorsEquipments.FirstOrDefaultAsync(a => a.HeroId == hero.Id && a.ArmorId == item.Id);
+                var armorEquipment = await context.ArmorsEquipments.FirstOrDefaultAsync(a => a.HeroId == hero.Id && a.Armor.Slot == item.Slot);
 
                 if (item.Slot == "Helmet" && hero.HelmetSlot)
                 {
@@ -138,9 +138,9 @@
                     hero.GlovesSlot = false;
                 }
 
-                context.ArmorsEquipments.Remove(armor);
+                context.ArmorsEquipments.Remove(armorEquipment);
 
-                var armorInventory = await context.ArmorsInventories.FirstOrDefaultAsync(a => a.HeroId == hero.Id && a.ArmorId == item.Id);
+                var armorInventory = await context.ArmorsInventories.FirstOrDefaultAsync(a => a.HeroId == hero.Id && a.ArmorId == armorEquipment.ArmorId);
 
                 if (armorInventory != null)
                 {
@@ -151,7 +151,7 @@
                     context.ArmorsInventories.Add(new ArmorInventory
                     {
                         HeroId = hero.Id,
-                        ArmorId = item.Id,
+                        ArmorId = armorEquipment.ArmorId,
                     });
                 }
             }
