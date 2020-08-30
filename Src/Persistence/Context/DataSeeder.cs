@@ -55,18 +55,18 @@
         {
             context.Consumeables.Add(new Consumeable
             {
-                Name = "Tomato",
+                Name = "Apple",
                 Type = "Edible",
                 Stat = "HP",
                 StatReplenish = 0.05,
                 HungerReplenish = 1,
                 IsRefineable = true,
                 RelatedMaterials = "Salad",
-                ZoneName = "Any",
+                DroppedFrom = "World",
                 Slot = "Consumeable",
                 BuyPrice = 10,
                 SellPrice = 10,
-                ImagePath = "",
+                ImagePath = "/images/Items/Consumeables/Apple.png",
             });
 
             await context.SaveChangesAsync(cancellationToken);
@@ -364,6 +364,7 @@
                 Type = "Wood",
                 ImagePath = "/images/Items/Materials/Oak-Log.png",
                 IsRefineable = true,
+                DroppedFrom = "World",
                 FuelCount = 1,
             });
 
@@ -373,6 +374,7 @@
                 Type = "Wood",
                 ImagePath = "/images/Items/Materials/Walnut-Log.png",
                 IsRefineable = true,
+                DroppedFrom = "World",
                 FuelCount = 2,
             });
             context.Materials.Add(new Material
@@ -381,6 +383,7 @@
                 Type = "Wood",
                 ImagePath = "/images/Items/Materials/Birch-Log.png",
                 IsRefineable = true,
+                DroppedFrom = "World",
                 FuelCount = 1,
             });
 
@@ -390,6 +393,7 @@
                 Type = "Wood",
                 ImagePath = "/images/Items/Materials/Mahogany-Log.png",
                 IsRefineable = true,
+                DroppedFrom = "World",
                 FuelCount = 1,
             });
 
@@ -398,6 +402,7 @@
                 Name = "Coal Ore",
                 Type = "Ore",
                 ImagePath = "/images/Items/Materials/Coal-Ore.png",
+                DroppedFrom = "World",
                 FuelCount = 3,
             });
 
@@ -406,6 +411,7 @@
                 Name = "Copper Ore",
                 Type = "Ore",
                 ImagePath = "/images/Items/Materials/Copper-Ore.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -414,6 +420,7 @@
                 Name = "Iron Ore",
                 Type = "Ore",
                 ImagePath = "/images/Items/Materials/Iron-Ore.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -422,6 +429,7 @@
                 Name = "Gold Ore",
                 Type = "Ore",
                 ImagePath = "/images/Items/Materials/Gold-Ore.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -430,6 +438,7 @@
                 Name = "Leather Scraps",
                 Type = "Leather",
                 ImagePath = "/images/Items/Materials/Leather-Scraps.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -438,6 +447,7 @@
                 Name = "Animal Fur",
                 Type = "Leather",
                 ImagePath = "/images/Items/Materials/Animal-Fur.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -446,6 +456,7 @@
                 Name = "Light Leather",
                 Type = "Leather",
                 ImagePath = "/images/Items/Materials/Light-Leather.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -454,6 +465,7 @@
                 Name = "Fine Leather",
                 Type = "Leather",
                 ImagePath = "/images/Items/Materials/Fine-Leather.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -462,6 +474,7 @@
                 Name = "Cotton",
                 Type = "Cloth",
                 ImagePath = "/images/Items/Materials/Cotton.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -470,6 +483,7 @@
                 Name = "Linen Cloth",
                 Type = "Cloth",
                 ImagePath = "/images/Items/Materials/Linen-Cloth.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -478,6 +492,7 @@
                 Name = "Silk",
                 Type = "Cloth",
                 ImagePath = "/images/Items/Materials/Silk.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -485,6 +500,7 @@
             {
                 Name = "Mint",
                 Type = "Herb",
+                DroppedFrom = "World",
                 ImagePath = "/images/Items/Materials/Mint.png",
             });
 
@@ -492,6 +508,7 @@
             {
                 Name = "Coriander",
                 Type = "Herb",
+                DroppedFrom = "World",
                 ImagePath = "/images/Items/Materials/Coriander.png",
             });
 
@@ -499,6 +516,7 @@
             {
                 Name = "Lavender",
                 Type = "Herb",
+                DroppedFrom = "World",
                 ImagePath = "/images/Items/Materials/Lavender.png",
             });
 
@@ -507,6 +525,7 @@
                 Name = "Buttercup",
                 Type = "Herb",
                 ImagePath = "/images/Items/Materials/Butter-Cup.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -515,6 +534,7 @@
                 Name = "Water Essence",
                 Type = "Essence",
                 ImagePath = "/images/Items/Materials/Water-Essence.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -523,6 +543,7 @@
                 Name = "Earth Essence",
                 Type = "Essence",
                 ImagePath = "/images/Items/Materials/Earth-Essence.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -531,6 +552,7 @@
                 Name = "Air Essence",
                 Type = "Essence",
                 ImagePath = "/images/Items/Materials/Air-Essence.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -539,6 +561,7 @@
                 Name = "Fire Essence",
                 Type = "Essence",
                 ImagePath = "/images/Items/Materials/Fire-Essence.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -547,6 +570,7 @@
                 Name = "Shiny Scale",
                 Type = "Scale",
                 ImagePath = "/images/Items/Materials/Shiny-Scale.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -555,6 +579,7 @@
                 Name = "Transparent Scale",
                 Type = "Scale",
                 ImagePath = "/images/Items/Materials/Transparent-Scale.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -564,6 +589,7 @@
                 Type = "Metal",
                 RelatedMaterials = "Gold Scraps 2,Iron Scraps 2",
                 ImagePath = "/images/Items/Materials/Golden-Necklace.png",
+                DroppedFrom = "World",
                 IsDisolveable = true,
             });
 
@@ -572,6 +598,7 @@
                 Name = "Hard Scale",
                 Type = "Scale",
                 ImagePath = "/images/Items/Materials/Hard-Scale.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -580,6 +607,7 @@
                 Name = "Tomato",
                 Type = "Vegetables",
                 ImagePath = "/images/Items/Materials/Tomato.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -588,6 +616,7 @@
                 Name = "Lettuce",
                 Type = "Vegetables",
                 ImagePath = "/images/Items/Materials/Lettuce.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -596,6 +625,7 @@
                 Name = "Turnip",
                 Type = "Vegetables",
                 ImagePath = "/images/Items/Materials/Turnip.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -604,6 +634,7 @@
                 Name = "Pumpkin",
                 Type = "Vegetables",
                 ImagePath = "/images/Items/Materials/Pumpkin.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -612,6 +643,7 @@
             {
                 Name = "Dry Branch",
                 Type = "Wood",
+                DroppedFrom = "Forest",
                 ImagePath = "/images/Items/Materials/Dry-Branch.png",
             });
 
@@ -619,6 +651,7 @@
             {
                 Name = "Green Leaves",
                 Type = "Wood",
+                DroppedFrom = "Forest",
                 ImagePath = "/images/Items/Materials/Green-Leaves.png",
             });
 
@@ -628,6 +661,7 @@
                 Type = "Wood",
                 ImagePath = "/images/Items/Materials/Tree-Stump.png",
                 IsRefineable = true,
+                DroppedFrom = "Forest",
                 FuelCount = 1,
             });
 
@@ -636,6 +670,7 @@
                 Name = "Acorn",
                 Type = "Wood",
                 ImagePath = "/images/Items/Materials/Acorn.png",
+                DroppedFrom = "Forest",
                 IsRefineable = true,
             });
 
@@ -644,6 +679,7 @@
                 Name = "Granite",
                 Type = "Rock",
                 ImagePath = "/images/Items/Materials/Granite.png",
+                DroppedFrom = "Mine",
                 IsRefineable = true,
             });
 
@@ -652,6 +688,7 @@
                 Name = "Marble",
                 Type = "Rock",
                 ImagePath = "/images/Items/Materials/Marble.png",
+                DroppedFrom = "Mine",
                 IsRefineable = true,
             });
 
@@ -660,6 +697,7 @@
                 Name = "Quartzite",
                 Type = "Rock",
                 ImagePath = "/images/Items/Materials/Quartzite.png",
+                DroppedFrom = "Mine",
                 IsRefineable = true,
             });
 
@@ -668,6 +706,7 @@
                 Name = "Obsidian",
                 Type = "Rock",
                 ImagePath = "/images/Items/Materials/Obsidian.png",
+                DroppedFrom = "Mine",
                 IsRefineable = true,
             });
 
@@ -676,6 +715,7 @@
                 Name = "Animal Stomach",
                 Type = "Meat",
                 ImagePath = "/images/Items/Materials/Animal-Stomach.png",
+                DroppedFrom = "Wild",
                 IsRefineable = true,
             });
 
@@ -685,6 +725,7 @@
                 Type = "Bones",
                 RelatedMaterials = "Bone Dust 1,Bone Shards 2",
                 ImagePath = "/images/Items/Materials/Animal-Skull.png",
+                DroppedFrom = "Wild",
                 IsDisolveable = true,
             });
 
@@ -694,6 +735,7 @@
                 Type = "Bones",
                 RelatedMaterials = "Bone Dust 2,Bone Shards 1",
                 ImagePath = "/images/Items/Materials/Animal-Bones.png",
+                DroppedFrom = "Wild",
                 IsDisolveable = true,
             });
 
@@ -701,6 +743,7 @@
             {
                 Name = "Fangs",
                 Type = "Bones",
+                DroppedFrom = "Wild",
                 ImagePath = "/images/Items/Materials/Fangs.png",
             });
 
@@ -710,6 +753,7 @@
                 Type = "Cloth",
                 RelatedMaterials = "Cloth 1,String 2",
                 ImagePath = "/images/Items/Materials/T-Shirt.png",
+                DroppedFrom = "City",
                 IsDisolveable = true,
             });
 
@@ -719,6 +763,7 @@
                 Type = "Leather",
                 RelatedMaterials = "Leather 1,String 2",
                 ImagePath = "/images/Items/Materials/Shoes.png",
+                DroppedFrom = "City",
                 IsDisolveable = true,
             });
 
@@ -728,6 +773,7 @@
                 Type = "Leather",
                 RelatedMaterials = "Leather 1,Cloth 1,String 1",
                 ImagePath = "/images/Items/Materials/Pants.png",
+                DroppedFrom = "City",
                 IsDisolveable = true,
             });
 
@@ -735,6 +781,7 @@
             {
                 Name = "Human Soul",
                 Type = "Essence",
+                DroppedFrom = "City",
                 ImagePath = "/images/Items/Materials/Human-Soul.png",
             });
 
@@ -742,6 +789,7 @@
             {
                 Name = "Rose",
                 Type = "Plant",
+                DroppedFrom = "Shop",
                 ImagePath = "/images/Items/Materials/Rose.png",
             });
 
@@ -749,6 +797,7 @@
             {
                 Name = "Daisy",
                 Type = "Plant",
+                DroppedFrom = "Shop",
                 ImagePath = "/images/Items/Materials/Daisy.png",
             });
 
@@ -758,6 +807,7 @@
                 Type = "Furniture",
                 RelatedMaterials = "Clay Dust 1,Clay Block 2",
                 ImagePath = "/images/Items/Materials/Clay-Pot.png",
+                DroppedFrom = "Shop",
                 IsDisolveable = true,
             });
 
@@ -766,6 +816,7 @@
                 Name = "Plastic Vase",
                 Type = "Furniture",
                 ImagePath = "/images/Items/Materials/Plastic-Vase.png",
+                DroppedFrom = "Shop",
                 IsRefineable = true,
             });
 
@@ -774,6 +825,7 @@
                 Name = "Life Essence",
                 Type = "Essence",
                 ImagePath = "/images/Items/Materials/Life-Essence.png",
+                DroppedFrom = "Core",
                 IsRefineable = true,
             });
 
@@ -782,6 +834,7 @@
                 Name = "Light Essence",
                 Type = "Essence",
                 ImagePath = "/images/Items/Materials/Light-Essence.png",
+                DroppedFrom = "Core",
                 IsRefineable = true,
             });
 
@@ -790,6 +843,7 @@
                 Name = "Shadow Essence",
                 Type = "Essence",
                 ImagePath = "/images/Items/Materials/Shadow-Essence.png",
+                DroppedFrom = "Core",
                 IsRefineable = true,
             });
 
@@ -798,6 +852,7 @@
                 Name = "Death Essence",
                 Type = "Essence",
                 ImagePath = "/images/Items/Materials/Death-Essence.png",
+                DroppedFrom = "Core",
                 IsRefineable = true,
             });
 
@@ -806,6 +861,7 @@
                 Name = "String",
                 Type = "Cloth",
                 ImagePath = "/images/Items/Materials/String.png",
+                DroppedFrom = "Basin",
                 IsRefineable = true,
             });
 
@@ -815,6 +871,7 @@
                 Type = "Fish",
                 RelatedMaterials = "Poison Vial 1,Fish Meat 1",
                 ImagePath = "/images/Items/Materials/Puffer-Fish.png",
+                DroppedFrom = "Basin",
                 IsDisolveable = true,
             });
 
@@ -823,6 +880,7 @@
                 Name = "Turtle Eggs",
                 Type = "Egg",
                 ImagePath = "/images/Items/Materials/Turtle-Eggs.png",
+                DroppedFrom = "Basin",
                 IsRefineable = true,
             });
 
@@ -832,6 +890,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Glass 1,Paper 1",
                 ImagePath = "/images/Items/Materials/Bottled-Message.png",
+                DroppedFrom = "Basin",
                 IsDisolveable = true,
             });
 
@@ -840,6 +899,7 @@
                 Name = "Potato",
                 Type = "Vegetable",
                 ImagePath = "/images/Items/Materials/Potato.png",
+                DroppedFrom = "Garden",
                 IsRefineable = true,
             });
 
@@ -848,6 +908,7 @@
                 Name = "Corn",
                 Type = "Vegetable",
                 ImagePath = "/images/Items/Materials/Corn.png",
+                DroppedFrom = "Garden",
                 IsRefineable = true,
             });
 
@@ -857,6 +918,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Stick 1,Copper Chunks 1,Dirt 1",
                 ImagePath = "/images/Items/Materials/Garden-Shovel.png",
+                DroppedFrom = "Garden",
                 IsDisolveable = true,
             });
 
@@ -866,6 +928,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Water Flask 1,Iron Chunks 1",
                 ImagePath = "/images/Items/Materials/Watering-Can.png",
+                DroppedFrom = "Garden",
                 IsDisolveable = true,
             });
 
@@ -874,6 +937,7 @@
                 Name = "Broken Glass Cup",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Broken-Glass-Cup.png",
+                DroppedFrom = "Scrap",
                 IsRefineable = true,
             });
 
@@ -882,6 +946,7 @@
                 Name = "Stale Hotdog",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Stale-Hotdog.png",
+                DroppedFrom = "Scrap",
                 IsRefineable = true,
             });
 
@@ -890,6 +955,7 @@
                 Name = "Crushed Can",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Crushed-Can.png",
+                DroppedFrom = "Scrap",
                 IsRefineable = true,
             });
 
@@ -899,6 +965,7 @@
                 Name = "Rubber Band",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Rubber-Band.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -906,6 +973,7 @@
             {
                 Name = "Animal Blood",
                 Type = "Junk",
+                DroppedFrom = "World",
                 ImagePath = "/images/Items/Materials/Animal-Blood.png",
             });
 
@@ -913,6 +981,7 @@
             {
                 Name = "Dead Critters",
                 Type = "Junk",
+                DroppedFrom = "World",
                 ImagePath = "/images/Items/Materials/Dead-Critters.png",
             });
 
@@ -921,6 +990,7 @@
                 Name = "Broken Skull",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Broken-Skull.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -930,6 +1000,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Gold Scraps 1,Iron Scraps 1,Copper Scraps 1",
                 ImagePath = "/images/Items/Materials/Broken-Watch.png",
+                DroppedFrom = "World",
                 IsDisolveable = true,
             });
 
@@ -939,6 +1010,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Plastic 1",
                 ImagePath = "/images/Items/Materials/Empty-Plastic-Bottle.png",
+                DroppedFrom = "World",
                 IsDisolveable = true,
             });
 
@@ -948,6 +1020,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Copper Scraps 1,Iron Scraps 1",
                 ImagePath = "/images/Items/Materials/Broken-Cogs.png",
+                DroppedFrom = "World",
                 IsDisolveable = true,
             });
 
@@ -957,6 +1030,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Copper Scraps 2",
                 ImagePath = "/images/Items/Materials/Rusty-Pipes.png",
+                DroppedFrom = "World",
                 IsDisolveable = true,
             });
 
@@ -966,6 +1040,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Iron Scraps 1,Golden Scraps 1",
                 ImagePath = "/images/Items/Materials/Dead-Battery.png",
+                DroppedFrom = "World",
                 IsDisolveable = true,
             });
 
@@ -975,6 +1050,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Water Vial 1,Glass 1",
                 ImagePath = "/images/Items/Materials/Cracked-Water-Orb.png",
+                DroppedFrom = "World",
                 IsDisolveable = true,
             });
 
@@ -983,6 +1059,7 @@
                 Name = "Coal Piece",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Coal-Piece.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 
@@ -990,6 +1067,7 @@
             {
                 Name = "Water Flask",
                 Type = "Junk",
+                DroppedFrom = "World",
                 ImagePath = "/images/Items/Materials/Water-Flask.png",
             });
 
@@ -997,6 +1075,7 @@
             {
                 Name = "Worm",
                 Type = "Junk",
+                DroppedFrom = "World",
                 ImagePath = "/images/Items/Materials/Worm.png",
             });
 
@@ -1006,6 +1085,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Stick 1,Dirt 1",
                 ImagePath = "/images/Items/Materials/Withered-Roots.png",
+                DroppedFrom = "World",
                 IsDisolveable = true,
             });
 
@@ -1015,6 +1095,7 @@
                 Type = "Junk",
                 RelatedMaterials = "Water Flask 1,Dirt 1",
                 ImagePath = "/images/Items/Materials/Mud.png",
+                DroppedFrom = "World",
                 IsDisolveable = true,
             });
 
@@ -1023,6 +1104,7 @@
                 Name = "Broken Branches",
                 Type = "Junk",
                 ImagePath = "/images/Items/Materials/Broken-Branches.png",
+                DroppedFrom = "World",
                 IsRefineable = true,
             });
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Context;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(FFDbContext))]
-    partial class FFDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200830154045_NameConv")]
+    partial class NameConv
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -753,6 +755,9 @@ namespace Persistence.Migrations
 
                     b.Property<string>("RelatedMaterials")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("RequiresProfession")
+                        .HasColumnType("bit");
 
                     b.Property<int>("SellPrice")
                         .HasColumnType("int");

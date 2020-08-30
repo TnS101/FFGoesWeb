@@ -431,7 +431,7 @@
 
         private async Task ConsumeableGenerate(string zoneName, IFFDbContext context, long heroId)
         {
-            var consumeables = await context.Consumeables.Where(c => c.ZoneName == zoneName || c.ZoneName == "Any").ToArrayAsync();
+            var consumeables = await context.Consumeables.Where(c => c.DroppedFrom == zoneName || c.DroppedFrom == "Any").ToArrayAsync();
 
             var consumeableId = consumeables[this.rng.Next(consumeables.Length)].Id;
 
@@ -497,14 +497,10 @@
 
         private async Task MaterialGenerate(IFFDbContext context, long heroId, string zoneName)
         {
-            var materials = await context.Materials.Where(m => m.DroppedFrom == zoneName && !m.RequiresProfession).OrderBy(m => m.Rarity).ToArrayAsync();
-            var professionMaterials = await context.Materials.Where(m => m.DroppedFrom == zoneName && m.RequiresProfession).OrderBy(m => m.Rarity).ToArrayAsync();
-
+            var materials = await context.Materials.Where(m => m.DroppedFrom == zoneName).OrderBy(m => m.Rarity).ToArrayAsync();
             var materialId = this.GetMainMaterial(materials).Id;
-            var professionMaterialId = professionMaterials[this.rng.Next(professionMaterials.Length)].Id;
 
             var materialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.HeroId == heroId && t.MaterialId == materialId);
-            var professionMaterialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.HeroId == heroId && t.MaterialId == professionMaterialId);
 
             if (materialInventory != null)
             {
@@ -516,19 +512,6 @@
                 {
                     HeroId = heroId,
                     MaterialId = materialId,
-                });
-            }
-
-            if (professionMaterialInventory != null)
-            {
-                professionMaterialInventory.Count++;
-            }
-            else
-            {
-                context.MaterialsInventories.Add(new MaterialInventory
-                {
-                    HeroId = heroId,
-                    MaterialId = professionMaterialId,
                 });
             }
         }

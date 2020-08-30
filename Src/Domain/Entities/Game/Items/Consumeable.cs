@@ -30,7 +30,7 @@
 
         public int Duration { get; set; }
 
-        public string ZoneName { get; set; }
+        public string DroppedFrom { get; set; }
 
         public bool IsRefineable { get; set; }
 

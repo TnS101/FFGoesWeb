@@ -38,8 +38,6 @@
 
         public string DroppedFrom { get; set; }
 
-        public bool RequiresProfession { get; set; }
-
         public int Rarity { get; set; }
 
         public string ImagePath { get; set; }
