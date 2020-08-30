@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Context;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(FFDbContext))]
-    partial class FFDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200830114500_CardEquipmentCount")]
+    partial class CardEquipmentCount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -438,6 +440,9 @@ namespace Persistence.Migrations
 
                     b.Property<long>("HeroId")
                         .HasColumnType("bigint");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
 
                     b.HasKey("CardId", "HeroId");
 
@@ -1183,9 +1188,6 @@ namespace Persistence.Migrations
 
                     b.Property<bool>("BracerSlot")
                         .HasColumnType("bit");
-
-                    b.Property<int>("CardSlots")
-                        .HasColumnType("int");
 
                     b.Property<bool>("ChestplateSlot")
                         .HasColumnType("bit");

@@ -82,6 +82,8 @@
 
         public bool GlovesSlot { get; set; }
 
+        public int CardSlots { get; set; }
+
         public int ProfessionLevel { get; set; }
 
         public int ProfessionEnergy { get; set; }
