@@ -25,11 +25,11 @@
         public async Task<IActionResult> Battle([FromQuery]string zone)
         {
             var playerPVM = await this.Mediator.Send(new GetPartialUnitQuery { UserId = this.UserManager.GetUserId(this.User) });
+            zoneName = zone;
 
             monster = await this.Mediator.Send(new GenerateMonsterCommand { PlayerLevel = playerPVM.Level, ZoneName = zoneName });
             heroId = playerPVM.Id;
             yourTurn = true;
-            zoneName = zone;
             turnCount = 0;
 
             return this.View(GConst.Battle, monster.Name);

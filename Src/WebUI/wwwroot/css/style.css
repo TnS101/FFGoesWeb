@@ -10,30 +10,30 @@ html {
  font-size: 75px;
 }
 
-.about-section
-{
-  width: 70%;
-  display: inline-block;           
-  box-shadow: 0px 4px 10px -5px #c49b79;
+.about-section {
+ width: 70%;
+ display: inline-block;
+ box-shadow: 0px 4px 10px -5px #c49b79;
 }
 
-.about-section p 
-{
+ .about-section p {
   width: 90%;
   display: inline-block;
+ }
+
+.clickable {
+ cursor: pointer;
 }
 
-.clickable
-{
- cursor:pointer;
+a {
+ cursor: pointer
 }
 
-a
-{
- cursor:pointer
+p:link {
+ text-decoration: none;
 }
 
-a:link{
+a:link {
  text-decoration: none;
 }
 
@@ -69,31 +69,28 @@ progress {
   box-shadow: 0px 1px 4px #666 inset;
  }
 
- .player-health-info::-webkit-progress-value
- {
-     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(186,51,51,0.87718837535014) 22%, rgba(255,0,0,1) 100%);
- }
-
- .player-mana-info::-webkit-progress-value
- {
-     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(71,51,186,0.7847514005602241) 22%, rgba(0,219,255,0.9220063025210083) 100%);
- }
-
-.player-health-bar{
-  background: linear-gradient(30deg, #067c5d,#079671, #12a780, #0ec295, #14deab, #13eeb6, #18f7bf, #2cfec9);
-  height: 15px;  
-  box-shadow: 0px 1px 5px #079671 inset;
-  border-radius: 10px;
-  background-size: 100% 480%;
-  -webkit-animation: Flow1 3s ease infinite;
-  -moz-animation: Flow2 3s ease infinite;
-  animation: Flow3 3s ease infinite;
-  -o-animation: Flow4 3s ease infinite;
+.player-health-info::-webkit-progress-value {
+ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(186,51,51,0.87718837535014) 22%, rgba(255,0,0,1) 100%);
 }
 
-.enemy-health-bar
-{
- height: 15px;  
+.player-mana-info::-webkit-progress-value {
+ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(71,51,186,0.7847514005602241) 22%, rgba(0,219,255,0.9220063025210083) 100%);
+}
+
+.player-health-bar {
+ background: linear-gradient(30deg, #067c5d,#079671, #12a780, #0ec295, #14deab, #13eeb6, #18f7bf, #2cfec9);
+ height: 15px;
+ box-shadow: 0px 1px 5px #079671 inset;
+ border-radius: 10px;
+ background-size: 100% 480%;
+ -webkit-animation: Flow1 3s ease infinite;
+ -moz-animation: Flow2 3s ease infinite;
+ animation: Flow3 3s ease infinite;
+ -o-animation: Flow4 3s ease infinite;
+}
+
+.enemy-health-bar {
+ height: 15px;
  box-shadow: 0px 1px 4px #079671 inset;
  border-radius: 10px;
  background: linear-gradient(30deg, #3b0303, #7c0606, #c40c0c, #d70000, #f11b1b, #fc2d2d, #ff3737, #ff5e5e);
@@ -104,8 +101,8 @@ progress {
  -o-animation: Flow4 3s ease infinite;
 }
 
-.mana-bar{
- height: 15px;  
+.mana-bar {
+ height: 15px;
  box-shadow: 0px 1px 4px #079671 inset;
  border-radius: 10px;
  background: linear-gradient(30deg, #001589, #0b44b7, #0e73c5, #1295d2, #1da8e8, #33b8f5, #33c9f5, #3ce5f7);
@@ -121,9 +118,9 @@ progress {
  width: 210px;
  margin: 0 auto;
  background-color: rgba(203, 183, 132, 0.42);
- outline: 4px inset #cb9484; 
+ outline: 4px inset #cb9484;
  box-shadow: 0px 2px 5px #494747 inset;
- display:inline-block;
+ display: inline-block;
 }
 
 @-webkit-keyframes Flow1 {
@@ -169,7 +166,7 @@ progress {
 }
 
 @-o-keyframes Flow4 {
-    0% {
+ 0% {
   background-position: 0% 10%
  }
 
@@ -1040,12 +1037,6 @@ a {
 
  a:visited {
   opacity: 0.8;
- }
-
- a:hover,
- a:focus,
- a:active {
-  text-decoration: underline dashed #1e283d;
  }
 
  a.button,

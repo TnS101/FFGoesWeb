@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,7 +68,7 @@ namespace Persistence.Migrations
                     Effect = table.Column<string>(nullable: true),
                     EffectPower = table.Column<int>(nullable: false),
                     Duration = table.Column<int>(nullable: false),
-                    ZoneName = table.Column<string>(nullable: true),
+                    DroppedFrom = table.Column<string>(nullable: true),
                     IsRefineable = table.Column<bool>(nullable: false),
                     IsCraftable = table.Column<bool>(nullable: false),
                     RelatedMaterials = table.Column<string>(nullable: true),
@@ -142,35 +142,19 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Monsters",
+                name: "MonstersRarities",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Level = table.Column<int>(nullable: false),
-                    Zone = table.Column<string>(nullable: true),
-                    ImagePath = table.Column<string>(maxLength: 100, nullable: false),
-                    MaxHP = table.Column<double>(nullable: false),
-                    HealthRegen = table.Column<double>(nullable: false),
-                    MaxMana = table.Column<double>(nullable: false),
-                    ManaRegen = table.Column<double>(nullable: false),
-                    AttackPower = table.Column<double>(nullable: false),
-                    MagicPower = table.Column<double>(nullable: false),
-                    ArmorValue = table.Column<double>(nullable: false),
-                    ResistanceValue = table.Column<double>(nullable: false),
-                    CritChance = table.Column<double>(nullable: false),
-                    IsConfused = table.Column<bool>(nullable: false),
-                    IsProvoked = table.Column<bool>(nullable: false),
-                    IsSilenced = table.Column<bool>(nullable: false),
-                    IsStunned = table.Column<bool>(nullable: false),
-                    IsBlinded = table.Column<bool>(nullable: false),
-                    Description = table.Column<string>(maxLength: 100, nullable: false),
-                    Type = table.Column<string>(nullable: false)
+                    MonsterName = table.Column<string>(nullable: true),
+                    StatAmplifier = table.Column<double>(nullable: false),
+                    Rarity = table.Column<string>(nullable: true),
+                    ImagePath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Monsters", x => x.Id);
+                    table.PrimaryKey("PK_MonstersRarities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -350,61 +334,40 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MonstersRarities",
+                name: "Monsters",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MonsterId = table.Column<int>(nullable: true),
-                    StatAmplifier = table.Column<double>(nullable: false),
-                    MonsterName = table.Column<string>(nullable: true),
-                    Rarity = table.Column<string>(nullable: true),
-                    ImagePath = table.Column<string>(nullable: true)
+                    MonsterRarityId1 = table.Column<int>(nullable: true),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Level = table.Column<int>(nullable: false),
+                    Zone = table.Column<string>(nullable: true),
+                    ImagePath = table.Column<string>(maxLength: 100, nullable: false),
+                    MaxHP = table.Column<double>(nullable: false),
+                    HealthRegen = table.Column<double>(nullable: false),
+                    MaxMana = table.Column<double>(nullable: false),
+                    ManaRegen = table.Column<double>(nullable: false),
+                    AttackPower = table.Column<double>(nullable: false),
+                    MagicPower = table.Column<double>(nullable: false),
+                    ArmorValue = table.Column<double>(nullable: false),
+                    ResistanceValue = table.Column<double>(nullable: false),
+                    CritChance = table.Column<double>(nullable: false),
+                    IsConfused = table.Column<bool>(nullable: false),
+                    IsProvoked = table.Column<bool>(nullable: false),
+                    IsSilenced = table.Column<bool>(nullable: false),
+                    IsStunned = table.Column<bool>(nullable: false),
+                    IsBlinded = table.Column<bool>(nullable: false),
+                    Description = table.Column<string>(maxLength: 100, nullable: false),
+                    Type = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MonstersRarities", x => x.Id);
+                    table.PrimaryKey("PK_Monsters", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MonstersRarities_Monsters_MonsterId",
-                        column: x => x.MonsterId,
-                        principalTable: "Monsters",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Spells",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FightingClassId = table.Column<int>(nullable: true),
-                    MonsterId = table.Column<int>(nullable: true),
-                    Name = table.Column<string>(maxLength: 30, nullable: false),
-                    Type = table.Column<string>(maxLength: 50, nullable: false),
-                    BuffOrEffectTarget = table.Column<string>(maxLength: 20, nullable: true),
-                    Power = table.Column<double>(nullable: false),
-                    ManaRequirement = table.Column<double>(nullable: false),
-                    AdditionalEffect = table.Column<string>(maxLength: 50, nullable: true),
-                    EffectPower = table.Column<double>(nullable: false),
-                    ResistanceAffect = table.Column<double>(nullable: false),
-                    SecondaryPower = table.Column<double>(nullable: false),
-                    Condition = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Spells", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Spells_FightingClasses_FightingClassId",
-                        column: x => x.FightingClassId,
-                        principalTable: "FightingClasses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Spells_Monsters_MonsterId",
-                        column: x => x.MonsterId,
-                        principalTable: "Monsters",
+                        name: "FK_Monsters_MonstersRarities_MonsterRarityId1",
+                        column: x => x.MonsterRarityId1,
+                        principalTable: "MonstersRarities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -472,7 +435,6 @@ namespace Persistence.Migrations
                     SellPrice = table.Column<int>(nullable: false),
                     Slot = table.Column<string>(nullable: true, defaultValue: "Material"),
                     DroppedFrom = table.Column<string>(maxLength: 100, nullable: false),
-                    RequiresProfession = table.Column<bool>(nullable: false),
                     Rarity = table.Column<int>(nullable: false),
                     ImagePath = table.Column<string>(maxLength: 100, nullable: false)
                 },
@@ -488,64 +450,38 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cards",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SpellId = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
-                    Slot = table.Column<string>(nullable: true, defaultValue: "Card"),
-                    Level = table.Column<int>(nullable: false),
-                    ClassType = table.Column<string>(maxLength: 30, nullable: false),
-                    Condition = table.Column<string>(maxLength: 150, nullable: false),
-                    Agility = table.Column<int>(nullable: false),
-                    Stamina = table.Column<int>(nullable: false),
-                    Intellect = table.Column<int>(nullable: false),
-                    Strength = table.Column<int>(nullable: false),
-                    Spirit = table.Column<int>(nullable: false),
-                    ImagePath = table.Column<string>(maxLength: 200, nullable: false),
-                    MaterialType = table.Column<string>(maxLength: 50, nullable: false),
-                    BuyPrice = table.Column<int>(nullable: false),
-                    SellPrice = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cards", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Cards_Spells_SpellId",
-                        column: x => x.SpellId,
-                        principalTable: "Spells",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Talents",
+                name: "Spells",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FightingClassId = table.Column<int>(nullable: false),
-                    SpellId = table.Column<int>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Decsription = table.Column<string>(nullable: true),
-                    Condition = table.Column<string>(nullable: true)
+                    FightingClassId = table.Column<int>(nullable: true),
+                    MonsterId = table.Column<int>(nullable: true),
+                    Name = table.Column<string>(maxLength: 30, nullable: false),
+                    Type = table.Column<string>(maxLength: 50, nullable: false),
+                    BuffOrEffectTarget = table.Column<string>(maxLength: 20, nullable: true),
+                    Power = table.Column<double>(nullable: false),
+                    ManaRequirement = table.Column<double>(nullable: false),
+                    AdditionalEffect = table.Column<string>(maxLength: 50, nullable: true),
+                    EffectPower = table.Column<double>(nullable: false),
+                    ResistanceAffect = table.Column<double>(nullable: false),
+                    SecondaryPower = table.Column<double>(nullable: false),
+                    Condition = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Talents", x => x.Id);
+                    table.PrimaryKey("PK_Spells", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Talents_FightingClasses_FightingClassId",
+                        name: "FK_Spells_FightingClasses_FightingClassId",
                         column: x => x.FightingClassId,
                         principalTable: "FightingClasses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Talents_Spells_SpellId",
-                        column: x => x.SpellId,
-                        principalTable: "Spells",
+                        name: "FK_Spells_Monsters_MonsterId",
+                        column: x => x.MonsterId,
+                        principalTable: "Monsters",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -721,6 +657,7 @@ namespace Persistence.Migrations
                     LeggingsSlot = table.Column<bool>(nullable: false),
                     ChestplateSlot = table.Column<bool>(nullable: false),
                     GlovesSlot = table.Column<bool>(nullable: false),
+                    CardSlots = table.Column<int>(nullable: false),
                     ProfessionLevel = table.Column<int>(nullable: false),
                     ProfessionEnergy = table.Column<int>(nullable: false, defaultValue: 10),
                     ProffesionXP = table.Column<double>(nullable: false),
@@ -881,6 +818,69 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cards",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SpellId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Slot = table.Column<string>(nullable: true, defaultValue: "Card"),
+                    Level = table.Column<int>(nullable: false),
+                    ClassType = table.Column<string>(maxLength: 30, nullable: false),
+                    Condition = table.Column<string>(maxLength: 150, nullable: false),
+                    Agility = table.Column<int>(nullable: false),
+                    Stamina = table.Column<int>(nullable: false),
+                    Intellect = table.Column<int>(nullable: false),
+                    Strength = table.Column<int>(nullable: false),
+                    Spirit = table.Column<int>(nullable: false),
+                    ImagePath = table.Column<string>(maxLength: 200, nullable: false),
+                    MaterialType = table.Column<string>(maxLength: 50, nullable: false),
+                    BuyPrice = table.Column<int>(nullable: false),
+                    SellPrice = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cards", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Cards_Spells_SpellId",
+                        column: x => x.SpellId,
+                        principalTable: "Spells",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Talents",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FightingClassId = table.Column<int>(nullable: false),
+                    SpellId = table.Column<int>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Decsription = table.Column<string>(nullable: true),
+                    Condition = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Talents", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Talents_FightingClasses_FightingClassId",
+                        column: x => x.FightingClassId,
+                        principalTable: "FightingClasses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Talents_Spells_SpellId",
+                        column: x => x.SpellId,
+                        principalTable: "Spells",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ArmorsEquipments",
                 columns: table => new
                 {
@@ -923,55 +923,6 @@ namespace Persistence.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ArmorsInventories_Heroes_HeroId",
-                        column: x => x.HeroId,
-                        principalTable: "Heroes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CardsEquipments",
-                columns: table => new
-                {
-                    CardId = table.Column<long>(type: "bigint", nullable: false),
-                    HeroId = table.Column<long>(type: "bigint", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CardsEquipments", x => new { x.CardId, x.HeroId });
-                    table.ForeignKey(
-                        name: "FK_CardsEquipments_Cards_CardId",
-                        column: x => x.CardId,
-                        principalTable: "Cards",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CardsEquipments_Heroes_HeroId",
-                        column: x => x.HeroId,
-                        principalTable: "Heroes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CardsInventories",
-                columns: table => new
-                {
-                    CardId = table.Column<long>(type: "bigint", nullable: false),
-                    HeroId = table.Column<long>(type: "bigint", nullable: false),
-                    Count = table.Column<int>(nullable: false, defaultValue: 1)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CardsInventories", x => new { x.CardId, x.HeroId });
-                    table.ForeignKey(
-                        name: "FK_CardsInventories_Cards_CardId",
-                        column: x => x.CardId,
-                        principalTable: "Cards",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CardsInventories_Heroes_HeroId",
                         column: x => x.HeroId,
                         principalTable: "Heroes",
                         principalColumn: "Id",
@@ -1022,31 +973,6 @@ namespace Persistence.Migrations
                         principalTable: "Heroes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HeroesTalents",
-                columns: table => new
-                {
-                    HeroId = table.Column<long>(type: "bigint", nullable: false),
-                    TalentId = table.Column<int>(nullable: false),
-                    Condition = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HeroesTalents", x => new { x.HeroId, x.TalentId });
-                    table.ForeignKey(
-                        name: "FK_HeroesTalents_Heroes_HeroId",
-                        column: x => x.HeroId,
-                        principalTable: "Heroes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_HeroesTalents_Talents_TalentId",
-                        column: x => x.TalentId,
-                        principalTable: "Talents",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -1358,6 +1284,80 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CardsEquipments",
+                columns: table => new
+                {
+                    CardId = table.Column<long>(type: "bigint", nullable: false),
+                    HeroId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CardsEquipments", x => new { x.CardId, x.HeroId });
+                    table.ForeignKey(
+                        name: "FK_CardsEquipments_Cards_CardId",
+                        column: x => x.CardId,
+                        principalTable: "Cards",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CardsEquipments_Heroes_HeroId",
+                        column: x => x.HeroId,
+                        principalTable: "Heroes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CardsInventories",
+                columns: table => new
+                {
+                    CardId = table.Column<long>(type: "bigint", nullable: false),
+                    HeroId = table.Column<long>(type: "bigint", nullable: false),
+                    Count = table.Column<int>(nullable: false, defaultValue: 1)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CardsInventories", x => new { x.CardId, x.HeroId });
+                    table.ForeignKey(
+                        name: "FK_CardsInventories_Cards_CardId",
+                        column: x => x.CardId,
+                        principalTable: "Cards",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CardsInventories_Heroes_HeroId",
+                        column: x => x.HeroId,
+                        principalTable: "Heroes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HeroesTalents",
+                columns: table => new
+                {
+                    HeroId = table.Column<long>(type: "bigint", nullable: false),
+                    TalentId = table.Column<int>(nullable: false),
+                    Condition = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HeroesTalents", x => new { x.HeroId, x.TalentId });
+                    table.ForeignKey(
+                        name: "FK_HeroesTalents_Heroes_HeroId",
+                        column: x => x.HeroId,
+                        principalTable: "Heroes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_HeroesTalents_Talents_TalentId",
+                        column: x => x.TalentId,
+                        principalTable: "Talents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Likes",
                 columns: table => new
                 {
@@ -1589,11 +1589,9 @@ namespace Persistence.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MonstersRarities_MonsterId",
-                table: "MonstersRarities",
-                column: "MonsterId",
-                unique: true,
-                filter: "[MonsterId] IS NOT NULL");
+                name: "IX_Monsters_MonsterRarityId1",
+                table: "Monsters",
+                column: "MonsterRarityId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Notifications_UserId",
@@ -1768,9 +1766,6 @@ namespace Persistence.Migrations
                 name: "MaterialsInventories");
 
             migrationBuilder.DropTable(
-                name: "MonstersRarities");
-
-            migrationBuilder.DropTable(
                 name: "Notifications");
 
             migrationBuilder.DropTable(
@@ -1868,6 +1863,9 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "MonstersRarities");
 
             migrationBuilder.DropTable(
                 name: "Statuses");

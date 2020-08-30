@@ -1256,54 +1256,6 @@
 
             context.MonstersRarities.Add(new MonsterRarity
             {
-                MonsterName = "Demon",
-                Rarity = "Rare",
-                ImagePath = "/images/Monsters/Demon-Rare.png",
-                StatAmplifier = 0.1,
-            });
-
-            context.MonstersRarities.Add(new MonsterRarity
-            {
-                MonsterName = "Demon",
-                Rarity = "Heroic",
-                ImagePath = "/images/Monsters/Demon-Heroic.png",
-                StatAmplifier = 0.2,
-            });
-
-            context.MonstersRarities.Add(new MonsterRarity
-            {
-                MonsterName = "Giant",
-                Rarity = "Rare",
-                ImagePath = "/images/Monsters/Giant-Rare.png",
-                StatAmplifier = 0.1,
-            });
-
-            context.MonstersRarities.Add(new MonsterRarity
-            {
-                MonsterName = "Giant",
-                Rarity = "Heroic",
-                ImagePath = "/images/Monsters/Giant-Heroic.png",
-                StatAmplifier = 0.2,
-            });
-
-            context.MonstersRarities.Add(new MonsterRarity
-            {
-                MonsterName = "Gryphon",
-                Rarity = "Rare",
-                ImagePath = "/images/Monsters/Gryphon-Rare.png",
-                StatAmplifier = 0.1,
-            });
-
-            context.MonstersRarities.Add(new MonsterRarity
-            {
-                MonsterName = "Gryphon",
-                Rarity = "Heroic",
-                ImagePath = "/images/Monsters/Gryphon-Heroic.png",
-                StatAmplifier = 0.2,
-            });
-
-            context.MonstersRarities.Add(new MonsterRarity
-            {
                 MonsterName = "Reptile",
                 Rarity = "Rare",
                 ImagePath = "/images/Monsters/Reptile-Rare.png",
@@ -1320,17 +1272,17 @@
 
             context.MonstersRarities.Add(new MonsterRarity
             {
-                MonsterName = "Saint",
+                MonsterName = "Zombie",
                 Rarity = "Rare",
-                ImagePath = "/images/Monsters/Saint-Rare.png",
+                ImagePath = "/images/Monsters/Zombie-Rare.png",
                 StatAmplifier = 0.1,
             });
 
             context.MonstersRarities.Add(new MonsterRarity
             {
-                MonsterName = "Saint",
+                MonsterName = "Zombie",
                 Rarity = "Heroic",
-                ImagePath = "/images/Monsters/Saint-Heroic.png",
+                ImagePath = "/images/Monsters/Zombie-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -1368,17 +1320,65 @@
 
             context.MonstersRarities.Add(new MonsterRarity
             {
-                MonsterName = "Zombie",
+                MonsterName = "Giant",
                 Rarity = "Rare",
-                ImagePath = "/images/Monsters/Zombie-Rare.png",
+                ImagePath = "/images/Monsters/Giant-Rare.png",
                 StatAmplifier = 0.1,
             });
 
             context.MonstersRarities.Add(new MonsterRarity
             {
-                MonsterName = "Zombie",
+                MonsterName = "Giant",
                 Rarity = "Heroic",
-                ImagePath = "/images/Monsters/Zombie-Heroic.png",
+                ImagePath = "/images/Monsters/Giant-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Gryphon",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Gryphon-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Gryphon",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Gryphon-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Saint",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Saint-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Saint",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Saint-Heroic.png",
+                StatAmplifier = 0.2,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Demon",
+                Rarity = "Rare",
+                ImagePath = "/images/Monsters/Demon-Rare.png",
+                StatAmplifier = 0.1,
+            });
+
+            context.MonstersRarities.Add(new MonsterRarity
+            {
+                MonsterName = "Demon",
+                Rarity = "Heroic",
+                ImagePath = "/images/Monsters/Demon-Heroic.png",
                 StatAmplifier = 0.2,
             });
 
@@ -1401,6 +1401,7 @@
                 ResistanceValue = 2,
                 CritChance = 2,
                 ImagePath = "/images/Monsters/Bear.png",
+                Zone = "World",
                 Description = "A bloodthirsty animal,which also likes to party for some reason...",
             });
 
@@ -1418,6 +1419,7 @@
                 ResistanceValue = 1,
                 CritChance = 4,
                 ImagePath = "/images/Monsters/Reptile.png",
+                Zone = "World",
                 Description = "Actually kind of a dinosaur/lizard thingy... not very sure.",
             });
 
@@ -1435,6 +1437,7 @@
                 ResistanceValue = 2,
                 CritChance = 2,
                 ImagePath = "/images/Monsters/Zombie.png",
+                Zone = "World",
                 Description = "Sapiosexual. Not very smart.",
             });
 
@@ -1452,6 +1455,7 @@
                 ResistanceValue = 2,
                 CritChance = 6,
                 ImagePath = "/images/Monsters/Skeleton.png",
+                Zone = "World",
                 Description = "{Insert a /Spooky/ joke here.}",
             });
 
@@ -1469,6 +1473,7 @@
                 ResistanceValue = 4,
                 CritChance = 3,
                 ImagePath = "/images/Monsters/Wyrm.png",
+                Zone = "World",
                 Description = "Picture this guy beneath the toilet seat next time you take a dump. I dare you!",
             });
 
@@ -1486,6 +1491,7 @@
                 ResistanceValue = 6,
                 CritChance = 2,
                 ImagePath = "/images/Monsters/Giant.png",
+                Zone = "World",
                 Description = "Not to be confused with the Iron Giant.",
             });
 
@@ -1503,6 +1509,7 @@
                 ResistanceValue = 4,
                 CritChance = 5,
                 ImagePath = "/images/Monsters/Gryphon.png",
+                Zone = "World",
                 Description = "These halfbreeds don't just exist in World of Warcraft!",
             });
 
@@ -1520,6 +1527,7 @@
                 ResistanceValue = 6,
                 CritChance = 3,
                 ImagePath = "/images/Monsters/Saint.png",
+                Zone = "World",
                 Description = "You'll pay for not going to church on sundays!",
             });
 
@@ -1537,6 +1545,7 @@
                 ResistanceValue = 3.2,
                 CritChance = 5.6,
                 ImagePath = "/images/Monsters/Demon.png",
+                Zone = "World",
                 Description = "Fearsome and cunning! Something is wrong with his head (I mean the PNG file).",
             });
 

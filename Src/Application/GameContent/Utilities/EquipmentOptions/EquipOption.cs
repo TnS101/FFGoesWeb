@@ -15,9 +15,9 @@
     {
         public async Task<long> Equip(Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
         {
-            var fightingClassId = context.FightingClasses.FirstOrDefault(fc => fc.Type == item.ClassType).Id;
+            var fightingClass = await context.FightingClasses.FirstOrDefaultAsync(fc => fc.Type == item.ClassType);
 
-            if ((item.ClassType != "Any" && hero.FightingClassId != fightingClassId) || item.Level > hero.Level)
+            if ((item.ClassType != "Any" && hero.FightingClassId != fightingClass.Id) || item.Level > hero.Level)
             {
                 return 0;
             }

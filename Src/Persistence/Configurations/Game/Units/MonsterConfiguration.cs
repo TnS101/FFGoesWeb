@@ -41,7 +41,6 @@
             builder.Ignore(m => m.SilenceDuration);
             builder.Ignore(m => m.StunDuration);
             builder.Ignore(m => m.CoinAmount);
-            builder.Ignore(m => m.MonsterRarityId);
         }
     }
 }

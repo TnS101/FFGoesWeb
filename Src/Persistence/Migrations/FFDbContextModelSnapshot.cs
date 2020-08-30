@@ -1490,9 +1490,6 @@ namespace Persistence.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MonsterId")
-                        .HasColumnType("int");
-
                     b.Property<string>("MonsterName")
                         .HasColumnType("nvarchar(max)");
 
@@ -1503,10 +1500,6 @@ namespace Persistence.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MonsterId")
-                        .IsUnique()
-                        .HasFilter("[MonsterId] IS NOT NULL");
 
                     b.ToTable("MonstersRarities");
                 });
@@ -2436,13 +2429,6 @@ namespace Persistence.Migrations
                         .HasForeignKey("TalentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.Entities.Game.Units.OneToOne.MonsterRarity", b =>
-                {
-                    b.HasOne("Domain.Entities.Game.Units.Monster", "Monster")
-                        .WithOne("MonsterRarity")
-                        .HasForeignKey("Domain.Entities.Game.Units.OneToOne.MonsterRarity", "MonsterId");
                 });
 
             modelBuilder.Entity("Domain.Entities.Game.Units.Spell", b =>

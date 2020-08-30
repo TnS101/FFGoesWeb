@@ -101,8 +101,8 @@
                                     itemChildren[3].textContent = `Sell Price : ${item.sellPrice}`;
                                 }
 
-                                if (item.classType == 'Any' || item.classType == data.responseJSON.heroClass) {
-                                    if (Number(item.level) <= data.responseJSON.heroLevel && Number(item.level) > 0) {
+                                if (item.classType == 'Any' || item.classType === data.responseJSON.heroClass) {
+                                    if (Number(item.level) <= Number(data.responseJSON.heroLevel) && Number(item.level) > 0) {
                                         equipChildren[0].value = item.id;
                                         equipChildren[2].value = item.slot;
 

@@ -10,8 +10,8 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(FFDbContext))]
-    [Migration("20200830114500_CardEquipmentCount")]
-    partial class CardEquipmentCount
+    [Migration("20200830184835_Redun")]
+    partial class Redun
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -287,6 +287,9 @@ namespace Persistence.Migrations
                     b.Property<int>("BuyPrice")
                         .HasColumnType("int");
 
+                    b.Property<string>("DroppedFrom")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
@@ -339,9 +342,6 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
-
-                    b.Property<string>("ZoneName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -440,9 +440,6 @@ namespace Persistence.Migrations
 
                     b.Property<long>("HeroId")
                         .HasColumnType("bigint");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
 
                     b.HasKey("CardId", "HeroId");
 
@@ -758,9 +755,6 @@ namespace Persistence.Migrations
 
                     b.Property<string>("RelatedMaterials")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("RequiresProfession")
-                        .HasColumnType("bit");
 
                     b.Property<int>("SellPrice")
                         .HasColumnType("int");
@@ -1189,6 +1183,9 @@ namespace Persistence.Migrations
                     b.Property<bool>("BracerSlot")
                         .HasColumnType("bit");
 
+                    b.Property<int>("CardSlots")
+                        .HasColumnType("int");
+
                     b.Property<bool>("ChestplateSlot")
                         .HasColumnType("bit");
 
@@ -1495,9 +1492,6 @@ namespace Persistence.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MonsterId")
-                        .HasColumnType("int");
-
                     b.Property<string>("MonsterName")
                         .HasColumnType("nvarchar(max)");
 
@@ -1508,10 +1502,6 @@ namespace Persistence.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MonsterId")
-                        .IsUnique()
-                        .HasFilter("[MonsterId] IS NOT NULL");
 
                     b.ToTable("MonstersRarities");
                 });
@@ -2441,13 +2431,6 @@ namespace Persistence.Migrations
                         .HasForeignKey("TalentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.Entities.Game.Units.OneToOne.MonsterRarity", b =>
-                {
-                    b.HasOne("Domain.Entities.Game.Units.Monster", "Monster")
-                        .WithOne("MonsterRarity")
-                        .HasForeignKey("Domain.Entities.Game.Units.OneToOne.MonsterRarity", "MonsterId");
                 });
 
             modelBuilder.Entity("Domain.Entities.Game.Units.Spell", b =>

@@ -27,7 +27,7 @@
 
             if (hero.Energy == 0)
             {
-                return GConst.NotEnoughEnergyRedirect;
+                return GConst.HeroCommandRedirect;
             }
 
             hero.Energy--;

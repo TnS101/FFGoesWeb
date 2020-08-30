@@ -10,8 +10,8 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(FFDbContext))]
-    [Migration("20200830160925_MatSimplify")]
-    partial class MatSimplify
+    [Migration("20200830184326_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1462,6 +1462,9 @@ namespace Persistence.Migrations
                     b.Property<double>("MaxMana")
                         .HasColumnType("float");
 
+                    b.Property<int?>("MonsterRarityId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
@@ -1479,6 +1482,8 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MonsterRarityId1");
+
                     b.ToTable("Monsters");
                 });
 
@@ -1492,9 +1497,6 @@ namespace Persistence.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MonsterId")
-                        .HasColumnType("int");
-
                     b.Property<string>("MonsterName")
                         .HasColumnType("nvarchar(max)");
 
@@ -1505,10 +1507,6 @@ namespace Persistence.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MonsterId")
-                        .IsUnique()
-                        .HasFilter("[MonsterId] IS NOT NULL");
 
                     b.ToTable("MonstersRarities");
                 });
@@ -2440,11 +2438,11 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Entities.Game.Units.OneToOne.MonsterRarity", b =>
+            modelBuilder.Entity("Domain.Entities.Game.Units.Monster", b =>
                 {
-                    b.HasOne("Domain.Entities.Game.Units.Monster", "Monster")
-                        .WithOne("MonsterRarity")
-                        .HasForeignKey("Domain.Entities.Game.Units.OneToOne.MonsterRarity", "MonsterId");
+                    b.HasOne("Domain.Entities.Game.Units.OneToOne.MonsterRarity", "MonsterRarity")
+                        .WithMany()
+                        .HasForeignKey("MonsterRarityId1");
                 });
 
             modelBuilder.Entity("Domain.Entities.Game.Units.Spell", b =>

@@ -1,7 +1,6 @@
 ﻿namespace Domain.Entities.Game.Units
 {
     using Domain.Contracts.Units;
-    using Domain.Entities.Game.Units.OneToOne;
     using System.Collections.Generic;
 
     public class Monster : IUnit
@@ -13,10 +12,6 @@
         }
 
         public int Id { get; set; }
-
-        public int? MonsterRarityId { get; set; }
-
-        public MonsterRarity MonsterRarity { get; set; }
 
         public string Name { get; set; }
 
