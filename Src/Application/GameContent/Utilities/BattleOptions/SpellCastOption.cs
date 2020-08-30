@@ -127,11 +127,9 @@
             }
         }
 
-        private void HealSpellCast(string spellStatType, double spellPower, double spellManaRequirment, IUnit caster)
+        private void HealSpellCast(string spellStatType, double spellPower, double manaRequirement, IUnit caster)
         {
             double healEffect = 0;
-
-            var manaRequirement = spellManaRequirment * caster.MaxMana;
 
             if (spellStatType == "Physical")
             {
@@ -149,10 +147,8 @@
             new HealCheck().Check(caster, caster, manaRequirement, healEffect, this.manaCheck);
         }
 
-        private void BuffSpellCast(string spellStatType, double spellManaRequirement, string buffOrEffectTarget, double spellPower, IUnit caster, IUnit target, string positiveOrNegativeBuff)
+        private void BuffSpellCast(string spellStatType, double manaRequirement, string buffOrEffectTarget, double spellPower, IUnit caster, IUnit target, string positiveOrNegativeBuff)
         {
-            double manaRequirement = spellManaRequirement * caster.MaxMana;
-
             var buffCheck = new BuffCheck();
 
             if (buffOrEffectTarget.Contains('/'))
@@ -182,10 +178,9 @@
             }
         }
 
-        private void DamageSpellCast(string spellStatType, string statsProvider, double spellManaRequirement, double spellPower, double secondarySpellPower, double spellResistanceAffect, IUnit caster, IUnit target)
+        private void DamageSpellCast(string spellStatType, string statsProvider, double manaRequirement, double spellPower, double secondarySpellPower, double spellResistanceAffect, IUnit caster, IUnit target)
         {
             double damage = 0;
-            double manaRequirement = spellManaRequirement * caster.MaxMana;
             var spellDamageCheck = new SpellDamageCheck();
 
             if (spellStatType.Contains("/")) // Combined Damage
