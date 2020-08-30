@@ -72,6 +72,7 @@
             this.CreateMap<Hero, BattleUnitViewModel>();
             this.CreateMap<Monster, BattleUnitViewModel>();
             this.CreateMap<Status, UpdateStatusJsonResult>();
+            this.CreateMap<Relic, ItemMinViewModel>();
         }
     }
 }

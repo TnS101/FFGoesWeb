@@ -58,6 +58,29 @@
                     });
                 }
             }
+            else if (item.Slot == "Relic")
+            {
+                var relic = await context.RelicsEquipments.FirstOrDefaultAsync(r => r.HeroId == hero.Id && r.RelicId == item.Id);
+
+                hero.RelicSlot = false;
+
+                context.RelicsEquipments.Remove(relic);
+
+                var relicInventory = await context.RelicsInventories.FirstOrDefaultAsync(r => r.RelicId == relic.RelicId && r.HeroId == hero.Id);
+
+                if (relicInventory != null)
+                {
+                    relicInventory.Count++;
+                }
+                else
+                {
+                    context.RelicsInventories.Add(new RelicInventory
+                    {
+                        HeroId = hero.Id,
+                        RelicId = relic.RelicId,
+                    });
+                }
+            }
             else
             {
                 var armor = await context.ArmorsEquipments.FirstOrDefaultAsync(a => a.HeroId == hero.Id && a.ArmorId == item.Id);
