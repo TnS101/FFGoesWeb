@@ -22,43 +22,43 @@
             this.fightingClassStatCheck = new FightingClassStatCheck();
         }
 
-        public async Task Execute(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, IFFDbContext context, long HeroId, Monster monster, string zoneName, CancellationToken cancellationToken)
+        public async Task Execute(int fightingClassNumber, int slotNumber, int[] stats, int fightingClassStatNumber, IFFDbContext context, long heroId, string zoneName, CancellationToken cancellationToken)
         {
             if (slotNumber == 0)
             {
-                await this.WeaponGenerate(fightingClassNumber, fightingClassStatNumber, stats, context, HeroId, cancellationToken);
+                await this.WeaponGenerate(fightingClassNumber, fightingClassStatNumber, stats, context, heroId, cancellationToken);
             }
             else if (slotNumber == 1)
             {
-                await this.TrinketGenerate(stats, context, HeroId, cancellationToken);
+                await this.TrinketGenerate(stats, context, heroId, cancellationToken);
             }
             else if (slotNumber > 1 && slotNumber < 4)
             {
-                await this.ArmorGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, HeroId, cancellationToken);
+                await this.ArmorGenerate(stats, fightingClassNumber, fightingClassStatNumber, context, heroId, cancellationToken);
             }
             else if (slotNumber > 3 && slotNumber < 6)
             {
-                await this.LootKeyGenerate(context, HeroId);
+                await this.LootKeyGenerate(context, heroId);
             }
             else if (slotNumber > 5 && slotNumber < 7)
             {
-                await this.RelicGenerate(stats, context, HeroId, cancellationToken);
+                await this.RelicGenerate(stats, context, heroId, cancellationToken);
             }
             else if (slotNumber > 6 && slotNumber < 10)
             {
-                await this.ConsumeableGenerate(zoneName, context, HeroId);
+                await this.ConsumeableGenerate(zoneName, context, heroId);
             }
             else if (slotNumber > 9 && slotNumber < 12)
             {
-                await this.CardGenerate(stats, context, HeroId, cancellationToken);
+                await this.CardGenerate(stats, context, heroId, cancellationToken);
             }
             else
             {
-                await this.MaterialGenerate(context, HeroId, zoneName);
+                await this.MaterialGenerate(context, heroId, zoneName);
             }
         }
 
-        private async Task WeaponGenerate(int fightingClassNumber, int fightingClassStatNumber, int[] stats, IFFDbContext context, long HeroId, CancellationToken cancellationToken)
+        private async Task WeaponGenerate(int fightingClassNumber, int fightingClassStatNumber, int[] stats, IFFDbContext context, long heroId, CancellationToken cancellationToken)
         {
             var templateWeapon = new Weapon
             {
@@ -94,7 +94,7 @@
                 weaponId = weapon.Id;
             }
 
-            var weaponInventory = await context.WeaponsInventories.FirstOrDefaultAsync(w => w.HeroId == HeroId && w.WeaponId == weaponId);
+            var weaponInventory = await context.WeaponsInventories.FirstOrDefaultAsync(w => w.HeroId == heroId && w.WeaponId == weaponId);
 
             if (weaponInventory != null)
             {
@@ -104,13 +104,13 @@
             {
                 context.WeaponsInventories.Add(new WeaponInventory
                 {
-                    HeroId = HeroId,
+                    HeroId = heroId,
                     WeaponId = weaponId,
                 });
             }
         }
 
-        private async Task TrinketGenerate(int[] stats, IFFDbContext context, long HeroId, CancellationToken cancellationToken)
+        private async Task TrinketGenerate(int[] stats, IFFDbContext context, long heroId, CancellationToken cancellationToken)
         {
             var effect = this.EffectGenerator("Trinket")[0];
 
@@ -154,7 +154,7 @@
                 trinketId = trinket.Id;
             }
 
-            var trinketInventory = await context.TrinketsInventories.FirstOrDefaultAsync(t => t.HeroId == HeroId && t.TrinketId == trinketId);
+            var trinketInventory = await context.TrinketsInventories.FirstOrDefaultAsync(t => t.HeroId == heroId && t.TrinketId == trinketId);
 
             if (trinketInventory != null)
             {
@@ -164,13 +164,13 @@
             {
                 context.TrinketsInventories.Add(new TrinketInventory
                 {
-                    HeroId = HeroId,
+                    HeroId = heroId,
                     TrinketId = trinketId,
                 });
             }
         }
 
-        private async Task RelicGenerate(int[] stats, IFFDbContext context, long HeroId, CancellationToken cancellationToken)
+        private async Task RelicGenerate(int[] stats, IFFDbContext context, long heroId, CancellationToken cancellationToken)
         {
             var effect = this.EffectGenerator("Relic")[0];
 
@@ -213,7 +213,7 @@
                 relicId = relic.Id;
             }
 
-            var relicInventory = await context.RelicsInventories.FirstOrDefaultAsync(t => t.HeroId == HeroId && t.RelicId == relicId);
+            var relicInventory = await context.RelicsInventories.FirstOrDefaultAsync(t => t.HeroId == heroId && t.RelicId == relicId);
 
             if (relicInventory != null)
             {
@@ -223,13 +223,13 @@
             {
                 context.RelicsInventories.Add(new RelicInventory
                 {
-                    HeroId = HeroId,
+                    HeroId = heroId,
                     RelicId = relicId,
                 });
             }
         }
 
-        private async Task ArmorGenerate(int[] stats, int fightingClassNumber, int fightingClassStatNumber, IFFDbContext context, long HeroId, CancellationToken cancellationToken)
+        private async Task ArmorGenerate(int[] stats, int fightingClassNumber, int fightingClassStatNumber, IFFDbContext context, long heroId, CancellationToken cancellationToken)
         {
             var templateArmor = new Armor
             {
@@ -268,7 +268,7 @@
                 armorId = armor.Id;
             }
 
-            var armorInventory = await context.ArmorsInventories.FirstOrDefaultAsync(t => t.HeroId == HeroId && t.ArmorId == armorId);
+            var armorInventory = await context.ArmorsInventories.FirstOrDefaultAsync(t => t.HeroId == heroId && t.ArmorId == armorId);
 
             if (armorInventory != null)
             {
@@ -278,13 +278,13 @@
             {
                 context.ArmorsInventories.Add(new ArmorInventory
                 {
-                    HeroId = HeroId,
+                    HeroId = heroId,
                     ArmorId = armorId,
                 });
             }
         }
 
-        private async Task LootKeyGenerate(IFFDbContext context, long HeroId)
+        private async Task LootKeyGenerate(IFFDbContext context, long heroId)
         {
             var rarityNumber = this.rng.Next(10);
 
@@ -303,7 +303,7 @@
                 treasureKeyId = 3; // Bronze
             }
 
-            var treasureKey = await context.LootKeysInventories.FirstOrDefaultAsync(t => t.HeroId == HeroId && t.LootKeyId == treasureKeyId);
+            var treasureKey = await context.LootKeysInventories.FirstOrDefaultAsync(t => t.HeroId == heroId && t.LootKeyId == treasureKeyId);
 
             if (treasureKey != null)
             {
@@ -313,13 +313,13 @@
             {
                 context.LootKeysInventories.Add(new LootKeyInventory
                 {
-                    HeroId = HeroId,
+                    HeroId = heroId,
                     LootKeyId = treasureKeyId,
                 });
             }
         }
 
-        private async Task CardGenerate(int[] stats, IFFDbContext context, long HeroId, CancellationToken cancellationToken)
+        private async Task CardGenerate(int[] stats, IFFDbContext context, long heroId, CancellationToken cancellationToken)
         {
             var fightingClasses = await context.FightingClasses.ToArrayAsync();
             var fightingClass = fightingClasses[this.rng.Next(fightingClasses.Count())];
@@ -388,7 +388,7 @@
 
             if (card == null)
             {
-                context.Cards.Add(card);
+                context.Cards.Add(templateCard);
                 await context.SaveChangesAsync(cancellationToken);
                 cardId = templateCard.Id;
             }
@@ -397,7 +397,7 @@
                 cardId = card.Id;
             }
 
-            var cardInvetory = await context.CardsInventories.FirstOrDefaultAsync(ci => ci.HeroId == HeroId && ci.CardId == cardId);
+            var cardInvetory = await context.CardsInventories.FirstOrDefaultAsync(ci => ci.HeroId == heroId && ci.CardId == cardId);
 
             if (cardInvetory != null)
             {
@@ -408,7 +408,7 @@
                 context.CardsInventories.Add(new CardInventory
                 {
                     CardId = cardId,
-                    HeroId = HeroId,
+                    HeroId = heroId,
                 });
             }
         }
@@ -429,13 +429,13 @@
             }
         }
 
-        private async Task ConsumeableGenerate(string zoneName, IFFDbContext context, long HeroId)
+        private async Task ConsumeableGenerate(string zoneName, IFFDbContext context, long heroId)
         {
             var consumeables = await context.Consumeables.Where(c => c.ZoneName == zoneName || c.ZoneName == "Any").ToArrayAsync();
 
             var consumeableId = consumeables[this.rng.Next(consumeables.Length)].Id;
 
-            var consumeableInventory = await context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.HeroId == HeroId && ci.ConsumeableId == consumeableId);
+            var consumeableInventory = await context.ConsumeablesInventories.FirstOrDefaultAsync(ci => ci.HeroId == heroId && ci.ConsumeableId == consumeableId);
 
             if (consumeableInventory != null)
             {
@@ -446,7 +446,7 @@
                 context.ConsumeablesInventories.Add(new ConsumeableInventory
                 {
                     ConsumeableId = consumeableId,
-                    HeroId = HeroId,
+                    HeroId = heroId,
                 });
             }
         }
@@ -495,7 +495,7 @@
             return (int)Math.Floor(goldAmount / 5);
         }
 
-        private async Task MaterialGenerate(IFFDbContext context, long HeroId, string zoneName)
+        private async Task MaterialGenerate(IFFDbContext context, long heroId, string zoneName)
         {
             var materials = await context.Materials.Where(m => m.DroppedFrom == zoneName && !m.RequiresProfession).OrderBy(m => m.Rarity).ToArrayAsync();
             var professionMaterials = await context.Materials.Where(m => m.DroppedFrom == zoneName && m.RequiresProfession).OrderBy(m => m.Rarity).ToArrayAsync();
@@ -503,8 +503,8 @@
             var materialId = this.GetMainMaterial(materials).Id;
             var professionMaterialId = professionMaterials[this.rng.Next(professionMaterials.Length)].Id;
 
-            var materialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.HeroId == HeroId && t.MaterialId == materialId);
-            var professionMaterialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.HeroId == HeroId && t.MaterialId == professionMaterialId);
+            var materialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.HeroId == heroId && t.MaterialId == materialId);
+            var professionMaterialInventory = await context.MaterialsInventories.FirstOrDefaultAsync(t => t.HeroId == heroId && t.MaterialId == professionMaterialId);
 
             if (materialInventory != null)
             {
@@ -514,7 +514,7 @@
             {
                 context.MaterialsInventories.Add(new MaterialInventory
                 {
-                    HeroId = HeroId,
+                    HeroId = heroId,
                     MaterialId = materialId,
                 });
             }
@@ -527,7 +527,7 @@
             {
                 context.MaterialsInventories.Add(new MaterialInventory
                 {
-                    HeroId = HeroId,
+                    HeroId = heroId,
                     MaterialId = professionMaterialId,
                 });
             }

@@ -9,7 +9,7 @@
 
     public class ItemGenerator
     {
-        public async Task Generate(Hero hero, IFFDbContext context, Monster monster, string zoneName, CancellationToken cancellationToken)
+        public async Task Generate(Hero hero, IFFDbContext context, string zoneName, CancellationToken cancellationToken)
         {
             var rng = new Random();
             var itemHandler = new ItemHandler();
@@ -38,7 +38,7 @@
                 }
             }
 
-            await itemHandler.Execute(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero.Id, monster, zoneName, cancellationToken);
+            await itemHandler.Execute(fightingClassNumber, slotNumber, stats, fightingClassStatNumber, context, hero.Id, zoneName, cancellationToken);
         }
     }
 }

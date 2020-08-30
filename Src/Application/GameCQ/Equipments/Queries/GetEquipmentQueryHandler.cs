@@ -23,14 +23,14 @@
         {
             var hero = await this.Context.Heroes.FirstOrDefaultAsync(h => h.Id == request.HeroId && h.UserId == request.UserId);
 
-            return await this.GetEquipement(hero);
+            return await this.GetEquipement(hero.Id);
         }
 
-        private async Task<EquipmentViewModel> GetEquipement(Hero hero)
+        private async Task<EquipmentViewModel> GetEquipement(long heroId)
         {
             var equipment = new HashSet<ItemMinViewModel>();
 
-            var trinketEquipment = await this.Context.TrinketEquipments.FirstOrDefaultAsync(te => te.HeroId == hero.Id);
+            var trinketEquipment = await this.Context.TrinketEquipments.FirstOrDefaultAsync(te => te.HeroId == heroId);
 
             if (trinketEquipment != null)
             {
@@ -39,7 +39,7 @@
                 equipment.Add(this.Mapper.Map<ItemMinViewModel>(trinket));
             }
 
-            var weaponEquipment = await this.Context.WeaponsEquipments.FirstOrDefaultAsync(we => we.HeroId == hero.Id);
+            var weaponEquipment = await this.Context.WeaponsEquipments.FirstOrDefaultAsync(we => we.HeroId == heroId);
 
             if (weaponEquipment != null)
             {
@@ -48,7 +48,16 @@
                 equipment.Add(this.Mapper.Map<ItemMinViewModel>(weapon));
             }
 
-            var armorEquipments = this.Context.ArmorsEquipments.Where(we => we.HeroId == hero.Id).AsNoTracking().Select(ae => new ItemMinViewModel
+            var relicEquipment = await this.Context.RelicsEquipments.FirstOrDefaultAsync(re => re.HeroId == heroId);
+
+            if (relicEquipment != null)
+            {
+                var relic = await this.Context.Relics.FindAsync(relicEquipment.RelicId);
+
+                equipment.Add(this.Mapper.Map<ItemMinViewModel>(relic));
+            }
+
+            await this.Context.ArmorsEquipments.Where(we => we.HeroId == heroId).AsNoTracking().Select(ae => new ItemMinViewModel
             {
                 Id = ae.ArmorId,
                 Name = ae.Armor.Name,
@@ -58,9 +67,7 @@
                 Slot = ae.Armor.Slot,
                 SellPrice = ae.Armor.SellPrice,
                 Count = 1,
-            });
-
-            equipment.ToList().AddRange(armorEquipments);
+            }).ForEachAsync(a => equipment.Add(a));
 
             if (equipment.Count == 0)
             {

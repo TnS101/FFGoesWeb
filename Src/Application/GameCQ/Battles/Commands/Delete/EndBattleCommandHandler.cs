@@ -35,7 +35,7 @@
             var reset = new StatReset();
             reset.Reset(hero);
 
-            await new ItemGenerator().Generate(hero, this.Context, request.Monster, request.ZoneName, cancellationToken);
+            await new ItemGenerator().Generate(hero, this.Context, request.ZoneName, cancellationToken);
 
             if (hero.XP >= hero.XPCap)
             {
