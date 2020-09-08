@@ -12,177 +12,68 @@
             {
                 if (effectType == "Positive")
                 {
-                    if (statType == "Attack")
+                    switch (statType)
                     {
-                        caster.CurrentAttackPower += effect * caster.AttackPower;
-                    }
-                    else if (statType == "hRegen")
-                    {
-                        caster.CurrentHealthRegen += effect * caster.HealthRegen;
-                    }
-                    else if (statType == "mRegen")
-                    {
-                        caster.CurrentManaRegen += effect * caster.ManaRegen;
-                    }
-                    else if (statType == "Armor")
-                    {
-                        caster.CurrentArmorValue += effect * caster.ArmorValue;
-                    }
-                    else if (statType == "Res")
-                    {
-                        caster.CurrentResistanceValue += effect * caster.ResistanceValue;
-                    }
-                    else if (statType == "Crit")
-                    {
-                        caster.CurrentCritChance += effect * caster.CritChance;
-                    }
-                    else if (statType == "Mana")
-                    {
-                        caster.CurrentMana += effect * caster.MaxMana;
-
-                        if (caster.CurrentMana > caster.MaxMana)
-                        {
-                            caster.CurrentMana = caster.MaxMana;
-                        }
-                    }
-                    else if (statType == "Magic")
-                    {
-                        caster.CurrentMagicPower += effect * caster.MagicPower;
-                    }
-                    else if (statType == "Health")
-                    {
-                        caster.CurrentHP += effect * caster.MaxHP;
-
-                        if (caster.CurrentHP > caster.MaxHP)
-                        {
-                            caster.CurrentHP = caster.MaxHP;
-                        }
+                        case "Attack": caster.CurrentAttackPower += effect * caster.AttackPower; break;
+                        case "hRegen": caster.CurrentHealthRegen += effect * caster.HealthRegen; break;
+                        case "mRegen": caster.CurrentManaRegen += effect * caster.ManaRegen; break;
+                        case "Armor": caster.CurrentArmorValue += effect * caster.ArmorValue; break;
+                        case "Res": caster.CurrentResistanceValue += effect * caster.ResistanceValue; break;
+                        case "Crit": caster.CurrentCritChance += effect * caster.CritChance; break;
+                        case "Mana": caster.CurrentMana = this.MaxValidator(caster.CurrentMana, effect, caster.MaxMana); break;
+                        case "Magic": caster.CurrentMagicPower += effect * caster.MagicPower; break;
+                        case "Health": caster.CurrentHP = this.MaxValidator(caster.CurrentHP, effect, caster.MaxHP); break;
                     }
                 }
                 else if (effectType == "Negative")
                 {
-                    if (statType == "Attack")
+                    switch (statType)
                     {
-                        effect *= target.CurrentAttackPower;
-
-                        if (target.CurrentAttackPower < effect)
-                        {
-                            target.CurrentAttackPower = 0;
-                        }
-                        else
-                        {
-                            target.CurrentAttackPower -= effect;
-                        }
+                        case "Attack": target.CurrentAttackPower = this.NegativeValidator(target.CurrentAttackPower, effect); break;
+                        case "hRegen": target.CurrentHealthRegen = this.NegativeValidator(target.CurrentHealthRegen, effect); break;
+                        case "mRegen": target.CurrentManaRegen = this.NegativeValidator(target.CurrentManaRegen, effect); break;
+                        case "Armor": target.CurrentArmorValue = this.NegativeValidator(target.CurrentArmorValue, effect); break;
+                        case "Res": target.CurrentResistanceValue = this.NegativeValidator(target.CurrentResistanceValue, effect); break;
+                        case "Crit": target.CurrentCritChance = this.NegativeValidator(target.CurrentCritChance, effect); break;
+                        case "Mana": target.CurrentMana = this.NegativeValidator(target.CurrentMana, effect); break;
+                        case "Magic": target.CurrentMagicPower = this.NegativeValidator(target.CurrentMagicPower, effect); break;
+                        case "Health": target.CurrentHP = this.NegativeValidator(target.CurrentHP, effect); break;
+                        case "Stun": target.StunDuration += (int)effect; break;
+                        case "Confusion": target.ConfusionDuration += (int)effect; break;
+                        case "Provoke": target.ProvokeDuration += (int)effect; break;
+                        case "Silence": target.SilenceDuration += (int)effect; break;
+                        case "Blind": target.BlindDuration += (int)effect; break;
                     }
-                    else if (statType == "hRegen")
-                    {
-                        effect *= target.CurrentHealthRegen;
-
-                        if (target.CurrentHealthRegen < effect)
-                        {
-                            target.CurrentHealthRegen = 0;
-                        }
-                        else
-                        {
-                            target.CurrentHealthRegen -= effect;
-                        }
-                    }
-                    else if (statType == "mRegen")
-                    {
-                        effect *= target.CurrentManaRegen;
-
-                        if (target.CurrentManaRegen < effect)
-                        {
-                            target.CurrentManaRegen = 0;
-                        }
-                        else
-                        {
-                            target.CurrentManaRegen -= effect;
-                        }
-                    }
-                    else if (statType == "Armor")
-                    {
-                        effect *= target.CurrentArmorValue;
-
-                        if (target.CurrentArmorValue < effect)
-                        {
-                            target.CurrentArmorValue = 0;
-                        }
-                        else
-                        {
-                            target.CurrentArmorValue -= effect;
-                        }
-                    }
-                    else if (statType == "Res")
-                    {
-                        effect *= target.CurrentResistanceValue;
-
-                        if (target.CurrentResistanceValue < effect)
-                        {
-                            target.CurrentResistanceValue = 0;
-                        }
-                        else
-                        {
-                            target.CurrentResistanceValue -= effect;
-                        }
-                    }
-                    else if (statType == "Health")
-                    {
-                        effect *= target.CurrentHP;
-
-                        if (target.CurrentHP > effect)
-                        {
-                            target.CurrentHP -= effect;
-                        }
-                        else
-                        {
-                            target.CurrentHP = 0;
-                        }
-                    }
-                    else if (statType == "Mana")
-                    {
-                        effect *= target.CurrentMana;
-
-                        if (target.CurrentMana > effect)
-                        {
-                            target.CurrentMana -= effect;
-                        }
-                        else
-                        {
-                            target.CurrentMana = 0;
-                        }
-                    }
-                    else if (statType == "Magic")
-                    {
-                        effect *= target.CurrentMagicPower;
-
-                        if (target.CurrentMagicPower > effect)
-                        {
-                            target.CurrentMagicPower -= effect;
-                        }
-                    }
-                }
-                else if (statType == "Stun")
-                {
-                    target.StunDuration += (int)effect;
-                }
-                else if (statType == "Confusion")
-                {
-                    target.ConfusionDuration += (int)effect;
-                }
-                else if (statType == "Provoke")
-                {
-                    target.ProvokeDuration += (int)effect;
-                }
-                else if (statType == "Silence")
-                {
-                    target.SilenceDuration += (int)effect;
-                }
-                else if (statType == "Blind")
-                {
-                    target.BlindDuration += (int)effect;
                 }
             }
+        }
+
+        private double MaxValidator(double stat, double effect, double max)
+        {
+            var sum = stat + (effect * max);
+
+            if (sum > max)
+            {
+                return max;
+            }
+            else
+            {
+                return sum;
+            }
+        }
+
+        private double NegativeValidator(double stat, double effect)
+        {
+            double result = 0;
+
+            effect *= stat;
+
+            if (stat > effect)
+            {
+                result = stat - effect;
+            }
+
+            return result;
         }
     }
 }

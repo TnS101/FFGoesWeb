@@ -13,6 +13,12 @@
         public void Process(Spell spell, IUnit caster, IUnit target, string cardCondition, string talentCondition, bool preview)
         {
             // Enemy,CurrentHP,>,10%,Spell,Power,+,10%
+
+            if (spell.Condition == null)
+            {
+                return;
+            }
+
             if (cardCondition != null)
             {
                 spell.Condition += $"/{cardCondition}";
@@ -21,11 +27,6 @@
             if (talentCondition != null)
             {
                 spell.Condition += $"/{talentCondition}";
-            }
-
-            if (spell.Condition == null)
-            {
-                return;
             }
 
             var conditions = new List<string>();
@@ -39,8 +40,10 @@
                 conditions.Add(spell.Condition);
             }
 
-            foreach (var condition in conditions)
+            for (int i = 0; i < conditions.Count; i++)
             {
+                var condition = conditions[i];
+
                 var info = condition.Split(',');
                 var conditionTarget = info[0];
                 var conditionValueType = info[1];

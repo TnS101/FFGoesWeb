@@ -12,52 +12,25 @@
 
             if (manaCheck.SpellManaCheck(caster, manaRequirment))
             {
-                if (damageType == "Physical")
+                switch (damageType)
                 {
-                    double protection = target.CurrentArmorValue * resistanceAffect;
-
-                    if (damage > protection)
-                    {
-                        damage -= protection;
-
-                        target.CurrentHP -= damage;
-                    }
-                    else
-                    {
-                        target.CurrentArmorValue -= target.CurrentArmorValue * 0.3;
-                    }
+                    case "Physical": this.TakeDamage(target, damage, target.CurrentArmorValue * resistanceAffect, 0.3, 0); break;
+                    case "Magical": this.TakeDamage(target, damage, target.CurrentResistanceValue * resistanceAffect, 0, 0.35); break;
+                    case "Mixed": this.TakeDamage(target, damage, (target.CurrentResistanceValue * resistanceAffect / 2) + (target.CurrentArmorValue * resistanceAffect / 2), 0.15, 0.2); break;
                 }
-                else if (damageType == "Magical")
-                {
-                    double protection = target.CurrentResistanceValue * resistanceAffect;
+            }
+        }
 
-                    if (damage > protection)
-                    {
-                        damage -= protection;
-
-                        target.CurrentHP -= damage;
-                    }
-                    else
-                    {
-                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.35;
-                    }
-                }
-                else if (damageType == "Mixed")
-                {
-                    double protection = (target.CurrentResistanceValue * resistanceAffect / 2) + (target.CurrentArmorValue * resistanceAffect / 2);
-
-                    if (damage > protection)
-                    {
-                        damage -= protection;
-
-                        target.CurrentHP -= damage;
-                    }
-                    else
-                    {
-                        target.CurrentArmorValue -= target.CurrentArmorValue * 0.15;
-                        target.CurrentResistanceValue -= target.CurrentResistanceValue * 0.2;
-                    }
-                }
+        private void TakeDamage(IUnit target, double damage, double protection, double armorReduce, double resistanceReduce)
+        {
+            if (damage > protection)
+            {
+                target.CurrentHP -= damage - protection;
+            }
+            else
+            {
+                target.CurrentArmorValue -= target.CurrentArmorValue * armorReduce;
+                target.CurrentResistanceValue -= target.CurrentResistanceValue * resistanceReduce;
             }
         }
     }

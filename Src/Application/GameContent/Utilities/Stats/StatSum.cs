@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Domain.Contracts.Items;
-    using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Units;
     using Microsoft.EntityFrameworkCore;
 
@@ -29,8 +28,7 @@
 
                 hero.AttackPower += weapon.AttackPower;
             }
-
-            if (hero.TrinketSlot)
+            else if (hero.TrinketSlot)
             {
                 var trinketEquipment = await context.TrinketEquipments.FirstOrDefaultAsync(t => t.HeroId == hero.Id);
 
@@ -38,8 +36,7 @@
 
                 this.MainStatSum(hero, trinket, "+");
             }
-
-            if (hero.RelicSlot)
+            else if (hero.RelicSlot)
             {
                 var relicEquipment = await context.RelicsEquipments.FirstOrDefaultAsync(r => r.HeroId == hero.Id);
 

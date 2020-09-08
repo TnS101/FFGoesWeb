@@ -1,6 +1,5 @@
 ﻿namespace Application.GameContent.Utilities.EquipmentOptions
 {
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
@@ -26,10 +25,7 @@
             {
                 var weaponInventory = await context.WeaponsInventories.FirstOrDefaultAsync(w => w.HeroId == hero.Id && w.WeaponId == item.Id);
 
-                if (hero.WeaponSlot)
-                {
-                    await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                }
+                await this.UnEquipCheck(hero.WeaponSlot, hero, item, statSum, context);
 
                 if (weaponInventory.Count > 1)
                 {
@@ -52,10 +48,7 @@
             {
                 var trinketInventory = await context.TrinketsInventories.FirstOrDefaultAsync(t => t.HeroId == hero.Id && t.TrinketId == item.Id);
 
-                if (hero.TrinketSlot)
-                {
-                    await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                }
+                await this.UnEquipCheck(hero.TrinketSlot, hero, item, statSum, context);
 
                 context.TrinketEquipments.Add(new TrinketEquipment
                 {
@@ -78,10 +71,7 @@
             {
                 var relicInventory = await context.RelicsInventories.FirstOrDefaultAsync(r => r.HeroId == hero.Id && r.RelicId == item.Id);
 
-                if (hero.RelicSlot)
-                {
-                    await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                }
+                await this.UnEquipCheck(hero.RelicSlot, hero, item, statSum, context);
 
                 context.RelicsEquipments.Add(new RelicEquipment
                 {
@@ -137,83 +127,18 @@
             {
                 var armorInventory = await context.ArmorsInventories.FirstOrDefaultAsync(a => a.HeroId == hero.Id && a.ArmorId == item.Id);
 
-                if (item.Slot == "Helmet")
+                switch (item.Slot)
                 {
-                    if (hero.HelmetSlot)
-                    {
-                        await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                    }
-
-                    hero.HelmetSlot = true;
-
-                    this.EquipArmor(hero, context, armorInventory);
+                    case "Helmet": await this.UnEquipCheck(hero.HelmetSlot, hero, item, statSum, context); hero.HelmetSlot = true; break;
+                    case "Chestplate": await this.UnEquipCheck(hero.ChestplateSlot, hero, item, statSum, context); hero.ChestplateSlot = true; break;
+                    case "Shoulder": await this.UnEquipCheck(hero.ShoulderSlot, hero, item, statSum, context); hero.ShoulderSlot = true; break;
+                    case "Bracer": await this.UnEquipCheck(hero.BracerSlot, hero, item, statSum, context); hero.BracerSlot = true; break;
+                    case "Boots": await this.UnEquipCheck(hero.BootsSlot, hero, item, statSum, context); hero.BootsSlot = true; break;
+                    case "Leggings": await this.UnEquipCheck(hero.LeggingsSlot, hero, item, statSum, context); hero.LeggingsSlot = true; break;
+                    case "Gloves": await this.UnEquipCheck(hero.GlovesSlot, hero, item, statSum, context); hero.GlovesSlot = true; break;
                 }
-                else if (item.Slot == "Chestplate")
-                {
-                    if (hero.ChestplateSlot)
-                    {
-                        await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                    }
 
-                    hero.ChestplateSlot = true;
-
-                    this.EquipArmor(hero, context, armorInventory);
-                }
-                else if (item.Slot == "Shoulder")
-                {
-                    if (hero.ShoulderSlot)
-                    {
-                        await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                    }
-
-                    hero.ShoulderSlot = true;
-
-                    this.EquipArmor(hero, context, armorInventory);
-                }
-                else if (item.Slot == "Bracer")
-                {
-                    if (hero.BracerSlot)
-                    {
-                        await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                    }
-
-                    hero.BracerSlot = true;
-
-                    this.EquipArmor(hero, context, armorInventory);
-                }
-                else if (item.Slot == "Boots")
-                {
-                    if (hero.BootsSlot)
-                    {
-                        await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                    }
-
-                    hero.BootsSlot = true;
-
-                    this.EquipArmor(hero, context, armorInventory);
-                }
-                else if (item.Slot == "Leggings")
-                {
-                    if (hero.LeggingsSlot)
-                    {
-                        await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                    }
-
-                    hero.LeggingsSlot = true;
-
-                    this.EquipArmor(hero, context, armorInventory);
-                }
-                else if (item.Slot == "Gloves")
-                {
-                    if (hero.GlovesSlot)
-                    {
-                        await new UnEquipOption().UnEquip(hero, item, statSum, context);
-                    }
-
-                    hero.GlovesSlot = true;
-
-                    this.EquipArmor(hero, context, armorInventory);
-                }
+                this.EquipArmor(hero, context, armorInventory);
 
                 if (armorInventory.Count > 1)
                 {
@@ -241,6 +166,14 @@
                 HeroId = hero.Id,
                 ArmorId = armor.ArmorId,
             });
+        }
+
+        private async Task UnEquipCheck(bool slot, Hero hero, IEquipableItem item, StatSum statSum, IFFDbContext context)
+        {
+            if (slot)
+            {
+                await new UnEquipOption().UnEquip(hero, item, statSum, context);
+            }
         }
     }
 }

@@ -8,7 +8,6 @@
     using Domain.Contracts.Items;
     using Domain.Entities.Game.Items;
     using Domain.Entities.Game.Items.ManyToMany.Inventories;
-    using Domain.Entities.Game.Units;
     using Microsoft.EntityFrameworkCore;
 
     public class ItemHandler
@@ -357,7 +356,18 @@
             }
             else
             {
-                this.ConditionEffectGenerate(effectType, effectPower, effectTypeDescription);
+                switch (this.rng.Next(8))
+                {
+                    case 0: effectType = "CurrentHP"; effectPower = this.rng.Next(8, 16); effectTypeDescription = "Current Health Points"; break;
+                    case 1: effectType = "CurrentMana"; effectPower = this.rng.Next(15, 31); effectTypeDescription = "Current Mana Points"; break;
+                    case 2: effectType = "CurrentArmor"; effectTypeDescription = "Current Armor Value"; break;
+                    case 3: effectType = "CurrentResistance"; effectTypeDescription = "Current Resistance Value"; break;
+                    case 4: effectType = "CurrentHealthRegen"; effectPower = this.rng.Next(60, 101); effectTypeDescription = "Current Health Regen"; break;
+                    case 5: effectType = "CurrentManaRegen"; effectPower = this.rng.Next(60, 101); effectTypeDescription = "Current Mana Regen"; break;
+                    case 6: effectType = "CurrentCritChance"; effectPower = this.rng.Next(6, 17); effectTypeDescription = "Current Critical Chance"; break;
+                    case 7: effectType = "CurrentAttackPower"; effectPower = this.rng.Next(5, 13); effectTypeDescription = "Current Attack Power"; break;
+                    case 8: effectType = "CurrentMagicPower"; effectPower = this.rng.Next(5, 13); effectTypeDescription = "Current Magic Power"; break;
+                }
             }
 
             var templateCard = new Card
@@ -410,22 +420,6 @@
                     CardId = cardId,
                     HeroId = heroId,
                 });
-            }
-        }
-
-        private void ConditionEffectGenerate(string effectType, double effectPower, string effectTypeDescription)
-        {
-            switch (this.rng.Next(8))
-            {
-                case 0: effectType = "CurrentHP"; effectPower = this.rng.Next(8, 16); effectTypeDescription = "Current Health Points"; break;
-                case 1: effectType = "CurrentMana"; effectPower = this.rng.Next(15, 31); effectTypeDescription = "Current Mana Points"; break;
-                case 2: effectType = "CurrentArmor"; effectTypeDescription = "Current Armor Value"; break;
-                case 3: effectType = "CurrentResistance"; effectTypeDescription = "Current Resistance Value"; break;
-                case 4: effectType = "CurrentHealthRegen"; effectPower = this.rng.Next(60, 101); effectTypeDescription = "Current Health Regen"; break;
-                case 5: effectType = "CurrentManaRegen"; effectPower = this.rng.Next(60, 101); effectTypeDescription = "Current Mana Regen"; break;
-                case 6: effectType = "CurrentCritChance"; effectPower = this.rng.Next(6, 17); effectTypeDescription = "Current Critical Chance"; break;
-                case 7: effectType = "CurrentAttackPower"; effectPower = this.rng.Next(5, 13); effectTypeDescription = "Current Attack Power"; break;
-                case 8: effectType = "CurrentMagicPower"; effectPower = this.rng.Next(5, 13); effectTypeDescription = "Current Magic Power"; break;
             }
         }
 

@@ -114,14 +114,12 @@
             {
                 this.DamageSpellCast(spellStatType, statsProvider, spell.ManaRequirement, spell.Power, spell.SecondaryPower, spell.ResistanceAffect, caster, target);
             }
-
-            if (spellType == "Buff")
+            else if (spellType == "Buff")
             {
                 string positiveOrNegativeBuff = spellInfo[3];
                 this.BuffSpellCast(spellStatType, spell.ManaRequirement, spell.BuffOrEffectTarget, spell.Power, caster, target, positiveOrNegativeBuff);
             }
-
-            if (spellType == "Heal")
+            else if (spellType == "Heal")
             {
                 this.HealSpellCast(spellStatType, spell.Power, spell.ManaRequirement, caster);
             }
@@ -131,17 +129,11 @@
         {
             double healEffect = 0;
 
-            if (spellStatType == "Physical")
+            switch (spellStatType)
             {
-                healEffect = spellPower * caster.CurrentAttackPower;
-            }
-            else if (spellStatType == "Magical")
-            {
-                healEffect = spellPower * caster.CurrentMagicPower;
-            }
-            else if (spellStatType == "Health")
-            {
-                healEffect = spellPower * caster.MaxHP;
+                case "Physical": healEffect = spellPower * caster.CurrentAttackPower; break;
+                case "Magical": healEffect = spellPower * caster.CurrentMagicPower; break;
+                case "Health": healEffect = spellPower * caster.MaxHP; break;
             }
 
             new HealCheck().Check(caster, caster, manaRequirement, healEffect, this.manaCheck);
@@ -180,7 +172,7 @@
 
         private void DamageSpellCast(string spellStatType, string statsProvider, double manaRequirement, double spellPower, double secondarySpellPower, double spellResistanceAffect, IUnit caster, IUnit target)
         {
-            double damage = 0;
+            double damage;
             var spellDamageCheck = new SpellDamageCheck();
 
             if (spellStatType.Contains("/")) // Combined Damage
@@ -190,71 +182,9 @@
                 spellDamageCheck.Check(caster, target, manaRequirement, damage, this.manaCheck, "Mixed", spellResistanceAffect);
             }
 
-            string spellDamageType;
-            if (spellStatType == "Physical")
-            {
-                if (statsProvider == "Self")
-                {
-                    damage = spellPower * caster.CurrentAttackPower;
-                }
-                else
-                {
-                    damage = spellPower * target.CurrentAttackPower;
-                }
+            damage = this.DamageCalculation(statsProvider, spellStatType, spellPower, caster, target);
 
-                spellDamageType = "Physical";
-            }
-            else
-            {
-                if (spellStatType == "Magical")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        damage = spellPower * caster.CurrentMagicPower;
-                    }
-                    else
-                    {
-                        damage = spellPower * target.CurrentMagicPower;
-                    }
-                }
-                else if (spellStatType == "MaxHP")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        damage = spellPower * caster.MaxHP;
-                    }
-                    else
-                    {
-                        damage = spellPower * target.MaxHP;
-                    }
-                }
-                else if (spellStatType == "CurrentHP")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        damage = spellPower * caster.CurrentHP;
-                    }
-                    else
-                    {
-                        damage = spellPower * target.CurrentHP;
-                    }
-                }
-                else if (spellStatType == "CurrentMana")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        damage = spellPower * caster.CurrentMana;
-                    }
-                    else
-                    {
-                        damage = spellPower * target.CurrentMana;
-                    }
-                }
-
-                spellDamageType = "Magical";
-            }
-
-            spellDamageCheck.Check(caster, target, manaRequirement, damage, this.manaCheck, spellDamageType, spellResistanceAffect);
+            spellDamageCheck.Check(caster, target, manaRequirement, damage, this.manaCheck, spellStatType, spellResistanceAffect);
         }
 
         private double MixedDamageSpellCast(string statsProvider, string spellStatType, double spellPower, double secondarySpellPower, IUnit caster, IUnit target)
@@ -262,275 +192,24 @@
             string mainStatType = spellStatType.Split('/')[0];
             string secondaryStatType = spellStatType.Split('/')[1];
 
-            double primaryDamage = 0;
-            double secondaryDamage = 0;
+            double primaryDamage;
+            double secondaryDamage;
 
             if (statsProvider.Contains('/')) // Two stats providers (Unit and Target)
             {
                 var primaryStatProvider = statsProvider.Split('/')[0];
                 var secondaryStatProvider = statsProvider.Split('/')[1];
 
-                // Primary Stats
-                if (mainStatType == "Physical")
-                {
-                    if (primaryStatProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.CurrentAttackPower;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.CurrentAttackPower;
-                    }
-                }
-
-                if (mainStatType == "Magical")
-                {
-                    if (primaryStatProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.CurrentMagicPower;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.CurrentMagicPower;
-                    }
-                }
-                else if (mainStatType == "MaxHP")
-                {
-                    if (primaryStatProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.MaxHP;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.MaxHP;
-                    }
-                }
-                else if (mainStatType == "CurrentHP")
-                {
-                    if (primaryStatProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.CurrentHP;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.CurrentHP;
-                    }
-                }
-                else if (mainStatType == "CurrentMana")
-                {
-                    if (primaryStatProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.CurrentMana;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.CurrentMana;
-                    }
-                }
-
-                // Secondary Stats
-                if (secondaryStatType == "Physical")
-                {
-                    if (secondaryStatProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.CurrentAttackPower;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.CurrentAttackPower;
-                    }
-                }
-                else if (secondaryStatType == "Magical")
-                {
-                    if (secondaryStatProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.CurrentMagicPower;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.CurrentMagicPower;
-                    }
-                }
-                else if (secondaryStatType == "MaxHP")
-                {
-                    if (secondaryStatProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.MaxHP;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.MaxHP;
-                    }
-                }
-                else if (secondaryStatType == "CurrentHP")
-                {
-                    if (secondaryStatProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.CurrentHP;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.CurrentHP;
-                    }
-                }
-                else if (secondaryStatProvider == "CurrentMana")
-                {
-                    if (secondaryStatProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.CurrentMana;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.CurrentMana;
-                    }
-                }
+                primaryDamage = this.DamageCalculation(primaryStatProvider, mainStatType, spellPower, caster, target);
+                secondaryDamage = this.DamageCalculation(secondaryStatProvider, secondaryStatType, secondarySpellPower, caster, target);
             }
             else // Single Stat Provider (Unit or Target)
             {
-                // Main Stats
-                if (mainStatType == "Physical")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.CurrentAttackPower;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.CurrentAttackPower;
-                    }
-                }
-                else if (mainStatType == "Magical")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.CurrentMagicPower;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.CurrentMagicPower;
-                    }
-                }
-                else if (mainStatType == "MaxHP")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.MaxHP;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.MaxHP;
-                    }
-                }
-                else if (mainStatType == "CurrentHP")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.CurrentHP;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.CurrentHP;
-                    }
-                }
-                else if (mainStatType == "CurrentMana")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        primaryDamage = spellPower * caster.CurrentMana;
-                    }
-                    else
-                    {
-                        primaryDamage = spellPower * target.CurrentMana;
-                    }
-                }
-
-                // Secondary Stats
-                if (secondaryStatType == "Physical")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.CurrentAttackPower;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.CurrentAttackPower;
-                    }
-                }
-                else if (secondaryStatType == "Magical")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.CurrentMagicPower;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.CurrentMagicPower;
-                    }
-                }
-                else if (secondaryStatType == "MaxHP")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.MaxHP;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.MaxHP;
-                    }
-                }
-                else if (secondaryStatType == "CurrentHP")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.CurrentHP;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.CurrentHP;
-                    }
-                }
-                else if (secondaryStatType == "CurrentMana")
-                {
-                    if (statsProvider == "Self")
-                    {
-                        secondaryDamage = secondarySpellPower * caster.CurrentMana;
-                    }
-                    else
-                    {
-                        secondaryDamage = secondarySpellPower * target.CurrentMana;
-                    }
-                }
+                primaryDamage = this.DamageCalculation(statsProvider, mainStatType, spellPower, caster, target);
+                secondaryDamage = this.DamageCalculation(statsProvider, secondaryStatType, secondarySpellPower, caster, target);
             }
 
-            var damage = this.HPDamageCap(caster, primaryDamage, secondaryDamage);
-
-            return damage;
-        }
-
-        private double HPDamageCap(IUnit caster, double primaryDamage, double secondaryDamage)
-        {
-            var magicDamageCap = 0.8 * caster.CurrentMagicPower;
-            var physicalDamageCap = 0.65 * caster.CurrentAttackPower;
-
-            if (primaryDamage > magicDamageCap)
-            {
-                primaryDamage = magicDamageCap;
-            }
-            else if (primaryDamage > physicalDamageCap)
-            {
-                primaryDamage = physicalDamageCap;
-            }
-
-            if (secondaryDamage > magicDamageCap)
-            {
-                secondaryDamage = magicDamageCap;
-            }
-            else if (secondaryDamage > physicalDamageCap)
-            {
-                secondaryDamage = physicalDamageCap;
-            }
-
-            return primaryDamage + secondaryDamage;
+            return this.HPDamageCap(caster, primaryDamage, secondaryDamage);
         }
 
         private void EffectCast(string[] effectInfo, double spellManaRequirement, string spellBuffOrEffectTarget, double spellEffectPower, double spellSecondaryPower, IUnit caster, IUnit target)
@@ -623,6 +302,56 @@
                     }
                 }
             }
+        }
+
+        private double DamageCalculation(string statsProvider, string statType, double spellPower, IUnit caster, IUnit target)
+        {
+            return statType switch
+            {
+                "Physical" => this.GetProvider(statsProvider, spellPower, caster.CurrentAttackPower, target.CurrentAttackPower),
+                "Magical" => this.GetProvider(statsProvider, spellPower, caster.CurrentMagicPower, target.CurrentMagicPower),
+                "MaxHP" => this.GetProvider(statsProvider, spellPower, caster.MaxHP, target.MaxHP),
+                "CurrentHP" => this.GetProvider(statsProvider, spellPower, caster.CurrentHP, target.CurrentHP),
+                "CurrentMana" => this.GetProvider(statsProvider, spellPower, caster.CurrentMana, target.CurrentMana),
+                "MaxMana" => this.GetProvider(statsProvider, spellPower, caster.MaxMana, target.MaxMana),
+                _ => 0,
+            };
+        }
+
+        private double GetProvider(string statsProvider, double spellPower, double casterPower, double targetPower)
+        {
+            if (statsProvider == "Self")
+            {
+                return spellPower * casterPower;
+            }
+
+            return spellPower * targetPower;
+        }
+
+        private double HPDamageCap(IUnit caster, double primaryDamage, double secondaryDamage)
+        {
+            var magicDamageCap = 0.8 * caster.CurrentMagicPower;
+            var physicalDamageCap = 0.65 * caster.CurrentAttackPower;
+
+            if (primaryDamage > magicDamageCap)
+            {
+                primaryDamage = magicDamageCap;
+            }
+            else if (primaryDamage > physicalDamageCap)
+            {
+                primaryDamage = physicalDamageCap;
+            }
+
+            if (secondaryDamage > magicDamageCap)
+            {
+                secondaryDamage = magicDamageCap;
+            }
+            else if (secondaryDamage > physicalDamageCap)
+            {
+                secondaryDamage = physicalDamageCap;
+            }
+
+            return primaryDamage + secondaryDamage;
         }
     }
 }

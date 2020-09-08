@@ -11,127 +11,47 @@
             {
                 if (buffType == "Positive")
                 {
-                    if (buffStat == "Attack")
+                    switch (buffStat)
                     {
-                        caster.CurrentAttackPower += buffEffect * caster.AttackPower;
-                    }
-                    else if (buffStat == "hRegen")
-                    {
-                        caster.CurrentHealthRegen += buffEffect * caster.HealthRegen;
-                    }
-                    else if (buffStat == "mRegen")
-                    {
-                        caster.CurrentManaRegen += buffEffect * caster.ManaRegen;
-                    }
-                    else if (buffStat == "Armor")
-                    {
-                        caster.CurrentArmorValue += buffEffect * caster.ArmorValue;
-                    }
-                    else if (buffStat == "Res")
-                    {
-                        caster.CurrentResistanceValue += buffEffect * caster.ResistanceValue;
-                    }
-                    else if (buffStat == "Mana")
-                    {
-                        caster.CurrentMana += buffEffect * caster.MaxMana;
-                    }
-                    else if (buffStat == "Gold")
-                    {
-                        caster.CoinAmount += (int)(buffEffect * caster.Level);
-                    }
-                    else if (buffStat == "Magic")
-                    {
-                        caster.CurrentMagicPower += buffEffect * caster.MagicPower;
+                        case "Attack": caster.CurrentAttackPower += buffEffect * caster.AttackPower; break;
+                        case "hRegen": caster.CurrentHealthRegen += buffEffect * caster.HealthRegen; break;
+                        case "mRegen": caster.CurrentManaRegen += buffEffect * caster.ManaRegen; break;
+                        case "Armor": caster.CurrentArmorValue += buffEffect * caster.ArmorValue; break;
+                        case "Res": caster.CurrentResistanceValue += buffEffect * caster.ResistanceValue; break;
+                        case "Mana": caster.CurrentMana = caster.CurrentMana + (buffEffect * caster.MaxMana) > caster.MaxMana ? caster.MaxMana : caster.CurrentMana + (buffEffect * caster.MaxMana); break;
+                        case "Gold": caster.CoinAmount += (int)(buffEffect * caster.Level); break;
+                        case "Magic": caster.CurrentMagicPower += buffEffect * caster.MagicPower; break;
                     }
                 }
                 else
                 {
-                    if (buffStat == "Attack")
+                    switch (buffStat)
                     {
-                        if (target.CurrentAttackPower < buffEffect)
-                        {
-                            target.CurrentAttackPower = 0;
-                        }
-                        else
-                        {
-                            target.CurrentAttackPower -= buffEffect;
-                        }
-                    }
-                    else if (buffStat == "hRegen")
-                    {
-                        if (target.CurrentHealthRegen < buffEffect)
-                        {
-                            target.CurrentHealthRegen = 0;
-                        }
-                        else
-                        {
-                            target.CurrentHealthRegen -= buffEffect * target.CurrentHealthRegen;
-                        }
-                    }
-                    else if (buffStat == "mRegen")
-                    {
-                        if (target.CurrentManaRegen < buffEffect)
-                        {
-                            target.CurrentManaRegen = 0;
-                        }
-                        else
-                        {
-                            target.CurrentManaRegen -= buffEffect * target.CurrentManaRegen;
-                        }
-                    }
-                    else if (buffStat == "Armor")
-                    {
-                        if (target.CurrentArmorValue < buffEffect)
-                        {
-                            target.CurrentArmorValue = 0;
-                        }
-                        else
-                        {
-                            target.CurrentArmorValue -= buffEffect * target.CurrentArmorValue;
-                        }
-                    }
-                    else if (buffStat == "Res")
-                    {
-                        if (target.CurrentResistanceValue < buffEffect)
-                        {
-                            target.CurrentResistanceValue = 0;
-                        }
-                        else
-                        {
-                            target.CurrentResistanceValue -= buffEffect * target.CurrentResistanceValue;
-                        }
-                    }
-                    else if (buffStat == "Health")
-                    {
-                        if (caster.CurrentHP > buffEffect)
-                        {
-                            caster.CurrentHP -= buffEffect;
-                        }
-                    }
-                    else if (buffStat == "Magic")
-                    {
-                        if (target.CurrentMagicPower < buffEffect)
-                        {
-                            target.CurrentMagicPower = 0;
-                        }
-                        else
-                        {
-                            target.CurrentMagicPower -= buffEffect * target.CurrentMagicPower;
-                        }
-                    }
-                    else if (buffStat == "Mana")
-                    {
-                        if (target.CurrentMana < buffEffect)
-                        {
-                            target.CurrentMana = 0;
-                        }
-                        else
-                        {
-                            target.CurrentMana -= buffEffect * target.MaxMana;
-                        }
+                        case "Attack": target.CurrentAttackPower = this.NegativeValidator(target.CurrentAttackPower, buffEffect); break;
+                        case "hRegen": target.CurrentHealthRegen = this.NegativeValidator(target.CurrentHealthRegen, buffEffect); break;
+                        case "mRegen": target.CurrentManaRegen = this.NegativeValidator(target.CurrentManaRegen, buffEffect); break;
+                        case "Armor": target.CurrentArmorValue = this.NegativeValidator(target.CurrentArmorValue, buffEffect); break;
+                        case "Res": target.CurrentResistanceValue = this.NegativeValidator(target.CurrentResistanceValue, buffEffect); break;
+                        case "Mana": target.CurrentMana = this.NegativeValidator(target.CurrentMana, buffEffect); break;
+                        case "Magic": target.CurrentMagicPower = this.NegativeValidator(target.CurrentMagicPower, buffEffect); break;
+                        case "Health": target.CurrentHP = this.NegativeValidator(target.CurrentHP, buffEffect); break;
                     }
                 }
             }
+        }
+
+        private double NegativeValidator(double stat, double effect)
+        {
+            double result = 0;
+
+            effect *= stat;
+
+            if (stat > effect)
+            {
+                result = stat - effect;
+            }
+
+            return result;
         }
     }
 }

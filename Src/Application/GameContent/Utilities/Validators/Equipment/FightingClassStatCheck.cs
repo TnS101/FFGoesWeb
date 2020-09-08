@@ -16,10 +16,7 @@
                 this.ArmorCheck(item, rng);
             }
 
-            if (item.Slot != "Trinket" && item.Slot != "Relic")
-            {
-                this.ClassCheck(item, fightingClassStatNumber);
-            }
+            this.ClassCheck(item, fightingClassStatNumber);
         }
 
         private void ArmorCheck(IEquipableItem item, Random rng)
@@ -29,79 +26,60 @@
             int typeNumber = rng.Next(3);
 
             int usableOrder = rng.Next(3);
-            if (slotNumber == 0)
+
+            switch (slotNumber)
             {
-                item.Slot = "Helmet";
-                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/archive/7/75/20180822163637%21Inv_helm_armor_voidelf_d_01.png?version=7de9cbcce2a59bd472985129e6af7e81";
-            }
-            else if (slotNumber == 1)
-            {
-                item.Slot = "Chestplate";
-                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/b/bb/Inv_chest_samurai.png?version=f5631859203ea398622deb50e0c95847";
-            }
-            else if (slotNumber == 2)
-            {
-                item.Slot = "Shoulder";
-                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/e/e4/Inv_shoulder_13.png?version=87153248a8d840ad34383507d2b11638";
-            }
-            else if (slotNumber == 3)
-            {
-                item.Slot = "Bracer";
-                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/8/87/Inv_bracer_22b.png?version=d5d42675bba996ac4daa904874398a4a";
-            }
-            else if (slotNumber == 4)
-            {
-                item.Slot = "Boots";
-                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/6/6d/Inv_boots_armor_dwarf_d_01.png?version=47cf645fde9bd16e155aa222da62a49d";
-            }
-            else if (slotNumber == 5)
-            {
-                item.Slot = "Leggings";
-                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/7/70/Inv_pant_zandalariclothes_a_01.png?version=d9a4d072389d2349d57517642222169d";
-            }
-            else if (slotNumber == 6)
-            {
-                item.Slot = "Gloves";
-                item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/c/ca/Inv_glove_mail_draenordungeon_c_01.png?version=30cf3357b49e25c4c79bbdfbf2828de5";
+                case 0:
+                    item.Slot = "Helmet";
+                    item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/archive/7/75/20180822163637%21Inv_helm_armor_voidelf_d_01.png?version=7de9cbcce2a59bd472985129e6af7e81"; break;
+                case 1:
+                    item.Slot = "Chestplate";
+                    item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/b/bb/Inv_chest_samurai.png?version=f5631859203ea398622deb50e0c95847"; break;
+                case 2:
+                    item.Slot = "Shoulder";
+                    item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/e/e4/Inv_shoulder_13.png?version=87153248a8d840ad34383507d2b11638"; break;
+                case 3:
+                    item.Slot = "Bracer";
+                    item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/8/87/Inv_bracer_22b.png?version=d5d42675bba996ac4daa904874398a4a"; break;
+                case 4:
+                    item.Slot = "Boots";
+                    item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/6/6d/Inv_boots_armor_dwarf_d_01.png?version=47cf645fde9bd16e155aa222da62a49d"; break;
+                case 5:
+                    item.Slot = "Leggings";
+                    item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/7/70/Inv_pant_zandalariclothes_a_01.png?version=d9a4d072389d2349d57517642222169d"; break;
+                case 6:
+                    item.Slot = "Gloves";
+                    item.ImagePath = "https://gamepedia.cursecdn.com/wowpedia/c/ca/Inv_glove_mail_draenordungeon_c_01.png?version=30cf3357b49e25c4c79bbdfbf2828de5"; break;
             }
 
-            string firstClassOrder;
-            string seccondClassOrder;
-            string thirdClassOrder;
+            string firstClassOrder = string.Empty;
+            string seccondClassOrder = string.Empty;
+            string thirdClassOrder = string.Empty;
 
-            if (typeNumber == 0)
+            switch (typeNumber)
             {
-                item.MaterialType = "Cloth";
-                firstClassOrder = "Mage,Necroid,Priest";
-                seccondClassOrder = "Necroid,Mage,Priest";
-                thirdClassOrder = "Priest,Necroid,Priest";
-            }
-            else if (typeNumber == 1)
-            {
-                item.MaterialType = "Leather";
-                firstClassOrder = "Hunter,Rouge,Naturalist";
-                seccondClassOrder = "Rouge,Hunter,Naturalist";
-                thirdClassOrder = "Naturalist,Hunter,Rouge";
-            }
-            else
-            {
-                item.MaterialType = "Metal";
-                firstClassOrder = "Warrior,Paladin,Shaman";
-                seccondClassOrder = "Paladin,Shaman,Warrior";
-                thirdClassOrder = "Shaman,Warrior,Paladin";
+                case 0:
+                    item.MaterialType = "Cloth";
+                    firstClassOrder = "Mage,Necroid,Priest";
+                    seccondClassOrder = "Necroid,Mage,Priest";
+                    thirdClassOrder = "Priest,Necroid,Priest"; break;
+                case 1:
+                    item.MaterialType = "Leather";
+                    firstClassOrder = "Hunter,Rouge,Naturalist";
+                    seccondClassOrder = "Rouge,Hunter,Naturalist";
+                    thirdClassOrder = "Naturalist,Hunter,Rouge"; break;
+                case 2:
+                    item.MaterialType = "Metal";
+                    firstClassOrder = "Warrior,Paladin,Shaman";
+                    seccondClassOrder = "Paladin,Shaman,Warrior";
+                    thirdClassOrder = "Shaman,Warrior,Paladin"; break;
             }
 
-            if (usableOrder == 0)
+            switch (usableOrder)
             {
-                item.ClassType = firstClassOrder;
-            }
-            else if (usableOrder == 1)
-            {
-                item.ClassType = seccondClassOrder;
-            }
-            else
-            {
-                item.ClassType = thirdClassOrder;
+                case 0: item.ClassType = firstClassOrder; break;
+                case 1: item.ClassType = seccondClassOrder; break;
+                case 2: item.ClassType = thirdClassOrder; break;
             }
 
             item.Name = $"{item.ClassType.Split(',')[0]}'s {item.Slot}";
@@ -122,17 +100,11 @@
             {
                 classOrder = rng.Next(3);
 
-                if (classOrder == 0)
+                switch (classOrder)
                 {
-                    item.ClassType = "Mage,Necroid,Naturalist";
-                }
-                else if (classOrder == 1)
-                {
-                    item.ClassType = "Necroid,Mage,Naturalist";
-                }
-                else
-                {
-                    item.ClassType = "Naturalist,Mage,Naturalist";
+                    case 0: item.ClassType = "Mage,Necroid,Naturalist"; break;
+                    case 1: item.ClassType = "Necroid,Mage,Naturalist"; break;
+                    case 2: item.ClassType = "Necroid,Mage,Naturalist"; break;
                 }
 
                 item.Name = "Orb";
@@ -143,13 +115,10 @@
             {
                 classOrder = rng.Next(2);
 
-                if (classOrder == 0)
+                switch (classOrder)
                 {
-                    item.ClassType = "Naturalist,Priest";
-                }
-                else
-                {
-                    item.ClassType = "Priest,Naturalist";
+                    case 0: item.ClassType = "Naturalist,Priest"; break;
+                    case 1: item.ClassType = "Priest,Naturalist"; break;
                 }
 
                 item.Name = "Branch";
@@ -167,17 +136,11 @@
             {
                 classOrder = rng.Next(3);
 
-                if (classOrder == 0)
+                switch (classOrder)
                 {
-                    item.ClassType = "Paladin,Warrior,Shaman";
-                }
-                else if (classOrder == 1)
-                {
-                    item.ClassType = "Shaman,Warrior,Paladin";
-                }
-                else
-                {
-                    item.ClassType = "Warrior,Shaman,Paladin";
+                    case 0: item.ClassType = "Paladin,Warrior,Shaman"; break;
+                    case 1: item.ClassType = "Shaman,Warrior,Paladin"; break;
+                    case 2: item.ClassType = "Warrior,Shaman,Paladin"; break;
                 }
 
                 item.Name = "Hammer";
@@ -188,21 +151,12 @@
             {
                 classOrder = rng.Next(4);
 
-                if (classOrder == 0)
+                switch (classOrder)
                 {
-                    item.ClassType = "Priest,Mage,Necroid,Naturalist";
-                }
-                else if (classOrder == 1)
-                {
-                    item.ClassType = "Mage,Priest,Necroid,Naturalist";
-                }
-                else if (classOrder == 2)
-                {
-                    item.ClassType = "Necroid,Mage,Priest,Naturalist";
-                }
-                else
-                {
-                    item.ClassType = "Naturalist,Mage,Necroid,Priest";
+                    case 0: item.ClassType = "Priest,Mage,Necroid,Naturalist"; break;
+                    case 1: item.ClassType = "Mage,Priest,Necroid,Naturalist"; break;
+                    case 2: item.ClassType = "Necroid,Mage,Priest,Naturalist"; break;
+                    case 3: item.ClassType = "Naturalist,Mage,Necroid,Priest"; break;
                 }
 
                 item.Name = "Staff";
@@ -220,13 +174,10 @@
             {
                 classOrder = rng.Next(2);
 
-                if (classOrder == 0)
+                switch (classOrder)
                 {
-                    item.ClassType = "Shaman,Warrior";
-                }
-                else
-                {
-                    item.ClassType = "Warrior,Shaman";
+                    case 0: item.ClassType = "Shaman,Warrior"; break;
+                    case 1: item.ClassType = "Warrior,Shaman"; break;
                 }
 
                 item.Name = "Club";
@@ -237,13 +188,10 @@
             {
                 classOrder = rng.Next(2);
 
-                if (classOrder == 0)
+                switch (classOrder)
                 {
-                    item.ClassType = "Warrior,Paladin";
-                }
-                else
-                {
-                    item.ClassType = "Paladin,Warrior";
+                    case 0: item.ClassType = "Warrior,Paladin"; break;
+                    case 1: item.ClassType = "Paladin,Warrior"; break;
                 }
 
                 item.Name = "Sword";
@@ -261,41 +209,17 @@
                 classUsable = item.ClassType.Split(',')[0];
             }
 
-            if (classUsable == "Hunter")
+            switch (classUsable)
             {
-                item.Agility = fightingClassStatNumber;
-            }
-            else if (classUsable == "Mage")
-            {
-                item.Intellect = fightingClassStatNumber;
-            }
-            else if (classUsable == "Naturalist")
-            {
-                item.Spirit = fightingClassStatNumber;
-            }
-            else if (classUsable == "Necroid")
-            {
-                item.Intellect = fightingClassStatNumber;
-            }
-            else if (classUsable == "Paladin")
-            {
-                item.Strength = fightingClassStatNumber;
-            }
-            else if (classUsable == "Priest")
-            {
-                item.Spirit = fightingClassStatNumber;
-            }
-            else if (classUsable == "Rogue")
-            {
-                item.Agility = fightingClassStatNumber;
-            }
-            else if (classUsable == "Shaman")
-            {
-                item.Stamina = fightingClassStatNumber;
-            }
-            else
-            {
-                item.Strength = fightingClassStatNumber;
+                case "Hunter": item.Agility = fightingClassStatNumber; break;
+                case "Mage": item.Intellect = fightingClassStatNumber; break;
+                case "Naturalist": item.Spirit = fightingClassStatNumber; break;
+                case "Necroid": item.Intellect = fightingClassStatNumber; break;
+                case "Paladin": item.Strength = fightingClassStatNumber; break;
+                case "Priest": item.Spirit = fightingClassStatNumber; break;
+                case "Rogue": item.Agility = fightingClassStatNumber; break;
+                case "Shaman": item.Stamina = fightingClassStatNumber; break;
+                case "Warrior": item.Strength = fightingClassStatNumber; break;
             }
         }
     }

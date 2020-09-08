@@ -25,6 +25,7 @@
                 UserId = request.UserId,
                 SentOn = DateTime.UtcNow,
                 Content = request.Content,
+                Type = request.ContentType,
             };
 
             if (request.ContentType == "Topic")
@@ -32,21 +33,18 @@
                 var topic = await this.Context.Topics.FindAsync(request.ContentId);
                 ticket.TopicId = topic.Id;
                 ticket.ReportedUserId = topic.UserId;
-                ticket.Type = "Topic";
             }
             else if (request.ContentType == "Comment")
             {
                 var comment = await this.Context.Comments.FindAsync(request.ContentId);
                 ticket.CommentId = comment.Id;
                 ticket.ReportedUserId = comment.UserId;
-                ticket.Type = "Comment";
             }
             else
             {
                 var message = await this.Context.Messages.FindAsync(request.ContentId);
                 ticket.MessageId = message.Id;
                 ticket.ReportedUserId = message.UserId;
-                ticket.Type = "Message";
             }
 
             this.Context.Tickets.Add(ticket);
