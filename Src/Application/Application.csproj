@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CQ\Users\Commands\**" />
+    <EmbeddedResource Remove="CQ\Users\Commands\**" />
+    <None Remove="CQ\Users\Commands\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Common\README.md" />
     <None Remove="CQ\README.md" />
     <None Remove="GameContent\Utilities\README.md" />
@@ -28,10 +34,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CQ\Users\Commands\" />
   </ItemGroup>
 
 </Project>
