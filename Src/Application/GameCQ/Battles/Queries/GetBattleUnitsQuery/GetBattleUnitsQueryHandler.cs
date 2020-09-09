@@ -20,7 +20,7 @@
 
         public async Task<BattleUnitsListViewModel> Handle(GetBattleUnitsQuery request, CancellationToken cancellationToken)
         {
-            var dbHero = await this.Context.Heroes.FindAsync(request.HeroId);
+            var dbHero = this.Context.Heroes.FromSqlRaw($"GetBattleHero {request.HeroId}").First();
             var hero = this.Mapper.Map<BattleUnitViewModel>(dbHero);
             var fightingClass = await this.Context.FightingClasses.FindAsync(dbHero.FightingClassId);
 

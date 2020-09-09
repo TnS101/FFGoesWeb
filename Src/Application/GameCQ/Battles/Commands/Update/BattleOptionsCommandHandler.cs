@@ -1,6 +1,7 @@
 ﻿namespace Application.GameCQ.Battles.Commands.Update
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Application.Common.Handlers;
@@ -10,6 +11,7 @@
     using AutoMapper;
     using global::Common;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
 
     public class BattleOptionsCommandHandler : MapperHandler, IRequestHandler<BattleOptionsCommand, string>
     {
@@ -23,7 +25,7 @@
 
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
-            var hero = await this.Context.Heroes.FindAsync(request.HeroId);
+            var hero = this.Context.Heroes.FromSqlRaw($"GetBattleHero {request.HeroId}").First();
 
             if (request.Enemy.CurrentHP > 0 && request.YourTurn)
             {
