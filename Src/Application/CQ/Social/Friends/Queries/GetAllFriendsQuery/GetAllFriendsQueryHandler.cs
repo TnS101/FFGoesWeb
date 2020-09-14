@@ -17,13 +17,13 @@
 
         public async Task<UserListViewModel> Handle(GetAllFriendsQuery request, CancellationToken cancellationToken)
         {
-            var friends = this.Context.Friends.Where(f => f.UserId == request.UserId).Select(f => new UserPartialViewModel
+            var friends = await this.Context.Friends.Where(f => f.UserId == request.UserId).AsNoTracking().Select(f => new UserPartialViewModel
             {
                 Id = f.Id,
                 UserName = f.User.UserName,
                 ForumPoints = f.User.ForumPoints,
                 MasteryPoints = f.User.MasteryPoints,
-            }).AsNoTracking();
+            }).ToArrayAsync();
 
             return new UserListViewModel { Users = friends };
         }

@@ -25,7 +25,7 @@
 
         public async Task<string> Handle(BattleOptionsCommand request, CancellationToken cancellationToken)
         {
-            var hero = this.Context.Heroes.FromSqlRaw($"GetBattleHero {request.HeroId}").First();
+            var hero = this.Context.Heroes.FromSqlRaw($"GetBattleHero {request.HeroId}").AsEnumerable().First();
 
             if (request.Enemy.CurrentHP > 0 && request.YourTurn)
             {
