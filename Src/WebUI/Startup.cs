@@ -41,8 +41,8 @@
             services.AddSingleton(mapper);
 
             // MediatR
-            services.AddMediatR(typeof(Startup));
-            var registerHandlers = new RegisterHandlers(services);
+            var assembly = AppDomain.CurrentDomain.Load("Application");
+            services.AddMediatR(assembly);
 
             // Database
             services.AddDbContextPool<FFDbContext>(opt => opt.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")))
